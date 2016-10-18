@@ -5,5 +5,4 @@ before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y texlive-lang-cjk texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra --no-install-recommends
 script:
-  - uplatex -no-guess-input-enc -kanji=utf8 -synctex=1 -output-directory=2016A 2016A/CircuitTheory1.tex 0<&-
-  - dvipdfmx -o 2016A/CircuitTheory1.pdf 2016A/CircuitTheory1.dvi 0<&-
+  - make
