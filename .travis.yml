@@ -3,10 +3,11 @@ addons:
   apt:
     packages:
       - texlive-latex-extra
+      - texlive-lang-cjk
       - dvipng
       - libssl-dev
       - libreadline-dev
       - zlib1g-dev
 script:
-  - uplatex -no-guess-input-enc -kanji=utf8 -synctex=1 -output-directory=2016A 2016A\CircuitTheory1.tex
-  - dvipdfmx -o 2016A\CircuitTheory1.pdf 2016A\CircuitTheory1.dvi
+  - uplatex -no-guess-input-enc -kanji=utf8 -synctex=1 -output-directory=2016A 2016A/CircuitTheory1.tex
+  - dvipdfmx -o 2016A/CircuitTheory1.pdf 2016A/CircuitTheory1.dvi
