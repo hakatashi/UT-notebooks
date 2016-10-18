@@ -3,6 +3,6 @@ sudo: required
 dist: trusty
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y texlive-lang-cjk texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra --no-install-recommends
+  - sudo apt-get install -y texlive-lang-cjk texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-lang-greek --no-install-recommends
 script:
   - make
