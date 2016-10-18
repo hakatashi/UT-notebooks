@@ -1,0 +1,2015 @@
+%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{calc}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{esint}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[version=3]{mhchem}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2016-A 電気回路理論第一}
+
+
+\author{教員: 藤本 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\jmath}
+\global\long\def\grad{\mathrm{grad}}
+\global\long\def\rot{\mathrm{rot}}
+\global\long\def\div{\mathrm{div}}
+\global\long\def\diag{\mathrm{diag}}
+
+
+
+\section*{第1回}
+
+
+\section{直流回路}
+
+
+\subsection{電気回路とは}
+
+回路要素(抵抗、コンデンサ、インダクタ、トランジスタ、etc)が導体によって接続されたループで、電源によって電流が流れるもの。
+
+図
+
+クーロン力
+\[
+F=\frac{1}{4\pi\varepsilon}\frac{q_{1}q_{2}}{r^{2}}
+\]
+は重力
+\[
+F=-G\frac{m_{1}m_{2}}{r^{2}}
+\]
+に対応する。
+
+静電ポテンシャル
+\[
+V=\frac{1}{4\pi\varepsilon}\frac{q_{1}}{r}
+\]
+は位置エネルギー
+\[
+U=-G\frac{m_{1}}{r}
+\]
+に対応する。
+
+
+\paragraph{電圧(電位、ポテンシャル)}
+
+記号 V, E 単位 $\left[\mathrm{V}\right]$ボルト
+
+図
+
+静電界$E$のなか単位電荷を$a\rightarrow b$に移動させるのに必要な仕事量
+\[
+V_{ba}=-\int_{a}^{b}E\mathrm{d}l
+\]
+
+
+
+\paragraph{電流}
+
+記号 I 単位 $\left[\mathrm{A}\right]$アンペア
+
+ある面$A$を単位時間に通過する電荷量
+
+図
+
+
+\paragraph{電力}
+
+記号 P 単位 $\left[\mathrm{W}\right]$ワット
+
+\[
+V\times I=\d wq\times\d qt=\d wt=\left(\text{単位時間あたりのエネルギー量}\right)
+\]
+
+
+
+\subsection{線形電気回路}
+
+理想化された抵抗、コンデンサ、インダクタ、電源などの線形素子から構成された回路。
+
+線形回路は理論的に取り扱いやすい。
+
+この講義の扱う範囲。
+
+図
+
+\[
+\left(\text{出力}\right)=a\times\left(\text{入力}\right)
+\]
+
+
+係数$a$が分かれば全ての入力に対する出力が分かる。→線形性の強み。
+
+例: オームの法則$I=\frac{1}{R}V$
+
+
+\paragraph{非線形回路}
+
+ex) 非線形抵抗(電球など)、トランジスタ、MOSFET
+
+図
+
+狭い範囲で見れば線形に近似できる。
+
+
+\subsection{直流及び交流信号}
+
+・直流
+
+図
+
+・交流
+
+図
+
+線形回路の場合、直流と交流で(ほぼ)全ての波形を表現できる。→フーリエ級数展開、フーリエ変換
+
+
+\subsection{回路要素}
+
+補足プリント(1)参照
+
+
+\paragraph{インダクタ補足}
+
+\[
+V=\d{\phi}t
+\]
+
+
+磁束$\phi=Li$
+
+
+\paragraph{コンダクタ補足}
+
+\[
+Q=CV
+\]
+
+
+$I=\d Qt$より
+
+
+\paragraph{補足プリントの続き}
+
+2端子では、この3素子しか出てこない。(線形回路では)
+
+直流回路では抵抗成分しか扱われない。直流では安定状態(十分に時間がたった状態)で、
+\begin{itemize}
+\item コイル=短絡(ショート) $V=L\d it=0$
+\item コンデンサ=開放(断線) $I=C\d Vt=0$
+\end{itemize}
+だから。
+
+
+\paragraph{JIS表記について}
+
+本講義では旧表記を用いる。
+
+図
+
+
+\subsection{電源}
+
+
+\paragraph{理想電圧源}
+
+図
+
+電流に無関係に電圧が$E$
+
+図
+
+ショート禁止 $I=\infty$となり、萌える。
+
+
+\paragraph{理想電流源}
+
+図
+
+電圧に無関係に電流が$I$
+
+図
+
+開放禁止 $I$を無理やり流そうとして$V=\infty$
+
+
+\paragraph{一般の電源}
+
+図
+
+内部抵抗があるため電流が大きいと出力電圧が低下。
+
+
+\subsection{キルヒホッフの法則(Kirchhoff's Law)}
+
+
+\paragraph{第1法則(電流則) Kirchhaff's Current Law = KCL}
+
+節点への流入電流の和=節点からの流出電流の和
+
+図
+
+\[
+\sum_{k=1}^{n}i_{k}=0
+\]
+
+
+電荷保存則
+
+
+\paragraph{第2法則(電圧則) Kirchhoff's Voltage Law = KVL}
+
+任意の閉路(ループ)を一巡する際の電位上昇の和=電圧降下の和
+
+図
+
+\[
+\sum_{k=1}^{n}v_{k}=0
+\]
+
+
+電圧の一位則
+
+直流回路はオームの法則、KCL、KVLで解くことができる。
+
+ex1) T型回路
+
+図
+
+節点$B$にKCLを適用
+
+\begin{equation}
+I_{1}-I_{2}-I_{3}=0
+\end{equation}
+
+
+閉路1にKVLを適用
+
+\begin{equation}
+V-R_{1}I_{1}-R_{2}I_{2}=0
+\end{equation}
+
+
+閉路2にKVLを適用
+
+\begin{equation}
+R_{2}I_{2}-R_{3}I_{3}=0
+\end{equation}
+
+
+(1), (2), (3) を連立して下記を得る。(自習)
+
+\[
+\left(\begin{array}{c}
+I_{1}\\
+I_{2}\\
+I_{3}
+\end{array}\right)=\frac{1}{R_{1}R_{2}+R_{2}R_{3}+R_{3}R_{1}}\left(\begin{array}{c}
+\left(R_{2}+R_{3}\right)V\\
+R_{3}V\\
+R_{2}V
+\end{array}\right)
+\]
+
+
+
+\subsection{合成抵抗}
+
+補足プリント(2)参照
+
+
+\paragraph{ex1の別解}
+
+\[
+\frac{1}{R_{\underbrace{2/3}_{\text{2と3の並列の意}}}}=\frac{1}{R_{2}}+\frac{1}{R_{1}}
+\]
+
+
+\begin{align*}
+R_{\mathrm{total}} & =R_{1}+R_{2/3}\\
+ & =R_{1}+\frac{R_{2}R_{3}}{R_{2}+R_{3}}
+\end{align*}
+
+
+\[
+I_{1}=\frac{V}{R_{\mathrm{total}}}=\frac{R_{2}+R_{3}}{R_{1}R_{2}+R_{2}R_{3}+R_{3}R_{1}}V
+\]
+
+
+簡単に求まる。回路の直感的理解に役立つ。
+
+
+\subsection{ブリッジ回路}
+
+図
+
+合成抵抗より、
+\begin{align*}
+I_{1} & =\frac{V}{R_{1}+R_{2}}\\
+I_{2} & =\frac{V}{R_{1}+R_{2}}
+\end{align*}
+
+
+ここで節点BC間の電圧を計算すると、
+\begin{align*}
+V_{CB} & =-R_{2}I_{1}+R_{4}I_{2}=-\frac{R_{2}V}{R_{1}+R_{2}}+\frac{R_{4}V}{R_{3}+R_{4}}\\
+ & =\frac{-R_{2}R_{3}+R_{1}R_{4}}{\left(R_{1}+R_{2}\right)\left(R_{1}+R_{4}\right)}V
+\end{align*}
+
+
+つまり、$R_{1}R_{4}=R_{2}R_{3}$(ブリッジの平衡条件)のとき入力電圧$V$によらすBC間の電圧は0になる。
+
+→BC間に検流計をつないでも電流は流れない。高精度抵抗測定などに応用。
+
+
+\subsection{$\Delta\leftrightarrow Y$変換}
+
+図
+
+回路をブラックボックスと考えたとき、外から見た時の両回路が等価となる条件を考える。
+
+まず$\Delta$回路について考える。各節点にKCLを適用すると、
+\begin{align*}
+I_{1}-I_{12}+I_{31} & =0\\
+I_{2}-I_{23}+I_{12} & =0\\
+I_{3}-I_{31}+I_{23} & =0
+\end{align*}
+
+
+オームの法則により、接点間電流を表すと、
+\begin{align}
+I_{1} & =\frac{V_{12}}{R_{12}}-\frac{V_{31}}{R_{31}}\\
+I_{2} & =\frac{V_{23}}{R_{23}}-\frac{V_{12}}{R_{12}}\\
+I_{3} & =\frac{V_{31}}{R_{31}}-\frac{V_{23}}{R_{23}}
+\end{align}
+
+
+一方、$Y$回路を考えると、節点$N$にKCLを適用して、
+\begin{equation}
+I_{1}+I_{2}+I_{3}=0
+\end{equation}
+
+
+各節点にオームの法則を適用
+
+\begin{align}
+V_{12} & =R_{1}I_{1}-R_{2}I_{2}\\
+V_{23} & =R_{2}I_{2}-R_{3}I_{3}\\
+V_{31} & =R_{3}I_{3}-R_{1}R_{1}
+\end{align}
+
+
+(7)を使って(10)の$I_{3}$を消去
+
+\[
+I_{2}=-\frac{V_{31}}{R_{3}}-\frac{R_{1}+R_{2}}{R_{3}}I_{1}
+\]
+となるので、これを(8)に代入して$I_{2}$を消す。
+
+\[
+I_{1}\frac{R_{3}V_{12}-R_{2}V_{31}}{R_{1}R_{2}+R_{2}R_{3}+R_{3}R_{1}}
+\]
+
+
+この式と(4), (5), (6)を比較すると次の関係が得られる。
+
+\begin{align}
+R_{12} & =\frac{R_{1}R_{2}+R_{2}R_{3}+R_{3}R_{1}}{R_{3}}\\
+R_{31} & =\frac{R_{1}R_{2}+R_{2}R_{3}+R_{3}R_{1}}{R_{2}}
+\end{align}
+
+
+同様に
+\[
+R_{23}=\frac{R_{1}R_{2}+R_{2}R_{3}+R_{3}R_{1}}{R_{1}}
+\]
+
+
+これらの関係をみたとき、$\Delta$回路は$Y$回路と等価となり互いに変換できる。
+
+また(11), (12)を2つずつ掛け合わせる。
+
+\begin{equation}
+\left(\begin{array}{c}
+\frac{1}{R_{12}R_{23}}\\
+\frac{1}{R_{23}R_{31}}\\
+\frac{1}{R_{31}R_{12}}
+\end{array}\right)=\frac{1}{\left(R_{1}R_{2}+R_{2}R_{3}+R_{3}R_{1}\right)}\left(\begin{array}{c}
+R_{3}R_{1}\\
+R_{1}R_{2}\\
+R_{2}R_{3}
+\end{array}\right)
+\end{equation}
+
+
+(13)を足し合わせる。
+
+\[
+\frac{R_{12}+R_{23}+R_{31}}{R_{12}R_{23}R_{31}}=\frac{1}{R_{1}R_{2}+R_{2}R_{3}+R_{3}R_{1}}
+\]
+
+
+(12)に代入する。
+
+\[
+\left(\begin{array}{c}
+R_{1}\\
+R_{2}\\
+R_{3}
+\end{array}\right)=\frac{1}{R_{12}+R_{23}+R_{31}}\left(\begin{array}{c}
+R_{12}R_{31}\\
+R_{23}R_{12}\\
+R_{31}R_{23}
+\end{array}\right)
+\]
+
+
+
+\section*{第2回}
+
+
+\section{回路方程式}
+
+
+\paragraph{節点方程式}
+
+節点電位を変数にとり、KCLにより方程式をつくる。
+
+節点電位: KVLは自動的に満たされる。
+
+
+\paragraph{閉路方程式}
+
+閉路電流を変数にとり、KVLにより方程式をつくる。
+
+閉路電流: KCLは自動的に満たされる。
+
+
+\subsection{節点方程式}
+
+
+\paragraph{回路のグラフ}
+
+回路要素を明示せずに、相互接続だけを表した図。
+
+図電回2-1
+
+グラフ化するとき、電流源を開放、電圧源を短絡させる。
+
+
+\paragraph{カットセット}
+
+グラフを2つの部分に分離することができる枝の組み合わせ。
+
+図電回2-2
+
+カットセットの枝電流の総和=0(KCLそのもの): カットセット方程式
+
+→KCLを適用すると、節点方程式が得られる。
+
+$n$個の節点→$n-1$個の独立した方程式 (基準の節点=0だから)
+
+節点$a$にKCLを適用
+\begin{equation}
+I-I_{1}-I_{2}=0
+\end{equation}
+
+
+節点$b$にKCLを適用
+\begin{equation}
+I_{2}-I_{3}=0
+\end{equation}
+
+
+(1), (2) の電流$I_{1},I_{2}$を節点電位$V_{a},V_{b}$で表現すると、
+\[
+I-\frac{V_{a}}{R_{1}}-\frac{V_{a}-V_{b}}{R_{2}}=0
+\]
+\[
+\frac{V_{a}-V_{b}}{R_{2}}-\frac{V_{b}}{R_{3}}=0
+\]
+
+
+行列で表すと、
+\[
+\left[\begin{array}{cc}
+\frac{1}{R_{1}}+\frac{1}{R_{2}} & -\frac{1}{R_{2}}\\
+-\frac{1}{R_{2}} & \frac{1}{R_{2}}+\frac{1}{R_{3}}
+\end{array}\right]\left[\begin{array}{c}
+V_{a}\\
+V_{b}
+\end{array}\right]=\left[\begin{array}{c}
+I\\
+0
+\end{array}\right]
+\]
+
+
+対角要素: 自己コンダクタンス
+
+非対角要素: 相互コンダクタンス
+
+右辺: 節点電流源ベクトル
+
+
+\paragraph{対角要素($y_{ii}$): 自己コンダクタンス}
+
+$i$番目の節点に接続されている全ての枝のコンダクタンス
+
+
+\paragraph{非対角要素($y_{ij}$): 相互コンダクタンス}
+
+$i$番目と$j$番目の節点を結ぶすべての枝のコンダクタンスの和に負の符号をつけたもの。
+
+
+\paragraph{節点電流ベクトル}
+
+各々の節点に接続される等価電流源
+
+節点に流れ込むものに+, 流れ出るものに-符号をつける。
+
+教科書p.29 例題1.7
+
+
+\paragraph{電圧源を含む場合}
+
+ex)
+
+図電回2-3
+
+節点$a$に関して
+\[
+I_{1}-I_{2}-I_{3}=0
+\]
+\[
+I_{1}=\frac{V-V_{a}}{R_{1}}
+\]
+とすればよい。
+
+図電回2-4
+
+\begin{align*}
+I_{1} & =\frac{V}{R_{1}}-\frac{V_{a}}{R_{1}}\\
+ & =I
+\end{align*}
+
+
+等価的な電流源に変換
+
+→ノートンの定理(来週)の特殊例
+
+
+\subsection{閉路方程式}
+
+
+\paragraph{グラフの木で補木}
+
+木: 全ての節点を含み、かつ閉路のないような枝で連結されているグラフ。
+
+$n$個の節点→木の枝数$n-1$
+
+補木: (元のグラフ数)-(木の枝)
+
+グラフの枝数$b$→補木の枝数$b-\left(a-1\right)$
+
+次の例では$n=4,b=5$
+
+図電回2-5
+
+
+\paragraph{タイセット}
+
+グラフの閉路を構成する1組の枝。
+
+木に\textbf{補木の枝を一つ追加}すると、1つのタイセットができる。
+
+図電回2-6
+
+木を$\left\{ 2,3,5\right\} $として、
+
++ 枝1→閉路1$\left\{ 1,2,5\right\} $
+
+- 枝4→閉路2$\left\{ 3,4,5\right\} $
+
+各閉路に対してKVLを適用することで、閉路方程式を得ることができる。
+
+互いに独立した閉路の数=補木の数=$b-\left(n-1\right)$
+
+例) T型回路
+
+図電回2-7
+
+各閉路のループ電流$I_{1},I_{2}$とする。
+
+閉路1にKVLを適用
+\begin{equation}
+V-R_{1}I_{1}-R_{2}\left(I_{1}-I_{2}\right)=0
+\end{equation}
+
+
+閉路2にKVLを適用
+\begin{equation}
+R_{2}\left(I_{1}-I_{2}\right)-R_{3}I_{2}=0
+\end{equation}
+
+
+次に(3), (4)を行列の形で書くと、閉路方程式が得られる。
+
+\[
+\left(\begin{array}{cc}
+R_{1}+R_{2} & -R_{2}\\
+-R_{2} & R_{2}+R_{3}
+\end{array}\right)\left(\begin{array}{c}
+I_{1}\\
+I_{2}
+\end{array}\right)=\left(\begin{array}{c}
+V\\
+0
+\end{array}\right)
+\]
+
+
+対角要素: 自己抵抗
+
+非対角要素: 相互抵抗
+
+右辺: 閉路電圧源ベクトル
+
+
+\paragraph{対角要素($z_{ii}$): 自己抵抗}
+
+$i$番目の閉路のすべての抵抗の和
+
+
+\paragraph{非対角要素($z_{ij}$): 相互抵抗}
+
+$i$番目と$j$番目の閉路が共通に持つ全ての抵抗の和
+
+2つの閉路が同じ向きなら正符号、逆なら負符号
+
+\textbf{閉路が網目(内側に枝がない)の場合は、必ず負符号}
+
+ループ電流は通常右回りを正にとる。
+
+
+\paragraph{閉路電圧源ベクトル}
+
+各閉路に含まれる等価電圧源の和
+
+閉路電流の向きに電流を流す電圧を正符号とする。
+
+
+\paragraph{電流源を含む場合}
+
+図電回2-8
+
+\[
+V_{1}=RI-RI_{1}
+\]
+
+
+$RI$: 等価な電圧源に変換
+
+鳳・テブナンの定理(来週)の特殊な例
+
+
+\subsection{節点方程式の数式的表現}
+
+図電回2-9
+
+節点$a$: $i_{1}+i_{2}=0$
+
+節点$b$: $-i_{2}+i_{3}=0$
+
+節点$c$: $-i_{1}-i_{3}=0$
+
+これを行列表示にすると、
+\begin{equation}
+\left(\begin{array}{ccc}
++1 & +1 & 0\\
+0 & -1 & +1\\
+-1 & 0 & -1
+\end{array}\right)\left(\begin{array}{c}
+i_{1}\\
+i_{2}\\
+i_{3}
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+0\\
+0
+\end{array}\right)
+\end{equation}
+
+
+左辺左項: 接続行列$A$: グラフを数式的に表したもの
+
+左辺右項: 枝電流ベクトル
+
++1: 枝電流が流れ出るとき
+
+-1: 枝電流が流れ入るとき
+
+(1行目)+(2行目)=-(3行目) からも分かるように、節点が$n$個のとき、独立なカットセット数$n-1$=回路の階数(rank)
+
+節点$c$を基準($v_{c}=0$)とすると、接続行列$A$の最後の行は不要。
+
+既約接続行列$A'=\left(\begin{array}{ccc}
++1 & +1 & 0\\
+0 & -1 & +1
+\end{array}\right)$で記述できる。
+
+式(5)は$Ai_{b}=0$とかける。枝電流を節点電位で表せば、節点方程式が得られる。
+
+
+\paragraph{$k$番目の枝}
+
+図電回2-10
+
+\[
+i_{k}=\frac{v_{k}}{R_{k}}+i_{sk}-\frac{v_{sk}}{R_{k}}
+\]
+
+
+→行列表示
+
+\[
+i_{b}=Gv_{b}+i_{sb}-Gv_{sb}
+\]
+\[
+\left(\begin{array}{c}
+i_{1}\\
+i_{2}\\
+\vdots\\
+i_{b}
+\end{array}\right)=\left(\begin{array}{cccc}
+G_{1} &  &  & 0\\
+ & G_{2}\\
+ &  & \ddots\\
+0 &  &  & G_{b}
+\end{array}\right)\left(\begin{array}{c}
+v_{1}\\
+v_{2}\\
+\vdots\\
+v_{b}
+\end{array}\right)+\left(\begin{array}{c}
+i_{s1}\\
+i_{s2}\\
+\vdots\\
+i_{sb}
+\end{array}\right)-\left(\begin{array}{cccc}
+G_{1} &  &  & 0\\
+ & G_{2}\\
+ &  & \ddots\\
+0 &  &  & G_{b}
+\end{array}\right)\left(\begin{array}{c}
+v_{s1}\\
+v_{s2}\\
+\vdots\\
+v_{sb}
+\end{array}\right)
+\]
+
+
+\[
+G_{k}=\frac{1}{R_{k}}
+\]
+
+
+注: 電圧源は抵抗に直列に、電流源は並列に挿入する。(電圧源に並行に抵抗があっても、出力電圧は抵抗によらず抵抗の意味がない。電流源に直列に抵抗があっても、抵抗値によらず電流は同じ。)
+
+よって
+\[
+Ai_{b}=AGv_{b}+Ai_{sb}-AGv_{sb}=0
+\]
+
+
+また、枝電圧と節点電圧の関係を求めると、
+\[
+\left(\begin{array}{c}
+v_{1}\\
+v_{2}\\
+v_{3}
+\end{array}\right)=\left(\begin{array}{ccc}
++1 & 0 & -1\\
++1 & -1 & 0\\
+0 & +1 & -1
+\end{array}\right)\left(\begin{array}{c}
+v_{a}\\
+v_{b}\\
+v_{c}
+\end{array}\right)
+\]
+
+
+図電回2-11
+
+\[
+v_{b}=A^{T}v_{n}
+\]
+を代入すると、
+\[
+\underbrace{AGA^{T}}_{Y_{n}}v_{n}=\underbrace{AGv_{sb}-Ai_{sb}}_{j_{s}}
+\]
+
+
+$Y_{n}$: 節点コンダクタンス行列
+
+$j_{s}$: 節点電流源ベクトル
+
+いま
+\begin{align*}
+G & =\diag\left(\frac{1}{R_{1}},\frac{1}{R_{2}},\frac{1}{R_{3}}\right)\\
+ & =\left(\begin{array}{ccc}
+\frac{1}{R_{1}} & 0 & 0\\
+0 & \frac{1}{R_{2}} & 0\\
+0 & 0 & \frac{1}{R_{3}}
+\end{array}\right)
+\end{align*}
+なので、
+\begin{align*}
+Y_{n} & =AGA^{T}\\
+ & =\left(\begin{array}{ccc}
+1 & 1 & 0\\
+0 & -1 & 1\\
+-1 & 0 & -1
+\end{array}\right)\left(\begin{array}{ccc}
+\frac{1}{R_{1}} & 0 & 0\\
+0 & \frac{1}{R_{2}} & 0\\
+0 & 0 & \frac{1}{R_{3}}
+\end{array}\right)\left(\begin{array}{ccc}
+1 & 0 & -1\\
+1 & -1 & 0\\
+0 & 1 & -1
+\end{array}\right)\\
+ & =\left(\begin{array}{ccc}
+\frac{1}{R_{1}}+\frac{1}{R_{2}} & -\frac{1}{R_{2}} & -\frac{1}{R_{1}}\\
+-\frac{1}{R_{2}} & \frac{1}{R_{2}}+\frac{1}{R_{3}} & -\frac{1}{R_{3}}\\
+-\frac{1}{R_{1}} & -\frac{1}{R_{3}} & \frac{1}{R_{1}}+\frac{1}{R_{3}}
+\end{array}\right)
+\end{align*}
+
+
+電流源ベクトルのみしかないので、$j_{s}$は、
+\begin{align*}
+j_{s} & =0-Aj_{sb}\\
+ & =-\left(\begin{array}{ccc}
+1 & 1 & 0\\
+0 & -1 & 1\\
+-1 & 0 & -1
+\end{array}\right)\left(\begin{array}{c}
+-i_{s1}\\
+-i_{s2}\\
+0
+\end{array}\right)=\left(\begin{array}{c}
+i_{s1}+i_{s2}\\
+-i_{s2}\\
+-i_{s1}
+\end{array}\right)
+\end{align*}
+
+
+よって節点方程式は
+\[
+\left(\begin{array}{ccc}
+\frac{1}{R_{1}}+\frac{1}{R_{2}} & -\frac{1}{R_{2}} & -\frac{1}{R_{1}}\\
+-\frac{1}{R_{2}} & \frac{1}{R_{2}}+\frac{1}{R_{3}} & -\frac{1}{R_{3}}\\
+-\frac{1}{R_{1}} & -\frac{1}{R_{3}} & \frac{1}{R_{1}}+\frac{1}{R_{3}}
+\end{array}\right)\left(\begin{array}{c}
+v_{a}\\
+v_{b}\\
+v_{c}
+\end{array}\right)=\left(\begin{array}{c}
+i_{s1}+i_{s2}\\
+-i_{s2}\\
+-i_{s1}
+\end{array}\right)
+\]
+
+
+節点$C$を基準にすると$v_{c}=0$なので最後の行は不要。
+
+結局、
+\[
+\left(\begin{array}{cc}
+\frac{1}{R_{1}}+\frac{1}{R_{2}} & -\frac{1}{R_{2}}\\
+-\frac{1}{R_{2}} & \frac{1}{R_{2}}+\frac{1}{R_{3}}
+\end{array}\right)\left(\begin{array}{c}
+v_{a}\\
+v_{b}
+\end{array}\right)=\left(\begin{array}{c}
+i_{s1}+i_{s2}\\
+-i_{s2}
+\end{array}\right)
+\]
+
+
+
+\section*{第3回}
+
+
+\section{線形回路の諸定理}
+
+
+\subsection{重ね合わせの理}
+
+複数の電源を含む回路において、任意の枝の電流または枝電圧は、電源が1個ずつしか存在していない場合のすべてを重ね合わせたものに等しい。
+
+∵キルヒホッフの法則が電流、電圧について線形だから。
+
+
+\paragraph{証明}
+
+前回の講義より節点方程式は一般的に
+\[
+Y_{n}v_{n}=j_{n}
+\]
+
+
+回路の解がある場合には逆行列$Y_{n}^{-1}$が存在するので、
+\[
+v_{n}=Y_{n}^{-1}j_{S}
+\]
+
+
+いま$j_{S}$を個別の電源で書き表すと、
+\[
+j_{S}=\sum_{n}j_{Sn}
+\]
+
+
+\[
+j_{S1}=\left[\begin{array}{c}
+j_{1}\\
+0\\
+\vdots\\
+0
+\end{array}\right],j_{S2}=\left[\begin{array}{c}
+0\\
+j_{2}\\
+0\\
+\vdots\\
+0
+\end{array}\right]
+\]
+
+
+よって
+\begin{align*}
+v_{n} & =Y_{n}^{-1}\sum_{n}j_{Sn}\\
+ & =\sum_{n}Y_{n}^{-1}j_{Sn}
+\end{align*}
+
+
+これより節点電圧$v_{n}$は、個別の電源のみの節点電位$Y_{n}^{-1}j_{Sn}$の重ね合わせで表現することができることがわかる。
+
+
+\paragraph{ex}
+
+図電回3-1
+
+\[
+I_{2}'=\frac{V}{R_{1}+R_{2}}
+\]
+
+
+\begin{align*}
+I_{2}'' & =\frac{\frac{1}{R_{2}}}{\frac{1}{R_{1}}+\frac{1}{R_{2}}}I\\
+ & =\frac{R_{1}}{R_{1}+R_{2}}I
+\end{align*}
+
+
+よって全電流は重ね合わせの理より
+\[
+I_{2}=I_{2'}+I_{2}''=\frac{V+R_{1}I}{R_{1}+R_{2}}
+\]
+
+
+
+\paragraph{通常の解法}
+
+KCLとKVLより
+\[
+I_{1}-I_{2}+I=0
+\]
+
+
+\[
+V=R_{1}I_{1}?R_{2}I_{2}
+\]
+
+
+\[
+\therefore I_{2}=\frac{V+R_{1}I}{R_{1}+R_{2}}
+\]
+とやり確かに重ね合わせの理が成り立っている。
+
+(直流+交流)=(直流)+(交流)として計算できる。
+
+\[
+I_{2}'=\frac{V}{R_{1}+R_{2}}
+\]
+
+
+
+\subsection{等価電源の定理}
+
+
+\paragraph{鳳・テブナンの定理}
+
+図電回3-2
+
+$R_{0}$: 電源を除去した時の端子1-1'から見た抵抗
+
+$V_{0}$: 端子1-1'\textbf{開放時}の電圧
+
+抵抗$R$接続時の$V,I$は、\textbf{電圧$V_{0}$、内部抵抗$R_{0}$の等価電源}に接続した時と同じである。
+
+\begin{align*}
+I & =\frac{V_{0}}{R_{0}+R}\\
+V & =\frac{R}{R_{0}+R}V_{0}
+\end{align*}
+
+
+図電回3-3
+
+電源$E$を0から増加させて$I'=0$となるようにする。
+
+→開放と同じなので$E=V_{0}$
+
+\[
+I''=-\frac{V_{0}}{R_{1}+R}
+\]
+
+
+\[
+I+I''=I'=0
+\]
+より、
+\[
+I=\frac{V_{0}}{R_{0}+R}
+\]
+
+
+これは電源$V_{0}$、内部抵抗$R_{0}$の電源をつないだ時の電流と同じ。
+
+注: $R_{0}+R=\frac{V_{0}}{I}$において、短絡時$R=0$を考えると、内部抵抗$R_{0}=\frac{\text{開放電圧}V_{0}}{\text{短絡電流}}$と書ける。測定可能な電圧、電流から求められるので便利。
+
+図電回3-4
+
+端子abの開放時の$I_{1}$は、
+\[
+25=5I_{1}+20\left(I_{1}+3\right)
+\]
+より$I_{1}=-1.4\mathrm{A}$
+
+よって開放電圧
+\[
+V_{0}=20\left(-1.4+3\right)=32\mathrm{V}
+\]
+
+
+また電源を全て除去すると、
+
+図電回3-5
+
+端子abから見た合成抵抗は
+\[
+\frac{1}{\frac{1}{5}+\frac{1}{20}}+4=8\Omega
+\]
+
+
+よって元の回路は
+
+図電回3-6
+
+と等価。
+
+
+\paragraph{ノートンの定理}
+
+鳳・テブナンの定理において、
+\begin{itemize}
+\item 開放電圧$V_{0}$→短絡電流$I_{0}$
+\item 抵抗$R_{0}$→コンダクタンス$G_{0}$
+\end{itemize}
+に置き換えたもの。
+
+図電回3-7
+
+$G_{0}$: 電源を除去した時の端子1-1'から見たコンダクタンス (端子1-1'開放時)
+
+$I_{0}$: 端子1-1'\textbf{短絡}時の電流
+
+コンダクタンス$G$接続時の$V,I$は、\textbf{電流源$I_{0}$、内部コンダクタンス$G_{0}$の等価電流源}に接続したときと同じになる。
+
+\[
+V=\frac{I_{0}}{G_{0}+G},I=\frac{G}{G_{0}+G}I
+\]
+
+
+証明は同様に行える(省略)。
+
+＊鳳・テブナンの定理、ノートンの定理を用いて、電圧源、電流源を相互に変換可能。
+
+
+\paragraph{ex) 回路簡略化の例}
+
+図電回3-9
+
+＊電圧源に並列抵抗$R_{p}$
+
+図電回3-10
+
+＊電流源に直列抵抗$R_{S}$
+
+図電回3-11
+
+
+\subsection{供給電力最大の法則}
+
+図電回3-12
+
+抵抗$R$で消費される電力$P$を最大にするには?
+
+等価電源に置き換えると、
+
+図電回3-13
+
+\[
+P=RI^{2}=\frac{RV_{0}^{2}}{\left(R_{0}+R\right)^{2}}
+\]
+\begin{align*}
+\pd PR & =\frac{\left(R_{0}+R\right)^{2}-2R\left(R_{0}+R\right)}{\left(R_{0}+R\right)^{2}}V_{0}^{2}\\
+ & =\frac{R_{0}-R}{\left(R_{0}+R\right)^{3}}V_{0}^{2}
+\end{align*}
+
+
+よって$R=R_{0}$のとき負荷抵抗$R$に最大の電力が供給される。
+
+\[
+P_{\mathrm{max}}=\frac{R_{0}V_{0}^{2}}{\left(2R_{0}\right)^{2}}=\frac{V_{0}^{2}}{4R_{0}}
+\]
+
+
+効率
+\[
+\eta=\frac{RI^{2}}{V_{0}I}=\frac{RI}{V_{0}}=\frac{1}{1+\frac{R_{0}}{R}}
+\]
+
+
+図電回3-14
+
+\[
+P_{\mathrm{lose}}=R_{0}I^{2}=\frac{R_{0}V_{0}^{2}}{\left(R_{0}+R\right)^{2}}
+\]
+
+
+
+\subsection{補償の定理}
+
+図電回3-15
+
+電圧、電流の変化分は、元の回路の電源を除去して、代わりに\textbf{電圧源$V=RI_{0}$}を挿入した時の電圧電流に等しい。
+
+\[
+\Delta V=V',\Delta I=I'
+\]
+
+
+
+\paragraph{証明}
+
+図電回3-16
+
+図(c)は元の回路と同等。よって
+\begin{align*}
+V+\Delta V & =V'+V\\
+I+\Delta I & =I'+I
+\end{align*}
+
+
+よって
+\[
+\Delta V=V',\Delta I=I'
+\]
+
+
+
+\paragraph{ex)}
+
+図電回3-17
+
+\[
+\Delta I=-\frac{RI}{R_{0}+R}
+\]
+
+
+(別解)
+
+通常のKVLで解くと、
+\[
+I=\frac{V_{0}}{R_{0}}
+\]
+\[
+I+\Delta I=\frac{V_{0}}{R_{0}+R}
+\]
+
+
+よって
+\begin{align*}
+\Delta I & =\frac{V_{0}}{R_{0}+R}-\frac{V_{0}}{R_{0}}\\
+ & =-\frac{R}{R_{0}+R}I
+\end{align*}
+
+
+補償の定理の結果と一致する。
+
+(＊)応用: 抵抗値の誤差の影響を調べるのに有効。
+
+
+\paragraph{ex)}
+
+いま、抵抗$R$の値が設計値の120\%大きかったとする。この時の電流の変化$\Delta I$を求めたい。
+
+図電回3-18
+
+\[
+I_{0}=2\mathrm{A}
+\]
+
+
+また$\Delta R=6\times0.2=1.2\Omega$
+
+よって補償電源$V=1.2\times2=2.4\mathrm{V}$
+
+よって
+\[
+\Delta I\simeq-0.25\mathrm{A}
+\]
+
+
+$6\Omega$に対して鳳・テブナンの定理を適用すると
+
+開放
+\[
+\frac{18\mathrm{V}\times3}{1+3}=13.5\mathrm{V}
+\]
+
+
+除去
+\[
+\frac{1}{1+V_{3}}=0.75\Omega
+\]
+
+
+\[
+I_{0}=\frac{13.5\mathrm{V}}{6+0.75}=2\mathrm{A}
+\]
+
+
+$1\Omega$に対して鳳・テブナンの定理を適用すると
+
+開放
+\[
+2.4\times\frac{\times3}{6+1.2+3}=0.705\mathrm{V}
+\]
+
+
+除去
+\[
+\frac{1}{\frac{1}{1.2}+\frac{1}{3}}=2.11
+\]
+
+
+\[
+\therefore\Delta I=\frac{-0.705}{1+2.11}=-0.226\mathrm{A}
+\]
+
+
+
+\paragraph{補償の定理と双対な定理}
+\begin{itemize}
+\item 抵抗→コンダクタンス
+\item 電流→電圧
+\item 電圧源→電流源
+\end{itemize}
+に置き換えても、同様のことが成立。
+
+図電回3-19
+
+このとき電圧、電流の変化分$\Delta V,\Delta I$は、元の回路の電源を除去して、代わりに\textbf{電流源$I=GV_{0}$}を挿入した時の電圧、電流に等しい。
+
+図電回3-20
+
+証明は同様(省略)
+
+このように電圧⇔電流などの置き換えができることを、\textbf{回路の双対性}と呼ぶ。
+\begin{itemize}
+\item 電流⇔電圧
+\item 抵抗⇔コンダクタンス
+\item 抵抗の直列接続⇔抵抗の並列接続
+\item 電流源⇔電圧源
+\item KCL⇔KVL
+\end{itemize}
+
+\subsection{相反原理}
+
+図電回3-21
+
+このとき
+\[
+\frac{E_{1}}{I_{2}}=\frac{E_{2}'}{I_{1}'}
+\]
+が成立。
+
+図電回3-22
+
+閉路方程式
+\[
+z\underbrace{i_{\mathrm{loop}}}_{\text{閉路電流ベクトル}}=\underbrace{v_{\mathrm{loop}}}_{\text{閉路電圧源}}
+\]
+
+
+$z$は対称行列
+\[
+z^{T}=z
+\]
+
+
+$Y=z^{-1}$とすると、
+\[
+i_{\mathrm{loop}}=Yv_{\mathrm{loop}}
+\]
+
+
+$N$内に電源がないので、
+\[
+i_{\mathrm{loop}}=Y\cdot\left[\begin{array}{c}
+v_{1}\\
+v_{2}\\
+0\\
+\vdots\\
+0
+\end{array}\right]
+\]
+
+
+のって
+\begin{align*}
+i_{1} & =Y_{11}v_{1}+Y_{12}v_{2}\\
+i_{2} & =Y_{12}v_{1}+Y_{22}v_{2}
+\end{align*}
+
+
+いま$v_{2}=0$とすると、
+\[
+i_{2}=Y_{12}v_{1}
+\]
+
+
+また$v_{1}=0$のとき、
+\[
+i_{1}'=Y_{12}v_{2}'
+\]
+
+
+\[
+\therefore\frac{v_{1}}{i_{2}}=\frac{v_{2}'}{i_{1}'}=\frac{1}{Y_{12}}
+\]
+
+
+
+\section*{第4回}
+
+
+\section{交流回路}
+
+平均値零の正弦波を入力した時の\textbf{定常解}を扱う。
+
+→ほとんどの波形は異なる周波数の正弦波の重ね合わせで表現可能(フーリエ変換)。
+
+
+\paragraph{定常解}
+
+十分に時間がたった時の周期を持つ解
+
+
+\paragraph{単一正弦波}
+
+\begin{align*}
+v\left(t\right) & =V_{m}\cos\left(\omega t+\theta_{v}\right)\\
+i\left(t\right) & =I_{m}\cos\left(\omega t+\theta_{i}\right)
+\end{align*}
+
+
+$I_{m}$: 振幅
+
+$\omega$: 角周波数
+
+$\theta_{i}$: 位相角
+
+図電回4-1
+
+電源が単一正弦波で表せるなら、\textbf{線形}回路の全ての電圧、電流成分は各周波数$\omega$の正弦波で表すことができる。
+
+よって定常状態の交流回路の動作で重要なのは、
+\begin{itemize}
+\item 振幅
+\item 位相
+\end{itemize}
+である。
+
+
+\subsection{微分を表す回路方程式の一般解}
+
+
+\paragraph{例1}
+
+図電回4-2
+
+\[
+v_{s}=V_{m}\cos\left(\omega t+\theta\right)
+\]
+
+
+回路方程式は、
+\begin{equation}
+Ri\left(t\right)+L\d{i\left(t\right)}t=V_{m}\cos\left(\omega t+\theta\right)
+\end{equation}
+
+
+一般解は、
+\[
+i\left(t\right)=\underbrace{I_{0}\e^{-\frac{R}{L}t}}_{\text{固有解}}+\underbrace{A_{1}\cos\omega t+A_{2}\sin\omega t}_{\text{特解}}
+\]
+
+
+固有解→過渡解 $t\rightarrow\infty$で0
+
+特解→定常解 $\omega$で振動
+
+ただし、$I_{0}$は$t=0$における回路の初期状態によって与えられる量。
+
+図電回4-3
+
+
+\paragraph{微分方程式の復習}
+\begin{enumerate}
+\item 固有解 (19)の右辺=0とおく。解を$i_{1}\left(t\right)=I_{0}\e^{pt}$とおくと、
+\[
+\left(R+Lp\right)I_{0}\e^{pt}=0\Rightarrow p=-\frac{R}{L}
+\]
+
+\item 特解 解を$i_{2}\left(t\right)=A_{1}\cos\omega t+A_{2}\sin\omega t$とおき(19)に代入。
+\[
+R\left(A_{1}\cos\omega t+A_{2}\sin\omega t\right)+L\left(-\omega A_{1}\sin\omega t+\omega A_{2}\cos\omega t\right)=V_{m}\left(\cos\omega t\cdot\cos\theta-\sin\omega t\sin\theta\right)
+\]
+
+
+
+$\cos\omega t$と$\sin\omega t$の係数を比較して、
+\[
+\left[\begin{array}{cc}
+R & \omega L\\
+-\omega L & R
+\end{array}\right]\left[\begin{array}{c}
+A_{1}\\
+A_{2}
+\end{array}\right]=\left[\begin{array}{c}
+V_{m}\cos\theta\\
+-V_{m}\sin\theta
+\end{array}\right]
+\]
+\begin{equation}
+\therefore\left[\begin{array}{c}
+A_{1}\\
+A_{2}
+\end{array}\right]=\frac{V_{m}}{R^{2}+\omega^{2}L^{2}}\left[\begin{array}{c}
+R\cos\theta+\omega L\sin\theta\\
+\omega L\cos\theta-R\sin\theta
+\end{array}\right]
+\end{equation}
+
+
+\end{enumerate}
+一般解は$i_{1}\left(t\right)+i_{2}\left(t\right)$
+
+
+\paragraph{定常解を簡単に求める方法(その1)}
+
+式(19)の定常解を求めるには、これを解く代わりに、
+\begin{equation}
+Ri\left(t\right)+L\d{i\left(t\right)}t=V_{m}\underline{\e^{\j\left(\omega t+\theta\right)}}\left(=V_{m}\left[\cos\left(\omega t+\theta\right)+\j\sin\left(\omega t+\theta\right)\right]\right)
+\end{equation}
+とおく(下線強調)。式(21)の特解$i\left(t\right)$を\textbf{$\mathring{I}\e^{\j\omega t}$}と\textbf{仮定}し、(21)に代入。
+
+\[
+R\mathring{I}\e^{\j\omega t}+\j\omega L\mathring{I}\e^{\j\omega t}=V_{m}\e^{\j\left(\omega t+\theta\right)}
+\]
+
+
+\[
+\mathring{I}=\frac{V_{m}}{R+\j\omega L}\e^{\j\theta}
+\]
+
+
+\textbf{$\mathring{I}$を複素表示という。}ドットは複素数の意味。
+
+式(21)の特解(定常解)は、
+\[
+i\left(t\right)=\mathring{I}\e^{\j\omega t}=\frac{V_{m}}{R+\j\omega L}\e^{\j\theta}
+\]
+
+
+式(19)の定常解は、
+\begin{align*}
+i_{2}\left(t\right) & =\Re\left[i\left(t\right)\right]=\Re\left[\frac{V_{m}}{R+\j\omega L}\e^{\j\left(\omega t+\theta\right)}\right]\\
+ & =\Re\left[\frac{V_{m}\e^{\j\left(\omega t+\theta\right)}}{\sqrt{R^{2}+\left(\omega L\right)^{2}}\e^{\j\alpha}}\right]\\
+ & =\frac{V_{m}}{\sqrt{R^{2}+\left(\omega L\right)^{2}}}\Re\left[\e^{\j\left(\omega t+\theta-\alpha\right)}\right]\\
+ & =\frac{V_{m}}{\sqrt{R^{2}+\left(\omega L\right)^{2}}}\cos\left(\omega t+\theta-\alpha\right)
+\end{align*}
+
+
+ただし$\alpha=\tan^{-1}\frac{\omega L}{R}$
+
+この係数が(20)と一致することを確認せよ。(自習)
+
+ヒント: $a\cos\beta+b\sin\beta=\sqrt{a^{2}+b^{2}}\cos\left(\beta-\varphi\right),\varphi=\tan^{-1}\frac{b}{a}$
+
+
+\subsection{正弦波の複素表示}
+
+
+\paragraph{複素数の指数関数表示}
+
+オイラーの公式
+\[
+\e^{\j\theta}=\cos\theta+\j\sin\theta
+\]
+より、複素数$x+\j y$を二次元座標に表すと、$x+\j y=r\e^{\j\theta}$: 指数実数表示 ($r=\sqrt{x^{2}+y^{2}}$)
+
+図電回4-4
+
+\begin{align*}
+v\left(t\right) & =V_{m}\cos\left(\omega t+\theta_{v}\right)\\
+ & =\Re\left[\underbrace{V_{m}\e^{\j\theta_{v}}}_{=\mathring{V}_{m}\text{電圧ベクトル}}\e^{\j\omega t}\right]
+\end{align*}
+
+
+$V_{m}\angle\theta_{v}$とも表記
+
+\begin{align*}
+i\left(t\right) & =I_{m}\cos\left(\omega t+\theta_{i}\right)\\
+ & =\Re\left[\underbrace{I_{m}\e^{\j\theta_{i}}}_{=\mathring{I}_{m}\text{電流ベクトル}}\e^{\j\omega t}\right]
+\end{align*}
+
+
+振幅、位相を一つの複素数で表記=フェーザー(Phaser)
+
+図電回4-5
+
+複素平面上のベクトルを上図のように表記。(フェザーダイアグラム)
+
+交流回路の定常解を考えるとき、電圧・電流ベクトルの変化だけを考えればよい。
+
+
+\subsection{回路要素のインピーダンス}
+
+\[
+z=\frac{\mathring{V}_{m}}{\mathring{I}_{m}}=\frac{V_{m}\e^{\j\theta_{v}}}{I_{m}\e^{\j\theta_{i}}}=\frac{V_{m}}{I_{m}}\e^{\j\left(\theta_{v}-\theta_{i}\right)}
+\]
+
+
+$\left(\theta_{v}-\theta_{i}\right)$: 電圧と電流の位相のずれ(インピーダンスの偏角)
+
+
+\paragraph{抵抗}
+
+交流でもオームの法則が成り立つことから、
+\[
+z_{R}=R
+\]
+←インピーダンスは抵抗の概念を拡張したもの。
+
+
+\paragraph{インダクタンス}
+
+図電回4-6
+
+電流を$i_{L}\left(t\right)=I_{m}\cos\left(\omega t+\theta_{i}\right)$としたときに、
+\begin{align*}
+v_{L}\left(t\right) & =L\d{i_{L}\left(t\right)}t=LI_{m}\omega\left\{ -\sin\left(\omega t+\theta_{i}\right)\right\} \\
+ & =LI_{m}\omega\cos\left(\omega t+\theta_{i}+\frac{\pi}{2}\right)
+\end{align*}
+
+
+よって$\mathring{V}_{L}=LI_{m}\omega\e^{\j\left(\theta_{i}+\frac{\pi}{2}\right)},\mathring{I}_{L}=I_{m}\e^{\j\theta_{i}}$となり、
+\[
+z_{i}=\frac{\mathring{V}_{L}}{\mathring{I}_{L}}=\omega L\e^{\j\frac{\pi}{2}}=\j\omega L
+\]
+
+
+図電回4-7
+
+電圧に対して電流の位相が90度遅れる。
+
+
+\paragraph{キャパシタンス}
+
+図電回4-8
+
+電圧を
+\[
+v_{C}\left(t\right)=V_{m}\cos\left(\omega t+\theta_{v}\right)
+\]
+としたとき、
+\begin{align*}
+i_{C} & =C\d{v_{c}\left(t\right)}t\\
+ & =CV_{m}\omega\left\{ -\sin\left(\omega t+\theta_{v}\right)\right\} \\
+ & =CV_{m}\omega\cos\left(\omega t+\theta_{v}+\frac{\pi}{2}\right)
+\end{align*}
+
+
+よって$\mathring{V}_{C}=V_{m}\e^{\j\theta_{v}},\mathring{I}_{C}=CV_{m}\omega\e^{\j\left(\theta_{v}+\frac{\pi}{2}\right)}$なので、
+\[
+z_{C}=\frac{1}{\omega C\e^{\j\frac{\pi}{2}}}=\frac{1}{\j\omega C}
+\]
+
+
+図電回4-9
+
+電圧に対して電流の位相が90度進む。
+
+
+\subsection{アドミッタンス(admittance)}
+
+\[
+Y=\frac{1}{z}
+\]
+
+
+インピーダンスの逆数、コンダクタンスに相当。
+
+
+\subsection{フェーザー表示でのキルヒホッフの法則}
+
+電圧則より、任意の閉路で
+\[
+v_{1}\left(t\right)+v_{2}\left(t\right)+\cdots+v_{n}\left(t\right)=0
+\]
+\[
+V_{m_{1}}\cos\left(\omega t+\theta_{1}\right)+V_{m_{2}}\cos\left(\omega t+\theta_{2}\right)+\cdots+V_{m_{n}}\cos\left(\omega t+\theta_{n}\right)=0
+\]
+\[
+\Re\left[V_{m_{1}}\e^{\j\theta_{1}}\e^{\j\omega t}\right]+\cdots+\Re\left[V_{m_{n}}\e^{\j\theta_{n}}\e^{\j\omega t}\right]=0
+\]
+\[
+\Re\left[\left(V_{m_{1}}\e^{\j\theta_{1}}+V_{m_{2}}\e^{\j\theta_{2}}+\cdots+V_{m_{n}}\e^{\j\theta_{n}}\right)\e^{\j\omega t}\right]=0
+\]
+\[
+\Re\left[\left(\mathring{V}_{1}+\mathring{V}_{2}+\cdots+\mathring{V}_{m_{n}}\right)\e^{\j\omega t}\right]=0
+\]
+
+
+これが$\forall t$で成り立つので、
+\[
+\mathring{V}_{m_{1}}+\mathring{V}_{m_{2}}+\cdots+\mathring{V}_{m_{n}}=0
+\]
+(電圧則)
+
+同様に任意の節点に対して
+\[
+\mathring{I}_{m_{1}}+\mathring{I}_{m_{2}}+\cdots+\mathring{I}_{m_{n}}=0
+\]
+(電流則)
+\begin{itemize}
+\item 直流→交流
+\item 電圧、電流→電圧ベクトル、電流ベクトル
+\item 抵抗→インピーダンス
+\item コンダクタンス→アドミッタンス
+\end{itemize}
+とすれば直流回路の解析手法がそのまま適用可能。
+
+
+\subsection{交流回路の計算}
+
+\fbox{\begin{minipage}[t]{1\columnwidth}%
+
+\paragraph{複素領域での解析法}
+
+Step1: 変数、電源、回路要素を複素表示する。
+
+\[
+\left(\mathring{V},\mathring{I}\right),\left(V_{m}\e^{\j\theta_{v}},I_{m}\e^{\j\theta_{i}}\right),\left(R,\j\omega L,\frac{1}{\j\omega C}\right)
+\]
+
+
+Step2: ノート3章までの抵抗網の解析法を用いて解析する。
+
+Step3: 実電圧、実電流を求める。
+
+\[
+v\left(t\right)=\Re\left[\mathring{V}\e^{\j\omega t}\right],i\left(t\right)=\Re\left[\mathring{I}\e^{\j\omega t}\right]
+\]
+%
+\end{minipage}}
+
+
+\paragraph{例1の定常解を簡単に求める方法(その2)}
+
+図電回4-10
+
+回路は上図に書き換える。
+
+KVLより、
+\[
+R\mathring{I}+\j\omega L\mathring{I}=V_{m}\e^{\j\theta}
+\]
+\[
+\mathring{I}=\frac{V_{m}}{R+\j\omega L}\e^{\j\theta}
+\]
+
+
+実電流は、
+\begin{align*}
+i\left(t\right) & =\Re\left[\mathring{I}\e^{\j\omega t}\right]\\
+ & =\Re\left[\frac{V_{m}}{R+\j\omega L}\e^{\j\left(\omega t+\theta\right)}\right]\\
+ & =\text{(その1)の解と同じ}
+\end{align*}
+
+
+
+\paragraph{(例2)}
+
+図電回4-11
+
+$e\left(t\right)=\sqrt{2}\cos\omega t$n
+
+(a) 網目解析
+
+図電回4-12
+
+\[
+\left(\begin{array}{cc}
+2+\frac{1}{\j\omega} & -\frac{1}{\j\omega}\\
+-\frac{1}{\j\omega} & 3+2\j\omega+\frac{1}{\j\omega}
+\end{array}\right)\left(\begin{array}{c}
+J_{1}\\
+J_{2}
+\end{array}\right)=\left(\begin{array}{c}
+\sqrt{2}\\
+0
+\end{array}\right)
+\]
+
+
+(b) $\omega=1\mathrm{rad/sec}$のとき定常状態における定電圧を求める。
+
+$\omega=1$より
+\[
+\left(\begin{array}{cc}
+2-\j & \j\\
+\j & 3+\j
+\end{array}\right)\left(\begin{array}{c}
+J_{1}\\
+J_{2}
+\end{array}\right)=\left(\begin{array}{c}
+\sqrt{2}\\
+0
+\end{array}\right)
+\]
+\[
+\left(\begin{array}{c}
+J_{1}\\
+J_{2}
+\end{array}\right)=\frac{1}{8-\j}\left(\begin{array}{cc}
+3+\j & -\j\\
+-\j & 2-\j
+\end{array}\right)\left(\begin{array}{c}
+\sqrt{2}\\
+0
+\end{array}\right)
+\]
+
+
+\[
+J_{2}=\frac{-\j\sqrt{2}}{8-\j}=\frac{\sqrt{2}}{8\j+1}
+\]
+
+
+\[
+V=3J_{2}=\frac{3\sqrt{2}}{1+8\j}=\frac{3\sqrt{2}}{\sqrt{65}}\e^{-\j\phi}
+\]
+
+
+\[
+\phi=\tan^{-1}8
+\]
+
+
+\[
+\therefore v\left(t\right)=\Re\left[V\e^{\j1t}\right]=3\sqrt{\frac{2}{65}}\cos\left(t-\phi\right)
+\]
+
+
+
+\subsection{交流における等価電流変換}
+
+図電回4-13
+
+
+\paragraph{(例)}
+
+図電回4-14
+
+\[
+I_{S}=\frac{40}{1+3\j}=\frac{40\left(1-3\j\right)}{\left(1+3\j\right)\left(1-3\j\right)}=\frac{40\left(1-3\j\right)}{10}=4-12\j
+\]
+
+
+
+\subsection{共振}
+
+
+\paragraph{例1) 直列共振}
+
+図電回4-15
+
+\[
+I=\frac{V}{z}=\frac{V}{R+\j\left(\omega L-\frac{1}{\omega C}\right)}
+\]
+
+
+入力電圧の角周波数$\omega$を変化させた時の電流の変化を考える。
+
+明らかに、分母の虚数部が零になったときに\textbf{電流が最大になる。}
+
+この角周波数は、
+\[
+\omega_{r}L=\frac{1}{\omega_{r}C}
+\]
+
+
+\[
+\therefore\omega_{r}=\frac{1}{\sqrt{LC}}
+\]
+
+
+この時の回路全体のインピーダンスは、
+\[
+z=R+\j\left(\omega_{r}L-\frac{1}{\omega_{r}C}\right)=R
+\]
+と純抵抗となる。
+
+$L$と$C$のインピーダンスが打ち消し合っているため。(\textbf{直列状態})
+
+図電回4-16
+
+また共振時の電流$I_{r}$は
+\[
+I_{r}=\frac{V}{R}
+\]
+
+
+ここでインピーダンス$z$を共振角周波数$\omega_{r}$で書き表すと、
+\begin{align*}
+z & =R\left[1+\j\frac{1}{R}\left(\omega L-\frac{1}{\omega C}\right)\right]\\
+ & =R\left[1+\j Q\left(\frac{\omega}{\omega_{r}}-\frac{\omega_{r}}{\omega}\right)\right]
+\end{align*}
+
+
+ただし、
+\[
+Q=\frac{1}{R}\sqrt{\frac{L}{C}}\left(=\left.\frac{\left|V_{L}\right|}{\left|V\right|}\right|_{\omega=\omega_{r}}=\left.\frac{\left|V_{C}\right|}{\left|V\right|}\right|_{\omega=\omega_{r}}\right)
+\]
+は共振回路の$Q$と呼ばれる。共振の鋭さを表すパラメータ。
+
+∵
+\begin{align*}
+V_{L} & =\j\omega_{r}LI_{r}\\
+ & =\frac{\j L}{\sqrt{LC}}\frac{V}{R}\\
+ & =\j\frac{1}{R}\sqrt{\frac{L}{C}}V
+\end{align*}
+
+
+よって$\left|V_{L}\right|=Q\left|V\right|$
+
+これより共振時の電流mI\_r で規格化された電流の大きさは、
+\[
+\frac{\left|I\right|}{\left|I_{r}\right|}=\frac{1}{\sqrt{1+Q^{2}\left(\frac{\omega}{\omega_{r}}+\frac{\omega_{r}}{\omega}\right)^{2}}}
+\]
+
+
+これをグラフにすると、
+
+図電回4-17
+
+電流の振幅が$\frac{1}{\sqrt{2}}$になる(電力が$\frac{1}{2}$になる)角周波数$\omega_{1},\omega_{2}$を求めると、
+\[
+Q^{2}\left(\frac{\omega}{\omega_{r}}-\frac{\omega_{r}}{\omega}\right)^{2}=1
+\]
+\[
+\frac{\omega}{\omega_{r}}-\frac{\omega_{r}}{\omega}=\pm\frac{1}{Q}
+\]
+\[
+\therefore\frac{\omega}{\omega_{r}}=\sqrt{1+\frac{1}{4Q^{2}}}\pm\frac{1}{2Q}
+\]
+
+
+ここで$Q\gg1$と仮定すると、
+\begin{align*}
+\frac{\omega_{1}}{\omega_{r}} & \simeq1-\frac{1}{2Q}\\
+\frac{\omega_{2}}{\omega_{r}} & \simeq1+\frac{1}{2Q}
+\end{align*}
+
+
+\[
+\frac{\Delta\omega}{\omega_{r}}=\frac{1}{Q}
+\]
+つまり$Q$が大きいほどピークの幅(半値幅)が狭くなり、より鋭い共振を表すことが分かる。
+
+
+\subsection{交流における電力}
+
+\begin{align*}
+v\left(t\right) & =V_{m}\cos\left(\omega t+\theta_{v}\right)\\
+i\left(t\right) & =I_{m}\cos\left(\omega t+\theta_{i}\right)
+\end{align*}
+なので、瞬間電力
+\begin{align*}
+P\left(t\right) & =v\left(t\right)i\left(t\right)=V_{m}I_{m}\cos\left(\omega t+\theta_{v}\right)\cos\left(\omega t+\theta_{i}\right)\\
+ & =\frac{V_{m}I_{m}}{2}\left[\underbrace{\cos\left(\theta_{v}-\theta_{i}\right)}_{\text{定常分}}+\underbrace{\cos\left(2\omega t+\theta_{v}+\theta_{i}\right)}_{\text{時間変動分(平均は0)}}\right]
+\end{align*}
+
+
+平均電力
+\[
+\bar{p}\left(t\right)=\frac{1}{T}\int_{0}^{T}P\left(t\right)\mathrm{d}t=\frac{V_{m}I_{m}}{2}\underbrace{\cos\left(\theta_{v}-\theta_{i}\right)}_{\text{力率(交流ならでは)}}
+\]
+
+
+直流のときと異なり$\frac{1}{2}$が出てしまう。
+
+図電回4-18
+
+そこで交流信号
+\begin{align*}
+v\left(t\right) & =V_{m}\cos\left(\omega t+\theta_{v}\right)\\
+i\left(t\right) & =I_{m}\cos\left(\omega t+\theta_{i}\right)
+\end{align*}
+に対して、実効値
+\begin{align*}
+V & \equiv\frac{V_{m}}{\sqrt{2}}\\
+I & \equiv\frac{I_{m}}{\sqrt{2}}
+\end{align*}
+を定義する。
+
+今後は実効値表示により、電圧・電流ベクトルを表すことにする。
+
+\begin{align*}
+\mathring{V} & =V\e^{\j\theta_{v}}\\
+\mathring{I} & =I\e^{\j\theta_{i}}
+\end{align*}
+
+
+交流における平均電力は、
+\begin{align*}
+P=\Re\left[\mathring{V}\cdot\overline{\mathring{I}}\right] & =\Re\left[VI\e^{\j\left(\theta_{v}-\theta_{i}\right)}\right]\\
+ & =\underbrace{VI}_{\text{皮相電力[VA]}}\underbrace{\cos\left(\theta_{r}-\theta_{i}\right)}_{\text{力率}}
+\end{align*}
+
+
+$\overline{\mathring{I}}$: 複素共役
+
+進み力率: 電流が電圧より位相が進む。 ($\theta_{i}>\theta_{v}$)
+
+戻り力率: 電流が電圧より位相が遅れている。 ($\theta_{i}<\theta_{v}$)
+\end{document}

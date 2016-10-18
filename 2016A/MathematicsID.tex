@@ -1,0 +1,1122 @@
+%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english]{book}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{esint}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[version=3]{mhchem}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2016-A 数学ID}
+
+
+\author{教員: 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\mathrm{grad}}
+\global\long\def\rot{\mathrm{rot}}
+\global\long\def\div{\mathrm{div}}
+\global\long\def\diag{\mathrm{diag}}
+
+
+
+\section*{第1回}
+
+
+\paragraph{この講義の内容}
+\begin{enumerate}
+\item 常微分方程式
+
+\begin{itemize}
+\item 一変数の微分に関する方程式
+\end{itemize}
+\item ベクトル解析(3回程度)
+
+\begin{itemize}
+\item ベクトルの内積・外積、微分
+\end{itemize}
+\item 変分法(3回程度)
+
+\begin{itemize}
+\item オイラー・ラグランジュ方程式
+\end{itemize}
+\end{enumerate}
+
+\paragraph{副読本}
+
+ジョージ・アルフケン
+
+ハンス・ウェーバー
+
+
+\paragraph{授業の流れ}
+\begin{enumerate}
+\item 常微分方程式
+
+\begin{enumerate}
+\item 変数分離系
+\item 同次系
+\item 定数添加法
+\item 完全微分方程式
+\item 線形微分方程式
+\item 連立微分方程式
+\end{enumerate}
+\item ベクトル解析
+
+\begin{enumerate}
+\item 内積・外積
+\item gradient $\nabla\phi$
+\item divergence $\nabla\cdot A$
+\item rotation $\nabla\times A$
+\item Greenの定理
+\item Stokesの定理
+\item Gauussの定理
+\item 直行曲線座標
+\item 円柱座標
+\item 3次元極座標
+\end{enumerate}
+\item 変分法
+
+\begin{enumerate}
+\item Eular-lagrange方程式
+\item 解析力学
+\item Lagrangian
+\item Hamiltonian
+\item Lagrangeの未定乗数法
+\end{enumerate}
+\end{enumerate}
+
+\paragraph{成績評価}
+
+期末試験+何回かのレポート
+
+
+\chapter{第一章 常微分方程式}
+
+
+\paragraph{変数分離系}
+
+関数$u\left(x\right)$を考える。
+
+\[
+\d ux=g\left(x\right)h\left(u\right)
+\]
+と表せるとき、変数分離系という。
+
+\begin{align*}
+\frac{\mathrm{d}u}{h\left(u\right)} & =g\left(x\right)\mathrm{d}x\\
+\int^{u}\frac{\mathrm{d}u}{h\left(u\right)} & =\int^{x}g\left(x\right)\mathrm{d}x
+\end{align*}
+
+
+
+\paragraph{放射性物質の自然崩壊}
+
+$u\left(t\right)$: 放射性物質の量
+
+$\gamma$: 消滅率
+
+\begin{align*}
+\mathrm{d}u & =\lim_{\delta\rightarrow0}\left[u\left(t+\delta t\right)-u\left(t\right)\right]\\
+ & =-\gamma u\left(t\right)\mathrm{d}t
+\end{align*}
+\[
+\d ut=-\gamma u\Rightarrow u\left(t\right)=u_{0}\mathrm{e}^{-\gamma t}
+\]
+
+
+半減期$\tau$は
+\[
+u\left(t\right)=u_{0}\mathrm{e}^{-\gamma t}=\frac{1}{2}u_{0}
+\]
+\[
+-\gamma t=-\ln2
+\]
+\[
+\tau-\frac{\ln2}{\gamma}
+\]
+
+
+
+\paragraph{Malthus模型}
+
+バクテリアの増殖を考える。
+
+$\alpha$: 増殖率
+
+\begin{align*}
+\mathrm{d}u=\alpha u\left(t\right)\mathrm{d}t & \Rightarrow\d ut=\alpha u\\
+ & \Rightarrow u\left(t\right)=u_{0}\mathrm{e}^{\alpha t}
+\end{align*}
+
+
+
+\paragraph{logistic方程式}
+
+増殖率$\alpha$を$\alpha-\beta u$としたもの。
+
+\[
+\d ut=\left(\alpha-\beta u\right)u=\alpha u-\beta u^{2}
+\]
+
+
+変数分離を用いて解く。
+
+\[
+\int_{u_{0}}^{u}\frac{\mathrm{d}u'}{u'\left(\alpha-\beta u'\right)}=\int_{t_{0}}^{t}\mathrm{d}t'=t-t_{0}
+\]
+
+
+部分分数分解を用いて、
+\[
+\frac{1}{u\left(\alpha-\beta u\right)}=\frac{A}{u}+\frac{B}{\alpha-\beta u}=\frac{A\alpha-\left(B-\beta A\right)u}{u\left(\alpha-\beta u\right)}
+\]
+
+
+$A=\frac{1}{\alpha},B=\frac{\beta}{\alpha}$より、
+\begin{align*}
+\int_{u_{0}}^{u}\frac{\mathrm{d}u'}{u'\left(\alpha-\beta u'\right)} & =\frac{1}{\alpha}\int_{u_{0}}^{u}\left(\frac{1}{u'}+\frac{\beta}{\alpha-\beta u'}\right)\mathrm{d}u'\\
+ & =\frac{1}{\alpha}\left[\log\frac{u}{u_{0}}+\log\frac{\alpha-\beta u_{0}}{\alpha-\beta u}\right]\\
+ & =\frac{1}{\alpha}\log\frac{u}{u_{0}}\frac{\alpha-\beta u_{0}}{\alpha-\beta u}\\
+\mathrm{e}^{\alpha\left(t-t_{0}\right)} & =\frac{u}{u_{0}}\frac{\alpha-\beta u_{0}}{\alpha-\beta u}
+\end{align*}
+\[
+\left(\alpha-\beta u_{0}+\beta u_{0}\mathrm{e}^{u\left(t-t_{0}\right)}\right)u\left(t\right)=\alpha u_{0}\mathrm{e}^{u\left(t-t_{0}\right)}
+\]
+\[
+u\left(t\right)=\frac{\alpha u_{0}\mathrm{e}^{u\left(t-t_{0}\right)}}{\alpha-\beta u_{0}+\beta u_{0}\mathrm{e}^{u\left(t-t_{0}\right)}}
+\]
+
+
+
+\paragraph{Lotka-Volterra方程式}
+
+被食者と捕食者がいる生態系を考える。
+
+被食者: $x\left(t\right)$
+
+捕食者: $y\left(t\right)$
+
+\begin{align*}
+\d xt & =x\left(\alpha-\beta y\right)\\
+\d yt & =-y\left(\gamma-\delta x\right)
+\end{align*}
+
+
+$\alpha,\beta,\gamma,\delta$は正の実数
+
+このような式を非線形連立方程式という。→原則、非線形は解けない
+
+平衡点を考える。
+
+\[
+\d xt=\d yt=0
+\]
+\[
+\begin{cases}
+x\left(\alpha-\beta y\right)=0\\
+-y\left(\gamma-\delta x\right)=0
+\end{cases}\Rightarrow\begin{cases}
+\left(\begin{array}{c}
+x=0\\
+y=0
+\end{array}\right) & \text{絶滅状態}\\
+\left(\begin{array}{c}
+x=\frac{\gamma}{\delta}\\
+y=\frac{\alpha}{\beta}
+\end{array}\right) & \text{平衡状態}
+\end{cases}
+\]
+
+
+$X=x-\frac{\gamma}{\delta},Y=y-\frac{\alpha}{\beta}$($\left|X\right|\ll1,\left|Y\right|\ll1$)とし、
+\begin{align*}
+\d Xt & =\left(X+\frac{\gamma}{\delta}\right)\left(\alpha-\beta\left(Y+\frac{\alpha}{\beta}\right)\right)\simeq-\frac{\beta\gamma}{\delta}Y\\
+\d Yt & =-\left(Y+\frac{\alpha}{\beta}\right)\left(\gamma-\delta\left(X+\frac{\gamma}{\delta}\right)\right)\simeq\frac{\alpha\delta}{\gamma}X
+\end{align*}
+\[
+X'=-\frac{\alpha\gamma}{\delta}Y'=-\alpha\gamma X
+\]
+\begin{align*}
+X & =c\cos\left(\sqrt{\alpha\gamma}t+\theta_{0}\right)\\
+Y & =-\frac{\delta}{\beta\gamma}X'=\sqrt{\frac{\alpha}{\gamma}}\frac{\delta}{\beta}c\sin\left(\sqrt{\alpha\gamma}t+\theta_{0}\right)
+\end{align*}
+
+
+このように一般に解けない方程式も、平衡点の周りの近似解は求めることができる。
+
+
+\paragraph{Liourille方程式}
+
+\begin{align*}
+ & y''+P\left(x\right)y'+Q\left(y\right)\left(y'\right)^{2}=0\\
+\Rightarrow & \frac{y''}{y'}+P\left(x\right)+Q\left(y\right)y'=0
+\end{align*}
+
+
+\begin{align*}
+ & \d{}x\left[\log y'+\int^{x}P\left(x'\right)\mathrm{d}x'+\int^{y}Q\left(y\right)\mathrm{d}y\right]=0\\
+\Rightarrow & \log y'+\int^{x}P\left(x\right)\mathrm{d}x+\int^{y}Q\left(y\right)\mathrm{d}y=C\\
+\Rightarrow & \d yx=\exp\left[-\int^{x}P\left(x\right)\mathrm{d}x\right]\exp\left[-\int^{y}Q\left(y\right)\mathrm{d}y\right]\\
+\Rightarrow & \int^{y}\exp\left[\int^{y}Q\left(y\right)\mathrm{d}y\right]\mathrm{d}y=C_{1}\int^{x}\exp\left[-\int^{x}P\left(x\right)\mathrm{d}x\right]\mathrm{d}x+C_{2}
+\end{align*}
+
+
+例1
+
+\[
+y''+2xy'+2y\left(y'\right)^{2}=0
+\]
+
+
+$P\left(x\right)=2x,Q\left(y\right)=2y$とし、
+\[
+\int^{y}\mathrm{e}^{y}\mathrm{d}y=C_{1}\int^{x}\mathrm{e}^{-x^{2}}\mathrm{d}x+C_{2}
+\]
+
+
+例2
+
+\[
+\d yx=\sin x\tan y\Rightarrow\sin\mathrm{d}x=\frac{\cos y}{\sin y}\mathrm{d}y=\frac{\mathrm{d}\sin y}{\sin y}=\mathrm{d}\log\left|\sin y\right|
+\]
+
+
+\[
+\cos x=-\log\left|\sin y\right|+C\Rightarrow\sin y=C\mathrm{e}^{-\cos x}\Rightarrow y=\arcsin\left[C\mathrm{e}^{-\cos x}\right]
+\]
+
+
+
+\section*{第2回}
+
+
+\paragraph{同次型微分方程式}
+
+\[
+\d yx=f\left(\frac{y}{x}\right)
+\]
+
+
+変換$x\mapsto\lambda x,y\mapsto\lambda y$に対して不変
+
+$u=\frac{y}{x}$とおく。
+
+\[
+\d yx=y'=\left(xu\right)'=xu'+u
+\]
+\[
+xu'+u=f\left(u\right)\Rightarrow\d ux=\frac{f\left(u\right)-u}{x}
+\]
+
+
+\[
+\int^{u}\frac{\mathrm{d}u}{f\left(u\right)-u}=\int^{u}\frac{\mathrm{d}x}{x}=\log\left|x\right|+c
+\]
+
+
+\[
+x\e^{c}=\exp\left[\int^{u}\frac{\mathrm{d}u}{f\left(u\right)-u}\right]\equiv G\left(u\right)
+\]
+
+
+\[
+G\left(\frac{y}{x}\right)=Cx\:\left(C=\e^{c}\right)
+\]
+
+
+
+\paragraph{例}
+
+\[
+\d yx=\e^{\frac{y}{x}}+\frac{y}{x}
+\]
+
+
+$y=xu$とおく。
+
+\[
+xu'+u=\e^{u}+u\Rightarrow\e^{-u}\mathrm{d}u=\frac{\mathrm{d}x}{x}
+\]
+
+
+\[
+-\e^{-u}=\log\left|x\right|-C
+\]
+
+
+\[
+\e^{-\frac{y}{x}}=-\log\left|x\right|+C
+\]
+\[
+-\frac{y}{x}=\log\left|-\log\left|x+C\right|\right|
+\]
+
+
+\[
+y=-x\log\left|-\log\left|x\right|+C\right|
+\]
+
+
+
+\paragraph{例}
+
+\[
+y'=\frac{x-2y+3}{2x+y-4}
+\]
+
+
+連立方程式
+
+\[
+\begin{cases}
+\alpha-2\beta+3=0\\
+2\alpha+\beta-4=0
+\end{cases}\rightarrow\alpha=1,\beta=2
+\]
+
+
+$x=\xi+1,y=\eta+2$とおく。
+
+\[
+\d yx=\d{\eta}{\xi},\frac{x-2y+3}{2x+y-4}=\frac{\xi-2\eta}{2\xi+\eta}=\frac{1-2\frac{\eta}{\xi}}{2+\frac{\eta}{\xi}}
+\]
+
+
+$\eta=\xi z$とおく。
+
+\[
+\xi\d z{\xi}+z=\frac{1-2z}{2+z}\Rightarrow\frac{z+4}{z^{2}+4z-1}\mathrm{d}z=-\frac{2}{\xi}\mathrm{d}\xi
+\]
+
+
+\[
+\log\left|z^{2}+4z-1\right|=-2\log\left|\xi\right|+c
+\]
+\[
+\Rightarrow z^{2}+4z-1=\e^{c}\xi^{-2}
+\]
+
+
+\[
+\left(y-2\right)^{2}+4\left(y-2\right)\left(x-1\right)-\left(x-1\right)^{2}=\e^{c}
+\]
+
+
+
+\paragraph{例}
+
+$P\left(x,y\right)$と$Q\left(x,y\right)$が$x,y$について$k$次。
+
+\[
+\d yx=\frac{P\left(x,y\right)}{Q\left(x,y\right)}
+\]
+
+
+$k=1$のとき
+\[
+\d yx=\frac{p_{0}x+p_{1}y}{q_{0}x+q_{1}y}
+\]
+
+
+$k=2$のとき
+\[
+\d yx=\frac{p_{0}x^{2}+p_{1}xy+p_{2}y^{2}}{q_{0}x^{2}+q_{1}xy+q_{2}y^{2}}
+\]
+
+
+$u=\frac{y}{x}$とおくと、
+\[
+u+xu'=\frac{p_{0}+p_{1}u}{q_{0}+q_{1}u}
+\]
+
+
+\[
+\Rightarrow x\d ux=\frac{p_{0}+p_{1}u}{q_{0}+q_{1}u}-u=\frac{p_{0}+\left(p_{1}-q_{0}\right)u-q_{1}u^{2}}{q_{2}+q_{1}u}
+\]
+
+
+\[
+\log\left|x\right|=\int^{u}\frac{q_{2}+q_{1}u}{p_{0}+\left(p_{1}-q_{0}\right)u-q_{1}u^{2}}\mathrm{d}u\equiv G\left(u\right)
+\]
+
+
+\[
+x=\exp\left[G\left(\frac{y}{x}\right)\right]
+\]
+
+
+$k=2$の場合も同様。以下一般で成り立つ。
+
+
+\paragraph{例}
+
+\[
+\d yx=f\left(\frac{ax+by+p}{cx+dy+q}\right)
+\]
+
+
+\[
+\begin{cases}
+ax+by+p=0\\
+cx+dy+q=0
+\end{cases}
+\]
+
+\begin{enumerate}
+\item $ad-bc\neq0$のとき $\left(x,y\right)=\left(\alpha,\beta\right)$
+
+
+$x=\xi+\alpha,y=\eta+\beta$とおく。
+
+
+\[
+\d{\eta}{\xi}+f\left(\frac{a\xi+b\eta}{c\xi+d\eta}\right)=f\left(\frac{a+b\frac{\eta}{\xi}}{c+d\frac{\eta}{\xi}}\right)\equiv g\left(\frac{\eta}{\xi}\right)
+\]
+
+
+\item $ad-bc=0$で$c$と$d$の少なくとも一方が0でないとき
+
+
+$\frac{ax+by}{cx+dy}=k\left(\text{定数}\right),z=cx+dy+q$とおく。
+
+
+\begin{align*}
+ax+by+p & =k\left(cx+dy\right)+p\\
+ & =kz+p-kq
+\end{align*}
+
+
+\item $c=d=0$のとき
+
+
+$z=-\frac{ax+by+p}{q}$とおく。
+
+
+\[
+\d zx=\frac{a+by'}{q}=\frac{a+bf\left(z\right)}{q}
+\]
+
+
+
+\[
+\int\frac{\mathrm{d}z}{a+bf\left(z\right)}=\frac{x}{q}+C
+\]
+
+
+\end{enumerate}
+
+\paragraph{例}
+
+同次形でないもの
+
+\[
+\d yx=\frac{xy}{x^{2}+y}
+\]
+
+
+$\left(x\mapsto\lambda x,y\mapsto\lambda^{2}y\right)$に対して不変。
+
+$u=\frac{y}{x^{2}}$とおく。
+\[
+\d yx=x^{2}u'+2xu
+\]
+
+
+\[
+\frac{xy}{x^{2}+y}=\frac{x^{2}u}{x^{3}+x^{2}u}=\frac{xu}{1+u}
+\]
+
+
+\[
+\d ux=\frac{u+2u^{2}}{x\left(1+u\right)}
+\]
+
+
+\[
+\frac{1+u}{u\left(1+2u\right)}\mathrm{d}u=-\frac{\mathrm{d}x}{x}
+\]
+
+
+部分分数分解を行う。
+
+\begin{align*}
+\frac{1+u}{u\left(1+2u\right)}\mathrm{d}u & =\frac{1+u}{u}\mathrm{d}u-\frac{2\left(1+u\right)}{1+2u}\mathrm{d}u\\
+ & =\frac{\mathrm{d}u}{u}+\frac{1+2u-2\left(1+u\right)}{1+2u}\mathrm{d}u\\
+ & =\frac{1}{2}\mathrm{d}\left[\log u^{2}-\log\left(1+2u\right)\right]
+\end{align*}
+
+
+\begin{align*}
+ & \log\left|\frac{u^{2}}{1+2u}\right|=-2\log\left|x\right|+c\\
+\Rightarrow & \frac{x^{2}u^{2}}{1+2u}=c'\Rightarrow\frac{y^{2}}{x^{2}+2y}=c'
+\end{align*}
+
+
+
+\paragraph{例}
+
+\[
+\d yz=\frac{x^{2}y}{x^{2}+y}
+\]
+
+
+$\left(x\mapsto\lambda x,y\mapsto\lambda^{2}x\right)$に対して不変。
+
+$u=\frac{y}{x^{2}}$とおく。
+
+\[
+y'=x^{3}u'+3x^{2}u
+\]
+
+
+\[
+x^{3}u'+3x^{2}u=\frac{x^{5}u}{x^{3}+x^{3}u}=\frac{x^{2}u}{1+u}
+\]
+
+
+\[
+\d ux=-\frac{u\left(2+3u\right)}{x\left(1+u\right)}
+\]
+
+
+\[
+\frac{1+u}{u\left(2+3u\right)}\mathrm{d}u=-\frac{\mathrm{d}x}{x}
+\]
+
+
+\[
+\frac{1+u}{u\left(2+3u\right)}=\frac{1}{2}\left(\frac{1+u}{u}-\frac{3+3u}{2+3u}\right)=\frac{1}{2}\left(\frac{1}{u}+1-\frac{3+3u}{2+3u}\right)
+\]
+
+
+\begin{align*}
+\log\left|x\right|+c & =\frac{1}{2}\int^{u}\left(1u-\frac{1}{2+3u}\right)\mathrm{d}u\\
+ & =\frac{1}{2}\left[\log u-\frac{1}{3}\log\left(2+3u\right)\right]\\
+ & =-\frac{1}{6}\log\frac{u^{3}}{2+3u}\\
+\Rightarrow\frac{x^{6}u^{3}}{2+3u} & =6C\\
+\Rightarrow\frac{y^{3}}{2x^{2}+3y} & =6C
+\end{align*}
+
+
+
+\paragraph{定数変化法}
+
+\[
+\d ux+P\left(x\right)u=Q\left(x\right)
+\]
+
+
+$Q\left(x\right)=0$のとき、
+\[
+u\left(x\right)=C\exp\left[-\int P\left(x\right)\mathrm{d}x\right]
+\]
+
+
+定数$C$を$x$の関数と見て計算してみる。
+
+\[
+C\mapsto C\left(x\right)\Rightarrow u\left(x\right)=C\left(x\right)\exp\left[-\int P\left(x\right)\mathrm{d}x\right]
+\]
+
+
+\[
+\d ux=\d Cx\exp\left[-\int P\left(x\right)\mathrm{d}x\right]P\left(x\right)u
+\]
+
+
+\[
+C'\e^{-\int^{x}P\left(x\right)\mathrm{d}x}-Pu+Pu^{2}Q
+\]
+
+
+\[
+\mathrm{d}C=Q\left(x\right)\e^{\int^{x}P\left(x\right)\mathrm{d}x}\mathrm{d}x
+\]
+
+
+\[
+C\left(x\right)=\int^{x}Q\left(x\right)\e^{\int^{x}P\left(x\right)\mathrm{d}x}\mathrm{d}x+c
+\]
+
+
+\[
+u\left(x\right)=\e^{\int^{x}P\left(x\right)\mathrm{d}x}\left[\int^{x}Q\left(x\right)\e^{\int^{x}P\left(x\right)\mathrm{d}x}\mathrm{d}x+c\right]
+\]
+
+
+
+\paragraph{例}
+
+\[
+xy^{2}-2y=x^{3}\cos x
+\]
+
+
+$xy'-2y=0$を解く。$y=Cx^{2}$
+
+$y=C\left(x\right)x^{2}$
+
+\[
+C'x^{3}=x^{3}\cos x\Rightarrow C\left(x\right)=\sin x+c
+\]
+
+
+\[
+y=x^{2}\left(\sin x+c\right)
+\]
+
+
+
+\paragraph{来週やること}
+
+Bernoulli型の微分方程式
+
+\[
+y'+P\left(x\right)y=Q\left(x\right)y^{m}
+\]
+
+
+Riccati
+
+\[
+y'=P\left(x\right)y^{2}+Q\left(x\right)y+R\left(x\right)
+\]
+
+
+d'Alembert
+
+\[
+y=xf\left(y^{2}\right)+g\left(y'\right)
+\]
+
+
+Clairaut
+
+\[
+y=xp+g\left(y'\right)
+\]
+
+
+
+\section*{第3回}
+
+
+\paragraph{レポート課題}
+
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{3x-2y+1}{2x+3y-2}
+\]
+を解け。ただし$y\left(x\right)$の形まで解くこと。
+
+
+\paragraph{Bernoulli型微分方程式}
+
+\[
+y'+P\left(x\right)y=Q\left(x\right)y^{m}
+\]
+
+
+$z=y^{k}$とおくと$z'=ky^{k-1}y'$
+
+両辺に$ky^{k-1}$を掛けて、
+\[
+z'+kP\left(x\right)z=kQ\left(x\right)y^{x-1+m}
+\]
+
+
+$k=1-m$とおく。
+
+\[
+z'+\left(1-m\right)P\left(x\right)z=\left(1-m\right)Q\left(x\right)
+\]
+
+
+\[
+z=\e^{-\left(1-n\right)\int P\left(x\right)\mathrm{d}x}\left[\left(1-m\right)\int Q\left(x\right)\e^{\left(1-m\right)\int P\left(x\right)\mathrm{d}x}\mathrm{d}x+C\right]
+\]
+
+
+\[
+y=\e^{-\int P\left(x\right)\mathrm{d}x}\left[\left(1-m\right)\int Q\left(x\right)\e^{\left(1-m\right)\int P\left(x\right)\mathrm{d}x}\mathrm{d}x+C\right]^{\frac{1}{1-m}}
+\]
+
+
+
+\paragraph{例}
+
+\[
+y'+xy=xy^{3}
+\]
+
+
+$m=3$なので$z=y^{-2}$とおく。
+
+\[
+z'=-2y^{-3}y'
+\]
+
+
+両辺に$-2y^{-3}$をかけて、
+\[
+z'-2xz=-2x
+\]
+
+
+\begin{align*}
+z & =\e^{x^{2}}\left(-2\int x\e^{-x^{2}}\mathrm{d}x+C\right)\\
+ & =1+C\e^{x^{2}}
+\end{align*}
+
+
+\[
+y=\frac{1}{\sqrt{1+C\e^{x^{2}}}}
+\]
+
+
+
+\paragraph{Riccati型微分方程式}
+
+\[
+y'=P\left(x\right)y^{2}+Q\left(x\right)y+R\left(x\right)
+\]
+
+
+$y=f\left(x\right)$を一つの特殊解とする。
+
+\[
+z=y-f\left(x\right)
+\]
+
+
+\begin{align*}
+z' & =y'-f'\left(x\right)\\
+ & =P\left(x\right)\left(z+f\left(x\right)\right)^{2}+Q\left(x\right)\left(z+f\left(x\right)\right)+R\left(x\right)-f'\left(x\right)\\
+ & =P\left(x\right)z^{2}+\left[2P\left(x\right)f\left(x\right)+Q\left(x\right)\right]z+\left[P\left(x\right)f^{2}\left(x\right)+Q\left(x\right)f\left(x\right)+R\left(x\right)-f'\left(x\right)\right]
+\end{align*}
+
+
+\[
+z'-\left[2P\left(x\right)f'\left(x\right)+Q\left(x\right)\right]z=P\left(x\right)z^{2}
+\]
+
+
+これはBernoulliの$m=2$の場合である。
+
+両辺に$-2y^{-3}$をかけて、
+\[
+z'-2xz=-2x
+\]
+
+
+\begin{align*}
+z & =\e^{x^{2}}\left(-2\int x\e^{-x^{2}}\mathrm{d}x+C\right)\\
+ & =1+C\e^{x^{2}}
+\end{align*}
+
+
+\[
+z=\exp\left[\int\left(2P\left(x\right)f\left(x\right)+Q\left(x\right)\right)\mathrm{d}x\right]-\int P\left(x\right)\exp\left[\int\left(2P\left(x\right)f\left(x\right)+Q\left(x\right)\right)\mathrm{d}x\right]\mathrm{d}x+C
+\]
+
+
+
+\paragraph{例}
+
+\[
+y'=y^{2}+\left(2-x\right)y-2x+1\;\left(y=x\right)
+\]
+
+
+$z=y-x$とおくと、
+\[
+z'+1=\left(z+x\right)^{2}+\left(2-x\right)\left(z+x\right)-2x+1
+\]
+
+
+$z'-\left(x+2\right)z=z^{2},z=\frac{1}{u}$とおく。
+
+\[
+u'+\left(x+2\right)u=-1\Rightarrow u=\e^{-\frac{x^{2}}{2}-2x}\left(-\int\e^{\frac{x^{2}}{2}+2x}\mathrm{d}x+C\right)
+\]
+
+
+\[
+y=\frac{\e^{\frac{x^{2}}{2}}+2x}{-\int\e^{\frac{x^{2}}{2}}\mathrm{d}x+C}+x
+\]
+
+
+
+\paragraph{例}
+
+\[
+y'-\left(x-1\right)y^{2}+\left(2x-1\right)y=x\;\left(y=1\right)
+\]
+
+
+$z=y-1$とおく。
+
+\[
+z'-\left(x-1\right)\left(z+1\right)^{2}+\left(2x-1\right)\left(;+1\right)-x=0
+\]
+
+
+$z'+z=\left(x-1\right)z^{2},u=\frac{1}{z}$とおく。
+
+\[
+u'-u=1-x
+\]
+
+
+\begin{align*}
+u\left(x\right) & =\e^{\int^{x}\mathrm{d}x}\left[\int^{x}\left(1-x\right)\e^{-\int^{x}\mathrm{d}x}\mathrm{d}x+C\right]\\
+ & =\e^{x}\left(x\e^{-x}+C\right)=x+C\e^{x}
+\end{align*}
+
+
+\[
+y=1+\frac{1}{x+C\e^{x}}
+\]
+
+
+
+\paragraph{d'Alembert型微分方程式}
+
+\[
+y=xf\left(y'\right)+g\left(y'\right)
+\]
+
+
+$P=y'$と置くと$y=xf\left(P\right)+g\left(P\right)$
+
+両辺を$x$で微分して、
+\[
+P=f\left(P\right)+\left[xf'\left(P\right)+g'\left(P\right)\right]\d Px
+\]
+
+
+ここで$f\left(P\right)\neq P$とすると、
+\[
+\d xP=\frac{xf'\left(P\right)+g'\left(P\right)}{P-f\left(P\right)}=-\frac{f'\left(P\right)}{f\left(P\right)-P}x+\frac{g'\left(P\right)}{f\left(P\right)-P}
+\]
+
+
+\[
+x=\left[-\int\frac{g'\left(P\right)}{P-f\left(P\right)}\e^{\int\frac{f'\left(P\right)}{P-f\left(P\right)}\mathrm{d}P}\mathrm{d}P+C\right]\exp\left[-\int\frac{f'\left(P\right)}{P-f\left(P\right)}\mathrm{d}P\right]
+\]
+
+
+
+\paragraph{例}
+
+\[
+y=xy'\left(y'+1\right)+\frac{1}{y'}
+\]
+
+
+$P=y'$とおく。($x$で微分)
+\[
+y=xP\left(P+1\right)+\frac{1}{P}
+\]
+
+
+\[
+P=P\left(P+1\right)+\frac{1}{P}
+\]
+
+
+\[
+P=P\left(P+1\right)+\left[x\left(2P+1\right)-\frac{1}{P^{2}}\right]\d Px
+\]
+
+
+\[
+\d xP+\frac{2P+1}{P^{2}}x=\frac{1}{P^{4}}
+\]
+
+
+\begin{align*}
+x & =\left[\int\frac{1}{P^{4}}\e^{\int\frac{2P+1}{P^{2}}\mathrm{d}P}\mathrm{d}P+C\right]\e^{-\int\frac{2P+1}{P^{2}}\mathrm{d}P}\\
+ & =\frac{1}{P^{2}}\left(1+C\e^{\frac{1}{P}}\right)
+\end{align*}
+
+
+
+\paragraph{Clairaut型微分方程式}
+
+$f\left(P\right)=P$のとき$P=y'$とおいて$x$で微分
+
+\[
+\left[x+g'\left(P\right)\right]P'=0
+\]
+$x+g'\left(P\right)=0$か$P'=0$
+
+$P'=0$のとき$P=C\Rightarrow y=Cx+g\left(C\right)$
+
+$x+g'\left(P\right)=0$のときは$y=xP+g\left(P\right)$と連立して$P$を消去して特異解$y\left(x\right)$を得る。
+
+
+\paragraph{例}
+
+\[
+y=xy'-\left(y'\right)^{2}
+\]
+
+
+\[
+y=xP-P^{2}\Rightarrow\left(x-2P\right)P'=0
+\]
+
+
+$x-2P=0$か$P'=0$
+
+$P'=0$のとき$y=Cx-C^{2}$
+
+$x-2P=0$のとき$y=xP-P^{2}$と連立して$y=\frac{x^{2}}{4}$
+
+
+\paragraph{全微分方程式て完全微分方程式}
+
+\[
+\d yx=-\frac{P\left(x,y\right)}{Q\left(x,y\right)}\Rightarrow P\left(x,y\right)\mathrm{d}x+Q\left(x,y\right)\mathrm{d}y=0
+\]
+
+
+ある関数$\Phi\left(x,y\right)$が存在して$\pd{\Phi}x=P,\pd{\Phi}y=Q$のとき完全微分方程式
+\[
+\mathrm{d}\Phi\left(x,y\right)=P\left(x,y\right)\mathrm{d}x+Q\left(x,y\right)\mathrm{d}y
+\]
+
+
+\[
+\pd Py=\pd Qx
+\]
+
+
+\[
+\int_{x_{0}}^{x}P\left(x,y\right)\mathrm{d}x+\int_{y_{0}}^{y}Q\left(x_{0},y\right)\mathrm{d}y+C
+\]
+
+
+積分因子$\mu\left(x,y\right)$をかけると完全微分方程式になる全微分方程式
+
+条件は$\partial_{y}\left(\mu P\right)=\partial_{x}\left(\mu Q\right)$
+
+もしも$\mu\left(x\right)$
+
+\[
+\mu\partial_{y}P=\partial_{x}\mu Q+\mu\partial_{x}Q
+\]
+
+
+\[
+\frac{\partial_{y}P-\partial_{x}Q}{Q}=\frac{\partial_{x}\mu}{\mu}=g\left(x\right)\Rightarrow\mu\left(x\right)=\e^{\int Q\left(x\right)\mathrm{d}x}
+\]
+
+
+
+\paragraph{例}
+
+\[
+\left(2x+2y\right)\mathrm{d}x+\left(2x+\mathrm{e}^{y}\right)\mathrm{d}y=0
+\]
+
+
+\[
+\partial_{y}\left(2x+2y\right)=\partial_{x}\left(2x+\e^{y}\right)
+\]
+
+
+\begin{align*}
+u & =\int_{0}^{x}\left(2x+2y\right)\mathrm{d}x+\left.\int_{0}^{y}\left(2x+\e^{y}\right)\right|_{x=0}\mathrm{d}y\\
+ & =x^{2}+2yx+\e^{y}-1=C
+\end{align*}
+
+
+\[
+\mathrm{d}x^{2}+2\mathrm{d}\left(xy+\mathrm{d}\e^{y}\right)=\mathrm{d}\left(x^{2}+2xy+\e^{y}\right)=0
+\]
+
+
+\[
+x^{2}+2xy+\e^{y}=C'
+\]
+
+
+
+\paragraph{例}
+
+\[
+\mathrm{d}x+2xy\mathrm{d}y=0
+\]
+
+
+\[
+\partial_{y}P-\partial_{x}Q=-\partial_{x}\left(2xy\right)=-2y\neq0
+\]
+
+
+\[
+\frac{\partial_{y}P-\partial_{x}Q}{Q}=\frac{-2y}{2xy}=-\frac{1}{x}\Rightarrow\mu\left(x\right)=\e^{-\int\frac{\mathrm{d}x}{x}}=\e^{\ln x}=\frac{1}{x}
+\]
+
+
+\[
+\frac{1}{x}\mathrm{d}x+2y\mathrm{d}y=\mathrm{d}\left(\ln x+y^{2}\right)=0
+\]
+
+
+\[
+\ln x+y^{2}=C\Rightarrow y=\pm\sqrt{C-\ln x}
+\]
+
+
+
+\paragraph{例}
+
+\[
+\e^{y}\mathrm{d}x+x\e^{y}\mathrm{d}y+2z\mathrm{d}z=0
+\]
+
+
+\[
+\mathrm{d}\left(x\e^{y}+z^{2}\right)=0\Rightarrow x\e^{y}+z^{2}=C
+\]
+
+
+
+\paragraph{例}
+
+\begin{align*}
+ & \left(x+\frac{y^{2}}{x}\right)\mathrm{d}x+2y\ln x\mathrm{d}y+u^{2}\mathrm{d}u=0\\
+\Rightarrow & \frac{1}{2}\mathrm{d}x^{2}+y^{2}\mathrm{d}\ln x+\ln x\mathrm{d}y'+\frac{u^{2}}{3}\mathrm{d}u^{3}\\
+\Rightarrow & \frac{1}{2}\mathrm{d}x^{2}+\mathrm{d}\left(y^{2}\ln x\right)+\frac{1}{3}u^{2}\mathrm{d}u^{2}=0\\
+ & \frac{1}{2}x^{2}+y^{2}\ln x+\frac{1}{3}y^{2}=C
+\end{align*}
+
+\end{document}

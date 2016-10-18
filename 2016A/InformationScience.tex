@@ -1,0 +1,376 @@
+%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english]{book}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[version=3]{mhchem}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2016-A 情報通信理論}
+
+
+\author{教員: 相澤 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\mathrm{grad}}
+\global\long\def\rot{\mathrm{rot}}
+\global\long\def\div{\mathrm{div}}
+\global\long\def\diag{\mathrm{diag}}
+
+
+
+\section*{第1回}
+
+
+\paragraph{本講義の内容}
+\begin{itemize}
+\item 情報量
+
+\begin{itemize}
+\item エントロピー
+\item 相互情報量
+\end{itemize}
+\item 情報源符号化
+\item 通信路符号化
+\item 通信システム
+
+\begin{itemize}
+\item 図情報1-1
+\end{itemize}
+\item 実際の通信システム
+
+\begin{itemize}
+\item 図情報1-2
+\end{itemize}
+\item 情報源符号化
+
+\begin{itemize}
+\item 平均符号長をなるべく短くする。
+\item どこまで短くできるか。
+\end{itemize}
+\item 通信路符号化
+
+\begin{itemize}
+\item 誤り訂正・検出
+\item どこまで正しく送れるのか?
+\end{itemize}
+\item 情報をどう測るか?
+
+\begin{itemize}
+\item 図情報1-3
+\item 統計的な定義～発生確率の関係
+
+\begin{enumerate}
+\item まれなでき事が起きる→情報量大
+\item 独立なでき事 1, 2 が同時に起こる→$I_{1}+I_{2}$
+\end{enumerate}
+\item でき事 1, 2 に対して、$P_{1},P_{2}$を発生確率とすると、
+
+\begin{enumerate}
+\item $P_{1}<P_{2}\rightarrow I\left(P_{1}\right)>I\left(P_{2}\right)$
+\item $I\left(P_{1}P_{2}\right)=I\left(P_{1}\right)+I\left(P_{2}\right)$
+\end{enumerate}
+\end{itemize}
+\end{itemize}
+
+\paragraph{定義}
+
+事象$a$の発生確率が$P\left(a\right)$であるとき、その事象$a$の(自己)情報量は
+\[
+I\left(a\right)=-\log_{2}P\left(a\right)\left(\text{ビット/シャノン}\right)
+\]
+
+
+例えばある日の天気が晴れである確率が0.6であるとき、その情報量は0.73、雨である確率が0.4であるとき、その情報量は1.32である。
+
+
+\paragraph{定義 情報源の情報量}
+
+複数の事象の集まりに対する情報量→平均情報量
+
+$a_{1},\cdots,a_{n}$の$M$個の``独立な''事象であるとすると、情報源全体の情報量は
+\begin{align*}
+H & =-P\left(a_{1}\right)\log P\left(a_{1}\right)-P\left(a_{2}\right)\log P\left(a_{2}\right)\cdots\\
+ & =-\sum_{i=1}^{M}P\left(a_{i}\right)\log P\left(a_{i}\right)
+\end{align*}
+
+\begin{itemize}
+\item 独立な$M$個であれば、平均情報量が情報源のエントロピー(正の情報量)
+\item 独立でないとき?
+
+\begin{itemize}
+\item →シンボルの$m$次拡大
+\item →拡大した情報源に対して平均情報源
+\end{itemize}
+\end{itemize}
+
+\paragraph{定義 情報源の情報量}
+
+複数の事象の集まりに対する情報量
+
+図情報1-4
+
+\begin{align*}
+H\left(A_{1}\right) & =-0.8\log0.8-0.15\log0.15-0.05\log0.05\\
+ & =0.88\left(\text{ビット}\right)\\
+H\left(A_{2}\right) & =1.58\left(\text{ビット}\right)
+\end{align*}
+
+
+
+\paragraph{エントロピーの性質}
+\begin{enumerate}
+\item 偏りが大きいとエントロピーが小さくなり、偏りが大きいとエントロピーは小さくなる。
+\item $H\left(A\right)\geqq0$
+\item $H\left(A\right)\leqq-\sum_{t=1}^{M}\frac{1}{M}\log\frac{1}{M}=\log M$
+\end{enumerate}
+\[
+\because\begin{cases}
+H=-\sum P_{i}\log P_{i}\\
+\sum P_{i}=1
+\end{cases}
+\]
+を条件に最大化し、
+\[
+L=H-\lambda\left(\sum P_{i}-1\right)
+\]
+\[
+\begin{cases}
+\pd L{P_{1}}=\pd L{P_{2}}=\cdots=0\\
+\pd L{\lambda}=0
+\end{cases}
+\]
+\[
+\pd L{P_{i}}=-\log P_{i}-\log\e-\lambda=0
+\]
+\[
+\pd L{\lambda}=\sum P_{i}-1=0
+\]
+
+
+\begin{align*}
+\log P_{i} & =-\log\e-\lambda\\
+P_{i} & =\frac{1}{\e2^{\lambda}}\\
+ & =c
+\end{align*}
+とすると、
+\[
+c=\frac{1}{M}
+\]
+
+
+
+\paragraph{エントロピー関数}
+
+図情報1-5
+
+\[
+H=-p\log p-\left(1-p\right)\log\left(1-p\right)
+\]
+
+
+図情報1-6
+
+
+\paragraph{曖昧さとエントロピー}
+
+エントロピー 曖昧さの変化の度合い
+\begin{itemize}
+\item あいまい
+\item →シグナルを受けた時点で曖昧さが消える
+\item →あいまい
+\end{itemize}
+
+\section*{第2回}
+
+
+\paragraph{情報量}
+\begin{itemize}
+\item 自己情報量 $-\log p_{i}$: でき事
+\item 平均情報量 $-\sum p_{i}\log p_{i}$: 情報源
+
+\begin{itemize}
+\item 無記憶情報源
+\end{itemize}
+\item あいまいさとエントロピー
+\end{itemize}
+
+\paragraph{エントロピーと代表的系列}
+
+図情報2-1
+
+$n$が十分大とすると、
+\begin{align*}
+\frac{n_{i}}{n} & \simeq p_{i}\\
+n_{i} & \simeq np_{i}
+\end{align*}
+
+
+ある系列$\sigma$に対し、
+\begin{align*}
+P\left(\sigma\right) & =p^{n_{1}}p^{n_{2}}\cdots p^{n_{M}}\\
+ & =\prod_{i=1}^{M}p^{n_{i}}\\
+ & =\prod p^{np_{i}}\\
+p_{i} & =2^{\log p_{i}}\\
+P\left(\sigma\right) & =\prod2^{np_{i}\log p_{i}}\\
+ & =2^{n\sum p_{i}\log p_{i}}\\
+ & =2^{-nH\left(A\right)}\\
+ & =\frac{1}{2^{nH\left(A\right)}}
+\end{align*}
+
+
+
+\paragraph{相互情報量}
+
+・通信的立場
+
+図情報2-3
+
+通信による情報源の情報量\\
+=$H\left(A\right)$－誤りによる混乱\\
+=(情報を受け取る以前の曖昧さ)－(通信を受け取った以降に残る曖昧さ=誤りに対する減少分)
+
+・汎用的立場
+
+複合事象のエントロピー
+
+図情報2-4
+
+$B$を観測→どれだけ$A$の情報量を受け取ることができるか
+
+$B$を介して知ることのできる情報源の情報量
+
+
+\paragraph{例}
+
+図情報2-5
+
+\begin{align*}
+H\left(A\right) & =-0.65\log0.65-0.35\log0.35\\
+ & =0.93\\
+H\left(B\right) & =-0.60\log0.60-0.4\log0.4\\
+ & =0.97\\
+H\left(AB\right) & =-\sum P\left(a_{i}b_{i}\right)\log P\left(a_{i}b_{i}\right)\\
+ & =-0.55\log0.55\cdots-0.30\log0.30\\
+ & =1.54
+\end{align*}
+
+
+\[
+H\left(A\right),H\left(B\right)<H\left(AB\right)<H\left(A\right)+H\left(B\right)
+\]
+
+
+$B$を知ってのちの$A$の曖昧さ(条件付きエントロピー)
+
+\begin{align*}
+ & H\left(A|b_{1}\right)\\
+ & =-\sum P\left(a_{i}|b_{i}\right)\log P\left(a_{i}|b_{i}\right)\\
+ & =-\frac{55}{60}\log\frac{55}{60}-\frac{5}{60}\log\frac{5}{60}\\
+ & =0.41
+\end{align*}
+
+
+\[
+H\left(A|b_{2}\right)=\cdots-0.81
+\]
+
+
+\begin{align*}
+H\left(A|B\right) & =-\sum P\left(b_{i}\right)H\left(A|b_{j}\right)\\
+ & =-\sum_{i}P\left(b_{i}\right)\sum P\left(a_{j}|b_{i}\right)\log P\left(a_{j}b_{i}\right)\\
+ & =0.57
+\end{align*}
+
+
+\[
+I\left(A,B\right)=H\left(A\right)-H\left(A|B\right)=0.36
+\]
+
+
+$I\left(A,B\right)$: $B$を知ることで分かる$A$の情報量 相互情報量
+
+\begin{align*}
+I\left(A,B\right)= & -\sum_{i}P\left(a_{i}\right)\log P\left(a_{i}\right)\\
+ & +\sum_{i}P\left(b_{j}\right)\sum_{i}P\left(a_{i}|b_{j}\right)\log P\left(a_{i}|b_{j}\right)\\
+= & \sum_{i}\sum_{j}P\left(a_{i}b_{j}\right)\log\frac{P\left(a_{i}|b_{j}\right)}{P\left(a_{i}\right)P\left(b_{j}\right)}
+\end{align*}
+
+
+$B$から得る$A$の情報量=$A$から得る$B$の情報量
+
+図情報2-6
+
+
+\paragraph{相互情報量の性質}
+
+\[
+0\leq I\left(A,B\right)\leq H\left(A\right)
+\]
+
+
+\[
+0\leq H\left(A,B\right)\leq H\left(A\right)
+\]
+
+
+
+\paragraph{例: 天気予報}
+
+図情報2-7
+
+\[
+H\left(A\right)=1\mathrm{bit}
+\]
+
+
+\begin{align*}
+I\left(A,B\right) & =\sum_{i}\sum_{j}P\left(a_{i}b_{j}\right)\log\frac{P\left(a_{i}b_{j}\right)}{P\left(a_{i}\right)P\left(b_{j}\right)}\\
+ & =1+p\log p+\left(1-p\right)\log\left(1-p\right)
+\end{align*}
+
+
+あるいは
+\begin{align*}
+H\left(A|B\right) & =\underbrace{-p\log p-\left(1-p\right)\log\left(1-p\right)}_{\text{エントロピー関数}}\\
+I\left(A,B\right) & =H\left(A\right)-H\left(A|B\right)
+\end{align*}
+
+
+図情報2-8
+
+\begin{align*}
+I\left(A,B\right) & =H\left(A\right)-H\left(A|B\right)\\
+ & =H\left(B\right)-H\left(B|A\right)\\
+ & =H\left(A\right)+H\left(B\right)-H\left(AB\right)
+\end{align*}
+
+
+図情報2-9
+\end{document}

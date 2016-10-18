@@ -1,0 +1,439 @@
+%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english]{jsbook}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[version=3]{mhchem}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2016-A 数理手法I}
+
+
+\author{教員: 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+
+
+
+\section*{第1回}
+
+
+\paragraph{講義の進め方}
+
+講義と演習で構成される。
+\begin{itemize}
+\item 講義4回
+\item 演習3回
+\item 講義?回
+\item 演習2回
+\end{itemize}
+
+\paragraph{数値解析の目的}
+\begin{itemize}
+\item データの整理
+
+\begin{itemize}
+\item 確率的手法
+
+\begin{itemize}
+\item 母集団全てに対して調査を行うのではなく、サンプリングされた対象から結論を導き出す。
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\paragraph{確率}
+
+「物事の起こりやすさ」。物事=事象。
+
+起こりうる事象全体 標本空間 $\Omega$
+
+$\Omega$に含まれる点 標本点 $\omega$
+
+例: $\omega=\left\{ 1\right\} \left\{ 2\right\} \cdots\left\{ 6\right\} $
+
+事象は標本点の集合で、$\Omega$の部分集合。$A,B,C$などと表す。$A\subset\Omega$ (可則)
+
+起こらないこと 空事象 $\phi$ ⇔ 数字の0
+
+
+\paragraph{ベン図}
+
+図MM-1
+
+図MM-2
+
+\begin{align*}
+A & =\left\{ 1,2,3,5\right\} \\
+B & =\left\{ 1,2,3\right\} 
+\end{align*}
+
+
+$B\subset A$ $B$が$A$の部分集合
+
+図MM-3
+
+\[
+B=\left\{ 4,5,6\right\} 
+\]
+
+
+共通部分あり
+
+図MM-4
+
+\[
+B=\left\{ 4,6\right\} 
+\]
+
+
+共通部分なし: 排反事象
+
+図MM-5
+
+\begin{align*}
+A & =\left\{ 1,2,3,4\right\} \\
+B & =\left\{ 5,6\right\} 
+\end{align*}
+
+
+$B$が「$A$以外」となっている: 余事象 $A^{c}$
+
+\begin{align*}
+\phi^{c} & =\Omega\\
+\Omega^{c} & =\phi
+\end{align*}
+
+
+
+\paragraph{和事象・積事象}
+
+和事象 $A\cup B$ $A$または$B$の(少なくとも一方)が起こる
+
+図MM-6
+
+積事象 $A\cap B$ $A$かつ$B$ $A$と$B$が同時に起こる
+
+図MM-7
+
+排反事象の定義 $A\cap B=\phi$
+
+
+\paragraph{分配法則}
+
+\[
+\left(a+b\right)\times c=a\times c+b\times c
+\]
+\[
+\left(A\cup B\right)\cap C=\left(A\cap C\right)\cup\left(A\cap B\right)
+\]
+\[
+\left(A\cap B\right)\cup C=\left(A\cup C\right)\cap\left(A\cup B\right)
+\]
+
+
+
+\paragraph{ドモルガンの法則}
+
+\begin{align*}
+\left(A\cup B\right)^{c} & =A^{c}\cap B^{c}\\
+\left(A\cap B\right)^{c} & =A^{c}\cup B^{c}
+\end{align*}
+
+
+
+\paragraph{確率}
+
+$A$の起こる確率:$P\left(A\right)$
+
+
+\paragraph{コロモゴロフによる3つの公理}
+\begin{enumerate}
+\item $0\leq P\left(A\right)\leq1$
+\item $P\left(\Omega\right)=1\Leftrightarrow P\left(\phi\right)=0$
+\item 違いに排反である可算個の事象$A_{1},A_{2},\cdots,A_{k}$に対して、
+\[
+P\left(A_{1}\cup A_{2}\cup\cdots\cup A_{k}\right)=\sum_{i=1}^{k}P\left(A_{i}\right)
+\]
+
+
+
+可算個: 有限もしくは自然数と同一の密度
+
+
+有理数は自然数と同じ密度で存在する
+
+\end{enumerate}
+
+\paragraph{確率の意味}
+
+大数の法則
+
+例) コインを投げて表が出る確率が$\frac{1}{2}$であるとは、全体の試行回数を$n$、表の回数を$\gamma$としたときに、$n\rightarrow\infty$のとき$\frac{\gamma}{n}\rightarrow\frac{1}{2}$となることである。
+
+
+\paragraph{加法定理}
+
+\[
+P\left(A\cup B\right)=P\left(A\right)+P\left(B\right)-P\left(A\cap B\right)
+\]
+
+
+\[
+P\left(A\cup B\cup C\right)=P\left(A\right)+P\left(B\right)+P\left(C\right)-P\left(A\cap B\right)-P\left(B\cap C\right)-P\left(C\cap A\right)+P\left(A\cap B\cap C\right)
+\]
+
+
+
+\paragraph{条件付き確率}
+
+白い1の玉2個と、白い2の玉1個と、赤い1の玉1個と、赤い2の玉2個が入った箱から1つを選ぶ事を考える。
+
+\[
+P\left(\text{“1”}\right)=\frac{1}{6}+\frac{1}{6}+\frac{1}{6}=\frac{3}{6}=\frac{1}{2}
+\]
+\[
+P\left(\text{“2”}\right)=\frac{1}{2}
+\]
+
+
+ここで選んだ玉が白であるという情報を持っていると、
+\[
+P\left(A|B\right)=P\left(\text{“1”}|\text{“白”}\right)=\frac{2}{3}
+\]
+となる。このような確率を($B$を条件とする$A$の)条件付き確率という。
+
+\[
+P\left(A|B\right)=\frac{P\left(A\cap B\right)}{P\left(B\right)}
+\]
+
+
+乗法定理
+
+\[
+P\left(A\cap B\right)=P\left(A|B\right)P\left(B\right)=P\left(B|A\right)P\left(A\right)
+\]
+
+
+
+\paragraph{独立}
+
+\[
+P\left(A|B\right)=P\left(B\right)
+\]
+となるとき、$A$と$B$が独立であるという。
+
+乗法定理に代入すると、
+\[
+P\left(A\cap B\right)=P\left(A|B\right)P\left(B\right)=P\left(A\right)P\left(B\right)
+\]
+
+
+この式は$P\left(B\right)=0$の場合にも拡張可能なので、独立の定義にはこちらを用いる。
+
+
+\section*{第2回}
+
+
+\paragraph{順列数}
+
+\[
+_{n}P_{r}=\frac{n!}{\left(n-r\right)!}
+\]
+
+
+
+\paragraph{確率}
+
+\[
+\frac{\text{目的の順列数}}{\text{全体の順列数}}
+\]
+
+
+同等に起こりやすい場合
+
+
+\paragraph{組み合わせ数}
+
+\[
+_{n}C_{r}=\frac{_{n}P_{r}}{r!}=\frac{n!}{\left(n-r\right)!r!}n
+\]
+
+
+
+\paragraph{ベイズの定理}
+
+原因⇔結果
+
+\[
+P\left(B|A\right)-\frac{P\left(A\cap B\right)}{P\left(A\right)}-\frac{P\left(A|B\right)P\left(B\right)}{P\left(A\right)}
+\]
+
+
+$B$は$B_{1},B_{2},\cdots B_{k}$
+
+\[
+B_{i}\cap B_{j}=\phi\:\left(i\neq j\right)
+\]
+\[
+\bigcup_{i=1}^{k}B_{i}=B_{1}\cup B_{2}\cup\cdots\cup B_{k}=B=\Omega
+\]
+
+
+
+\paragraph{分配法則}
+
+\begin{align*}
+A\cap\Omega & =A\cap\left(B_{1}\cup B_{2}\cup\cdots\cup B_{k}\right)\\
+ & =\left(A\cap B_{1}\right)\cup\left(A\cap B_{2}\right)\cdots\cup\left(A\cap B_{k}\right)\\
+ & =\bigcup_{i=1}^{k}\left(A\cap B_{i}\right)
+\end{align*}
+
+
+排反事象である。
+
+\begin{align*}
+P\left(A\right) & =P\left(\bigcup_{i=1}^{k}A\cap B_{i}\right)\\
+ & =\sum_{i=1}^{k}P\left(A\cap B_{i}\right)
+\end{align*}
+\[
+P\left(B|A\right)=\frac{P\left(A|B\right)P\left(B\right)}{\sum_{i=1}^{k}P\left(A|B_{i}\right)P\left(B_{i}\right)}
+\]
+
+
+$P\left(B_{i}\right)$: 事前確率
+
+$P\left(B_{i}|A\right)$: 事後確率
+
+
+\paragraph{確率変数}
+
+取りうる値 + その確率
+
+確率変数: $X$
+
+取りうる値:$x$
+
+\[
+P\left(X=x\right)=f\left(x\right)
+\]
+
+
+
+\paragraph{離散型の確率変数}
+
+取りうる値がとびとび(可算個)
+
+
+\paragraph{コイン投げ}
+
+表(H)が出たら1点、裏(T)が出たら0点とし、2回投げる(独立)。→ベルヌーイ試行
+
+合計点: $X$
+
+\[
+X=\begin{cases}
+2 & \left(H,H\right)\\
+1 & \left(H,T\right),\left(T,H\right)\\
+0 & \left(T,T\right)
+\end{cases}
+\]
+
+
+$P\left(X=2\right)=\frac{1}{2}\times\frac{1}{2}=\frac{1}{4}$
+
+$P\left(X=1\right)=\frac{1}{4}+\frac{1}{4}=\frac{1}{2}$
+
+$P\left(X=0\right)=\frac{1}{4}$
+
+表が出る確率を$p$、裡が出る確率を$q=1-p$とすると、
+\begin{align*}
+P\left(X=i\right) & =_{n}C_{x}p^{x}\left(1-p\right)^{n-x}\\
+ & =f\left(x\right)
+\end{align*}
+
+
+→二項分布
+
+
+\paragraph{分布の中心は?: 期待値(平均)}
+
+\[
+\mathrm{ex}=E\left(X\right)=\sum_{x}xf\left(x\right)
+\]
+
+
+中央値 50\%点
+
+\[
+P\left(X\leq x\right)\geq\frac{1}{2}
+\]
+の最小の値。
+
+\[
+P\left(X\leq x\right)=\sum_{u\leq x}f\left(u\right)=F\left(x\right)
+\]
+
+
+(累積)分布関数
+
+
+\paragraph{モード}
+
+$f\left(x\right)$の最大の値を与える
+
+標準偏差$\sigma=\sqrt{\text{分散}}$
+
+\[
+E\left(X^{2}\right)=\sum_{x}x^{2}f\left(x\right)
+\]
+\[
+E\left(g\left(x\right)\right)=\sum_{x}g\left(x\right)f\left(x\right)
+\]
+\[
+E\left(X+Y\right)=E\left(X\right)+E\left(Y\right)
+\]
+
+
+$n\rightarrow\infty\:\because p\rightarrow0$
+
+$n\cdot p=\lambda$: ポアソンの小数の法則
+
+\[
+f\left(x\right)=\frac{\mathrm{e}^{x}\lambda^{x}}{x!}\:x=0,1,2\cdots
+\]
+
+
+$p\rightarrow0\:n\rightarrow\infty$
+
+$\mu\rightarrow\lambda$
+
+$\sigma^{2}=\lambda$
+
+$\mu=\sigma^{2}$
+
+
+\paragraph{連続型の確率変数}
+\end{document}

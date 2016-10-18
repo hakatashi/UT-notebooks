@@ -1,0 +1,654 @@
+%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{esint}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[version=3]{mhchem}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2016-A 数理手法V}
+
+
+\author{教員: 藤原 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\mathrm{grad}}
+\global\long\def\rot{\mathrm{rot}}
+\global\long\def\div{\mathrm{div}}
+\global\long\def\diag{\mathrm{diag}}
+
+
+
+\section*{第1回}
+
+
+\paragraph{講義の内容}
+
+講義の内容: 確率と確率過程
+
+比較的user-orientedな内容
+
+休日授業日は休み
+
+評価はレポート数回
+\begin{enumerate}
+\item 統計と確率
+\item 確率過程
+
+\begin{itemize}
+\item 確率微分方程式
+\end{itemize}
+\end{enumerate}
+
+\paragraph{参考書}
+\begin{enumerate}
+\item 『確率・統計1』縄田 (丸善) 東京大学工学教程シリーズ
+\item 『確率と確率過程』伏見 (朝倉)
+\item 『入門 確率過程』松原 (東京図書)
+
+\begin{itemize}
+\item 主に後半の内容
+\end{itemize}
+\item 『確率論の基礎』伊藤 (岩波)
+\item 『確率論』伊藤 (岩波)
+\end{enumerate}
+
+\section{事象と確率}
+
+試行: 標本点$\Omega$ 例) $\left\{ 1,2,3,4,5,6\right\} $
+
+事象: 例) $A_{1}=\left\{ 1,3,5\right\} ,A_{2}=\left\{ 2,4,6\right\} ,A_{3}=\left\{ 3,4,5,6\right\} $
+
+「$A_{i}$は$\Omega$の部分集合である」と(定義上)言える。
+
+余事象$A_{i}^{c}$: $A_{i}^{c}=\left\{ \omega\in\Omega,\omega\notin A_{i}\right\} $
+
+空集合$\phi$: $\phi=\Omega^{c}$
+
+
+\paragraph{演算の定義}
+\begin{enumerate}
+\item 和
+
+
+\[
+A_{1}\cup A_{2}=\left\{ \omega\in\Omega,\omega\in A_{1}\text{OR}\omega\in A_{2}\right\} 
+\]
+
+
+\item 積
+
+
+\[
+A_{1}\cap A_{2}=\left\{ \omega\in\Omega,\omega\in A_{1}\text{AND}\omega\in A_{2}\right\} 
+\]
+
+
+\item $A_{1},A_{2}$が互いに排他的である時、
+\[
+A_{1}\cap A_{2}=\phi
+\]
+
+\end{enumerate}
+
+\subsection{事象の公理}
+
+$\mathcal{A}$: 事象の全体集合
+\begin{enumerate}
+\item $\Omega\in\mathcal{A}$
+\item $A\in\mathcal{A}$ならば$A^{c}\in\mathcal{A}$
+\item $A_{1},A_{2},A_{3}\cdots\in\mathcal{A}$ならば
+\[
+A_{1}\cup A_{2}\cup A_{3}\cdots=\bigcup_{i=1}^{\infty}A_{i}\in\mathcal{A}
+\]
+
+\end{enumerate}
+1. から 3. を満足する集合をBorel集合という。
+
+公理1.\textasciitilde{}3.を認めれば、
+\begin{enumerate}
+\item $\phi\in\mathcal{A}$ (1.と2.から)
+\item $A_{1},A_{2},\cdots\in\mathcal{A}$ならば
+\[
+A_{1}\cap A_{2}\cap\cdots=\bigcap_{i=1}^{\infty}A_{i}\in\mathcal{A}
+\]
+
+
+
+($\left(\bigcap_{i=1}^{n}A_{i}\right)^{c}=\bigcup_{i=1}^{n}A_{i}^{c}$から)
+
+\end{enumerate}
+
+\subsection{確率の定義(Kolmogorovの定理)}
+
+次の特徴を持つ数を定義する。
+\begin{enumerate}
+\item $0\leq P\left(A\right)\leq1$
+\item $P\left(\Omega\right)=1$ ($\Omega$は$\mathcal{A}$の最大の部分空間)
+\item $A_{1},A_{2},A_{3}\cdots$が排他的であれば、
+\[
+P\left(\bigcup_{i=1}^{\infty}A_{i}\right)=\sum_{i=1}^{\infty}P\left(A_{i}\right)
+\]
+
+
+
+(完全加法性)
+
+\end{enumerate}
+このような数を確率(測度)という。
+
+これら$\left(\Omega,\mathcal{A},P\right)$の組み合わせで確率空間が構成される。
+
+
+\subsection{確率の性質}
+\begin{enumerate}
+\item $P\left(\phi\right)=0$
+\item $A_{1},A_{2}\cdots\in\mathcal{A}$、$A_{1},A_{2},\cdots,A_{n}$が排他的であれば
+\[
+P\left(\bigcup_{i=1}^{n}A_{i}\right)=\sum_{i=1}^{n}P\left(A_{i}\right)
+\]
+
+\item $P\left(A^{c}\right)=1-P\left(A\right)$
+\item $P\left(\bigcup_{i}A_{i}\right)=1-P\left(\bigcap_{i}A_{i}^{c}\right)$
+\item $B_{1},B_{2},\cdots$が排他的で$\bigcup_{i}B_{i}=\Omega$ならば、任意の$A$に対して
+\[
+P\left(A\right)=\sum_{i}P\left(A\cap B_{i}\right)
+\]
+
+\item 和の公式$P\left(A_{1}\cup A_{2}\right)=P\left(A_{1}\right)+P\left(A_{2}\right)-P\left(A_{1}\cap A_{2}\right)$
+\item 和の公式2 
+\begin{align*}
+P\left(A_{1}\cup A_{2}\cup A_{3}\right)= & P\left(A_{1}\right)+P\left(A_{2}\right)+P\left(A_{3}\right)\\
+ & -P\left(A_{1}\cap A_{2}\right)-P\left(A_{2}\cap A_{3}\right)-P\left(A_{3}\cap A_{1}\right)\\
+ & +P\left(A_{1}\cap A_{2}\cap A_{3}\right)
+\end{align*}
+
+\item 和の公式3 
+\begin{align*}
+P\left(\bigcup_{i=1}^{n}A_{i}\right)= & P\left(A_{1}\right)+P\left(A_{2}\right)+\cdots+P\left(A_{n}\right)\\
+ & -\sum_{i<j}P\left(A_{i}\cap A_{j}\right)\\
+ & +\sum_{i<j<k}P\left(A_{i}\cap A_{j}\cap A_{k}\right)\\
+ & \cdots\\
+ & +\left(-1\right)^{m+1}P\left(\bigcap_{i=1}^{m}A_{i}\right)
+\end{align*}
+
+
+
+(証明は帰納法など)
+
+\end{enumerate}
+
+\section*{第2回}
+
+
+\paragraph{講義全体の流れ}
+\begin{enumerate}
+\item 事象と確率
+
+\begin{enumerate}
+\item Borel集合
+\item 確率の測度とKolomogorovの公理
+\item 確率の性度
+\item 確率の連続性
+\item 条件確率
+\item 独立性
+\end{enumerate}
+\item 確率変数
+
+\begin{enumerate}
+\item 確率変数と分布関数
+\item 様々な分布関数
+\end{enumerate}
+\end{enumerate}
+評価は数回のレポートで行う。
+
+可能な限り情報基盤センターのPCを使って計算を行ってもらう。
+
+
+\subsection{確率の連続性}
+
+1. 無限個の系列$A_{1},A_{2},A_{3}\cdots$に包含関係$A_{1}\subset A_{2}\subset A_{3}\cdots$がある時、
+\[
+A\equiv\bigcup_{i=1}^{\infty}A_{i}
+\]
+とすると、
+\[
+P\left(A\right)=\lim_{i\rightarrow\infty}P\left(A_{i}\right)
+\]
+
+
+$B_{1}=A_{1},B_{2}=A_{2}\cap A_{1}^{c},B_{3}=A_{3}\cap A_{2}^{c}\cdots$、$B_{1},B_{2},B_{3}$は互いに素とする。
+
+\begin{align*}
+ & \bigcup_{i=1}^{n}B_{i}=A_{m}\\
+\rightarrow\therefore & P\left(A_{m}\right)=P\left(\bigcup_{i=1}^{n}B_{i}\right)=\sum_{i=1}^{m}P\left(B_{i}\right)\\
+\therefore & \lim_{n\rightarrow\infty}P\left(A_{n}\right)=\sum_{i=1}^{\infty}P\left(B_{i}\right)
+\end{align*}
+
+
+2. $A_{1},A_{2},\cdots,A_{n}\cdots$が$A_{1}\supset A_{2}\supset\cdots\supset A_{n}\supset\cdots$ならば
+\[
+P\left(A\right)=\lim_{n\rightarrow\infty}P\left(A_{n}\right)
+\]
+
+
+$A_{1}^{c}\subset A_{2}^{c}\subset A_{3}^{c}\cdots$
+
+1. から
+\[
+P\left(A^{c}\right)=\lim_{i\rightarrow\infty}P\left(A_{i}^{c}\right)
+\]
+
+
+\[
+\therefore P\left(A\right)=\lim_{i\rightarrow\infty}P\left(A_{i}\right)
+\]
+
+
+$B_{1},B_{2},\cdots$は互いに素だから($A_{n}\rightarrow A$)、
+\[
+P\left(A\right)=\sum_{i=1}^{n}P\left(B_{i}\right)
+\]
+
+
+\[
+\therefore P\left(A\right)=\lim_{i\rightarrow\infty}P\left(A_{i}\right)
+\]
+
+
+
+\subsection{条件付き確率}
+
+$B$: 最初に起きる事象
+
+$A$: 次に起きる事象
+
+赤玉が7個、白玉が3個入ってる箱から連続して2個玉を取り出す作業を考える。
+
+赤→赤: $\frac{7}{10}\times\frac{6}{9}$
+
+白→赤: $\frac{7}{10}\times\frac{3}{9}$
+
+赤→白: $\frac{3}{10}\times\frac{7}{9}$
+
+白→白: $\frac{3}{10}\times\frac{2}{9}$
+
+\[
+P\left(A|B\right)=\frac{P\left(A\cap B\right)}{P\left(B\right)}\:\left(P\left(B\right)\neq0\right)
+\]
+
+
+最小に$B$が起こった条件下で、次に$A$が起こる確率
+
+
+\paragraph{条件付き確率の性質}
+\begin{enumerate}
+\item a
+\item a
+\item $B_{1},B_{2}\cdots$が互いに素で$\bigcup_{i}B_{i}=\Omega$であるなら、任意の$A$に対して、
+\[
+P\left(A\right)=\sum_{i}P\left(B_{i}\right)P\left(A|B_{i}\right)
+\]
+$P\left(A\right)>0$であるなら、
+\[
+P\left(B_{j}|A\right)=\frac{P\left(B_{j}\right)P\left(A|B_{j}\right)}{\sum_{i}P\left(B_{i}\right)P\left(A|B_{i}\right)}
+\]
+
+
+
+\begin{align*}
+\because P\left(B_{j}|A\right) & =\frac{P\left(B_{j}\cap A\right)}{P\left(A\right)}=\frac{P\left(B_{j}\right)P\left(A|B_{j}\right)}{P\left(A\right)}\\
+ & =\frac{P\left(B_{j}\right)P\left(A|B_{j}\right)}{\sum_{i}P\left(B_{i}\right)P\left(A|B_{i}\right)}
+\end{align*}
+
+
+\end{enumerate}
+
+\subsection{独立性}
+
+\[
+P\left(A|B\right)\Leftrightarrow\text{「AとBは独立する」}\Leftrightarrow P\left(A\cap B\right)=P\left(A\right)\cdot P\left(B\right)\Leftrightarrow\frac{P\left(A\cap B\right)}{P\left(B\right)}=P\left(A\right)
+\]
+
+
+例として、
+
+$\Omega=\left\{ 1,2,3,4\right\} $
+
+$A=\left\{ 1,2\right\} $: 1または2が出る
+
+$B=\left\{ 1,3\right\} $: 1または3が出る
+
+$C=\left\{ 1,4\right\} $: 1または4が出る
+
+\[
+P\left(A\right)=\frac{1}{2},P\left(B\right)=\frac{1}{2},P\left(C\right)=\frac{1}{2}
+\]
+
+
+\[
+A\cap B=\left\{ 1\right\} ,A\cap C=\left\{ 1\right\} ,B\cap C=\left\{ 1\right\} 
+\]
+
+
+\[
+P\left(A\cap B\right)=\frac{1}{4},P\left(A\cap C\right)=\frac{1}{4},P\left(B\cap C\right)=\frac{1}{4}
+\]
+
+
+$P\left(A\cap B\right)=P\left(A\right)P\left(B\right)$: $A$と$B$は独立
+
+\[
+A\cap B\cap C=\left\{ 1\right\} 
+\]
+
+
+\[
+P\left(C|A\cap B\right)=1\neq P\left(A\cap B\right)P\left(C\right)
+\]
+から、$A$と$B$、$B$と$C$、$C$と$A$が独立であっても、$P\left(C|A\cap B\right)=P\left(C\right)P\left(A\cap B\right)$とはならない。
+
+\[
+P\left(A_{i_{1}}\cap A_{i_{2}}\cap\cdots\right)=P\left(A_{i_{1}}\right)P\left(A_{i_{2}}\right)P\left(A_{i_{3}}\right)\cdots
+\]
+が成立するとき、$A_{1},A_{2},A_{3}\cdots$が独立であるという。
+
+
+\paragraph{2点分布}
+
+$f\left(0\right)=1-p\equiv q$
+
+$f\left(1\right)=p$ (1が出る確率が$p$)
+
+\[
+p^{k}q^{1-k}
+\]
+
+
+→ベルヌーイ試行
+
+
+\paragraph{2項分布}
+
+ベルヌーイ試行を$n$回
+
+1が$k$回出現
+
+0が$n-k$回出現
+
+\[
+\left(\begin{array}{c}
+n\\
+k
+\end{array}\right)p^{k}q^{n-k}
+\]
+
+
+
+\paragraph{Poisson分布}
+
+\[
+F\left(N\right)=\sum_{n<N}f\left(n\right)
+\]
+
+
+\[
+\left(\text{二項分布}\right)\xrightarrow{n\rightarrow\infty}\text{ポアソン分布}
+\]
+
+
+
+\section*{第3回}
+
+
+\paragraph{レポート}
+
+ITC-LMSで提出する。
+
+必ずPDFで提出のこと。
+
+ファイル名に学籍番号と氏名を明記。
+
+また、資料もITC-LMSで配布するので必ず確認のこと。
+
+
+\section{確率変数}
+
+
+\subsection{確率変数と分布関数}
+
+\[
+\left\{ \Omega,\mathcal{A},P\right\} 
+\]
+
+
+
+\paragraph{確率変数}
+
+全ての実数$x$に対して
+\[
+\left\{ \omega;X\left(\omega\right)\leqq x\right\} \in\mathcal{A}
+\]
+を満足するとき、$X\left(\omega\right)$を確率変数という。
+
+すなわち、$\omega\rightarrow X\left(\omega\right)$を対応させた上で、$X\left(\omega\right)\leqq x,\omega\in\mathcal{A}$ならば確率変数である。
+
+
+\paragraph{分布関数}
+
+\[
+F_{x}\left(x\right)=P\left(\left\{ \omega;X\left(\omega\right)\leqq x\right\} \right)
+\]
+
+
+
+\paragraph{分布関数の性質}
+\begin{enumerate}
+\item $a\leq b\Rightarrow F\left(a\right)\leq F\left(b\right)$
+\item 右連続 
+\[
+\lim_{x\rightarrow+a}F\left(x\right)=F\left(a\right)
+\]
+
+\item $\lim_{x\rightarrow-\infty}F\left(x\right)=0$
+\item $\lim_{x\rightarrow+\infty}F\left(x\right)=1$
+\end{enumerate}
+ここで
+\[
+f\left(x\right)=F\left(x_{k}\right)-F\left(x_{k-1}\right)
+\]
+(ただし$x_{k}=X\left(\omega_{k}\right)$)は確率関数である。
+
+
+\subsection{様々な分布}
+
+
+\paragraph{ポアソン分布}
+
+(プリントも参照)
+
+\[
+\Delta P_{0}\left(\Delta t\right)\sim-\lambda\Delta tP_{0}\left(t\right)
+\]
+
+
+これが0回起きる場合、
+\[
+\d{P_{0}\left(t\right)}t=-\lambda P_{0}\left(t\right)
+\]
+\[
+P_{0}\left(t\right)=\e^{-\lambda t}
+\]
+
+
+$n$回起きる場合、
+\[
+P_{n}\left(t+\Delta t\right)=\left(1-\lambda\Delta t\right)P_{n}\left(t\right)+\lambda\Delta tP_{n-1}\left(t\right)
+\]
+
+
+これは$n$に対する差分方程式。
+
+$\Delta t\rightarrow0$で
+\[
+\frac{P_{n}\left(t+\Delta t\right)-P_{n}\left(t\right)}{\Delta t}=-\lambda\left(P_{n}\left(t\right)-P_{n-1}\left(t\right)\right)
+\]
+
+
+\[
+\d{}tP_{n}\left(t\right)=\lambda\left(P_{n-1}\left(t\right)-P_{n}\left(t\right)\right)
+\]
+
+
+これを初期条件$P_{0}\left(t\right)=\e^{-\lambda t}$で解くと、
+\[
+P_{n}\left(t\right)=\e^{-\lambda t}\frac{\left(\lambda t\right)^{n}}{n!}
+\]
+となる。
+
+離散分布について
+\[
+F\left(X\left(\omega_{k}\right)\right)=\sum_{i=1}^{k}P\left(\omega_{i}\right)
+\]
+\[
+f\left(X\left(\omega_{k}\right)\right)=F\left(X\left(\omega_{k}\right)\right)-F\left(X\left(\omega_{k-1}\right)\right)
+\]
+であったものを、連続分布について
+\[
+F\left(x\right)=\int_{-\infty}^{x}f\left(v\right)\mathrm{d}v
+\]
+\[
+f\left(x\right)=\d{}xF\left(x\right)
+\]
+とする。
+
+
+\paragraph{正規分布}
+
+\[
+f\left(x\right)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left[-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{2}\right]
+\]
+
+
+しばしば$\mathcal{N}\left(\mu,\sigma^{2}\right)$と書く。
+
+
+\paragraph{コーシー分布}
+
+\[
+f\left(x\right)=\frac{1}{\pi}\frac{\alpha}{\left(x-\mu\right)^{2}+\alpha^{2}}
+\]
+
+
+$C\left(\mu,\alpha\right)$と書く。
+
+
+\subsection{中心極限定理1 (ド・モアブル-ラプラスの定理)}
+
+$X$が二項分布$B\left(n;p\right)$に従うとき、$n$が大きいならば$X$は$\mu=np,\sigma^{2}=np\left(1-p\right)$であるような正規分布$\mathcal{N}\left(np;np\left(1-p\right)\right)$に従う。
+
+
+\paragraph{証明}
+
+二項分布
+\[
+P\left(a\leq\frac{X_{n}-np}{\sqrt{npq}}\leq b\right)\approx^{n\rightarrow\infty}\int_{a}^{b}\frac{\e^{-\frac{1}{2}x^{2}}}{\sqrt{2\pi}}\mathrm{d}x
+\]
+を示せばよい。($q=1-p$)
+
+∵
+\[
+P\left(x=k\right)=_{n}C_{k}p^{k}q^{n-k}
+\]
+
+
+すなわち$n\rightarrow\infty$で
+\[
+\sum_{np+a\sqrt{npq}\leqq k\leqq np+b\sqrt{npq}}{}_{n}C_{k}p^{k}q^{n-k}\rightarrow\frac{1}{2\pi}\int_{a}^{b}\e^{-\frac{1}{2}x^{2}}\mathrm{d}x
+\]
+を示す。
+\begin{enumerate}
+\item $n\rightarrow\infty$なら$k\rightarrow\infty$となるはず。
+\item $n\gg1$で$n!\approx\sqrt{2\pi n}n^{n}\e^{-n}$ (スターリングの公式)
+
+
+(ガンマ関数
+\[
+\Gamma\left(n\right)=\left(n+1\right)!
+\]
+の議論で後々出てくる。)
+
+\end{enumerate}
+これを用いて
+\begin{align*}
+_{n}C_{k}=\frac{n!}{k!\left(n-k\right)!} & \approx\frac{\sqrt{2\pi n}n^{n}\e^{-n}}{\sqrt{2\pi k}k^{k}\e^{-k}+\sqrt{2\pi\left(n-k\right)}\left(n-k\right)^{n-k}\e^{-\left(n-k\right)}}\\
+ & =\frac{1}{\sqrt{2\pi n\cdot\frac{k}{n}\cdot\frac{n-k}{n}}}\left(\frac{n}{k}\right)^{k}\left(\frac{n}{n-k}\right)^{n-k}
+\end{align*}
+\[
+_{n}C_{k}p^{k}q^{n-k}\simeq\frac{1}{\sqrt{2\pi n\cdot\frac{k}{n}\cdot\frac{n-k}{n}}}\left(\frac{n}{k}p\right)^{k}\left(\frac{n}{n-k}q\right)^{n-k}
+\]
+
+
+\[
+F\equiv\left(\frac{n}{k}p\right)^{k}\left(\frac{n}{n-k}q\right)^{n-k}
+\]
+を評価する。
+
+$\delta\equiv k-np$とすると、
+\begin{align*}
+\log F & =-\left(np+\delta\right)\log\left(1+\frac{\delta}{np}\right)-\left(nq-k\right)\log\left(1-\frac{\delta}{nq}\right)\\
+ & \approx-\frac{\delta^{2}}{2n}\left(\frac{1}{p}+\frac{1}{q}\right)=-\frac{\delta^{2}}{2npq}
+\end{align*}
+
+
+$p+q=1$を使った。
+
+\[
+F\approx\exp\left[\frac{\left(k-np\right)^{2}}{2npq}\right]
+\]
+
+
+ところで
+\[
+np+a\sqrt{npq}\leqq k\leqq np+b\sqrt{npq}
+\]
+より
+\[
+\frac{k}{n}\rightarrow p,\frac{n-k}{n}\rightarrow q
+\]
+
+
+\begin{align*}
+P\left(a\leq\frac{X-np}{\sqrt{npq}}\leq b\right) & =P\left(a\sqrt{npq}+np\leq X\leq b\sqrt{npq}+np\right)\\
+ & =\sum_{a\sqrt{npq}+np\leq k\leq b\sqrt{npq}+np}\frac{1}{\sqrt{2\pi npq}}\exp\left[-\frac{\left(k-np\right)^{2}}{2npq}\right]\\
+ & =\sum_{a\leq z_{k}\leq b}\frac{1}{\sqrt{2\pi}}\e^{-\frac{z^{2}}{2}}\frac{1}{\sqrt{npq}}\rightarrow\int_{a}^{b}\frac{1}{\sqrt{2\pi}}\e^{-\frac{z^{2}}{2}}\mathrm{d}z
+\end{align*}
+
+
+ただし$z_{k}=\frac{k-np}{\sqrt{npq}},\Delta z=\frac{1}{\sqrt{npq}}$である。
+\end{document}

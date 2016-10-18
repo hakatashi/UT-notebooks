@@ -1,0 +1,1458 @@
+%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{esint}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[version=3]{mhchem}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2016-A 電気磁気学 }
+
+
+\author{教員: 小野/種村 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\mathrm{grad}}
+\global\long\def\rot{\mathrm{rot}}
+\global\long\def\div{\mathrm{div}}
+
+
+
+\section*{第1回}
+
+
+\section{第1章 電荷と静電界}
+
+
+\subsection{クーロンの法則}
+
+図電1
+
+\begin{align*}
+F & =\frac{1}{4\pi\varepsilon_{0}}\frac{Q_{1}Q_{2}}{r^{2}}\left[\mathrm{N}\right]\\
+ & =9\times10^{9}\frac{Q_{1}Q_{2}}{r^{2}}
+\end{align*}
+
+
+クーロンの法則
+
+$\varepsilon_{0}$: 真空の誘電率 $8.854\times10^{-12}$
+
+$Q$の単位: $\left[\mathrm{C}\right]=\left[\mathrm{A\cdot s}\right]$
+
+
+\paragraph{例題}
+
+$\pm1\left[\mathrm{C}\right]$の電荷を1m離れた場所においた時に働く力は?
+
+\begin{align*}
+F & =9\times10^{9}\left[\mathrm{N}\right]\\
+ & =9\times10^{8}\left[\mathrm{kgw}\right]
+\end{align*}
+
+
+
+\paragraph{重ね合わせの理}
+
+図電2
+
+\[
+\mathbb{F}=\mathbb{F}_{1}+\mathbb{F}_{2}
+\]
+
+
+
+\paragraph{練習問題}
+
+図電3
+
+\begin{align*}
+F_{1} & =\frac{1}{4\pi\varepsilon_{0}}\frac{qQ}{a^{2}+y^{2}}\\
+F_{1,x} & =F_{1}\cos\theta\\
+ & =\frac{1}{4\pi\varepsilon_{0}}\frac{qQ}{a^{2}+y^{2}}\frac{a}{\sqrt{a^{2}+y^{2}}}\\
+\mathbb{F} & =\left(-\frac{qQa}{2\pi\varepsilon_{0}\left(a^{2}+y^{2}\right)^{\frac{3}{2}}},0\right)
+\end{align*}
+
+
+点電荷しか扱わない場合はクーロンの法則で十分だが、実際には電荷は連続に分布している。
+
+
+\subsection{電界(電場) $E$}
+
+電荷そのものではなく、電荷が作り出す電場から力を受けていると考える。
+
+図電4
+
+\[
+F=\frac{1}{4\pi\varepsilon_{0}}\frac{q_{1}q_{2}}{r^{2}}=q_{1}E_{2}
+\]
+\[
+E_{2}=\frac{1}{4\pi\varepsilon_{0}}\frac{q_{2}}{r^{2}}
+\]
+
+
+このような$E_{2}$を、$q_{2}$が作る電気の場、電界と考える。
+
+例: 先ほどの問題で$-Q$と$+Q$が$\left(0,y\right)$に作る$\mathbb{E}$は?
+
+\[
+\mathbb{E}=\left(-\frac{Qa}{2\pi\varepsilon_{0}\left(a^{2}+y^{2}\right)^{\frac{3}{2}}},0\right)
+\]
+
+
+$\mathbb{E}=\mathbb{E}_{1}+\mathbb{E}_{2}$が成立する。
+
+なお、静電気においては「自己力」(電荷自身が作り出す電場の影響)は考えない。
+
+
+\paragraph{電気力線}
+
+図電5
+\begin{itemize}
+\item $\mathbb{E}$の大きさ$\propto$力線の密度
+\item $+q$から出て$-q$に入るのみ
+\item 電荷がないところでは発生しない
+\item 電荷がないところで消滅しない
+
+\begin{itemize}
+\item 無限遠で消滅する場合、無限遠に対応する電荷が存在するものと仮定する。
+\end{itemize}
+\item 交差しない
+\end{itemize}
+
+\paragraph{電荷から出る力線の本数は?}
+
+図電6
+
+\[
+E=\frac{1}{4\pi\varepsilon_{0}}\frac{q}{r^{2}}
+\]
+
+
+線密度は
+\[
+\frac{N}{4\pi r^{2}}
+\]
+
+
+よって
+\begin{align*}
+\frac{1}{4\pi\varepsilon_{0}}\frac{q}{r^{2}} & =\frac{N}{4\pi r^{2}}\\
+N & =\frac{q}{\varepsilon_{0}}
+\end{align*}
+
+
+
+\subsection{電位 ($q$の位置エネルギー)}
+
+図電7
+
+$+q$を$A\rightarrow B$に準静的に運ぶ。
+
+図電8
+
+\[
+\mathrm{d}w=-q\mathbb{E}\cdot\mathrm{d}\boldsymbol{s}
+\]
+
+
+\begin{align*}
+W_{A\rightarrow B} & =\int_{A}^{B}\mathrm{d}w\\
+ & =-\int_{A}^{B}q\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}
+\end{align*}
+
+
+例 点電荷$q_{1}$が作る$\boldsymbol{E}$
+
+\[
+\boldsymbol{E}=\frac{1}{4\pi\varepsilon_{0}}\frac{q_{1}}{r^{2}}\hat{\boldsymbol{r}}
+\]
+
+
+図電9
+
+\begin{align*}
+W_{A\rightarrow B} & =-\frac{qq_{1}}{4\pi\varepsilon_{0}}\int_{A}^{B}\frac{\hat{\boldsymbol{r}}\mathrm{d}\boldsymbol{s}}{r^{2}}\\
+ & =-\frac{qq_{1}}{4\pi\varepsilon_{0}}\int_{A}^{B}\frac{\mathrm{d}r}{r^{2}}\\
+ & =\frac{qq_{1}}{4\pi\varepsilon_{0}}\left(\frac{1}{r_{B}}-\frac{1}{r_{A}}\right)
+\end{align*}
+
+
+図電10
+
+この式は経路によらず、始点と終点にのみ左右される。→保存力
+
+つまり、$q$に比例する位置エネルギーを定義できる。
+
+\[
+qV_{B}=qV_{A}+W_{A\rightarrow B}
+\]
+\begin{align*}
+W_{AB} & =q\left(V_{B}-V_{A}\right)\\
+ & =qV_{BA}
+\end{align*}
+
+
+$V_{BA}$が、ABの電位差$\left[\mathrm{V}\right]$となる。
+
+\[
+V_{BA}=-\int_{A}^{B}\boldsymbol{E}\mathrm{d}\boldsymbol{s}
+\]
+
+
+電圧を微分すると電界となり、電界を微分すると電圧となる。
+
+$V=0\left[\mathrm{V}\right]$の基準
+\begin{itemize}
+\item 無限遠で$V=0$
+\item 地球(earth)で$V=0$
+
+
+$V$も重ね合わせ可能
+
+\end{itemize}
+
+\paragraph{演習問題回答}
+
+問1
+
+\[
+F_{1}=-\frac{q_{1}q_{2}}{4\pi\varepsilon_{0}a^{2}}-\frac{q_{1}q_{3}}{4\pi\varepsilon_{0}\left(2a\right)^{2}}=-\frac{q_{1}\left(4q_{2}+q_{3}\right)}{16\pi\varepsilon_{0}a^{2}}
+\]
+\[
+F_{2}=\frac{q_{1}q_{2}}{4\pi\varepsilon_{0}a^{2}}-\frac{q_{1}q_{3}}{4\pi\varepsilon_{0}a^{2}}=\frac{q_{2}\left(q_{1}-q_{3}\right)}{4\pi\varepsilon_{0}a^{2}}
+\]
+\[
+F_{1}=\cdots=-\frac{q_{3}\left(q_{1}+4q_{2}\right)}{16\pi\varepsilon_{0}a^{2}}
+\]
+
+
+$F_{1}=F_{2}=F_{3}$より
+\[
+q_{1}=q_{3}
+\]
+\begin{align*}
+q_{1}+4q_{2} & =0\\
+q_{2} & =-\frac{q_{1}}{4}
+\end{align*}
+
+
+よって
+\[
+q_{1}:q_{2}:q_{3}=4:-1:4
+\]
+
+
+問2
+
+図略
+
+\begin{align*}
+\mathrm{d}q & =\sigma\mathrm{d}S\\
+ & =\sigma a^{2}\sin\theta\mathrm{d}\theta\mathrm{d}\varphi
+\end{align*}
+ 余弦定理より
+\begin{align*}
+c^{2} & =a^{2}+a^{2}-2a\cdot a\cos\theta\\
+ & =2a^{2}\left(1-\cos\theta\right)
+\end{align*}
+
+
+\begin{align*}
+\mathrm{d}V & =\frac{1}{4\pi\varepsilon_{0}}\frac{\sigma a^{2}\sin\theta}{\sqrt{2}a\sqrt{1-\cos\theta}}\mathrm{d}\theta\mathrm{d}\varphi\\
+ & =\frac{1}{4\pi\varepsilon_{0}}\frac{\sigma a^{2}\cdot2\sin\frac{\theta}{2}\cos\frac{\theta}{2}}{\sqrt{2}a\sqrt{2}\sin\frac{\theta}{2}}\mathrm{d}\theta\mathrm{d}\varphi\\
+ & =\frac{1}{4\pi\varepsilon_{0}}\sigma a\cos\frac{\theta}{2}\mathrm{d}\theta\mathrm{d}\varphi
+\end{align*}
+\begin{align*}
+V & =\oint_{S}\mathrm{d}V\\
+ & =\int_{0}^{\pi}\int_{0}^{2\pi}\frac{\sigma a}{4\pi\varepsilon_{0}}\cos\frac{\theta}{2}\mathrm{d}\theta\mathrm{d}\varphi\\
+ & =\int_{0}^{\pi}\frac{\sigma a}{2\varepsilon_{0}}\cos\frac{\theta}{2}\mathrm{d}\theta\\
+ & =\frac{\sigma a}{\varepsilon_{0}}\left[\sin\frac{\theta}{2}\right]_{0}^{\pi}\\
+ & =\frac{\sigma a}{\varepsilon_{0}}\\
+ & =\frac{Q}{4\pi\varepsilon_{0}a}
+\end{align*}
+
+
+問3
+
+図電11
+
+\[
+\mathrm{d}E=\frac{1}{4\pi\varepsilon_{0}}\frac{\rho\mathrm{d}s}{a^{2}+h^{2}}
+\]
+\begin{align*}
+\mathrm{d}E_{z} & =\mathrm{d}E\cdot\frac{h}{\sqrt{a^{2}+h^{2}}}\\
+ & =\frac{\rho h\mathrm{d}s}{4\pi\varepsilon_{0}\left(a^{2}+h^{2}\right)^{\frac{3}{2}}}
+\end{align*}
+\begin{align*}
+E & =\oint_{c}\mathrm{d}E_{z}\\
+ & =\frac{\rho h}{4\pi\varepsilon_{0}\left(a^{2}+h^{2}\right)^{\frac{3}{2}}}\oint_{c}\mathrm{d}s\\
+ & =\frac{\rho ha}{2\varepsilon_{0}\left(a^{2}+h^{2}\right)^{\frac{3}{2}}}
+\end{align*}
+\[
+\mathrm{d}s=a\mathrm{d}\theta
+\]
+\[
+\oint_{c}\mathrm{d}s=\int_{0}^{2\pi}a\mathrm{d}\theta=2\pi a
+\]
+
+
+(2)
+
+\begin{align*}
+V & =-\int_{\infty}^{p}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}\\
+ & =-\int_{\infty}^{h}\frac{\rho az}{2\varepsilon_{0}\left(z^{2}+a^{2}\right)^{\frac{3}{2}}}\mathrm{d}z
+\end{align*}
+
+
+$t=\sqrt{z^{2}+a^{2}}$とおいて$\d tz=\frac{z}{\sqrt{z^{2}+a^{2}}}=\frac{z}{t}$
+
+\begin{align*}
+V & =-\int=\frac{\rho a}{2\varepsilon_{0}t^{3}}t\mathrm{d}t\\
+ & =\frac{\rho a}{2\varepsilon_{0}}\left[\frac{1}{t}\right]\\
+ & =\frac{\rho a}{2\varepsilon_{0}\sqrt{h^{2}+a^{2}}}
+\end{align*}
+
+
+問4
+
+O34kg 16g/mol→2500mol\texttimes 8
+
+C12kg 12g/mol→1000mol\texttimes 6
+
+H6kg 1g/mol→6000mol\texttimes 1
+
+N3kg 14g/mol→200mol\texttimes 7
+
+以下板書電1
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第2回}
+
+
+\paragraph{等電位面}
+
+ex. 点電荷→球面 $\frac{1}{4\pi\varepsilon_{0}}\frac{q}{r}$
+
+電界(電気力線)と直交
+
+図電磁2-1
+
+\[
+\boldsymbol{E}=\grad\boldsymbol{V}
+\]
+
+
+$\grad$はgradientであり、要するに微分である。
+
+図電磁2-2
+
+多変数関数の微分
+
+図電磁2-3
+
+\[
+\text{等}V\text{面}\perp\grad V
+\]
+
+
+\begin{align*}
+\boldsymbol{E} & =\left(E_{x},E_{y},E_{z}\right)\\
+ & =\left(\pd Vx,\pd Vy,\pd Vz\right)
+\end{align*}
+
+
+\[
+V_{BA}=-\int_{A}^{B}\boldsymbol{E}\mathrm{d}q
+\]
+
+
+$\boldsymbol{E}$を積分すると$V$になり、$V$を微分すると$\boldsymbol{E}$になる。
+
+
+\paragraph{ナブラ演算子}
+
+\[
+\nabla=\left(\pd{}x,\pd{}y,\pd{}z\right)
+\]
+
+
+\begin{align*}
+\grad V & =\nabla V\\
+ & =\left(\pd Vx,\pd Vy,\pd Vz\right)
+\end{align*}
+
+
+
+\paragraph{例1.6}
+
+図電磁2-4
+
+クーロン
+\[
+\boldsymbol{E}=\frac{1}{4\pi\varepsilon_{0}}\frac{Q}{r^{2}}\hat{\boldsymbol{r}}
+\]
+
+
+\[
+\boldsymbol{E}=-\grad V,V=\frac{1}{4\pi\varepsilon_{0}}\frac{Q}{r}\Rightarrow\boldsymbol{E}?
+\]
+
+
+\begin{align*}
+E_{x} & =-\pd Vx\\
+ & =-\pd{}x\left(\frac{1}{4\pi\varepsilon_{0}}\frac{Q}{\sqrt{x^{2}+y^{2}+z^{2}}}\right)\\
+ & =\frac{1}{4\pi\varepsilon_{0}}\frac{Qx}{\left(x^{2}+y^{2}+z^{2}\right)^{\frac{3}{2}}}\\
+ & =\frac{Qx}{4\pi\varepsilon_{0}r^{3}}
+\end{align*}
+
+
+同様にして
+\begin{align*}
+\boldsymbol{E} & =\frac{Q}{4\pi\varepsilon_{0}}\left(x,y,z\right)\\
+ & =\frac{Q}{4\pi\varepsilon_{0}r^{3}}\boldsymbol{r}\\
+ & =\frac{Q}{4\pi\varepsilon_{0}r^{2}}\hat{\boldsymbol{r}}
+\end{align*}
+
+
+別解: $\left(r,\theta,\varphi\right)$で解く。
+
+\begin{align*}
+\boldsymbol{E} & =\left(E_{r},E_{\theta},E_{\varphi}\right)\\
+ & =-\grad V\\
+ & =-\left(\pd Vr,\frac{1}{r}\pd V{\theta},\frac{1}{r\sin\theta}\pd V{\varphi}\right)\\
+ & =-\left(-\pd Vr,0,0\right)\\
+ & =\left(\frac{1}{4\pi\varepsilon_{0}}\frac{Q}{r^{2}},0,0\right)
+\end{align*}
+
+
+
+\subsection{ガウスの法則}
+
+図電磁2-5
+
+閉曲面$S$内で発生した$E$力線の本数=$S$を外向きに貫く$E$力線の本数=$Q$本
+
+$\mathrm{d}S$近傍 図電磁2-6
+
+\begin{align*}
+\mathrm{d}S\text{を貫く本数} & =E\cdot\mathrm{d}S_{n}\\
+ & =E\cos\theta\frac{\mathrm{d}S_{n}}{\cos\theta}\\
+ & =E_{n}\mathrm{d}S
+\end{align*}
+
+
+\[
+S\text{を貫く本数}=\oint_{S}E_{n}\mathrm{d}S
+\]
+\[
+\therefore\oint_{S}E_{n}\mathrm{d}S=\frac{Q}{\varepsilon_{0}}
+\]
+
+
+これをガウスの法則という。
+
+
+\paragraph{例1.7}
+
+図電磁2-7
+\begin{enumerate}
+\item $r>r_{0}$の場合
+
+
+半径$r$の球$S$→$S$上で$E=\text{一定},E_{n}=E$
+
+
+\begin{align*}
+\oint E_{n}\mathrm{d}S & =E\oint_{S}\mathrm{d}S\\
+ & =4\pi r^{2}E=\frac{Q}{\varepsilon_{0}}
+\end{align*}
+
+
+
+\[
+E=\frac{Q}{4\pi\varepsilon_{0}r^{2}}
+\]
+
+
+\item $r\leqq r_{0}$の場合
+
+
+\[
+\oint_{S}E_{n}\mathrm{d}S=4\pi r^{2}E=\frac{q}{\varepsilon_{0}}
+\]
+
+
+
+$q=0$より$E=0$
+
+\end{enumerate}
+
+\paragraph{微分形}
+
+微小体積$\Delta v$に適用
+
+図電磁2-8
+
+電荷は連続的に分布し$\rho\left(x,y,z\right)\left[\mathrm{c/m^{2}}\right]$
+
+\begin{align*}
+\int_{S_{1}+S_{2}}E_{n}\mathrm{d}S & =-E_{x}\Delta y\Delta z\left(E_{x}+\pd{E_{x}}x\Delta x\right)\Delta y\Delta z\\
+ & =\pd{E_{x}}x\Delta x\Delta y\Delta z\\
+ & =\pd{E_{x}}x\Delta v
+\end{align*}
+
+
+同様にして
+\[
+\oint_{S}E_{n}\mathrm{d}S=\left(\pd{E_{x}}x,\pd{E_{y}}y,\pd{E_{z}}z\right)\Delta v
+\]
+
+
+また
+\[
+\oint_{S}E_{n}\mathrm{d}S=\frac{1}{\varepsilon_{0}}\rho\Delta v
+\]
+
+
+よって
+\[
+\pd{E_{x}}x+\pd{E_{y}}y+\pd{E_{z}}z=\frac{\rho}{\varepsilon_{0}}
+\]
+\[
+\mathrm{div}\boldsymbol{E}=\nabla\cdot\boldsymbol{E}
+\]
+
+
+$\mathrm{div}$: divergence, 湧き出し, 発散
+
+\[
+\mathrm{div}\boldsymbol{E}=\frac{\rho}{\varepsilon_{0}}
+\]
+
+
+ガウスの法則 微分形
+
+
+\subsection{ポアソン・ラプラスの式}
+
+\[
+\mathrm{div}\boldsymbol{E}=\frac{\rho}{\varepsilon_{0}},\boldsymbol{E}=-\grad V
+\]
+\[
+\div\grad V=-\frac{\rho}{\varepsilon_{0}}
+\]
+\[
+\nabla\cdot\left(\nabla V\right)=-\frac{\rho}{\varepsilon_{0}}
+\]
+
+
+$\nabla^{2}V=-\frac{\rho}{\varepsilon_{0}}$: ポアソンの式
+
+\[
+\pdd Vx+\pdd Vy+\pdd Vz=-\frac{\rho}{\varepsilon_{0}}
+\]
+
+
+$\rho$の分布から$V$を求めることができる。
+
+$\rho=0$のとき
+
+$\nabla^{2}V=0$: ラプラスの式
+
+
+\subsection{静電界の保存則}
+
+図電磁2-9
+
+\begin{align*}
+\oint_{C}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s} & =\int_{AC_{1}}^{B}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}+\int_{BC_{2}}^{A}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}\\
+ & =\int_{AC_{1}}^{B}-\int_{BC_{2}}^{A}\\
+ & =0
+\end{align*}
+
+
+渦なしの条件
+
+
+\paragraph{微分形}
+
+図電磁2-10
+
+\[
+\oint_{c}\boldsymbol{E}\mathrm{d}\boldsymbol{s}=E_{x}\left(x,y-\frac{\Delta y}{2}\right)\Delta x+E_{y}\left(x+\frac{\Delta x}{2},y\right)\Delta y-E_{x}\left(x,y+\frac{\Delta y}{2}\right)\Delta x-E_{y}\left(x+\frac{\Delta x}{2},y\right)\Delta y
+\]
+
+
+\[
+E_{x}\left(x,y-\frac{\Delta y}{2}\right)\Delta x-E_{x}\left(x,y+\frac{\Delta y}{2}\right)\Delta x=-\pd{E_{x}}y\Delta y
+\]
+
+
+\[
+E_{y}\left(x+\frac{\Delta x}{2},y\right)\Delta y-E_{y}\left(x+\frac{\Delta x}{2},y\right)\Delta y=\pd{E_{y}}x\Delta x
+\]
+
+
+\[
+\therefore\oint_{c}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}=\left(\pd{E_{x}}x-\pd{E_{y}}y\right)\Delta x\Delta y
+\]
+
+
+左辺=0より$\left(\rot\boldsymbol{E}\right)_{z}$
+
+$\therefore\rot\boldsymbol{E}=0$: 微分形
+
+\[
+\rot\boldsymbol{E}=-\pd{\boldsymbol{B}}t\left(=0\right)
+\]
+
+
+$\rot\boldsymbol{E}=\nabla\times\boldsymbol{E}$
+
+
+\paragraph{前回課題(1)}
+
+$\mathrm{d}S$にある$\mathrm{d}q=\sigma\mathrm{d}S$が点Pにつくる$\mathrm{d}E$
+
+\[
+\mathrm{d}E=\frac{1}{4\pi\varepsilon_{0}}\frac{\sigma\mathrm{d}S}{r^{2}+h^{2}}
+\]
+
+
+\begin{align*}
+E & =\int_{S}\mathrm{d}E_{z}\\
+ & =\int_{b}^{a}\int_{0}^{2\pi}\frac{1}{4\pi\varepsilon_{0}}\frac{\sigma\mathrm{d}S}{r^{2}+h^{2}}\cdot\frac{h}{\sqrt{r^{2}+h^{2}}}\\
+ & =\frac{\sigma h}{4\pi\varepsilon_{0}}\int_{b}^{a}\int_{0}^{2\pi}\frac{r}{\left(r^{2}+h^{2}\right)^{\frac{3}{2}}}\mathrm{d}\theta\mathrm{d}r\\
+ & =\frac{\sigma h}{2\varepsilon_{0}}\int_{b}^{a}\frac{r}{\left(r^{2}+h^{2}\right)^{\frac{3}{2}}}\mathrm{d}r\\
+ & =\frac{\sigma h}{2\varepsilon_{0}}\left(\frac{1}{\sqrt{b^{2}+h^{2}}}-\frac{1}{\sqrt{a^{2}+h^{2}}}\right)
+\end{align*}
+
+
+(向きは$z$方向)
+
+
+\paragraph{前回課題(2)}
+
+\[
+W_{P\rightarrow O}=q\left(V_{O}-V_{P}\right)
+\]
+
+
+\begin{align*}
+V_{P} & =-\int_{\infty}^{h}E\mathrm{d}s\\
+ & =-\frac{\sigma}{2\varepsilon_{0}}\int_{\infty}^{h}\left(\frac{z}{\sqrt{z^{2}+b^{2}}}-\frac{z}{\sqrt{z^{2}+a^{2}}}\right)\mathrm{d}z\\
+ & =\frac{\sigma}{2\varepsilon_{0}}\left[\sqrt{z^{2}+a^{2}}-\sqrt{z^{2}+b^{2}}\right]_{\infty}^{h}\\
+ & =\frac{\sigma}{2\varepsilon_{0}}\left[\frac{a^{2}-b^{2}}{\sqrt{z^{2}+a^{2}}+\sqrt{z^{2}+b^{2}}}\right]_{\infty}^{h}\\
+ & =\frac{\sigma}{2\varepsilon_{0}}\left(\frac{a^{2}-b^{2}}{\sqrt{h^{2}+a^{2}}+\sqrt{h^{2}+b^{2}}}\right)
+\end{align*}
+
+
+\[
+V_{O}=V_{P}|_{h=0}=\frac{\sigma}{2\varepsilon_{0}}\left(a-b\right)
+\]
+
+
+\begin{align*}
+W_{P\rightarrow O} & =q\left(V_{O}-V_{P}\right)\\
+ & =\frac{\sigma}{2\varepsilon_{0}}\left(a-b\right)\left(1-\frac{a+b}{\sqrt{h^{2}+a^{2}}+\sqrt{h^{2}+b^{2}}}\right)
+\end{align*}
+
+
+
+\paragraph{演習問題問1}
+
+(1) 図電磁2-11
+
+\[
+\begin{cases}
+z=r\cos\theta\\
+\sqrt{x^{2}+y^{2}+z^{2}}=r
+\end{cases}
+\]
+
+
+\begin{align*}
+V & =\frac{aq}{2\pi\varepsilon_{0}}\frac{r\cos\theta}{r^{3}}\\
+ & =\frac{aq}{2\pi\varepsilon_{0}}\frac{\cos\theta}{r^{2}}
+\end{align*}
+
+
+(2) 極座標では
+\[
+\nabla=\left(\pd{}r,\frac{1}{r}\pd{}{\theta},\frac{1}{r\sin\theta}\pd{}{\varphi}\right)
+\]
+より
+\begin{align*}
+\left(E_{r},E_{\theta},E_{\varphi}\right) & =-\nabla V\\
+ & =\left(\frac{aq}{\pi\varepsilon_{0}}\frac{\cos\theta}{r^{3}},\frac{aq}{2\pi\varepsilon_{0}}\frac{\sin\theta}{r^{3}},0\right)
+\end{align*}
+
+
+(3) 極座標なので、
+\begin{align*}
+\div\boldsymbol{E} & =\frac{1}{r^{3}}\pd{\left(r^{2}E_{r}\right)}r+\frac{1}{r\sin\theta}\pd{\left(\sin\theta E_{\theta}\right)}{\theta}+\frac{1}{r\sin\theta}\pd{E_{\varphi}}{\varphi}\\
+ & =\frac{1}{r^{2}}\left(-\frac{aq}{\pi\varepsilon_{0}}\frac{\cos\theta}{r^{2}}\right)+\frac{1}{r\sin\theta}\left(\frac{aq}{2\pi\varepsilon_{0}}\frac{2\sin\theta\cos\theta}{r^{3}}\right)\\
+ & =0
+\end{align*}
+
+
+
+\paragraph{演習問題問2}
+
+\[
+\nabla^{2}V=-\frac{\rho}{\varepsilon_{0}}
+\]
+
+
+$\pdd Vy=\pdd Vz=0$より、
+\[
+\nabla^{2}V=\pdd Vx=-\frac{\rho}{\varepsilon_{0}}
+\]
+
+
+\[
+\pd Vx=-\frac{\rho}{\varepsilon_{0}}x+C_{1}
+\]
+
+
+\[
+V=-\frac{\rho}{2\varepsilon_{0}}x^{2}+C_{1}x+C_{2}
+\]
+
+
+$V\left(0\right)=0$より$C_{2}=0$
+
+$V\left(d\right)=V_{0}$より
+\[
+-\frac{\rho}{2\varepsilon_{0}}d^{2}+C_{1}d=V_{0}
+\]
+
+
+\[
+C_{1}=\frac{V_{0}}{d}+\frac{\rho d}{2\varepsilon_{0}}
+\]
+
+
+\[
+\therefore V=-\frac{\rho}{2\varepsilon_{0}}x^{2}+\left(\frac{V_{0}}{d}+\frac{\rho d}{2\varepsilon_{0}}\right)x
+\]
+
+
+\begin{align*}
+E_{x} & =-\left(\grad V\right)_{x}\\
+ & =-\pd Vx\\
+ & =\frac{\rho}{\varepsilon_{0}}x-\frac{V_{0}}{d}-\frac{\rho d}{2\varepsilon_{0}}
+\end{align*}
+
+
+
+\paragraph{演習問題問3}
+
+$V\left(a\right)=0$
+
+\[
+\oint_{S}E_{n}\mathrm{d}S=\begin{cases}
+\frac{1}{\varepsilon_{0}}\pi\left(a^{2}-b^{2}\right)h\rho & \left(r>a\right)\\
+\frac{1}{\varepsilon_{0}}\pi\left(r^{2}-b^{2}\right)h\rho & \left(b<r<a\right)\\
+0 & \left(r<b\right)
+\end{cases}
+\]
+
+
+左辺は
+\begin{align*}
+\oint_{S}E_{n}\mathrm{d}S & =E\oint_{S}\mathrm{d}S\\
+ & =2\pi rhE
+\end{align*}
+
+
+$\therefore$
+\[
+E=\begin{cases}
+\frac{\left(a^{2}-b^{2}\right)\rho}{2\varepsilon_{0}r} & \left(r>a\right)\\
+\frac{\left(r^{2}-b^{2}\right)\rho}{2\varepsilon_{0}r} & \left(b<r<a\right)\\
+0 & \left(r<b\right)
+\end{cases}
+\]
+
+
+$V$を求める。
+\begin{enumerate}
+\item $r>a$のとき
+
+
+\begin{align*}
+V & =\int_{a}^{r}E\left(r'\right)\mathrm{d}r'\\
+ & =-\frac{\left(a^{2}-b^{2}\right)\rho}{2\varepsilon_{0}}\left[\ln r'\right]_{a}^{r}\\
+ & =-\frac{\left(a^{2}-b^{2}\right)\rho}{2\varepsilon_{0}}\ln\frac{r}{a}
+\end{align*}
+
+
+\item $b<r<a$のとき
+
+
+\begin{align*}
+V & =-\int_{a}^{r}E\left(r'\right)\mathrm{d}r'\\
+ & =\frac{\rho}{2\varepsilon_{0}}\left[\frac{r'^{2}}{2}-b^{2}\ln r'\right]_{r}^{a}\\
+ & =\frac{\rho}{4\varepsilon_{0}}\left(a^{2}-r^{2}-2b^{2}\ln\frac{a}{r}\right)
+\end{align*}
+
+
+\item $r<b$のとき
+
+
+\begin{align*}
+V & =-\int_{a}^{r}E\left(r'\right)\mathrm{d}r'\\
+ & =-\int_{a}^{b}E\left(r'\right)\mathrm{d}r'-\int_{b}^{r}E\left(r'\right)\mathrm{d}r'\\
+ & =\frac{\rho}{4\varepsilon_{0}}\left(a^{2}-b^{2}-2b^{2}\ln\frac{a}{b}\right)
+\end{align*}
+
+
+\end{enumerate}
+
+\section*{第3回}
+
+
+\section{導体}
+
+導体⇔(誘電体=絶縁体)
+
+図電磁3-1
+
+$K=0$:
+\begin{itemize}
+\item $E_{\text{in}}=0$→導体は等電位 ($\boldsymbol{E}=-\grad V$)
+\item $\text{表面}\perp\boldsymbol{E}$
+
+\begin{itemize}
+\item 図電磁3-2
+\end{itemize}
+\end{itemize}
+
+\subsection{導体表面の電荷密度}
+
+図電磁3-3
+
+\[
+\oint E_{n}\mathrm{d}S=\frac{q}{\varepsilon_{0}}
+\]
+
+
+\[
+ES=\frac{\sigma S}{\varepsilon_{0}}
+\]
+
+
+\[
+\sigma=\varepsilon_{0}E
+\]
+
+
+
+\paragraph{例}
+
+図電磁3-4
+
+\begin{align*}
+4\pi a^{2}E & =\frac{Q}{\varepsilon_{0}}\\
+ & =\frac{1}{\varepsilon_{0}}4\pi a^{2}\sigma
+\end{align*}
+
+
+\[
+E=\frac{\sigma}{\varepsilon_{0}}
+\]
+
+
+図電磁3-5
+
+\[
+E\cdot2S=\frac{\sigma S}{\varepsilon_{0}}
+\]
+
+
+\[
+E=\frac{\sigma}{2\varepsilon_{0}}
+\]
+
+
+図電磁3-6
+
+
+\subsection{大地面}
+
+地球の電位は常に0である。
+
+図電磁3-7
+
+図電磁3-8
+
+
+\paragraph{影像法}
+
+図電磁3-9
+
+例2.2
+
+図電磁3-10
+
+図電磁3-11
+
+\begin{align*}
+\sigma & =-\varepsilon_{0}E\\
+ & =-\frac{hq}{2\pi\left(h^{2}+r^{2}\right)^{\frac{3}{2}}}
+\end{align*}
+
+
+図電磁3-12
+
+\begin{align*}
+\int\sigma\mathrm{d}S & =-\int_{0}^{\infty}\frac{hq}{2\pi\left(h^{2}+g^{2}\right)^{\frac{3}{2}}}\cdot2\pi r\mathrm{d}r\\
+ & =-hq\int_{0}^{\infty}\frac{r}{\left(h^{2}+g^{2}\right)^{\frac{3}{2}}}\mathrm{d}r\\
+ & =-hq\left[\frac{1}{\sqrt{h^{2}+r^{2}}}\right]_{0}^{\infty}=-q
+\end{align*}
+
+
+
+\subsection{同心球面}
+
+図電磁3-13
+\begin{enumerate}
+\item $r<r_{1}$のとき
+
+
+\[
+\int E\mathrm{d}S=0
+\]
+\[
+E=0
+\]
+
+
+\item $r_{1}<r<r_{2}$のとき
+
+
+\[
+\underbrace{\int E\mathrm{d}S}_{=4\pi r^{2}E}=\frac{Q_{1}}{\varepsilon_{0}}
+\]
+\[
+\therefore E=\frac{Q}{4\pi\varepsilon_{0}r^{2}}
+\]
+
+
+\item $r>r_{2}$のとき
+
+
+\[
+\int E\mathrm{d}S=\frac{Q_{1}+Q_{2}}{\varepsilon_{0}}
+\]
+\[
+E=\frac{Q_{1}+Q_{2}}{4\pi\varepsilon_{0}r^{2}}
+\]
+
+
+\end{enumerate}
+$V$は?
+
+\[
+V=-\int E\cdot\mathrm{d}s
+\]
+
+
+\begin{align*}
+V_{2} & =-\int_{\infty}^{r_{2}}E\mathrm{d}r\\
+ & =-\int_{\infty}^{r_{2}}\frac{Q_{1}+Q_{2}}{4\pi\varepsilon_{0}r^{2}}\mathrm{d}r\\
+ & =\frac{Q_{1}+Q_{2}}{4\pi\varepsilon_{0}r_{2}}
+\end{align*}
+
+
+\begin{align*}
+V_{1} & =V_{2}-\int_{r_{2}}^{r_{1}}E\mathrm{d}r\\
+ & =V_{2}-\int_{r_{2}}^{r_{1}}\frac{Q}{4\pi\varepsilon_{0}r^{2}}\mathrm{d}r\\
+ & =\frac{1}{4\pi\varepsilon_{0}}\left(\frac{Q_{1}}{r_{1}}+\frac{Q_{2}}{r_{2}}\right)
+\end{align*}
+
+
+ここで外球を接地すると?
+
+$V_{2}=0$なので$Q_{1}+Q_{2}=0$ $\therefore Q_{2}=-Q_{1}$
+
+\[
+V_{1}=\frac{Q_{1}}{4\pi\varepsilon_{0}}\left(\frac{1}{r_{1}}-\frac{1}{r_{2}}\right)
+\]
+
+
+
+\paragraph{中空導体}
+
+図電磁3-14
+
+静電シールド
+
+
+\subsection{静電容量}
+
+図電磁3-15
+
+$\mathrm{C=\frac{Q}{V}}$: 静電容量{[}F{]}
+
+非接地導体\texttimes 2のとき、
+
+図電磁3-16
+
+\begin{align*}
+V & =Ed\\
+ & =\frac{\sigma}{\varepsilon_{0}}d\\
+ & =\frac{d}{\varepsilon_{0}S}Q
+\end{align*}
+
+
+図電磁3-17
+
+\[
+4\pi r^{2}E=\frac{Q}{\varepsilon_{0}}
+\]
+
+
+\[
+E=\frac{Q}{4\pi\varepsilon_{0}r^{2}}
+\]
+
+
+\begin{align*}
+V & =-\int_{b}^{a}\frac{Q}{4\pi\varepsilon_{0}r^{2}}\mathrm{d}r\\
+ & =\frac{Q}{4\pi\varepsilon_{0}}\left(\frac{1}{a}-\frac{1}{b}\right)
+\end{align*}
+
+
+\begin{align*}
+C & =\frac{Q}{V}\\
+ & =\frac{4\pi\varepsilon_{0}}{\frac{1}{a}-\frac{1}{b}}
+\end{align*}
+
+
+図電磁3-18
+
+$C=\frac{Q}{V}$、非接地導体\texttimes 1
+
+\[
+4\pi r^{2}E=\frac{Q}{\varepsilon_{0}}
+\]
+
+
+\[
+E=\frac{Q}{4\pi\varepsilon_{0}r^{2}}
+\]
+
+
+\begin{align*}
+V & =-\int_{\infty}^{a}\frac{Q}{4\pi\varepsilon_{0}r^{2}}\mathrm{d}r\\
+ & =\frac{Q}{4\pi\varepsilon_{0}a}
+\end{align*}
+
+
+\begin{align*}
+C & =\frac{Q}{V}\\
+ & =4\pi\varepsilon_{0}a
+\end{align*}
+
+
+
+\subsection{電界のエネルギー}
+
+図電磁3-19
+
+\[
+W=QV
+\]
+
+
+エネルギー
+
+\begin{align*}
+U & =W\\
+ & =\frac{1}{2}CV^{2}\\
+ & =\frac{1}{2}QV
+\end{align*}
+
+
+図電磁3-20
+
+\[
+W=\int\mathrm{d}W=\int_{0}^{Q}\frac{q}{c}\mathrm{d}q=\frac{Q^{2}}{2c}
+\]
+
+
+
+\paragraph{例題2-2}
+
+図電磁3-21
+
+くっつく前は
+\[
+C=4\pi\varepsilon_{0}r
+\]
+\[
+U=2\cdot\frac{+Q^{2}}{2C}=\frac{Q^{2}}{4\pi\varepsilon_{0}r}
+\]
+
+
+くっついた後は
+\[
+U'=\frac{\left(2Q\right)^{2}}{2C'}=\frac{Q}{2\pi\varepsilon_{0}\sqrt[3]{2}r}
+\]
+
+
+\[
+\frac{U'}{U}=\frac{4}{2\sqrt[3]{2}}=1.59
+\]
+
+
+
+\subsection{導体に働く力}
+
+図電磁3-22
+
+$\Delta x$の移動に要する仕事
+\[
+-F_{x}\Delta x
+\]
+
+
+$F_{x}$: $F$の$x$方向成分(外力)
+
+$Q=\text{一定}$→エネルギー増分
+
+\[
+\Delta W_{e}=-F_{x}\Delta x
+\]
+
+
+\[
+F_{x}=-\left(\frac{\Delta W_{e}}{\Delta x}\right)_{Q}\rightarrow-\left(\pd{W_{e}}x\right)_{Q}
+\]
+
+
+図電磁3-23
+
+\begin{align*}
+W_{e} & =\frac{Q^{2}}{2C}\\
+ & =\frac{Q^{2}x}{2\varepsilon_{0}S}
+\end{align*}
+
+
+$C=\frac{\varepsilon_{0}S}{x},Q=CV$
+
+\begin{align*}
+F & =-\left(\pd{W_{e}}x\right)_{Q}\\
+ & =\frac{-Q^{2}}{2\varepsilon_{0}S}\\
+ & =-\frac{\varepsilon_{0}S}{2}\left(\frac{V}{x}\right)^{2}
+\end{align*}
+
+
+図電磁3-24
+
+$V$一定: $x\rightarrow x+\Delta x\Rightarrow Q\rightarrow Q+\Delta Q$
+
+電源が$V\Delta Q$の仕事をする。
+
+\[
+\begin{cases}
+\Delta W_{e}=-F\Delta x+V\Delta Q\\
+\Delta W_{e}=\frac{1}{2}V\Delta Q\left(\because W_{e}=\frac{1}{2}VQ\right)
+\end{cases}
+\]
+
+
+\[
+\therefore F\Delta x=\frac{1}{2}V\Delta Q=\Delta W_{e}
+\]
+
+
+\[
+F=\left(\pd{W_{e}}x\right)_{V}
+\]
+
+
+
+\paragraph{前回課題(1)}
+
+図電磁3-25
+
+\[
+\rho\left(r\right)=\frac{\rho_{0}}{r^{4}}
+\]
+
+
+\[
+\frac{1}{r^{2}}\pd{}r\left(r^{2}\pd Vr\right)=-\frac{\rho_{0}}{\varepsilon_{0}r^{4}}
+\]
+
+
+\[
+\pd{}r\left(r^{2}\pd Vr\right)=-\frac{\rho_{0}}{\varepsilon_{0}r^{2}}
+\]
+
+
+\[
+r^{2}\pd Vr=\frac{\rho_{0}}{\varepsilon_{0}r}+C_{1}
+\]
+
+
+\[
+\pd Vr=\frac{\rho_{0}}{\varepsilon_{0}r^{3}}+\frac{C_{1}}{r^{2}}
+\]
+
+
+\[
+V=-\frac{\rho_{0}}{2\varepsilon_{0}r^{2}}-\frac{C_{1}}{r}+C_{2}
+\]
+
+
+$V\left(\infty\right)=0$より$C_{2}=0$
+
+$V\left(a\right)=0$より$C_{1}=-\frac{\rho_{0}}{2\varepsilon_{0}a}$
+
+\[
+\therefore V=\frac{\rho_{0}}{2\varepsilon_{0}r}\left(\frac{1}{a}-\frac{1}{r}\right)
+\]
+
+
+
+\paragraph{前回課題(2)}
+
+\[
+\int E\mathrm{d}S=\frac{1}{\varepsilon_{0}}\left(q+\int_{a}^{r}\frac{\rho_{0}}{r^{4}}4\pi r^{3}\mathrm{d}r\right)
+\]
+
+
+\[
+4\pi r^{2}E=\frac{1}{\varepsilon_{0}}\left(q+4\pi\rho_{0}\left(\frac{1}{a}-\frac{1}{r}\right)\right)
+\]
+\[
+E=\frac{q}{4\pi\varepsilon_{0}r^{2}}+\frac{\rho_{0}}{\varepsilon_{0}r^{2}}\left(\frac{1}{a}-\frac{1}{r}\right)
+\]
+
+
+\begin{align*}
+V_{a} & =-\int_{\infty}^{a}E\mathrm{d}r\\
+ & =\left[\frac{\rho_{0}}{\varepsilon_{0}}\left(\frac{1}{ar}-\frac{1}{2r^{2}}\right)+\frac{q}{4\pi\varepsilon_{0}r}\right]_{\infty}^{a}\\
+ & =\frac{\rho_{0}}{2\varepsilon_{0}a^{2}}+\frac{q}{4\pi\varepsilon_{0}a}
+\end{align*}
+
+
+$V_{a}=0$より、
+\[
+q=-\frac{2\pi\rho_{0}}{a}
+\]
+
+
+
+\paragraph{演習課題問1}
+
+図電磁3-26
+
+\begin{align*}
+F & =\frac{q_{1}}{4\pi\varepsilon_{0}}\left(\frac{q_{2}}{a^{2}}+\frac{q_{1}}{\left(2a\right)^{2}}+\frac{q_{2}}{\left(3a\right)^{2}}\right)\\
+ & =\frac{q_{1}}{4\pi\varepsilon_{0}a^{2}}\left(\frac{q_{1}}{4}+\frac{10q_{2}}{9}\right)
+\end{align*}
+
+
+\begin{align*}
+V & =\frac{1}{4\pi\varepsilon_{0}}\left(\frac{q_{2}}{a}-\frac{q_{1}}{2a}-\frac{q_{2}}{3a}\right)\\
+ & =\frac{1}{4\pi\varepsilon_{0}a}\left(-\frac{q_{1}}{2}+\frac{2q_{2}}{3}\right)\\
+V' & =\frac{1}{4\pi\varepsilon_{0}}\left(\frac{q_{2}}{\sqrt{2}a}-\frac{q_{1}}{2a}-\frac{q_{2}}{\sqrt{10}a}\right)\\
+ & =\frac{1}{4\pi\varepsilon_{0}a}\left(-\frac{q_{1}}{2}+\frac{\left(\sqrt{5}-1\right)q_{1}}{\sqrt{10}}\right)
+\end{align*}
+
+
+\begin{align*}
+W & =\Delta U\\
+ & =q_{1}\left(V'-V\right)\\
+ & =\frac{q_{1}q_{2}}{4\pi\varepsilon_{0}a}\left(\frac{\sqrt{5}-1}{\sqrt{10}}-\frac{2}{3}\right)
+\end{align*}
+
+
+
+\paragraph{演習問題問2(1)}
+
+図電磁3-27
+
+\[
+\int E\mathrm{d}S=\frac{q}{\varepsilon_{0}}
+\]
+
+
+\[
+4\pi r^{2}E=\frac{q}{\varepsilon_{0}}
+\]
+
+
+\[
+E=\frac{q}{4\pi\varepsilon_{0}r^{2}}
+\]
+
+
+\begin{align*}
+V & =-\int_{b}^{a}E\mathrm{d}r\\
+ & =\frac{q}{4\pi\varepsilon_{0}}\left(\frac{1}{a}-\frac{1}{b}\right)
+\end{align*}
+
+
+\[
+C=\frac{q}{V}=\frac{4\pi\varepsilon_{0}}{\frac{1}{a}-\frac{1}{b}}=\frac{4\pi\varepsilon_{0}ab}{b-a}
+\]
+
+
+
+\paragraph{演習問題問2(2)}
+
+非接地\texttimes 1
+
+図電磁3-28
+
+\[
+\begin{cases}
+E_{1}=\frac{-q'}{4\pi\varepsilon_{0}r^{2}}\\
+E_{2}=\frac{q-q'}{4\pi\varepsilon_{0}r^{2}}
+\end{cases}
+\]
+
+
+\begin{align*}
+V_{b} & =-\int_{a}^{b}E_{1}\mathrm{d}r\\
+ & =-\int_{a}^{b}\frac{-q'}{4\pi\varepsilon_{0}r^{2}}\mathrm{d}r\\
+ & =\frac{q'}{4\pi\varepsilon_{0}}\left(\frac{1}{a}-\frac{1}{b}\right)
+\end{align*}
+
+
+\begin{align*}
+V_{b} & =-\int_{\infty}^{b}E_{2}\mathrm{d}r\\
+ & =-\int_{\infty}^{b}\frac{q-q'}{4\pi\varepsilon_{0}r^{2}}\mathrm{d}r\\
+ & =\frac{q-q'}{4\pi\varepsilon_{0}b}
+\end{align*}
+
+
+上の2つの式は等しいので、
+\[
+\frac{q'}{q}=\frac{a}{b}
+\]
+
+
+$q'$を$V_{b}$の式に代入
+
+\[
+V_{b}=\frac{aq}{4\pi\varepsilon_{0}b}\left(\frac{1}{a}-\frac{1}{b}\right)
+\]
+
+
+\begin{align*}
+C & =\frac{q}{V_{0}}\\
+ & =\frac{4\pi\varepsilon_{0}b^{2}}{b-a}
+\end{align*}
+
+
+
+\paragraph{演習問題問2(3)}
+
+\begin{align*}
+f & =\frac{1}{4\pi b^{2}}F\\
+ & =-\frac{1}{4\pi b^{2}}\left(\pd{W_{e}}b\right)_{q}\\
+ & =-\frac{1}{4\pi b^{2}}\left(\pd{}b\frac{q^{2}}{2C}\right)_{q}\\
+ & =-\frac{q^{2}}{8\pi b^{2}}\left(\pd{}b\frac{1}{4\pi\varepsilon_{0}}\left(\frac{1}{a}-\frac{1}{b}\right)\right)\\
+ & =\frac{-q^{2}}{32\pi^{2}\varepsilon_{0}b^{2}}\frac{1}{b^{2}}\\
+ & =\frac{-q^{2}}{32\pi^{2}\varepsilon_{0}b^{4}}
+\end{align*}
+
+
+別解
+
+Maxwell応力
+\[
+\sigma=\frac{-q}{4\pi b^{2}}
+\]
+
+
+\begin{align*}
+E & =\frac{\sigma}{\varepsilon_{0}}\\
+ & =\frac{-q}{4\pi\varepsilon_{0}b^{2}}
+\end{align*}
+
+
+\begin{align*}
+f & =\frac{1}{2}\varepsilon_{0}E^{2}\left(r=b\right)\\
+ & =\frac{\varepsilon_{0}}{2}\frac{q^{2}}{16\pi^{2}\varepsilon_{0}^{2}b^{4}}
+\end{align*}
+
+
+
+\paragraph{演習問題問3}
+
+図電磁3-30
+
+球電荷の半径を$r\rightarrow r+\mathrm{d}r$とするのに必要な仕事$\mathrm{d}w$
+
+\[
+\mathrm{d}w=V_{1}\mathrm{d}q=\frac{q_{r}}{4\pi\varepsilon_{0}r}\mathrm{d}q
+\]
+
+
+\[
+q_{r}=\frac{4}{3}\pi r^{3}\rho
+\]
+
+
+\[
+\therefore q_{r}=\frac{r^{3}}{a^{3}Q}
+\]
+
+
+および
+
+\begin{align*}
+\mathrm{d}q & =4\pi r^{2}\mathrm{d}r\cdot\rho\\
+ & =\frac{3Qr^{2}}{a^{3}}\mathrm{d}r
+\end{align*}
+
+
+より、
+\[
+\mathrm{d}w=\frac{3Q^{2}r^{4}}{4\pi\varepsilon_{0}a^{3}}\mathrm{d}r
+\]
+
+
+よって、$q:0\rightarrow Q$に必要な$W$は、
+\begin{align*}
+W & =\int\mathrm{d}w=\int_{0}^{a}\frac{3Q^{2}r^{4}}{4\pi\varepsilon_{0}a^{6}}\mathrm{d}r\\
+ & =\frac{3Q^{2}}{20\pi\varepsilon_{0}a}
+\end{align*}
+
+\end{document}
