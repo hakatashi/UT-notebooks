@@ -226,3 +226,13 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# App Specific
+# =========================
+
+*~
+*.sw[op]
+*.html
+*.pdf
+*.lyx
+*.rdb
