@@ -11,6 +11,7 @@
 \usepackage{textcomp}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{graphicx}
 
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
@@ -47,8 +48,9 @@
 \subsection{電気回路とは}
 
 回路要素(抵抗、コンデンサ、インダクタ、トランジスタ、etc)が導体によって接続されたループで、電源によって電流が流れるもの。
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-1}
+\par\end{center}
 
 クーロン力
 \[
@@ -73,8 +75,9 @@ U=-G\frac{m_{1}}{r}
 \paragraph{電圧(電位、ポテンシャル)}
 
 記号 V, E 単位 $\left[\mathrm{V}\right]$ボルト
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-2}
+\par\end{center}
 
 静電界$E$のなか単位電荷を$a\rightarrow b$に移動させるのに必要な仕事量
 \[
@@ -87,8 +90,9 @@ V_{ba}=-\int_{a}^{b}E\mathrm{d}l
 記号 I 単位 $\left[\mathrm{A}\right]$アンペア
 
 ある面$A$を単位時間に通過する電荷量
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-3}
+\par\end{center}
 
 \paragraph{電力}
 
@@ -106,8 +110,9 @@ V\times I=\d wq\times\d qt=\d wt=\left(\text{単位時間あたりのエネル�
 線形回路は理論的に取り扱いやすい。
 
 この講義の扱う範囲。
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-4}
+\par\end{center}
 
 \[
 \left(\text{出力}\right)=a\times\left(\text{入力}\right)
@@ -120,20 +125,23 @@ V\times I=\d wq\times\d qt=\d wt=\left(\text{単位時間あたりのエネル�
 \paragraph{非線形回路}
 
 ex) 非線形抵抗(電球など)、トランジスタ、MOSFET
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-5}
+\par\end{center}
 
 狭い範囲で見れば線形に近似できる。
 
 \subsection{直流及び交流信号}
 
 ・直流
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-6}
+\par\end{center}
 
 ・交流
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-7}
+\par\end{center}
 
 線形回路の場合、直流と交流で(ほぼ)全ての波形を表現できる。→フーリエ級数展開、フーリエ変換
 
@@ -171,34 +179,40 @@ $I=\d Qt$より
 \paragraph{JIS表記について}
 
 本講義では旧表記を用いる。
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-8}
+\par\end{center}
 
 \subsection{電源}
 
 \paragraph{理想電圧源}
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-9}
+\par\end{center}
 
 電流に無関係に電圧が$E$
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-10}
+\par\end{center}
 
 ショート禁止 $I=\infty$となり、萌える。
 
 \paragraph{理想電流源}
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-11}
+\par\end{center}
 
 電圧に無関係に電流が$I$
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-12}
+\par\end{center}
 
 開放禁止 $I$を無理やり流そうとして$V=\infty$
 
 \paragraph{一般の電源}
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-13}
+\par\end{center}
 
 内部抵抗があるため電流が大きいと出力電圧が低下。
 
@@ -207,8 +221,9 @@ $I=\d Qt$より
 \paragraph{第1法則(電流則) Kirchhaff's Current Law = KCL}
 
 節点への流入電流の和=節点からの流出電流の和
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-14}
+\par\end{center}
 
 \[
 \sum_{k=1}^{n}i_{k}=0
@@ -219,8 +234,9 @@ $I=\d Qt$より
 \paragraph{第2法則(電圧則) Kirchhoff's Voltage Law = KVL}
 
 任意の閉路(ループ)を一巡する際の電位上昇の和=電圧降下の和
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-15}
+\par\end{center}
 
 \[
 \sum_{k=1}^{n}v_{k}=0
@@ -231,8 +247,9 @@ $I=\d Qt$より
 直流回路はオームの法則、KCL、KVLで解くことができる。
 
 ex1) T型回路
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-16}
+\par\end{center}
 
 節点$B$にKCLを適用
 
@@ -289,8 +306,9 @@ I_{1}=\frac{V}{R_{\mathrm{total}}}=\frac{R_{2}+R_{3}}{R_{1}R_{2}+R_{2}R_{3}+R_{3
 簡単に求まる。回路の直感的理解に役立つ。
 
 \subsection{ブリッジ回路}
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-17}
+\par\end{center}
 
 合成抵抗より、
 \begin{align*}
@@ -309,8 +327,9 @@ V_{CB} & =-R_{2}I_{1}+R_{4}I_{2}=-\frac{R_{2}V}{R_{1}+R_{2}}+\frac{R_{4}V}{R_{3}
 →BC間に検流計をつないでも電流は流れない。高精度抵抗測定などに応用。
 
 \subsection{$\Delta\leftrightarrow Y$変換}
-
-図
+\begin{center}
+\includegraphics{images/CircuitTheory1/1-18}
+\par\end{center}
 
 回路をブラックボックスと考えたとき、外から見た時の両回路が等価となる条件を考える。
 
