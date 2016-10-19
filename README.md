@@ -5,7 +5,7 @@
 [travis-image]: https://travis-ci.org/hakatashi/UT-notebooks.svg?branch=master
 [travis-url]: https://travis-ci.org/hakatashi/UT-notebooks
 
-hakatashiが東大で個人用に記録した板書ノートを公開するリポジトリです。
+hakatashiが東京大学で個人用に記録した板書ノートを公開するリポジトリです。
 
 ## Index
 
