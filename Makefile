@@ -1,11 +1,18 @@
 TEX=$(shell find . -name '*.tex')
 DVI=$(TEX:.tex=.dvi)
 PDF=$(TEX:.tex=.pdf)
-
-%.dvi: %.tex
-	uplatex -no-guess-input-enc -kanji=utf8 -synctex=1 -output-directory=$(dir $@) $< 0<&-
-
-%.pdf: %.dvi
-	dvipdfmx -o $@ $< 0<&-
+JPG=$(shell find . -name '*.jpg')
+EPS=$(JPG:.jpg=.eps)
 
 all: $(PDF)
+
+eps: $(EPS)
+
+%.dvi: %.tex eps
+	cd $(dir $@); uplatex -no-guess-input-enc -kanji=utf8 -synctex=1 $(notdir $<) 0<&-
+
+%.pdf: %.dvi
+	cd $(dir $@); dvipdfmx -o $(notdir $@) $(notdir $<) 0<&-
+
+%.eps: %.jpg
+	convert $< eps3:$@
