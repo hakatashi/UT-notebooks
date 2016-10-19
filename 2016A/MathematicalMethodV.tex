@@ -1,4 +1,4 @@
-%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[english]{article}
 \usepackage[T1]{fontenc}
@@ -10,7 +10,6 @@
 \usepackage{textcomp}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{esint}
 
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
@@ -23,7 +22,6 @@
 \begin{document}
 
 \title{2016-A 数理手法V}
-
 
 \author{教員: 藤原 入力: 高橋光輝}
 
@@ -41,9 +39,7 @@
 \global\long\def\diag{\mathrm{diag}}
 
 
-
 \section*{第1回}
-
 
 \paragraph{講義の内容}
 
@@ -88,30 +84,24 @@
 
 空集合$\phi$: $\phi=\Omega^{c}$
 
-
 \paragraph{演算の定義}
 \begin{enumerate}
 \item 和
-
 
 \[
 A_{1}\cup A_{2}=\left\{ \omega\in\Omega,\omega\in A_{1}\text{OR}\omega\in A_{2}\right\} 
 \]
 
-
 \item 積
-
 
 \[
 A_{1}\cap A_{2}=\left\{ \omega\in\Omega,\omega\in A_{1}\text{AND}\omega\in A_{2}\right\} 
 \]
 
-
 \item $A_{1},A_{2}$が互いに排他的である時、
 \[
 A_{1}\cap A_{2}=\phi
 \]
-
 \end{enumerate}
 
 \subsection{事象の公理}
@@ -124,7 +114,6 @@ $\mathcal{A}$: 事象の全体集合
 \[
 A_{1}\cup A_{2}\cup A_{3}\cdots=\bigcup_{i=1}^{\infty}A_{i}\in\mathcal{A}
 \]
-
 \end{enumerate}
 1. から 3. を満足する集合をBorel集合という。
 
@@ -136,10 +125,7 @@ A_{1}\cup A_{2}\cup A_{3}\cdots=\bigcup_{i=1}^{\infty}A_{i}\in\mathcal{A}
 A_{1}\cap A_{2}\cap\cdots=\bigcap_{i=1}^{\infty}A_{i}\in\mathcal{A}
 \]
 
-
-
 ($\left(\bigcap_{i=1}^{n}A_{i}\right)^{c}=\bigcup_{i=1}^{n}A_{i}^{c}$から)
-
 \end{enumerate}
 
 \subsection{確率の定義(Kolmogorovの定理)}
@@ -153,15 +139,11 @@ A_{1}\cap A_{2}\cap\cdots=\bigcap_{i=1}^{\infty}A_{i}\in\mathcal{A}
 P\left(\bigcup_{i=1}^{\infty}A_{i}\right)=\sum_{i=1}^{\infty}P\left(A_{i}\right)
 \]
 
-
-
 (完全加法性)
-
 \end{enumerate}
 このような数を確率(測度)という。
 
 これら$\left(\Omega,\mathcal{A},P\right)$の組み合わせで確率空間が構成される。
-
 
 \subsection{確率の性質}
 \begin{enumerate}
@@ -170,14 +152,12 @@ P\left(\bigcup_{i=1}^{\infty}A_{i}\right)=\sum_{i=1}^{\infty}P\left(A_{i}\right)
 \[
 P\left(\bigcup_{i=1}^{n}A_{i}\right)=\sum_{i=1}^{n}P\left(A_{i}\right)
 \]
-
 \item $P\left(A^{c}\right)=1-P\left(A\right)$
 \item $P\left(\bigcup_{i}A_{i}\right)=1-P\left(\bigcap_{i}A_{i}^{c}\right)$
 \item $B_{1},B_{2},\cdots$が排他的で$\bigcup_{i}B_{i}=\Omega$ならば、任意の$A$に対して
 \[
 P\left(A\right)=\sum_{i}P\left(A\cap B_{i}\right)
 \]
-
 \item 和の公式$P\left(A_{1}\cup A_{2}\right)=P\left(A_{1}\right)+P\left(A_{2}\right)-P\left(A_{1}\cap A_{2}\right)$
 \item 和の公式2 
 \begin{align*}
@@ -185,7 +165,6 @@ P\left(A_{1}\cup A_{2}\cup A_{3}\right)= & P\left(A_{1}\right)+P\left(A_{2}\righ
  & -P\left(A_{1}\cap A_{2}\right)-P\left(A_{2}\cap A_{3}\right)-P\left(A_{3}\cap A_{1}\right)\\
  & +P\left(A_{1}\cap A_{2}\cap A_{3}\right)
 \end{align*}
-
 \item 和の公式3 
 \begin{align*}
 P\left(\bigcup_{i=1}^{n}A_{i}\right)= & P\left(A_{1}\right)+P\left(A_{2}\right)+\cdots+P\left(A_{n}\right)\\
@@ -195,14 +174,10 @@ P\left(\bigcup_{i=1}^{n}A_{i}\right)= & P\left(A_{1}\right)+P\left(A_{2}\right)+
  & +\left(-1\right)^{m+1}P\left(\bigcap_{i=1}^{m}A_{i}\right)
 \end{align*}
 
-
-
 (証明は帰納法など)
-
 \end{enumerate}
 
 \section*{第2回}
-
 
 \paragraph{講義全体の流れ}
 \begin{enumerate}
@@ -227,7 +202,6 @@ P\left(\bigcup_{i=1}^{n}A_{i}\right)= & P\left(A_{1}\right)+P\left(A_{2}\right)+
 
 可能な限り情報基盤センターのPCを使って計算を行ってもらう。
 
-
 \subsection{確率の連続性}
 
 1. 無限個の系列$A_{1},A_{2},A_{3}\cdots$に包含関係$A_{1}\subset A_{2}\subset A_{3}\cdots$がある時、
@@ -239,7 +213,6 @@ A\equiv\bigcup_{i=1}^{\infty}A_{i}
 P\left(A\right)=\lim_{i\rightarrow\infty}P\left(A_{i}\right)
 \]
 
-
 $B_{1}=A_{1},B_{2}=A_{2}\cap A_{1}^{c},B_{3}=A_{3}\cap A_{2}^{c}\cdots$、$B_{1},B_{2},B_{3}$は互いに素とする。
 
 \begin{align*}
@@ -248,12 +221,10 @@ $B_{1}=A_{1},B_{2}=A_{2}\cap A_{1}^{c},B_{3}=A_{3}\cap A_{2}^{c}\cdots$、$B_{1}
 \therefore & \lim_{n\rightarrow\infty}P\left(A_{n}\right)=\sum_{i=1}^{\infty}P\left(B_{i}\right)
 \end{align*}
 
-
 2. $A_{1},A_{2},\cdots,A_{n}\cdots$が$A_{1}\supset A_{2}\supset\cdots\supset A_{n}\supset\cdots$ならば
 \[
 P\left(A\right)=\lim_{n\rightarrow\infty}P\left(A_{n}\right)
 \]
-
 
 $A_{1}^{c}\subset A_{2}^{c}\subset A_{3}^{c}\cdots$
 
@@ -262,22 +233,18 @@ $A_{1}^{c}\subset A_{2}^{c}\subset A_{3}^{c}\cdots$
 P\left(A^{c}\right)=\lim_{i\rightarrow\infty}P\left(A_{i}^{c}\right)
 \]
 
-
 \[
 \therefore P\left(A\right)=\lim_{i\rightarrow\infty}P\left(A_{i}\right)
 \]
-
 
 $B_{1},B_{2},\cdots$は互いに素だから($A_{n}\rightarrow A$)、
 \[
 P\left(A\right)=\sum_{i=1}^{n}P\left(B_{i}\right)
 \]
 
-
 \[
 \therefore P\left(A\right)=\lim_{i\rightarrow\infty}P\left(A_{i}\right)
 \]
-
 
 
 \subsection{条件付き確率}
@@ -300,9 +267,7 @@ $A$: 次に起きる事象
 P\left(A|B\right)=\frac{P\left(A\cap B\right)}{P\left(B\right)}\:\left(P\left(B\right)\neq0\right)
 \]
 
-
 最小に$B$が起こった条件下で、次に$A$が起こる確率
-
 
 \paragraph{条件付き確率の性質}
 \begin{enumerate}
@@ -317,13 +282,10 @@ $P\left(A\right)>0$であるなら、
 P\left(B_{j}|A\right)=\frac{P\left(B_{j}\right)P\left(A|B_{j}\right)}{\sum_{i}P\left(B_{i}\right)P\left(A|B_{i}\right)}
 \]
 
-
-
 \begin{align*}
 \because P\left(B_{j}|A\right) & =\frac{P\left(B_{j}\cap A\right)}{P\left(A\right)}=\frac{P\left(B_{j}\right)P\left(A|B_{j}\right)}{P\left(A\right)}\\
  & =\frac{P\left(B_{j}\right)P\left(A|B_{j}\right)}{\sum_{i}P\left(B_{i}\right)P\left(A|B_{i}\right)}
 \end{align*}
-
 
 \end{enumerate}
 
@@ -332,7 +294,6 @@ P\left(B_{j}|A\right)=\frac{P\left(B_{j}\right)P\left(A|B_{j}\right)}{\sum_{i}P\
 \[
 P\left(A|B\right)\Leftrightarrow\text{「AとBは独立する」}\Leftrightarrow P\left(A\cap B\right)=P\left(A\right)\cdot P\left(B\right)\Leftrightarrow\frac{P\left(A\cap B\right)}{P\left(B\right)}=P\left(A\right)
 \]
-
 
 例として、
 
@@ -348,23 +309,19 @@ $C=\left\{ 1,4\right\} $: 1または4が出る
 P\left(A\right)=\frac{1}{2},P\left(B\right)=\frac{1}{2},P\left(C\right)=\frac{1}{2}
 \]
 
-
 \[
 A\cap B=\left\{ 1\right\} ,A\cap C=\left\{ 1\right\} ,B\cap C=\left\{ 1\right\} 
 \]
 
-
 \[
 P\left(A\cap B\right)=\frac{1}{4},P\left(A\cap C\right)=\frac{1}{4},P\left(B\cap C\right)=\frac{1}{4}
 \]
-
 
 $P\left(A\cap B\right)=P\left(A\right)P\left(B\right)$: $A$と$B$は独立
 
 \[
 A\cap B\cap C=\left\{ 1\right\} 
 \]
-
 
 \[
 P\left(C|A\cap B\right)=1\neq P\left(A\cap B\right)P\left(C\right)
@@ -376,7 +333,6 @@ P\left(A_{i_{1}}\cap A_{i_{2}}\cap\cdots\right)=P\left(A_{i_{1}}\right)P\left(A_
 \]
 が成立するとき、$A_{1},A_{2},A_{3}\cdots$が独立であるという。
 
-
 \paragraph{2点分布}
 
 $f\left(0\right)=1-p\equiv q$
@@ -387,9 +343,7 @@ $f\left(1\right)=p$ (1が出る確率が$p$)
 p^{k}q^{1-k}
 \]
 
-
 →ベルヌーイ試行
-
 
 \paragraph{2項分布}
 
@@ -407,22 +361,18 @@ k
 \]
 
 
-
 \paragraph{Poisson分布}
 
 \[
 F\left(N\right)=\sum_{n<N}f\left(n\right)
 \]
 
-
 \[
 \left(\text{二項分布}\right)\xrightarrow{n\rightarrow\infty}\text{ポアソン分布}
 \]
 
 
-
 \section*{第3回}
-
 
 \paragraph{レポート}
 
@@ -434,16 +384,13 @@ ITC-LMSで提出する。
 
 また、資料もITC-LMSで配布するので必ず確認のこと。
 
-
 \section{確率変数}
-
 
 \subsection{確率変数と分布関数}
 
 \[
 \left\{ \Omega,\mathcal{A},P\right\} 
 \]
-
 
 
 \paragraph{確率変数}
@@ -456,13 +403,11 @@ ITC-LMSで提出する。
 
 すなわち、$\omega\rightarrow X\left(\omega\right)$を対応させた上で、$X\left(\omega\right)\leqq x,\omega\in\mathcal{A}$ならば確率変数である。
 
-
 \paragraph{分布関数}
 
 \[
 F_{x}\left(x\right)=P\left(\left\{ \omega;X\left(\omega\right)\leqq x\right\} \right)
 \]
-
 
 
 \paragraph{分布関数の性質}
@@ -472,7 +417,6 @@ F_{x}\left(x\right)=P\left(\left\{ \omega;X\left(\omega\right)\leqq x\right\} \r
 \[
 \lim_{x\rightarrow+a}F\left(x\right)=F\left(a\right)
 \]
-
 \item $\lim_{x\rightarrow-\infty}F\left(x\right)=0$
 \item $\lim_{x\rightarrow+\infty}F\left(x\right)=1$
 \end{enumerate}
@@ -482,9 +426,7 @@ f\left(x\right)=F\left(x_{k}\right)-F\left(x_{k-1}\right)
 \]
 (ただし$x_{k}=X\left(\omega_{k}\right)$)は確率関数である。
 
-
 \subsection{様々な分布}
-
 
 \paragraph{ポアソン分布}
 
@@ -494,7 +436,6 @@ f\left(x\right)=F\left(x_{k}\right)-F\left(x_{k-1}\right)
 \Delta P_{0}\left(\Delta t\right)\sim-\lambda\Delta tP_{0}\left(t\right)
 \]
 
-
 これが0回起きる場合、
 \[
 \d{P_{0}\left(t\right)}t=-\lambda P_{0}\left(t\right)
@@ -503,12 +444,10 @@ f\left(x\right)=F\left(x_{k}\right)-F\left(x_{k-1}\right)
 P_{0}\left(t\right)=\e^{-\lambda t}
 \]
 
-
 $n$回起きる場合、
 \[
 P_{n}\left(t+\Delta t\right)=\left(1-\lambda\Delta t\right)P_{n}\left(t\right)+\lambda\Delta tP_{n-1}\left(t\right)
 \]
-
 
 これは$n$に対する差分方程式。
 
@@ -517,11 +456,9 @@ $\Delta t\rightarrow0$で
 \frac{P_{n}\left(t+\Delta t\right)-P_{n}\left(t\right)}{\Delta t}=-\lambda\left(P_{n}\left(t\right)-P_{n-1}\left(t\right)\right)
 \]
 
-
 \[
 \d{}tP_{n}\left(t\right)=\lambda\left(P_{n-1}\left(t\right)-P_{n}\left(t\right)\right)
 \]
-
 
 これを初期条件$P_{0}\left(t\right)=\e^{-\lambda t}$で解くと、
 \[
@@ -545,16 +482,13 @@ f\left(x\right)=\d{}xF\left(x\right)
 \]
 とする。
 
-
 \paragraph{正規分布}
 
 \[
 f\left(x\right)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left[-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{2}\right]
 \]
 
-
 しばしば$\mathcal{N}\left(\mu,\sigma^{2}\right)$と書く。
-
 
 \paragraph{コーシー分布}
 
@@ -562,14 +496,11 @@ f\left(x\right)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left[-\frac{1}{2}\left(\frac{x-\
 f\left(x\right)=\frac{1}{\pi}\frac{\alpha}{\left(x-\mu\right)^{2}+\alpha^{2}}
 \]
 
-
 $C\left(\mu,\alpha\right)$と書く。
-
 
 \subsection{中心極限定理1 (ド・モアブル-ラプラスの定理)}
 
 $X$が二項分布$B\left(n;p\right)$に従うとき、$n$が大きいならば$X$は$\mu=np,\sigma^{2}=np\left(1-p\right)$であるような正規分布$\mathcal{N}\left(np;np\left(1-p\right)\right)$に従う。
-
 
 \paragraph{証明}
 
@@ -584,7 +515,6 @@ P\left(a\leq\frac{X_{n}-np}{\sqrt{npq}}\leq b\right)\approx^{n\rightarrow\infty}
 P\left(x=k\right)=_{n}C_{k}p^{k}q^{n-k}
 \]
 
-
 すなわち$n\rightarrow\infty$で
 \[
 \sum_{np+a\sqrt{npq}\leqq k\leqq np+b\sqrt{npq}}{}_{n}C_{k}p^{k}q^{n-k}\rightarrow\frac{1}{2\pi}\int_{a}^{b}\e^{-\frac{1}{2}x^{2}}\mathrm{d}x
@@ -594,13 +524,11 @@ P\left(x=k\right)=_{n}C_{k}p^{k}q^{n-k}
 \item $n\rightarrow\infty$なら$k\rightarrow\infty$となるはず。
 \item $n\gg1$で$n!\approx\sqrt{2\pi n}n^{n}\e^{-n}$ (スターリングの公式)
 
-
 (ガンマ関数
 \[
 \Gamma\left(n\right)=\left(n+1\right)!
 \]
 の議論で後々出てくる。)
-
 \end{enumerate}
 これを用いて
 \begin{align*}
@@ -610,7 +538,6 @@ _{n}C_{k}=\frac{n!}{k!\left(n-k\right)!} & \approx\frac{\sqrt{2\pi n}n^{n}\e^{-n
 \[
 _{n}C_{k}p^{k}q^{n-k}\simeq\frac{1}{\sqrt{2\pi n\cdot\frac{k}{n}\cdot\frac{n-k}{n}}}\left(\frac{n}{k}p\right)^{k}\left(\frac{n}{n-k}q\right)^{n-k}
 \]
-
 
 \[
 F\equiv\left(\frac{n}{k}p\right)^{k}\left(\frac{n}{n-k}q\right)^{n-k}
@@ -623,13 +550,11 @@ $\delta\equiv k-np$とすると、
  & \approx-\frac{\delta^{2}}{2n}\left(\frac{1}{p}+\frac{1}{q}\right)=-\frac{\delta^{2}}{2npq}
 \end{align*}
 
-
 $p+q=1$を使った。
 
 \[
 F\approx\exp\left[\frac{\left(k-np\right)^{2}}{2npq}\right]
 \]
-
 
 ところで
 \[
@@ -640,29 +565,23 @@ np+a\sqrt{npq}\leqq k\leqq np+b\sqrt{npq}
 \frac{k}{n}\rightarrow p,\frac{n-k}{n}\rightarrow q
 \]
 
-
 \begin{align*}
 P\left(a\leq\frac{X-np}{\sqrt{npq}}\leq b\right) & =P\left(a\sqrt{npq}+np\leq X\leq b\sqrt{npq}+np\right)\\
  & =\sum_{a\sqrt{npq}+np\leq k\leq b\sqrt{npq}+np}\frac{1}{\sqrt{2\pi npq}}\exp\left[-\frac{\left(k-np\right)^{2}}{2npq}\right]\\
  & =\sum_{a\leq z_{k}\leq b}\frac{1}{\sqrt{2\pi}}\e^{-\frac{z^{2}}{2}}\frac{1}{\sqrt{npq}}\rightarrow\int_{a}^{b}\frac{1}{\sqrt{2\pi}}\e^{-\frac{z^{2}}{2}}\mathrm{d}z
 \end{align*}
 
-
 ただし$z_{k}=\frac{k-np}{\sqrt{npq}},\Delta z=\frac{1}{\sqrt{npq}}$である。
-
 
 \section*{第4回}
 
-
 \section{確率関数に関する特性値}
-
 
 \subsection{平均値、期待値}
 
 離散: $E\left[X\right]=\sum_{k}v_{k}f\left(v_{k}\right)$
 
 連続: $E\left[X\right]=\int_{-\infty}^{\infty}xf\left(x\right)\mathrm{d}x$
-
 
 \paragraph{例}
 
@@ -671,30 +590,25 @@ P\left(a\leq\frac{X-np}{\sqrt{npq}}\leq b\right) & =P\left(a\sqrt{npq}+np\leq X\
 E\left[X\right]=0\cdot q+1\cdot p=p
 \]
 
-
 2項分布 ($B\left(n,p\right)$) 
 \[
 E\left[X\right]=\sum_{k}k\cdot\binom{n}{k}p^{k}\left(1-p\right)^{n-k}=np
 \]
-
 
 正規分布 
 \[
 E\left[X\right]=\int_{-\infty}^{\infty}x\frac{1}{\sqrt{2\pi}}\e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{2}}\mathrm{d}x
 \]
 
-
 \[
 \int_{-\infty}^{\infty}\mathrm{d}x\cdot x\e^{-x^{2}}=\int_{0}^{-\infty}\mathrm{d}\left(x^{2}\right)\e^{-x^{2}}
 \]
-
 
 コーシー分布 
 \begin{align*}
 E\left[X\right] & =\int_{-\infty}^{\infty}\left|x\right|\frac{\mathrm{d}x}{\prod\left(1+x^{2}\right)}\rightarrow\infty\\
  & \sim\int_{0}^{\infty}\frac{\mathrm{d}x}{1+x}
 \end{align*}
-
 
 
 \paragraph{性質1}
@@ -705,9 +619,7 @@ E\left(X\right) & =\int_{0}^{\infty}\left(1-F\left(x\right)\right)\mathrm{d}x\\
  & =\int_{0}^{\infty}P\left(X>x\right)\mathrm{d}x
 \end{align*}
 
-
 $F\left(x\right)=1-P\left(X>x\right)$
-
 
 \paragraph{性質2}
 
@@ -717,13 +629,11 @@ E\left(X\right)=\int_{-\infty}^{\infty}P\left(X>x\right)\mathrm{d}x-\int_{-\inft
 \]
 
 
-
 \paragraph{平均値}
 
 \[
 E\left[X\right]=\int_{-\infty}^{\infty}x\mathrm{d}F\left(x\right)
 \]
-
 
 離散: $\mathrm{d}F\left(v_{k}\right)=F\left(v_{k}\right)-F\left(v_{k-1}\right)$
 
@@ -733,21 +643,17 @@ E\left[X\right]=\int_{-\infty}^{\infty}x\mathrm{d}F\left(x\right)
 E\left[X\right]\equiv\sum_{i=1}^{n-1}\tilde{x}_{k}\left[F\left(x_{k+1}\right)-F\left(x_{k}\right)\right];\tilde{x}_{k}\in\left[x_{k},x_{k+1}\right]
 \]
 
-
 \[
 \int_{-\infty}^{\infty}f\left(x\right)\mathrm{d}x=1
 \]
-
 
 \[
 \mu=\int_{-\infty}^{\infty}xf\left(x\right)\mathrm{d}x
 \]
 
-
 \[
 \sigma^{2}=\int_{-\infty}^{\infty}\left(x-\mu\right)^{2}f\left(x\right)\mathrm{d}x
 \]
-
 
 $X$: 確率変数
 
@@ -760,9 +666,7 @@ E\left[\left(X-\mu\right)^{2}\right] & =V_{av}\left[X\right]\text{or}V\left[X\ri
  & =\int_{-\infty}^{\infty}\left(x-\mu\right)^{2}f\left(x\right)\mathrm{d}x=\int_{-\infty}^{\infty}\left(x-\mu\right)^{2}\mathrm{d}F\left(x\right)
 \end{align*}
 
-
 $\sqrt{V\left[X\right]}$: 標準偏差
-
 
 \paragraph{分散の性質}
 \begin{enumerate}
@@ -774,7 +678,6 @@ $\sqrt{V\left[X\right]}$: 標準偏差
 
 \subsection{???}
 
-
 \subsection{モーメント母関数}
 
 \begin{align*}
@@ -785,12 +688,10 @@ M_{X}\left(t\right) & =E\left[\e^{tX}\right]\\
 \end{cases}
 \end{align*}
 
-
 \begin{align*}
 M_{X}\left(t\right) & =E\left[1+tX+\frac{t^{2}}{2!}X^{2}+\cdots\right]\\
  & =1+\underbrace{tE\left[X\right]}_{\equiv\mu=\mu_{1}}+\underbrace{\frac{t^{2}}{2}E\left[X^{2}\right]}_{\equiv\mu_{2}\text{(2次モーメント)}}+\cdots
 \end{align*}
-
 
 
 \subsection{特性関数}
@@ -798,7 +699,6 @@ M_{X}\left(t\right) & =E\left[1+tX+\frac{t^{2}}{2!}X^{2}+\cdots\right]\\
 \[
 \varphi\left(t\right)=E\left[\e^{\i tX}\right]=\int_{-\infty}^{\infty}\e^{\i tx}f\left(x\right)\mathrm{d}x
 \]
-
 
 \[
 \left|\varphi\left(t\right)\right|\leqq\int_{-\infty}^{\infty}f\left(x\right)\mathrm{d}x=1
@@ -810,9 +710,7 @@ f\left(x\right)\xrightarrow[\text{フーリエ逆変換}(\text{反転公式})]{\
 \]
 
 
-
 \section{多次元確率分布}
-
 
 \subsection{複数の確率関数}
 
@@ -830,14 +728,12 @@ F\left(x_{1},x_{2},\cdots\right)=P\left(\bigcap_{k=1}^{n}\left\{ \omega:X_{k}\le
 \]
 =同時分布関数
 
-
 \paragraph{性質}
 
 1. $a_{1}\leq b_{1},a_{2}\leq b_{2}$ならば、
 \[
 F\left(b_{1},b_{2}\right)-F\left(b_{1},a_{2}\right)-F\left(a_{1},b_{2}\right)+F\left(a_{1},a_{2}\right)\geq0
 \]
-
 
 =単調増加
 
@@ -846,12 +742,10 @@ F\left(b_{1},b_{2}\right)-F\left(b_{1},a_{2}\right)-F\left(a_{1},b_{2}\right)+F\
 \lim_{x_{1}\rightarrow a1+,x_{2}\in\rightarrow}F\left(x_{1},x_{2}\right)=F\left(a_{1},a_{2}\right)
 \]
 
-
 3. 
 \[
 \lim_{x_{1}\rightarrow-\infty}F\left(x_{1},x_{2}\right)=\lim_{x_{2}\rightarrow-\infty}F\left(x_{1},x_{2}\right)=0
 \]
-
 
 \[
 \lim_{x_{1},x_{2}\rightarrow+\infty}F\left(x_{1},x_{2}\right)=1

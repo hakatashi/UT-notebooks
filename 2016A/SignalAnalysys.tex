@@ -1,4 +1,4 @@
-%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[oneside,english]{book}
 \usepackage[LGR,T1]{fontenc}
@@ -12,7 +12,6 @@
 \usepackage{textcomp}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{esint}
 
 \makeatletter
 
@@ -20,8 +19,8 @@
 \DeclareRobustCommand{\greektext}{%
   \fontencoding{LGR}\selectfont\def\encodingdefault{LGR}}
 \DeclareRobustCommand{\textgreek}[1]{\leavevmode{\greektext #1}}
-\DeclareFontEncoding{LGR}{}{}
-\DeclareTextSymbol{\~}{LGR}{126}
+\ProvideTextCommand{\~}{LGR}[1]{\char126#1}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage[dvipdfmx]{hyperref}
@@ -33,7 +32,6 @@
 \begin{document}
 
 \title{2016-A 信号解析基礎}
-
 
 \author{教員: 苗村健 入力: 高橋光輝}
 
@@ -50,16 +48,13 @@
 \global\long\def\div{\mathrm{div}}
 
 
-
 \section*{第1回}
-
 
 \paragraph{信号とは}
 
 物理量の変動の中に見いだされる情報
 
 学科のキーワードでもある「物理」と「情報」の橋渡しをするもの
-
 
 \paragraph{信号の種類}
 \begin{itemize}
@@ -104,7 +99,6 @@
 \end{itemize}
 が互いに干渉しあう、どちらも出発点となりうるような世界の感覚。
 
-
 \paragraph{今後の予定}
 \begin{itemize}
 \item 第一部(確定信号)
@@ -141,7 +135,6 @@
 
 持ち込み不可・追試なし
 
-
 \paragraph{中間レポート}
 
 12/5(月)
@@ -152,20 +145,17 @@ A4用紙1枚(表裏)
 
 イメージとしては、カンニングペーパー作り
 
-
 \paragraph{評価の方法}
 
 原則、期末試験のみ
 
 +α(体調不良などの場合の救済措置, 中間レポート/出席)
 
-
 \chapter{第1部 信号とスペクトル}
 
 目的: 信号波の周波数解析
 
 考え方: 信号を単純な波形の組み合わせで表現する
-
 
 \subsection{最初にやること}
 \begin{enumerate}
@@ -181,13 +171,11 @@ A4用紙1枚(表裏)
 
 \section{第1章 正弦波信号と線形システム}
 
-
 \subsection{正弦波とは?}
 
 \[
 x\left(t\right)=A\cos\left(2\pi ft+\theta\right)
 \]
-
 
 $A$: 振幅
 
@@ -201,23 +189,19 @@ $\theta$: 位相
 T=\frac{1}{f}\:\left(2\pi f\cdot T=2\pi\right)
 \]
 
-
 角周波数
 
 \[
 \omega=2\pi f
 \]
 
-
 正弦波は円運動の投影
 
 {[}図1{]}
 
-
 \subsection{複素正弦波}
 
 複素…2次元的な円運動の取り扱いに便利
-
 
 \paragraph{複素数とは}
 
@@ -225,13 +209,11 @@ T=\frac{1}{f}\:\left(2\pi f\cdot T=2\pi\right)
 z=x+\mathrm{i}y
 \]
 
-
 $\left(x,y\right)$の2次元空間を表している。
 
 \[
 \mathrm{i}=\sqrt{-1}=\mathrm{j}
 \]
-
 
 \textbf{虚数は$\mathrm{j}$で表記する!!!}
 
@@ -244,13 +226,11 @@ z & =x+\mathrm{j}y\\
 \end{align*}
 
 
-
 \paragraph{オイラーの定理}
 
 \[
 \mathrm{e}^{\mathrm{j}\varphi}=\cos\varphi+\mathrm{j}\sin\varphi
 \]
-
 
 \begin{align*}
 \d{}{\varphi}\mathrm{e}^{\mathrm{j}\varphi} & =-\sin\varphi+\mathrm{j}\cos\varphi\\
@@ -258,11 +238,9 @@ z & =x+\mathrm{j}y\\
  & =\mathrm{j}\mathrm{e}^{\mathrm{j}\varphi}
 \end{align*}
 
-
 \[
 \mathrm{e}^{\mathrm{j}\left(\varphi_{1}+\varphi_{2}\right)}=\cdots=\mathrm{e}^{\mathrm{j}\varphi_{1}}\cdot\mathrm{e}^{\mathrm{j}\varphi_{2}}
 \]
-
 
 \begin{align*}
 z & =x+\mathrm{j}y\\
@@ -275,39 +253,30 @@ x\left(t\right) & =A\cos\left(\omega t+\theta\right)+\mathrm{j}A\sin\left(\omega
  & =A\mathrm{e}^{\mathrm{j}\theta}\cdot\mathrm{e}^{\mathrm{j}\omega t}
 \end{align*}
 
-
 振幅と位相を時間変化する成分から分離して複素振幅として扱うことができるので、便利である。
-
 
 \paragraph{$\mathrm{e}^{\mathrm{j}\omega t}$に関するいろいろ}
 \begin{enumerate}
 \item 時計回りと反時計回り
-
 
 \begin{align*}
 \mathrm{e}^{\mathrm{j}\omega t} & =\cos\omega t+\mathrm{j}\sin\omega t\\
 \mathrm{e}^{-\mathrm{j}\omega t} & =\cos\omega t-\mathrm{j}\sin\omega t
 \end{align*}
 
-
-
 図2
-
 
 \begin{align*}
 \cos\omega t & =\frac{\mathrm{e}^{\mathrm{j}\omega t}+\mathrm{e}^{-\mathrm{j}\omega t}}{2}\\
 \mathrm{j}\sin\omega t & =\frac{\mathrm{e}^{\mathrm{j}\omega t}-\mathrm{e}^{-\mathrm{j}\omega t}}{2}
 \end{align*}
 
-
 \item 正規直交系
 
 
 \paragraph{定義}
 
-
 内積$\left\langle \varphi_{n}\left(t\right),\varphi_{m}\left(t\right)\right\rangle $に対して、下記を満たす$\left\{ \varphi_{n}\left(t\right)\right\} $を、正規直交系と呼ぶ。
-
 
 \[
 \left\langle \varphi_{n}\left(t\right),\varphi_{m}\left(t\right)\right\rangle =\begin{cases}
@@ -316,10 +285,7 @@ x\left(t\right) & =A\cos\left(\omega t+\theta\right)+\mathrm{j}A\sin\left(\omega
 \end{cases}
 \]
 
-
-
 複素正弦波は下記において正規直交系を成す。
-
 
 \[
 \varphi_{n}\left(t\right)=\mathrm{e}^{\mathrm{j}n\omega_{0}t}\left(\omega=n\omega_{0}\right)
@@ -332,16 +298,12 @@ T=\frac{2\pi}{\omega_{0}}
 \]
 
 
-
 \paragraph{証明}
-
 
 \begin{align*}
 \left\langle \varphi_{n}\left(t\right),\varphi_{m}\left(t\right)\right\rangle  & =\frac{\omega_{0}}{2\pi}\int_{-\frac{\pi}{\omega_{0}}}^{\frac{\pi}{\omega_{0}}}\mathrm{e}^{\mathrm{j}n\omega_{0}t}\cdot\overline{\mathrm{e}^{\mathrm{j}m\omega_{0}t}}\mathrm{d}t\\
  & =\frac{\omega_{0}}{2\pi}\int_{-\frac{\pi}{\omega_{0}}}^{\frac{\pi}{\omega_{0}}}\mathrm{e}^{\mathrm{j}\left(n-m\right)\omega_{0}t}\mathrm{d}t
 \end{align*}
-
-
 
 $n\neq m$のとき
 \begin{align*}
@@ -349,13 +311,10 @@ $n\neq m$のとき
  & =0
 \end{align*}
 
-
 \end{enumerate}
 \rule[0.5ex]{1\columnwidth}{1pt}
 
-
 \section*{第2回}
-
 
 \paragraph{複素正弦波}
 
@@ -364,22 +323,17 @@ x\left(t\right) & =A\e^{\j\left(\omega t+\theta\right)}\\
  & =A\e^{\j\theta}\cdot\e^{\j\omega t}
 \end{align*}
 
-
 $A\e^{\j\theta}$が複素振幅となり、$\e^{\j\omega t}$は正規直交系をなす。
 
-
 \subsection{線形システム}
-
 
 \paragraph{システムの図示}
 
 図信2-1
 
-
 \paragraph{(脱線)}
 
 図信2-2
-
 
 \paragraph{線形システムとは?}
 
@@ -398,9 +352,7 @@ x\left(t\right)=\sum_{k}a_{k}x_{k}\left(t\right)
 y\left(t\right)=\phi\left[x\left(t\right)\right]=\sum_{k}a_{k}\phi\left[x_{k}\left(t\right)\right]
 \]
 
-
 この講義では、線形システムで表される現象のみを扱う。世の中の極めて多くの現象がこれで扱うことができる。
-
 
 \paragraph{線形システムの例}
 
@@ -411,7 +363,6 @@ y\left(t\right) & =\phi\left[\sum a_{k}x_{k}\left(t\right)\right]\\
  & =\sum a_{k}\left[cx_{k}\left(t\right)\right]\\
  & =\sum a_{k}\phi\left[x_{k}\left(t\right)\right]
 \end{align*}
-
 
 例2) 微分 $y\left(t\right)=\d{}tx\left(t\right)$
 
@@ -427,11 +378,9 @@ y\left(t\right) & =\phi\left[\sum a_{k}x_{k}\left(t\right)\right]\\
 
 定係数連立微積分方程式で表されるすべての回路
 
-
 \paragraph{線形でないもの}
 
 図信2-5
-
 
 \paragraph{線形システムの扱い方}
 
@@ -439,11 +388,9 @@ y\left(t\right) & =\phi\left[\sum a_{k}x_{k}\left(t\right)\right]\\
 x\left(t\right)=\sum a_{k}x_{k}\left(t\right)\rightarrow y\left(t\right)=\sum a_{k}\phi\left[x_{k}\left(t\right)\right]
 \]
 
-
 これを基本波形$x_{k}\left(t\right)$の線形合成に対する出力(応答)は、それぞれの基本波形に対する応答$\phi\left[x_{k}\left(t\right)\right]$の線形合成になる。
 
 したがって、基本波形の応答さえわかっていれば、その合成に対する応答も分かる。
-
 
 \paragraph{それではどうするか?}
 \begin{enumerate}
@@ -454,13 +401,11 @@ x\left(t\right)=\sum a_{k}x_{k}\left(t\right)\rightarrow y\left(t\right)=\sum a_
 
 \subsection{線形システムの応答}
 
-
 \paragraph{1. 基本波形は何にするか?: $x_{k}\left(t\right)$を決める}
 
 →複素正弦波を採用
 
 メリット: 線形システムの場合、入出力の周波数に変化はなく、複素振幅のみ変化する。
-
 
 \paragraph{2. 基本波形の応答を計算する方法は?}
 
@@ -475,7 +420,6 @@ x\left(t\right)=\sum a_{k}x_{k}\left(t\right)\rightarrow y\left(t\right)=\sum a_
 となり、すべての周波数$\omega$に対して複素振幅の比を定義できる。
 
 この比を、周波数$\omega$や$f$における\textbf{伝達関数}と呼び、$H\left(f\right)$と表記する。(伝達関数でシステムの特性$\phi$を全て語れる)
-
 
 \paragraph{伝達関数(システムの特性)の例}
 
@@ -493,14 +437,11 @@ $\e^{\j\angle H\left(f\right)}$: $\theta_{2}-\theta_{1}$ 位相差
 
 図信2-6
 
-
 \paragraph{まとめ}
 
 図信2-7
 
-
 \section{第2章 フーリエ級数とフーリエ変換}
-
 
 \paragraph{フーリエ解析の基本定理}
 
@@ -511,14 +452,12 @@ $x\left(t\right)$が周期$T$を持つとき、$\omega_{0}$とおいて
 x\left(t\right)=\sum_{n=-\infty}^{\infty}\alpha_{n}\e^{\j n\omega_{0}t}
 \]
 
-
 $\e^{\j n\omega_{0}t}$という飛び飛びの周波数で考えているので級数展開可能。
 
 係数
 \[
 \alpha_{n}=\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}x\left(t\right)\e^{-\j n\omega_{0}t}\mathrm{d}t
 \]
-
 
 どこでもよいので1周期分を積分して$T$で割ればよい。
 
@@ -534,7 +473,6 @@ X\left(\omega\right)=\int_{-\infty}^{\infty}x\left(t\right)\e^{-\j\omega t}\math
 \]
 (フーリエ変換)
 
-
 \paragraph{Parsevalの等式}
 
 時間領域の電力=周波数領域の電力
@@ -542,7 +480,6 @@ X\left(\omega\right)=\int_{-\infty}^{\infty}x\left(t\right)\e^{-\j\omega t}\math
 \[
 \frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}\left|x\left(t\right)\right|^{2}\mathrm{d}t=\sum_{n=-\infty}^{\infty}\left|\alpha_{n}\right|^{2}
 \]
-
 
 証明
 
@@ -561,7 +498,6 @@ x\left(t\right)=\sum\alpha_{n}\varphi_{n}\left(t\right)\\
 \end{cases}\right)\\
  & =\sum_{n}\alpha_{n}\cdot\overline{\alpha_{n}}=\sum_{n}\left|\alpha_{n}\right|^{2}
 \end{align*}
-
 
 
 \section*{第3回}
@@ -591,16 +527,13 @@ x\left(t\right)=\sum_{n=-\infty}^{\infty}\alpha_{n}\e^{\j n\omega_{0}t}
 \]
 
 
-
 \paragraph{Parsevalの等式}
 
 \[
 \frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}\left|x\left(t\right)\right|^{2}\mathrm{d}t=\sum_{n=-\infty}^{\infty}\left|\alpha_{n}\right|^{2}
 \]
 
-
 時間領域と周波数領域でエネルギーが保存される。
-
 
 \paragraph{準備: 偶関数と奇関数}
 
@@ -610,18 +543,15 @@ x\left(t\right)=\sum_{n=-\infty}^{\infty}\alpha_{n}\e^{\j n\omega_{0}t}
 \[
 f_{e}\left(t\right)=\frac{f\left(t\right)+f\left(-t\right)}{2}\leftarrow\cos
 \]
-
 \item 奇関数 odd 
 \[
 f_{o}\left(t\right)=\frac{f\left(t\right)-f\left(-t\right)}{2}\leftarrow\sin
 \]
-
 \end{itemize}
 に分解できて、
 \[
 f\left(t\right)=f_{e}\left(t\right)+f_{o}\left(t\right)
 \]
-
 
 
 \paragraph{$x\left(t\right)$と$\alpha_{n}$の関係についてイメージをつかむ}
@@ -647,14 +577,12 @@ b_{-n} & =-b_{n}
 \alpha_{-n}=\overline{\alpha_{n}}
 \]
 
-
 ここで$\overline{\alpha_{n}}$は$\alpha_{n}$の複素共役である。
 
 $x\left(t\right)$が実数かつ偶関数のとき、
 \[
 b_{n}=0
 \]
-
 
 即ち、$\alpha_{n}$は「実数のみの偶関数」
 
@@ -665,14 +593,11 @@ $x\left(t\right)$が実数かつ奇関数のとき、
 a_{n}=0
 \]
 
-
 すなわち、$\alpha_{n}$は「純虚数で奇関数」
-
 
 \subsection{{[}2{]} 非周期波形のフーリエ変換}
 
 $x\left(t\right)$周期なし→周期∞と考える
-
 
 \paragraph{導出}
 
@@ -686,14 +611,12 @@ X\left(\omega\right) & =\lim_{T\rightarrow\infty}\alpha_{n}\cdot T\leftarrow\tex
  & =\int_{-\infty}^{\infty}x\left(t\right)\e^{-\j\omega t}\mathrm{d}t
 \end{align*}
 
-
 これがフーリエ変換である。
 
 一方、逆変換に関しては、
 \[
 x\left(t\right)=\sum_{n=-\infty}^{\infty}\alpha_{n}\e^{\j n\omega_{n}t}=\sum_{n=-\infty}^{\infty}\frac{X\left(n\omega_{0}\right)}{T}\e^{\j n\omega_{0}t}
 \]
-
 
 ここで、
 \[
@@ -704,13 +627,11 @@ x\left(t\right)=\sum_{n=-\infty}^{\infty}\alpha_{n}\e^{\j n\omega_{n}t}=\sum_{n=
 \frac{1}{T}=\frac{\Delta\omega}{2\pi}
 \]
 
-
 よって、
 \begin{align*}
 x\left(t\right) & =\frac{1}{2\pi}\sum_{n=-\infty}^{\infty}X\left(n\Delta\omega\right)\e^{\j n\Delta\omega t}\Delta\omega\\
  & \xrightarrow[T\rightarrow\infty,\Delta\omega\rightarrow0]{}\frac{1}{2\pi}\int_{-\infty}^{\infty}X\left(\omega\right)\e^{\j\omega t}\mathrm{d}\omega
 \end{align*}
-
 
 これがフーリエ逆変換である。
 
@@ -721,12 +642,10 @@ $x\left(t\right)$が非周期なら、
 X\left(\omega\right)=\int_{-\infty}^{\infty}x\left(t\right)\e^{-\j\omega t}\mathrm{d}t
 \]
 
-
 フーリエ逆変換
 \[
 x\left(t\right)=\frac{1}{2\pi}\int_{-\infty}^{\infty}X\left(\omega\right)\e^{-\j\omega t}\mathrm{d}\omega
 \]
-
 
 
 \paragraph{他の書き方}
@@ -746,9 +665,7 @@ X\left(f\right) & =\int_{-\infty}^{\infty}x\left(t\right)\e^{-\j2\pi ft}\mathrm{
 x\left(t\right) & =\int_{-\infty}^{\infty}X\left(f\right)\e^{\j2\pi ft}\mathrm{d}f
 \end{align*}
 
-
 $f$で書くか$\omega$で書くかは自由度があるけれど、正しい組み合わせで利用することが大事。
-
 
 \paragraph{(第3の表記法)}
 
@@ -759,7 +676,6 @@ X\left(\omega\right) & =\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}x\left(t\rig
 x\left(t\right) & =\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}X\left(\omega\right)\e^{\j\omega t}\mathrm{d}\omega
 \end{align*}
 
-
 フーリエ変換でも、以下が成立。
 \begin{itemize}
 \item Parsevalの等式(エネルギー保存)
@@ -768,9 +684,7 @@ x\left(t\right) & =\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}X\left(\omega\rig
 
 \section{第3章 信号波のフーリエ解析}
 
-
 \subsection{非周期波形のフーリエ変換}
-
 
 \paragraph{例1}
 
@@ -785,7 +699,6 @@ X\left(f\right) & =\int_{-\infty}^{\infty}x\left(t\right)\e^{-\j2\pi ft}\mathrm{
  & =E\frac{\sin\left(2\pi f\cdot\frac{\tau}{2}\right)}{\pi f}\\
  & =\underbrace{E\cdot\tau}_{\text{方形波の面積}}\underbrace{\frac{\sin\left(\pi f\tau\right)}{\pi f\tau}}_{\frac{\sin x}{x}\text{の形になる}}
 \end{align*}
-
 
 
 \paragraph{$\frac{\sin x}{x}$を描く}
@@ -806,9 +719,7 @@ sinc関数・標本化関数
 X\left(f\right)=E\tau\frac{\sin\left(\pi\tau f\right)}{\pi\tau f}
 \]
 
-
 図信3-8
-
 
 \paragraph{例2: インパルス関数のフーリエ変換}
 
@@ -823,7 +734,6 @@ $E\cdot\tau=1$のままで、$\tau\rightarrow0$
 X\left(f\right)=\lim_{\tau\rightarrow0}\frac{\sin\left(\pi\tau f\right)}{\pi\tau f}=1
 \]
 
-
 図信3-10
 
 逆に
@@ -833,7 +743,6 @@ X\left(f\right)=\lim_{\tau\rightarrow0}\frac{\sin\left(\pi\tau f\right)}{\pi\tau
 直流のフーリエ変換は周波数0のところのインパルス
 
 図信3-12
-
 
 \paragraph{例3}
 

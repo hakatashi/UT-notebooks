@@ -1,4 +1,4 @@
-%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[oneside,english]{book}
 \usepackage[T1]{fontenc}
@@ -12,7 +12,6 @@
 \usepackage{textcomp}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{esint}
 \PassOptionsToPackage{normalem}{ulem}
 \usepackage{ulem}
 
@@ -27,7 +26,6 @@
 \begin{document}
 
 \title{2016-A 電子基礎物理}
-
 
 \author{教員: 入力: 高橋光輝}
 
@@ -44,9 +42,7 @@
 \global\long\def\div{\mathrm{div}}
 
 
-
 \section*{第1回}
-
 
 \paragraph{講義のウェブサイト}
 
@@ -59,7 +55,6 @@ http://www.ee.t.u-tokyo.ac.jp/\textasciitilde{}sugiyama/lecture/phys/
 科目の総合成績は授業数を加重した2人の担当者の平均点で計算される。
 
 レポート・演習問題は本人が提出する必要はない。
-
 
 \paragraph{アインシュタインの光量子仮説}
 
@@ -76,7 +71,6 @@ E=\frac{hc}{\lambda}
 E\left(\text{eV}\right)=\frac{1240}{\lambda}
 \]
 
-
 $h$: プランク定数
 
 $\nu$:光の振動数
@@ -85,13 +79,11 @@ $c$: 光速
 
 $\lambda$: 光の波長
 
-
 \paragraph{c.f. 古典力学: 光は波である}
 
 振幅$A=A_{0}\cos\left(kx-\omega t\right)$
 
 波のエネルギー$I\propto A_{0}^{2}$
-
 
 \section*{第2回}
 
@@ -99,22 +91,18 @@ $\lambda$: 光の波長
 E=h\nu=h\frac{c}{\lambda}
 \]
 
-
 \[
 \frac{hc}{\lambda}=E_{2}-E_{1}
 \]
-
 
 光子(光を構成する粒子)の
 \begin{itemize}
 \item 質量→ゼロ
 \item 運動量$p$→$E=cp$を満たす
 
-
 \[
 \frac{hc}{\lambda}=cp\Rightarrow p=\frac{h}{\lambda}
 \]
-
 
 \end{itemize}
 単位面積、単位時間あたり、運動量$p\left[\mathrm{kg\cdot m\cdot s^{-2}}\right]$の粒子が$N$個入射しているとする。
@@ -133,30 +121,25 @@ $1\mathrm{kWm^{-2}}$の強度の光が入射するとき、光子の運動量に
 \frac{\left(\mathrm{2eV}\right)\left(\mathrm{1.6\times10^{-19}JeV^{-1}}\right)}{\left(\mathrm{3\times10^{8}ms^{-1}}\right)}\doteqdot\mathrm{1\times10^{-27}kgms^{-1}}
 \end{equation}
 
-
 $\mathrm{1m^{2},1s}$あたりの光子数は
 \begin{equation}
 \frac{\mathrm{1\times10^{3}Js^{-1}m^{-2}}}{\left(\mathrm{2eV}\right)\left(\mathrm{1.6\times10^{-19}JeV^{-1}}\right)}\doteqdot\mathrm{3\times10^{21}m^{-2}s^{-1}}
 \end{equation}
-
 
 ∴光子の圧力
 \[
 \left(1\right)\times\left(2\right)\doteqdot\mathrm{3\times10^{-6}kgm^{-1}s^{-2}\left(=Pa\right)}
 \]
 
-
 参考: 1気圧=$\mathrm{1\times10^{5}Pa}$
 
 $\mathrm{1kWm^{-2}}$の620nmの光が与える圧力→大気圧の$3\times10^{-11}$倍
-
 
 \paragraph{物質波(ド・ブロイ)}
 
 質量$m$
 
 運動量$p=mv=\frac{h}{\lambda}$
-
 
 \paragraph{ボーアの電子模型}
 
@@ -184,17 +167,14 @@ E=\frac{1}{2}mv^{2}=\mathrm{1eV}
 \therefore v=\sqrt{\frac{\mathrm{2eV}}{m}}
 \]
 
-
 \[
 v=\sqrt{\frac{\mathrm{2eV}}{m}}\Rightarrow\lambda=\frac{h}{\sqrt{2m\mathrm{eV}}}\Rightarrow2m\mathrm{eV}\lambda^{2}=\frac{h^{2}}{V}
 \]
-
 
 \begin{align*}
 V & =\frac{h^{2}}{2m\mathrm{eV}\lambda^{2}}=\frac{\left(\mathrm{6.6\times10^{-34}Js}\right)\left(\mathrm{6.6\times10^{-34}Js}\right)}{\left(2\right)\left(\mathrm{1\times10^{-30}kg}\right)\left(\mathrm{1.6\times10^{-19}C}\right)\left(\mathrm{1\times10^{-20}m^{2}}\right)}\\
  & \sim\mathrm{130JC^{-1}\left(=V\right)}
 \end{align*}
-
 
 
 \paragraph{Schrödinger方程式}
@@ -205,11 +185,9 @@ $\Psi$: 波動関数 粒子の運動に関する情報をすべて含む複素�
 \i\hbar\pd{\Psi}t=\left(-\frac{\hbar^{2}}{2m}\pdd{}x+V\right)\Psi
 \]
 
-
 $\hbar$: プランク定数 $\hbar=\frac{h}{2\pi}$
 
 $V$: ポテンシャル
-
 
 \paragraph{もとになる考え方}
 
@@ -222,7 +200,6 @@ $\Psi$は波の形をとる。
 A=\mathrm{Re}\left[\underbrace{A_{c}\e^{\i\left(kx-\omega t\right)}}_{\text{波動関数の基本形?}}\right]
 \]
 
-
 $k$: 波数 $k=\frac{2\pi}{\lambda}$
 
 $\omega$: 角振動数 $\omega=\frac{2\pi}{T}$
@@ -231,11 +208,9 @@ $\omega$: 角振動数 $\omega=\frac{2\pi}{T}$
 E=h\nu=\hbar\omega\left(\text{光量子仮説}\right)\Leftrightarrow\i h\pd{\Psi}t=\hbar\omega\Psi
 \]
 
-
 \[
 p=\frac{h}{\lambda}=\hbar k\left(\text{物質波も}\right)\Leftrightarrow-\i h\pd{\Psi}{\chi}=\hbar k\Psi
 \]
-
 
 演算子→物理量を導く数学操作と考えると
 
@@ -250,12 +225,10 @@ p=\frac{h}{\lambda}=\hbar k\left(\text{物質波も}\right)\Leftrightarrow-\i h\
 \frac{\hat{p}^{2}}{2m}+V=-\frac{\hbar^{2}}{2m}\pdd{}{\chi}+V
 \]
 
-
 →エネルギーに対応する2通りの演算子を対応させて、
 \[
 \left(-\frac{\hbar^{2}}{2m}\pdd{}{\chi}+V\right)\Psi=\i\hbar\pd{}t\Psi
 \]
-
 
 
 \section*{第3回}
@@ -266,12 +239,10 @@ p=\frac{h}{\lambda}=\hbar k\left(\text{物質波も}\right)\Leftrightarrow-\i h\
 Af=g
 \]
 
-
 内積:
 \[
 \left(f,g\right)=\left\langle f|g\right\rangle =\int_{\text{all space}}f^{*}g\mathrm{d}\vec{r}
 \]
-
 
 ※$f^{*}$: 複素共役 $\i\rightarrow-\i$
 
@@ -280,7 +251,6 @@ Af=g
 \[
 \left(Af,g\right)=\left(f,Ag\right)
 \]
-
 
 
 \paragraph{定理}
@@ -292,7 +262,6 @@ Af=af
 \]
 
 
-
 \paragraph{証明}
 
 \begin{align*}
@@ -301,9 +270,7 @@ Af=af
 \left(f,Af\right) & =\left(Af,f\right)\rightarrow a\left|f\right|^{2}=a^{*}\left|f\right|^{2}
 \end{align*}
 
-
 $a^{*}=a$なので$a$は実数。ただし$\left|f\right|^{2}=\left(f,f\right)$
-
 
 \paragraph{定理}
 
@@ -313,12 +280,10 @@ $a^{*}=a$なので$a$は実数。ただし$\left|f\right|^{2}=\left(f,f\right)$
 \left(f_{m},f_{n}\right)=\delta_{m,n}
 \]
 
-
 ただし$\delta=\begin{cases}
 1 & \left(m=n\right)\\
 0 & \left(m\neq n\right)
 \end{cases}$(クロネッカーのデルタ)
-
 
 \paragraph{証明}
 
@@ -326,21 +291,17 @@ $a^{*}=a$なので$a$は実数。ただし$\left|f\right|^{2}=\left(f,f\right)$
 Af_{m}=a_{m}f_{m}
 \]
 
-
 \[
 Af_{n}=a_{n}f_{n}\left(m\neq n\right)
 \]
-
 
 \begin{equation}
 \left(f_{m},Af_{n}\right)=a_{n}\left(f_{m},f_{n}\right)
 \end{equation}
 
-
 \begin{equation}
 \left(Af_{m},f_{n}\right)=a_{m}^{*}\left(f_{m},f_{n}\right)=a_{m}\left(f_{m},f_{n}\right)
 \end{equation}
-
 
 $A$はエルミート演算子なので、$\left(f_{m},Af_{n}\right)=\left(Af_{m},f_{n}\right)$
 
@@ -349,9 +310,7 @@ $A$はエルミート演算子なので、$\left(f_{m},Af_{n}\right)=\left(Af_{m
 \left(a_{m}-a_{n}\right)\left(f_{m},f_{n}\right)=0
 \]
 
-
 $a_{m}\neq a_{n}$なので、$\left(f_{m},f_{n}\right)=0$
-
 
 \paragraph{交換関係}
 
@@ -372,7 +331,6 @@ Bf=bf
 \]
 を同時に満たす固有関数$f$は存在しない。
 
-
 \paragraph{証明}
 
 エルミート演算子$A,B$が交換不可能かつ、$Af=af,Bf=bf$を同時に満たす固有関数$f$は存在すると仮定する。
@@ -381,16 +339,13 @@ Bf=bf
 Af=af
 \]
 
-
 \[
 B\left(Af\right)=a\left(Bf\right)=abf
 \]
 
-
 \[
 A\left(Bf\right)=b\left(Af\right)=baf
 \]
-
 
 $a,b$は実数なので$ab=ba$
 
@@ -398,14 +353,11 @@ $a,b$は実数なので$ab=ba$
 BAf=ABf
 \]
 
-
 \[
 \left(BA-AB\right)f=0
 \]
 
-
 これは$A,B$が交換不可能($AB-BA\neq0$)なことに矛盾
-
 
 \paragraph{Schrödinger方程式}
 
@@ -415,11 +367,9 @@ BAf=ABf
 \i\hbar\pd{\Psi}t=H\Psi
 \]
 
-
 $\Psi$: 波動関数
 
 $H$: ハミルトニアン
-
 
 \paragraph{定常状態の解}
 
@@ -433,13 +383,11 @@ E & =\hbar\omega
 H\Psi_{0}\left(x,y,z\right)=E\Psi_{0}\left(x,y,z\right)
 \]
 
-
 (固有値問題)
 
 \[
 E=\hbar\omega
 \]
-
 
 (固有値)は$H$で記述されるエネルギーに対応
 
@@ -449,28 +397,23 @@ E=\hbar\omega
 \i\hbar\pd{\Psi}t=\hat{H}\Psi\:\hat{H}=-\frac{\hbar^{2}}{2m}\pdd{}x+V
 \]
 
-
 $\Psi=\Psi_{0}\left(x\right)\e^{-\i\omega t}$を代入
 
 \[
 \hbar\omega\Psi_{0}\left(x\right)\e^{-\i\omega t}=\left\{ \hat{H}\Psi_{0}\left(x\right)\right\} \e^{-\i\omega t}
 \]
 
-
 $\hbar\omega=\varepsilon$: エネルギー とすると、
 \[
 \hat{H}\Psi_{0}\left(x\right)=\varepsilon\Psi_{0}\left(x\right)
 \]
-
 
 これを定常状態のSchrödinger方程式という。この式は時間に無依存であり、解くと$\Psi_{0}\left(x\right)$が求まる。これに時間依存性を加えると、
 \[
 \Psi\left(x,t\right)=\Psi_{0}\left(x\right)\e^{-\i\omega t}
 \]
 
-
 ただし、$\varepsilon=\hbar\omega$。
-
 
 \paragraph{量子力学の基本仮定}
 
@@ -483,12 +426,10 @@ $\hbar\omega=\varepsilon$: エネルギー とすると、
 P\left(x,y,z\right)\mathrm{d}x\mathrm{d}y\mathrm{d}z=\left|\Psi\left(x,y,z\right)\right|^{2}\mathrm{d}x\mathrm{d}y\mathrm{d}z=\Psi^{*}\left(x,y,z\right)\Psi\left(x,y,z\right)\mathrm{d}x\mathrm{d}y\mathrm{d}z
 \]
 
-
 ただし、
 \[
 \iiint_{-\infty}^{\infty}\left|\Psi\right|^{2}\mathrm{d}x\mathrm{d}y\mathrm{d}z=1
 \]
-
 
 (2)
 
@@ -498,7 +439,6 @@ P\left(x,y,z\right)\mathrm{d}x\mathrm{d}y\mathrm{d}z=\left|\Psi\left(x,y,z\right
 \Psi\left(x,y,z,t\right)=\sum_{n}c_{n}\phi_{n}\left(x,y,z\right)\e^{-\i\omega_{n}t}
 \]
 
-
 $c_{n}$: 係数(時間に無依存の複素数)
 
 $\phi_{n}$は、定常状態のSchrödinger方程式を満たす。
@@ -507,18 +447,15 @@ $\phi_{n}$は、定常状態のSchrödinger方程式を満たす。
 H\phi_{n}\left(x,y,z\right)=\epsilon_{n}\phi_{n}\left(x,y,z\right)
 \]
 
-
 \[
 \omega_{n}=\frac{\epsilon_{n}}{\hbar}
 \]
-
 
 異なるエネルギー固有値に属する波動関数は直交する。
 
 \[
 \iiint_{-\infty}^{\infty}\phi_{n}^{*}\phi_{m}\mathrm{d}x\mathrm{d}y\mathrm{d}z=\delta_{nm}
 \]
-
 
 (3)
 
@@ -532,7 +469,6 @@ H\phi_{n}\left(x,y,z\right)=\epsilon_{n}\phi_{n}\left(x,y,z\right)
 \[
 \hat{E}\Psi\left(x,t\right)=\i\hbar\pd{}t\Psi=\hbar\omega\Psi=\varepsilon\Psi
 \]
-
 
 古典力学では、運動量$p=mv$、運動エネルギー$E=\frac{1}{2}mv^{2}=\frac{p}{2m}$である。
 
@@ -553,7 +489,6 @@ H\phi_{n}\left(x,y,z\right)=\epsilon_{n}\phi_{n}\left(x,y,z\right)
 A\phi_{n}=a_{n}\phi_{n}
 \]
 
-
 →波動関数$\phi_{n}$にエルミート演算子$A$を左右させて得られる固有値$a_{0}$
 
 固有値が1つなら観測される物理量は必ず一定。
@@ -567,13 +502,11 @@ A\phi_{n}=a_{n}\phi_{n}
 \left\langle a\right\rangle =\iiint_{-\infty}^{\infty}\Psi^{*}A\Psi\mathrm{d}x\mathrm{d}y\mathrm{d}z=\sum_{n}\left|c_{n}\right|^{2}a_{n}
 \]
 
-
 ・ある瞬間に固有状態$n$が観測される確率
 
 \[
 \left|c_{n}\right|^{2}
 \]
-
 
 
 \paragraph{ポテンシャル一定の空間 (1次元)}
@@ -586,23 +519,19 @@ Schrödinger方程式(定常)
 \hat{H}\varphi=\varepsilon\varphi
 \]
 
-
 \[
 \left(-\frac{\hbar^{2}}{2m}\pdd{}x+U_{0}\right)\varphi=\varepsilon\varphi
 \]
 
-
 \[
 -\frac{\hbar^{2}}{2m}\pdd{}x\varphi=\left(\varepsilon-U_{0}\right)\varphi
 \]
-
 
 $\varepsilon-U_{0}$とは$\varepsilon$を$U_{0}$を基準として表しただけ。$U_{0}=0$でも同じこと。
 
 \begin{equation}
 \pdd{}x\varphi=-\frac{2m\varepsilon}{\hbar^{2}}\varphi
 \end{equation}
-
 
 \[
 \varphi=A\e^{\i kx}
@@ -637,7 +566,6 @@ A^{2}L=1
 \therefore A=\frac{1}{\sqrt{L}}
 \]
 
-
 境界条件
 \[
 \varphi\left(0\right)=\varphi\left(L\right)
@@ -650,7 +578,6 @@ A^{2}L=1
 \varphi=\frac{1}{\sqrt{L}}\e^{\i kx}
 \]
 
-
 波長$\lambda$について
 \[
 n\lambda=L
@@ -662,12 +589,10 @@ n\frac{2\pi}{k}=L
 \therefore k=\frac{2\pi}{L}n
 \]
 
-
 まとめると、ポテンシャル一定の空間中で\uline{粒子1個}に対する波動関数
 \[
 \varphi_{n}=\frac{1}{\sqrt{L}}\e^{\i k_{n}x}
 \]
-
 
 ただし(6)より$k_{n}=\frac{2\pi}{L}n,\varepsilon_{n}=\frac{\hbar^{2}k_{n}^{2}}{2m}$、$n$は整数。
 
@@ -676,18 +601,15 @@ n\frac{2\pi}{k}=L
 \Psi_{n}=\varphi_{n}\e^{-\i\omega t}=\frac{1}{\sqrt{L}}\e^{\i\left(k_{n}x-\omega_{n}t\right)}
 \]
 
-
 ただし、
 \[
 \hbar\omega_{n}=\varepsilon_{n}=\frac{\hbar k_{n}^{2}}{2m}
 \]
 
-
 粒子の運動量
 \[
 \hat{p}\Psi_{n}=-\i\hbar\pd{}t\Psi_{n}=\hbar k_{n}\Psi_{n}
 \]
-
 
 より、$\hbar k_{n}$が状態$n$に対応する運動量。
 
@@ -704,11 +626,9 @@ $\Psi_{n}$単独では粒子の位置を議論できない。
 \Psi=\sum_{n}C_{n}\Psi_{n}=\sum_{n}C_{n}\e^{\i\left(k_{n}x-\omega_{n}t\right)}
 \]
 
-
 $C_{n}$: 複素数(時間に無依存)
 
 図電物3-2
-
 
 \paragraph{波束 (wave packet)}
 
@@ -718,13 +638,11 @@ $C_{n}$: 複素数(時間に無依存)
 \Psi=\sum_{n}C_{n}\e^{\i\left(k_{n}x-\omega_{n}t\right)}
 \]
 
-
 $\e^{\i\left(k_{n}x-\omega_{n}t\right)}$は正弦波の動きを表す。この式は時間とともにどう運動するか?
 
 \[
 \e^{\i\left(kx-\omega t\right)}=\e^{\i k\left(x-\frac{\omega}{k}t\right)}
 \]
-
 
 $\frac{\omega}{k}t$: $x$軸上の平行移動
 
@@ -738,13 +656,11 @@ $\frac{\omega}{k}t$: $x$軸上の平行移動
 k_{n}=k_{0}+\Delta k,\omega_{n}=\omega_{0}+\Delta\omega=\omega_{0}+\left.\pd{\omega}k\right|_{k_{0}}\Delta k
 \]
 
-
 \begin{align*}
 \Psi & =\sum_{\Delta k}C_{\Delta k}\e^{\i\left\{ \left(k_{0}+\Delta k\right)x-\left(\omega_{0}+\pd{\omega}k\Delta k\right)t\right\} }\\
  & =\sum_{\Delta k}C_{\Delta k}\e^{\i\left(k_{0}x-\omega_{0}t\right)}\e^{\i\Delta k\left(x-\pd{\omega}kt\right)}\\
  & =\underbrace{\e^{\i k_{0}\left(x-\frac{\omega_{0}}{k_{0}}t\right)}}_{\text{細かい振動}}\sum_{\Delta k}C_{\Delta k}\underbrace{\e^{\i\Delta k\left(x-\pd{\omega}kt\right)}}_{\text{緩やかな振動}}
 \end{align*}
-
 
 ただし、$\Delta k\ll k_{0}$。
 \end{document}

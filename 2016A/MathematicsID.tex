@@ -1,4 +1,4 @@
-%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[oneside,english]{book}
 \usepackage[T1]{fontenc}
@@ -12,7 +12,6 @@
 \usepackage{textcomp}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{esint}
 
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
@@ -25,7 +24,6 @@
 \begin{document}
 
 \title{2016-A 数学ID}
-
 
 \author{教員: 入力: 高橋光輝}
 
@@ -43,9 +41,7 @@
 \global\long\def\diag{\mathrm{diag}}
 
 
-
 \section*{第1回}
-
 
 \paragraph{この講義の内容}
 \begin{enumerate}
@@ -71,7 +67,6 @@
 ジョージ・アルフケン
 
 ハンス・ウェーバー
-
 
 \paragraph{授業の流れ}
 \begin{enumerate}
@@ -114,9 +109,7 @@
 
 期末試験+何回かのレポート
 
-
 \chapter{第一章 常微分方程式}
-
 
 \paragraph{変数分離系}
 
@@ -133,7 +126,6 @@
 \end{align*}
 
 
-
 \paragraph{放射性物質の自然崩壊}
 
 $u\left(t\right)$: 放射性物質の量
@@ -148,7 +140,6 @@ $\gamma$: 消滅率
 \d ut=-\gamma u\Rightarrow u\left(t\right)=u_{0}\mathrm{e}^{-\gamma t}
 \]
 
-
 半減期$\tau$は
 \[
 u\left(t\right)=u_{0}\mathrm{e}^{-\gamma t}=\frac{1}{2}u_{0}
@@ -159,7 +150,6 @@ u\left(t\right)=u_{0}\mathrm{e}^{-\gamma t}=\frac{1}{2}u_{0}
 \[
 \tau-\frac{\ln2}{\gamma}
 \]
-
 
 
 \paragraph{Malthus模型}
@@ -174,7 +164,6 @@ $\alpha$: 増殖率
 \end{align*}
 
 
-
 \paragraph{logistic方程式}
 
 増殖率$\alpha$を$\alpha-\beta u$としたもの。
@@ -183,19 +172,16 @@ $\alpha$: 増殖率
 \d ut=\left(\alpha-\beta u\right)u=\alpha u-\beta u^{2}
 \]
 
-
 変数分離を用いて解く。
 
 \[
 \int_{u_{0}}^{u}\frac{\mathrm{d}u'}{u'\left(\alpha-\beta u'\right)}=\int_{t_{0}}^{t}\mathrm{d}t'=t-t_{0}
 \]
 
-
 部分分数分解を用いて、
 \[
 \frac{1}{u\left(\alpha-\beta u\right)}=\frac{A}{u}+\frac{B}{\alpha-\beta u}=\frac{A\alpha-\left(B-\beta A\right)u}{u\left(\alpha-\beta u\right)}
 \]
-
 
 $A=\frac{1}{\alpha},B=\frac{\beta}{\alpha}$より、
 \begin{align*}
@@ -212,7 +198,6 @@ u\left(t\right)=\frac{\alpha u_{0}\mathrm{e}^{u\left(t-t_{0}\right)}}{\alpha-\be
 \]
 
 
-
 \paragraph{Lotka-Volterra方程式}
 
 被食者と捕食者がいる生態系を考える。
@@ -225,7 +210,6 @@ u\left(t\right)=\frac{\alpha u_{0}\mathrm{e}^{u\left(t-t_{0}\right)}}{\alpha-\be
 \d xt & =x\left(\alpha-\beta y\right)\\
 \d yt & =-y\left(\gamma-\delta x\right)
 \end{align*}
-
 
 $\alpha,\beta,\gamma,\delta$は正の実数
 
@@ -252,7 +236,6 @@ y=\frac{\alpha}{\beta}
 \end{cases}
 \]
 
-
 $X=x-\frac{\gamma}{\delta},Y=y-\frac{\alpha}{\beta}$($\left|X\right|\ll1,\left|Y\right|\ll1$)とし、
 \begin{align*}
 \d Xt & =\left(X+\frac{\gamma}{\delta}\right)\left(\alpha-\beta\left(Y+\frac{\alpha}{\beta}\right)\right)\simeq-\frac{\beta\gamma}{\delta}Y\\
@@ -266,9 +249,7 @@ X & =c\cos\left(\sqrt{\alpha\gamma}t+\theta_{0}\right)\\
 Y & =-\frac{\delta}{\beta\gamma}X'=\sqrt{\frac{\alpha}{\gamma}}\frac{\delta}{\beta}c\sin\left(\sqrt{\alpha\gamma}t+\theta_{0}\right)
 \end{align*}
 
-
 このように一般に解けない方程式も、平衡点の周りの近似解は求めることができる。
-
 
 \paragraph{Liourille方程式}
 
@@ -277,7 +258,6 @@ Y & =-\frac{\delta}{\beta\gamma}X'=\sqrt{\frac{\alpha}{\gamma}}\frac{\delta}{\be
 \Rightarrow & \frac{y''}{y'}+P\left(x\right)+Q\left(y\right)y'=0
 \end{align*}
 
-
 \begin{align*}
  & \d{}x\left[\log y'+\int^{x}P\left(x'\right)\mathrm{d}x'+\int^{y}Q\left(y\right)\mathrm{d}y\right]=0\\
 \Rightarrow & \log y'+\int^{x}P\left(x\right)\mathrm{d}x+\int^{y}Q\left(y\right)\mathrm{d}y=C\\
@@ -285,19 +265,16 @@ Y & =-\frac{\delta}{\beta\gamma}X'=\sqrt{\frac{\alpha}{\gamma}}\frac{\delta}{\be
 \Rightarrow & \int^{y}\exp\left[\int^{y}Q\left(y\right)\mathrm{d}y\right]\mathrm{d}y=C_{1}\int^{x}\exp\left[-\int^{x}P\left(x\right)\mathrm{d}x\right]\mathrm{d}x+C_{2}
 \end{align*}
 
-
 例1
 
 \[
 y''+2xy'+2y\left(y'\right)^{2}=0
 \]
 
-
 $P\left(x\right)=2x,Q\left(y\right)=2y$とし、
 \[
 \int^{y}\mathrm{e}^{y}\mathrm{d}y=C_{1}\int^{x}\mathrm{e}^{-x^{2}}\mathrm{d}x+C_{2}
 \]
-
 
 例2
 
@@ -305,22 +282,18 @@ $P\left(x\right)=2x,Q\left(y\right)=2y$とし、
 \d yx=\sin x\tan y\Rightarrow\sin\mathrm{d}x=\frac{\cos y}{\sin y}\mathrm{d}y=\frac{\mathrm{d}\sin y}{\sin y}=\mathrm{d}\log\left|\sin y\right|
 \]
 
-
 \[
 \cos x=-\log\left|\sin y\right|+C\Rightarrow\sin y=C\mathrm{e}^{-\cos x}\Rightarrow y=\arcsin\left[C\mathrm{e}^{-\cos x}\right]
 \]
 
 
-
 \section*{第2回}
-
 
 \paragraph{同次型微分方程式}
 
 \[
 \d yx=f\left(\frac{y}{x}\right)
 \]
-
 
 変換$x\mapsto\lambda x,y\mapsto\lambda y$に対して不変
 
@@ -333,21 +306,17 @@ $u=\frac{y}{x}$とおく。
 xu'+u=f\left(u\right)\Rightarrow\d ux=\frac{f\left(u\right)-u}{x}
 \]
 
-
 \[
 \int^{u}\frac{\mathrm{d}u}{f\left(u\right)-u}=\int^{u}\frac{\mathrm{d}x}{x}=\log\left|x\right|+c
 \]
-
 
 \[
 x\e^{c}=\exp\left[\int^{u}\frac{\mathrm{d}u}{f\left(u\right)-u}\right]\equiv G\left(u\right)
 \]
 
-
 \[
 G\left(\frac{y}{x}\right)=Cx\:\left(C=\e^{c}\right)
 \]
-
 
 
 \paragraph{例}
@@ -356,18 +325,15 @@ G\left(\frac{y}{x}\right)=Cx\:\left(C=\e^{c}\right)
 \d yx=\e^{\frac{y}{x}}+\frac{y}{x}
 \]
 
-
 $y=xu$とおく。
 
 \[
 xu'+u=\e^{u}+u\Rightarrow\e^{-u}\mathrm{d}u=\frac{\mathrm{d}x}{x}
 \]
 
-
 \[
 -\e^{-u}=\log\left|x\right|-C
 \]
-
 
 \[
 \e^{-\frac{y}{x}}=-\log\left|x\right|+C
@@ -376,11 +342,9 @@ xu'+u=\e^{u}+u\Rightarrow\e^{-u}\mathrm{d}u=\frac{\mathrm{d}x}{x}
 -\frac{y}{x}=\log\left|-\log\left|x+C\right|\right|
 \]
 
-
 \[
 y=-x\log\left|-\log\left|x\right|+C\right|
 \]
-
 
 
 \paragraph{例}
@@ -388,7 +352,6 @@ y=-x\log\left|-\log\left|x\right|+C\right|
 \[
 y'=\frac{x-2y+3}{2x+y-4}
 \]
-
 
 連立方程式
 
@@ -399,20 +362,17 @@ y'=\frac{x-2y+3}{2x+y-4}
 \end{cases}\rightarrow\alpha=1,\beta=2
 \]
 
-
 $x=\xi+1,y=\eta+2$とおく。
 
 \[
 \d yx=\d{\eta}{\xi},\frac{x-2y+3}{2x+y-4}=\frac{\xi-2\eta}{2\xi+\eta}=\frac{1-2\frac{\eta}{\xi}}{2+\frac{\eta}{\xi}}
 \]
 
-
 $\eta=\xi z$とおく。
 
 \[
 \xi\d z{\xi}+z=\frac{1-2z}{2+z}\Rightarrow\frac{z+4}{z^{2}+4z-1}\mathrm{d}z=-\frac{2}{\xi}\mathrm{d}\xi
 \]
-
 
 \[
 \log\left|z^{2}+4z-1\right|=-2\log\left|\xi\right|+c
@@ -421,11 +381,9 @@ $\eta=\xi z$とおく。
 \Rightarrow z^{2}+4z-1=\e^{c}\xi^{-2}
 \]
 
-
 \[
 \left(y-2\right)^{2}+4\left(y-2\right)\left(x-1\right)-\left(x-1\right)^{2}=\e^{c}
 \]
-
 
 
 \paragraph{例}
@@ -436,49 +394,40 @@ $P\left(x,y\right)$と$Q\left(x,y\right)$が$x,y$について$k$次。
 \d yx=\frac{P\left(x,y\right)}{Q\left(x,y\right)}
 \]
 
-
 $k=1$のとき
 \[
 \d yx=\frac{p_{0}x+p_{1}y}{q_{0}x+q_{1}y}
 \]
-
 
 $k=2$のとき
 \[
 \d yx=\frac{p_{0}x^{2}+p_{1}xy+p_{2}y^{2}}{q_{0}x^{2}+q_{1}xy+q_{2}y^{2}}
 \]
 
-
 $u=\frac{y}{x}$とおくと、
 \[
 u+xu'=\frac{p_{0}+p_{1}u}{q_{0}+q_{1}u}
 \]
 
-
 \[
 \Rightarrow x\d ux=\frac{p_{0}+p_{1}u}{q_{0}+q_{1}u}-u=\frac{p_{0}+\left(p_{1}-q_{0}\right)u-q_{1}u^{2}}{q_{2}+q_{1}u}
 \]
-
 
 \[
 \log\left|x\right|=\int^{u}\frac{q_{2}+q_{1}u}{p_{0}+\left(p_{1}-q_{0}\right)u-q_{1}u^{2}}\mathrm{d}u\equiv G\left(u\right)
 \]
 
-
 \[
 x=\exp\left[G\left(\frac{y}{x}\right)\right]
 \]
 
-
 $k=2$の場合も同様。以下一般で成り立つ。
-
 
 \paragraph{例}
 
 \[
 \d yx=f\left(\frac{ax+by+p}{cx+dy+q}\right)
 \]
-
 
 \[
 \begin{cases}
@@ -490,43 +439,32 @@ cx+dy+q=0
 \begin{enumerate}
 \item $ad-bc\neq0$のとき $\left(x,y\right)=\left(\alpha,\beta\right)$
 
-
 $x=\xi+\alpha,y=\eta+\beta$とおく。
-
 
 \[
 \d{\eta}{\xi}+f\left(\frac{a\xi+b\eta}{c\xi+d\eta}\right)=f\left(\frac{a+b\frac{\eta}{\xi}}{c+d\frac{\eta}{\xi}}\right)\equiv g\left(\frac{\eta}{\xi}\right)
 \]
 
-
 \item $ad-bc=0$で$c$と$d$の少なくとも一方が0でないとき
 
-
 $\frac{ax+by}{cx+dy}=k\left(\text{定数}\right),z=cx+dy+q$とおく。
-
 
 \begin{align*}
 ax+by+p & =k\left(cx+dy\right)+p\\
  & =kz+p-kq
 \end{align*}
 
-
 \item $c=d=0$のとき
 
-
 $z=-\frac{ax+by+p}{q}$とおく。
-
 
 \[
 \d zx=\frac{a+by'}{q}=\frac{a+bf\left(z\right)}{q}
 \]
 
-
-
 \[
 \int\frac{\mathrm{d}z}{a+bf\left(z\right)}=\frac{x}{q}+C
 \]
-
 
 \end{enumerate}
 
@@ -538,7 +476,6 @@ $z=-\frac{ax+by+p}{q}$とおく。
 \d yx=\frac{xy}{x^{2}+y}
 \]
 
-
 $\left(x\mapsto\lambda x,y\mapsto\lambda^{2}y\right)$に対して不変。
 
 $u=\frac{y}{x^{2}}$とおく。
@@ -546,21 +483,17 @@ $u=\frac{y}{x^{2}}$とおく。
 \d yx=x^{2}u'+2xu
 \]
 
-
 \[
 \frac{xy}{x^{2}+y}=\frac{x^{2}u}{x^{3}+x^{2}u}=\frac{xu}{1+u}
 \]
-
 
 \[
 \d ux=\frac{u+2u^{2}}{x\left(1+u\right)}
 \]
 
-
 \[
 \frac{1+u}{u\left(1+2u\right)}\mathrm{d}u=-\frac{\mathrm{d}x}{x}
 \]
-
 
 部分分数分解を行う。
 
@@ -570,12 +503,10 @@ $u=\frac{y}{x^{2}}$とおく。
  & =\frac{1}{2}\mathrm{d}\left[\log u^{2}-\log\left(1+2u\right)\right]
 \end{align*}
 
-
 \begin{align*}
  & \log\left|\frac{u^{2}}{1+2u}\right|=-2\log\left|x\right|+c\\
 \Rightarrow & \frac{x^{2}u^{2}}{1+2u}=c'\Rightarrow\frac{y^{2}}{x^{2}+2y}=c'
 \end{align*}
-
 
 
 \paragraph{例}
@@ -583,7 +514,6 @@ $u=\frac{y}{x^{2}}$とおく。
 \[
 \d yz=\frac{x^{2}y}{x^{2}+y}
 \]
-
 
 $\left(x\mapsto\lambda x,y\mapsto\lambda^{2}x\right)$に対して不変。
 
@@ -593,26 +523,21 @@ $u=\frac{y}{x^{2}}$とおく。
 y'=x^{3}u'+3x^{2}u
 \]
 
-
 \[
 x^{3}u'+3x^{2}u=\frac{x^{5}u}{x^{3}+x^{3}u}=\frac{x^{2}u}{1+u}
 \]
-
 
 \[
 \d ux=-\frac{u\left(2+3u\right)}{x\left(1+u\right)}
 \]
 
-
 \[
 \frac{1+u}{u\left(2+3u\right)}\mathrm{d}u=-\frac{\mathrm{d}x}{x}
 \]
 
-
 \[
 \frac{1+u}{u\left(2+3u\right)}=\frac{1}{2}\left(\frac{1+u}{u}-\frac{3+3u}{2+3u}\right)=\frac{1}{2}\left(\frac{1}{u}+1-\frac{3+3u}{2+3u}\right)
 \]
-
 
 \begin{align*}
 \log\left|x\right|+c & =\frac{1}{2}\int^{u}\left(1u-\frac{1}{2+3u}\right)\mathrm{d}u\\
@@ -623,19 +548,16 @@ x^{3}u'+3x^{2}u=\frac{x^{5}u}{x^{3}+x^{3}u}=\frac{x^{2}u}{1+u}
 \end{align*}
 
 
-
 \paragraph{定数変化法}
 
 \[
 \d ux+P\left(x\right)u=Q\left(x\right)
 \]
 
-
 $Q\left(x\right)=0$のとき、
 \[
 u\left(x\right)=C\exp\left[-\int P\left(x\right)\mathrm{d}x\right]
 \]
-
 
 定数$C$を$x$の関数と見て計算してみる。
 
@@ -643,31 +565,25 @@ u\left(x\right)=C\exp\left[-\int P\left(x\right)\mathrm{d}x\right]
 C\mapsto C\left(x\right)\Rightarrow u\left(x\right)=C\left(x\right)\exp\left[-\int P\left(x\right)\mathrm{d}x\right]
 \]
 
-
 \[
 \d ux=\d Cx\exp\left[-\int P\left(x\right)\mathrm{d}x\right]P\left(x\right)u
 \]
-
 
 \[
 C'\e^{-\int^{x}P\left(x\right)\mathrm{d}x}-Pu+Pu^{2}Q
 \]
 
-
 \[
 \mathrm{d}C=Q\left(x\right)\e^{\int^{x}P\left(x\right)\mathrm{d}x}\mathrm{d}x
 \]
-
 
 \[
 C\left(x\right)=\int^{x}Q\left(x\right)\e^{\int^{x}P\left(x\right)\mathrm{d}x}\mathrm{d}x+c
 \]
 
-
 \[
 u\left(x\right)=\e^{\int^{x}P\left(x\right)\mathrm{d}x}\left[\int^{x}Q\left(x\right)\e^{\int^{x}P\left(x\right)\mathrm{d}x}\mathrm{d}x+c\right]
 \]
-
 
 
 \paragraph{例}
@@ -675,7 +591,6 @@ u\left(x\right)=\e^{\int^{x}P\left(x\right)\mathrm{d}x}\left[\int^{x}Q\left(x\ri
 \[
 xy^{2}-2y=x^{3}\cos x
 \]
-
 
 $xy'-2y=0$を解く。$y=Cx^{2}$
 
@@ -685,11 +600,9 @@ $y=C\left(x\right)x^{2}$
 C'x^{3}=x^{3}\cos x\Rightarrow C\left(x\right)=\sin x+c
 \]
 
-
 \[
 y=x^{2}\left(\sin x+c\right)
 \]
-
 
 
 \paragraph{来週やること}
@@ -700,20 +613,17 @@ Bernoulli型の微分方程式
 y'+P\left(x\right)y=Q\left(x\right)y^{m}
 \]
 
-
 Riccati
 
 \[
 y'=P\left(x\right)y^{2}+Q\left(x\right)y+R\left(x\right)
 \]
 
-
 d'Alembert
 
 \[
 y=xf\left(y^{2}\right)+g\left(y'\right)
 \]
-
 
 Clairaut
 
@@ -722,9 +632,7 @@ y=xp+g\left(y'\right)
 \]
 
 
-
 \section*{第3回}
-
 
 \paragraph{レポート課題}
 
@@ -733,13 +641,11 @@ y=xp+g\left(y'\right)
 \]
 を解け。ただし$y\left(x\right)$の形まで解くこと。
 
-
 \paragraph{Bernoulli型微分方程式}
 
 \[
 y'+P\left(x\right)y=Q\left(x\right)y^{m}
 \]
-
 
 $z=y^{k}$とおくと$z'=ky^{k-1}y'$
 
@@ -748,23 +654,19 @@ $z=y^{k}$とおくと$z'=ky^{k-1}y'$
 z'+kP\left(x\right)z=kQ\left(x\right)y^{x-1+m}
 \]
 
-
 $k=1-m$とおく。
 
 \[
 z'+\left(1-m\right)P\left(x\right)z=\left(1-m\right)Q\left(x\right)
 \]
 
-
 \[
 z=\e^{-\left(1-n\right)\int P\left(x\right)\mathrm{d}x}\left[\left(1-m\right)\int Q\left(x\right)\e^{\left(1-m\right)\int P\left(x\right)\mathrm{d}x}\mathrm{d}x+C\right]
 \]
 
-
 \[
 y=\e^{-\int P\left(x\right)\mathrm{d}x}\left[\left(1-m\right)\int Q\left(x\right)\e^{\left(1-m\right)\int P\left(x\right)\mathrm{d}x}\mathrm{d}x+C\right]^{\frac{1}{1-m}}
 \]
-
 
 
 \paragraph{例}
@@ -773,30 +675,25 @@ y=\e^{-\int P\left(x\right)\mathrm{d}x}\left[\left(1-m\right)\int Q\left(x\right
 y'+xy=xy^{3}
 \]
 
-
 $m=3$なので$z=y^{-2}$とおく。
 
 \[
 z'=-2y^{-3}y'
 \]
 
-
 両辺に$-2y^{-3}$をかけて、
 \[
 z'-2xz=-2x
 \]
-
 
 \begin{align*}
 z & =\e^{x^{2}}\left(-2\int x\e^{-x^{2}}\mathrm{d}x+C\right)\\
  & =1+C\e^{x^{2}}
 \end{align*}
 
-
 \[
 y=\frac{1}{\sqrt{1+C\e^{x^{2}}}}
 \]
-
 
 
 \paragraph{Riccati型微分方程式}
@@ -805,13 +702,11 @@ y=\frac{1}{\sqrt{1+C\e^{x^{2}}}}
 y'=P\left(x\right)y^{2}+Q\left(x\right)y+R\left(x\right)
 \]
 
-
 $y=f\left(x\right)$を一つの特殊解とする。
 
 \[
 z=y-f\left(x\right)
 \]
-
 
 \begin{align*}
 z' & =y'-f'\left(x\right)\\
@@ -819,11 +714,9 @@ z' & =y'-f'\left(x\right)\\
  & =P\left(x\right)z^{2}+\left[2P\left(x\right)f\left(x\right)+Q\left(x\right)\right]z+\left[P\left(x\right)f^{2}\left(x\right)+Q\left(x\right)f\left(x\right)+R\left(x\right)-f'\left(x\right)\right]
 \end{align*}
 
-
 \[
 z'-\left[2P\left(x\right)f'\left(x\right)+Q\left(x\right)\right]z=P\left(x\right)z^{2}
 \]
-
 
 これはBernoulliの$m=2$の場合である。
 
@@ -832,17 +725,14 @@ z'-\left[2P\left(x\right)f'\left(x\right)+Q\left(x\right)\right]z=P\left(x\right
 z'-2xz=-2x
 \]
 
-
 \begin{align*}
 z & =\e^{x^{2}}\left(-2\int x\e^{-x^{2}}\mathrm{d}x+C\right)\\
  & =1+C\e^{x^{2}}
 \end{align*}
 
-
 \[
 z=\exp\left[\int\left(2P\left(x\right)f\left(x\right)+Q\left(x\right)\right)\mathrm{d}x\right]-\int P\left(x\right)\exp\left[\int\left(2P\left(x\right)f\left(x\right)+Q\left(x\right)\right)\mathrm{d}x\right]\mathrm{d}x+C
 \]
-
 
 
 \paragraph{例}
@@ -851,12 +741,10 @@ z=\exp\left[\int\left(2P\left(x\right)f\left(x\right)+Q\left(x\right)\right)\mat
 y'=y^{2}+\left(2-x\right)y-2x+1\;\left(y=x\right)
 \]
 
-
 $z=y-x$とおくと、
 \[
 z'+1=\left(z+x\right)^{2}+\left(2-x\right)\left(z+x\right)-2x+1
 \]
-
 
 $z'-\left(x+2\right)z=z^{2},z=\frac{1}{u}$とおく。
 
@@ -864,11 +752,9 @@ $z'-\left(x+2\right)z=z^{2},z=\frac{1}{u}$とおく。
 u'+\left(x+2\right)u=-1\Rightarrow u=\e^{-\frac{x^{2}}{2}-2x}\left(-\int\e^{\frac{x^{2}}{2}+2x}\mathrm{d}x+C\right)
 \]
 
-
 \[
 y=\frac{\e^{\frac{x^{2}}{2}}+2x}{-\int\e^{\frac{x^{2}}{2}}\mathrm{d}x+C}+x
 \]
-
 
 
 \paragraph{例}
@@ -877,13 +763,11 @@ y=\frac{\e^{\frac{x^{2}}{2}}+2x}{-\int\e^{\frac{x^{2}}{2}}\mathrm{d}x+C}+x
 y'-\left(x-1\right)y^{2}+\left(2x-1\right)y=x\;\left(y=1\right)
 \]
 
-
 $z=y-1$とおく。
 
 \[
 z'-\left(x-1\right)\left(z+1\right)^{2}+\left(2x-1\right)\left(;+1\right)-x=0
 \]
-
 
 $z'+z=\left(x-1\right)z^{2},u=\frac{1}{z}$とおく。
 
@@ -891,17 +775,14 @@ $z'+z=\left(x-1\right)z^{2},u=\frac{1}{z}$とおく。
 u'-u=1-x
 \]
 
-
 \begin{align*}
 u\left(x\right) & =\e^{\int^{x}\mathrm{d}x}\left[\int^{x}\left(1-x\right)\e^{-\int^{x}\mathrm{d}x}\mathrm{d}x+C\right]\\
  & =\e^{x}\left(x\e^{-x}+C\right)=x+C\e^{x}
 \end{align*}
 
-
 \[
 y=1+\frac{1}{x+C\e^{x}}
 \]
-
 
 
 \paragraph{d'Alembert型微分方程式}
@@ -910,7 +791,6 @@ y=1+\frac{1}{x+C\e^{x}}
 y=xf\left(y'\right)+g\left(y'\right)
 \]
 
-
 $P=y'$と置くと$y=xf\left(P\right)+g\left(P\right)$
 
 両辺を$x$で微分して、
@@ -918,17 +798,14 @@ $P=y'$と置くと$y=xf\left(P\right)+g\left(P\right)$
 P=f\left(P\right)+\left[xf'\left(P\right)+g'\left(P\right)\right]\d Px
 \]
 
-
 ここで$f\left(P\right)\neq P$とすると、
 \[
 \d xP=\frac{xf'\left(P\right)+g'\left(P\right)}{P-f\left(P\right)}=-\frac{f'\left(P\right)}{f\left(P\right)-P}x+\frac{g'\left(P\right)}{f\left(P\right)-P}
 \]
 
-
 \[
 x=\left[-\int\frac{g'\left(P\right)}{P-f\left(P\right)}\e^{\int\frac{f'\left(P\right)}{P-f\left(P\right)}\mathrm{d}P}\mathrm{d}P+C\right]\exp\left[-\int\frac{f'\left(P\right)}{P-f\left(P\right)}\mathrm{d}P\right]
 \]
-
 
 
 \paragraph{例}
@@ -937,33 +814,27 @@ x=\left[-\int\frac{g'\left(P\right)}{P-f\left(P\right)}\e^{\int\frac{f'\left(P\r
 y=xy'\left(y'+1\right)+\frac{1}{y'}
 \]
 
-
 $P=y'$とおく。($x$で微分)
 \[
 y=xP\left(P+1\right)+\frac{1}{P}
 \]
 
-
 \[
 P=P\left(P+1\right)+\frac{1}{P}
 \]
-
 
 \[
 P=P\left(P+1\right)+\left[x\left(2P+1\right)-\frac{1}{P^{2}}\right]\d Px
 \]
 
-
 \[
 \d xP+\frac{2P+1}{P^{2}}x=\frac{1}{P^{4}}
 \]
-
 
 \begin{align*}
 x & =\left[\int\frac{1}{P^{4}}\e^{\int\frac{2P+1}{P^{2}}\mathrm{d}P}\mathrm{d}P+C\right]\e^{-\int\frac{2P+1}{P^{2}}\mathrm{d}P}\\
  & =\frac{1}{P^{2}}\left(1+C\e^{\frac{1}{P}}\right)
 \end{align*}
-
 
 
 \paragraph{Clairaut型微分方程式}
@@ -979,18 +850,15 @@ $P'=0$のとき$P=C\Rightarrow y=Cx+g\left(C\right)$
 
 $x+g'\left(P\right)=0$のときは$y=xP+g\left(P\right)$と連立して$P$を消去して特異解$y\left(x\right)$を得る。
 
-
 \paragraph{例}
 
 \[
 y=xy'-\left(y'\right)^{2}
 \]
 
-
 \[
 y=xP-P^{2}\Rightarrow\left(x-2P\right)P'=0
 \]
-
 
 $x-2P=0$か$P'=0$
 
@@ -998,29 +866,24 @@ $P'=0$のとき$y=Cx-C^{2}$
 
 $x-2P=0$のとき$y=xP-P^{2}$と連立して$y=\frac{x^{2}}{4}$
 
-
 \paragraph{全微分方程式て完全微分方程式}
 
 \[
 \d yx=-\frac{P\left(x,y\right)}{Q\left(x,y\right)}\Rightarrow P\left(x,y\right)\mathrm{d}x+Q\left(x,y\right)\mathrm{d}y=0
 \]
 
-
 ある関数$\Phi\left(x,y\right)$が存在して$\pd{\Phi}x=P,\pd{\Phi}y=Q$のとき完全微分方程式
 \[
 \mathrm{d}\Phi\left(x,y\right)=P\left(x,y\right)\mathrm{d}x+Q\left(x,y\right)\mathrm{d}y
 \]
 
-
 \[
 \pd Py=\pd Qx
 \]
 
-
 \[
 \int_{x_{0}}^{x}P\left(x,y\right)\mathrm{d}x+\int_{y_{0}}^{y}Q\left(x_{0},y\right)\mathrm{d}y+C
 \]
-
 
 積分因子$\mu\left(x,y\right)$をかけると完全微分方程式になる全微分方程式
 
@@ -1032,11 +895,9 @@ $x-2P=0$のとき$y=xP-P^{2}$と連立して$y=\frac{x^{2}}{4}$
 \mu\partial_{y}P=\partial_{x}\mu Q+\mu\partial_{x}Q
 \]
 
-
 \[
 \frac{\partial_{y}P-\partial_{x}Q}{Q}=\frac{\partial_{x}\mu}{\mu}=g\left(x\right)\Rightarrow\mu\left(x\right)=\e^{\int Q\left(x\right)\mathrm{d}x}
 \]
-
 
 
 \paragraph{例}
@@ -1045,27 +906,22 @@ $x-2P=0$のとき$y=xP-P^{2}$と連立して$y=\frac{x^{2}}{4}$
 \left(2x+2y\right)\mathrm{d}x+\left(2x+\mathrm{e}^{y}\right)\mathrm{d}y=0
 \]
 
-
 \[
 \partial_{y}\left(2x+2y\right)=\partial_{x}\left(2x+\e^{y}\right)
 \]
-
 
 \begin{align*}
 u & =\int_{0}^{x}\left(2x+2y\right)\mathrm{d}x+\left.\int_{0}^{y}\left(2x+\e^{y}\right)\right|_{x=0}\mathrm{d}y\\
  & =x^{2}+2yx+\e^{y}-1=C
 \end{align*}
 
-
 \[
 \mathrm{d}x^{2}+2\mathrm{d}\left(xy+\mathrm{d}\e^{y}\right)=\mathrm{d}\left(x^{2}+2xy+\e^{y}\right)=0
 \]
 
-
 \[
 x^{2}+2xy+\e^{y}=C'
 \]
-
 
 
 \paragraph{例}
@@ -1074,26 +930,21 @@ x^{2}+2xy+\e^{y}=C'
 \mathrm{d}x+2xy\mathrm{d}y=0
 \]
 
-
 \[
 \partial_{y}P-\partial_{x}Q=-\partial_{x}\left(2xy\right)=-2y\neq0
 \]
-
 
 \[
 \frac{\partial_{y}P-\partial_{x}Q}{Q}=\frac{-2y}{2xy}=-\frac{1}{x}\Rightarrow\mu\left(x\right)=\e^{-\int\frac{\mathrm{d}x}{x}}=\e^{\ln x}=\frac{1}{x}
 \]
 
-
 \[
 \frac{1}{x}\mathrm{d}x+2y\mathrm{d}y=\mathrm{d}\left(\ln x+y^{2}\right)=0
 \]
 
-
 \[
 \ln x+y^{2}=C\Rightarrow y=\pm\sqrt{C-\ln x}
 \]
-
 
 
 \paragraph{例}
@@ -1102,11 +953,9 @@ x^{2}+2xy+\e^{y}=C'
 \e^{y}\mathrm{d}x+x\e^{y}\mathrm{d}y+2z\mathrm{d}z=0
 \]
 
-
 \[
 \mathrm{d}\left(x\e^{y}+z^{2}\right)=0\Rightarrow x\e^{y}+z^{2}=C
 \]
-
 
 
 \paragraph{例}
@@ -1119,12 +968,9 @@ x^{2}+2xy+\e^{y}=C'
 \end{align*}
 
 
-
 \section*{第4回}
 
-
 \paragraph{減衰振動と定数係数2階斉次線形常微分方程式}
-
 
 \paragraph{抵抗のあるバネ振動}
 
@@ -1136,7 +982,6 @@ m\ddot{x}=-kx-\mu\dot{x}
 \]
 
 
-
 \paragraph{LCR回路}
 
 Kirchhoffの法則より、
@@ -1144,16 +989,13 @@ Kirchhoffの法則より、
 V_{R}+V_{L}+V_{C}=V
 \]
 
-
 \[
 V_{R}=IR
 \]
 
-
 \[
 V_{C}=\frac{q}{C}
 \]
-
 
 $q$: 電荷
 
@@ -1161,32 +1003,26 @@ $q$: 電荷
 I=\d qt
 \]
 
-
 \[
 V_{L}=L\d It
 \]
 
-
 \[
 V=IR+\frac{q}{C}+L\d It
 \]
-
 
 時間で微分して
 \[
 L\dd It+R\d It+\frac{I}{C}=0
 \]
 
-
 \[
 \ddot{I}+2\gamma\dot{I}+w^{2}I=0\:\left(\gamma=\frac{R}{2L},w=\frac{1}{\sqrt{LC}}\right)
 \]
 
-
 \[
 \ddot{u}+2\gamma\dot{u}+w^{2}u=0
 \]
-
 
 $u=C\e^{\lambda t}$を代入
 
@@ -1195,7 +1031,6 @@ $u=C\e^{\lambda t}$を代入
 \[
 \lambda=-\gamma\pm\sqrt{\gamma^{2}-w^{2}}
 \]
-
 
 $w$: 固有振動数
 
@@ -1207,26 +1042,23 @@ $w$: 固有振動数
 V_{L}=L\d It
 \]
 
-
 \[
 V=IR+\frac{q}{C}+L\d It
 \]
 
+\begin{enumerate}
+\item $\gamma>w$の時 ($D>0$)
 
-1. $\gamma>w$の時 ($D>0$)
-
-会は2つの実数$\lambda_{\pm}=-\gamma\pm\nu$ ($\nu=\sqrt{\gamma^{2}+w^{2}}$)
+解は2つの実数$\lambda_{\pm}=-\gamma\pm\nu$ ($\nu=\sqrt{\gamma^{2}+w^{2}}$)
 
 一般解は
 \[
 u=\e^{-\gamma t}\left[A\cosh\nu t+B\sinh\nu t\right]
 \]
 
-
 \[
 \dot{u}=-\gamma\e^{-\gamma t}\left[A\cosh\nu t+B\sinh\nu t\right]+\e^{-\gamma t}\left[A\nu\sinh\nu t+B\nu\cosh\nu t\right]
 \]
-
 
 $u=u_{0}\Rightarrow A=u_{0}$
 
@@ -1236,23 +1068,19 @@ $\dot{u}=0\Rightarrow-\gamma A+B\nu=0\Rightarrow B=\frac{\gamma A}{\nu}=\frac{\g
 u=u_{0}\e^{-\gamma t}\left[\cosh\nu t+\frac{\gamma}{\nu}\sinh\nu t\right]
 \]
 
-
 過減衰解 $\gamma>\nu=\sqrt{\gamma^{2}-w^{2}}$
+\item $\gamma<w$の時 ($D<0$)
 
-2. $\gamma<w$の時 ($D<0$)
-
-会は2つの複素数 $\lambda_{\pm}=-\gamma\pm\i\nu$ ($\nu=\sqrt{w^{2}-\gamma^{2}}$)
+解は2つの複素数 $\lambda_{\pm}=-\gamma\pm\i\nu$ ($\nu=\sqrt{w^{2}-\gamma^{2}}$)
 
 一般解は
 \[
 u=\e^{-\gamma t}\left[A\cos\nu t+B\sin\nu t\right]
 \]
 
-
 \[
 \dot{u}=-\gamma\e^{-\gamma t}\left[A\cos\nu t+B\sin\nu t\right]+\e^{-\gamma t}\left[A\nu\sin\nu t+B\nu\cos\nu t\right]
 \]
-
 
 $u=u_{0}\Rightarrow A=u_{0}$
 
@@ -1262,10 +1090,8 @@ $\dot{u}=0\Rightarrow-\gamma A+B\nu\Rightarrow B=\frac{\gamma u_{0}}{\nu}$
 u=u_{0}\e^{-\gamma t}\left[\cos\nu t+\frac{\gamma}{\nu}\sin\nu t\right]
 \]
 
-
 減衰振動解
-
-3. $\gamma=w$の時 ($D=0$)
+\item $\gamma=w$の時 ($D=0$)
 
 解は重根 ($\lambda=-\gamma$)
 
@@ -1277,25 +1103,21 @@ $u=A\e^{-u_{0}t}$
 \dot{u}=\dot{A}\e^{-wt}-wA\e^{-wt}
 \]
 
-
 \[
 \ddot{u}=\ddot{A}\e^{-wt}-2w\dot{A}\e^{-u_{0}t}+w^{2}A\e^{-wt}
 \]
 
-
 \[
 \ddot{u}+w^{2}u+2\gamma\dot{u}=\left[\ddot{A}-2w\dot{A}+w^{2}A+w^{2}A+2w\dot{A}-2w^{2}A\right]\e^{-wt}=\ddot{A}\e^{-wt}=0
 \]
-
 
 よって 
 \[
 A\left(t\right)=C_{1}t+C_{2}
 \]
 
-
 臨界減衰運動解 $u=u_{0}\e^{-\gamma t}\left(\gamma t+1\right)$
-
+\end{enumerate}
 
 \paragraph{強制振動と定数係数2階非斉次線形常微分方程式}
 
@@ -1306,26 +1128,22 @@ A\left(t\right)=C_{1}t+C_{2}
  & =\Re\left[F_{0}\e^{\i\Omega t}\right]
 \end{align*}
 
-
 $u=\Re\left[A\e^{\i\Omega t}\right]$を代入。
 
 \[
 \left(-\Omega^{2}+\i2\gamma\Omega+w^{2}\right)A=F_{0}
 \]
 
-
 \begin{align*}
 A & =\frac{F_{0}}{Z}\left(Z=w^{2}-\Omega^{2}+\i2\gamma\Omega\right)\\
  & \equiv\left|Z\right|\e^{\i\alpha}
 \end{align*}
-
 
 複素インピーダンス
 
 \[
 u=\frac{F_{0}}{\left|Z\right|}\cos\left(\Omega t-\alpha\right)
 \]
-
 
 $\alpha$: 位相の遅れ
 
@@ -1334,11 +1152,9 @@ $\alpha$: 位相の遅れ
  & =\sqrt{\left(w^{2}-\Omega^{2}\right)^{2}+4\gamma^{2}\Omega^{2}}
 \end{align*}
 
-
 \[
 \tan\alpha=\frac{2\gamma\Omega}{w^{2}-\Omega^{2}}
 \]
-
 
 振幅最大は$\left|Z\right|$が最大のとき
 
@@ -1346,20 +1162,17 @@ $\alpha$: 位相の遅れ
 \left|Z\right|^{2}=\left[\Omega^{2}-\left(w^{2}-2\gamma^{2}\right)\right]^{2}+w^{4}-\left(2\gamma^{2}-w^{2}\right)^{2}
 \]
 
-
 \[
 \Omega=\sqrt{w^{2}-2\gamma^{2}}
 \]
-
 
 共鳴または共振と呼ぶ。
 
 抵抗が零のとき($\gamma=0$)、$\Omega=w$
 
 \[
-\left|Z\right|=2\gamma\Omega\rogh0
+\left|Z\right|=2\gamma\Omega\rightarrow0
 \]
-
 
 実数変化法 $u=Ct\sin\Omega t$
 
@@ -1367,26 +1180,21 @@ $\alpha$: 位相の遅れ
 \dot{u}=C\sin\Omega t+\Omega Ct\cos\Omega t
 \]
 
-
 \[
 \ddot{u}=2\Omega C\cos\Omega t-\Omega^{2}Ct\sin\Omega t
 \]
-
 
 \[
 \dot{u}+w^{2}u=2\Omega C\cos\Omega t=F_{0}\cos\Omega t
 \]
 
-
 \[
 C=\frac{F_{0}}{2\Omega}
 \]
 
-
 \[
 \therefore u=\frac{F_{0}}{2\Omega}t\sin\Omega t
 \]
-
 
 
 \paragraph{定数係数n階斉次線形常微分方程式}
@@ -1394,7 +1202,6 @@ C=\frac{F_{0}}{2\Omega}
 \[
 \sum_{j=1}^{n}a_{j}\frac{\mathrm{d}^{3}}{\mathrm{d}x^{3}}u+a_{0}u=0
 \]
-
 
 $u=C\e^{\lambda x}$を代入
 
@@ -1404,11 +1211,10 @@ $u=C\e^{\lambda x}$を代入
 \begin{enumerate}
 \item 解$\lambda_{k}$がすべて異なるとき $u=\sum_{k=1}^{n}C_{k}\e^{\lambda_{k}x}$
 \item 解$\lambda$が$n$重根のとき $u=\sum_{m=0}^{n-1}C_{m}x^{m}\e^{\lambda x}$
-\item 異なるかい$\lambda_{k}$が$n_{k}$重根のとき
+\item 異なる解$\lambda_{k}$が$n_{k}$重根のとき
 \[
 u=\sum_{k}\sum_{m=0}^{n_{k}-1}C_{m}^{k}x^{m}\e^{\lambda_{k}x}
 \]
-
 \end{enumerate}
 \[
 \sum_{j=1}^{n}a_{j}\lambda^{3}+a_{0}=a_{0}\prod_{k=1}^{n}\left(\lambda-\lambda_{k}\right)=0
@@ -1417,11 +1223,9 @@ u=\sum_{k}\sum_{m=0}^{n_{k}-1}C_{m}^{k}x^{m}\e^{\lambda_{k}x}
 \sum_{j=1}^{n}\frac{\mathrm{d}^{3}}{\mathrm{d}x^{3}}u+a_{0}u=a_{0}\prod_{k=1}^{n}\left(D-\lambda_{k}\right)u=0
 \]
 
-
 \[
 D=\d{}x
 \]
-
 
 $\e^{\lambda x}$が$n$重根のとき
 
@@ -1429,26 +1233,21 @@ $\e^{\lambda x}$が$n$重根のとき
 \left(D-\lambda\right)^{n}\left[\e^{\lambda x}f\left(x\right)\right]=0
 \]
 
-
 \[
 \left(D-\lambda\right)\left[\e^{\lambda x}f\left(x\right)\right]=\e^{\lambda x}Df\left(x\right)
 \]
-
 
 \[
 \left(D-\lambda\right)^{2}\left[\e^{\lambda x}f\left(x\right)\right]=\e^{\lambda x}D^{2}f\left(x\right)
 \]
 
-
 \[
 \left(D-\lambda\right)^{n}\left[f\left(x\right)\e^{\lambda x}\right]=\e^{\lambda x}D^{n}f\left(x\right)
 \]
 
-
 \[
 f^{\left(n\right)}\left(x\right)=0\Rightarrow f\left(x\right)=1,x,x^{2},\cdots,x^{n-1}
 \]
-
 
 
 \paragraph{例}
@@ -1457,49 +1256,40 @@ f^{\left(n\right)}\left(x\right)=0\Rightarrow f\left(x\right)=1,x,x^{2},\cdots,x
 u''-u'-6u=0
 \]
 
-
 \[
 \lambda^{2}-\lambda-6=\left(\lambda-3\right)\left(\lambda+2\right)=0
 \]
 
-
 \[
 u=C_{1}\e^{3x}+C_{2}\e^{-2x}
 \]
-
 
 \begin{align*}
 u''+9u=0 & \Rightarrow\lambda^{2}+9=\left(\lambda+3\i\right)\left(\lambda-3\i\right)=0\\
  & \Rightarrow u=C_{1}\cos3x+C_{2}\sin3x
 \end{align*}
 
-
 \begin{align*}
 u''-6u'+9u=0 & \Rightarrow\lambda^{2}-6\lambda+9=\left(\lambda-3\right)^{2}=0\\
  & \Rightarrow u=C_{1}\e^{3x}+C_{2}x\e^{3x}
 \end{align*}
-
 
 \begin{align*}
  & u'''-5u''+8u'-4u=0\\
 \Rightarrow & \lambda^{3}-5\lambda^{2}+8\lambda-4=\left(\lambda-2\right)^{2}\left(\lambda-1\right)=0
 \end{align*}
 
-
 \[
 u=C_{1}\e^{x}+C_{2}\e^{2x}+C_{3}x\e^{2x}
 \]
-
 
 \[
 u'''+u''-u'-u=0\Rightarrow u=C_{1}\e^{x}+\left(C_{2}+C_{3}x\right)\e^{4x}
 \]
 
-
 \[
 u'''+3u''+3u'+u=0\Rightarrow u\left(C_{1}+C_{2}x+C_{3}x^{2}\right)\e^{4x}
 \]
-
 
 \[
 u'''-8u''+16=0\Rightarrow u=\left(C_{1}+C_{2}x\right)\e^{2x}+\left(C_{3}+C_{4}x\right)\e^{-2x}
