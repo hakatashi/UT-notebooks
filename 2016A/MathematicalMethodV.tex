@@ -649,4 +649,212 @@ P\left(a\leq\frac{X-np}{\sqrt{npq}}\leq b\right) & =P\left(a\sqrt{npq}+np\leq X\
 
 
 ただし$z_{k}=\frac{k-np}{\sqrt{npq}},\Delta z=\frac{1}{\sqrt{npq}}$である。
+
+
+\section*{第4回}
+
+
+\section{確率関数に関する特性値}
+
+
+\subsection{平均値、期待値}
+
+離散: $E\left[X\right]=\sum_{k}v_{k}f\left(v_{k}\right)$
+
+連続: $E\left[X\right]=\int_{-\infty}^{\infty}xf\left(x\right)\mathrm{d}x$
+
+
+\paragraph{例}
+
+2点分布 (0: $1-p=q$, 1: $p$) 
+\[
+E\left[X\right]=0\cdot q+1\cdot p=p
+\]
+
+
+2項分布 ($B\left(n,p\right)$) 
+\[
+E\left[X\right]=\sum_{k}k\cdot\binom{n}{k}p^{k}\left(1-p\right)^{n-k}=np
+\]
+
+
+正規分布 
+\[
+E\left[X\right]=\int_{-\infty}^{\infty}x\frac{1}{\sqrt{2\pi}}\e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{2}}\mathrm{d}x
+\]
+
+
+\[
+\int_{-\infty}^{\infty}\mathrm{d}x\cdot x\e^{-x^{2}}=\int_{0}^{-\infty}\mathrm{d}\left(x^{2}\right)\e^{-x^{2}}
+\]
+
+
+コーシー分布 
+\begin{align*}
+E\left[X\right] & =\int_{-\infty}^{\infty}\left|x\right|\frac{\mathrm{d}x}{\prod\left(1+x^{2}\right)}\rightarrow\infty\\
+ & \sim\int_{0}^{\infty}\frac{\mathrm{d}x}{1+x}
+\end{align*}
+
+
+
+\paragraph{性質1}
+
+$X$が非負の値のみを取る確率変数であるならば
+\begin{align*}
+E\left(X\right) & =\int_{0}^{\infty}\left(1-F\left(x\right)\right)\mathrm{d}x\\
+ & =\int_{0}^{\infty}P\left(X>x\right)\mathrm{d}x
+\end{align*}
+
+
+$F\left(x\right)=1-P\left(X>x\right)$
+
+
+\paragraph{性質2}
+
+$X$が正負両方をとる確率変数である場合、
+\[
+E\left(X\right)=\int_{-\infty}^{\infty}P\left(X>x\right)\mathrm{d}x-\int_{-\infty}^{0}P\left(x\leq X\right)\mathrm{d}x
+\]
+
+
+
+\paragraph{平均値}
+
+\[
+E\left[X\right]=\int_{-\infty}^{\infty}x\mathrm{d}F\left(x\right)
+\]
+
+
+離散: $\mathrm{d}F\left(v_{k}\right)=F\left(v_{k}\right)-F\left(v_{k-1}\right)$
+
+連続: $\mathrm{d}F\left(x\right)=f\left(x\right)\mathrm{d}x$
+
+\[
+E\left[X\right]\equiv\sum_{i=1}^{n-1}\tilde{x}_{k}\left[F\left(x_{k+1}\right)-F\left(x_{k}\right)\right];\tilde{x}_{k}\in\left[x_{k},x_{k+1}\right]
+\]
+
+
+\[
+\int_{-\infty}^{\infty}f\left(x\right)\mathrm{d}x=1
+\]
+
+
+\[
+\mu=\int_{-\infty}^{\infty}xf\left(x\right)\mathrm{d}x
+\]
+
+
+\[
+\sigma^{2}=\int_{-\infty}^{\infty}\left(x-\mu\right)^{2}f\left(x\right)\mathrm{d}x
+\]
+
+
+$X$: 確率変数
+
+$\mu=E\left[X\right]$
+
+$\left(X-\mu\right)^{2}$も確率変数と考えることができる。
+
+\begin{align*}
+E\left[\left(X-\mu\right)^{2}\right] & =V_{av}\left[X\right]\text{or}V\left[X\right]\\
+ & =\int_{-\infty}^{\infty}\left(x-\mu\right)^{2}f\left(x\right)\mathrm{d}x=\int_{-\infty}^{\infty}\left(x-\mu\right)^{2}\mathrm{d}F\left(x\right)
+\end{align*}
+
+
+$\sqrt{V\left[X\right]}$: 標準偏差
+
+
+\paragraph{分散の性質}
+\begin{enumerate}
+\item $V_{av}\left[X\right]\geqq0$
+\item $V_{av}\left[X\right]=E\left[X^{2}\right]-\mu^{2}$
+\item $V_{av}\left[ax\right]=a^{2}V_{av}\left[X\right]$
+\item $V_{av}\left[X_{1}+X_{2}\right]=V_{av}\left[X_{1}\right]+V_{av}\left[X_{2}\right]+2E\left[\left(X_{1}-\mu_{1}\right)\left(X_{2}-\mu_{2}\right)\right]$
+\end{enumerate}
+
+\subsection{???}
+
+
+\subsection{モーメント母関数}
+
+\begin{align*}
+M_{X}\left(t\right) & =E\left[\e^{tX}\right]\\
+ & =\begin{cases}
+\sum\e^{tx}f\left(x\right)\\
+\int_{-\infty}^{\infty}\e^{tx}f\left(x\right)\mathrm{d}x
+\end{cases}
+\end{align*}
+
+
+\begin{align*}
+M_{X}\left(t\right) & =E\left[1+tX+\frac{t^{2}}{2!}X^{2}+\cdots\right]\\
+ & =1+\underbrace{tE\left[X\right]}_{\equiv\mu=\mu_{1}}+\underbrace{\frac{t^{2}}{2}E\left[X^{2}\right]}_{\equiv\mu_{2}\text{(2次モーメント)}}+\cdots
+\end{align*}
+
+
+
+\subsection{特性関数}
+
+\[
+\varphi\left(t\right)=E\left[\e^{\i tX}\right]=\int_{-\infty}^{\infty}\e^{\i tx}f\left(x\right)\mathrm{d}x
+\]
+
+
+\[
+\left|\varphi\left(t\right)\right|\leqq\int_{-\infty}^{\infty}f\left(x\right)\mathrm{d}x=1
+\]
+(可積分)
+
+\[
+f\left(x\right)\xrightarrow[\text{フーリエ逆変換}(\text{反転公式})]{\text{フーリエ変換}(\text{特性関数})}\varphi\left(t\right)
+\]
+
+
+
+\section{多次元確率分布}
+
+
+\subsection{複数の確率関数}
+
+$\left(\Omega,\mathcal{A},P\right)$
+
+$X_{1}\left(\omega\right),X_{2}\left(\omega\right),\cdots$
+
+\[
+\left\{ \omega:X_{1}\left(\omega\right)\leq x_{1},X_{2}\left(\omega\right)\leq x_{2},\cdots\right\} =\bigcap_{k=1}^{n}\left\{ \omega:X\left(\omega\right)\leq x_{k}\right\} 
+\]
+も$\mathcal{A}$に属する。
+
+\[
+F\left(x_{1},x_{2},\cdots\right)=P\left(\bigcap_{k=1}^{n}\left\{ \omega:X_{k}\left(\omega\right)\leq x_{n}\right\} \right)
+\]
+=同時分布関数
+
+
+\paragraph{性質}
+
+1. $a_{1}\leq b_{1},a_{2}\leq b_{2}$ならば、
+\[
+F\left(b_{1},b_{2}\right)-F\left(b_{1},a_{2}\right)-F\left(a_{1},b_{2}\right)+F\left(a_{1},a_{2}\right)\geq0
+\]
+
+
+=単調増加
+
+2. 
+\[
+\lim_{x_{1}\rightarrow a1+,x_{2}\in\rightarrow}F\left(x_{1},x_{2}\right)=F\left(a_{1},a_{2}\right)
+\]
+
+
+3. 
+\[
+\lim_{x_{1}\rightarrow-\infty}F\left(x_{1},x_{2}\right)=\lim_{x_{2}\rightarrow-\infty}F\left(x_{1},x_{2}\right)=0
+\]
+
+
+\[
+\lim_{x_{1},x_{2}\rightarrow+\infty}F\left(x_{1},x_{2}\right)=1
+\]
+
 \end{document}
