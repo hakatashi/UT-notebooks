@@ -16,3 +16,7 @@ eps: $(EPS)
 
 %.eps: %.jpg
 	convert $< eps3:$@
+
+.PHONY: clean
+clean:
+	find . -path ./.git -prune -o ! -name "*.pdf" -type f -exec rm -f {} +

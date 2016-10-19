@@ -14,6 +14,8 @@ before_install:
 before_script: git lfs pull
 script:
   - make
+before_deploy:
+  - make clean
 deploy:
   provider: s3
   access_key_id: AKIAIUVOWRPPIGFZXQVA
