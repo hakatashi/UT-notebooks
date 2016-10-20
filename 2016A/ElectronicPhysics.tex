@@ -663,4 +663,107 @@ k_{n}=k_{0}+\Delta k,\omega_{n}=\omega_{0}+\Delta\omega=\omega_{0}+\left.\pd{\om
 \end{align*}
 
 ただし、$\Delta k\ll k_{0}$。
+
+\section*{第4回}
+
+\paragraph{前半メモ}
+
+\[
+\Psi=\sum_{n}C_{n}\phi_{n}
+\]
+
+$\phi_{n}$: 固有状態
+
+の重ねあわせ
+
+$\hat{A}$: 演算子
+
+\[
+\hat{A}\phi_{n}=a_{n}\phi_{n}
+\]
+
+$a_{n}$: 固有状態の物理量
+
+\textbf{1回の観測で見えるのは$a_{n}$のどれかである。}
+
+期待値
+
+\[
+\left\langle a\right\rangle =\int_{\text{全空間}}\Psi^{*}\hat{A}\Psi\mathrm{d}x=\sum_{n}\left|C_{n}\right|^{2}a_{n}
+\]
+
+\[
+P\left(x,t\right)=\Psi^{*}\Psi=\left(\sum_{n}C_{n}^{*}\phi_{n}^{*}\right)\left(\sum_{n}C_{n}\phi_{n}\right)
+\]
+
+ある位置$x$に粒子が存在する確率
+\[
+\int_{\text{全空間}}P\left(x,t\right)\mathrm{d}x=\sum_{n}\left|C_{n}\right|^{2}\equiv\text{全空間での粒子の存在確率}=1
+\]
+になるように$C_{n}$を決める。
+
+ガウス関数
+\[
+f\left(x\right)=\left(\frac{1}{\pi\alpha^{2}}\right)^{\frac{1}{4}}\e^{-\frac{x^{2}}{2\alpha^{2}}}\e^{\i k_{0}x}
+\]
+
+($\int_{-\infty}^{\infty}\left|f\left(x\right)\right|^{2}\mathrm{d}x=1$)
+
+フーリエ変換して
+\[
+F\left(k\right)=\left(\frac{\alpha^{2}}{\pi}\right)^{\frac{1}{4}}\e^{-\frac{\alpha^{2}}{2}\left(k-k_{0}\right)^{2}}
+\]
+
+すなわち、
+\[
+f\left(x\right)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}F\left(k\right)\e^{\i kx}\mathrm{d}k
+\]
+(フーリエ逆変換)
+
+$f\left(x\right)$: ポテンシャル一定の空間中の粒子の固有関数$\phi_{k}=\e^{\i\left(kx-\omega t\right)}$
+
+→$f\left(x\right)$は$\phi_{k}$の重ね合わせでできた波動関数$\Psi\left(x,t\right)$の$t=0$に相当している。
+i.e. $\Psi\left(x,0\right)=f\left(x\right)$
+
+図電物4-1
+
+\[
+\left|f\left(x\right)\right|^{2}=\sqrt{\frac{1}{\pi\alpha^{2}}}\e^{-\frac{x^{2}}{\alpha^{2}}}
+\]
+
+$t>0$について、
+\[
+\Psi\left(x,t\right)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}F\left(k\right)\e^{\i\left(kx-\omega t\right)}\mathrm{d}k=\left(\frac{\alpha^{2}}{4\pi^{3}}\right)^{\frac{1}{4}}\int_{-\infty}^{\infty}\e^{-\frac{\alpha^{2}}{2}\left(k-k_{0}\right)^{2}}\e^{\i\left(kx-\omega t\right)}\mathrm{d}k
+\]
+
+\[
+\Psi\left(x,t\right)=\left(\frac{1}{\pi\alpha^{2}}\right)^{\frac{1}{4}}\frac{1}{\sqrt{1+\i\xi t}}\exp\left(\frac{-\frac{x^{2}}{2\alpha^{2}}+\i\left(kx-\omega_{0}t\right)}{1+\i\xi t}\right)
+\]
+
+ただし$\xi=\frac{\hbar}{m\alpha^{2}},\omega_{0}=\frac{\hbar k_{0}^{2}}{2m}$
+
+粒子の存在確率分布
+\begin{align*}
+P\left(x,t\right) & =\left|\Psi\left(x,t\right)\right|^{2}=\Psi^{*}\left(x,t\right)\Psi\left(x,t\right)\\
+ & =\sqrt{\frac{1}{\alpha^{2}\pi\left(1+\xi^{2}t^{2}\right)}}\exp\left(-\frac{\left(x-v_{g}t\right)^{2}}{\alpha^{2}\left(1+\xi^{2}t^{2}\right)}\right)
+\end{align*}
+
+ただし$v_{g}=\frac{\hbar k_{0}}{m}$
+
+この中心:$x=v_{g}t$ c.f. $v_{g}=\pd{\omega}k=\frac{\hbar k}{m}$
+
+即ち、波束の中心が動く速度$v_{g}$が群速度を求める式と矛盾しない。
+
+この幅: $\frac{\alpha}{\sqrt{2}}\sqrt{1+\xi^{2}t^{2}}$
+
+$\sqrt{1+\xi^{2}t^{2}}$が時間の経過による波束の増加を表している。$t$が大きいとき、幅は$\frac{\alpha}{\sqrt{2}}\xi t$。
+
+波束の幅増加を表す係数
+\[
+\sim\xi t=\frac{\hbar^{2}}{m\alpha^{2}}t
+\]
+
+$\alpha$: $t=0$における波束幅
+
+図電物4-2
 \end{document}
