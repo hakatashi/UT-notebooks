@@ -441,16 +441,18 @@ R_{31}R_{23}
 \paragraph{回路のグラフ}
 
 回路要素を明示せずに、相互接続だけを表した図。
-
-図電回2-1
+\begin{center}
+\includegraphics{images/CircuitTheory1/2-1}
+\par\end{center}
 
 グラフ化するとき、電流源を開放、電圧源を短絡させる。
 
 \paragraph{カットセット}
 
 グラフを2つの部分に分離することができる枝の組み合わせ。
-
-図電回2-2
+\begin{center}
+\includegraphics{images/CircuitTheory1/2-2}
+\par\end{center}
 
 カットセットの枝電流の総和=0(KCLそのもの): カットセット方程式
 
@@ -515,8 +517,9 @@ $i$番目と$j$番目の節点を結ぶすべての枝のコンダクタンス�
 \paragraph{電圧源を含む場合}
 
 ex)
-
-図電回2-3
+\begin{center}
+\includegraphics{images/CircuitTheory1/2-3}
+\par\end{center}
 
 節点$a$に関して
 \[
@@ -526,8 +529,9 @@ I_{1}-I_{2}-I_{3}=0
 I_{1}=\frac{V-V_{a}}{R_{1}}
 \]
 とすればよい。
-
-図電回2-4
+\begin{center}
+\includegraphics{images/CircuitTheory1/2-4}
+\par\end{center}
 
 \begin{align*}
 I_{1} & =\frac{V}{R_{1}}-\frac{V_{a}}{R_{1}}\\
@@ -551,16 +555,18 @@ $n$個の節点→木の枝数$n-1$
 グラフの枝数$b$→補木の枝数$b-\left(a-1\right)$
 
 次の例では$n=4,b=5$
-
-図電回2-5
+\begin{center}
+\includegraphics{images/CircuitTheory1/2-5}
+\par\end{center}
 
 \paragraph{タイセット}
 
 グラフの閉路を構成する1組の枝。
 
 木に\textbf{補木の枝を一つ追加}すると、1つのタイセットができる。
-
-図電回2-6
+\begin{center}
+\includegraphics{images/CircuitTheory1/2-6}
+\par\end{center}
 
 木を$\left\{ 2,3,5\right\} $として、
 
@@ -573,8 +579,9 @@ $n$個の節点→木の枝数$n-1$
 互いに独立した閉路の数=補木の数=$b-\left(n-1\right)$
 
 例) T型回路
-
-図電回2-7
+\begin{center}
+\includegraphics{images/CircuitTheory1/2-7}
+\par\end{center}
 
 各閉路のループ電流$I_{1},I_{2}$とする。
 
@@ -630,8 +637,9 @@ $i$番目と$j$番目の閉路が共通に持つ全ての抵抗の和
 閉路電流の向きに電流を流す電圧を正符号とする。
 
 \paragraph{電流源を含む場合}
-
-図電回2-8
+\begin{center}
+\includegraphics{images/CircuitTheory1/2-8}
+\par\end{center}
 
 \[
 V_{1}=RI-RI_{1}
@@ -642,8 +650,9 @@ $RI$: 等価な電圧源に変換
 鳳・テブナンの定理(来週)の特殊な例
 
 \subsection{節点方程式の数式的表現}
-
-図電回2-9
+\begin{center}
+\includegraphics{images/CircuitTheory1/2-9}
+\par\end{center}
 
 節点$a$: $i_{1}+i_{2}=0$
 
@@ -688,8 +697,9 @@ i_{3}
 式(5)は$Ai_{b}=0$とかける。枝電流を節点電位で表せば、節点方程式が得られる。
 
 \paragraph{$k$番目の枝}
-
-図電回2-10
+\begin{center}
+\includegraphics{images/CircuitTheory1/2-10}
+\par\end{center}
 
 \[
 i_{k}=\frac{v_{k}}{R_{k}}+i_{sk}-\frac{v_{sk}}{R_{k}}
@@ -762,7 +772,9 @@ v_{c}
 \end{array}\right)
 \]
 
-図電回2-11
+\begin{center}
+\includegraphics{images/CircuitTheory1/2-11}
+\par\end{center}
 
 \[
 v_{b}=A^{T}v_{n}
@@ -911,8 +923,9 @@ v_{n} & =Y_{n}^{-1}\sum_{n}j_{Sn}\\
 これより節点電圧$v_{n}$は、個別の電源のみの節点電位$Y_{n}^{-1}j_{Sn}$の重ね合わせで表現することができることがわかる。
 
 \paragraph{ex}
-
-図電回3-1
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-1}
+\par\end{center}
 
 \[
 I_{2}'=\frac{V}{R_{1}+R_{2}}
@@ -955,8 +968,9 @@ I_{2}'=\frac{V}{R_{1}+R_{2}}
 \subsection{等価電源の定理}
 
 \paragraph{鳳・テブナンの定理}
-
-図電回3-2
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-2}
+\par\end{center}
 
 $R_{0}$: 電源を除去した時の端子1-1'から見た抵抗
 
@@ -969,7 +983,9 @@ I & =\frac{V_{0}}{R_{0}+R}\\
 V & =\frac{R}{R_{0}+R}V_{0}
 \end{align*}
 
-図電回3-3
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-3}
+\par\end{center}
 
 電源$E$を0から増加させて$I'=0$となるようにする。
 
@@ -990,8 +1006,9 @@ I=\frac{V_{0}}{R_{0}+R}
 これは電源$V_{0}$、内部抵抗$R_{0}$の電源をつないだ時の電流と同じ。
 
 注: $R_{0}+R=\frac{V_{0}}{I}$において、短絡時$R=0$を考えると、内部抵抗$R_{0}=\frac{\text{開放電圧}V_{0}}{\text{短絡電流}}$と書ける。測定可能な電圧、電流から求められるので便利。
-
-図電回3-4
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-4}
+\par\end{center}
 
 端子abの開放時の$I_{1}$は、
 \[
@@ -1005,8 +1022,9 @@ V_{0}=20\left(-1.4+3\right)=32\mathrm{V}
 \]
 
 また電源を全て除去すると、
-
-図電回3-5
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-5}
+\par\end{center}
 
 端子abから見た合成抵抗は
 \[
@@ -1014,8 +1032,9 @@ V_{0}=20\left(-1.4+3\right)=32\mathrm{V}
 \]
 
 よって元の回路は
-
-図電回3-6
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-6}
+\par\end{center}
 
 と等価。
 
@@ -1027,8 +1046,9 @@ V_{0}=20\left(-1.4+3\right)=32\mathrm{V}
 \item 抵抗$R_{0}$→コンダクタンス$G_{0}$
 \end{itemize}
 に置き換えたもの。
-
-図電回3-7
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-7}
+\par\end{center}
 
 $G_{0}$: 電源を除去した時の端子1-1'から見たコンダクタンス (端子1-1'開放時)
 
@@ -1045,26 +1065,31 @@ V=\frac{I_{0}}{G_{0}+G},I=\frac{G}{G_{0}+G}I
 ＊鳳・テブナンの定理、ノートンの定理を用いて、電圧源、電流源を相互に変換可能。
 
 \paragraph{ex) 回路簡略化の例}
-
-図電回3-9
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-9}
+\par\end{center}
 
 ＊電圧源に並列抵抗$R_{p}$
-
-図電回3-10
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-10}
+\par\end{center}
 
 ＊電流源に直列抵抗$R_{S}$
-
-図電回3-11
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-11}
+\par\end{center}
 
 \subsection{供給電力最大の法則}
-
-図電回3-12
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-12}
+\par\end{center}
 
 抵抗$R$で消費される電力$P$を最大にするには?
 
 等価電源に置き換えると、
-
-図電回3-13
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-13}
+\par\end{center}
 
 \[
 P=RI^{2}=\frac{RV_{0}^{2}}{\left(R_{0}+R\right)^{2}}
@@ -1085,7 +1110,9 @@ P_{\mathrm{max}}=\frac{R_{0}V_{0}^{2}}{\left(2R_{0}\right)^{2}}=\frac{V_{0}^{2}}
 \eta=\frac{RI^{2}}{V_{0}I}=\frac{RI}{V_{0}}=\frac{1}{1+\frac{R_{0}}{R}}
 \]
 
-図電回3-14
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-14}
+\par\end{center}
 
 \[
 P_{\mathrm{lose}}=R_{0}I^{2}=\frac{R_{0}V_{0}^{2}}{\left(R_{0}+R\right)^{2}}
@@ -1093,8 +1120,9 @@ P_{\mathrm{lose}}=R_{0}I^{2}=\frac{R_{0}V_{0}^{2}}{\left(R_{0}+R\right)^{2}}
 
 
 \subsection{補償の定理}
-
-図電回3-15
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-15}
+\par\end{center}
 
 電圧、電流の変化分は、元の回路の電源を除去して、代わりに\textbf{電圧源$V=RI_{0}$}を挿入した時の電圧電流に等しい。
 
@@ -1104,8 +1132,9 @@ P_{\mathrm{lose}}=R_{0}I^{2}=\frac{R_{0}V_{0}^{2}}{\left(R_{0}+R\right)^{2}}
 
 
 \paragraph{証明}
-
-図電回3-16
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-16}
+\par\end{center}
 
 図(c)は元の回路と同等。よって
 \begin{align*}
@@ -1120,8 +1149,9 @@ I+\Delta I & =I'+I
 
 
 \paragraph{ex)}
-
-図電回3-17
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-17}
+\par\end{center}
 
 \[
 \Delta I=-\frac{RI}{R_{0}+R}
@@ -1150,8 +1180,9 @@ I+\Delta I=\frac{V_{0}}{R_{0}+R}
 \paragraph{ex)}
 
 いま、抵抗$R$の値が設計値の120\%大きかったとする。この時の電流の変化$\Delta I$を求めたい。
-
-図電回3-18
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-18}
+\par\end{center}
 
 \[
 I_{0}=2\mathrm{A}
@@ -1206,12 +1237,14 @@ $1\Omega$に対して鳳・テブナンの定理を適用すると
 \item 電圧源→電流源
 \end{itemize}
 に置き換えても、同様のことが成立。
-
-図電回3-19
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-19}
+\par\end{center}
 
 このとき電圧、電流の変化分$\Delta V,\Delta I$は、元の回路の電源を除去して、代わりに\textbf{電流源$I=GV_{0}$}を挿入した時の電圧、電流に等しい。
-
-図電回3-20
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-20}
+\par\end{center}
 
 証明は同様(省略)
 
@@ -1225,16 +1258,18 @@ $1\Omega$に対して鳳・テブナンの定理を適用すると
 \end{itemize}
 
 \subsection{相反原理}
-
-図電回3-21
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-21}
+\par\end{center}
 
 このとき
 \[
 \frac{E_{1}}{I_{2}}=\frac{E_{2}'}{I_{1}'}
 \]
 が成立。
-
-図電回3-22
+\begin{center}
+\includegraphics{images/CircuitTheory1/3-22}
+\par\end{center}
 
 閉路方程式
 \[
