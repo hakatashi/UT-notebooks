@@ -10,6 +10,7 @@
 \usepackage{textcomp}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{graphicx}
 \usepackage{esint}
 
 \makeatletter
@@ -44,8 +45,9 @@
 \section{第1章 電荷と静電界}
 
 \subsection{クーロンの法則}
-
-図電1
+\begin{center}
+\includegraphics{images/Electromagnetics12/1-1}
+\par\end{center}
 
 \begin{align*}
 F & =\frac{1}{4\pi\varepsilon_{0}}\frac{Q_{1}Q_{2}}{r^{2}}\left[\mathrm{N}\right]\\
@@ -69,8 +71,9 @@ F & =9\times10^{9}\left[\mathrm{N}\right]\\
 
 
 \paragraph{重ね合わせの理}
-
-図電2
+\begin{center}
+\includegraphics{images/Electromagnetics12/1-2}
+\par\end{center}
 
 \[
 \mathbb{F}=\mathbb{F}_{1}+\mathbb{F}_{2}
@@ -78,8 +81,9 @@ F & =9\times10^{9}\left[\mathrm{N}\right]\\
 
 
 \paragraph{練習問題}
-
-図電3
+\begin{center}
+\includegraphics{images/Electromagnetics12/1-3}
+\par\end{center}
 
 \begin{align*}
 F_{1} & =\frac{1}{4\pi\varepsilon_{0}}\frac{qQ}{a^{2}+y^{2}}\\
@@ -93,8 +97,9 @@ F_{1,x} & =F_{1}\cos\theta\\
 \subsection{電界(電場) $E$}
 
 電荷そのものではなく、電荷が作り出す電場から力を受けていると考える。
-
-図電4
+\begin{center}
+\includegraphics{images/Electromagnetics12/1-4}
+\par\end{center}
 
 \[
 F=\frac{1}{4\pi\varepsilon_{0}}\frac{q_{1}q_{2}}{r^{2}}=q_{1}E_{2}
@@ -116,8 +121,9 @@ $\mathbb{E}=\mathbb{E}_{1}+\mathbb{E}_{2}$が成立する。
 なお、静電気においては「自己力」(電荷自身が作り出す電場の影響)は考えない。
 
 \paragraph{電気力線}
-
-図電5
+\begin{center}
+\includegraphics{images/Electromagnetics12/1-5}
+\par\end{center}
 \begin{itemize}
 \item $\mathbb{E}$の大きさ$\propto$力線の密度
 \item $+q$から出て$-q$に入るのみ
@@ -131,8 +137,9 @@ $\mathbb{E}=\mathbb{E}_{1}+\mathbb{E}_{2}$が成立する。
 \end{itemize}
 
 \paragraph{電荷から出る力線の本数は?}
-
-図電6
+\begin{center}
+\includegraphics{images/Electromagnetics12/1-6}
+\par\end{center}
 
 \[
 E=\frac{1}{4\pi\varepsilon_{0}}\frac{q}{r^{2}}
@@ -151,12 +158,14 @@ N & =\frac{q}{\varepsilon_{0}}
 
 
 \subsection{電位 ($q$の位置エネルギー)}
-
-図電7
+\begin{center}
+\includegraphics{images/Electromagnetics12/1-7}
+\par\end{center}
 
 $+q$を$A\rightarrow B$に準静的に運ぶ。
-
-図電8
+\begin{center}
+\includegraphics{images/Electromagnetics12/1-8}
+\par\end{center}
 
 \[
 \mathrm{d}w=-q\mathbb{E}\cdot\mathrm{d}\boldsymbol{s}
@@ -173,7 +182,9 @@ W_{A\rightarrow B} & =\int_{A}^{B}\mathrm{d}w\\
 \boldsymbol{E}=\frac{1}{4\pi\varepsilon_{0}}\frac{q_{1}}{r^{2}}\hat{\boldsymbol{r}}
 \]
 
-図電9
+\begin{center}
+\includegraphics{images/Electromagnetics12/1-9}
+\par\end{center}
 
 \begin{align*}
 W_{A\rightarrow B} & =-\frac{qq_{1}}{4\pi\varepsilon_{0}}\int_{A}^{B}\frac{\hat{\boldsymbol{r}}\mathrm{d}\boldsymbol{s}}{r^{2}}\\
@@ -181,7 +192,9 @@ W_{A\rightarrow B} & =-\frac{qq_{1}}{4\pi\varepsilon_{0}}\int_{A}^{B}\frac{\hat{
  & =\frac{qq_{1}}{4\pi\varepsilon_{0}}\left(\frac{1}{r_{B}}-\frac{1}{r_{A}}\right)
 \end{align*}
 
-図電10
+\begin{center}
+\includegraphics{images/Electromagnetics12/1-10}
+\par\end{center}
 
 この式は経路によらず、始点と終点にのみ左右される。→保存力
 
@@ -268,8 +281,9 @@ V & =\oint_{S}\mathrm{d}V\\
 \end{align*}
 
 問3
-
-図電11
+\begin{center}
+\includegraphics{images/Electromagnetics12/1-11}
+\par\end{center}
 
 \[
 \mathrm{d}E=\frac{1}{4\pi\varepsilon_{0}}\frac{\rho\mathrm{d}s}{a^{2}+h^{2}}
@@ -326,20 +340,23 @@ N3kg 14g/mol→200mol\texttimes 7
 ex. 点電荷→球面 $\frac{1}{4\pi\varepsilon_{0}}\frac{q}{r}$
 
 電界(電気力線)と直交
-
-図電磁2-1
+\begin{center}
+\includegraphics{images/Electromagnetics12/2-1}
+\par\end{center}
 
 \[
 \boldsymbol{E}=\grad\boldsymbol{V}
 \]
 
 $\grad$はgradientであり、要するに微分である。
-
-図電磁2-2
+\begin{center}
+\includegraphics{images/Electromagnetics12/2-2}
+\par\end{center}
 
 多変数関数の微分
-
-図電磁2-3
+\begin{center}
+\includegraphics{images/Electromagnetics12/2-3}
+\par\end{center}
 
 \[
 \text{等}V\text{面}\perp\grad V
@@ -369,8 +386,9 @@ $\boldsymbol{E}$を積分すると$V$になり、$V$を微分すると$\boldsymb
 
 
 \paragraph{例1.6}
-
-図電磁2-4
+\begin{center}
+\includegraphics{images/Electromagnetics12/2-4}
+\par\end{center}
 
 クーロン
 \[
@@ -407,12 +425,16 @@ E_{x} & =-\pd Vx\\
 
 
 \subsection{ガウスの法則}
-
-図電磁2-5
+\begin{center}
+\includegraphics{images/Electromagnetics12/2-5}
+\par\end{center}
 
 閉曲面$S$内で発生した$E$力線の本数=$S$を外向きに貫く$E$力線の本数=$Q$本
 
-$\mathrm{d}S$近傍 図電磁2-6
+$\mathrm{d}S$近傍
+\begin{center}
+\includegraphics{images/Electromagnetics12/2-6}
+\par\end{center}
 
 \begin{align*}
 \mathrm{d}S\text{を貫く本数} & =E\cdot\mathrm{d}S_{n}\\
@@ -430,8 +452,9 @@ S\text{を貫く本数}=\oint_{S}E_{n}\mathrm{d}S
 これをガウスの法則という。
 
 \paragraph{例1.7}
-
-図電磁2-7
+\begin{center}
+\includegraphics{images/Electromagnetics12/2-7}
+\par\end{center}
 \begin{enumerate}
 \item $r>r_{0}$の場合
 
@@ -458,8 +481,9 @@ $q=0$より$E=0$
 \paragraph{微分形}
 
 微小体積$\Delta v$に適用
-
-図電磁2-8
+\begin{center}
+\includegraphics{images/Electromagnetics12/2-8}
+\par\end{center}
 
 電荷は連続的に分布し$\rho\left(x,y,z\right)\left[\mathrm{c/m^{2}}\right]$
 
@@ -520,8 +544,9 @@ $\rho=0$のとき
 $\nabla^{2}V=0$: ラプラスの式
 
 \subsection{静電界の保存則}
-
-図電磁2-9
+\begin{center}
+\includegraphics{images/Electromagnetics12/2-9}
+\par\end{center}
 
 \begin{align*}
 \oint_{C}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s} & =\int_{AC_{1}}^{B}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}+\int_{BC_{2}}^{A}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}\\
@@ -532,8 +557,9 @@ $\nabla^{2}V=0$: ラプラスの式
 渦なしの条件
 
 \paragraph{微分形}
-
-図電磁2-10
+\begin{center}
+\includegraphics{images/Electromagnetics12/2-10}
+\par\end{center}
 
 \[
 \oint_{c}\boldsymbol{E}\mathrm{d}\boldsymbol{s}=E_{x}\left(x,y-\frac{\Delta y}{2}\right)\Delta x+E_{y}\left(x+\frac{\Delta x}{2},y\right)\Delta y-E_{x}\left(x,y+\frac{\Delta y}{2}\right)\Delta x-E_{y}\left(x+\frac{\Delta x}{2},y\right)\Delta y
@@ -605,7 +631,10 @@ W_{P\rightarrow O} & =q\left(V_{O}-V_{P}\right)\\
 
 \paragraph{演習問題問1}
 
-(1) 図電磁2-11
+(1)
+\begin{center}
+\includegraphics{images/Electromagnetics12/2-11}
+\par\end{center}
 
 \[
 \begin{cases}
