@@ -760,10 +760,90 @@ $\sqrt{1+\xi^{2}t^{2}}$が時間の経過による波束の増加を表してい
 
 波束の幅増加を表す係数
 \[
-\sim\xi t=\frac{\hbar^{2}}{m\alpha^{2}}t
+\sim\xi t=\frac{\hbar}{m\alpha^{2}}t
 \]
 
 $\alpha$: $t=0$における波束幅
 
 図電物4-2
+
+\[
+\hat{H}\hat{p}-\hat{p}\hat{H}=\i\hbar\pd Vx
+\]
+
+\begin{align*}
+\hat{a} & =\hat{\dot{v}}=\pd{}t\left(\frac{\hat{p}}{m}\right)+\frac{\i}{\hbar}\left[\hat{H}\frac{\hat{p}}{m}-\frac{\hat{p}}{m}\hat{H}\right]\\
+ & =\frac{1}{m}\frac{\i}{\hbar}\i\hbar\pd Vx=\frac{1}{m}\pd Vx
+\end{align*}
+
+\[
+m\left\langle a\right\rangle =-\pd Vx=F\left(\text{外力}\right)
+\]
+
+
+\paragraph{ポテンシャル障壁への衝突}
+
+図電物4-3
+
+解くべきSchrödinger方程式は
+\[
+\left(-\frac{\hbar^{2}}{2m}\dd{}x+V\right)\varphi=\varepsilon\varphi
+\]
+
+\begin{itemize}
+\item 領域I
+
+\[
+-\frac{\hbar^{2}}{2m}\dd{\varphi}x=\varepsilon\varphi
+\]
+
+\[
+\varphi_{I}=A\e^{\i kx}+B\e^{-\i kx}
+\]
+
+$A,B$: 係数、$\frac{\hbar^{2}k^{2}}{2m}=\varepsilon$
+
+$k>0$→$+x$方向に進む波
+
+$k<0$→$-x$方向に進む波
+\item 領域III
+
+粒子は$+x$方向に進むのみ。
+
+\[
+\varphi_{III}=T\e^{\i kx}
+\]
+
+$T$: 係数、$\frac{\hbar^{2}k^{2}}{2m}=\varepsilon$
+\item 領域II
+
+粒子の運動エネルギー$\varepsilon$ < 障壁高さ$V_{0}$
+
+\[
+\frac{\hbar^{2}}{2m}\d{\varphi_{II}}x=\left(V_{0}-\varepsilon\right)\varphi_{II}
+\]
+
+\[
+\varphi_{II}=C\e^{-\beta x}+D\e^{\beta x}
+\]
+
+$C,D$: 係数、$\beta$: 実数、$\frac{\hbar^{2}\beta^{2}}{2m}=V_{0}-\varepsilon$
+\end{itemize}
+全空間でSchrödinger方程式が成立するためには、全空間で$\Psi$が$x$について2階微分可能である必要がある。→$\Psi$が連続、$\pd{\Psi}x$が連続
+
+$x=0$で、
+\begin{align*}
+\Psi_{I}\left(0\right) & =\Psi_{II}\left(0\right)\\
+\pd{\Psi_{I}}x\left(0\right) & =\pd{\Psi_{II}}x\left(0\right)
+\end{align*}
+
+$x=b$で、
+\begin{align*}
+\Psi_{II}\left(b\right) & =\Psi_{III}\left(b\right)\\
+\pd{\Psi_{II}}x\left(b\right) & =\pd{\Psi_{III}}x\left(b\right)
+\end{align*}
+
+上式より$A,B,C,D$についての制約式が2個、下式より$C,D,T$についての制約式が2個出てくる。
+
+これに規格化条件を加えて$A,B,C,D,T$が求まる。
 \end{document}
