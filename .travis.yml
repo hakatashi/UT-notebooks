@@ -28,3 +28,5 @@ deploy:
   on:
     repo: hakatashi/UT-notebooks
     branch: master
+notifications:
+  webhooks: http://webhook.hakatashi.com/travis
