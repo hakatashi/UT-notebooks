@@ -10,6 +10,7 @@
 \usepackage{textcomp}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{graphicx}
 
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
@@ -104,11 +105,14 @@ $A$: 振幅
 u\left(x,t\right)=A\e^{\i\underbrace{\left(kx-\omega t\right)}_{\text{位相(phase)}}}
 \]
 
-図電デ2-1
+\begin{center}
+\includegraphics{images/ElectronicDevice/2-1}
+\par\end{center}
 
 $x=x_{0}$で見ると、
-
-図電デ2-2
+\begin{center}
+\includegraphics{images/ElectronicDevice/2-2}
+\par\end{center}
 
 $T$: 周期
 
@@ -119,8 +123,9 @@ T=\frac{2\pi}{\omega}
 $\omega$: 角周波数
 
 $t=t_{0}$で見ると、
-
-図電デ2-3
+\begin{center}
+\includegraphics{images/ElectronicDevice/2-3}
+\par\end{center}
 
 $\lambda$: 波長
 
@@ -129,8 +134,9 @@ $\lambda$: 波長
 \]
 
 $k$: 波数
-
-図電デ2-4
+\begin{center}
+\includegraphics{images/ElectronicDevice/2-4}
+\par\end{center}
 
 同位相の位置
 
@@ -195,7 +201,9 @@ $\hbar\omega$: エネルギー固有値 $E=\hbar\omega$の定常状態
 E=\frac{\left(\hbar k\right)^{2}}{2m^{*}}
 \]
 
-図電デ2-5
+\begin{center}
+\includegraphics{images/ElectronicDevice/2-5}
+\par\end{center}
 
 $k$と$E$の関係: 分散関係
 
@@ -204,29 +212,35 @@ ex. Siの有効質量$m^{*}=0.19m$
 \paragraph{結晶中}
 
 $k\sim0$の場合
-
-図電デ2-6
+\begin{center}
+\includegraphics{images/ElectronicDevice/2-6}
+\par\end{center}
 
 $\lambda=\frac{2\pi}{k}\gg0$
 
 $k=\frac{\pi}{a}\Rightarrow\lambda=2a$の場合
-
-図電デ2-7
+\begin{center}
+\includegraphics{images/ElectronicDevice/2-7}
+\par\end{center}
 
 \begin{align*}
 \varphi^{+}\left(x\right) & =A\left(\e^{\i kx}+\e^{-\i kx}\right)=2A\cos kx\\
 \varphi^{-}\left(x\right) & =A\left(\e^{\i kx}-\e^{-\i kx}\right)=2\i A\sin kx
 \end{align*}
 
-図電デ2-8
+\begin{center}
+\includegraphics{images/ElectronicDevice/2-8}
+\par\end{center}
 
 $k=\pm\left(\frac{\pi}{a}\right)\underbrace{n}_{\text{整数}}$でもエネルギーが分裂する。
-
-図電デ2-9
+\begin{center}
+\includegraphics{images/ElectronicDevice/2-9}
+\par\end{center}
 
 \subsection{パウリの排他律}
-
-図電デ2-10
+\begin{center}
+\includegraphics{images/ElectronicDevice/2-10}
+\par\end{center}
 
 電子は全く同じ量子状態を持つことはできない。
 
@@ -241,8 +255,9 @@ n\left(E\right)=\frac{\Delta N}{\Delta E}
 $n\left(E\right)$: 状態密度(Density of States, DOS)
 
 \paragraph{3次元}
-
-図電デ2-11
+\begin{center}
+\includegraphics{images/ElectronicDevice/2-11}
+\par\end{center}
 
 \[
 \Psi\left(x,t\right)=\e^{\i\left(kx-\omega t\right)}
@@ -279,7 +294,9 @@ k_{y}=\frac{2\pi}{L}\times\text{整数}
 k_{z}=\frac{2\pi}{L}\times\text{整数}
 \]
 
-図電デ2-12
+\begin{center}
+\includegraphics{images/ElectronicDevice/2-12}
+\par\end{center}
 
 半径$k$の球({*})の状態数
 \begin{align*}
@@ -306,8 +323,9 @@ n\left(E\right)=\frac{1}{2\pi^{2}}\left(\frac{2m^{*}}{\hbar^{2}}\right)^{\frac{3
 \]
 
 最終的に計算される状態数は$L$によらない。
-
-図電デ2-13
+\begin{center}
+\includegraphics{images/ElectronicDevice/2-13}
+\par\end{center}
 
 \section*{第3回}
 
@@ -378,4 +396,109 @@ $l=2$: d軌道
 $l=3$: f軌道
 
 sp混成軌道
+
+\section*{第4回}
+
+一部欠損
+
+\section{???}
+
+\subsection{???}
+
+\subsection{真性導体}
+
+図電デ4-1
+
+\[
+E_{i}\sim\frac{E_{e}+E_{r}}{2}
+\]
+
+電子濃度: $n$
+
+ホール濃度: $p$
+
+\[
+n=p=n_{i}
+\]
+
+$n_{i}$: 真性キャリア濃度 会陰。Si($R_{1}T_{1}$) $10^{10}\mathrm{cm}^{3}$
+
+$E\sim E+\mathrm{d}E\text{\text{の電子数}(\text{単位体積})}=\underbrace{n_{e}\left(E\right)}_{\text{状態密度}}\mathrm{d}E\times f\left(e\right)$
+
+図電デ4-2
+
+\[
+E-E_{F}>\sim2kT
+\]
+
+\[
+f\left(E\right)\sim\exp\left(-\frac{E-E_{F}}{kT}\right)
+\]
+
+ボルツマン分布をとる。
+
+\subsection{N型半導体}
+
+P, As(V族)などの不純物(dopant)を添加(doping)
+
+図電デ4-3
+
+図電デ4-4
+
+\subsection{P型半導体}
+
+B(III族)をドーピング
+
+図電デ4-5
+
+図電デ4-6
+
+\paragraph{質量作用の法則}
+
+図電デ4-7
+
+生成速度$g=A\left(T\right)$ ($T$のみに依存)
+
+再結合速度$r=B\left(T\right)np$
+
+熱平衡状態では$g=r$なので
+\[
+np=\frac{A\left(T\right)}{B\left(T\right)}=n_{i}^{2}
+\]
+
+ex. N型: $n=N_{D},p=\frac{n_{i}^{2}}{N_{D}}$
+
+P型: $p=N_{A},n=\frac{n_{i}^{2}}{N_{A}}$
+
+$N_{D}$: $10^{20}\mathrm{cm^{-3}}$ のとき、
+
+$n$: $10^{20}\mathrm{cm^{-3}}$: 多数キャリア(majority carrier)
+
+$p$: $1\mathrm{cm^{-3}}$: 少数キャリア(minority carrier)
+
+\subsection{半導体中のキャリア濃度}
+
+伝導帯中の電子濃度
+\[
+n=\int_{E_{c}}^{E_{\mathrm{top}}}n_{e}\left(E\right)f\left(E\right)\mathrm{d}E
+\]
+
+価電子帯中のホール濃度
+\[
+p=\int_{E_{\mathrm{bottom}}}^{E_{r}}n_{p}\left(E\right)\left(1-f\left(E\right)\right)\mathrm{d}E
+\]
+
+\[
+n_{e}\left(E\right)=\frac{1}{2\pi^{2}}\left(\frac{2m_{e}}{\hbar^{2}}\right)^{\frac{3}{2}}\sqrt{E-E_{c}}
+\]
+
+図電デ4-8
+
+\begin{align*}
+n & \sim\int_{E_{c}}^{\infty}\frac{1}{2\pi^{2}}\left(\frac{2m_{e}}{\hbar^{2}}\right)^{\frac{3}{2}}\sqrt{E-E_{c}}\exp\left(-\frac{E-E_{F}}{kT}\right)\mathrm{d}E\\
+ & =\frac{1}{2\pi^{2}}\left(\frac{2m_{e}}{\hbar^{2}}\right)^{\frac{3}{2}}\exp\left(-\frac{E_{c}-E_{F}}{kT}\right)\int_{E_{c}}^{\infty}\sqrt{E-E_{c}}\exp\left(-\frac{E-E_{c}}{kT}\right)\mathrm{d}E\\
+ & =2\left(\frac{m_{e}kT}{2\pi\hbar^{2}}\right)^{\frac{3}{2}}\exp\left(-\frac{E_{c}-E_{F}}{kT}\right)
+\end{align*}
+
+←$\int_{0}^{\infty}\sqrt{x}\exp\left(-\frac{x}{kT}\right)\mathrm{d}E=\frac{1}{2}\sqrt{\pi\left(kT\right)^{3}}$
 \end{document}
