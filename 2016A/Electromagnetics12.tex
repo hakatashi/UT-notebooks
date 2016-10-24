@@ -1639,4 +1639,125 @@ V & =\frac{Q+Q_{0}}{C}=V_{0}+\frac{Q_{0}}{C}\\
  & =V_{0}+\frac{\ln\frac{b}{a}}{2\pi\varepsilon_{0}L}Q_{0}
 \end{align*}
 
+
+\paragraph{演習問題問1}
+
+\[
+\oint_{S}D\mathrm{d}S=Q_{F}
+\]
+
+\[
+2\pi rD=Q
+\]
+
+\[
+D=\frac{Q}{2\pi r}
+\]
+\[
+E=\begin{cases}
+\frac{Q}{2\pi\varepsilon_{1}r} & \left(a<r<c\right)\\
+\frac{Q}{2\pi\varepsilon_{2}r} & \left(c<r<b\right)
+\end{cases}
+\]
+
+\begin{align*}
+V & =-\int_{b}^{c}\frac{Q}{2\pi\varepsilon_{2}r}\mathrm{d}r-\int_{c}^{a}\frac{Q}{2\pi\varepsilon_{1}r}\mathrm{d}r\\
+ & =\frac{Q}{2\pi}\left(\frac{1}{\varepsilon_{2}}\ln\frac{b}{c}+\frac{1}{\varepsilon_{1}}\ln\frac{c}{a}\right)
+\end{align*}
+
+\[
+C=\frac{Q}{V}=\frac{2\pi}{\frac{1}{\varepsilon_{2}}\ln\frac{b}{c}+\frac{1}{\varepsilon_{1}}\ln\frac{c}{a}}
+\]
+
+
+\paragraph{演習問題問2(1)}
+
+図電磁4-15
+
+$D_{\bot}$が保存
+
+\[
+\varepsilon_{0}E_{1}=2\varepsilon_{0}E_{2}
+\]
+
+\begin{align*}
+V & =E_{1}\frac{2}{3}d+E_{2}\frac{1}{3}d\\
+ & =\frac{5}{3}dE_{2}
+\end{align*}
+
+\[
+\therefore E_{2}=\frac{3V}{5d},E_{1}=\frac{6V}{5d}
+\]
+
+
+\paragraph{演習問題問2(2)}
+
+図電磁4-16
+
+\begin{align*}
+V & =E\frac{2}{3}d+3E\frac{1}{3}d\\
+ & =\frac{5}{3}dE
+\end{align*}
+
+\[
+E=\frac{3V}{5d}
+\]
+
+\begin{align*}
+\oint_{S}D\mathrm{d}S & =-\varepsilon_{0}E_{0}\Delta S+2\varepsilon_{0}\cdot3E\Delta S\\
+ & =5\varepsilon_{0}E\Delta S\\
+ & =\sigma_{F}\Delta S
+\end{align*}
+
+\begin{align*}
+\sigma_{F} & =5\varepsilon_{0}E\\
+ & =\frac{3\varepsilon_{0}V}{d}
+\end{align*}
+
+図電磁4-17
+
+\begin{align*}
+\sigma_{P} & =-P\\
+ & =-\left(D-\varepsilon_{0}\cdot3E\right)\\
+ & =-3\varepsilon_{0}E\\
+ & =-\frac{9\varepsilon_{0}V}{5d}
+\end{align*}
+
+
+\paragraph{演習問題問3}
+
+図電磁4-18
+
+\begin{align*}
+V & =\frac{q}{4\pi\varepsilon_{0}r_{1}}-\frac{q}{4\pi\varepsilon_{0}r_{2}}\\
+ & =\frac{q}{4\pi\varepsilon_{0}}\left(\frac{1}{r_{1}}-\frac{1}{r_{2}}\right)
+\end{align*}
+
+余弦定理より、
+\[
+r_{1}^{2}=r^{2}+\left(\frac{\ell}{2}\right)^{2}-r\ell\cos\theta
+\]
+
+\begin{align*}
+\frac{1}{r_{1}} & =\frac{1}{r\sqrt{1-\frac{\ell}{r}\cos\theta+\left(\frac{\ell}{2}\right)^{2}}}\\
+ & \simeq\frac{1}{r}\left(1-\frac{l}{r}\cos\theta\right)^{-\frac{1}{2}}\\
+ & \simeq\frac{1}{r}\left(1+\frac{\ell}{2r}\cos\theta\right)
+\end{align*}
+
+$r\ll1$のとき$\left(1+r\right)^{a}\simeq1+ar$を用いた。
+
+同様に、
+\[
+\frac{1}{r_{2}}\simeq\frac{1}{r}\left(1-\frac{\ell}{2r}\cos\theta\right)
+\]
+
+\[
+\therefore V=\frac{q}{4\pi\varepsilon_{0}}\frac{\ell}{r^{2}}\cos\theta
+\]
+
+$\boldsymbol{p}\cdot\hat{\boldsymbol{r}}=q\ell\cos\theta$より、
+\[
+V=\frac{\boldsymbol{p}\cdot\hat{\boldsymbol{r}}}{4\pi\varepsilon_{0}r^{2}}
+\]
+
 \end{document}
