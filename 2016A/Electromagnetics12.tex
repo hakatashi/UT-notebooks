@@ -10,6 +10,7 @@
 \usepackage{textcomp}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{stmaryrd}
 \usepackage{graphicx}
 \usepackage{esint}
 
@@ -1299,4 +1300,277 @@ W & =\int\mathrm{d}w=\int_{0}^{a}\frac{3Q^{2}r^{4}}{4\pi\varepsilon_{0}a^{6}}\ma
  & =\frac{3Q^{2}}{20\pi\varepsilon_{0}a}
 \end{align*}
 
+
+\section*{第4回}
+
+\paragraph{中間試験 教室変}
+
+743→761
+
+\section{誘電体}
+
+\subsection{誘電体とは}
+
+=絶縁体
+
+電気を通さない物質⇔導体
+
+\paragraph{分極}
+
+図電磁4-1
+
+図電磁4-2
+\begin{itemize}
+\item 電子分極: 原子核と電子雲のずれ
+\item イオン分極: 材料中のイオンの移動
+\item 分極電荷:
+
+図電磁4-3
+
+$Q_{F}$があるから$Q_{P}$がある。
+\[
+Q_{F}>Q_{P}
+\]
+
+\end{itemize}
+
+\paragraph{双極子モーメント$\mathbf{p}$}
+
+図電磁4-4
+
+\[
+\boldsymbol{p}=q\boldsymbol{T}\left[\mathrm{C\cdot m}\right]
+\]
+
+
+\paragraph{面と分極}
+
+図電磁4-5
+
+$p$が$S$を跨ぐ確率
+\[
+\frac{\ell}{L}
+\]
+
+$S$を通過する電荷量
+\begin{align*}
+Q & =nSL\cdot\frac{\ell}{L}\cdot q\\
+ & =nL\ell q
+\end{align*}
+
+$n$: 密度
+
+\[
+\therefore\sigma_{P}=\frac{Q}{S}=n\ell q=np=P
+\]
+
+$P$: 分極
+
+\[
+\boldsymbol{p}=n\left\langle p\right\rangle 
+\]
+
+分極ベクトル
+
+$\left\langle \boldsymbol{p}\right\rangle $: $\boldsymbol{p}$のベクトル平均
+
+\subsection{誘電体を含むガウスの法則}
+
+図電磁4-6
+
+$\sigma_{P}=P$付近で$\mathrm{d}S$
+
+\[
+Q_{P}=\int_{S}\boldsymbol{p}\cdot\boldsymbol{n}\mathrm{d}S\left(-\int_{S}p_{n}\mathrm{d}S\right)
+\]
+
+$\boldsymbol{n}$: $\mathrm{d}S$の単位法線ベクトル
+
+$\boldsymbol{p}\cdot\boldsymbol{n}$: 面$\mathrm{d}S$を貫く$\sigma_{P}$
+
+$Q_{F}$: 真電荷とも言う。
+
+\[
+\oint_{S}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S=\frac{Q_{F}+Q_{P}}{\varepsilon_{0}}
+\]
+
+\[
+\oint_{S}\left(\varepsilon_{0}\boldsymbol{E}+\boldsymbol{p}\right)\cdot\boldsymbol{n}\mathrm{d}S=Q_{F}
+\]
+
+$\left(\varepsilon_{0}\boldsymbol{E}+\boldsymbol{p}\right)=\boldsymbol{D}$:
+電束密度$\left[\mathrm{C/m^{2}}\right]$
+
+\[
+\oint_{S}\boldsymbol{D}\cdot\boldsymbol{n}\mathrm{d}S=Q_{F}
+\]
+
+$\boldsymbol{D}$: $Q_{F}$と関係した量
+
+$\boldsymbol{E}$: $Q_{F}$と$Q_{P}$と関係した量
+
+\[
+V_{BA}=-\int_{A}^{B}\boldsymbol{E}\cdot\mathrm{d}q
+\]
+
+\[
+\oint\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}=0
+\]
+
+が成立する。
+
+\paragraph{例}
+
+図電磁4-7
+
+\[
+-D_{1\bot}\Delta S+D_{2\bot}\Delta S=0
+\]
+
+\[
+D_{1\bot}=D_{2\bot}
+\]
+
+図電磁4-8
+
+\begin{align*}
+\oint\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s} & =-E_{1\sslash}\Delta\ell+E_{2\sslash}\Delta\ell\\
+ & =0
+\end{align*}
+
+
+\paragraph{微分系}
+
+\[
+\div\boldsymbol{D}=\rho_{F}
+\]
+
+\[
+\div\left(\varepsilon_{0}\boldsymbol{E}+\boldsymbol{p}\right)=\rho_{F}
+\]
+
+\[
+\div\left(\varepsilon_{0}\boldsymbol{E}\right)=\rho_{F}+\rho_{P}
+\]
+
+\[
+\div\boldsymbol{p}=-\rho_{P}
+\]
+
+\[
+\boldsymbol{E}=-\grad V
+\]
+
+\[
+\rot\boldsymbol{E}=\boldsymbol{0}
+\]
+
+
+\subsection{誘電率}
+
+常誘電体: $\boldsymbol{p}\propto\boldsymbol{E}$
+
+$\boldsymbol{p}=x_{\varepsilon}\boldsymbol{E}$
+
+$x_{\varepsilon}$: 電気感受率(真空$x_{e}=0$)
+
+\begin{align*}
+\boldsymbol{D} & =\varepsilon_{0}\boldsymbol{E}+\boldsymbol{p}\\
+ & =\left(1+x_{e}\right)\varepsilon_{0}E\\
+ & =\varepsilon\boldsymbol{E}
+\end{align*}
+
+$\varepsilon$: $\varepsilon_{r}\varepsilon_{0}$: 誘電率
+
+\paragraph{$\varepsilon_{r}$の値}
+\begin{itemize}
+\item 空気 1.00059
+\item 紙 2\textasciitilde{}3
+\item 石英 4
+\item 水 80
+\item BTO 21000\textasciitilde{}5000
+\end{itemize}
+図電磁4-9
+
+\[
+\oint_{S}D_{n}\mathrm{d}S=D_{0}\Delta S=\sigma_{F}\Delta S
+\]
+
+\[
+D_{_{0}}=\sigma_{F}
+\]
+
+\[
+-D_{0}S+D_{1}\Delta S=0
+\]
+
+\[
+D_{1}=D_{0}
+\]
+
+\[
+E_{0}=\frac{D_{0}}{\varepsilon_{0}}=\frac{\sigma_{F}}{\varepsilon_{0}}
+\]
+
+\[
+E_{1}=\frac{D_{1}}{\varepsilon}=\frac{\sigma_{F}}{\varepsilon}
+\]
+
+\begin{align*}
+V & =E_{0}\left(d_{0}-d\right)+E_{1}d\\
+ & =\sigma_{F}\left(\frac{d_{0}-d}{\varepsilon_{0}}+\frac{d}{\varepsilon}\right)
+\end{align*}
+
+\begin{align*}
+C & =\frac{Q_{F}}{V}\\
+ & =\frac{\sigma_{F}S}{V}\\
+ & =\frac{S}{\frac{d_{0}-d}{\varepsilon_{0}}+\frac{d}{\varepsilon}}
+\end{align*}
+
+\begin{align*}
+O_{P} & =-\int\boldsymbol{p}\cdot\boldsymbol{n}\cdot\mathrm{d}S\\
+ & P\Delta S
+\end{align*}
+
+\[
+\sigma_{P}=\frac{Q_{P}}{\Delta S}
+\]
+
+$d=d_{0}$のとき、
+\[
+C=\frac{\varepsilon S}{d}
+\]
+
+$d=0$のときの$\frac{\varepsilon}{\varepsilon_{0}}$
+
+電磁図4-10
+\[
+P=\left(Q_{P}\Delta S\right)
+\]
+
+図電磁4-11
+
+\[
+V=-\int\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}
+\]
+
+\[
+D=\varepsilon_{0}E+P
+\]
+
+図電磁4-12
+
+$D_{L}$: $D_{1}\cos\theta_{1}=D_{2}\cos\theta_{2}$
+
+$E_{\sslash}$: $E_{1}\sin\theta_{1}=E_{2}\sin\theta_{2}$
+
+\[
+\underbrace{\frac{E_{1}}{D_{1}}}_{\frac{1}{\varepsilon_{1}}}\tan\theta_{1}=\underbrace{\frac{E_{2}}{D_{2}}}_{\frac{1}{\varepsilon_{2}}}\tan\theta_{2}
+\]
+
+\[
+\therefore\frac{\tan\theta_{1}}{\tan\theta_{2}}=\frac{\varepsilon_{1}}{\varepsilon_{2}}
+\]
+
+図電磁4-13
 \end{document}
