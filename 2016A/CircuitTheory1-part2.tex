@@ -1,0 +1,324 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2016-A 電気回路理論第一 後半}
+
+\author{教員: 小関泰之 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\jmath}
+\global\long\def\grad{\mathrm{grad}}
+\global\long\def\rot{\mathrm{rot}}
+\global\long\def\div{\mathrm{div}}
+\global\long\def\diag{\mathrm{diag}}
+
+
+\section*{第1回}
+
+\paragraph{講義ページ}
+
+https://sites.google.com/site/ysozeki/lecture
+
+\section{過渡現象}
+
+\subsection{過渡現象とは?}
+
+図電回後1-1
+
+応用: ディジタル回路・アナログ回路・制御・物理現象
+
+\paragraph{4つの見方}
+\begin{itemize}
+\item 微分方程式(今日)
+\item 周波数特性
+\item インパルス応答・ステップ応答
+\item 伝達関数(複素周波数平面)
+\end{itemize}
+ラプラス変換・フーリエ変換がこの4つを繋げてくれる。
+
+→複雑な回路へ
+
+\subsection{回路方程式から微分方程式へ}
+
+図電回後1-2
+
+\subsubsection{基本: KVL (キルヒホッフの電圧則)}
+
+図電回後1-3
+
+\[
+v_{R}+v_{L}+v_{C}=v\left(t\right)
+\]
+
+\[
+Ri+L\d it+\frac{1}{C}\int i\mathrm{d}t=v\left(t\right)
+\]
+
+→微分
+
+\[
+R\d it+L\dd it+\frac{i}{C}=\d{v\left(t\right)}t
+\]
+
+
+\subsubsection{複雑な回路}
+
+連立微分方程式
+
+図電回後1-4
+
+\[
+\begin{cases}
+Ri_{1}+L\d{}t\left(i_{1}+i_{2}\right)=v\left(t\right)\\
+\frac{1}{C}\int i_{2}\mathrm{d}t+R_{2}i_{2}=L\d{}t\left(i_{1}+i_{2}\right)
+\end{cases}
+\]
+
+
+\subsubsection{相互インダクタンス}
+
+向きに注意
+
+図電回後1-5
+
+\[
+\begin{cases}
+Ri_{1}+L_{1}\d{i_{1}}t-M\d{i_{2}}t=v\left(t\right)\\
+L_{2}\d{i_{2}}t-M\d{i_{1}}t+\frac{1}{L}\int i_{2}\mathrm{d}t=0
+\end{cases}
+\]
+
+
+\subsection{RC回路}
+
+(あとでRL回路・RLC回路)
+
+図電回後1-6
+
+\[
+Ri+\frac{1}{C}\int i\mathrm{d}t=V\left(t\geqq0\right)
+\]
+
+微分して、
+\[
+R\d it+\frac{1}{C}i=0
+\]
+
+変数分離して、
+\[
+\frac{\mathrm{d}i}{i}=-\frac{1}{RC}\mathrm{d}t
+\]
+
+積分して、
+\[
+\log i=-\frac{1}{RC}+K\rightarrow i\left(t\right)=k\e^{-\frac{t}{RC}}
+\]
+
+ただし$k=\e^{K}$。
+
+スイッチを入れた直後、$v_{c}\left(0+\right)=0$より初期条件
+\[
+i\left(0+\right)=\frac{V}{R}=k
+\]
+
+\[
+i\left(t\right)=\frac{V}{R}\e^{-\frac{1}{RC}}\left(t\geqq0\right)
+\]
+
+\[
+v_{R}\left(t\right)=Ri\left(t\right)=V\e^{-\frac{t}{RC}}
+\]
+\[
+v_{c}\left(t\right)=V-v_{R}\left(t\right)=V\left(1-\e^{-\frac{t}{RC}}\right)
+\]
+
+図電回後半1-7
+
+・$C$に供給されるパワー
+
+\begin{align*}
+P_{C}\left(t\right) & =v_{C}\left(t\right)i\left(t\right)\\
+ & =\frac{V^{2}}{R}\e^{-\frac{t}{RC}}\left(1-\e^{-\frac{t}{RC}}\right)
+\end{align*}
+
+・時刻$t$までに蓄えられるエネルギー
+
+\begin{align*}
+W_{C}\left(t\right) & =\int_{0}^{t}P_{C}\left(t\right)\mathrm{d}t\\
+ & =\frac{1}{2}CV^{2}\left(1-2\e^{-\frac{t}{\tau}}+\e^{-\frac{2t}{\tau}}\right)
+\end{align*}
+
+$t\rightarrow\infty$で$W_{C}\rightarrow\frac{1}{c}CV^{2}$
+
+\paragraph{電源を短絡すると?}
+
+図電回後半1-8
+
+\[
+i\left(t\right)=k\e^{-\frac{t}{RC}}
+\]
+
+$v_{C}\left(0+\right)=V$より、
+\[
+i\left(0+\right)=-\frac{V}{R}
+\]
+
+\[
+i\left(t\right)=-\frac{V}{R}\e^{-\frac{t}{RC}}\left(t\geqq0\right)
+\]
+
+図電回後半1-9
+
+\subsection{RL回路}
+
+図電回後半1-10
+
+\[
+Ri+L\d it=V\left(t\geqq0\right)
+\]
+
+変数分離して、
+\[
+i+\frac{L}{R}\d it=\frac{V}{R}
+\]
+\[
+i-\frac{V}{R}=-\frac{L}{R}\d it
+\]
+\[
+\frac{\mathrm{d}i}{i-\frac{V}{R}}=-\frac{R}{L}\mathrm{d}t
+\]
+\[
+\log\left(i-\frac{V}{R}\right)=-\frac{R}{L}t
+\]
+\[
+\therefore i\left(t\right)=\frac{V}{R}+k\e^{\frac{R}{L}t}
+\]
+
+インダクタの電流は連続的に変化するため、初期条件$i\left(0+\right)=0=\frac{V}{R}+k$
+
+\[
+i\left(t\right)=\frac{V}{R}\left(1-\e^{-\frac{R}{L}t}\right)
+\]
+
+図電回後半1-11
+
+・$L$に供給されるパワー
+
+\begin{align*}
+P_{L}\left(t\right) & =v_{L}\left(t\right)i\left(t\right)\\
+ & =\frac{V^{2}}{R}\e^{-\frac{R}{L}t}\left(1-\e^{-\frac{R}{L}t}\right)
+\end{align*}
+
+・時刻$t$までに蓄えられるエネルギー
+
+\begin{align*}
+W_{L}\left(t\right) & =\int_{0}^{t}P_{L}\left(t\right)\mathrm{d}t\\
+ & \xrightarrow{t\rightarrow\infty}\frac{L}{2}\left(\frac{V}{R}\right)^{2}
+\end{align*}
+
+・電源短絡時
+
+\[
+Ri+L\d it=0
+\]
+
+\[
+i\left(t\right)=k\e^{-\frac{R}{L}t}
+\]
+
+$i\left(0+\right)=\frac{V}{R}$より、
+\[
+i\left(t\right)=\frac{V}{R}\e^{-\frac{R}{L}t}
+\]
+
+図電回後半1-12
+
+\subsection{RLC回路}
+
+図電回後半1-13
+
+\[
+Ri+\frac{1}{C}\int i\mathrm{d}t+L\d it=V\left(t\geqq0\right)
+\]
+
+微分して、
+\[
+L\dd it+R\d it+\frac{1}{C}i=0
+\]
+
+試行解$k=\e^{st}$($s$: 複素数)を代入
+
+\[
+Ls^{2}Rs+\frac{1}{C}=0
+\]
+
+\begin{align*}
+S & =-\frac{R}{2L}\pm\sqrt{\left(\frac{R}{2L}\right)^{2}-\frac{1}{LC}}\\
+ & =S_{1},S_{2}
+\end{align*}
+とし、場合分けする。
+\begin{enumerate}
+\item $s$: 2つの実数解
+\item $s$: 重解
+\item $s$: 複素数解
+\end{enumerate}
+
+\paragraph{下準備}
+
+i) オイラーの公式
+
+\[
+\e^{\j\theta}=\cos\theta+\j\sin\theta
+\]
+
+覚え方: $f\left(\theta\right)=\e^{\j\theta}$とすると、
+\[
+\begin{cases}
+f\left(0\right)=1\\
+\d{}{\theta}f\left(\theta\right)=\j f\left(\theta\right)
+\end{cases}
+\]
+
+図電回後半1-14
+
+ii) 三角関数
+
+\[
+\cos\theta=\frac{\e^{\j\theta}-\e^{-\j\theta}}{2},\sin\theta=\frac{\e^{\j\theta}-\e^{-\j\theta}}{2\j}
+\]
+
+図電回後半1-15
+
+iii) 双曲線関数
+
+\[
+\cosh\theta=\frac{\e^{\theta}+\e^{-\theta}}{2},\sinh\theta=\frac{\e^{\theta}-\e^{-\theta}}{2}
+\]
+
+\end{document}
