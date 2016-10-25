@@ -360,4 +360,144 @@ I\left(A,B\right) & =H\left(A\right)-H\left(A|B\right)\\
 \begin{center}
 \includegraphics{images/InformationScience/2-9}
 \par\end{center}
+
+\section*{第3回}
+
+\paragraph{相互情報量}
+
+情報源符号化(情報圧縮)
+\begin{itemize}
+\item 符号の望ましい性質
+\item どのように符号化?
+\item どこまで圧縮できるか?
+\end{itemize}
+
+\paragraph{望ましい性質}
+
+例:
+
+図情3-1
+
+平均符号長 $L=\sum p_{i}l_{i}$
+
+$C_{5}$:
+
+図情3-2
+\begin{itemize}
+\item 一意復号可能
+\begin{itemize}
+\item 瞬時符号
+\begin{itemize}
+\item 等長符号
+\item 非等長符号
+\end{itemize}
+\item 非瞬時符号
+\end{itemize}
+\item 一意復号不可能 ($C_{5}$)
+\end{itemize}
+図情3-3
+
+\paragraph{瞬時符号の条件}
+
+語頭条件 (Prefix rule): ある符号が別の符号の語頭になっていない (必要十分条件)
+
+\paragraph{符号の木}
+
+図情3-4
+
+瞬時符号→符号の木の葉にだけ符号がある
+
+\paragraph{クラフトの不等式}
+
+符号の``長さ''に関する条件
+
+長さ$l_{1},l_{2},\cdots,l_{m}$となる瞬時符号が存在する必要十分条件
+
+\[
+2^{-l_{1}}+2^{-l_{2}}+\cdots+2^{-l_{m}}\le1
+\]
+
+
+\paragraph{平均符号長の条件}
+
+どこまで短くできるか?
+
+\paragraph{情報源符号化定理}
+
+平均符号長$L$は、情報源のエントロピー$H\left(S\right)$に限りなく近づけることができる。
+
+→
+\[
+H\left(S\right)\le L\le H\left(S\right)+\varepsilon
+\]
+
+図情3-5
+
+\[
+H\left(S\right)=-\sum p_{i}\log p_{i}
+\]
+
+\[
+L=\sum p_{i}l_{i}
+\]
+
+
+\paragraph{定理}
+\begin{enumerate}
+\item $L<H\left(S\right)+1$となる瞬時符号を作ることができる。
+\item $H\left(S\right)\le L$でなければならない
+\end{enumerate}
+→$H\left(S\right)\le L<H\left(S\right)+1$
+
+\paragraph{1. について}
+
+符号長$l_{i}$について
+\[
+-\log p_{i}\le l_{i}<-\log_{i}+1
+\]
+と$l_{i}$を選ぶ。
+
+\[
+\log p_{i}\ge-l_{i}
+\]
+
+\[
+p_{i}\ge2^{-l_{i}}
+\]
+
+\[
+\sum p_{i}\ge\sum2^{-l_{i}}
+\]
+
+\[
+1\ge\sum2^{-l_{i}}
+\]
+
+クラフトの不等式
+
+瞬時符号が存在する。
+
+\paragraph{シャノンの補助定理}
+
+$q_{1},\cdots'q_{m}$を非負の数で$q_{1}+\cdots+q_{m}=1$とする。
+
+\[
+-p_{i}\log q_{i}\ge-p_{i}\log p_{i}
+\]
+
+等号は$q_{i}=p_{i}$のとき成立(シャノンの補助定理)。
+
+$l_{i}=-\log q_{i}$と$q_{i}$を選ぶ。
+
+$l_{i}$瞬時符号があれば
+\[
+\sum2^{-l_{i}}\le1
+\]
+
+
+\paragraph{どうやって最短符号を作るか?}
+
+ハフマン府外: 平均符号長を最短化する符号
+
+図情3-6
 \end{document}
