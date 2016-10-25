@@ -1,0 +1,102 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{amsmath}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{数理手法V 第1回レポート}
+
+\author{電気電子工学科2年 340728B 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\mathrm{grad}}
+\global\long\def\rot{\mathrm{rot}}
+\global\long\def\div{\mathrm{div}}
+\global\long\def\diag{\mathrm{diag}}
+
+
+\paragraph{証明}
+
+数学的帰納法を用いる。
+\begin{enumerate}
+\item $n=1$のとき題意は
+\[
+P\left(A_{1}\right)=P\left(A_{1}\right)
+\]
+となり自明。
+\item $n=k$のとき題意が満たされると仮定する。
+
+すなわち、
+\[
+P\left(\bigcup_{i=1}^{k}A_{i}\right)=\sum_{m=1}^{k}\left(-1\right)^{m-1}\sum_{i_{1}<\cdots<i_{m}}P\left(\bigcap_{l=1}^{m}A_{i_{l}}\right)
+\]
+が成立。このとき、
+
+\begin{align*}
+ & P\left(\bigcup_{i=1}^{k+1}A_{i}\right)\\
+= & P\left(\left(\bigcup_{i=1}^{k}A_{i}\right)\cup A_{k+1}\right)\\
+= & P\left(\bigcup_{i=1}^{k}A_{i}\right)+P\left(A_{k+1}\right)-P\left(\left(\bigcup_{i=1}^{k}A_{i}\right)\cap A_{k+1}\right)\\
+= & \sum_{m=1}^{k}\left(-1\right)^{m-1}\sum_{i_{1}<\cdots<i_{m}\in\left(i_{1}\cdots i_{k}\right)}P\left(\bigcap_{l=1}^{m}A_{i_{l}}\right)+P\left(A_{k+1}\right)\\
+ & -\sum_{m=1}^{k}\left(-1\right)^{m-1}\sum_{i_{1}<\cdots<i_{m}\in\left(i_{1}\cdots i_{k}\right)}P\left(\left(\bigcap_{l=1}^{m}A_{i_{l}}\right)\cap A_{k+1}\right)\\
+= & \sum_{l=1}^{k}P\left(A_{l}\right)+P\left(A_{k+1}\right)\\
+ & +\sum_{m=2}^{k}\left(-1\right)^{m-1}\sum_{i_{1}<\cdots<i_{m}\in\left(i_{1}\cdots i_{k}\right)}P\left(\bigcap_{l=1}^{m}A_{i_{l}}\right)\\
+ & -\sum_{m=1}^{k-1}\left(-1\right)^{m-1}\sum_{i_{1}<\cdots<i_{m}\in\left(i_{1}\cdots i_{k}\right)}P\left(\left(\bigcap_{l=1}^{m}A_{i_{l}}\right)\cap A_{k+1}\right)\\
+ & -\left(-1\right)^{k-1}\sum_{i_{1}<\cdots<i_{k}\in\left(i_{1}\cdots i_{k}\right)}P\left(\left(\bigcap_{l=1}^{k}A_{i_{l}}\right)\cap A_{k+1}\right)\\
+= & \sum_{l=1}^{k+1}P\left(A_{l}\right)\\
+ & +\sum_{m=2}^{k}\left(-1\right)^{m-1}\\
+ & \quad\left(\sum_{i_{1}<\cdots<i_{m}\in\left(i_{1}\cdots i_{k}\right)}P\left(\bigcap_{l=1}^{m}A_{i_{l}}\right)+\sum_{i_{1}<\cdots<i_{m-1}\in\left(i_{1}\cdots i_{k}\right)}P\left(\left(\bigcap_{l=1}^{m-1}A_{i_{l}}\right)\cap A_{k+1}\right)\right)\\
+ & +\left(-1\right)^{k}\sum_{i_{1}<\cdots<i_{k+1}\in\left(i_{1}\cdots i_{k+1}\right)}P\left(\bigcap_{l=1}^{k+1}A_{i_{l}}\right)
+\end{align*}
+
+ここで
+\[
+\sum_{i_{1}<\cdots<i_{m}\in\left(i_{1}\cdots i_{k}\right)}P\left(\bigcap_{l=1}^{m}A_{i_{l}}\right)+\sum_{i_{1}<\cdots<i_{m-1}\in\left(i_{1}\cdots i_{k}\right)}P\left(\left(\bigcap_{l=1}^{m-1}A_{i_{l}}\right)\cap A_{k+1}\right)
+\]
+とは$k+1$個の整数から$k+1$を含まない$m$個を選ぶ$_{k}C_{m}$通りと、$k+1$を含む$m$個を選ぶ$_{k}C_{m-1}$通りの2つの組み合わせの和となっている。この数は公式より
+\[
+_{k}C_{m}+{}_{k}C_{m-1}={}_{k+1}C_{m}
+\]
+通りであり、$k+1$個の整数から任意の$m$個を選ぶ組み合わせを重複なく列挙している。即ち、
+\begin{align*}
+ & \sum_{i_{1}<\cdots<i_{m}\in\left(i_{1}\cdots i_{k}\right)}P\left(\bigcap_{l=1}^{m}A_{i_{l}}\right)+\sum_{i_{1}<\cdots<i_{m-1}\in\left(i_{1}\cdots i_{k}\right)}P\left(\left(\bigcap_{l=1}^{m-1}A_{i_{l}}\right)\cap A_{k+1}\right)\\
+= & \sum_{i_{1}<\cdots<i_{m}\in\left(i_{1}\cdots i_{k+1}\right)}P\left(\bigcap_{l=1}^{m}A_{i_{l}}\right)
+\end{align*}
+である。
+
+これを用いて前述の式は、
+\begin{align*}
+ & P\left(\bigcup_{i=1}^{k+1}A_{i}\right)\\
+= & \sum_{l=1}^{k+1}P\left(A_{l}\right)\\
+ & +\sum_{m=2}^{k}\left(-1\right)^{m-1}\sum_{i_{1}<\cdots<i_{m}\in\left(i_{1}\cdots i_{k+1}\right)}P\left(\bigcap_{l=1}^{m}A_{i_{l}}\right)\\
+ & +\left(-1\right)^{k}\sum_{i_{1}<\cdots<i_{k+1}\in\left(i_{1}\cdots i_{k+1}\right)}P\left(\bigcap_{l=1}^{k+1}A_{i_{l}}\right)\\
+= & \sum_{m=1}^{k+1}\left(-1\right)^{m-1}\sum_{i_{1}<\cdots<i_{m}}P\left(\bigcap_{l=1}^{m}A_{i_{l}}\right)
+\end{align*}
+
+よって$k+1$において題意が成立する。
+\end{enumerate}
+1. および 2. より、数学的帰納法から任意の$n$に対して題意が成立する。よって証明された。
+
+終
+\end{document}
