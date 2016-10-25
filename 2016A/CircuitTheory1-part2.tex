@@ -37,6 +37,7 @@
 \global\long\def\rot{\mathrm{rot}}
 \global\long\def\div{\mathrm{div}}
 \global\long\def\diag{\mathrm{diag}}
+\global\long\def\when#1{\left.#1\right|}
 
 
 \section*{第1回}
@@ -275,12 +276,12 @@ L\dd it+R\d it+\frac{1}{C}i=0
 試行解$k=\e^{st}$($s$: 複素数)を代入
 
 \[
-Ls^{2}Rs+\frac{1}{C}=0
+Ls^{2}+Rs+\frac{1}{C}=0
 \]
 
 \begin{align*}
-S & =-\frac{R}{2L}\pm\sqrt{\left(\frac{R}{2L}\right)^{2}-\frac{1}{LC}}\\
- & =S_{1},S_{2}
+s & =-\frac{R}{2L}\pm\sqrt{\left(\frac{R}{2L}\right)^{2}-\frac{1}{LC}}\\
+ & =s_{1},s_{2}
 \end{align*}
 とし、場合分けする。
 \begin{enumerate}
@@ -320,5 +321,205 @@ iii) 双曲線関数
 \[
 \cosh\theta=\frac{\e^{\theta}+\e^{-\theta}}{2},\sinh\theta=\frac{\e^{\theta}-\e^{-\theta}}{2}
 \]
+
+\begin{enumerate}
+\item $\left(\frac{R}{2L}\right)^{2}>\frac{1}{LC}$は$S$は2つの実数解
+
+\begin{align*}
+s_{1} & =-\frac{R}{2L}+\sqrt{\left(\frac{R}{2L}\right)^{2}-\frac{1}{LC}}\equiv-a+b\\
+s_{2} & =-\frac{R}{2L}-\sqrt{\left(\frac{R}{2L}\right)^{2}-\frac{1}{LC}}\equiv-a-b
+\end{align*}
+
+ただし
+\begin{align*}
+a & =\frac{R}{2L}\\
+b & =\sqrt{\left(\frac{R}{2L}\right)^{2}-\frac{1}{LC}}
+\end{align*}
+
+として、$i\left(t\right)/k_{1}\e^{s_{1}t}+k_{2}\e^{s_{2}t}$(一般解)とおく。
+
+初期条件から$k_{1},k_{2}$をて決定
+
+$t=0+$の
+\begin{itemize}
+\item 電流: $i\left(0+\right)=0\rightarrow k_{1}+k_{2}=0$
+\item 電圧: $v_{L}\left(0+\right)=L\d it=V\rightarrow L\left(k_{1}s_{1}+k_{2}s_{2}\right)=V$
+\end{itemize}
+から、
+\[
+k_{1}=-k_{2}=\frac{V}{L}\frac{1}{s_{1}-s_{2}}=\frac{V}{2bL}
+\]
+
+\begin{align*}
+i\left(t\right) & =\frac{L}{2bL}\left(\e^{\left(-a+b\right)t}-\e^{\left(-a-b\right)t}\right)\\
+ & =\frac{V}{bL}\e^{-at}\sinh bt
+\end{align*}
+
+\begin{align*}
+v_{R} & =Ri\left(t\right)\\
+v_{L} & =L\d it\\
+v_{C} & =V-v_{R}-v_{L}
+\end{align*}
+
+図電回後半1-16
+\item $\left(\frac{R}{2L}\right)^{2}=\frac{1}{LC}$のとき、$s$は重根
+
+$s_{1}=s_{2}=-\frac{R}{2L}=-a$
+
+一般解
+\[
+i\left(t\right)=k_{1}\e^{-at}+k_{2}t\e^{-at}
+\]
+
+(重根のとき$t\e^{-at}$も解)
+
+\paragraph{証明}
+
+\begin{align*}
+L\dd it+R\d it+\frac{1}{L}i & =L\left(\d{}t-s_{1}\right)\left(\d{}t-s_{2}\right)i\\
+ & =L\left(\d{}t+a\right)\left(\d{}t+a\right)i
+\end{align*}
+
+ここで$i=t^{n}\e^{-at}$とおくと
+\[
+\left(\d{}t+a\right)i=nt^{n-1}\e^{-at}-at^{n}\e^{-at}+at^{n}\e^{-at}
+\]
+
+従って$n=1$として、$i=t\e^{-at}$とすると、
+\[
+\left(\d{}t+a\right)\left(\d{}t+a\right)i=\left(\d{}t+a\right)\left(\d{}t+a\right)t\e^{-at}=\left(\d{}t+a\right)\e^{-at}=0
+\]
+
+初期条件から$k_{1},k_{2}$を決定する。
+
+$t=0+$における
+\begin{itemize}
+\item 電流: $i\left(0+\right)=0\rightarrow k_{1}=0$
+\item 電圧: $L\d it=V\rightarrow k_{2}=\frac{V}{C}$
+\end{itemize}
+\[
+i\left(t\right)=\frac{V}{L}t\e^{-at}
+\]
+
+図電回後半1-17
+
+\paragraph{別解}
+
+$b\rightarrow0$とすると$\sinh bt\sim bt$とでき、
+\[
+i\left(t\right)=\frac{V}{L}t\e^{-at}
+\]
+
+\item $\left(\frac{R}{2L}\right)^{2}<\frac{1}{LC}$のとき(複素数根)
+
+\begin{align*}
+s_{1} & =-\frac{R}{2L}+\j\sqrt{\frac{1}{LC}-\left(\frac{R}{2L}\right)^{2}}\equiv-a+\j\beta\\
+s_{2} & =-\frac{R}{2L}-\j\sqrt{\frac{1}{LC}-\left(\frac{R}{2L}\right)^{2}}\equiv-a-\j\beta
+\end{align*}
+として、一般解
+\begin{align*}
+i\left(t\right) & =k_{1}\e^{s_{1}t}+k_{2}\e^{s_{2}t}\\
+ & =\e^{-at}\left(k_{1}\e^{\j\beta t}+k_{2}\e^{-\j\beta t}\right)
+\end{align*}
+
+初期条件
+\[
+\begin{cases}
+i\left(0+\right)=0 & \rightarrow k_{1}+k_{2}=0\\
+L\when{\d it}_{t=0}=V & \rightarrow L\left(k_{1}s_{1}+k_{2}s_{2}\right)=L\left(-a\left(k_{1}-k_{2}\right)+\j\beta\left(k_{1}-k_{2}\right)\right)=V
+\end{cases}
+\]
+
+\[
+i\left(t\right)=\e^{-at}\frac{V}{2\j\beta L}\left(\e^{\j\beta t}-\e^{-\j\beta t}\right)=\frac{V}{\beta L}\e^{-at}\sin\beta t
+\]
+
+図電回後半1-18
+
+1. で$b=\j\beta$としても同じ。
+\end{enumerate}
+定常状態のあと、$t=0$で電源を短絡
+
+\[
+\begin{cases}
+i\left(0+\right)=0\\
+v_{L}\left(0+\right)=L\when{\d it}_{t=0}=-V
+\end{cases}
+\]
+
+
+\subsection{LC回路}
+
+図電回後半1-19
+
+RLC回路で$R\rightarrow0$($a\rightarrow0$)
+
+\[
+i\left(t\right)=\frac{V}{\beta L}\sin\beta t
+\]
+
+\[
+\beta=\sqrt{\frac{1}{LC}}\equiv\omega_{0}
+\]
+
+$\omega_{0}$: 固有角周波数
+
+とすると、
+\[
+i\left(t\right)=\frac{V}{\omega_{0}L}\sin\omega_{0}t
+\]
+
+図電回後半1-20
+
+\subsection{まとめ}
+\begin{enumerate}
+\item 回路は過渡応答を持つ
+\item 微分方程式で解析できる
+\item RC、RL回路: 時定数$\tau\left(=RC,\frac{L}{R}\right)$で指数減少
+\item RLC$\begin{cases}
+\text{減衰的}\\
+\text{臨界的}\\
+\text{振動的}
+\end{cases}$
+\item 余談1: RCL回路と工学
+
+図電回後半1-21
+
+$Q=\int i\mathrm{d}t$を用いたKVL
+
+\[
+L\dd{}tQ+R\d Qt+\frac{1}{C}Q=V
+\]
+\[
+\underbrace{m\dd xt}_{\text{慣性力}}+\underbrace{P\d xt}_{\text{摩擦}}+\underbrace{kt}_{\text{ばね}}=F
+\]
+
+電荷$Q$⇔位置$x$
+
+電流$i=\d Qt$⇔速度$\d xt$
+
+$L$⇔$m$
+
+$\frac{1}{C}$⇔$k$
+
+パワー$vi$⇔$F\d xt$
+\item 余談2
+
+今日の話はステップ入力に対応する応答
+
+図電回後半1-22
+
+\begin{align*}
+v\left(t\right) & =\begin{cases}
+v & \left(t\geqq0\right)\\
+0 & \left(t<0\right)
+\end{cases}\\
+ & =\underbrace{\frac{V}{2}}_{\text{直流}}+\underbrace{\int_{0}^{\infty}\frac{1}{\pi\omega}\sin\omega t\mathrm{d}\omega}_{\text{様々な周波数の正弦波の和}}
+\end{align*}
+
+それぞれの周波数に対する回路の応答を計算すればよい。
+
+→フーリエ変換、ラプラス変換
+\end{enumerate}
 
 \end{document}
