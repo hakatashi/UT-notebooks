@@ -32,6 +32,7 @@
 \global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
 \global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
 \global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
 \global\long\def\e{\mathrm{e}}
 \global\long\def\i{\mathrm{i}}
 \global\long\def\j{\mathrm{j}}
@@ -39,6 +40,7 @@
 \global\long\def\rot{\mathrm{rot}}
 \global\long\def\div{\mathrm{div}}
 \global\long\def\diag{\mathrm{diag}}
+\global\long\def\rank{\mathrm{rank}}
 
 
 \section*{第1回}
@@ -1294,5 +1296,480 @@ u'''+3u''+3u'+u=0\Rightarrow u\left(C_{1}+C_{2}x+C_{3}x^{2}\right)\e^{4x}
 \[
 u'''-8u''+16=0\Rightarrow u=\left(C_{1}+C_{2}x\right)\e^{2x}+\left(C_{3}+C_{4}x\right)\e^{-2x}
 \]
+
+
+\section*{第5回}
+
+\paragraph{定数係数n階非斉次線形常微分方程式}
+
+\[
+\sum_{j=1}^{n}a_{j}\ddd{}xu+a_{0}u_{2}=f\left(x\right)
+\]
+
+\[
+u\left(x\right)=\underbrace{u_{0}\left(x\right)}_{\text{特殊解}}+\underbrace{\sum_{R}\sum_{m=0}^{n_{k}-1}C_{m}^{k}x^{m}\e^{\lambda_{k}x}}_{\text{斉次方程式の一般解}}
+\]
+
+特殊解の求め方
+
+$f\left(x\right)=\e^{\alpha x}$のとき、
+\begin{enumerate}
+\item $\alpha$が特性方程式の根でないとき、$u=C\e^{\alpha x}$を代入して$C$を決定
+\item $\alpha$が特性方程式の単根なら、$u=Cx\e^{\alpha x}$を代入して$C$を決定
+\item $\alpha$が特性方程式の$m$乗根なら、$u=Cx^{m}\e^{\alpha x}$を代入
+\end{enumerate}
+$f\left(x\right)$が$m$次の多項式のとき、
+\[
+u=C_{1}x^{m}+C_{2}x^{m-1}+\cdots+C_{m}
+\]
+を代入。
+
+\paragraph{例}
+
+\[
+u''+3u'+2u=\e^{3x}
+\]
+
+\[
+\lambda^{2}+3\lambda+2=\left(\lambda+1\right)\left(\lambda+2\right)=0\Rightarrow\lambda=-1,-2
+\]
+
+\[
+u=C\e^{3x}\Rightarrow9C\e^{3x}+9C\e^{3x}+2C\e^{3x}=\e^{3x}
+\]
+
+\[
+C=\frac{1}{20}\Rightarrow u\left(x\right)=\frac{1}{20}\e^{3x}+C_{1}\e^{-x}+C_{2}\e^{-2x}
+\]
+
+
+\paragraph{例}
+
+\[
+u''+2u'+u=\e^{-x}
+\]
+
+\[
+\lambda^{2}+2\lambda+1=\left(\lambda+1\right)^{2}=0\Rightarrow\lambda=-1
+\]
+
+$u=Cx^{2}\e^{-x}$を代入
+
+\[
+C\left(2-2x\right)\e^{-x}-C\left(2x-x^{2}\right)\e^{-x}+2C\left(2x-x^{2}\right)\e^{-x}+Cx^{2}\e^{-x}=\e^{-x}
+\]
+
+\[
+C=\frac{1}{2}\Rightarrow u\left(x\right)=\frac{1}{2}x^{2}\e^{-x}+C_{1}\e^{-x}+C_{2}\e^{-x}
+\]
+
+
+\paragraph{例}
+
+\[
+u''+3u'+2u=x
+\]
+\[
+\lambda^{2}+3\lambda+2=\left(\lambda+1\right)\left(\lambda+2\right)=0
+\]
+
+$u=ax+b$を代入
+
+\[
+3a+2ax+2b=x\Rightarrow a=\frac{1}{2},b=-\frac{3a}{2}=-\frac{3}{4}
+\]
+
+\[
+u\left(x\right)=\frac{1}{2}x-\frac{3}{4}+C_{1}\e^{-x}+C_{2}\e^{-2x}
+\]
+
+
+\paragraph{例}
+
+\[
+u''-u'-2u=x^{2}
+\]
+
+\[
+\left(\lambda+1\right)\left(\lambda-2\right)
+\]
+$u=ax^{2}+bx+c$を代入
+
+\[
+2a-2ax-b-2ax^{2}-2ax-2c=x^{2}
+\]
+
+\[
+a=-\frac{1}{2},b=-a=\frac{1}{2},c=a-\frac{b}{2}=-\frac{3}{4}
+\]
+
+\[
+u\left(x\right)=\frac{x^{2}}{2}+\frac{x}{2}-\frac{3}{4}+C_{1}\e^{-x}+C_{2}\e^{2x}
+\]
+
+
+\paragraph{例}
+
+\[
+u''+2\eta u'+\eta^{2}u=x
+\]
+
+\[
+\left(\lambda+\eta\right)^{2}=0
+\]
+
+$u\left(x\right)=a+b$を代入
+
+\[
+2\eta a+\eta^{2}ax+\eta^{2}b=x
+\]
+
+\[
+a=\frac{1}{\eta^{2}}b=-\frac{2a}{\eta}=-\frac{2}{\eta^{3}}
+\]
+
+\[
+u\left(x\right)=\frac{x}{\eta^{2}}-\frac{2}{\eta^{3}}+C_{1}\e^{-\eta x}+C_{2}x\e^{-\eta x}
+\]
+
+
+\paragraph{n階微分方程式と一階n次元連立微分方程式}
+
+\[
+\sum_{j=1}^{n}a_{j}\ddd{}xu+a_{0}u=0
+\]
+
+$a_{n}=1$をおいて良い。
+
+\[
+u^{\left(n\right)}+a_{n-1}u^{\left(n-1\right)}+\cdots+a_{2}u''+a_{1}u'+a_{0}u=0
+\]
+
+\begin{align*}
+u_{0}=u\\
+u_{1}=u'\\
+u_{2}=u''\\
+\vdots\\
+u_{n-2}=u^{\left(n-2\right)}\\
+u_{n-1}=u^{\left(n-1\right)}
+\end{align*}
+
+$n$変数
+
+\begin{align*}
+u_{1}=u_{0}'\\
+u_{2}=u_{0}'\\
+\vdots\\
+u_{n=1}=u_{n-2}'
+\end{align*}
+
+\[
+u_{n-1}'+a_{n-1}u_{n-1}+a_{n-2}u_{n-2}+\cdots+a_{1}u_{1}+a_{0}u_{0}=0
+\]
+
+\[
+\boldsymbol{u}=\left(\begin{array}{c}
+u_{n-1}\\
+u_{n-2}\\
+\vdots\\
+u_{1}\\
+u_{0}
+\end{array}\right),A=\left(\begin{array}{cccccc}
+-a_{n-1} & -a_{n-2} & \cdots & -a_{2} & -a_{1} & -a_{0}\\
+1 & 0 &  &  &  & 0\\
+0 & 1 & 0 &  &  & 0\\
+ & 0 & \ddots & 0 &  & \vdots\\
+ &  & 0 & 1 & 0 & 0\\
+0 &  & \cdots & 0 & 1 & 0
+\end{array}\right)
+\]
+
+\[
+\boldsymbol{x}'=A\boldsymbol{x}
+\]
+
+
+\paragraph{参考: Jordan標準形}
+
+\paragraph{二次元連立微分方程式}
+
+\[
+\dot{\boldsymbol{u}}=A\boldsymbol{u}
+\]
+
+\[
+A=\left(\begin{array}{cc}
+a_{11} & a_{12}\\
+a_{21} & a_{22}
+\end{array}\right)
+\]
+
+\[
+\det\left(A-\lambda I\right)=\lambda^{2}-\left(a_{11}+a_{22}\right)\lambda+a_{11}a_{22}-a_{12}a_{21}
+\]
+
+判別式
+\[
+D=\left(a_{11}+a_{22}\right)^{2}-4\left(a_{11}a_{22}-a_{12}a_{21}\right)
+\]
+
+\begin{enumerate}
+\item $D>0$のとき相異なる実数$a<b$を持つ
+
+\begin{align*}
+A\boldsymbol{p} & =a\boldsymbol{p}\\
+A\boldsymbol{q} & =b\boldsymbol{q}
+\end{align*}
+
+\[
+p=\binom{p_{1}}{p_{2}},q=\binom{q}{q_{2}}
+\]
+
+\[
+P=\left(\boldsymbol{p},\boldsymbol{q}\right)=\left(\begin{array}{cc}
+p_{1} & q_{1}\\
+p_{2} & q_{2}
+\end{array}\right)
+\]
+
+\[
+A\left(\boldsymbol{p},\boldsymbol{q}\right)=\left(\boldsymbol{p},\boldsymbol{q}\right)\left(\begin{array}{cc}
+a & 0\\
+0 & 0
+\end{array}\right)
+\]
+
+\[
+AP=P\left(\begin{array}{cc}
+a & 0\\
+0 & b
+\end{array}\right)
+\]
+
+\[
+P^{-1}AP=\left(\begin{array}{cc}
+a & 0\\
+0 & b
+\end{array}\right)
+\]
+
+対角化。
+
+$\boldsymbol{u}=\binom{u}{v},\boldsymbol{x}=P\boldsymbol{u}$
+
+\begin{align*}
+\dot{\boldsymbol{u}} & =P^{-1}\dot{\boldsymbol{x}}=P^{-1}Ax=P^{-1}APu\\
+ & =\left(\begin{array}{cc}
+a & 0\\
+0 & b
+\end{array}\right)\boldsymbol{u}
+\end{align*}
+
+\begin{align*}
+ & \begin{cases}
+\dot{u}=au\\
+\dot{v}=bv
+\end{cases}\\
+\Rightarrow & \begin{cases}
+u\left(t\right)=\e^{at}u_{0}\\
+v\left(t\right)=\e^{bt}v_{0}
+\end{cases}
+\end{align*}
+
+\item $D=0$のとき1つの重根を持つ。
+\begin{enumerate}
+\item $\mathrm{rank}\left(aI-A\right)=0$のとき
+
+\[
+A=\left(\begin{array}{cc}
+a & 0\\
+0 & a
+\end{array}\right)\Rightarrow u\left(t\right)=\e^{at}u_{0},v\left(t\right)=\e^{at}v_{0}
+\]
+
+\item $\mathrm{rank}\left(aI-A\right)=1$のとき
+
+$A\boldsymbol{p}=a\boldsymbol{p},D=\left(\lambda-a\right)^{2}$なので$\boldsymbol{p}$と一次独立な$\boldsymbol{q}$があって、$\left(A-aI\right)\boldsymbol{q}=\boldsymbol{p}$を満たす。
+
+\[
+\left(A-aI\right)^{2}\boldsymbol{q}=\left(A-aI\right)\boldsymbol{p}=0
+\]
+
+\begin{align*}
+A\boldsymbol{p} & =a\boldsymbol{p}\\
+A\boldsymbol{q} & =a\boldsymbol{q}+\boldsymbol{p}
+\end{align*}
+
+\[
+A\left(\boldsymbol{p}\cdot\boldsymbol{q}\right)=\left(\boldsymbol{p}\cdot\boldsymbol{q}\right)\left(\begin{array}{cc}
+a & 1\\
+0 & a
+\end{array}\right)
+\]
+
+\[
+AP=P\left(\begin{array}{cc}
+a & 1\\
+0 & b
+\end{array}\right)\Rightarrow P^{-1}AP=\left(\begin{array}{cc}
+a & 1\\
+0 & b
+\end{array}\right)
+\]
+
+\[
+\dot{u}=P^{-1}\dot{x}=P^{-1}Ax=P^{-1}AP\boldsymbol{u}=\left(\begin{array}{cc}
+a & 1\\
+0 & b
+\end{array}\right)\boldsymbol{u}
+\]
+
+\[
+u\left(t\right)=\e^{at}\left(u_{0}+tv_{0}\right),v\left(t\right)=\e^{bt}v_{0}
+\]
+
+\end{enumerate}
+\item $D<0$複素共役な解$a\pm\i b$をもつ。
+
+\[
+A\boldsymbol{z}=\left(a+\i b\right)\boldsymbol{z}\:\left(\boldsymbol{z}=\boldsymbol{p}+\i\boldsymbol{q}\right)
+\]
+
+\[
+A\boldsymbol{p}+A\boldsymbol{q}\i=\left(a\boldsymbol{p}-b\boldsymbol{q}\right)+\i\left(a\boldsymbol{q}+b\boldsymbol{p}\right)
+\]
+
+\begin{align*}
+A\boldsymbol{p} & =a\boldsymbol{p}-b\boldsymbol{q}\\
+A\boldsymbol{q} & =a\boldsymbol{q}+b\boldsymbol{p}
+\end{align*}
+
+\[
+A\left(\boldsymbol{p},\boldsymbol{q}\right)=\left(\boldsymbol{p},\boldsymbol{q}\right)\left(\begin{array}{cc}
+a & b\\
+-b & a
+\end{array}\right)
+\]
+
+\[
+P^{-1}AP=\left(\begin{array}{cc}
+a & b\\
+-b & a
+\end{array}\right)
+\]
+
+\[
+\dot{\boldsymbol{u}}=\left(\begin{array}{cc}
+a & b\\
+-b & a
+\end{array}\right)\boldsymbol{u}
+\]
+
+\begin{align*}
+u\left(t\right) & =\e^{at}\left(u_{0}\cos bt-v_{0}\sin bt\right)\\
+v\left(t\right) & =\e^{at}\left(u_{0}\sin bt+v_{0}\cos bt\right)
+\end{align*}
+
+\end{enumerate}
+
+\paragraph{三次元連立微分方程式}
+
+\[
+A=\left(\begin{array}{ccc}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}\\
+a_{31} & a_{32} & a_{33}
+\end{array}\right),\boldsymbol{u}=\left(\begin{array}{c}
+u\\
+v\\
+w
+\end{array}\right)
+\]
+
+\begin{enumerate}
+\item 異なる3つの解を持つ
+
+\[
+P^{-1}AP=\left(\begin{array}{ccc}
+a & 0 & 0\\
+0 & b & 0\\
+0 & 0 & c
+\end{array}\right)
+\]
+
+\[
+u\left(t\right)=\e^{at}u_{01}v\left(t\right)=\e^{bt}v_{01}w\left(t\right)=\e^{ct}v_{0}
+\]
+
+\item 1つの実数と1つの2重根
+\begin{enumerate}
+\item $\rank\left(aIA\right)=1$のとき
+
+\[
+P^{-1}AP=\left(\begin{array}{ccc}
+a & 0 & 0\\
+0 & a & 0\\
+0 & 0 & c
+\end{array}\right)
+\]
+
+\[
+u\left(t\right)=\e^{at}u_{01}v\left(t\right)=\e^{at}v_{0}'w\left(t\right)=\e^{ct}w_{0}
+\]
+
+\item $\rank\left(aI-A\right)=2$のとき
+
+\[
+P^{-1}AP=\left(\begin{array}{ccc}
+a & 1 & 0\\
+0 & a & 0\\
+0 & 0 & c
+\end{array}\right)
+\]
+
+\[
+u\left(t\right)=\e^{at}\left(u_{0}+tv_{0}\right)_{1}v\left(t\right)=\e^{at}v_{0},w\left(t\right)=\e^{ct}w_{0}
+\]
+
+\end{enumerate}
+\item 1つの実根と複素根
+
+\[
+P^{-1}AP=\left(\begin{array}{ccc}
+a & b & 0\\
+-b & a & 0\\
+0 & 0 & c
+\end{array}\right)
+\]
+
+\begin{align*}
+u\left(t\right) & =\e^{at}\left(u_{0}\cos bt-v_{0}\sin bt\right)\\
+v\left(t\right) & =\e^{at}\left(u_{0}\sin bt+v_{0}\cos bt\right),w\left(t\right)=\e^{ct}w_{0}
+\end{align*}
+
+\item 1つの三重根
+\begin{enumerate}
+\item $\rank\left(aI-A\right)=0\Rightarrow P^{-1}AP=\left(\begin{array}{ccc}
+a & 0 & 0\\
+0 & a & 0\\
+0 & 0 & a
+\end{array}\right)$
+\item $\rank\left(aI-A\right)=1\Rightarrow P^{-1}AP=\left(\begin{array}{ccc}
+a & 1 & 0\\
+0 & a & 0\\
+0 & 0 & a
+\end{array}\right)$
+\item $\rank\left(aI-A\right)=2\Rightarrow P^{-1}AP=\left(\begin{array}{ccc}
+a & 1 & 0\\
+0 & a & 1\\
+0 & 0 & a
+\end{array}\right)$
+\end{enumerate}
+\begin{align*}
+u\left(t\right) & =\e^{at}\left(u_{0}+tv_{0}+\frac{t^{2}}{2}w_{0}\right)\\
+v\left(t\right) & =\e^{at}\left(v_{0}+tw_{0}\right)\\
+w\left(t\right) & =\e^{at}w_{0}
+\end{align*}
+\end{enumerate}
 
 \end{document}
