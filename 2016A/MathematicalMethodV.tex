@@ -37,6 +37,8 @@
 \global\long\def\rot{\mathrm{rot}}
 \global\long\def\div{\mathrm{div}}
 \global\long\def\diag{\mathrm{diag}}
+\global\long\def\rank{\mathrm{rank}}
+\global\long\def\cov{\mathrm{Cov}}
 
 
 \section*{第1回}
@@ -750,5 +752,261 @@ F\left(b_{1},b_{2}\right)-F\left(b_{1},a_{2}\right)-F\left(a_{1},b_{2}\right)+F\
 \[
 \lim_{x_{1},x_{2}\rightarrow+\infty}F\left(x_{1},x_{2}\right)=1
 \]
+
+
+\section*{第5回}
+
+\subsection{?}
+
+\subsection{共分散と相関}
+
+\begin{align*}
+E\left[X+Y\right] & =E\left[X\right]+E\left[Y\right]\\
+V\left[X+Y\right] & =V\left[X\right]+V\left[Y\right]+2\cov\left(X,Y\right)
+\end{align*}
+
+\begin{align*}
+V\left[X+Y\right] & =\int\left\{ \left(x-\mu_{X}\right)+\left(y-\mu_{Y}\right)\right\} ^{2}\mathrm{d}F\left(X,Y\right)\\
+ & \int\left\{ \left(x-\mu_{X}\right)^{2}+\left(y-\mu_{Y}\right)^{2}+2\left(x-\mu_{X}\right)\left(y-\mu_{Y}\right)\right\} \mathrm{d}F\left(X,Y\right)
+\end{align*}
+
+\begin{align*}
+\cov\left(X,Y\right) & =\int\left(x-\mu_{X}\right)\left(y-\mu_{Y}\right)\mathrm{d}F\left(X,Y\right)\\
+ & =E\left[\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)\right]
+\end{align*}
+
+共分散という。
+
+\[
+\rho_{XY}\equiv\frac{\cov\left(X,Y\right)}{\sqrt{V\left(X\right)V\left(Y\right)}}
+\]
+
+相関関数という。
+
+\[
+-1\leq\rho_{XY}\leq1
+\]
+
+$\rho_{XY}=0$: 無相関
+
+\[
+\cov\left(X,Y\right)=E\left(X,Y\right)-\mu_{X}\mu_{Y}
+\]
+
+$V$: 独立な確率変数
+
+\[
+F\left(x_{1},x_{2},\cdots\right)=F_{1}\left(x_{1}\right)\cdot F_{2}\left(x_{2}\right)\cdot F_{3}\left(x_{3}\right)\cdots
+\]
+
+
+\paragraph{性質}
+\begin{enumerate}
+\item 積の期待値 $E\left[XY\right]=E\left[X\right]E\left[Y\right]$
+\item 相関 $\cov\left[X,Y\right]=0$
+
+独立ならば$\cov=0$。ただし逆は成立しない。
+\item モーメント母関数
+\[
+M_{X+Y}\left(t\right)=M_{X}\left(t\right)M_{Y}\left(t\right)
+\]
+\item 分散の加法性
+\[
+V\left[X\pm Y\right]=V\left[X\right]+V\left[Y\right]
+\]
+\item $X_{1},X_{2},\cdots,X_{n}$が独立で同一分布に従い、
+\[
+E\left[X_{1}\right]=E\left[X_{2}\right]=\cdots=\mu
+\]
+\[
+V\left[X_{1}\right]=V\left[X_{2}\right]=\cdots=\sigma^{2}
+\]
+ならば、
+\begin{align*}
+ & E\left[X_{1}+X_{2}+\cdots+X_{n}\right]=n\mu\\
+ & V\left[X_{1}+X_{2}+\cdots+X_{n}\right]=n\sigma^{2}
+\end{align*}
+
+$\overline{X}=\frac{1}{n}\left(X_{1}+X_{2}+\cdots+X_{n}\right)$とすれば、
+\begin{align*}
+E\left[\overline{X}\right] & =\mu\\
+V\left[\overline{X}\right] & =\frac{\sigma^{2}}{n}
+\end{align*}
+
+\item $X_{1},X_{2},\cdots,X_{n}$が独立で、各々が$\mathcal{N}\left(\mu_{i},\sigma_{i}^{2}\right)\:\left(i=1,2\cdots n\right)$に従うならば、
+\[
+X=X_{1}+X_{2}+\cdots+X_{n}
+\]
+は
+\[
+\mathcal{N}\left(\mu_{1}+\mu_{2}+\cdots+\mu_{n},\sigma_{1}^{2}+\sigma_{2}^{2}+\cdots+\sigma_{n}^{2}\right)
+\]
+に従う。
+
+もし
+\[
+\mu_{1}=\mu_{2}=\cdots=\mu_{n}=\mu
+\]
+\[
+\sigma_{1}=\sigma_{2}=\cdots=\sigma_{n}=\sigma
+\]
+ならば、
+\[
+\overline{X}=\frac{1}{n}\left(X_{1}+X_{2}+\cdots+X_{n}\right)
+\]
+は$\mathcal{N}\left(\mu,\frac{\sigma^{2}}{n}\right)$に従う。
+\end{enumerate}
+
+\section{?}
+
+\subsection{?}
+
+\subsection{条件付き確率}
+
+\[
+P\left(A|B\right)
+\]
+
+$X$と$Y$とが独立でないとき、
+\[
+E_{Y}\left(E\left(X|Y\right)\right)=E\left(X\right)
+\]
+
+$X$と$Y$とが独立であるならば
+\[
+E\left(X|Y\right)=E\left(X\right)
+\]
+
+$X$と$Y$とが独立であるならば
+\[
+E\left[X_{1}+X_{2}|Y\right]=E\left[X_{1}\right]+E\left[X_{2}\right]
+\]
+\[
+E\left[cX|Y\right]=cE\left[X|Y\right]
+\]
+\[
+E\left[aX+b|Y\right]=aE\left[X\right]+b
+\]
+\[
+E\left[c|Y\right]=c
+\]
+
+
+\section{中心極限定理}
+
+\subsection{上極限集合と下極限集合}
+
+\paragraph{例}
+
+\[
+\left\{ A_{n}\right\} =A,B,A,B,\cdots
+\]
+
+無限に多くの$A_{n}$は$A\cup B$に含まれる。有限個の場合を除いて$A\cap B$に含まれる。
+
+\paragraph{例2}
+
+$n$奇
+
+\[
+A_{n}=\left(-\frac{1}{n},1-\frac{1}{n}\right)
+\]
+
+$n$偶
+
+\[
+A_{n}=\left(\frac{1}{n},1+\frac{1}{n}\right)
+\]
+
+上極限: 無限に多くの列$A_{n}$に属する元を全て集めた集合
+
+下極限: ほとんど全ての(有限個の$A_{m}$を覗いて)$A_{n}$に含まれる元全体からなる集合
+
+上極限集合:
+
+\[
+\lim_{n}\sup A_{n}=\bigcap_{k=1}^{\infty}\bigcup_{n=k}^{\infty}A_{n}
+\]
+
+\[
+\omega\in\lim_{n}\sup A_{n}\leftrightarrows\text{無限個の}n\text{について}\omega\in A_{n}
+\]
+
+i.o. (infinity often)
+
+下極限集合:
+
+\[
+\lim_{n}\inf A_{n}=\bigcup_{k=1}^{\infty}\bigcap_{n=k}^{\infty}A_{n}
+\]
+
+(ある番号より先の全ての$A_{n}$で)
+
+\paragraph{性質}
+\begin{enumerate}
+\item $\lim_{n}\inf A_{n}\subset\lim_{n}\sup A_{n}$
+\item $\left(\lim\sup A_{n}\right)^{c}=\lim\inf A_{n}^{c}$
+\end{enumerate}
+
+\paragraph{1.の証明}
+
+\[
+x\in\bigcap_{k=1}^{\infty}\bigcup_{n=k}^{\infty}A_{n}\rightarrow x\in\bigcup_{k=1}^{\infty}\bigcap_{n=k}^{\infty}A_{n}
+\]
+を示す。
+
+\[
+x\in\bigcap_{k=1}^{\infty}\bigcup_{n=k}^{\infty}A_{n}\rightarrow x\in x\in\left(\bigcap_{n=1}^{\infty}A_{n}\right)\cup\left(\bigcap_{n=2}^{\infty}A_{n}\right)\cup\cdots
+\]
+
+$\bigcap_{n=k}^{\infty}A_{n}$は減少列。
+
+十分大きな$N$に対して$x\in\bigcap_{n=N}^{\infty}A_{n}$を考えると、任意の$K$を考えて
+\[
+M=\max\left(K,N\right)
+\]
+
+\[
+A_{M}\subset\bigcup_{k=K}^{\infty}A_{n}
+\]
+
+\[
+\bigcap_{k=N}^{\infty}A_{n}\subset A_{M}
+\]
+
+\[
+\therefore x\in\bigcup_{n=K}^{\infty}A_{n}
+\]
+
+
+\paragraph{2.の証明}
+
+\[
+\left(\lim\sup A_{n}\right)^{c}=\lim\inf A_{n}^{c}
+\]
+
+\begin{align*}
+\because\left(\lim\sup A_{n}\right)^{c} & =\left(\bigcup_{k=1}^{\infty}\bigcap_{n=k}^{\infty}A_{n}\right)^{c}\\
+ & =\bigcup_{k=1}^{\infty}\bigcap_{n=k}^{\infty}A_{n}^{c}=\lim\inf A_{n}^{c}
+\end{align*}
+
+
+\subsection{Borel-Canntellの補題}
+\begin{enumerate}
+\item 第1定理: $\sum_{n=1}^{\infty}P\left(A_{n}\right)<\infty$ならば、
+\[
+P\left(\lim\sup A_{n}\right)=0
+\]
+\[
+P\left(\lim\sup A_{n}^{c}\right)=1
+\]
+\item 第2定理: $\sum_{n=1}^{\infty}P\left(A_{n}\right)=\infty$ならば、
+\[
+P\left(\lim\sup A_{n}\right)=1
+\]
+\[
+P\left(\lim\sup A_{n}^{c}\right)=0
+\]
+\end{enumerate}
 
 \end{document}
