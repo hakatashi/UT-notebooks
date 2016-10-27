@@ -1010,4 +1010,153 @@ J_{p} & =\Re\left[A_{k}^{*}\e^{-\i\left(kx-\omega t\right)}\frac{-\i\hbar}{m}\pd
 T=\frac{2\i\beta k\e^{-\i kb}}{\left(k^{2}-\beta^{2}\right)\sinh\left(\beta b\right)+2\i\beta k\cosh\left(\beta b\right)}
 \]
 を用いた。
+
+\[
+\cosh^{2}\left(x\right)-\sinh^{2}\left(x\right)=1
+\]
+を用いて、
+\begin{align*}
+\eta & =\frac{4\beta^{2}k^{2}}{4\beta^{2}k^{2}+\left(k^{2}+\beta^{2}\right)^{2}\sinh^{2}\left(\beta b\right)}\\
+ & =\frac{1}{1+\frac{\left(k^{2}+\beta^{2}\right)^{2}}{4\beta^{2}k^{2}}\sinh^{2}\left(\beta b\right)}
+\end{align*}
+
+ここで領域I, IIIにおいて
+\[
+\frac{\hbar^{2}k^{2}}{2m}=E\rightarrow k^{2}=\frac{2mE}{k^{2}}
+\]
+
+領域IIにおいて
+\[
+\frac{\hbar^{2}\beta^{2}}{2m}=V_{0}-E\rightarrow\beta^{2}=\frac{2m}{k^{2}}\left(V_{0}-E\right)
+\]
+
+以上を代入して
+\[
+\eta=\frac{1}{1+\frac{V_{0}^{2}}{4E\left(V_{0}-E\right)}\sinh\left(\beta b\right)}
+\]
+が粒子が障壁を透過する確率となる。
+
+\paragraph{例}
+
+電子 $E=3\mathrm{eV},V_{0}=10\mathrm{eV}$
+
+\begin{align*}
+\beta^{2} & =\frac{\left(2\times10^{-30}\mathrm{kg}\right)}{\left(10^{-34}\mathrm{kgm^{2}s^{-1}}\right)}\left(7\times1.6\times10^{-19}\mathrm{kgm^{2}s^{-1}}\right)\\
+ & =2\times10^{20}\mathrm{m^{-2}}\\
+\beta & \sim10^{10}\mathrm{m^{-1}}
+\end{align*}
+
+領域II
+\[
+\varphi=C\e^{-\beta x}+D\e^{\beta x}
+\]
+
+図電物5-8
+
+$\beta b\gg1$であることが多いので、
+\[
+\eta\sim\e^{-2\beta b}=\e^{-\frac{2b}{\frac{1}{\beta}}}
+\]
+
+図電物5-9
+
+図電物5-10
+
+\[
+F=U-TS
+\]
+
+$F$: 自由エネルギー
+
+$U$: 内部エネルギー
+
+$TS$: エントロピー
+
+$f\left(E\right)$: 電子が量子状態に見いだされる確率
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+1. 1次元のSchrödinger方程式の場合
+
+1つのエネルギー固有値⇔1つの波動関数(縮退がない)
+
+\[
+\left(-\frac{\hbar^{2}}{2m}\dd{}x+V\left(X\right)\right)\varphi=E\varphi
+\]
+を$\varphi_{1},\varphi_{2}$ともに満たすと仮定
+\[
+-\frac{\hbar^{2}}{2m}\frac{1}{\varphi_{1}}\dd{\varphi_{1}}x=-\frac{\hbar^{2}}{2m}\frac{1}{\varphi_{2}}\dd{\varphi_{2}}x=E-V\left(X\right)
+\]
+
+\[
+\frac{1}{\varphi_{1}}\dd{\varphi_{1}}x-\varphi_{2}\dd{\varphi_{2}}x=0
+\]
+
+図電物5-11
+
+定理より、ポテンシャル$V\left(X\right)$が$X=0$に対して対称(偶関数)
+\[
+V\left(-X\right)=V\left(X\right)
+\]
+ならば、波動関数は$x=0$に対して
+\begin{itemize}
+\item 偶関数 $\varphi\left(-x\right)=\varphi\left(x\right)$ もしくは
+\item 奇関数 $\varphi\left(-x\right)=-\varphi\left(x\right)$
+\end{itemize}
+\[
+\varphi_{2}\dd{\varphi_{1}}x-\varphi_{1}\dd{\varphi_{2}}x=0
+\]
+
+\[
+\d{}x\left(\d{\varphi_{1}}x\varphi_{2}-\varphi_{1}\d{\varphi_{2}}x\right)=0
+\]
+
+\[
+\d{\varphi_{1}}x\varphi_{2}-\varphi_{1}\d{\varphi_{2}}x=C
+\]
+
+$\int_{-\infty}^{\infty}\left|\varphi\right|^{2}\mathrm{d}x$が有限の値を取る→$x\rightarrow I\infty$のとき$\varphi\rightarrow0$
+
+\[
+\Rightarrow\d{\varphi_{1}}x\varphi_{2}-\varphi_{1}\d{\varphi_{2}}x=0=\Rightarrow\frac{1}{\varphi_{1}}\d{\varphi_{1}}x=\frac{1}{\varphi_{2}}\d{\varphi_{2}}x
+\]
+
+片々積分して、
+\[
+\ln\left(\varphi_{1}\right)=\ln\left(\varphi_{2}\right)+C'
+\]
+
+\[
+\varphi_{2}=C''\varphi_{1}
+\]
+より、仮定に矛盾する。従って、1つの$E$には1つの独立な$\varphi$。
+
+2.
+
+\[
+\left(-\frac{\hbar^{2}}{2m}\dd{}x+V\left(x\right)\right)\varphi\left(x\right)=E\varphi\left(x\right)
+\]
+
+$x\rightarrow-x$に置換
+
+\[
+\left(-\frac{\hbar^{2}}{2m}\dd{}x+V\left(-x\right)\right)\varphi\left(-x\right)=E\varphi\left(-x\right)
+\]
+
+$\varphi\left(x\right)$と$\varphi\left(-x\right)$は同一の$E$についてSchrödinger方程式の固有関数
+
+→1. より$\varphi\left(x\right)=C\varphi\left(-x\right)$
+
+\[
+\varphi\left(-x\right)=C\varphi\left(-\left(-x\right)\right)=C\varphi\left(x\right)
+\]
+を用いて、
+\[
+\varphi\left(x\right)=C^{2}\varphi\left(x\right)
+\]
+
+\[
+C^{2}=1,C\pm1
+\]
+
 \end{document}
