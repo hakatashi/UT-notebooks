@@ -35,12 +35,16 @@
 \global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
 \global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
 \global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
 \global\long\def\e{\mathrm{e}}
 \global\long\def\i{\mathrm{i}}
 \global\long\def\j{\mathrm{j}}
 \global\long\def\grad{\mathrm{grad}}
 \global\long\def\rot{\mathrm{rot}}
 \global\long\def\div{\mathrm{div}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\diag{\mathrm{diag}}
+\global\long\def\rank{\mathrm{rank}}
 
 
 \section*{第1回}
@@ -849,4 +853,161 @@ $x=b$で、
 上式より$A,B,C,D$についての制約式が2個、下式より$C,D,T$についての制約式が2個出てくる。
 
 これに規格化条件を加えて$A,B,C,D,T$が求まる。
+
+\section*{第5回}
+
+\paragraph{前半メモ}
+
+図電物5-1
+
+領域3
+
+\[
+\varphi_{III}=T\e^{\i kx}
+\]
+
+\[
+T=\frac{2\i\beta k}{F}\e^{-\i kb}
+\]
+
+\[
+F=\left(k^{2}-\beta^{2}\right)\sinh\left(\beta b\right)+2\i\beta k\cosh\left(\beta b\right)
+\]
+
+波束の群速度
+\[
+v_{G}=\frac{1}{\hbar}\underbrace{\when{\pd Ek}_{k=k_{0}}}_{V\text{が一定の空間中}}
+\]
+
+\[
+E=\frac{\hbar^{2}k^{2}}{2m}
+\]
+
+\[
+v_{G}=\frac{\hbar k_{0}}{m}
+\]
+
+電子を例に取り、$m=9.1\times10^{-31}\mathrm{kg},v_{G}=1\times10^{6}\mathrm{m}$の時を考える。
+
+\[
+k_{0}=\frac{mv_{G}}{\hbar}=1\times10^{10}\mathrm{m^{-1}}
+\]
+
+図電物5-2
+
+フーリエ級数より
+\[
+\left(\delta x\right)\left(\delta k\right)\sim1
+\]
+
+\[
+\delta x=10\mathrm{nm}\rightarrow\delta k\sim10\mathrm{m^{-1}}
+\]
+
+\[
+\left\langle E\right\rangle =\frac{\hbar^{2}k_{0}^{2}}{2m}\sim\frac{\left(10^{-34}\mathrm{Js}\right)^{2}\left(10^{10}\mathrm{m^{-1}}\right)^{2}}{\left(2\right)\left(10^{-30}\mathrm{kg}\right)}\sim0.5\times10^{-18}\mathrm{J}\longrightarrow3\mathrm{eV}
+\]
+
+図電物5-3
+
+フラックス(J)=単位時間.単位時間あたりの量
+
+図電物5-4
+
+粒子数の収支(単位断面積あたり)
+\[
+J\left(x\right)\Delta t=\pd{\rho}t\Delta x\Delta t+J\left(x+\Delta x\right)\Delta t
+\]
+
+\[
+\frac{J\left(x+\Delta x\right)-J\left(x\right)}{\Delta x}=-\pd{\rho}t
+\]
+
+\[
+\pd Jx=-\pd{\rho}t
+\]
+
+連続の式である。
+
+古典力学的に運動する粒子のフラックス$J$
+
+図電物5-5
+
+\[
+J=\rho v
+\]
+
+量子力学的に運動する粒子のフラックス→確率密度のフラックス
+
+\[
+J_{p}=\Re\left[\Psi^{*}\hat{v_{x}}\Psi\right]
+\]
+
+(連続の式$\pd{J_{p}}x=-\pd{\left|\Psi\right|^{2}}t$を満たす。$\left|\Psi\right|^{2}$:
+ある場所における1つの粒子を見出す確率の密度)
+
+\[
+\hat{v_{x}}=\frac{\hat{p_{x}}}{m}
+\]
+
+\begin{align*}
+\Psi^{*}\hat{v_{x}}\Psi & =\Psi^{*}\frac{\hat{p_{x}}}{m}\Psi\\
+ & =\Psi^{*}\left(\frac{-\i\hbar}{m}\right)\pd{\Psi}x\\
+ & =-\frac{\i\hbar}{m}\Psi^{*}\pd{\Psi}x\\
+\Re\left[\Psi^{*}\hat{v_{x}}\Psi\right] & =\frac{1}{2}\left(\Psi^{*}\hat{v}_{x}\Psi+\left(\Psi^{*}\hat{v_{x}}\Psi\right)^{*}\right)\\
+ & =\frac{1}{2}\left(\left(\frac{-\i\hbar}{m}\right)\Psi^{*}\pd{\Psi}x+\left(\frac{\i\hbar}{m}\right)\Psi\pd{\Psi^{*}}x\right)\\
+ & =\frac{-\i\hbar}{2m}\left(\Psi^{*}\pd{\Psi}x-\Psi\pd{\Psi^{*}}x\right)
+\end{align*}
+
+\begin{equation}
+\pd{J_{p}}x=\frac{-\i\hbar}{2m}\left(\Psi^{*}\pdd{\Psi}x-\Psi\pdd{\Psi^{*}}x\right)
+\end{equation}
+
+Sch\textbackslash{}''oredinger方程式を用いて
+\[
+\i\hbar\pd{\Psi}t=-\frac{\hbar^{2}}{2m}\pdd{\Psi}x+V\Psi
+\]
+
+\[
+\pdd{\Psi}x=-\frac{2\i m}{\hbar}\pd{\Psi}t+\frac{2m}{\hbar^{2}}V\Psi
+\]
+
+c.c.をとって、
+\[
+\pdd{\Psi^{*}}x=-\frac{2m}{\hbar}\pd{\Psi^{*}}t+\frac{2m}{\hbar^{2}}V\Psi^{*}
+\]
+
+(7)に代入して、
+\begin{align*}
+\pd{J_{p}}x & =\frac{-\i\hbar}{2m}\left[-\frac{2\i m}{\hbar}\Psi^{*}\pd{\Psi}t+\frac{2m}{\hbar^{2}}V\Psi^{*}\Psi+\frac{2m}{\hbar}\Psi\pd{\Psi^{*}}t-\frac{2m}{\hbar^{2}}V\Psi\Psi^{*}\right]\\
+ & =-\left(\Psi^{*}\pd{\Psi}t+\Psi\pd{\Psi^{*}}t\right)\\
+ & =-\pd{\Psi^{*}\Psi}t\\
+ & =-\pd{\left|\Psi\right|^{2}}t
+\end{align*}
+
+図電物5-6
+
+粒子が壁を透過する確率
+\[
+\eta=\frac{\int_{0}^{\eta}J_{p}\left(x_{\text{out}},t\right)\mathrm{d}t}{\int_{0}^{\eta}J_{p}\left(x_{in},t\right)\mathrm{d}t}
+\]
+
+固有関数$\varphi_{k}=A_{k}\e^{\i\left(kx-\omega t\right)}$に関して、
+\begin{align*}
+J_{p} & =\Re\left[A_{k}^{*}\e^{-\i\left(kx-\omega t\right)}\frac{-\i\hbar}{m}\pd{}x\left(A_{k}\e^{\i\left(kx-\omega t\right)}\right)\right]\\
+ & =\Re\left[A_{k}^{*}A_{k}\frac{\hbar k}{m}\right]\\
+ & =\underbrace{\left|A_{k}\right|^{2}}_{\text{粒子の存在確率密度}}\underbrace{\frac{\hbar k}{m}}_{\text{(粒子の)速度}}
+\end{align*}
+
+透過確率
+\begin{align*}
+\eta & =\left|T\right|^{2}\\
+ & =\frac{4\beta^{2}k^{2}}{\left(k^{2}-\beta^{2}\right)^{2}\sinh^{2}\left(\beta b\right)+4\beta^{2}k^{2}\cosh^{2}\left(\beta b\right)}
+\end{align*}
+
+ただし、
+\[
+T=\frac{2\i\beta k\e^{-\i kb}}{\left(k^{2}-\beta^{2}\right)\sinh\left(\beta b\right)+2\i\beta k\cosh\left(\beta b\right)}
+\]
+を用いた。
 \end{document}
