@@ -12,6 +12,7 @@
 \usepackage{textcomp}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{graphicx}
 
 \makeatletter
 
@@ -328,12 +329,14 @@ $A\e^{\j\theta}$が複素振幅となり、$\e^{\j\omega t}$は正規直交系�
 \subsection{線形システム}
 
 \paragraph{システムの図示}
-
-図信2-1
+\begin{center}
+\includegraphics{images/SignalAnalysys/2-1}
+\par\end{center}
 
 \paragraph{(脱線)}
-
-図信2-2
+\begin{center}
+\includegraphics{images/SignalAnalysys/2-2}
+\par\end{center}
 
 \paragraph{線形システムとは?}
 
@@ -369,18 +372,21 @@ y\left(t\right) & =\phi\left[\sum a_{k}x_{k}\left(t\right)\right]\\
 例3) 積分 $y\left(t\right)=\int x\left(t\right)\mathrm{d}t$
 
 例4) 加減算 $y\left(t\right)=\phi_{1}\left[x\left(t\right)\right]+\phi_{2}\left[x\left(t\right)\right]$
-
-図信2-3
+\begin{center}
+\includegraphics{images/SignalAnalysys/2-3}
+\par\end{center}
 
 例5) 定数倍・微分・積分・加減算の組み合わせ
-
-図信2-4
+\begin{center}
+\includegraphics{images/SignalAnalysys/2-4}
+\par\end{center}
 
 定係数連立微積分方程式で表されるすべての回路
 
 \paragraph{線形でないもの}
-
-図信2-5
+\begin{center}
+\includegraphics{images/SignalAnalysys/2-5}
+\par\end{center}
 
 \paragraph{線形システムの扱い方}
 
@@ -434,12 +440,14 @@ $\left|H\left(f\right)\right|$: $\frac{A_{2}}{A_{1}}$ 振幅の比
 $\e^{\j\angle H\left(f\right)}$: $\theta_{2}-\theta_{1}$ 位相差
 
 伝達関数をシステムの周波数特性と呼ぶこともよくある。
-
-図信2-6
+\begin{center}
+\includegraphics{images/SignalAnalysys/2-6}
+\par\end{center}
 
 \paragraph{まとめ}
-
-図信2-7
+\begin{center}
+\includegraphics{images/SignalAnalysys/2-7}
+\par\end{center}
 
 \section{第2章 フーリエ級数とフーリエ変換}
 
@@ -746,5 +754,151 @@ X\left(f\right)=\lim_{\tau\rightarrow0}\frac{\sin\left(\pi\tau f\right)}{\pi\tau
 
 \paragraph{例3}
 
-図信`3-13
+図信3-13
+
+\section*{第4回}
+
+\paragraph{前回}
+
+フーリエ変換対
+\begin{itemize}
+\item 方形関数⇔標本化関数
+\item 定数⇔$\delta$関数
+\item ガウス関数⇔ガウス関数
+\end{itemize}
+
+\paragraph{フーリエ変換対(非周期)とフーリエ変換級数展開(周期)の関係}
+
+図信4-1
+
+\paragraph{結論}
+
+周期$T$と1周期分の波形$x^{*}\left(t\right)$のフーリエ変換$X^{*}\left(f\right)$が与えられれば、フーリエ級数の係数$\alpha_{n}$が求まる。
+
+\paragraph{定理}
+
+周期波形$x\left(t\right)$が孤立波形$x^{*}\left(t\right)$を1周期成分とする繰り返し波形のとき、$x\left(t\right)$とフーリエ級数の係数$\alpha_{n}$は、$\frac{X^{*}\left(H\right)}{T}$を包絡線とする間隔$\frac{1}{T}$の離散スペクトルになる。
+
+図信4-2
+
+式で書くと、
+\[
+\alpha_{n}=\frac{1}{T}\left.X^{*}\left(f\right)\right|_{f=nf_{0}}\left(f_{0}=\frac{1}{T}\right)
+\]
+
+
+\paragraph{略証}
+
+\begin{align*}
+\alpha_{n} & =\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}x\left(t\right)\e^{-\j2\pi nf_{0}t}\mathrm{d}t\\
+ & =\frac{1}{T}\int_{-\infty}^{\infty}x^{*}\left(t\right)\e^{-\j2\pi nf_{0}}\mathrm{d}t\\
+ & =\frac{1}{T}\left.X^{*}\left(f\right)\right|_{f=nf_{0}}
+\end{align*}
+
+
+\paragraph{パラメータを変えてみよう}
+
+図信4-3
+
+高さ$E$、幅$\tau$の方形波が周期$T$で繰り返す波形
+
+図信4-4
+
+ここで$\tau$:一定、$T\rightarrow\infty$にすると、
+
+図信4-5
+
+サンプリング: 変化あり、包絡線: 変化なし
+
+一方、$E\cdot\tau=1$、$\tau\rightarrow0$($T$は一定)
+
+図信4-6
+
+サンプリング: 変化なし、包絡線: 変化
+
+インパルス列$x\left(t\right)=\sum_{t=-\infty}^{\infty}\delta\left(t-kT\right)$
+
+図信4-7
+
+\paragraph{非周期波形と周期波形の混在}
+
+図信4-8
+
+・準備
+
+$\delta$関数について
+
+定義 $x\left(t\right)$が$t=t_{0}$で連続のとき、
+\[
+\int_{-\infty}^{\infty}\delta\left(t-t_{0}\right)x\left(t\right)\mathrm{d}t=x\left(t_{0}\right)
+\]
+
+積分で定義される積分汎関数
+
+\paragraph{$\delta$関数のフーリエ変換}
+
+$\delta\left(t\right)\xrightarrow{\mathcal{F}}1$
+
+\[
+X\left(f\right)=\int_{-\infty}^{\infty}\delta\left(t\right)\e^{-\j2\pi ft}\mathrm{d}t=\e^{-\j2\pi f\cdot0}=1
+\]
+
+図信4-9
+
+$\delta\left(t-t_{0}\right)\rightarrow\e^{-\j2\pi ft_{0}}$
+
+図信4-10
+
+この逆で
+\[
+\e^{\j2\pi f_{0}t}\xrightarrow{\mathcal{F}}\delta\left(f-f_{0}\right)
+\]
+
+図信4-11
+
+ということは、
+
+フーリエ級数
+\[
+x\left(t\right)=\sum_{n}\alpha_{n}\e^{-j2\pi nf_{0}t}
+\]
+
+→フーリエ変換
+
+\[
+X\left(f\right)=\sum_{n}\alpha_{n}\delta\left(f-f_{0}\right)
+\]
+
+図信4-12
+
+連続スペクトルでありつつ、同期的に大きな値を持つ成分が現れる。
+
+\subsection{フーリエ級数とフーリエ変換の仕事}
+\begin{enumerate}
+\item Parsevalの等式
+\item $x\left(t\right)$を実数偶成分→$X\left(f\right)$の実偶成分など
+\item 畳み込み積分 convolution
+
+\[
+y\left(t\right)=\int_{-\infty}^{\infty}h\left(t\right)x\left(t-\tau\right)\mathrm{d}\tau
+\]
+
+\end{enumerate}
+図信4-13
+
+\paragraph{定理}
+
+\[
+x\left(t\right)\xrightarrow{\mathcal{F}}X\left(f\right),h\left(t\right)\xrightarrow{\mathcal{F}}H\left(f\right)
+\]
+とずると、
+\[
+y\left(t\right)=\int_{-\infty}^{\infty}h\left(\tau\right)x\left(t-\tau\right)\mathrm{d}\tau\xrightarrow{\mathcal{F}}Y\left(f\right)=H\left(f\right)X\left(f\right)
+\]
+
+畳み込み積分→単なる積 (簡単便利)
+
+\subsection{線形システムの応答}
+
+インパルス応答=–n
 \end{document}
