@@ -24,10 +24,13 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 	* [物理学汎論](2014S/GeneralPhysics.tex) - [PDF][GeneralPhysics-pdf]
 	* [物性科学](2014S/MaterialsChemistry.tex) - [PDF][MaterialsChemistry-pdf]
 	* [数理科学IV](2014S/MathematicsIV.tex) - [PDF][MathematicsIV-pdf]
-* 2014年度 冬学期
-	* 準備中
-* 2015年度 Sセメスター
-	* 準備中
+* [2014年度 冬学期](2014W)
+	* [科学技術基礎論](2014W/ScientificStudy.tex) - [PDF][ScientificStudy-pdf]
+* [2015年度 Sセメスター](2015S)
+	* 宇宙科学実習
+		* [レポート2](2015S/Astronomy-report2.tex) - [PDF][Astronomy-report2-pdf]
+		* [レポート3](2015S/Astronomy-report3.tex) - [PDF][Astronomy-report3-pdf]
+	* [相対論](2015S/Relative.tex) - [PDF][Relative-pdf]
 * 2015年度 Aセメスター
 	* 準備中
 * 2016年度 Sセメスター
@@ -57,6 +60,10 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 [GeneralPhysics-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2014S/GeneralPhysics.pdf
 [MaterialsChemistry-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2014S/MaterialsChemistry.pdf
 [MathematicsIV-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2014S/MathematicsIV.pdf
+[ScientificStudy-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2014W/ScientificStudy.pdf
+[Astronomy-report2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2015S/Astronomy-report2.pdf
+[Astronomy-report3-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2015S/Astronomy-report3.pdf
+[Relative-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2015S/Relative.pdf
 [CircuitTheory1-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/CircuitTheory1.pdf
 [CircuitTheory1-part2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/CircuitTheory1-part2.pdf
 [Electromagnetics12-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/Electromagnetics12.pdf
