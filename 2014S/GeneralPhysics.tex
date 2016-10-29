@@ -1,0 +1,1863 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[b5paper]{geometry}
+\geometry{verbose,tmargin=1.5cm,bmargin=1.5cm,lmargin=3cm,rmargin=3cm}
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{babel}
+\usepackage{calc}
+\usepackage{textcomp}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{esint}
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 1},backref=section,colorlinks=false]
+ {hyperref}
+\hypersetup{
+ dvipdfm,bookmarkstype=toc}
+\usepackage{breakurl}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{babel}
+\newcommand{\bra}[1]{\left\langle #1 \right|}
+\newcommand{\cket}[1]{\left| #1 \right\rangle}
+
+\makeatother
+
+\begin{document}
+
+\title{物理学汎論講義ノート}
+\maketitle
+
+\section{古典力学的世界観}
+
+古典力学的世界観においては、あらゆる物理的な運動・変化は力学的な計算(運動方程式)によって求まると考えられていた。
+
+この考え方は電磁気学の登場によって破綻し、場の概念が導入されることとなった。ここから、Maxwell方程式が考案され、真空は電磁波を伝達する性質を持つと定義された。
+
+ここで、運動方程式がガリレイ変換によって不変の式に変換されるのに対し、Maxwell方程式は(時間の一次微分を含むため)これが不可能であった。そこで、ガリレイ変換に変わるローレンツ変換が登場した。
+
+\paragraph{解析力学入門}
+
+簡便のため、一次元の質点の運動を考える。運動エネルギーを$T$、位置エネルギーを$U$として、 
+\[
+L=T-U=L\left(\dot{q}\left(t\right),q\left(t\right)\right)
+\]
+をLagrangianと呼ぶ。
+
+質点の位置を$q\left(t\right)$とする($t$は時間)。
+
+質点は時刻$t_{1}$で$q\left(t_{1}\right)$、$t_{2}$で$q\left(t_{2}\right)$にいるものとする。途中の時間で質点はどのような運動を取るか?
+
+\paragraph{変分原理}
+
+実現する運動では 
+\[
+I=\int_{t_{1}}^{t_{2}}L\left(\dot{q}\left(t\right),q\left(t\right)\right)\mathrm{d}t
+\]
+を考えたとき 
+\[
+\delta I=0
+\]
+が満たされる。
+
+すなわち、$\delta I$とは 
+\[
+\int_{t_{1}}^{t_{2}}L\left(\dot{q}\left(t\right),q\left(t\right)\right)\mathrm{d}t
+\]
+に$q\left(t\right)$を入れたものと$\overline{q}\left(t\right)$を入れたものの差である。
+
+\[
+\delta I=\int\left(\frac{\partial L}{\partial q}\delta q+\frac{\partial L}{\partial\dot{q}}\delta\dot{q}\right)\mathrm{d}t
+\]
+ただし、$\delta q=\overline{q}-q$である。
+
+$\delta\dot{q}$を考える。 
+\begin{align*}
+\delta\dot{q} & =\dot{\overline{q}}-\dot{q}\\
+ & =\frac{\mathrm{d}}{\mathrm{d}t}\left(q+\delta q\right)-\frac{\mathrm{d}}{\mathrm{d}t}q\\
+ & =\frac{\mathrm{d}}{\mathrm{d}t}\delta q
+\end{align*}
+
+これを前式に代入して、 
+\[
+\delta I=\int_{t_{1}}^{t_{2}}\frac{\partial L}{\partial q}\delta q\mathrm{d}t+\int_{t_{1}}^{t_{2}}\frac{\partial L}{\partial\dot{q}}\frac{\mathrm{d}}{\mathrm{d}t}\left(\delta q\right)\mathrm{d}t
+\]
+
+第二項に部分積分を適用して 
+\[
+\left[\frac{\partial L}{\partial q}\delta q\right]_{t_{1}}^{t_{2}}-\int_{t_{1}}^{t_{2}}\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial q}\right)\delta q\mathrm{d}t
+\]
+\[
+\delta q\left(t_{2}\right)=\delta q\left(t_{1}\right)=0
+\]
+
+$\delta I=0$より 
+\[
+\int_{t_{1}}^{t_{2}}\left[\frac{\partial L}{\partial q}-\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial\dot{q}}\right)\right]\delta q\mathrm{d}t=0
+\]
+\[
+\frac{\partial L}{\partial q}-\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial\dot{q}}\right)=0
+\]
+これをEuler-Lagrangeの式と呼ぶ。
+
+\[
+L=\frac{m}{2}\left[\dot{q}\left(t\right)\right]^{2}-U\left(q\left(t\right)\right)
+\]
+\[
+\frac{\partial L}{\partial q}=-\frac{\partial U}{\partial q}
+\]
+\[
+\frac{\partial L}{\partial q}=m\dot{q}
+\]
+\[
+-\frac{\partial U}{\partial q}=\frac{\mathrm{d}}{\mathrm{d}t}\left(m\dot{q}\right)
+\]
+となり、運動方程式に還元される。
+
+\paragraph{Lagrangianを使うメリット}
+
+\[
+m\ddot{q}=F
+\]
+\[
+\begin{cases}
+m\ddot{x}=-\frac{\partial V}{\partial x}\\
+m\ddot{y}=-\frac{\partial V}{\partial y}
+\end{cases}
+\]
+
+これを極座標で考えたい。だが、 
+\[
+\begin{cases}
+x=r\cos\theta\\
+y=r\sin\theta
+\end{cases}
+\]
+を代入して計算すると非常にめんどくさい。結果は 
+\[
+\begin{cases}
+m\left(\ddot{r}-r\dot{\theta}^{2}\right)=-\frac{\partial V}{\partial r}\\
+m\left(2r\dot{r}\dot{\theta}+r^{2}\ddot{\theta}\right)=-\frac{\partial V}{\partial\theta}
+\end{cases}
+\]
+となる。
+
+この問題をLagramgianを使って考える。$L$を極座標でかんがえると 
+\begin{align*}
+L & =\frac{1}{2}m\left(\dot{x}^{2}+\dot{y}^{2}\right)-V\\
+ & =\frac{1}{2}m\left(\left(\dot{r}\cos\theta\right)^{2}+\left(r\sin\theta\dot{\theta}\right)^{2}+\left(\dot{r}\sin\theta\right)^{2}+\left(r\cos\theta\dot{\theta}\right)^{2}\right)=V\\
+ & =\frac{1}{2}m\left(\dot{r}^{2}+r^{2}\dot{\theta}^{2}\right)-V
+\end{align*}
+\[
+\begin{cases}
+\frac{\partial L}{\partial r}-\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial\dot{r}}\right)=0\\
+\frac{\partial L}{\partial\theta}-\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial\dot{\theta}}\right)=0
+\end{cases}
+\]
+
+\[
+\begin{cases}
+mr\dot{\theta}^{2}-\frac{\mathrm{d}}{\mathrm{d}t}\left(m\dot{r}\right)-\frac{\partial V}{\partial r}=0\\
+-\frac{\mathrm{d}}{\mathrm{d}t}\left(mr^{2}\dot{\theta}\right)-\frac{\partial V}{\partial\theta}=0
+\end{cases}
+\]
+となり、計算の詳細は覚えなくても良いが、同じ式が簡単に出せた。これがLagransianの効用である。
+
+\paragraph{Hamilton形式}
+
+$p\left(t\right)=\frac{\partial L}{\partial\dot{q}}$なる量を考える。ここで$p,q$を正準共役な量と呼ぶ。ここで、
+\begin{align*}
+\delta L & =\frac{\partial L}{\partial q}\delta q+\frac{\partial L}{\partial q}\delta\dot{q}\\
+ & =\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial\dot{q}}\right)\delta q+\frac{\partial L}{\partial q}\delta\dot{q}\\
+ & =\dot{p}\delta q+p\delta\dot{q}
+\end{align*}
+\begin{align*}
+\delta\left(p\dot{q}-L\right) & =\dot{q}\delta p+p\delta\dot{q}-\dot{p}\delta q-p\delta\dot{q}\\
+ & =\dot{q}\delta p-\dot{p}\delta q
+\end{align*}
+
+この$p\dot{q}-L$をHamiltonianと呼ぶ。
+
+ここで、 
+\[
+\begin{cases}
+\frac{\partial H}{\partial p}=\dot{q}\\
+\frac{\partial H}{\partial q}=-\dot{p}
+\end{cases}
+\]
+はEuler-lagrange方程式及び運動方程式とと等価で、Hamiltonianの正準方程式と呼ぶ。
+
+ここから一般の物理量の変化は 
+\begin{align*}
+\frac{\mathrm{d}A}{\mathrm{d}t} & =\frac{\partial A}{\partial q}\frac{\mathrm{d}q}{\mathrm{d}t}+\frac{\partial A}{\partial p}\frac{\mathrm{d}p}{\mathrm{d}t}\\
+ & =\frac{\partial A}{\partial q}\frac{\partial H}{\partial t}-\frac{\partial A}{\partial p}\frac{\partial H}{\partial t}\\
+ & =\left[A,H\right]
+\end{align*}
+と表せる。$\left[,\right]$はPoison括弧と呼ばれる。
+
+物理量が時間に依存しない場合、 
+\[
+\frac{\mathrm{d}A}{\mathrm{d}t}=\left[A,H\right]=0
+\]
+
+例えば、運動量保存則は 
+\[
+\left[p,H\right]=\frac{\partial p}{\partial q}\frac{\partial H}{\partial t}-\frac{\partial p}{\partial p}\frac{\partial H}{\partial t}=0
+\]
+\[
+\frac{\partial H}{\partial q}=0
+\]
+となる。
+
+\section{力学的世界観の凋落}
+
+\subsection{場の概念}
+
+\subsubsection{近接力と遠隔力}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/phy001}
+
+直接働く``遠隔力''
+
+\paragraph{近接力の考え方}
+
+水銀に2つのガラス球を浮かべると、水銀の表面張力により2つのガラス球が引き合う。このように、ガラス球同士には何も力が働いていないにもかかわらず、外部的な作用により相互作用が働いているようにみえる力のことを近接力という。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/phy002}
+
+このように、真空中に電荷を置くと、電荷の周りである種の歪みが``生じ''ているのではないか?とも考えることができる。この歪みを媒介にして電気的な相互作用が伝わっているのではないか?
+
+それでは、電磁力は近接力と遠隔力、どちらが優れた考え方だろうか。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/phy003}
+
+真空中に孤立した電荷を置いて、激しく振動させてみる。遠隔力の考え方では、何も起こらないはずだが、実際には電磁波が発生する。この実験から、電磁波においては近接力の考え方が優位性を持っていると考えることができる。
+
+それでは、真空中で生じる歪み、媒質とは何だろうか?「力学的自然観」に従うならば、何らかの歪む実体が必要である。そこで、かつては「ゆがむもの」の存在が仮定され、エーテルの力学的振動が電磁波とされた。
+
+ここで、宇宙がエーテルに満たされているとすると、エーテルが静止している「絶対静止空間」が存在することになる。もしそうならば、電磁波の伝わり具合(例えば``伝播速度'')はエーテルに対する運動の方向によって変化しなければならない。
+
+ところが実際には、光の伝播に方向依存性はないことがマイケルソン・モーレーの実験によって示された。これによりエーテルの存在は否定され、電磁現象を力学的に理解するのは失敗した。これが力学的自然観の凋落である。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/phy004}
+
+そうではなく、電磁現象は真空の性質によるものであり、電荷を置くことにより、その周囲の真空の性質が変わると理解できる。この真空の性質の変化を``電場''という名前で記述する。
+
+\paragraph{Maxwellの方程式}
+\begin{enumerate}
+\item $\mathrm{div}\boldsymbol{D}=\rho$
+\item $\mathrm{div}\boldsymbol{B}=0$
+\item $\mathrm{rot}\boldsymbol{E}+\frac{\partial\boldsymbol{B}}{\partial t}=0$
+\item $\mathrm{rot}\boldsymbol{H}-\frac{\partial\boldsymbol{D}}{\partial t}=\boldsymbol{i}$
+\end{enumerate}
+$\boldsymbol{E}$: 電場, $\boldsymbol{H}$: 磁場, $\boldsymbol{D}$: 電束密度($\boldsymbol{D}=\varepsilon\boldsymbol{E}$),
+$\boldsymbol{B}$: 磁束密度$\boldsymbol{}$($\boldsymbol{B}=\mu\boldsymbol{H}$),
+$\boldsymbol{i}$: 電流の密度, $\rho$: 電荷密度
+
+\[
+\mathrm{div}\boldsymbol{D}=\frac{\partial D_{x}}{\partial x}+\frac{\partial D_{y}}{\partial y}+\frac{\partial D_{z}}{\partial z}
+\]
+\[
+\nabla=\left(\frac{\partial}{\partial x},\frac{\partial}{\partial y},\frac{\partial}{\partial z}\right)
+\]
+\[
+\mathrm{div}\boldsymbol{D}=\nabla\cdot\boldsymbol{D}
+\]
+\begin{align*}
+\mathrm{rot}\boldsymbol{E} & =\nabla\times\boldsymbol{E}\\
+ & =\left(\frac{\partial E_{z}}{\partial y}-\frac{\partial E_{y}}{\partial z},\frac{\partial E_{x}}{\partial z}-\frac{\partial E_{z}}{\partial x},\frac{\partial E_{y}}{\partial x}-\frac{\partial E_{x}}{\partial y}\right)
+\end{align*}
+
+\begin{enumerate}
+\item $\mathrm{div}\boldsymbol{D}=\rho$
+
+ガウスの法則: 電場の源は電荷である。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/phy005}
+
+クーロンの法則より、
+\[
+F=\frac{1}{4\pi\varepsilon_{0}}\frac{q_{1}q_{2}}{r^{2}}
+\]
+が成り立つ。
+
+また、$q_{1}$の電荷を置くと、その周りに
+\[
+\boldsymbol{E}=\frac{1}{4\pi\varepsilon_{0}}\frac{q_{1}}{r^{3}}\boldsymbol{r}
+\]
+の電場が生じる。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/phy006}
+
+ここで電荷$q_{1}$を半径$r$の球で囲む。
+
+\begin{align*}
+ & \int\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S\\
+= & \frac{1}{4\pi\varepsilon_{0}}\frac{q_{1}}{r^{2}}4\pi r^{2}\\
+= & \frac{q_{1}}{\varepsilon_{0}}
+\end{align*}
+となり、この値は$r$によらない。すなわち、
+\[
+\int\boldsymbol{D}\cdot\boldsymbol{n}\mathrm{d}S=q_{1}
+\]
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/phy007}
+
+ここで、ガウスの定理を使用して、
+\begin{align*}
+\int\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S & =\int\mathrm{div}\boldsymbol{E}\mathrm{d}V\\
+ & =\iiint_{a}^{b}\frac{\partial E_{X}}{\partial x}\mathrm{d}x\mathrm{d}y\mathrm{d}z\\
+ & =\left[E_{x}\left(b\right)-E_{x}\left(a\right)\right]S
+\end{align*}
+\[
+\int\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S=\int\mathrm{div}\boldsymbol{E}\mathrm{d}V
+\]
+\[
+q_{1}=\int\rho\mathrm{d}V
+\]
+\[
+\int\mathrm{div}\boldsymbol{E}\mathrm{d}V=\frac{1}{\varepsilon_{0}}\int\rho\mathrm{d}V
+\]
+
+\fbox{\begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
+\[
+\mathrm{div}\boldsymbol{D}=\rho
+\]
+%
+\end{minipage}}
+
+すなわち、電荷があるとその周りに電場が生じることがわかる。
+\item $\mathrm{div}\boldsymbol{B}=0$
+
+磁気モノポールは存在しない。(磁石のN,Sだけの存在は実在しない。)
+
+\fbox{\begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
+\[
+\mathrm{div}\boldsymbol{B}=0
+\]
+%
+\end{minipage}}
+\item $\mathrm{rot}\boldsymbol{E}+\frac{\partial\boldsymbol{B}}{\partial t}=0$
+
+ファラデーの電磁誘導を表す。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/phy008}
+
+\[
+\underbrace{V}_{\text{誘導起電力}}=-\frac{\mathrm{d}\Phi}{\mathrm{d}t}
+\]
+\[
+\underbrace{\Phi}_{\text{磁束}}=\int\underbrace{\boldsymbol{B}}_{\text{磁束密度}}\cdot\underbrace{\boldsymbol{n}\mathrm{d}S}_{\text{面積分}}
+\]
+\[
+V=\int\boldsymbol{E}\cdot\underbrace{\mathrm{d}\boldsymbol{s}}_{\text{線積分}}
+\]
+
+ストークスの定理は、
+\[
+\int\boldsymbol{E}\cdot\underbrace{\mathrm{d}\boldsymbol{s}}_{\text{線積分}}=\int\mathrm{rot}\boldsymbol{E}\cdot\underbrace{\boldsymbol{n}\mathrm{d}S}_{\text{面積分}}
+\]
+であり、ガウスの法則が体積積分と面積分の関係を示しているのに対し、ストークスの定理は線積分と面積分の関係を示す公式である。
+
+ここから、
+\begin{align*}
+\int\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s} & =\int\mathrm{rot}\boldsymbol{E}\cdot n\mathrm{d}S\\
+ & =-\int\frac{\partial\boldsymbol{B}}{\partial t}\cdot\boldsymbol{n}\mathrm{d}S
+\end{align*}
+\fbox{\begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
+\[
+\mathrm{rot}\boldsymbol{E}=-\frac{\partial\boldsymbol{B}}{\partial t}
+\]
+%
+\end{minipage}}
+\item $\mathrm{rot}\boldsymbol{H}-\frac{\partial\boldsymbol{D}}{\partial t}=\boldsymbol{i}$
+
+ビオ・サバールの法則及びアンペールの法則を表す。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/phy010}
+
+アンペールの法則より、
+\[
+2\pi rH=I
+\]
+
+\[
+\int\boldsymbol{H}\cdot\mathrm{d}\boldsymbol{s}=\int\boldsymbol{i}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+\[
+\mathrm{rot}\boldsymbol{H}=\boldsymbol{i}
+\]
+となる。しかしこれでは不十分であり、電場の変化によって理解が発生するような効果を考えなくてはいけない。
+
+\paragraph{連続の式}
+
+\begin{align*}
+\int\boldsymbol{i}\cdot\boldsymbol{n}\mathrm{d}S & =\int\mathrm{div}\boldsymbol{i}\cdot\mathrm{d}V\\
+ & =-\frac{\partial}{\partial t}\left[\int\rho\mathrm{d}V\right]
+\end{align*}
+より、
+
+\fbox{\begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
+\[
+\mathrm{div}\boldsymbol{i}+\frac{\partial\rho}{\partial t}=0
+\]
+%
+\end{minipage}}
+
+\[
+\mathrm{rot}\boldsymbol{H}=\boldsymbol{i}
+\]
+\[
+\mathrm{div}\mathrm{rot}\boldsymbol{H}=\mathrm{div}\boldsymbol{i}
+\]
+\[
+\mathrm{div}\mathrm{rot}\boldsymbol{H}=\frac{\partial}{\partial x}\left[\frac{\partial H_{z}}{\partial y}-\frac{\partial H_{y}}{\partial z}\right]+\frac{\partial}{\partial y}\left[\frac{\partial H_{x}}{\partial z}-\frac{\partial H_{z}}{\partial x}\right]+\frac{\partial}{\partial z}\left[\frac{\partial H_{y}}{\partial x}-\frac{\partial H_{x}}{\partial y}\right]=0
+\]
+より、$\mathrm{div}\boldsymbol{i}=0$、$\frac{\partial\rho}{\partial t}=0$となっておかしい。そこで、
+
+\fbox{\begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
+\[
+\mathrm{rot}\boldsymbol{H}=\boldsymbol{i}+\frac{\partial\boldsymbol{D}}{\partial t}
+\]
+%
+\end{minipage}}とする。
+\end{enumerate}
+このMaxwellの方程式から電磁場が記述できる。
+
+\section{場と相対性理論}
+
+\subsection{ガリレイの相対性原理}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/phy011}
+
+$K$から見て運動する$K'$という座標系を考える。この座標系に対して
+\[
+\begin{cases}
+y'=y\\
+x'=x-vt\\
+t'=t\left(\text{自明ではない}\right)
+\end{cases}
+\]
+が成り立っているとする。これをガリレイ変換という。
+
+ここで、$K$系の観測者が時刻$t$に点$P\left(x,y\right)$における物理量を観測したらその値が$F$だったとする。このとき、$K'$系の観測者が同じ時刻$\left(t'=t\right)$に同じ場所$P=\left(x',y'\right)$で$\mathscr{F}$の値を観測して$F'$という値をエたとする。$F'=F$が成立するとき$\mathscr{F}$はガリレイ変換に対してスカラーであるという。
+
+では、ガリレイ変換に対してNewtonの運動方程式はどのように変化するだろうか?
+
+\[
+\frac{\mathrm{d}^{2}x}{\mathrm{d}t^{2}}=\frac{\mathrm{d}^{2}x'}{\mathrm{d}t^{2}}
+\]
+
+粒子の加速度はガリレイ変換に対してスカラーである。同様に力もスカラーである。(異なる速度で等速運動するエレベーターの中で重力は等しく働く)
+
+$K$系において
+\[
+m\frac{\mathrm{d}^{2}x}{\mathrm{d}t^{2}}=F
+\]
+
+$K'$系において
+\[
+m\frac{\mathrm{d}^{2}x'}{\mathrm{d}t^{2}}=F'
+\]
+となり、両系で法則の形は不変(共変的)である。よって、Newtonの運動方程式はガリレオ変換に対して共変的である。\footnote{法則が共変的であるということは法則の解である運動そのものが変わらないということを意味するわけではない。例えば、$K$における自由落下運動は$K'$では放物線用の運動に見える。}\footnote{$K$と$K'$でNewtonの運動方程式は同じ形をしているので、物体の運動を支配する法則からは、$K$が静止しているのか$K'$が静止しているのかは判定できない。(加速している系とは区別が付く。例えば回転運動をしている系には遠心力が働く。)すなわち、どの慣性系($K,K'$など)も特別な慣性系として区別することはできない。これをガリレイの相対性原理という。}
+
+\subsection{ヘルツの理論}
+
+Newtonの運動方程式はガリレオ変換に対して共変的であるが、マクスウェルの方程式はどうだろうか?
+
+Newtonの運動方程式には$F=\text{力}$という物理量しか登場しないが、マクスウェルの方程式には電場・磁場の空間及び時間微分が出てくる。よって自明ではない。
+
+位置に関する微分は、
+\begin{align*}
+\frac{\partial F\left(x',t\right)}{\partial x'} & =\frac{\partial F\left(x-vt\right)}{\partial x}\frac{\partial x}{\partial x'}\\
+ & =\frac{\partial F'\left(x-vt,t\right)}{\partial x}\\
+ & =\frac{\partial F\left(x,t\right)}{\partial x}
+\end{align*}
+
+時間に冠する微分は、
+\begin{align*}
+\frac{\mathrm{d}}{\mathrm{d}t}F\left(x,t\right) & =\frac{\partial}{\partial t}F\left(x,t\right)\\
+\frac{\mathrm{d}}{\mathrm{d}t}F'\left(x',t\right) & =\frac{\mathrm{d}}{\mathrm{d}t}F'\left(x-vt,t\right)\\
+ & =\frac{\partial}{\partial t}F'\left(x-vt,t\right)-v\frac{\partial}{\partial x}F\left(x-vt,t\right)
+\end{align*}
+となり、余計な項がつく。
+
+\[
+\frac{\partial}{\partial t}F'\left(x',t\right)=\frac{\partial}{\partial t}F\left(x,t\right)+\nabla\cdot\nabla F\left(\boldsymbol{r},t\right)
+\]
+
+マクスウェルの方程式のうち、空間微分しかない
+\[
+\mathrm{div}\boldsymbol{B}=0,\mathrm{div}\boldsymbol{D}=\rho
+\]
+はガリレイ変換で形を変えないが、時間微分を含む
+\[
+\mathrm{rot}\boldsymbol{E}+\frac{\partial\boldsymbol{B}}{\partial t}=0,\mathrm{rot}\boldsymbol{H}-\frac{\partial\boldsymbol{D}}{\partial t}=\boldsymbol{i}
+\]
+は問題があるといえる。
+
+この事実によって方程式はどのように形を変えるか?興味のある人は実際にやってみて欲しいが、答えを書いてみると、
+\[
+\begin{cases}
+\mathrm{rot}\boldsymbol{E}=-\frac{\partial\boldsymbol{B}}{\partial t}\underline{+\mathrm{rot}\left(\boldsymbol{v}\times\boldsymbol{B}\right)}\\
+\mathrm{rot}\boldsymbol{H}=\frac{\partial\boldsymbol{D}}{\partial t}\underline{-\mathrm{rot}\left(\boldsymbol{v}\times\boldsymbol{D}\right)}+\left(\boldsymbol{i}\underline{+\rho\boldsymbol{v}}\right)
+\end{cases}
+\]
+というように余計な項がつく。(ヘルツの方程式)\footnote{$K$と$K'$で法則の形が変わっている。(片方でマクスウェルの方程式が成立するなら、もう片方ではヘルツの方程式が成立しないといけない。)つまり、マクスウェルの方程式はニュートンの運動方程式と違って、ガリレイ変換に対して共変ではない。つまり、Newtonの運動方程式では検出することが出来なかった絶対静止の特別な座標系を、電磁気学的な現象から知ることができることになってしまう。}
+
+\subsection{マイケルソン・モーレーの実験}
+
+「電磁波(光)は絶対静止のエーテルの中の物理現象である。エーテルに対して静止している系ではマクスウェルの方程式が成立する」という仮定をすると、地球上ではその自転と公転のため、絶対静止のエーテルに対して運動していることになる。そこで、エーテルに対する速度を観測しようと考えた。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/phy012}
+
+光源$Q$から出発した光が鏡$M_{1},M_{2}$に反射されて$T$に集められる。このとき干渉現象が起きるだろうか?
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/phy013}
+
+\[
+t=\frac{\sqrt{l^{2}+\left(vt\right)^{2}}}{c}
+\]
+
+$t=\frac{l}{\sqrt{c^{2}-v^{2}}}$、往復で$\frac{2l}{\sqrt{c^{2}-v^{2}}}$なので、
+\begin{align*}
+t & =\frac{l}{c+v}+\frac{l}{c-v}\\
+ & =\frac{2cl}{c^{2}-v^{2}}
+\end{align*}
+
+2つの経路の時間差$\sim\frac{l}{c}\left(\frac{v}{c}\right)^{2}$なので、光の位相差から干渉縞が見えるはずである。
+
+ところが、実験を行った結果、干渉縞は観測されなかった。すなわち、エーテルに対して運動している系においても、マクスウェルの方程式が成立しているべきである。ここから、ガリレイ変換がおかしいのではないかという推測がされる。
+
+\subsection{特殊相対論}
+
+\subsubsection{基本的な考え方(Einstein)}
+
+マクスウェルの方程式の共変性を、従来の時間・空間の概念のもとで解釈するのはやめることにする。逆に、共変性を出発点にして時空間の概念を構成する。
+
+\paragraph{相対性原理}
+
+互いに等速運動をしている全ての慣性系で、全ての自然法則は同じ形で表され、慣性系の中から特別なものを選び出すことは出来ない。\footnote{自然法則が同じと入っているだけで現象が同じと行っているわけではない。片方で静止している電荷はもう片方では電流として観測される。}
+
+\paragraph{光速度不変の原理}
+
+いかなる慣性系においても、その系の観測者にとって光の速度は不変である。\footnote{光速度不変⇔マクスウェルの方程式の共変性}\footnote{ガリレイ変換にかわる新しい変換を考える必要がある→ローレンツ変換}\footnote{マクスウェルの方程式はローレンツ変換に対して共編である。ところがNewton方程式は共編ではない。よってNewtonの運動方程式をローレンツ方程式に対して共編になるように修正しなければならない(再来週に続く)→$E=mc^{2}$}
+
+\paragraph{準備: 電磁波}
+
+$j=0,p=0$のケースを考える。このときマクスウェル方程式は
+\begin{align*}
+\mathrm{div}\boldsymbol{E} & =0\\
+\mathrm{div}\boldsymbol{B} & =0\\
+\mathrm{rot}\boldsymbol{E} & =-\frac{\partial\boldsymbol{B}}{\partial t}\\
+\mathrm{rot}\boldsymbol{B} & =\varepsilon_{0}\mu_{0}\frac{\partial\boldsymbol{E}}{\partial t}
+\end{align*}
+となる。
+
+簡単のため、電場、磁場が$x$だけの関数であるとする。
+
+\begin{align*}
+\mathrm{div}\boldsymbol{E} & =\frac{\partial E_{x}}{\partial x}=0\\
+\mathrm{div}\boldsymbol{B} & =\frac{\partial B_{x}}{\partial x}=0
+\end{align*}
+$\mathrm{rot}\boldsymbol{E}=-\frac{\partial\boldsymbol{B}}{\partial t}$より、
+\[
+\begin{cases}
+0=\frac{\partial B_{x}}{\partial t}\\
+\frac{\partial E_{z}}{\partial x}=-\frac{\partial B_{y}}{\partial t}\\
+\frac{\partial E_{y}}{\partial x}=-\frac{\partial B_{z}}{\partial t}
+\end{cases}
+\]
+$\mathrm{rot}\boldsymbol{B}=\varepsilon_{0}\mu_{0}\frac{\partial\boldsymbol{E}}{\partial t}$より、
+\[
+\begin{cases}
+0=\frac{\partial E_{x}}{\partial t}\\
+\frac{\partial B_{z}}{\partial x}=-\varepsilon_{0}\mu_{0}\frac{\partial E_{y}}{\partial t}\\
+\frac{\partial B_{y}}{\partial x}=-\varepsilon_{0}\mu_{0}\frac{\partial E_{z}}{\partial t}
+\end{cases}
+\]
+
+$E_{x}=B_{x}=0$とする。$\frac{\partial B_{z}}{\partial x}=-\varepsilon_{0}\mu_{0}\frac{\partial E_{y}}{\partial t}$の両辺を$t$で微分して、
+\[
+\frac{\partial}{\partial t}\frac{\partial B_{z}}{\partial x}=-\varepsilon_{0}\mu_{0}\frac{\partial^{2}E_{y}}{\partial t^{2}}
+\]
+$\frac{\partial E_{y}}{\partial x}=-\frac{\partial B_{z}}{\partial t}$の両辺を$x$で微分して、
+\[
+\frac{\partial}{\partial x}\frac{\partial}{\partial x}E_{y}=-\frac{\partial}{\partial x}\frac{\partial}{\partial t}B_{z}
+\]
+
+この2式から
+\[
+\frac{\partial^{2}}{\partial x^{2}}E_{y}=\varepsilon_{0}\mu_{0}\frac{\partial^{2}}{\partial t^{2}}E_{y}
+\]
+が導かれる。
+
+同様の式変形で、
+\begin{align*}
+\frac{\partial^{2}B_{y}}{\partial t^{2}} & =\frac{1}{\varepsilon_{0}\mu_{0}}\frac{\partial^{2}}{\partial x^{2}}B_{y}\\
+\frac{\partial^{2}E_{z}}{\partial t^{2}} & =\frac{1}{\varepsilon_{0}\mu_{0}}\frac{\partial^{2}}{\partial x^{2}}E_{z}\\
+\frac{\partial^{2}B_{z}}{\partial t^{2}} & =\frac{1}{\varepsilon_{0}\mu_{0}}\frac{\partial^{2}}{\partial x^{2}}B_{z}
+\end{align*}
+が導かれる。
+
+\paragraph{波動方程式}
+
+弦の運動方程式を考える。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/phy014}
+
+\[
+ma=F
+\]
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/phy015}
+
+\begin{align*}
+F & =T\left(\sin\theta_{2}-\sin\theta_{1}\right)\\
+T\left(\sin\theta_{2}-\sin\theta_{1}\right) & =\rho\mathrm{d}x\frac{\partial^{2}u\left(x,t\right)}{\partial t^{2}}
+\end{align*}
+
+$\theta$が小さければ、$\sin\theta\sim\tan\theta\sim\frac{\partial u}{\partial x}$なので、
+\[
+\text{左辺}=T\frac{\partial^{2}u}{\partial x^{2}}\mathrm{d}x
+\]
+\[
+\underbrace{\frac{\partial^{2}u}{\partial x^{2}}}_{\text{空間}}=\frac{P}{T}\underbrace{\frac{\partial^{2}u}{\partial t^{2}}}_{\text{時間}}
+\]
+
+一般に、
+\[
+\frac{\partial^{2}u}{\partial x^{2}}=\frac{1}{v^{2}}\frac{\partial^{2}u}{\partial t^{2}}
+\]
+\[
+u\left(x,t\right)=f\left(x+vt\right)+g\left(x-vt\right)
+\]
+とかける。ただし、$u\left(x,t\right)$は速さ$v$で伝播する波を表す。→Maxwellの方程式がある速さで伝播する波を記述する波動方程式になる。
+
+\paragraph{ローレンツ変換}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/phy016}
+
+光の速さが一定であることから、$t=t'=0$において$x=x'=0$から出発した光の波面は
+\[
+\begin{cases}
+\boldsymbol{r}^{2}-c^{2}t^{2}=0\\
+\boldsymbol{r}'^{2}-c^{2}t'^{2}=0
+\end{cases}
+\]
+を満たす。
+
+目標は$\left(\boldsymbol{r},t\right)$と$\left(\boldsymbol{r}',t'\right)$の間の関係を求めることである。具体的には
+\[
+\left(\begin{array}{c}
+x\\
+y\\
+z\\
+t
+\end{array}\right)=A\left(\begin{array}{c}
+x'\\
+y'\\
+z'\\
+t'
+\end{array}\right)
+\]
+となるような行列$A$を求める。
+
+$K'$は$K$から見て$x$方向にしか動いていないとする。すなわち$y'=y,z'=z$とする。
+
+$K'$の$\boldsymbol{r}'=0$を$K$から見ると速さ$v$で等速で移動している。
+\[
+X'=0\rightarrow x=vt
+\]
+\[
+X'\left(x,t\right)=\alpha\left(x-vt\right)
+\]
+\[
+t'=\delta x+\epsilon t
+\]
+である。ただしここで$\alpha,\delta,\epsilon$は未知定数である。
+
+これらの式を条件式に代入して、$x^{2},t^{2},xt$の項を比較すると、$\alpha,\delta,\epsilon$の値が求まる。計算すると、
+\begin{align*}
+x' & =\frac{x-vt}{\sqrt{1-\frac{v^{2}}{c^{2}}}}\\
+y' & =y\\
+z' & =z\\
+t & =\frac{t-\frac{v}{c^{2}}x}{\sqrt{1-\frac{v^{2}}{c^{2}}}}
+\end{align*}
+となる。これをローレンツ変換と
+
+$c$は通常$v$よりもはるかに大きい。$\frac{v}{c}\doteqdot0$と近似すると、
+\begin{align*}
+x' & =x-vt\\
+y' & =y\\
+z' & =z\\
+t & =t
+\end{align*}
+となり、ガリレイ変換に戻る。
+
+このローレンツ変換に従うと、直感に反する様々な性質が導き出されてしまう。
+\begin{enumerate}
+\item 同時性
+
+$K$系で$\left(x_{1},t\right),\left(x_{2},t\right)$で事象が発生した(同じ時刻に違う場所で発生した)とする。
+
+\begin{align*}
+t_{1}' & =\frac{t-\frac{v}{c^{2}}x_{1}}{\sqrt{1-\frac{v^{2}}{c^{2}}}}\\
+t_{2}' & =\frac{t-\frac{v}{c^{2}}x_{2}}{\sqrt{1-\frac{v^{2}}{c^{2}}}}
+\end{align*}
+\begin{align*}
+t_{2}'-t_{1}' & =\frac{v}{c^{2}}\frac{x_{1}-x_{2}}{\sqrt{1-\frac{v^{2}}{c^{2}}}}
+\end{align*}
+となり、$K'$系で見た時には$x_{1}=x_{2}$でない限り同時に起きた事象ではなくなる。
+\item ローレンツ収縮
+
+$K'$系で静止している棒があったとする。端を$x_{2}',x_{1}'$とすると、$K'$系での棒の長さは
+\[
+l'=x_{2}'-x_{1}'=\frac{x_{2}-x_{1}}{\sqrt{1-\frac{v^{2}}{c^{2}}}}=\frac{l}{\sqrt{1-\frac{v^{2}}{c^{2}}}}
+\]
+となる。
+
+$K$系での棒の長さ$l$は、
+\[
+l=\sqrt{1-\frac{v^{2}}{c^{2}}}l'
+\]
+に見えるので、$K'$系で見える長さより短く見える。
+\item 時計の流れ
+
+$K'$系で$x'=0$にある時計は、$K$系では
+\[
+t=\frac{t'}{\sqrt{1-\frac{v^{2}}{c^{2}}}}
+\]
+
+$K'$系でのある時間間隔$\Delta t'$が$K$系では$\frac{\Delta t'}{\sqrt{1-\frac{v^{2}}{c^{2}}}}$として認識される。
+\end{enumerate}
+
+\paragraph{マクスウェルの方程式の共変性}
+
+(マクスウェルの方程式がローレンツ変換で法則の形を変えないということを確認する。)
+
+ミンコフスキー空間: 2点の距離が$\mathrm{d}s^{2}=-c^{2}\mathrm{d}t^{2}+\mathrm{d}x^{2}+\mathrm{d}y^{2}+\mathrm{d}z^{2}$で表される空間
+
+ローレンツ変換: $s^{2}=-\left(ct\right)^{2}+x^{2}+y^{2}+z^{2}$を不変に保つ変換
+
+\[
+x'^{\mu}=\sum_{\nu=1}^{4}L_{\nu}^{\mu}x^{\nu}
+\]
+と略記する。
+
+\[
+x'^{\mu}=L_{\nu}^{\mu}x^{\nu}\left(\text{Einsteinの縮約}\right)
+\]
+\[
+L_{\nu}^{\mu}=\frac{\partial x'^{\mu}}{\partial x^{\nu}}
+\]
+
+$x$方向に$v$で動いている場合の具体例
+\[
+\left(\begin{array}{c}
+x'^{0}\\
+x'^{1}\\
+x'^{2}\\
+x'^{3}
+\end{array}\right)=\left(\begin{array}{cc}
+\begin{array}{cc}
+\gamma & -\beta\gamma\\
+-\beta\gamma & \gamma
+\end{array} & \vline0\\
+\hline 0 & \vline\boldsymbol{1}
+\end{array}\right)\left(\begin{array}{c}
+x^{0}\\
+x^{1}\\
+x^{2}\\
+x^{3}
+\end{array}\right)
+\]
+\[
+\beta=\frac{v}{c}
+\]
+\[
+\gamma=\frac{1}{\sqrt{1-\beta^{2}}}
+\]
+
+反変ベクトル: 下と同形の変換をするベクトル
+
+\[
+\begin{cases}
+\mathrm{d}x'=\frac{\partial x'}{\partial x}\mathrm{d}x+\frac{\partial x'}{\partial y}\mathrm{d}y+\frac{\partial x'}{\partial z}\mathrm{d}z\\
+\mathrm{d}y'=\frac{\partial y'}{\partial x}\mathrm{d}x+\frac{\partial y'}{\partial y}\mathrm{d}y+\frac{\partial y'}{\partial z}\mathrm{d}z\\
+\mathrm{d}z'=\frac{\partial z'}{\partial x}\mathrm{d}x+\frac{\partial z'}{\partial y}\mathrm{d}y+\frac{\partial z'}{\partial z}\mathrm{d}z
+\end{cases}
+\]
+
+共変ベクトル: 下と同形の変換をするベクトル
+
+\[
+\begin{cases}
+\frac{\partial}{\partial x'}=\frac{\partial x}{\partial x'}\frac{\partial}{\partial x}+\frac{\partial y}{\partial x'}\frac{\partial}{\partial y}+\frac{\partial z}{\partial x'}\frac{\partial}{\partial z}\\
+\frac{\partial}{\partial y'}=\frac{\partial x}{\partial y'}\frac{\partial}{\partial x}+\frac{\partial y}{\partial y'}\frac{\partial}{\partial y}+\frac{\partial z}{\partial y'}\frac{\partial}{\partial z}\\
+\frac{\partial}{\partial z'}=\frac{\partial x}{\partial z'}\frac{\partial}{\partial x}+\frac{\partial y}{\partial z'}\frac{\partial}{\partial y}+\frac{\partial z}{\partial z'}\frac{\partial}{\partial z}
+\end{cases}
+\]
+
+
+\paragraph{テンソル量}
+
+ミンコフスキー空間の中にある一点$P$におけるある物理量$\varphi$の値を$\varphi\left(x^{\mu}\right)$とする。別の慣性系で$x^{\mu}$が$x'^{\mu}$となったとして、$\varphi\left(x'^{\mu}\right)=\varphi\left(x^{\mu}\right)$が成立するとき、$\varphi$をスカラーと呼ぶ。
+
+行列の各成分が$x^{\mu}\rightarrow x'^{\mu}$の変換に対して
+\[
+a'^{ij}=\frac{\partial x'^{i}}{\partial x^{k}}\frac{\partial x'^{j}}{\partial x^{l}}a^{kl}
+\]
+と変換されるとき、これを\textbf{2階の反変テンソル}と呼ぶ。
+
+最も簡単な霊は2つの反変ベクトル$s^{i},t^{j}$の関
+\[
+a^{ij}=s^{i}t^{j}
+\]
+
+同様に共変テンソルは、
+\[
+b_{ij}'=\frac{\partial x^{k}}{\partial x'^{i}}\frac{\partial x^{l}}{\partial x'^{j}}b_{kl}
+\]
+
+根号テンソルを考えることもできる。
+\[
+c_{j}'^{i}=\frac{\partial x'^{i}}{\partial x^{k}}\frac{\partial x^{l}}{\partial x'^{j}}c_{l}^{k}
+\]
+と変換する。
+
+次回、マクスウェルの方程式は、
+\[
+\begin{cases}
+\partial_{\nu}F^{\mu\nu}=\mu_{0}j^{\mu}\\
+\partial_{\rho}F_{\mu\nu}+\partial_{\mu}F_{\nu\rho}+\partial_{\nu}F_{\rho\mu}=0
+\end{cases}
+\]
+と表される。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+ミンコフスキー空間とは、2点の距離が
+\[
+\mathrm{d}s^{2}=-c^{2}\mathrm{d}t^{2}+\mathrm{d}x^{2}+\mathrm{d}y^{2}+\mathrm{d}z^{2}=\eta_{\mu\nu}\mathrm{d}x^{\mu}\mathrm{d}x^{\nu}
+\]
+で表される空間であった。ただし、
+\[
+x^{\mu}=\left(ct,x,y,z\right)
+\]
+\[
+\eta_{\mu\nu}=\left(\begin{array}{cccc}
+-1 &  &  & 0\\
+ & 1\\
+ &  & 1\\
+0 &  &  & -1
+\end{array}\right)
+\]
+である。
+
+反転ベクトル→共変ベクトルへの変換は、
+\begin{align*}
+\mathrm{d}x^{\mu} & \rightarrow\mathrm{d}x_{\nu}=\eta_{\mu\nu}\mathrm{d}x^{\mu}
+\end{align*}
+\[
+\eta_{\mu\nu}\mathrm{d}x^{\mu}\mathrm{d}x^{\nu}=\mathrm{d}x_{\nu}\mathrm{d}x^{\nu}=\mathrm{d}s^{2}
+\]
+
+反変ベクトル
+\[
+x'^{\mu}=L_{\nu}^{\mu}x^{\nu}=\sum_{\nu=0}^{3}L_{\nu}^{\mu}x^{\nu}
+\]
+
+なお、連続の式
+\[
+\mathrm{div}\boldsymbol{i}=-\frac{\partial\rho}{\partial t}
+\]
+は、
+\[
+j^{\mu}=\left\{ c\rho,i_{x},i_{y},i_{z}\right\} 
+\]
+\[
+\partial_{\mu}j^{\mu}=0
+\]
+となる。
+
+\paragraph{Maxwellの方程式の書き換え}
+
+$\mathrm{div}\boldsymbol{B}=0$のとき、$\boldsymbol{B}=\mathrm{rot}\boldsymbol{A}$($\boldsymbol{A}$はベクトルポテンシャル)と表せる。\footnote{$\mathrm{div}\left(\mathrm{rot}\boldsymbol{V}\right)=0$である。}よって、
+\begin{align*}
+ & \mathrm{rot}\boldsymbol{E}+\frac{\partial\boldsymbol{B}}{\partial t}\\
+= & \mathrm{rot}\boldsymbol{E}=\mathrm{rot}\frac{\partial\boldsymbol{A}}{\partial t}\\
+= & \mathrm{rot}\left(\boldsymbol{E}=\frac{\partial\boldsymbol{A}}{\partial t}\right)=0
+\end{align*}
+
+$\mathrm{rot}\left(\mathrm{grad}c\right)=0$なので、
+\[
+\boldsymbol{E}+\frac{\partial}{\partial t}\boldsymbol{A}=-\mathrm{grad}\phi
+\]
+と書ける。($\phi$はスカラーポテンシャル)
+
+また、
+\[
+\mathrm{rot}\boldsymbol{E}=\frac{\partial\boldsymbol{B}}{\partial t}=0
+\]
+も自動的に満たされる。。
+
+\[
+\begin{cases}
+\mathrm{rot}\boldsymbol{H}-\frac{\partial\boldsymbol{D}}{\partial t}=\boldsymbol{i}\\
+\mathrm{div}\boldsymbol{D}=\rho
+\end{cases}
+\]
+
+この2つを$\boldsymbol{A}$と$\phi$を使って表現する。式変形の詳細は省略するが、$\mathrm{rot}\mathrm{rot}\boldsymbol{A}=\mathrm{grad}\mathrm{div}A-\Delta A$などを用いて最終的に、
+\[
+\begin{cases}
+\mathrm{grad}\left(\mathrm{div}\boldsymbol{A}=\frac{1}{c^{2}}\frac{\partial\phi}{\partial t}\right)+\left(\frac{1}{c^{2}}\frac{\partial^{2}}{\partial t^{2}}-\Delta\right)\boldsymbol{A}=\mu_{0}\boldsymbol{i}\\
+-\mathrm{div}\left(\frac{\partial\boldsymbol{A}}{\partial t}\right)-\Delta\phi=\frac{\rho}{\varepsilon_{0}}
+\end{cases}
+\]
+となる。ただし$\frac{1}{\varepsilon_{0}\mu_{0}}=c^{2}$などを用いた。
+
+\paragraph{ゲージ変換}
+
+この式をもっと簡略することはできないか。ここでゲージ変換という考え方を導入する。ここで、
+\begin{align*}
+\boldsymbol{A}' & =\boldsymbol{A}+\mathrm{grad}u\left(\boldsymbol{r},t\right)\\
+\phi' & =\phi-\frac{\partial}{\partial t}u\left(\boldsymbol{r},t\right)
+\end{align*}
+という変換を考える。
+\begin{align*}
+\mathrm{rot}\boldsymbol{A}' & =\mathrm{rot}\left(\boldsymbol{A}=\mathrm{grad}u\right)\\
+ & =\mathrm{rot}\boldsymbol{A}=\boldsymbol{B}
+\end{align*}
+\begin{align*}
+-\frac{\partial\boldsymbol{A}'}{\partial t}-\mathrm{grad}\phi' & =-\frac{\partial\boldsymbol{A}}{\partial t}-\mathrm{grad}\frac{\partial u}{\partial t}-\mathrm{grad}\phi+\mathrm{grad}\frac{\partial u}{\partial t}\\
+ & =-\frac{\partial\boldsymbol{A}}{\partial t}-\mathrm{grad}\phi=\boldsymbol{E}
+\end{align*}
+
+$\boldsymbol{B}$と$\boldsymbol{E}$を与える$\boldsymbol{A}$と$\phi$には、$u$の不定性がある。これをゲージの自由度という。
+
+ゲージの自由度を使って先の2式を簡単化できないだろうか。先の2式を満たすような$\boldsymbol{A}_{0},\phi_{0}$があったとする。
+
+\[
+\Delta\chi-\frac{1}{c^{2}}\frac{\partial^{2}}{\partial t^{2}}\chi=-\left(\mathrm{div}\boldsymbol{A}_{0}+\frac{1}{c^{2}}\frac{\partial\phi_{0}}{\partial t}\right)
+\]
+を満たすような$x$を探す。この時、
+\[
+\Delta x-\frac{1}{c^{2}}\frac{\partial^{2}}{\partial t^{2}}\chi=-4\pi f
+\]
+で与えられた$f$に対して$x$を求めればよい。
+
+\[
+\left[\Delta-\frac{1}{c^{2}}\frac{\partial^{2}}{\partial t^{2}}\right]G^{\pm}\left(x,t,\underbrace{x',t'}_{\text{局所源}}\right)=-4\pi\delta\left(x-x'\right)\delta\left(t-t'\right)
+\]
+\[
+\chi=\int G^{\pm}\left(x,t,x',t'\right)f\left(x',t'\right)\mathrm{d}x'\mathrm{d}t'
+\]
+
+$\chi$を$u$として採用すると、
+\[
+\begin{cases}
+\boldsymbol{A}_{L}=\boldsymbol{A}_{0}+\mathrm{grad}\chi\\
+\phi_{L}=\phi_{0}-\frac{\partial}{\partial t}\chi
+\end{cases}
+\]
+
+この時、
+\[
+\mathrm{div}\boldsymbol{A}_{L}+\frac{1}{c^{2}}\frac{\partial^{2}}{\partial t^{2}}\phi_{L}=0
+\]
+となり、先の2式が簡単家できる。つまり、
+\[
+\begin{cases}
+\left(\frac{1}{c^{2}}\frac{\partial}{\partial t^{2}}-\Delta\right)\mathbf{A}_{L}=\mu_{0}\boldsymbol{i}\\
+\left(\frac{1}{c^{2}}\frac{\partial}{\partial t^{2}}-\Delta\right)\phi_{L}=\frac{\rho}{\varepsilon_{0}}
+\end{cases}
+\]
+と書ける。このゲージ変換を特にローレンツゲージと呼ぶ。
+
+ちなみに、
+\[
+A^{\mu}=\left(\frac{\phi}{c},A^{1},A^{2},A^{3}\right)
+\]
+ローレンツゲージは
+\[
+\partial_{\mu}A^{\mu}=0
+\]
+となる。
+
+ここですべての材料が揃ったので、マクスウェルの方程式をテンソル形式で書いてみる。
+
+\[
+\begin{cases}
+j^{\mu}=\left(c\rho,i_{x},i_{y},i_{z}\right)\\
+A^{\mu}=\left(\frac{\phi}{c},A_{x},A_{y},A_{z}\right)
+\end{cases}
+\]
+
+これはローレンツ変換に対してベクトル的に振る舞う。
+
+\[
+F^{\mu\nu}=\partial^{\mu}A^{\nu}-\partial^{\nu}A^{\mu}
+\]
+を考える。
+\[
+\partial^{\mu}
+\]
+
+電源断
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\paragraph{相対論的力学}
+
+Newton方程式は、ローレンツ方程式に対して共変でない。そこで、``固有時''の考え方を導入する。Newton力学では失点の運動を時間$t$をパラメータとして$\mathbf{r}\left(t\right)$と記述する。(ガリレオ変換に対しては変化しない「スカラー量」)
+
+しかし、ローレンツ変換に対してはスカラーではない。ローレンツ変換に対してスカラーな量として
+\[
+\sqrt{\left(ct\right)^{2}-\left(x^{2}+y^{2}+z^{2}\right)}
+\]
+を導入し、これを$\left(ct\right)^{2}$と名前をつける。
+
+ある質点がミンコフスキー空間である点から隣接する点に動いたとすると、その距離は
+\[
+\left(c\mathrm{d}t\right)=\sqrt{\left(c\mathrm{d}t\right)^{2}-\left(\mathrm{d}x\right)^{2}-\left(\mathrm{d}y\right)^{2}-\left(\mathrm{d}z\right)^{2}}
+\]
+\[
+\mathrm{d}t=\sqrt{1-\frac{1}{c^{2}}\left(u_{x}^{2}+u_{y}^{2}+u_{z}^{2}\right)}\mathrm{d}t
+\]
+\[
+u_{x}=\frac{\mathrm{d}x}{\mathrm{d}t},u_{y}=\frac{\mathrm{d}y}{\mathrm{d}t},u_{z}=\frac{\mathrm{d}z}{\mathrm{d}t}
+\]
+
+$u_{x},u_{y},u_{z}$はある慣性系で見た時の質点の速度である。\footnote{慣性系の間の相対速度$v$とは異なる。}
+
+Newton力学における$t$のかわりに固有時間$\tau$を用いて質点の運動を記述するというのが基本方針となる。
+
+$\left(ct\left(\tau\right),x\left(\tau\right),y\left(\tau\right),z\left(\tau\right)\right)=\mathcal{Z}^{\mu}\left(\tau\right)$と書くことにする。
+
+$x$方向に$v$の速さで相対運動する慣性系では、
+\[
+\mathcal{Z}'^{\mu=1}\left(\tau\right)=\frac{\mathcal{Z}^{\mu=1}\left(\tau\right)-\frac{v}{c}\mathcal{Z}^{\mu=0}\left(\tau\right)}{\sqrt{1-\beta^{2}}}
+\]
+\[
+\mathcal{Z}'^{\mu=2}\left(\tau\right)=\mathcal{Z}^{\mu=2}\left(\tau\right)
+\]
+\[
+\mathcal{Z}'^{\mu=3}\left(\tau\right)=\mathcal{Z}^{\mu-3}\left(\tau\right)
+\]
+\[
+\mathcal{Z}'^{\mu=0}\left(\tau\right)=\frac{\mathcal{Z}^{\mu=0}\left(\tau\right)-\frac{v}{c}\mathcal{Z}^{\mu=1}\left(\tau\right)}{\sqrt{1-\beta^{2}}}
+\]
+と変化する。これを
+\[
+\mathcal{Z}_{\left(\tau\right)}^{'\mu}=L_{\nu}^{\mu}\mathcal{Z}_{\left(\tau\right)}^{\nu}
+\]
+と書く。
+
+$\frac{\mathrm{d}\mathcal{Z}^{\mu}}{\mathrm{d}t}=\omega^{\mu}$と書くと$\omega^{\mu}$も$\omega'^{\mu}\left(\tau\right)=L_{\nu}^{\mu}\omega^{\nu}\left(\tau\right)$と変換される。$\omega^{\mu}\left(\tau\right)$を四元速度と呼ぶ。
+
+$\omega^{\mu=0,1,2,3}$と$u_{x},u_{y},u_{z}$の関係を見てみる。
+\begin{align*}
+u_{x}\left(t\right)=\frac{\mathrm{d}x}{\mathrm{d}t} & =\frac{\mathrm{d}x}{\mathrm{d}\tau}\frac{\mathrm{d}\tau}{\mathrm{d}t}\\
+ & =\frac{\mathrm{d}x}{\mathrm{d}\tau}/\frac{\mathrm{d}t}{\mathrm{d}\tau}\\
+ & =\omega^{\mu=1}/\frac{\mathrm{d}t}{\mathrm{d}\tau}
+\end{align*}
+\begin{align*}
+\omega^{\mu=1}\left(\tau\right) & =u_{x}\frac{\mathrm{d}t}{\mathrm{d}\tau}\\
+ & =\frac{u_{x}}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}
+\end{align*}
+\[
+\omega^{\mu=2}=\frac{u_{y}}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}
+\]
+\[
+\omega^{\mu=3}=\frac{u_{z}}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}
+\]
+$\omega^{\mu=0}=c\frac{\mathrm{d}t}{\mathrm{d}\tau}=\frac{c}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}$である。
+
+$\omega'^{\mu}=L_{\nu}^{\mu}\omega^{\nu}$と変換されるので$\omega^{\nu}$と$\omega'^{\mu}$の表式を代入すると、
+\begin{align*}
+\frac{u'_{x}}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}} & =\frac{1}{\sqrt{1-\beta^{2}}}\frac{u_{x}-\beta c}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}\\
+\frac{u'_{y}}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}} & =\frac{u_{y}}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}\\
+\frac{u'_{z}}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}} & =\frac{u_{z}}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}
+\end{align*}
+\begin{align*}
+\frac{c}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}} & =\frac{1}{\sqrt{1-\beta^{2}}}\frac{c-\beta u_{x}}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}\\
+\frac{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}} & =\frac{\sqrt{1-\beta^{2}}}{1-\frac{v}{c^{2}}u_{x}}
+\end{align*}
+
+これを上式に代入すると、
+\begin{align*}
+u'_{x} & =\frac{u_{x}-v}{1-\frac{1}{c^{2}}vu_{x}}\\
+u'_{y} & =\frac{u_{y}\sqrt{1-\beta^{2}}}{1-\frac{1}{c^{2}}vu_{x}}\\
+u'_{z} & =\frac{u_{z}\sqrt{1-\beta^{2}}}{1-\frac{1}{c^{2}}vu_{x}}
+\end{align*}
+
+ある慣性系$K$で$\left(u_{x},u_{y},u_{z}\right)$と見える運動は、もうひとつの慣性系$K'$では、$\left(u'_{x},u'_{y},u'_{z}\right)$と見える。$c\gg v$であれば、$\left(u'_{x},u'_{y},u'_{z}\right)$は$\left(u_{x}-v,u_{y},u_{z}\right)$と近似でき、ガリレイ変換の結論に近づく。
+
+では、$\left(u_{x},u_{y},u_{z}\right)=\left(c,0,0\right)$ならばどうなるか? $\left(u'_{x},u'_{y},u'_{z}\right)=\left(c,0,0\right)$、光速度はその慣性系で見ても$c$なので、$v<0$とすると、ガリレイ変換の場合$u'_{x}=c-v>c$となり、光速よりも速い運動が実現してしまう。
+
+\[
+\left|v_{A}\right|,\left|v_{B}\right|<c
+\]
+\[
+\frac{v_{A}+v_{B}}{1+\frac{v_{A}v_{B}}{c^{2}}}>c
+\]
+
+一般に$\alpha<1,\beta<1$のとき、
+\[
+\frac{\alpha+\beta}{1+\alpha\beta}\leq1
+\]
+であるから、光速度以下のものとの合成で光速以上は実現しない。
+
+次に四元加速度というものを考える。
+\[
+\frac{\mathrm{d}\omega^{\mu}}{\mathrm{d}\tau}
+\]
+
+これを運動方程式の左辺にも作る。
+
+\[
+m\frac{\mathrm{d}\omega^{\mu}}{\mathrm{d}\tau}=f^{\mu}\left(\text{四次元的力?}\right)
+\]
+
+ここで$f^{\mu}$としてどういうものを持ってくると良いだろうか?
+
+$\mu=1$に注目して、
+\begin{align*}
+\frac{\mathrm{d}}{\mathrm{d}\tau}\left(m\omega^{\mu=1}\right) & =m\frac{\left(\frac{\mathrm{d}}{\mathrm{d}t}\omega'\right)}{\mathrm{d}\tau/\mathrm{d}t}\\
+ & =\frac{m}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{u_{x}}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}\right)
+\end{align*}
+
+$\omega^{\mu=1}$と$u_{x}$の間には
+\[
+\omega^{\mu=1}=\frac{u_{x}}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}
+\]
+の関係があるので、四次元的な力$f^{\mu=0,1,2,3}$と、三次元的な力$F^{i=1,2,3}$の間に、
+\[
+f^{\mu}=\frac{1}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}F^{i}
+\]
+という関係があると、
+\[
+m\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{u_{x}}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}\right)=F^{i=1}
+\]
+となり、$u\ll c$で
+\[
+m\frac{\mathrm{d}}{\mathrm{d}t}u_{x}=F^{i=1}
+\]
+に近づいてNewtonの運動方程式が出てくる。
+
+\paragraph{Lorentz力の例}
+
+\[
+\boldsymbol{F}=e\boldsymbol{E}+\boldsymbol{u}\times\boldsymbol{B}
+\]
+
+これから$f^{\mu}$を定義して、それを前回導入した天則$F^{\mu\nu}$を使って表現すると、
+\[
+f^{\mu}=eF^{\mu\nu}\omega_{\nu}
+\]
+と書ける。
+
+\[
+F^{\mu\nu}=\left(\begin{array}{cccc}
+0 & \frac{E_{x}}{c} & \frac{E_{y}}{c} & \frac{E_{z}}{c}\\
+-\frac{E_{x}}{c} & 0 & B_{z} & -B_{y}\\
+-\frac{E_{y}}{c} & -B_{z} & 0 & B_{x}\\
+-\frac{E_{z}}{c} & B_{y} & -B_{x} & 0
+\end{array}\right)
+\]
+
+\begin{align*}
+f^{1} & =e\left(F^{11}\omega_{1}+F^{12}\omega_{2}+F^{13}\omega_{3}+F^{14}\omega_{4}\right)\\
+ & =e\left(0+B_{z}\omega^{\mu=2}-B_{y}\omega^{\mu=3}-\left(-\frac{E_{x}}{c}\right)\omega^{\mu=0}\right)\\
+ & =\frac{1}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}e\left[E_{x}+\left[\boldsymbol{u}\times\boldsymbol{B}\right]_{x}\right]\\
+ & =\frac{1}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}\left[\boldsymbol{F}\right]_{x}
+\end{align*}
+
+運動方程式
+\[
+\frac{\mathrm{d}}{\mathrm{d}\tau}\left(m\omega^{\mu}\right)=eF^{\mu\nu}\omega_{\nu}
+\]
+は$\mu=1,2,3$(空間部分)で問題ない。では、$\mu=0$ではどうか。
+
+\begin{align*}
+\frac{\mathrm{d}}{\mathrm{d}\tau}\left(m\omega^{\mu=0}\right) & =c\left(F^{00}\omega_{0}+F^{01}\omega_{1}+F^{02}\omega_{2}+F^{03}\omega_{3}\right)\\
+ & =e\left(0+\frac{E_{x}}{c}\omega^{1}+\frac{E_{y}}{c}\omega^{2}+\frac{E_{z}}{c}\omega^{3}\right)
+\end{align*}
+\[
+\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{mc^{2}}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}\right)=e\boldsymbol{E}\cdot\boldsymbol{u}
+\]
+
+$\boldsymbol{E}$: 電場が電荷に単位時間になす仕事
+
+$T=\frac{mc^{2}}{\sqrt{1-\frac{\boldsymbol{u}^{2}}{c^{2}}}}$はエネルギーと思って良い。$\left|\boldsymbol{u}\right|\ll c$で展開すると、
+\begin{align*}
+T & =mc^{2}\left(1+\frac{1}{2}\frac{\boldsymbol{u}^{2}}{c^{2}}+\cdots\right)\\
+ & =mc^{2}+\frac{1}{2}m\boldsymbol{u}^{2}+\cdots
+\end{align*}
+となり、これがNewton力学での運動エネルギーとなる。$\boldsymbol{u}=0$のとき、
+\[
+T=mc^{2}
+\]
+となり、質量$m$の粒子には$mc^{2}$のエネルギーがある。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\title{物理学汎論(後半)}
+
+\author{担当 岡隆史}
+
+\section{量子物理学}
+
+近代に入り、これまで見てきた古典物理で説明できない現象が数多く発見された。これを説明するための物理学が量子物理学である。
+
+\paragraph{物の大きさと階層構造}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/gen017}
+
+人間のスケールから小さい方向にスケールを動かしていくと、これまでの物理学で説明できない現象が見られるようになる。
+
+\paragraph{原子の古典描像}
+
+水素原子Hの構造
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{../../../../HAKATA~1/OneDrive/DOCUME~1/Note/gen018}
+
+二つの粒子の間に働く引力はクーロン力で、
+\[
+\left|\vec{F}\right|=\frac{e^{2}}{r^{2}}
+\]
+であり、円運動をとる。この時のエネルギーは
+\[
+E=\underbrace{\frac{p^{2}}{2m}}_{\text{運動エネルギー}}-\underbrace{\frac{e^{2}}{r}}_{\text{ポテンシャルエネルギー}}
+\]
+と表される。
+
+\paragraph{古典論の破綻}
+
+ところで、加速された電荷は電磁波(光)を発する。これにより、電子はエネルギを失い、陽子に吸収されてしまうはずである。
+
+そこで、量子力学では``電子のエネルギーは飛び飛びの値をとる''。これを$E_{1},E_{2},\cdots$とおく。そして、光はそのエネルギー差を放出、九州するものとする。
+
+\paragraph{熱力学現象}
+\begin{itemize}
+\item 黒体輻射
+\item ガスの比熱
+\end{itemize}
+なども古典物理学では説明できない減少として知られる。
+
+\paragraph{マクロ量子現象}
+\begin{itemize}
+\item 超流動: ヘリウムは低温で摩擦ゼロで流れる。このとき``ボソン''\footnote{ヘリウムの同位体、光(レーザー)、音など}(↔フェルミオン\footnote{電子、陽子など})の量子論的な凝縮退ができている。
+\item 超電導: 金属中の電子が、クーパー対を組み、それが凝縮する。
+\item 冷却原子のボース(アインシュタイン)凝縮
+\end{itemize}
+
+\paragraph{量子力学でもわからない現象}
+\begin{itemize}
+\item 重力の量子論(研究中)
+\item 量子力学の解釈問題→重要な概念として量子もつれが挙げられる
+\end{itemize}
+
+\paragraph{量子力学の世界観}
+
+古典粒子(質点)では、位置$x$と運動量$p$が決まれば粒子の状態が決定される。しかし、量子力学における質点は、
+\begin{itemize}
+\item 1個の粒子が同時にいろいろな場所に存在する
+\item 粒子の状態は波動関数$\psi\left(x\right)$で指定される
+\item 粒子が$x$に存在する確率は
+\[
+\left|\psi\left(x\right)\right|^{2}
+\]
+で与えられる。
+\item 確率はたくさんの実験を行って分かる。
+\item 波動関数はシュレディンガー方程式(波の式に似ている)に従う。
+\[
+i\hbar\frac{\partial}{\partial t}\psi=\left[-\frac{\hbar^{2}}{2m}\nabla^{2}+V\left(x\right)\right]\psi
+\]
+(ここで$\hbar=\frac{h}{2\pi}$、$h$はプランク定数である)
+\end{itemize}
+以上が``コペンハーゲン解釈''である。
+
+※その他の解釈もある
+
+\paragraph{多世界解釈}
+
+``測定''が行われるたびに``宇宙全体が分岐''すると解釈する。実はコペンハーゲン解釈と無矛盾である。
+
+\paragraph{隠れた変数}
+
+量子論を否定し、全ての現象は古典確率論で説明できるとする解釈。
+
+我々の知らない自由度が存在し、これを計算に取り込めば古典論で説明できるとする。アインシュタイン・ポドルスキー・ローゼンなどが支持した。これによりEPR実験が提唱され、ベルの不等式などが考案されたが、現在では実験で否定されている。
+
+\section{シュレディンガー方程式とその帰結}
+
+\[
+i\hbar\frac{\partial}{\partial t}\psi\left(x,t\right)=\left[-\frac{\hbar^{2}}{2m}\nabla^{2}+V\left(x\right)\right]\psi\left(x,t\right)
+\]
+
+ここで$\nabla^{2}=\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}+\frac{\partial^{2}}{\partial z^{2}},\hbar=\frac{h}{2\pi}$、$h$はプランク定数$6.6\times10^{-34}\mathrm{J\cdot s}$である。
+
+ここでは$\hbar=1$とおく記法を取る。
+
+\subsection{``導出法'', 量子化}
+
+ここでは古典モデルの知識から量子モデルへと導出・推測する。(自然の法則は逆で、全て量子力学に支配されているが、ある極限では古典的な法則に従うように見える)
+
+座標表示$\psi\left(x,t\right)$における手続きとして、$x$(古典)から$\hat{x}$(量子)への変換を定める。$\hat{\circ}$(ハット)記号は、演算子であることを示し、関数に作用するものである。
+
+同様に$p\rightarrow\hat{p}$となるが、座標表示においては$\hat{p}=-i\hbar\frac{\partial}{\partial x}$という置換えをする。
+
+これをポテンシャル中の自由粒子に適用する。
+
+\paragraph{ハミルトニアン(エネルギー関数)}
+
+高校物理と大学物理の一番の違いは高校物理では個々のケースとして扱っていた力学上の諸現象を、一般化して一つの物理量として表現するということである。ハミルトニアンもそのような一般化により生まれた作用素である。
+
+高校物理においては運動する物体の持つエネルギーは
+\[
+E=\frac{p^{2}}{2m}+V\left(x\right)
+\]
+と表されたが、まずはこれを$x$と$p$の関数と見て、
+\[
+H\left(x,p\right)=\frac{p^{2}}{2m}+V\left(x\right)
+\]
+とおく。これを演算子に置き換えて、
+\[
+\hat{H}\left(\hat{x},\hat{p}=-i\hbar\frac{\partial}{\partial x}\right)=-\frac{\hbar^{2}}{2m}\frac{\partial^{2}}{\partial x^{2}}+V\left(\hat{x}\right)
+\]
+とする。これが量子論のハミルトニアンである。
+
+これを
+\[
+i\frac{\partial}{\partial x}\psi=\hat{H}\psi
+\]
+に代入すると、
+\[
+i\frac{\partial}{\partial t}\psi=\left[-\frac{\hbar^{2}}{2m}\frac{\partial^{2}}{\partial x^{2}}+V\left(\hat{x}\right)\right]\psi
+\]
+を得る。
+
+上の式は``時間発展が$\hat{H}$によって推進される''という物理的な描像から得られる。
+
+\subsection{演算子の非可換性}
+
+一般的には$\hat{x}\hat{p}\psi\neq\hat{p}\hat{x}\psi$である。なぜなら右辺は
+\[
+\hat{p}\hat{x}\psi=-i\hbar\frac{\partial}{\partial x}\left(x\psi\left(x\right)\right)=-i\hbar x\frac{\partial}{\partial x}\psi-i\hbar\psi
+\]
+左辺は
+\[
+-i\hbar x\frac{\partial}{\partial x}\psi\left(x\right)
+\]
+となり、明らかに一致しない。これは交換子$\left[\hat{x},\hat{p}\right]=\hat{x}\hat{p}-\hat{p}\hat{x}$がゼロであるかどうかによって判定され、今回の場合は
+\[
+\left[\hat{x},\hat{p}\right]=\hat{x}\hat{p}-\hat{p}\hat{x}=i\hbar
+\]
+となる。このような性質は量子論特有の効果を生み出す現象である。
+
+\subsection{物理量}
+
+\paragraph{例}
+
+電子の存在確率$\rho\left(x\right)$は$\rho\left(x\right)=\left|\psi\right|^{2}$によって表せる。
+
+一般に物理量に対する演算子$\hat{\circ}$の期待値(複数回実験を行った時の平均値)は
+\[
+\left\langle \circ\right\rangle =\int\mathrm{d}x\psi^{*}\left(x\right)\hat{\circ}\psi\left(x\right)
+\]
+で与えられる。
+
+\paragraph{例}
+
+運動量期待値は
+\begin{align*}
+\left\langle p\right\rangle  & =\int\mathrm{d}x\psi^{*}\left(x\right)\hat{p}\psi\left(x\right)\\
+ & =\int\mathrm{d}x\psi^{*}\left(x\right)\left(-i\hbar\frac{\partial}{\partial x}\right)\psi\left(x\right)
+\end{align*}
+
+
+\subsection{一次元の束縛状態}
+
+原子の安定性、及びスペクトルの離性の説明を行う。
+
+\[
+V\left(x\right)=\begin{cases}
+0 & \left|x\right|\leq\frac{L}{2}\\
+\infty & \left|x\right|>\frac{L}{2}
+\end{cases}
+\]
+となるような系を考える。古典力学ではこのような場においては粒子は自由なエネルギーを取ることができるが、量子力学においては、
+\[
+i\hbar\frac{\partial}{\partial t}\psi\left(x,t\right)=\left[-\frac{\hbar^{2}}{2m}\frac{\partial^{2}}{\partial x^{2}}+V\left(x\right)\right]\psi\left(x,t\right)
+\]
+に従うことになる。
+
+右辺は$t$によらないのでこれは変数分離型である。
+
+\[
+\psi\left(x,t\right)=\mathrm{e}^{\frac{iEt}{\hbar}}\phi\left(x\right)
+\]
+と分離する。これを式に代入すると、
+\[
+E\phi\left(x\right)=\left[-\frac{\hbar^{2}}{2m}\frac{\partial^{2}}{\partial x^{2}}+V\left(x\right)\right]\phi\left(x\right)
+\]
+となり、これを時間によらないシュレディンガー方程式と呼ぶ。
+
+$V\left(x\right)$が定数であるときには平面波解という非常に単純な解となる。すなわち、
+\begin{align*}
+\phi_{k}\left(x\right) & =\mathrm{e}^{ikx}\\
+ & =\cos kx+i\sin kx
+\end{align*}
+となる。実際に代入してみると、
+\begin{align*}
+\text{右辺} & =-\frac{\hbar^{2}}{2m}\frac{\partial^{2}}{\partial x^{2}}\mathrm{e}^{ikx}\\
+ & =-\frac{\hbar^{2}}{2m}\left(ik\right)^{2}\mathrm{e}^{ikx}\\
+ & =\frac{\left(\hbar k\right)^{2}}{2m}\mathrm{e}^{ikx}
+\end{align*}
+\[
+\text{左辺}=E\mathrm{e}^{ikx}
+\]
+
+よって、$E=\frac{\left(\hbar k\right)^{2}}{2m}$ならば解であることが分かる。
+
+さらにこれを箱に閉じ込めるために、
+\[
+\phi\left(x\right)=0\left(\left|x\right|>\frac{L}{2}\right)
+\]
+という条件を課す。実は、$\left|\phi_{k}\right|^{2}=1$なので$\phi_{k}\left(x\right)$だけではこの条件は満たせない。$\phi_{k}\left(x\right)+\phi_{-k}\left(x\right)$なら条件を満たせる場合がある。($\phi_{-k}$は$E=\frac{\hbar^{2}}{2m}k^{2}$より同じエネルギーを持つ)
+
+\[
+\phi_{k}\left(x\right)+\phi_{-k}\left(x\right)=2\cos kx
+\]
+
+これが$x=\frac{L}{2}$で0になる条件は
+\[
+\cos\frac{kL}{2}=0\Rightarrow\frac{kL}{2}=\frac{\pi}{2}+\pi n
+\]
+($n$は整数)である。$a,b$は$\phi\left(x=\pm\frac{L}{2}\right)=0$という条件より
+\[
+\left(\begin{array}{cc}
+\mathrm{e}^{-\frac{ikL}{2}} & \mathrm{e}^{\frac{ikL}{2}}\\
+\mathrm{e}^{\frac{ikL}{2}} & \mathrm{e}^{-\frac{ikL}{2}}
+\end{array}\right)\left(\begin{array}{c}
+a\\
+b
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+0
+\end{array}\right)
+\]
+
+$a:b=1:\left(-1\right)^{n}$として、解は
+\[
+\phi_{n}\left(x\right)=\begin{cases}
+\sqrt{\frac{2}{L}}\cos k_{n}x & n=1,3,5\cdots\\
+\sqrt{\frac{2}{L}}\sin k_{n}x & n=2,4,\cdots
+\end{cases}
+\]
+
+$\sqrt{\frac{2}{L}}$は$\int\left|\phi_{n}\right|^{2}\mathrm{d}x=1$(規格化条件)から求めた。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+(復習) 一次元の束縛状態
+
+井戸型ポテンシャル中の粒子の解
+\[
+\phi_{n}\left(x\right)=\begin{cases}
+\sqrt{\frac{2}{L}}\cos k_{n}x & n=1,3,5\\
+\sqrt{\frac{2}{L}}\sin k_{n}x & n=2,4,6
+\end{cases}
+\]
+
+ただし、$k_{n}=\frac{n\pi}{L}$である。ここで、運動量$p$は波数$\hbar k$に対応する。また、
+\[
+E_{n}=\frac{\hbar^{2}k_{n}^{2}}{2m}=\frac{\hbar^{2}\pi^{2}}{2mL^{2}}n^{2}
+\]
+
+粒子の波動性+引力ポテンシャルという条件から、束縛状態、エネルギーが離散的という状態が導かれた。水素原子で電子のエネルギー準位は離散的+下限を持つここから、原子の安定性が導かれる。
+
+\subsection{トンネル効果}
+
+\[
+V\left(x\right)=\begin{cases}
+V & \left|x\right|<\frac{L}{2}\\
+0 & \left|x\right|>0
+\end{cases}
+\]
+
+$V$が一定のとき、$\varphi_{k}=\mathrm{e}^{ikx}=\cos kx+\mathrm{i}\sin kx$(平面は)がシュレディンガー方程式の解。
+\[
+\left(\frac{\hbar^{2}}{2m}k^{2}+V\right)\varphi_{k}=E\varphi_{k}
+\]
+\begin{align*}
+E & =\frac{\hbar^{2}}{2m}k^{2}+V\\
+ & \Rightarrow k=\pm\frac{\sqrt{2m}}{\hbar}\sqrt{E-V}
+\end{align*}
+
+$V=0,k=\pm\frac{\begin{array}{c}
+\sqrt{2m}\end{array}}{\hbar}\sqrt{E}$
+
+このように、古典論ではエネルギー的に許されない領域にも、量子論では粒子はどおり抜けることができる。
+
+例: 原子の崩壊
+
+物質表面の電子を原子の分解能で見ることができる。
+
+\section{ファインマンの経路積分}
+
+摂動論(ファインマンルール)を図形的に計算できる
+
+数値計算(量子モンテカルロ法)を定式化できる
+
+特に経路積分は場の理論の定式化に適していた。 e.g. 量子電磁力学・原子・光子
+
+参考: ファインマン、ヒッグス「経路積分」
+
+\paragraph{直感的な説明}
+
+二重スリット問題を拡張し、スリットを$n$重化、スリットの枚数を増やすことにより、あみだくじのようにする。
+
+ディラックのデルタ関数を以下のとおり定義する。
+\[
+\delta\left(x-x'\right)=\begin{cases}
+\infty & x=x'\\
+0 & x\neq x'
+\end{cases}
+\]
+
+ただし、積分値は1
+\[
+\int_{-\infty}^{\infty}\mathrm{d}x\delta\left(x-x'\right)=1
+\]
+
+また、ブラ状態$\left\langle x\right|$($x$に粒子がいる)とケット状態$\left|x'\right\rangle $($x'$に粒子がいる)を定義し、内積$\left\langle x|x'\right\rangle =\delta\left(x-x'\right)$とする。
+
+ブラ状態とはすなわち横ベクトルであって、
+\[
+\left\langle x_{n}\right|=\left(\begin{array}{cccccc}
+0 & \cdots & 0 & 1 & 0 & \cdots\end{array}\right)
+\]
+
+ケット状態とはすなわち縦ベクトルであって、
+\[
+\left|x_{n}\right\rangle =\left(\begin{array}{c}
+\vdots\\
+0\\
+1\\
+0\\
+\vdots
+\end{array}\right)
+\]
+よって、
+\[
+\left\langle x_{n}|x_{n'}\right\rangle =\begin{cases}
+1 & n=n'\\
+0 & n\neq n'
+\end{cases}
+\]
+となる。
+
+\paragraph{1の分割}
+
+\[
+\int_{-\infty}^{\infty}\mathrm{d}x\left|x\right\rangle \left\langle x\right|=1
+\]
+
+\[
+\sum_{n}\left(\begin{array}{c}
+\vdots\\
+0\\
+1\\
+0\\
+\vdots
+\end{array}\right)\left(\begin{array}{ccccc}
+\cdots & 0 & 1 & 0 & \cdots\end{array}\right)=\left(\begin{array}{ccccc}
+1\\
+ & 1\\
+ &  & \ddots\\
+ &  &  & 1\\
+ &  &  &  & 1
+\end{array}\right)=I
+\]
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+休講 7/7,14
+
+レポート締め切り 7/18
+
+前回 $\left|x\right\rangle $: 位置$x$に粒子がいる状態
+
+\paragraph{運動量表示}
+
+ケット$\cket{p}$: 運動量$p$を持つ状態
+
+運動量演算子$\hat{p}$の固有状態(→$\hat{p}\left|p\right\rangle =p\left|p\right\rangle $)≒固有ベクトル$A\vec{v}=a\vec{v}$
+
+ブラ$\bra{p}$も導入: $\bra{p}\hat{p}=\bra{p}\hat{p}$
+
+\paragraph{性質}
+\begin{itemize}
+\item $\bra{p}\cket{p'}=\delta\left(p-p'\right)$
+\item 1の分割$\int\mathrm{d}p\cket{p}\bra{p}=1$
+\item $\cket{p}$と$\cket{x}$の関係
+\[
+\varphi_{p}\left(x\right)=\left\langle x|p\right\rangle 
+\]
+
+$\varphi_{p}\left(x\right)$は次の微分方程式に従う。
+\[
+\left\langle x|\hat{p}|p\right\rangle =\left\langle x|p|p\right\rangle =p\left\langle x|p\right\rangle =p\varphi_{p}\left(x\right)
+\]
+
+\item $\hat{p}=-i\frac{\mathrm{d}}{\mathrm{d}x}$
+\item 演算子がぶら状態に作用するときエルミート(複素)共役される
+\end{itemize}
+\[
+\hat{p}=-i\frac{\mathrm{d}}{\mathrm{d}x}\xrightarrow[\text{エルミート共役}]{}+i\frac{\mathrm{d}}{\mathrm{d}x}
+\]
+なぜか?
+
+\[
+\text{ブラ}\underbrace{\leftrightarrow}_{\text{エルミート共役}}\text{ケット}
+\]
+
+
+\paragraph{複素行列・ベクトル}
+
+\[
+A=\left(\begin{array}{ccc}
+a_{11} & a_{12} & \cdots\\
+a_{21}\\
+\vdots
+\end{array}\right),A^{+}=\left(\begin{array}{ccc}
+a_{11}^{*} & a_{12}^{*} & \cdots\\
+a_{21}^{*}\\
+\vdots
+\end{array}\right)
+\]
+\[
+a_{ij}\rightarrow a_{ji}^{*}
+\]
+\[
+\vec{v}=\left(\begin{array}{c}
+v_{1}\\
+\vdots\\
+v_{N}
+\end{array}\right),\vec{v}^{+}=\left(v_{1}^{*},v_{2}^{*},\cdots,v_{N}^{*}\right)
+\]
+
+内積
+
+\begin{align*}
+\left(\vec{v},\vec{w}\right) & =v_{1}^{*}w_{1}+v_{2}^{*}w_{2}+\cdots+v_{N}^{*}w_{N}\\
+ & =\sum_{i}v_{i}^{*}w_{i}\\
+ & =\vec{v}^{+}\vec{w}
+\end{align*}
+
+ここで、$\left(\vec{v},\vec{v}\right)\geq0$となる。
+
+\begin{align*}
+\left\langle x|\hat{p}|p\right\rangle  & =+i\frac{\mathrm{d}}{\mathrm{d}x}\left\langle x|p\right\rangle \\
+ & =i\frac{\mathrm{d}}{\mathrm{d}x}\varphi_{p}\left(x\right)
+\end{align*}
+\[
+i\frac{\mathrm{d}}{\mathrm{d}x}\varphi_{p}\left(x\right)=p\varphi_{p}\left(x\right)
+\]
+
+解は次の平面波である。
+\[
+\varphi_{p}\left(x\right)=\mathrm{e}^{-ipx}
+\]
+
+
+\subsection{一次元自由粒子の経路積分}
+
+\[
+H=\frac{p^{2}}{2m}
+\]
+で記述される粒子を考える。
+
+\paragraph{シュレディンガー描像の解き方}
+
+\[
+i\hbar\frac{\partial}{\partial t}\psi\left(x,t\right)=-\frac{\hbar^{2}}{2m}\frac{\partial^{2}}{\partial x^{2}}\psi\left(x,t\right)
+\]
+
+解は平面波
+\[
+\psi\left(x,t\right)=\mathrm{e}^{-iE_{p}\frac{t}{\hbar}+i\frac{px}{\hbar}}
+\]
+ただし、$E_{p}=\frac{p^{2}}{2m}$を満たす。
+
+\paragraph{時間推進演算子}
+
+ハミルトニアン$H$は、$\Psi\left(x,t\right)$の時間を進める作用を持つ。
+
+シュレディンガー方程式の形式解は$\Psi\left(x,t\right)=\mathrm{e}^{-iH\frac{t}{\hbar}}\Psi\left(x,t\right)$
+
+$U\left(t\right)=\mathrm{e}^{-iH\frac{t}{\hbar}}$を時間推進演算子と呼ぶ。
+
+遷移振幅を$U_{fi}=\left\langle x^{f}|\mathrm{e}^{iH\frac{t_{f}}{\hbar}}|x^{i}\right\rangle $で定義
+
+物理的意味: 時刻0に$x=x_{i}$にいた粒子が時刻$t_{f}$に$x=x_{f}$にいる波動関数
+
+$\Psi\left(x,t=0\right)=\delta\left(x-x_{i}\right),\Psi\left(x,t=t_{f}\right)=U_{fi}$
+
+考え方: 時間と空間を細かく分割
+
+\paragraph{時間を分割}
+
+\[
+U\left(t_{f}\right)=\mathrm{e}^{-iH\frac{t_{f}}{\hbar}}=\left(\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}\right)^{N+1}
+\]
+
+
+\paragraph{空間の分割}
+
+1の分割
+\[
+1=\int_{-\infty}^{\infty}\mathrm{d}x\cket{x}\bra{x}
+\]
+\begin{align*}
+U_{fi} & =\left\langle x_{f}|\mathrm{e}^{-iH\frac{t_{f}}{\hbar}}|x_{i}\right\rangle \\
+ & =\left\langle x_{f}|\left(\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}\right)^{N+1}|x_{i}\right\rangle \\
+ & =\left\langle x_{f}|\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}1\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}1\cdots1\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}|x_{i}\right\rangle \\
+ & =\left\langle x_{f}|\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}\int_{-\infty}^{\infty}\mathrm{d}x_{N}\cket{x}_{N}\bra{x}_{N}\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}\int_{-\infty}^{\infty}\mathrm{d}x_{N-1}\cket{x}_{N-1}\bra{x}_{N-1}\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}\int_{-\infty}^{\infty}\mathrm{d}x_{N-2}\cket{x}_{N-2}\bra{x}_{N-2}\cdots|x_{i}\right\rangle \\
+ & =\int_{-\infty}^{\infty}\mathrm{d}x_{N}\left\langle x_{f}|\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}|x_{N}\right\rangle \left\langle x_{N}|\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}|x_{N-1}\right\rangle \times\cdots\times\left\langle x_{1}|\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}|x_{i}\right\rangle 
+\end{align*}
+
+微小時間の遷移振幅を求める。
+\begin{align*}
+\left\langle y|\mathrm{e}^{-H\frac{\Delta t}{\hbar}}|x\right\rangle  & =\left\langle y|\mathrm{e}^{-H\frac{\Delta t}{\hbar}}\left(\int_{-\infty}^{\infty}\cket{p}\bra{p}\right)|x\right\rangle \\
+ & =\int_{-\infty}^{\infty}\mathrm{d}p\left\langle y|\mathrm{e}^{-i\frac{p^{2}}{2m}\frac{\Delta t}{\hbar}}|p\right\rangle \left\langle p|x\right\rangle \\
+ & =\int_{-\infty}^{\infty}\mathrm{d}p\mathrm{e}^{-i\frac{p^{2}}{2m}\frac{\Delta t}{\hbar}}\left\langle y|p\right\rangle \left\langle p|x\right\rangle \\
+ & =\int_{-\infty}^{\infty}\mathrm{d}p\mathrm{e}^{-i\frac{p^{2}}{2m}\frac{\Delta t}{\hbar}}\mathrm{e}^{ip\frac{y}{\hbar}}\mathrm{e}^{-ip\frac{y}{\hbar}}\\
+ & =\mathrm{e}^{\frac{i}{\hbar}\frac{m\left(y-x\right)^{2}}{2\Delta t}}\int_{-\infty}^{\infty}\mathrm{d}p\mathrm{e}^{-\frac{i\Delta t}{2m\hbar}\left(p-\frac{m\left(y-x\right)}{\Delta t}\right)^{2}}\\
+ & =\sqrt{\frac{2\pi\hbar m}{i\Delta t}}\exp\left[\frac{i}{\hbar}\frac{m}{2}\left(\frac{y-x}{\Delta t}\right)^{2}\Delta t\right]
+\end{align*}
+
+ガウス積分$\int_{-\infty}^{\infty}\mathrm{d}p\mathrm{e}^{-ap^{2}}=\sqrt{\frac{\pi}{a}}$を用いた。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\begin{align*}
+U_{fi} & =\int_{-\infty}^{\infty}\mathrm{d}x_{1}\cdots\mathrm{d}x_{N}\left\langle x_{f}|\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}|x_{N}\right\rangle \left\langle x_{N}|\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}|x_{N-1}\right\rangle \cdots\left\langle x_{1}|\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}|x_{i}\right\rangle 
+\end{align*}
+
+ここで
+\begin{align*}
+\left\langle y|\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}|x\right\rangle  & =\sqrt{\frac{m}{2\pi i\hbar\Delta t}}\exp\left[\frac{i}{\hbar}\frac{m}{2}\left(\frac{y-x}{\Delta t}\right)^{2}\Delta t\right]\\
+ & \xrightarrow{\Delta t\rightarrow0}\sqrt{\frac{m}{2\pi i\hbar\Delta t}}\exp\left[\frac{i}{\hbar}\frac{m}{2}\dot{x}^{2}\Delta t\right]
+\end{align*}
+の経路の時間微分を用いた置き換えを使って、
+\begin{align*}
+U_{fi} & =\int_{-\infty}^{\infty}\mathrm{d}x_{1}\cdots\mathrm{d}x_{N}\left\langle x_{f}|\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}|x_{N}\right\rangle \left\langle x_{N}|\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}|x_{N-1}\right\rangle \cdots\left\langle x_{1}|\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}|x_{i}\right\rangle \\
+ & =\left(\frac{m}{2\pi i\hbar\Delta t}\right)^{\frac{N+1}{2}}\int_{-\infty}^{\infty}\mathrm{d}x_{1}\cdots\mathrm{d}x_{N}\exp\left[\frac{i}{\hbar}\frac{m}{2}\left\{ \left(\frac{x_{f}-x_{N}}{\Delta t}\right)^{2}+\left(\frac{x_{N}-x_{N-1}}{\Delta t}\right)^{2}+\cdots+\left(\frac{x_{1}-x_{i}}{\Delta t}\right)^{2}\right\} \Delta t\right]\\
+ & \xrightarrow{N\rightarrow\infty\left(\Delta t\rightarrow0\right)}\int_{x\left(0\right)=x_{i}}^{x\left(t_{f}\right)=x_{f}}Dx\left(t\right)\exp\left[\frac{i}{\hbar}\int_{0}^{t_{f}}\mathrm{d}t\frac{1}{2}m\dot{x}^{2}\right]
+\end{align*}
+
+境界条件$x\left(0\right)=x_{i},x\left(t_{f}\right)=x_{f}$を満たすすべての経路の和を表す経路積分となる。
+
+\subsection{ポテンシャルがある場合への拡張}
+
+\[
+H=\frac{p^{2}}{2m}+V\left(x\right)
+\]
+
+計算の途中までは同じ。
+
+\begin{align*}
+\left\langle y|\mathrm{e}^{-iH\frac{\Delta t}{\hbar}}|x\right\rangle  & =\left\langle y|\mathrm{e}^{i\left(\frac{\hat{p}^{2}}{2m}+\hat{V}\right)\frac{\Delta t}{\hbar}}|x\right\rangle \\
+ & \sim\left\langle y|\mathrm{e}^{-i\frac{\hat{p}^{2}}{2m}\frac{\Delta t}{\hbar}}\mathrm{e}^{-i\hat{V}\frac{\Delta t}{\hbar}}|x\right\rangle \\
+ & =\int_{-\infty}^{\infty}\mathrm{d}z\left\langle y|\mathrm{e}^{-i\frac{\hat{p}^{2}}{2m}\frac{\Delta t}{\hbar}}|z\right\rangle \left\langle z|\mathrm{e}^{-i\hat{V}\frac{\Delta t}{\hbar}}|x\right\rangle 
+\end{align*}
+
+
+\paragraph{注意}
+
+$\left[\hat{p},\hat{x}\right]\neq0$なので、$\left[\frac{p^{2}}{2m},V\left(x\right)\right]\neq0$である。
+
+なので、上の``～''の部分は、$\Delta t\rightarrow0$の時の近似的な結果である。
+
+\paragraph{Baker-Campbell-Hausdorffの公式}
+
+\[
+\mathrm{e}^{A}\mathrm{e}^{B}=\mathrm{e}^{A+B+\frac{1}{2}\left[A,B\right]+\cdots}
+\]
+
+$\frac{1}{2}\left[A,B\right]$は、先の式では$\Delta t^{2}$に比例し、小さい。
+
+$\left(*\right)$に代入して
+\[
+U_{fi}=\int_{x\left(0\right)=x_{i}}^{x\left(t_{f}\right)=x_{f}}Dx\left(t\right)\exp\left[\frac{i}{\hbar}S\right]
+\]
+
+ここで古典作用
+\[
+S=\int_{0}^{t_{f}}\mathrm{d}tL\left(t\right)=\int_{0}^{t_{f}}\mathrm{d}t\left(\frac{1}{2}m\dot{x}^{2}-V\left(x\right)\right)
+\]
+が現れる。
+
+\paragraph{ファインマンの経路積分(まとめ)}
+
+仮定1: 量子状態は可能なすべての経路を経由する
+
+仮定2: 各々の経路は$\mathrm{e}^{iS}$という寄与をする。ここで$S$はその経路において計算された古典作用である。
+
+\subsection{古典極限}
+
+$h\rightarrow0$とすると古典論に収束するはず。
+
+例: 重力中でボールを投げる
+
+\paragraph{最小作用の定理(古典論)}
+
+\begin{align*}
+\delta S & =S\left(x+\delta x\right)-S\left(x\right)\\
+ & =\int_{0}^{t}\mathrm{d}tL\left(\dot{x}+\delta\dot{x},x+\delta x,t\right)-\int_{0}^{t}\mathrm{d}tL\left(\dot{x},x,t\right)\\
+ & =\int_{0}^{t}\mathrm{d}t\left(\delta\dot{x}\frac{\partial L}{\partial\dot{x}}+\delta x\frac{\partial L}{\partial x}\right)\\
+ & =\left[\delta x\frac{\partial L}{\partial\dot{x}}\right]_{t=0}^{t=t_{f}}-\int_{o}^{t}\mathrm{d}t\delta x\left[\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial\dot{x}}\right)-\frac{\partial L}{\partial x}\right]\\
+ & =0
+\end{align*}
+
+オイラー・ラグランジュ方程式
+\[
+\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial x}\right)-\frac{\partial L}{\partial x}=0
+\]
+が導かれる。特に$L=\frac{m}{2}\dot{x}^{2}-V$なら、$m\ddot{x}=-\frac{\partial V}{\partial x}$を得る。
+
+量子力学で考える。
+\[
+U=\int_{x\left(0\right)=x_{i}}^{x\left(t_{f}\right)=x_{f}}Dx\left(t\right)\mathrm{e}^{\frac{i}{\hbar}S\left[x\left(t\right)\right]}
+\]
+作用は$x\left(t\right)$の汎関数である。
+
+経路積分において$\mathrm{e}^{\frac{iS\left(x\right)}{\hbar}}$は経路$x\left(t\right)$を$x\left(t\right)+\delta x\left(t\right)$と変えると変化する。
+
+$\mathrm{e}^{\frac{iS\left(x+\delta x\right)}{\hbar}}$と$\mathrm{e}^{\frac{iS\left(x\right)}{\hbar}}$の比を考える。
+
+\[
+\mathrm{e}^{\frac{i\left[S\left(x+\delta x\right)-S\left(x\right)\right]}{\hbar}}=\exp\left\{ i\frac{1}{\hbar}\int\mathrm{d}t\delta x\left[\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial L}{\partial\dot{x}}-\frac{\partial L}{\partial x}\right]\right\} 
+\]
+
+$\hbar\rightarrow0$とすると、$\mathrm{e}^{iS\left(x\right)}$は激しく振動する(→寄与が小さい)。
+
+ただし、
+\[
+\left[\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial\dot{x}}\right)-\frac{\partial L}{\partial x}\right]=0
+\]
+を満たす$x\left(t\right)$(→寄与が大きい⇒古典解(ニュートン方程式の解))の周りでは振動が少ない。
+\end{document}

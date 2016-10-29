@@ -1,0 +1,2691 @@
+%% LyX 2.0.6 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[b5paper]{geometry}
+\geometry{verbose,tmargin=1.5cm,bmargin=1.5cm,lmargin=3cm,rmargin=3cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{fancybox}
+\usepackage{calc}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfm,bookmarks=true,bookmarksnumbered=true,bookmarkstype=toc]{hyperref}
+
+\newcommand{\vin}{\mathrel{\reflectbox{\rotatebox[origin=c]{90}{$\in$}}}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{数学IV講義ノート}
+
+\maketitle
+
+\paragraph{前回$2\times2$の対角化の復習}
+
+例1 $A=\left[\begin{array}{cc}
+5 & -1\\
+-1 & 5
+\end{array}\right]$→固有方程式$\lambda^{2}-10\lambda+24=0\Leftrightarrow\left(\lambda-4\right)\left(\lambda-6\right)=0$
+
+\[
+\begin{cases}
+A\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]=4\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]\\
+A\left[\begin{array}{c}
+-1\\
+1
+\end{array}\right]=6\left[\begin{array}{c}
+-1\\
+1
+\end{array}\right]
+\end{cases}\Leftrightarrow A\left[\begin{array}{cc}
+1 & -1\\
+1 & 1
+\end{array}\right]=\left[\begin{array}{cc}
+1 & -1\\
+1 & 1
+\end{array}\right]\left[\begin{array}{cc}
+4 & 0\\
+0 & 6
+\end{array}\right]
+\]
+
+
+こうすると何が嬉しいか?→『$A^{n}$を$n$の式で明示的に書ける』
+
+\begin{eqnarray*}
+A^{n} & = & \left(P\left[\begin{array}{cc}
+4 & 0\\
+0 & 6
+\end{array}\right]P^{-1}\right)^{n}\\
+ & = & P\left[\begin{array}{cc}
+4^{n} & 0\\
+0 & 6^{n}
+\end{array}\right]P^{-1}\\
+ & = & \left[\begin{array}{cc}
+1 & -1\\
+1 & 1
+\end{array}\right]\left[\begin{array}{cc}
+4^{^{n}}\\
+ & 6^{n}
+\end{array}\right]\frac{1}{2}\left[\begin{array}{cc}
+1 & 1\\
+-1 & 1
+\end{array}\right]\\
+ & = & \cdots
+\end{eqnarray*}
+
+
+例2: $A=\left[\begin{array}{cc}
+5 & -1\\
+1 & 3
+\end{array}\right]\left(\text{対角化出来ない例}\right)$
+
+固有方程式$\lambda^{2}-8\lambda+16=0\Leftrightarrow\left(\lambda-4\right)^{2}=0$と重解となり、固有値は$\lambda=4$のみとなる。ここで対応する固有ベクトルを探すと、
+\begin{eqnarray*}
+ &  & A\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]=4\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]\left(\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]\neq0\right)\\
+ & \Leftrightarrow & \left(A-4E\right)\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]=\left[\begin{array}{c}
+0\\
+0
+\end{array}\right]\\
+ & \Leftrightarrow & \left[\begin{array}{cc}
+1 & -1\\
+1 & -1
+\end{array}\right]\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]=\left[\begin{array}{c}
+0\\
+0
+\end{array}\right]\\
+ & \Leftrightarrow & x=y
+\end{eqnarray*}
+となり、固有ベクトルは例えば$\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]$となる。
+
+注: $\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]$の(0でない)定数倍ならなんでもよい。$\left[\begin{array}{c}
+0\\
+0
+\end{array}\right]$も付け足して、『$\text{固有値4の固有空間}=\left\{ \left.\left[\begin{array}{c}
+k\\
+k
+\end{array}\right]\right|k\in\mathbb{C}\right\} $』という。\textbf{今の場合、固有空間は1次元}という。つまり、\textbf{$\lambda=4$の重複度(multiplicity)が対応する固有空間の次元よりも大きい。}
+
+\noindent \begin{flushleft}
+→Q. もうひとつのベクトルをどう探す?
+\par\end{flushleft}
+
+$\boldsymbol{u}=\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]$と置くと、
+\[
+A\boldsymbol{u}=4\boldsymbol{u}\Leftrightarrow\left(A-4E\right)\boldsymbol{u}=\boldsymbol{O}
+\]
+
+
+一方、$A-4E=\left[\begin{array}{cc}
+1 & -1\\
+1 & -1
+\end{array}\right]$なので、
+\[
+\left(A-4E\right)^{2}=O
+\]
+であり、これはケーリー・ハミルトンの定理の特別な場合となる。ただしここで$O$はすべての成分が0であるゼロ行列である。言い換えると、
+\[
+\begin{cases}
+\mathrm{dim}\left(\mathrm{ker}\left(A-4E\right)\right)=1\\
+\mathrm{dim}\left(\mathrm{ker}\left(A-4E\right)^{2}\right)=2
+\end{cases}
+\]
+となる。つまり、$A-4E$の1乗の核には1つしかベクトルが見つからないが、$A-4E$の2乗の核にはもうひとつベクトルが見つかるはずである。そこで、次のような$\boldsymbol{v}$を探したい。
+
+\begin{eqnarray*}
+\boldsymbol{v}\not\in\mathrm{ker}\left(A-4E\right) & \Leftrightarrow & \left(A-4E\right)\boldsymbol{v}\neq\boldsymbol{O}\\
+\boldsymbol{v}\in\mathrm{ker\left(A-4E\right)^{2}} & \Leftrightarrow & \left(A-4E\right)^{2}\boldsymbol{v}=\boldsymbol{O}
+\end{eqnarray*}
+
+
+2番目の条件は常に満たされるので、これを満たす$\boldsymbol{v}$は容易に見つかる。そこで、次のようなアイデアを導入する。
+
+\doublebox{\begin{minipage}[t]{1\columnwidth}%
+アイデア: $\left(A-4E\right)\boldsymbol{v}=\boldsymbol{u}$となる\textbf{$\boldsymbol{v}$}を探す。
+\[
+\boldsymbol{v}\xrightarrow{A-4E}\boldsymbol{u}\xrightarrow{A-4E}\boldsymbol{O}
+\]
+%
+\end{minipage}}
+
+この場合、
+\begin{eqnarray*}
+\left(A-4E\right)\boldsymbol{v}=\boldsymbol{u} & \Leftrightarrow & \left[\begin{array}{cc}
+1 & -1\\
+1 & -1
+\end{array}\right]\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]=\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]\\
+ & \Leftrightarrow & x-y=1
+\end{eqnarray*}
+となり、例えば$\boldsymbol{v}=\left[\begin{array}{c}
+1\\
+0
+\end{array}\right]$となる。
+
+こうして、$\boldsymbol{u}=\left[\begin{array}{c}
+1\\
+1
+\end{array}\right],\boldsymbol{v}=\left[\begin{array}{c}
+1\\
+0
+\end{array}\right]$に対して、次が成り立つことがわかった。
+
+\[
+\left[\begin{array}{c}
+1\\
+0
+\end{array}\right]\xrightarrow{A-4E}\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]\xrightarrow{A-4E}\left[\begin{array}{c}
+0\\
+0
+\end{array}\right]
+\]
+\begin{align*}
+ & \begin{cases}
+\left(A-4E\right)\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]=\left[\begin{array}{c}
+0\\
+0
+\end{array}\right]\\
+\left(A-4E\right)\left[\begin{array}{c}
+1\\
+0
+\end{array}\right]=\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]
+\end{cases}\\
+\Leftrightarrow & \begin{cases}
+A\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]=4\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]\\
+A\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]=4\left[\begin{array}{c}
+1\\
+0
+\end{array}\right]+\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]
+\end{cases}\\
+\Leftrightarrow & A\left[\begin{array}{cc}
+1 & 1\\
+1 & 0
+\end{array}\right]=\left[\begin{array}{cc}
+4\cdot1 & 4\cdot1+1\\
+4\cdot1 & 4\cdot0+1
+\end{array}\right]=\left[\begin{array}{cc}
+1 & 1\\
+1 & 0
+\end{array}\right]\left[\begin{array}{cc}
+4 & 1\\
+0 & 4
+\end{array}\right]
+\end{align*}
+となる。上図のようにベクトルの連鎖によりゼロベクトルに帰着する方法をこの講義では``Jordan鎖''と呼ぶことにする。
+
+適当に記号で置いて、
+\begin{align*}
+ & AP=P\left[\begin{array}{cc}
+4 & 1\\
+0 & 4
+\end{array}\right]\\
+\Leftrightarrow & P^{-1}AP=\left[\begin{array}{cc}
+4 & 1\\
+0 & 4
+\end{array}\right]
+\end{align*}
+となる。これを今の$A$に対する\textbf{Jordan標準系(Jordan Normal Form)}といい、しばしばJNFと略記される。また、今作った$\boldsymbol{v}=\left[\begin{array}{c}
+1\\
+0
+\end{array}\right]$は、固有値$\lambda=4$に対する\textbf{一般固有ベクトル}(一般化固有ベクトル,広義固有ベクトル)という。
+
+なお、ここで$\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]$の係数が1である必要は特にない。
+
+このときも、$A^{n}$を$n$の式で書ける。
+\[
+A^{n}=\left(P\left[\begin{array}{cc}
+4 & 1\\
+0 & 4
+\end{array}\right]P^{-1}\right)^{n}=P\left[\begin{array}{cc}
+4 & 1\\
+0 & 4
+\end{array}\right]^{n}P^{-1}
+\]
+
+
+ここで、
+\[
+\left[\begin{array}{cc}
+4 & 1\\
+0 & 4
+\end{array}\right]=4E+F
+\]
+と分解できる。ただし$F=\left[\begin{array}{cc}
+0 & 1\\
+0 & 0
+\end{array}\right]$である。この分解法を加法的Jordan分解という。このとき、
+\begin{itemize}
+\item $E$と$F$は可換($EF=FE\left(=F\right)$)
+\item $F^{2}=O$(冪零行列(nilpotent))
+\end{itemize}
+となる。
+
+すると、
+\begin{eqnarray*}
+\left[\begin{array}{cc}
+4 & 1\\
+0 & 4
+\end{array}\right]^{n} & = & \left(4E+F\right)^{n}\\
+ & = & \left(4E\right)^{n}+_{n}C_{1}\left(4E\right)^{n-1}F+_{n}C_{2}\left(4E\right)^{n-2}F^{2}+\cdots\\
+ & = & 4^{n}E+n4^{n-1}F\\
+ & = & \left[\begin{array}{cc}
+4^{n} & n4^{n-1}\\
+0 & 4^{n}
+\end{array}\right]
+\end{eqnarray*}
+
+
+$EF=FE$より二項定理が適用できた。よって、
+\[
+A^{n}=\left[\begin{array}{cc}
+1 & 1\\
+1 & 0
+\end{array}\right]\left[\begin{array}{cc}
+4^{n} & n4^{n-1}\\
+0 & 4^{n}
+\end{array}\right]\left[\begin{array}{cc}
+0 & 1\\
+1 & -1
+\end{array}\right]
+\]
+となり、$A^{n}$の値が明示的に求まった。
+
+
+\paragraph{先ほどのアイデアの応用}
+
+特性方程式が重解を持つときの微分方程式の一般解を求める。
+
+例: 
+\[
+\frac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}-8\frac{\mathrm{d}y}{\mathrm{d}x}+16y=0
+\]
+を満たす$y=y\left(x\right)$の一般解を求める。
+
+普通は$y=\mathrm{e}^{\lambda x}$($\lambda$定数)として解を探す。
+\begin{align*}
+ & \lambda^{2}\mathrm{e}^{\lambda x}-6\lambda\mathrm{e}^{\lambda x}+16\mathrm{e}^{\lambda x}=0\\
+\Leftrightarrow & \lambda^{2}-8\lambda+16=0
+\end{align*}
+
+
+よって対応する解は$f\left(x\right)=\mathrm{e}^{4x}$。この式は次を満たす。
+\begin{align*}
+ & \frac{\mathrm{d}}{\mathrm{d}x}f\left(x\right)=4f\left(x\right)\\
+\Leftrightarrow & \left(\frac{\mathrm{d}}{\mathrm{d}x}-4\right)f\left(x\right)=0
+\end{align*}
+
+
+ここで$\frac{\mathrm{d}}{\mathrm{d}x}$は\textbf{微分作用素(微分演算子)}と言い、「微分せよ」という命令と捉えれば良い。
+
+そこで、次のような$g\left(x\right)$を探してみる。
+
+\[
+g\left(x\right)\xrightarrow{\frac{\mathrm{d}}{\mathrm{d}x}-4}f\left(x\right)\xrightarrow{\frac{\mathrm{d}}{\mathrm{d}x}-4}0
+\]
+
+
+この$g\left(x\right)$は
+\begin{align*}
+ & \left(\frac{\mathrm{d}}{\mathrm{d}x}-4\right)^{2}g\left(x\right)=0\\
+\Leftrightarrow & \left(\frac{\mathrm{d}^{2}}{\mathrm{d}x^{2}}-8\frac{\mathrm{d}}{\mathrm{d}x}+16\right)g\left(x\right)=0
+\end{align*}
+となるので、元の微分方程式に帰着する。
+
+\begin{align*}
+ & \left(\frac{\mathrm{d}}{\mathrm{d}x}-4\right)g\left(x\right)=f\left(x\right)\\
+\Leftrightarrow & \frac{\mathrm{d}g}{\mathrm{d}x}-4g=\mathrm{e}^{4x}
+\end{align*}
+
+
+この両辺に$\mathrm{e}^{-4x}$をかけると、
+\begin{align*}
+ & \mathrm{e}^{-4s}\frac{\mathrm{d}g}{\mathrm{d}x}-4\mathrm{e}^{-4x}g=1\\
+\Leftrightarrow & \frac{\mathrm{d}}{\mathrm{d}x}\left(\mathrm{e}^{-4x}g\right)=1
+\end{align*}
+\[
+\therefore\mathrm{e}^{-4x}g=x+\text{定数}
+\]
+
+
+簡単のため$\text{定数}=0$と選ぶと、
+\[
+g\left(x\right)=x\mathrm{e}^{4x}
+\]
+
+
+こうして、$\mathrm{e}^{4x},x\mathrm{e}^{4x}$という2つの解が作れた。一般解は、
+\[
+y=C_{1}\mathrm{e}^{4x}+C_{2}x\mathrm{e}^{4x}
+\]
+ただし、$C_{1},C_{2}$は任意定数である。
+
+
+\paragraph{もう一つ応用}
+
+三項間漸化式の一般項
+
+\[
+a_{n+2}-8a_{n+1}+16a_{n}=0
+\]
+を満たす数列$\left\{ a_{n}\right\} _{n=1,2,\cdots}$の$a_{n}$を$a_{1},a_{2},n$を使って表したい。
+
+``$T$''という数列に作用する作用素を
+\[
+T:\left\{ a_{1},a_{2}a_{3}\cdots\right\} \mapsto\left\{ a_{2},a_{3},a_{4},\cdots\right\} 
+\]
+と定義すると、上の三項間漸化式は
+\[
+\left(T^{2}-8T+16\right)\left\{ a_{n}\right\} =\left\{ 0\right\} 
+\]
+と書ける。
+
+今の場合は、
+\[
+\left(T-4\right)^{2}\left\{ a_{n}\right\} =\left\{ 0\right\} 
+\]
+なので、次のような$\left\{ p_{n}\right\} ,\left\{ q_{n}\right\} $を探したくなる。
+\[
+\left\{ q_{n}\right\} \xrightarrow{T-4}\left\{ p_{n}\right\} \xrightarrow{T-4}\left\{ 0\right\} 
+\]
+
+
+$\left\{ p_{n}\right\} $は簡単に求まる。
+\begin{align*}
+ & \left(T-4\right)\left\{ p_{n}\right\} =\left\{ 0\right\} \\
+\Leftrightarrow & p_{n+1}=4p_{n}
+\end{align*}
+
+
+等比数列となる。例えば$p_{n}=4^{n}$これに合わせて
+\[
+\left(T-4\right)\left\{ q_{n}\right\} =\left\{ p_{n}\right\} 
+\]
+となる$\left\{ q_{n}\right\} $をつくれば一般項が書ける。
+
+
+\paragraph{前回: $2\times2$、対角化出来ない場合のJNF(Jordan Normal Form)}
+
+前回の例: $A=\left[\begin{array}{cc}
+5 & -1\\
+1 & 3
+\end{array}\right]$に対して
+\[
+\left[\begin{array}{c}
+1\\
+0
+\end{array}\right]\xrightarrow{A-4E}\left[\begin{array}{c}
+1\\
+1
+\end{array}\right]\xrightarrow{A-4E}\left[\begin{array}{c}
+0\\
+0
+\end{array}\right]
+\]
+より$P=\left[\begin{array}{cc}
+1 & 1\\
+1 & 0
+\end{array}\right]$ととれば
+\[
+P^{-1}AP=\left[\begin{array}{cc}
+4 & 1\\
+0 & 4
+\end{array}\right]
+\]
+となることを学んだ。
+
+
+\paragraph{練習問題1}
+
+固有値2から
+\[
+\left[\begin{array}{ccc}
+3 & -8 & 5\\
+1 & -2 & 1\\
+0 & 1 & -1
+\end{array}\right]\left[\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right]=\left[\begin{array}{c}
+p\\
+q\\
+r
+\end{array}\right]\left(p,q,r\text{定数}\right)
+\]
+に帰着する。拡大係数行列で「はき出し」を行って、
+\begin{align*}
+\tilde{A} & =\left[\left.\begin{array}{ccc}
+3 & -8 & 5\\
+1 & -2 & 1\\
+0 & 1 & -1
+\end{array}\right|\begin{array}{c}
+p\\
+q\\
+r
+\end{array}\right]\\
+ & \rightarrow\left[\left.\begin{array}{ccc}
+1 & -2 & 1\\
+0 & 1 & -1\\
+3 & -8 & 5
+\end{array}\right|\begin{array}{c}
+q\\
+r\\
+p
+\end{array}\right]\\
+ & \rightarrow\left[\left.\begin{array}{ccc}
+1 & -2 & 1\\
+0 & 1 & -1\\
+0 & -2 & 2
+\end{array}\right|\begin{array}{c}
+q\\
+r\\
+p-3q
+\end{array}\right]\\
+ & \rightarrow\left[\left.\begin{array}{ccc}
+1 & 0 & -1\\
+0 & 1 & -1\\
+0 & 0 & 0
+\end{array}\right|\begin{array}{c}
+q+2r\\
+r\\
+p-3q+2r
+\end{array}\right]
+\end{align*}
+
+
+これが会を持つための必要十分条件は、
+\[
+\mathrm{rank}\left(\tilde{A}\right)=\mathrm{rank}\left(A\right)=2
+\]
+である。$\mathrm{rank}\left(\tilde{A}\right)=2$であるためには$p-3q+2r=0$であればいい。
+
+まず$p=q=r=0$(固有ベクトル)の場合を求めると、
+\begin{align*}
+ & \begin{cases}
+x-z=0\\
+y-z=0
+\end{cases}\\
+\rightarrow & \left[\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right]=\left[\begin{array}{c}
+1\\
+1\\
+1
+\end{array}\right]
+\end{align*}
+ととれる。そこで$p=q=r=1$ととると、
+\[
+p-3q+2r=0
+\]
+となり条件を満たす。ここから
+\begin{align*}
+ & \begin{cases}
+x-z=3\\
+y-z=1
+\end{cases}\\
+\rightarrow & \left[\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right]=\left[\begin{array}{c}
+3\\
+1\\
+0
+\end{array}\right]
+\end{align*}
+ととる。さらに$p=3,q=1,r=0$とすると、
+\[
+p-3q+2r=0
+\]
+となり条件を満たす。ここから
+\begin{align*}
+ & \begin{cases}
+x-z=1\\
+y-z=0
+\end{cases}\\
+\rightarrow & \left[\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right]=\left[\begin{array}{c}
+1\\
+0\\
+0
+\end{array}\right]
+\end{align*}
+ととる。
+
+ここまでをまとめると、
+\[
+\underbrace{\left[\begin{array}{c}
+1\\
+0\\
+0
+\end{array}\right]}_{\boldsymbol{w}}\xrightarrow{A-2E}\underbrace{\left[\begin{array}{c}
+3\\
+1\\
+0
+\end{array}\right]}_{\boldsymbol{v}}\xrightarrow{A-2E}\underbrace{\left[\begin{array}{c}
+1\\
+1\\
+1
+\end{array}\right]}_{\boldsymbol{u}}\xrightarrow{A-2E}\left[\begin{array}{c}
+0\\
+0\\
+0
+\end{array}\right]
+\]
+\begin{align*}
+ & \begin{cases}
+\left(A-2E\right)\boldsymbol{u}=\boldsymbol{O}\\
+\left(A-2E\right)\boldsymbol{v}=\boldsymbol{u}\\
+\left(A-2E\right)\boldsymbol{w}=\boldsymbol{v}
+\end{cases}\\
+\rightarrow & \begin{cases}
+A\boldsymbol{u}=2\boldsymbol{u}\\
+A\boldsymbol{v}=2\boldsymbol{v}+\boldsymbol{u}\\
+A\boldsymbol{w}=2\boldsymbol{w}+\boldsymbol{v}
+\end{cases}\\
+\rightarrow & A\left[\begin{array}{ccc}
+\boldsymbol{u} & \boldsymbol{v} & \boldsymbol{w}\end{array}\right]=\left[\begin{array}{ccc}
+2\boldsymbol{u} & 2\boldsymbol{v}+\boldsymbol{u} & 2\boldsymbol{w}+\boldsymbol{v}\end{array}\right]\\
+\rightarrow & A\left[\begin{array}{ccc}
+\boldsymbol{u} & \boldsymbol{v} & \boldsymbol{w}\end{array}\right]=\left[\begin{array}{ccc}
+\boldsymbol{u} & \boldsymbol{v} & \boldsymbol{w}\end{array}\right]\left[\begin{array}{ccc}
+2 & 1 & 0\\
+0 & 2 & 1\\
+0 & 0 & 2
+\end{array}\right]
+\end{align*}
+
+
+よって、$P=\left[\begin{array}{ccc}
+1 & 3 & 1\\
+1 & 1 & 0\\
+1 & 0 & 0
+\end{array}\right]$に対して、
+\[
+P^{-1}AP=\left[\begin{array}{ccc}
+2 & 1\\
+ & 2 & 1\\
+ &  & 2
+\end{array}\right]
+\]
+となり、今の$A$に対するJNFとなる。
+
+同様に(ii)を解いてみる。$A=\left[\begin{array}{ccc}
+3 & 2 & -2\\
+0 & 4 & -1\\
+0 & 1 & 2
+\end{array}\right]$とおいて固有方程式
+\[
+\Phi_{A}\left(x\right)=\mathrm{det}\left(xE-A\right)=\left(x-3\right)^{3}
+\]
+となる。$\left(A-3E\right)\boldsymbol{x}=\boldsymbol{p}$を考えると、
+\begin{align*}
+ & \left[\left.\begin{array}{ccc}
+0 & 2 & -2\\
+0 & 1 & -1\\
+0 & 1 & -1
+\end{array}\right|\begin{array}{c}
+p\\
+q\\
+r
+\end{array}\right]\\
+\rightarrow & \left[\left.\begin{array}{ccc}
+0 & 1 & -1\\
+0 & 1 & -1\\
+0 & 2 & -2
+\end{array}\right|\begin{array}{c}
+q\\
+r\\
+p
+\end{array}\right]\\
+\rightarrow & \left[\left.\begin{array}{ccc}
+0 & 1 & -1\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{array}\right|\begin{array}{c}
+q\\
+r-q\\
+p-2q
+\end{array}\right]
+\end{align*}
+
+
+よってこの連立一次方程式が解を持つための必要十分条件は、
+\[
+\begin{cases}
+r-q=0\\
+p-2q=0
+\end{cases}
+\]
+
+
+$p=q=r=0$のとき(固有ベクトル)、条件をみたすのは明らかであり、
+\[
+y-z=0\rightarrow\left[\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right]=\left[\begin{array}{c}
+x\\
+y\\
+y
+\end{array}\right]=x\left[\begin{array}{c}
+1\\
+0\\
+0
+\end{array}\right]+y\left[\begin{array}{c}
+0\\
+1\\
+1
+\end{array}\right]
+\]
+
+
+このように固有空間は2次元となる。2次元のうち、どこから伸ばせばいいのか?
+
+$\left[\begin{array}{c}
+s\\
+t\\
+t
+\end{array}\right]$と置いて考えてみる。つまり$p=s,q=r=t$とする。会を持つ条件は
+\[
+\begin{cases}
+r-q=0\Rightarrow t-t=0\\
+p-2q=0\Rightarrow s-2t=0
+\end{cases}
+\]
+
+
+よって$s=2,t=1$と選ぶ。このとき
+\[
+y-z=q=t=1
+\]
+となる$z$を選べば良い。例えば、
+\[
+\left[\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right]=\left[\begin{array}{c}
+0\\
+1\\
+0
+\end{array}\right]
+\]
+
+
+\[
+\begin{cases}
+\left[\begin{array}{c}
+0\\
+1\\
+0
+\end{array}\right]\xrightarrow{A-3E}\left[\begin{array}{c}
+2\\
+1\\
+1
+\end{array}\right]\xrightarrow{A-3E}\left[\begin{array}{c}
+0\\
+0\\
+0
+\end{array}\right]\\
+\left[\begin{array}{c}
+1\\
+0\\
+0
+\end{array}\right]\xrightarrow{A-3E}\left[\begin{array}{c}
+1\\
+0\\
+0
+\end{array}\right]
+\end{cases}
+\]
+
+
+そこで、$P=\left[\begin{array}{ccc}
+2 & 0 & 1\\
+1 & 1 & 0\\
+1 & 0 & 0
+\end{array}\right]$とすると、
+\[
+P^{-1}AP=\left[\begin{array}{ccc}
+3 & 1\\
+ & 3\\
+ &  & 3
+\end{array}\right]
+\]
+が(ii)に対応するJNFとなる。
+
+「自然数$n$の分割」とは、$n$をいくつかの自然数の和として表すやり方のこと(``大きい順''に並べるものとする。)
+
+例: $n=4$「4の分割」は全5通り
+
+～
+
+4/28 練習問題2($4\times4$、4重根)
+
+\[
+A=\left[\begin{array}{cccc}
+2 & -1 & 1 & -1\\
+2 & -1 & 2 & -2\\
+2 & -3 & 5 & -4\\
+1 & -2 & 3 & -2
+\end{array}\right]
+\]
+\begin{align*}
+\Phi_{A}\left(x\right) & =\mathrm{det}\left(xE-A\right)\\
+ & =\cdots=\left(x-1\right)^{4}
+\end{align*}
+
+
+前回までのやり方では、固有ベクトル($\mathrm{ker}\left(A-E\right)$の元)を求めてそこから「ジョルダン鎖」を伸ばしてゆく
+
+注: 線形写像
+\[
+f:\: V\rightarrow W
+\]
+に対し、
+\[
+\mathrm{ker}f=\left\{ \boldsymbol{v}\in V|f\left(\boldsymbol{v}\right)=\boldsymbol{0}\right\} 
+\]
+
+
+これとは違うやり方として、``$I_{m}$''(造空間)に注目する方法もある。
+
+まず、次に注目する。
+\begin{align*}
+\left(A-E\right)^{2} & =\left[\begin{array}{cccc}
+1 & -1 & 1 & -1\\
+2 & -2 & 2 & -2\\
+2 & -3 & 4 & -4\\
+1 & -2 & 3 & -3
+\end{array}\right]^{2}\\
+ & =\cdots=\boldsymbol{O}
+\end{align*}
+
+
+$I_{m}\left(A-E\right)$が何次元のベクトル空間かを調べる。
+
+\[
+\left\{ \boldsymbol{e}_{1}=\left[\begin{array}{c}
+1\\
+0\\
+0\\
+0
+\end{array}\right],\boldsymbol{e}_{2}=\left[\begin{array}{c}
+0\\
+1\\
+0\\
+0
+\end{array}\right],\boldsymbol{e}_{3}=\left[\begin{array}{c}
+0\\
+0\\
+1\\
+0
+\end{array}\right],\boldsymbol{e}_{4}=\left[\begin{array}{c}
+0\\
+0\\
+0\\
+1
+\end{array}\right]\right\} 
+\]
+を\textbf{$\boldsymbol{C}^{4}$}の標準基底と呼ぶ。これらの像は、
+\[
+\boldsymbol{f}_{1}=\left(A-E\right)\boldsymbol{e}_{1}=\left[\begin{array}{c}
+1\\
+2\\
+2\\
+1
+\end{array}\right],\cdots
+\]
+となる。つまり、
+\[
+A-E=\left(\begin{array}{cccc}
+1 & -1 & 1 & -1\\
+2 & -2 & 2 & -2\\
+2 & -3 & 4 & -4\\
+1 & -2 & 3 & -3
+\end{array}\right)
+\]
+より、列基本変形で
+\[
+\rightarrow\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+2 & 0 & 0 & 0\\
+2 & -1 & 2 & 0\\
+1 & -1 & 2 & 0
+\end{array}\right]\rightarrow\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+2 & 0 & 0 & 0\\
+2 & 1 & 0 & 0\\
+1 & 1 & 0 & 0
+\end{array}\right]=\left[\begin{array}{cccc}
+\boldsymbol{f}_{1} & -\boldsymbol{f}_{1}-\boldsymbol{f}_{2} & \boldsymbol{f}_{1}+2\boldsymbol{f}_{2}+\boldsymbol{f}_{3} & \boldsymbol{f}_{3}+\boldsymbol{f}_{4}\end{array}\right]
+\]
+
+
+こうして、次のジョルダン鎖が得られる。
+\[
+\begin{cases}
+\boldsymbol{e}_{1}\xrightarrow{A-E}\boldsymbol{f}_{1}\xrightarrow{A-E}\boldsymbol{O}\\
+-\boldsymbol{e}_{1}-\boldsymbol{e}_{2}\xrightarrow{A-E}-\boldsymbol{f}_{1}-\boldsymbol{f}_{2}\xrightarrow{A-E}\boldsymbol{O}
+\end{cases}
+\]
+
+
+変換行列は
+\[
+D=\left[\begin{array}{cccc}
+\boldsymbol{f}_{1} & \boldsymbol{e}_{1} & -\boldsymbol{f}_{1}-\boldsymbol{f}_{2} & -\boldsymbol{e}_{1}-\boldsymbol{e}_{2}\end{array}\right]=\left[\begin{array}{cccc}
+1 & 1 & 0 & -1\\
+2 & 0 & 0 & -1\\
+2 & 0 & 1 & 0\\
+1 & 0 & 1 & 0
+\end{array}\right]
+\]
+
+
+今の場合、
+\begin{align*}
+A-E & \neq O\\
+\left(A-E\right)^{2} & =O
+\end{align*}
+であった。
+
+対応する多項式
+\[
+\varphi_{A}\left(x\right)=\left(x-1\right)^{2}
+\]
+を「Aの最小多項式」という。
+
+
+\paragraph{定義}
+
+A: 正方行列、$f\left(x\right)$は多項式で、
+\begin{itemize}
+\item 最高次の係数は1(monic)
+\item $f\left(x\right)=x^{n}+c_{1}x^{n-1}+\cdots+c_{n}$であるとき、$f\left(A\right)=A^{n}+c_{1}A^{n-1}+\cdots+c_{n}E$として、$f\left(A\right)=O$
+\end{itemize}
+の2つを満たすとする。この2つを満たす$f\left(x\right)$で次数が最小のものを$A$の最小多項式という。
+
+
+\paragraph{定理(証明は後ほど)}
+
+$A$の最小多項式は$A$の固有多項式を割り切る。(=ケーリーハミルトンの定理$\Phi_{A}\left(A\right)=O$)
+
+sかいほどの$4\times4$の例に戻る。現れた「鎖」は次のパターン
+
+\[
+\begin{cases}
+\boldsymbol{v}_{1}\xrightarrow{T}\boldsymbol{u}_{1}\xrightarrow{T}\boldsymbol{O}\\
+\boldsymbol{v}_{2}\xrightarrow{T}\boldsymbol{u}_{2}\xrightarrow{T}\boldsymbol{O}
+\end{cases}
+\]
+
+
+
+\paragraph{5/12例題1}
+
+上図が成り立つとき、$\left\{ \boldsymbol{u}_{1},\boldsymbol{u}_{2}\right\} $が独立なら$\left\{ \boldsymbol{u}_{1},\boldsymbol{u}_{2},\boldsymbol{v}_{1},\boldsymbol{v}_{2}\right\} $は独立である。
+
+
+\paragraph{復習}
+
+$\left\{ \boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{n}\right\} $が一次独立/線形独立であるとは、$c_{1}\boldsymbol{a}_{1}+c_{2}\boldsymbol{a}_{2}+\cdots+c_{n}\boldsymbol{a}_{n}=\boldsymbol{O}$となるのが$c_{1}=c_{2}=\cdots=c_{n}=0$のときのみであることをいう。
+
+(再び、例題1)
+
+条件より、$T\left(\boldsymbol{v}_{1}\right)=\boldsymbol{u}_{1},T\left(\boldsymbol{v}_{2}\right)=\boldsymbol{u}_{2},T\left(\boldsymbol{u}_{1}\right)=\boldsymbol{O},T\left(\boldsymbol{u}_{2}\right)=\boldsymbol{O}$
+
+次の方程式を考える。
+\begin{align*}
+ & c_{1}\boldsymbol{u}_{1}+c_{2}\boldsymbol{u}_{2}+c_{3}\boldsymbol{v}_{1}+c_{4}\boldsymbol{v}_{2}=\boldsymbol{O}\\
+\xrightarrow[T\text{を作用}]{} & T\left(c_{1}\boldsymbol{u}_{1}+c_{2}\boldsymbol{u}_{2}+c_{3}\boldsymbol{v}_{1}+c_{4}\boldsymbol{v}_{2}\right)=T\left(\boldsymbol{O}\right)=\boldsymbol{O}\\
+\rightarrow & c_{1}T\left(\boldsymbol{u}_{1}\right)+c_{2}T\left(\boldsymbol{u}_{2}\right)+c_{3}T\left(\boldsymbol{v}_{1}\right)+c_{4}T\left(\boldsymbol{v}_{2}\right)=\boldsymbol{O}
+\end{align*}
+
+
+ゆえに
+\[
+c_{3}\boldsymbol{U}_{1}+c_{4}\boldsymbol{u}_{2}=\boldsymbol{O}
+\]
+
+
+$\left\{ \boldsymbol{u}_{1},\boldsymbol{u}_{2}\right\} $の独立性より、
+\[
+c_{3}=c_{4}=0
+\]
+
+
+これを代入して
+\[
+c_{1}\boldsymbol{u}_{1}+c_{2}\boldsymbol{u}_{2}=\boldsymbol{O}\Rightarrow c_{1}=c_{2}=0
+\]
+\[
+\therefore c_{1}=c_{2}=c_{3}=c_{4}=0
+\]
+
+
+
+\paragraph{前回の復習}
+
+$N\times N$, $N$重根の場合のJNF
+
+「$N$の分割」で分類できる(証明はまだ)
+
+例えば、$N=3$のとき
+\[
+\begin{cases}
+3=1+1+1\\
+3=2+1\\
+3=3
+\end{cases}
+\]
+
+
+$N=4$のとき
+\[
+\begin{cases}
+4=1+1+1+1\\
+4=2+1+1\\
+4=2+2\\
+4=3+1\\
+4=4
+\end{cases}
+\]
+となる。なお、これが何通り存在するかは「自然数の分割」という問題であり、かなり複雑な理論になるが、詳しくは「整数の分割」(2006,
+アンドュース エリクソン, 数学書房)を参照されたい。
+
+ここから問題にすることは、
+\begin{itemize}
+\item 与えられた複素正方行列に対し、ジョルダン鎖からなる基底(←一次独立性)が存在すること。
+\item 上の基底において、ジョルダン鎖のパターンが一意に決まること。
+\end{itemize}
+である。
+
+$A$: $N\times N$, $N$重根($\alpha$とする), $B=A-\alpha E$とする。このとき、
+\[
+B^{\text{鎖の最長の長さ}}=O
+\]
+となる。(冪零行列, nilpotent matrix)
+
+ここからは、$A$が冪零として考える。なおこのとき$A$は固有値0しか持たないが、複素行列の場合は話は別である。
+
+前回は、
+\begin{itemize}
+\item $\boldsymbol{v}_{1}\xrightarrow{A}\boldsymbol{u}_{1}\xrightarrow{A}\boldsymbol{O}$
+\item $\boldsymbol{v}_{2}\xrightarrow{A}\boldsymbol{u}_{2}\xrightarrow{A}\boldsymbol{O}$
+\item $\left\{ \boldsymbol{u}_{1},\boldsymbol{u}_{2}\right\} $は一次独立
+\end{itemize}
+の条件を満たすならば$\left\{ \boldsymbol{u}_{1},\boldsymbol{u}_{2},\boldsymbol{v}_{1},\boldsymbol{v}_{2}\right\} $は一次独立であることを学んだ。
+
+より一般に、べきゼロ行列$A$に対してジョルダン鎖が与えられたとき$\ker A$のところが一次独立ならば、全体も一次独立である。
+
+$4\times4$の場合に「一意性」を調べてみる。
+
+$A$: $4\times4$, 冪零で$\left\{ \boldsymbol{u}_{1},\boldsymbol{u}_{2},\boldsymbol{v}_{1},\boldsymbol{v}_{2}\right\} $は次を満たすとする。
+\begin{itemize}
+\item $\boldsymbol{v}_{1}\xrightarrow{A}\boldsymbol{u}_{1}\xrightarrow{A}\boldsymbol{O}$
+\item $\boldsymbol{v}_{2}\xrightarrow{A}\boldsymbol{u}_{2}\xrightarrow{A}\boldsymbol{O}$
+\item $\left\{ \boldsymbol{u}_{1},\boldsymbol{u}_{2}\right\} $は一次独立
+\end{itemize}
+さらに、$\left\{ \tilde{\boldsymbol{u}}_{1},\tilde{\boldsymbol{u}}_{2},\tilde{\boldsymbol{v}}_{1},\tilde{\boldsymbol{v}}_{2}\right\} $が次を満たすとする。
+
+\[
+\begin{cases}
+\tilde{\boldsymbol{w}}_{1}\xrightarrow{A}\tilde{\boldsymbol{v}}_{1}\xrightarrow{A}\tilde{\boldsymbol{u}}_{1}\xrightarrow{A}\boldsymbol{O}\\
+\tilde{\boldsymbol{u}}_{2}\xrightarrow{A}\boldsymbol{O}\\
+\left\{ \tilde{\boldsymbol{u}}_{1},\tilde{\boldsymbol{u}}_{2}\right\} \text{は独立}
+\end{cases}
+\]
+
+
+このような$\left\{ \tilde{\boldsymbol{u}}_{1},\tilde{\boldsymbol{u}}_{2},\tilde{\boldsymbol{v}}_{1},\tilde{\boldsymbol{v}}_{2}\right\} $が存在しないことを証明する。$P$は$4\times4$行列で
+
+\[
+P=\left[\begin{array}{cccc}
+\boldsymbol{u}_{1} & \boldsymbol{v}_{1} & \boldsymbol{u}_{2} & \boldsymbol{v}_{2}\end{array}\right]
+\]
+\[
+AP=\left[\begin{array}{cccc}
+\boldsymbol{O} & \boldsymbol{u}_{1} & \boldsymbol{O} & \boldsymbol{u}_{2}\end{array}\right]=\left[\begin{array}{cccc}
+\boldsymbol{u}_{1} & \boldsymbol{v}_{1} & \boldsymbol{u}_{2} & \boldsymbol{v}_{2}\end{array}\right]\left[\begin{array}{cccc}
+0 & 1\\
+ & 0\\
+ &  & 0 & 1\\
+ &  &  & 0
+\end{array}\right]=PJ_{\left(2,2\right)}
+\]
+\[
+\tilde{P}=\left[\begin{array}{cccc}
+\tilde{\boldsymbol{u}}_{1} & \tilde{\boldsymbol{v}}_{1} & \tilde{\boldsymbol{w}}_{1} & \tilde{\boldsymbol{u}}_{2}\end{array}\right]
+\]
+\[
+A\tilde{P}=\left[\begin{array}{cccc}
+\boldsymbol{O} & \tilde{\boldsymbol{u}}_{1} & \tilde{\boldsymbol{v}}_{1} & \boldsymbol{O}\end{array}\right]=\left[\begin{array}{cccc}
+\tilde{\boldsymbol{u}}_{1} & \tilde{\boldsymbol{v}}_{1} & \tilde{\boldsymbol{w}}_{1} & \tilde{\boldsymbol{u}}_{2}\end{array}\right]\left[\begin{array}{cccc}
+0 & 1\\
+ & 0 & 1\\
+ &  & 0\\
+ &  &  & 0
+\end{array}\right]=PJ_{\left(3,1\right)}
+\]
+
+
+先ほどの議論より、$P,\tilde{P}$は逆行列を持つ。
+
+このとき、
+\begin{align*}
+A & =PJ_{\left(2,2\right)}P^{-1}\\
+ & =\tilde{P}J_{\left(3,1\right)}\tilde{P}^{-1}
+\end{align*}
+
+
+ここで、
+\[
+J_{\left(2,2\right)}^{2}=O,J_{\left(3,1\right)}^{2}\neq O
+\]
+
+
+一方、
+\[
+O=PJ_{\left(2,2\right)}^{2}P^{-1}=\left(PJ_{\left(2,2\right)}P^{-1}\right)^{2}=\left(\tilde{P}J_{\left(3,1\right)}\tilde{P}^{-1}\right)^{2}=\tilde{P}J_{\left(3,1\right)}^{2}\tilde{P}^{-1}\neq O
+\]
+となり矛盾
+
+
+\paragraph{演習問題}
+
+$A$は$4\times4$の冪零行列とする。上と同じ$\left\{ \boldsymbol{u}_{1},\boldsymbol{u}_{2},\boldsymbol{v}_{1},\boldsymbol{v}_{2}\right\} $が存在するとき、次を満たす$\left\{ \hat{\boldsymbol{u}}_{1},\hat{\boldsymbol{u}}_{2},\hat{\boldsymbol{u}}_{3},\hat{\boldsymbol{v}}_{1}\right\} $は存在しないことを示せ。
+\begin{itemize}
+\item $\hat{\boldsymbol{v}}_{1}\xrightarrow{A}\hat{\boldsymbol{u}}_{1}\xrightarrow{A}\boldsymbol{O}$
+\item $\hat{\boldsymbol{u}}_{2}\xrightarrow{A}\boldsymbol{O}$
+\item $\hat{\boldsymbol{u}}_{3}\xrightarrow{A}\boldsymbol{O}$
+\item $\left\{ \hat{\boldsymbol{u}}_{1},\hat{\boldsymbol{u}}_{2},\hat{\boldsymbol{u}}_{3}\right\} $は独立
+\end{itemize}
+
+\paragraph{一般化}
+
+定理: $A$を$n$次正方行列で、冪零であるとする。このとき、$A$のジョルダン標準形を定める$n$の分割は$A$に対して一意的に決まる。
+
+準備: $J_{k}\left(0\right)$を以下のように定義する。$J_{k}\left(0\right)$は$k\times k$正方行列で
+\[
+J_{k}\left(0\right)=\left[\begin{array}{cccc}
+0 & 1\\
+ & \ddots & \ddots\\
+ &  & \ddots & 1\\
+ &  &  & 0
+\end{array}\right]
+\]
+である。これをジョルダン細胞(ジョルダンブロック)と呼ぶ。また
+
+\[
+\mathrm{dim}\mathrm{Im}\left(J_{k}\left(0\right)^{l}\right)=k-l\left(l=1,2,3,\cdots,k\right)
+\]
+
+
+(証明) 与えられた$A$に対して、ある可逆行列$P$が存在し、
+\[
+AP=PJ_{\lambda}
+\]
+とする。ただし$\lambda$は$n$の分割で1が$S_{1}$個、2が$S_{2}$個、…、$m$が$S_{m}$個存在するmのとする。このとき、
+\[
+n=S_{1}+2S_{2}+\cdots+mS_{m}
+\]
+\[
+J_{\lambda}=\left[\begin{array}{ccccccc}
+J_{m}\left(0\right)\\
+ & \ddots^{S_{m}\text{個}}\\
+ &  & J_{m}\left(0\right)\\
+ &  &  & \ddots\\
+ &  &  &  & 0\\
+ &  &  &  &  & \ddots^{S_{1}\text{個}}\\
+ &  &  &  &  &  & 0
+\end{array}\right]
+\]
+となる。
+
+\[
+\begin{cases}
+\mathrm{dim}\mathrm{Im}J_{\lambda}=S_{2}+2S_{3}+3S_{4}+\cdots+\left(m-1\right)S_{m}\\
+\mathrm{dim}\mathrm{Im}J_{\lambda}^{2}=S_{3}+2S_{4}+\cdots+\left(m-2\right)S_{m}\\
+\vdots\\
+\mathrm{dim}\mathrm{Im}J_{\lambda}^{m-2}=S_{m-1}+2S_{m}\\
+\mathrm{dim}\mathrm{Im}J_{\lambda}^{m-1}=S_{m}
+\end{cases}
+\]
+
+
+これらより、
+\[
+S_{m},S_{m-1},\cdots,S_{1}
+\]
+は全て、$n$と$\mathrm{dim}\mathrm{Im}J_{\lambda}^{k}=\mathrm{dim}\mathrm{Im}A^{k}=\mathrm{rank}A^{k}\left(k=1,\cdots,m-1\right)$で書ける。よって$n$の分割は一意に書けることがわかり、証明された。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+次回授業後半に小テスト: 範囲は今回の内容まで
+
+前回: 冪零行列の場合のJNFの一意性(uniqueness)
+
+$A$: $n$次正方行列($\mathbb{C}$成分)、$A$は冪零 i.e. $\exists m\in\mathbb{N}$
+s.t. $A^{m}=0$→$A$の固有値は0のみ($n$重解)
+
+このとき、$P^{-1}AP$がJNFとなる可逆行列$P$が\uline{存在するとしたら}、対応するJNFはジョルダン細胞(ブロック)の並べ替えを除いて一意的に決まる。
+
+証明のアイデアは、長さ1の鎖が$S_{1}$本、長さ2の鎖が$S_{2}$本、…、長さ$m$の鎖が$S_{m}$本、あるとき、これらは$\mathrm{dim}\mathrm{Im}A^{k}=\mathrm{rank}A^{k}\left(k=0,\cdots,m-1\right)$で書ける、ということであった。
+
+前回の``定理''では可逆行列$P$の存在を仮定していた。今回(～次回?)は、冪零の場合の``$P$''の存在を証明する。そこで、まずは、ベクトル空間(or線形(型)空間,
+vector space, Vect sp.)の復習をしておく。
+
+
+\paragraph{ベクトル空間}
+
+体$\boldsymbol{K}$上のベクトル空間$V$(正確な定義はテキスト及びプリントを見よ)を定義する。大雑把に言うと、「体$\boldsymbol{K}$」とは四則(加減乗除)が``うまく''できる集合、「ベクトル空間$V$」とは足し算($\boldsymbol{x}+\boldsymbol{y}$)や定数倍($k\boldsymbol{x}$)が``うまく''計算できる集合である。
+
+ベクトル空間$V$において重要な概念: 「基底(basis)」%
+\footnote{複数形: bases%
+}
+\begin{itemize}
+\item $\left\{ \boldsymbol{x}_{1},\cdots,\boldsymbol{x}_{n}\right\} $は一次独立
+\item 任意の$\boldsymbol{v}\in V$は\textbf{$\boldsymbol{v}=\sum a_{j}\boldsymbol{x}_{j}$}の形に書ける\textbf{。}
+\end{itemize}
+ここでは「有限次元」の場合を主に扱う。
+
+
+\paragraph{「基底」の使い道}
+
+$V$: 有限次元ベクトル空間(係数体は$\boldsymbol{C}$とする)($\mathrm{dim}V=n$)
+
+$\left\{ \boldsymbol{x}_{1},\cdots,\boldsymbol{x}_{n}\right\} $:
+$V$の基底
+
+この時、次のようにして、$V$から$\boldsymbol{C}^{n}$への写像が作れる。
+\[
+\varphi:\begin{array}{ccc}
+V & \longrightarrow & \boldsymbol{C}^{n}\\
+\in &  & \in\\
+\sum_{j=1}^{n}a_{j}\boldsymbol{x}_{j} & \mapsto & \left[\begin{array}{c}
+a_{1}\\
+a_{2}\\
+\vdots\\
+a_{n}
+\end{array}\right]
+\end{array}
+\]
+
+
+(ベクトル空間としての同型写像になっている)
+
+例: $\boldsymbol{C}\left[x\right]_{2}$: 2次以下の多項式の場合(変数$x$, 係数は$\boldsymbol{C}$)
+
+$\boldsymbol{C}\left[x\right]_{2}$の基底の一つ$\left\{ x^{2},x,1\right\} $、別の基底$\left\{ 1,x,x^{2}\right\} $
+
+基底$\left\{ x^{2},x,1\right\} $をとると、
+\[
+\varphi_{1}:\begin{array}{ccc}
+\boldsymbol{C}\left[x\right]_{2} & \longrightarrow & \boldsymbol{C}^{3}\\
+\in &  & \in\\
+ax^{2}+bx+c & \mapsto & \left[\begin{array}{c}
+a\\
+b\\
+c
+\end{array}\right]
+\end{array}
+\]
+
+
+別の基底$\left\{ 1,x,x^{2}\right\} $をとると、
+\[
+\varphi_{2}:\begin{array}{ccc}
+\boldsymbol{C}\left[x\right]_{2} & \longrightarrow & \boldsymbol{C}^{3}\\
+\in &  & \in\\
+ax^{2}+bx+c & \mapsto & \left[\begin{array}{c}
+c\\
+b\\
+a
+\end{array}\right]
+\end{array}
+\]
+というように、基底の取り方を変えると、対応が変わる。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mIV001}
+
+「基底」については次が重要である。
+\begin{itemize}
+\item 基底の存在定理(「選択公理(ariom of choice)」と同値)(``$\Leftarrow$''については、たとえば松坂「集合と位相」を参照)
+\item 基底の延長定理
+\end{itemize}
+
+\paragraph{次元定理}
+
+$U,V$: 有限次元(fin dim'l) vect sp. /$\boldsymbol{C}$
+
+$f$: $U\rightarrow V$線形
+
+$\ker f:=\left\{ \boldsymbol{x}\in U|f\left(\boldsymbol{x}\right)=\boldsymbol{O}\right\} \subseteq U$
+
+$\mathrm{Im}f:=\left\{ f\left(\boldsymbol{x}\right)|\boldsymbol{x}\in U\right\} \subseteq V$
+
+この時、
+\[
+\mathrm{dim}\mathrm{Im}f+\mathrm{dim}\mathrm{Im}f=\mathrm{dim}U
+\]
+
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mIV002}
+
+
+\paragraph{証明}
+
+$\mathrm{dim}U=m$, $\mathrm{Im}f=k\left(\leqq n\right)$とする。$\mathrm{Im}f$の基底$\left\{ f\left(\boldsymbol{x}_{1}\right),\cdots,f\left(\boldsymbol{x}_{k}\right)\right\} $をひとつ定める。
+
+Lemma 1. $\left\{ \boldsymbol{x}_{1},\cdots,\boldsymbol{x}_{k}\right\} $は一次独立
+
+$\because$$c_{1}\boldsymbol{x}_{1}+\cdots+c_{k}\boldsymbol{x}_{k}=\boldsymbol{O}$とすると、
+\[
+f\left(c_{1}\boldsymbol{x}_{1}+\cdots+c_{k}\boldsymbol{x}_{k}\right)=f\left(\boldsymbol{O}\right)=\boldsymbol{O}
+\]
+
+
+$f$の線形性より、
+\[
+f\left(c_{1}\boldsymbol{x}_{1}+\cdots+c_{k}\boldsymbol{x}_{k}\right)=c_{1}f\left(\boldsymbol{x}_{1}\right)+\cdots+c_{k}f\left(\boldsymbol{x}_{k}\right)\Rightarrow c_{j}=0\left(\forall_{j}\right)
+\]
+
+
+「延長定理」より、
+\[
+\left\{ \boldsymbol{x}_{1},\cdots,\boldsymbol{x}_{k},\boldsymbol{x}_{k+1},\cdots,\boldsymbol{x}_{n}\right\} 
+\]
+という$U$の基底が存在する。
+
+ただしこのままでは$\boldsymbol{x}_{k+1},\cdots,\boldsymbol{x}_{n}$は$\ker f$の元とは限らない。
+
+Lemma 2. $\left\{ \boldsymbol{x}_{1},\cdots,\boldsymbol{x}_{k}\right\} $は一次独立とする。
+
+\[
+f\left(x_{k+j}\right)\neq0\left(j=1,\cdots,n-k\text{のどれか}\right)
+\]
+であるとき、
+\[
+f\left(\boldsymbol{x}_{k+j}\right)=a_{1}f\left(\boldsymbol{x}_{1}\right)+\cdots+a_{k}f\left(\boldsymbol{x}_{k}\right)
+\]
+と表される。(さっきの$\mathrm{Im}f$の基底で展開した)
+
+この時、
+\[
+\tilde{\boldsymbol{x}}_{k+j}=\boldsymbol{x}_{k+j}-\left(a_{1}\mathbf{x}_{1}+\cdots+a_{k}\mathbf{x}_{k}\right)
+\]
+とすると、
+\[
+f\left(\tilde{\boldsymbol{x}}_{k+j}\right)=\boldsymbol{O}\left(\text{i.e. }\tilde{x}_{k+j}\in\ker f\right)
+\]
+
+
+この時、$\left\{ \boldsymbol{x}_{1},\cdots,\tilde{\mathbf{x}}_{k+j},\cdots,\boldsymbol{x}_{n}\right\} $は一次独立
+
+この操作を繰り返して、
+\[
+\left\{ \boldsymbol{x}_{1},\cdots,\boldsymbol{x}_{k},\underbrace{\tilde{\boldsymbol{x}}_{k+1},\cdots,\tilde{\boldsymbol{x}}_{n}}_{\ker f\text{の基底}}\right\} 
+\]
+という$U$の基底が作れる。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+前回: 「次元定理」(or「次元公式」)
+
+$U,V$: ベクトル空間
+
+$f:U\rightarrow V$: 線形写像
+
+とする、このとき
+\[
+\dim\left(\ker f\right)+\dim\left(\mathrm{Im}f\right)=\dim U
+\]
+\[
+\ker f=\left\{ \boldsymbol{x}\in U|f\left(\boldsymbol{x}\right)=\boldsymbol{O}_{V}\right\} \subseteq U
+\]
+\[
+\mathrm{Im}f=\left\{ f\left(\boldsymbol{x}\right)|\boldsymbol{x}\in U\right\} \subseteq V
+\]
+であった。これに対する証明のアイディアとして、%
+\framebox{\begin{minipage}[t]{1\columnwidth}%
+$\mathrm{Im}f$の基底を1組とる。→対応する$U$の部分集合を``延長'7して、$U$の基底を作る。→付け足したベクトルを少し``変形''して$\ker f$の元になるようにする。(プリントに詳述)%
+\end{minipage}}というものを導入した。
+
+付け足した元$\boldsymbol{x}_{k+1}$に対し、
+\[
+f\left(\boldsymbol{x}_{k+1}\right)\in\mathrm{Im}f
+\]
+であり、基底$\left\{ f\left(\boldsymbol{x}_{1}\right),\cdots,f\left(\boldsymbol{x}_{k}\right)\right\} $で展開できる。
+
+$f$の線形性を用いて、
+\begin{align*}
+f\left(\boldsymbol{x}_{k+1}\right) & =a_{a}f\left(\boldsymbol{x}_{1}\right)+\cdots+a_{k}f\left(\boldsymbol{x}_{k}\right)\\
+ & =f\left(a_{1}\boldsymbol{x}_{1}+\cdots+a_{k}\boldsymbol{x}_{k}\right)\\
+\Rightarrow f\left(\boldsymbol{x}_{k+1}-\left(a_{1}\boldsymbol{x}_{1}+\cdots+a_{k}\boldsymbol{x}_{k}\right)\right) & =0
+\end{align*}
+
+
+あとは、以下を示せば良い。$\boldsymbol{x}_{k+1}-\left(a_{1}\boldsymbol{x}_{1}+\cdots+a_{k}\boldsymbol{x}_{k}\right)=\tilde{\boldsymbol{x}}_{k+1}$とおいて、
+\begin{itemize}
+\item $\left\{ \boldsymbol{x}_{1},\cdots,\boldsymbol{x}_{k},\tilde{\boldsymbol{x}}_{k+1},\cdots,\tilde{\boldsymbol{x}}_{n}\right\} $は一次独立
+\item $U$の任意の元は$\left\{ \boldsymbol{x}_{1},\cdots,\boldsymbol{x}_{k},\tilde{\boldsymbol{x}}_{k+1},\cdots,\tilde{\boldsymbol{x}}_{n}\right\} $の一次結合で書ける(プリント補題2,3)
+\end{itemize}
+さらに、次が示せる。
+\begin{itemize}
+\item $\left\{ \tilde{\boldsymbol{x}}_{k+1},\cdots,\tilde{\boldsymbol{x}}_{n}\right\} $は一次独立
+\item $\ker f$の任意の元は$\left\{ \tilde{\boldsymbol{x}}_{k+1},\cdots,\tilde{\boldsymbol{x}}_{n}\right\} $の一次結合で書ける。
+\end{itemize}
+つまり、$\left\{ \tilde{\boldsymbol{x}}_{k+1},\cdots,\tilde{\boldsymbol{x}}_{n}\right\} $は$\ker f$の基底、つまり$\dim\ker f=n-k$
+
+(プリント訂正) 補題4の証明において
+
+$\boldsymbol{u}\in\ker f\subseteq U$は、$\left\{ \boldsymbol{x}_{1},\cdots,\boldsymbol{x}_{k},\tilde{\boldsymbol{x}}_{k+1},\cdots,\tilde{\boldsymbol{x}}_{n}\right\} $の一次結合で書ける。すなわち、
+\[
+\boldsymbol{u}=a_{1}\boldsymbol{x}_{1}+\cdots+a_{k}\boldsymbol{x}_{k}+\underbrace{a_{k+1}\tilde{\boldsymbol{x}}_{k+1}+\cdots+a_{n}\tilde{\boldsymbol{x}}_{n}}_{\ker f\text{の元}}
+\]
+となる$a_{1}\sim a_{n}$が存在する。
+
+これを$f$で移すと、
+\[
+f\left(\boldsymbol{u}\right)=a_{1}f\left(\boldsymbol{x}_{1}\right)+\cdots+a_{k}f\left(\boldsymbol{x}_{k}\right)
+\]
+
+
+よって
+\[
+f\left(\boldsymbol{u}\right)=\boldsymbol{O}\Leftrightarrow a_{1}=a_{2}=\cdots=a_{k}=\sigma
+\]
+
+
+証明終
+
+今の照明のアイデアを使うと、次が示せる。
+
+
+\paragraph{定理}
+
+$W$: 有限次元ベクトル空間
+
+$N$: $W\rightarrow W$, 線形, \textbf{冪零}(すなわち、$\exists m\in\boldsymbol{N}\mathrm{s.t.}\: N^{m}\left(w\right)=\left\{ \boldsymbol{O}\right\} ,N^{m-1}\neq\left|\boldsymbol{O}\right|$
+)
+
+このとき、$W$の基底で、``ジョルダン鎖''の形に繋がっているものが存在する。
+
+\framebox{\begin{minipage}[t]{1\columnwidth}%
+\textbf{証明のアイデア}
+
+さきほどの「次元定理」の証明でやったことを繰り返す。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mIV003}
+
+最後の3つだけ書くと
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mIV004}
+
+$\mathrm{Im}\left(N^{m-1}\right)$の基底を1組とる→対応する$\mathrm{Im}\left(N^{m-2}\right)$の元をとって、そこにベクトルを付け足して$\mathrm{Im}\left(N^{m-2}\right)$の規定を作る。ただし、付け足すベクトルは$\ker\left(N\right)$のげんになるように選ぶ。(かならずできる)%
+\end{minipage}}
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+前回の小テスト
+
+
+\paragraph{問題1}
+
+\[
+A=\left[\begin{array}{cccc}
+-1 & 1 & 0 & 1\\
+-9 & 5 & 0 & 3\\
+-3 & 1 & 2 & 1\\
+0 & 0 & 0 & 2
+\end{array}\right]
+\]
+
+
+(1) 固有多項式
+
+\begin{align*}
+\Phi_{A}\left(x\right) & =\det\left(xE-A\right)\\
+ & =\left|\begin{array}{cccc}
+x+1 & -1 & 0 & -1\\
+9 & x-5 & 0 & -3\\
+3 & -1 & x-2 & -1\\
+0 & 0 & 0 & x-2
+\end{array}\right|\\
+ & =\left(x-2\right)^{4}
+\end{align*}
+
+
+(2) 固有値は2のみ
+
+\[
+A-2E=\left[\begin{array}{cccc}
+-3 & 1 & 0 & 1\\
+-9 & 3 & 0 & 3\\
+-3 & 1 & 0 & 1\\
+0 & 0 & 0 & 0
+\end{array}\right]
+\]
+より$\mathrm{rank}\left(A-2E\right)=1$、よって$\mathrm{dim}\mathrm{ker}\left(A-2E\right)=4-1=3$
+
+\[
+A-2E\left[\begin{array}{c}
+x\\
+y\\
+z\\
+w
+\end{array}\right]=0\Leftrightarrow-3x+y+w=0
+\]
+
+
+よって、
+\[
+\left[\begin{array}{c}
+x\\
+y\\
+z\\
+w
+\end{array}\right]=\left[\begin{array}{c}
+x\\
+y\\
+z\\
+3x-y
+\end{array}\right]=x\left[\begin{array}{c}
+1\\
+0\\
+0\\
+3
+\end{array}\right]+y\left[\begin{array}{c}
+0\\
+1\\
+0\\
+-1
+\end{array}\right]+z\left[\begin{array}{c}
+0\\
+0\\
+1\\
+0
+\end{array}\right]
+\]
+(たとえば)これらが基底となる。
+
+(3) JNFは$\left[\begin{array}{cccc}
+2 & 1\\
+ & 2\\
+ &  & 2\\
+ &  &  & 2
+\end{array}\right]$となる。変換行列を求めるには``ジョルダン基底''が必要となるが、今の場合は、$A-2E\neq0,\left(A-2E\right)^{2}=0$、しかも$\mathrm{Im}\left(A-2E\right)$の基底が$\left[\begin{array}{c}
+1\\
+3\\
+1\\
+0
+\end{array}\right]$であることはすぐわかる。
+
+\begin{align*}
+\left[\begin{array}{c}
+0\\
+1\\
+0\\
+0
+\end{array}\right]\xrightarrow{A-2E}\left[\begin{array}{c}
+1\\
+3\\
+1\\
+0
+\end{array}\right]\xrightarrow{A-2E} & \boldsymbol{O}\\
+\left[\begin{array}{c}
+0\\
+1\\
+0\\
+-1
+\end{array}\right]\xrightarrow{A-2E} & \boldsymbol{O}\\
+\left[\begin{array}{c}
+0\\
+0\\
+1\\
+0
+\end{array}\right]\xrightarrow{A-2E} & \boldsymbol{O}
+\end{align*}
+より(例えば)
+\[
+P=\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+3 & 1 & 1 & 0\\
+1 & 0 & 0 & 1\\
+0 & 0 & -1 & 0
+\end{array}\right]
+\]
+
+
+
+\paragraph{問題2}
+
+(1) $A\boldsymbol{x}=\lambda\boldsymbol{x},\boldsymbol{x}\neq0$とする→$A^{n}\boldsymbol{x}=\lambda^{n}\boldsymbol{x}$
+
+$A$は冪零なので、
+\[
+A^{n}=O
+\]
+なる$n$が存在。このとき$\boldsymbol{x}\neq\boldsymbol{O}$より、$\lambda^{n}=0$。$\therefore\lambda=0$
+
+(2)
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mIV005}
+
+(3) 与えられた3条件でJNFは1つに決まるか?
+
+\[
+P_{1}^{-1}AP_{1}=J=P_{2}^{-1}BP_{2}\Rightarrow\underbrace{P_{2}P_{1}^{-1}}_{\text{問題文の}P^{-1}}A\underbrace{P_{1}P_{2}^{-1}}_{P}=B
+\]
+
+
+これは実は正しくない。$\left(n=4\right)$では正しい。
+
+反例
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mIV006}
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+前回までで、冪零行列に対しては、
+\begin{itemize}
+\item JNFを与える基底の存在 
+\item JNFの(ある意味での)一意性
+\end{itemize}
+を証明した。
+
+より一般の$A$で証明のアイデアは「\textbf{一般固有空間への直和分解}」である。
+
+今回はここに使う概念をまとめておく。
+
+
+\paragraph{表現行列}
+
+$U,V$: $\mathbb{C}$上有限次元ベクトル空間
+
+$f$: $U\rightarrow V$: $\mathbb{C}$上線形写像
+
+$U$の基底$\left\{ \boldsymbol{e}_{1},\cdots,\boldsymbol{e}_{m}\right\} \left(m=\mathrm{dim}U\right)$
+
+$V$の基底$\left\{ \boldsymbol{f}_{1},\cdots,\boldsymbol{f}_{n}\right\} \left(n=\mathrm{dim}V\right)$
+
+$\varphi_{U}$: $\begin{array}{ccc}
+U & \longrightarrow & \boldsymbol{C}^{m}\\
+\in &  & \in\\
+\sum_{i=1}^{m}x_{i}\boldsymbol{e}_{i} & \mapsto & \left[\begin{array}{c}
+x_{1}\\
+x_{2}\\
+\vdots\\
+x_{m}
+\end{array}\right]
+\end{array}$
+
+$\varphi_{V}$: $\begin{array}{ccc}
+V & \longrightarrow & \boldsymbol{C}^{n}\\
+\in &  & \in\\
+\sum_{j=1}^{n}y_{j}f_{j} & \mapsto & \left[\begin{array}{c}
+y_{1}\\
+y_{2}\\
+\vdots\\
+y_{n}
+\end{array}\right]
+\end{array}$
+
+このとき、次の図式が可換となるような行列$A$が存在する。
+
+\begin{align*}
+U & \xrightarrow{f} & V\\
+\varphi_{U}\downarrow &  & \downarrow\varphi_{V}\\
+\mathbb{C}^{m} & \xrightarrow[\text{(左から)}A\text{をかける}]{} & \mathbb{C}^{n}
+\end{align*}
+
+
+($\varphi_{V}\circ f=A\circ\varphi_{U}$)
+
+\framebox{\begin{minipage}[t]{1\columnwidth}%
+$A$は、$n$行$m$列である。%
+\end{minipage}}
+
+
+\paragraph{例}
+
+$U=\mathbb{C}\left[x\right]_{2}$($\mathbb{C}$係数2次以下の多項式)
+
+$V=\mathbb{C}\left[x\right]_{1}$($\mathbb{C}$係数1次以下の多項式)
+
+$U$の基底として、$\left\{ x^{2},x,1\right\} $、$V$の基底として、$\left\{ x,1\right\} $をとる。
+
+線形写像$f$として、
+\[
+\frac{\mathrm{d}}{\mathrm{d}x}:\:\begin{array}{ccc}
+U & \longrightarrow & V\\
+\in &  & \in\\
+f\left(x\right) & \mapsto & \frac{\mathrm{d}f\left(x\right)}{\mathrm{d}x}
+\end{array}
+\]
+
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mIV007}
+
+
+\paragraph{不変部分空間}
+
+$V$: $\mathbb{C}$乗のベクトル空間、$\mathrm{dim}V=n\left(<+\infty\right)$
+
+$T$: $V\rightarrow V$: 線形変換
+
+$W$: $V$の部分(ベクトル)空間
+
+$T\left(W\right)\subseteq W$、すなわち、$\forall\boldsymbol{x}\in W,T\left(x\right)\in W$であるとき、$W$は``T-不変''であるという。
+
+
+\paragraph{線形変換の不変部分空間への\uline{制限}}
+
+$V\supseteq W$がT-不変部分空間のとき、$T$の定義域を$W$に制限できる。これを$T|_{W}$と表す。($T$の$W$への制限)
+
+練習問題
+
+$W=\left\{ \left[\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right]\in\mathbb{R}^{3}|x+y+z=0\right\} $
+
+$T$: $\left[\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right]\mapsto\left[\begin{array}{c}
+y\\
+z\\
+x
+\end{array}\right]$
+
+(1) $W$はT-不変であることを示せ
+
+(2) $W$の基底を一つ定め、それに冠する$T|_{W}$の表現行列を求めよ。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+前回: 用語の確認
+\begin{itemize}
+\item 線形写像の表現行列
+\item 線形写像に対応する不変部分空間
+\item 線形写像の不変部分空間への制限
+\end{itemize}
+例: $ $$W=\left\{ \left[\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right]\in\mathbb{R}^{3}|x+y+z=0\right\} $ $T$: $\left[\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right]\mapsto\left[\begin{array}{c}
+y\\
+z\\
+x
+\end{array}\right]=\left(\begin{array}{ccc}
+0 & 1 & 0\\
+0 & 0 & 1\\
+1 & 0 & 0
+\end{array}\right)\left(\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right)$
+
+今回は、$W$の基底として、$\left\{ \boldsymbol{a}=\left(\begin{array}{c}
+1\\
+-1\\
+0
+\end{array}\right),\boldsymbol{b}=\left(\begin{array}{c}
+1\\
+0\\
+-1
+\end{array}\right)\right\} $を選ぶ。
+
+\[
+T|_{W}:\: W=\left\{ x\left(\begin{array}{c}
+1\\
+-1\\
+0
+\end{array}\right)+y\left(\begin{array}{c}
+1\\
+0\\
+-1
+\end{array}\right)\right\} \mapsto\left\{ \left(\begin{array}{c}
+-x\\
+-y\\
+x+y
+\end{array}\right)=y\left(\begin{array}{c}
+1\\
+-1\\
+0
+\end{array}\right)+\left(-x-y\right)\left(\begin{array}{c}
+1\\
+0\\
+-1
+\end{array}\right)\right\} 
+\]
+\[
+T|_{W}:\:\left\{ \left(\begin{array}{c}
+x\\
+y
+\end{array}\right)\right\} \mapsto\left\{ \left(\begin{array}{c}
+y\\
+-x-y
+\end{array}\right)=\left(\begin{array}{cc}
+0 & 1\\
+-1 & -1
+\end{array}\right)\left(\begin{array}{c}
+x\\
+y
+\end{array}\right)\right\} 
+\]
+
+
+今の$W$の基底に例えば$\left(\begin{array}{c}
+0\\
+0\\
+1
+\end{array}\right)$を付け足して、$\left\{ \boldsymbol{a}=\left(\begin{array}{c}
+1\\
+-1\\
+0
+\end{array}\right),\boldsymbol{b}=\left(\begin{array}{c}
+1\\
+0\\
+-1
+\end{array}\right),\boldsymbol{c}=\left(\begin{array}{c}
+0\\
+0\\
+1
+\end{array}\right)\right\} $とすると、$\mathbb{R}^{3}$全体の基底
+
+この$\left\{ \boldsymbol{a},\boldsymbol{b},\boldsymbol{c}\right\} $についての$T$の表現行列
+
+\[
+x\left(\begin{array}{c}
+1\\
+-1\\
+0
+\end{array}\right)+y\left(\begin{array}{c}
+1\\
+0\\
+-1
+\end{array}\right)+z\left(\begin{array}{c}
+0\\
+0\\
+1
+\end{array}\right)\xrightarrow{T}\left(\begin{array}{c}
+-x\\
+-y+z\\
+x+y
+\end{array}\right)=\left(y-z\right)\left(\begin{array}{c}
+1\\
+-1\\
+0
+\end{array}\right)+\left(-x-y+z\right)\left(\begin{array}{c}
+1\\
+0\\
+-1
+\end{array}\right)+z\left(\begin{array}{c}
+0\\
+0\\
+1
+\end{array}\right)
+\]
+
+
+写像$\tilde{\varphi}$により
+\[
+\left(\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right)\xrightarrow{T}\left(\begin{array}{c}
+y-z\\
+-x-y+z\\
+z
+\end{array}\right)=\left(\begin{array}{ccc}
+0 & 1 & -1\\
+-1 & -1 & 1\\
+0 & 0 & 1
+\end{array}\right)\left(\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right)
+\]
+と変換される。今の場合、$T$の作用を見ると、
+\[
+\mathbb{R}^{3}=W\underbrace{+}_{\text{和空間}}\mathbb{R}\left(\begin{array}{c}
+0\\
+0\\
+1
+\end{array}\right)
+\]
+において、(和空間はプリント参照)
+\begin{itemize}
+\item $T\left(W\right)\subseteq W$(はみでない)
+\item $T\left(\left(\begin{array}{c}
+0\\
+0\\
+1
+\end{array}\right)\right)\notin\mathbb{R}\left(\begin{array}{c}
+0\\
+0\\
+1
+\end{array}\right)$
+\end{itemize}
+``うまく''部分空間をとって、
+\[
+\mathbb{R}^{3}=W_{1}+W_{2}
+\]
+かつ、$\begin{cases}
+T\left(W_{1}\right)\subseteq W_{1}\\
+T\left(W_{2}\right)\subseteq W_{2}
+\end{cases}$とできるとうれしい。
+
+このとき、基底を``うまく''とれば、表現行列を
+\[
+\left[\begin{array}{cc}
+T|_{W_{1}} & O\\
+O & T|_{W_{2}}
+\end{array}\right]
+\]
+という形にできる。
+
+こうなる条件が、
+\[
+W_{1}+W_{2}=W_{1}\underbrace{\oplus}_{\text{直和}}W_{2}
+\]
+
+
+
+\paragraph{Def. \& Prop.}
+
+$V$: ベクトル空間
+
+$W_{1},W_{2}$: $V$の部分空間
+
+この時、
+\begin{align*}
+ & W_{1}+W_{2}=W_{1}\oplus W_{2}\\
+\Leftrightarrow & \text{(i)}\forall\boldsymbol{x}\in W_{1}+W_{2}\exists1\boldsymbol{x}_{1}\in W_{1}\exists1\boldsymbol{x}_{2}\in W_{2},\text{s.t. }\boldsymbol{x}=\boldsymbol{x}_{1}+\boldsymbol{x}_{2}\\
+\Leftrightarrow & \text{(ii)}W_{1}\cap W_{2}=\left\{ \boldsymbol{O}\right\} 
+\end{align*}
+
+
+($\exists1$は``一意的に存在''の意)
+
+(証明) (i)⇒(ii)
+
+$\boldsymbol{u}\in W_{1}\cap W_{2}$かつ$\boldsymbol{u}\neq\boldsymbol{O}$なる$\boldsymbol{u}$があると仮定。
+
+このとき、$\boldsymbol{x}_{1}\in W_{1},\boldsymbol{x}_{2}\in W_{2}$に対して、
+\[
+\boldsymbol{x}_{1}+\boldsymbol{x}_{2}=\left(\boldsymbol{x}_{1}-\boldsymbol{u}\right)+\left(\boldsymbol{x}_{2}+\boldsymbol{u}\right)
+\]
+これは一意性に反する
+
+(ii)⇒(i)
+
+分解が一意でないと仮定する。つまり、$\boldsymbol{x}_{1},\tilde{\boldsymbol{x}}_{1}\in W_{1},\boldsymbol{x}_{2},\tilde{\boldsymbol{x}}_{2}\in W_{2}$に対し、
+\[
+\boldsymbol{x}_{1}+\boldsymbol{x}_{2}=\tilde{\boldsymbol{x}}_{1}+\tilde{\boldsymbol{x}}_{2}\left(\boldsymbol{x}_{1}\neq\tilde{\boldsymbol{x}}_{1},\boldsymbol{x}_{2}\neq\tilde{\boldsymbol{x}}_{2}\right)
+\]
+とする。この時、以下略
+
+此処から先は、次を証明するのが目標。
+
+$V$: ベクトル空間$\left(/\mathbb{C}\right)$
+
+$T$: $V$の線形変換
+
+$\left\{ \beta_{1},\cdots,\beta_{p}\right\} $: $T$の相異なる固有値全体
+
+$W\left(\beta_{j}\right)$: 固有値$\beta_{j}$に対する一般固有空間
+
+この時、
+\begin{align*}
+V & =\oplus_{j=1}^{p}W\left(\beta_{j}\right)\\
+ & =W\left(\beta_{1}\right)\oplus W\left(\beta_{2}\right)\oplus\cdots\oplus W\left(\beta_{p}\right)
+\end{align*}
+
+
+
+\paragraph{一般固有空間の定義(復習)}
+
+$\alpha$を$T$の固有値として、
+\[
+W\left(\alpha\right)=\left\{ \boldsymbol{x}\in V|\exists m\in\mathbb{N},\text{s.t.}\left(T-\alpha\underbrace{I}_{\text{(Vの)恒等変換}}\right)^{m}\boldsymbol{x}=\boldsymbol{O}\right\} 
+\]
+
+
+さらに、$W\left(\alpha\right)$の部分空間$W_{k}\left(\alpha\right)$を次で定めておく。
+\[
+W_{k}\left(\alpha\right)=\left\{ \boldsymbol{x}\in V|\left(T-\alpha I\right)^{k}\boldsymbol{x}=\boldsymbol{O}\right\} 
+\]
+
+
+$V=\oplus_{j=1}^{p}W\left(\beta_{j}\right)$を示すために、まずは一般固有空間の性質を調べておく。
+
+{[}性質1{]} $W\left(\alpha\right)$は部分空間
+
+$\because$足し算、スカラー倍について閉じていることを示せば良い。
+
+足し算については、
+\[
+\begin{cases}
+\boldsymbol{x}\in W\left(\alpha\right)\Rightarrow\exists m\in\mathbb{N},\text{s.t.}\left(T-\alpha I\right)^{m}\boldsymbol{x}=\boldsymbol{O}\\
+\boldsymbol{y}\in W\left(\alpha\right)\Rightarrow\exists n\in\mathbb{N},\text{s.t.}\left(T-\alpha I\right)^{n}\boldsymbol{y}=\boldsymbol{O}
+\end{cases}
+\]
+
+
+このとき、
+\[
+\left(T-\alpha I\right)^{m+n}\left(\boldsymbol{x}+\boldsymbol{y}\right)=\boldsymbol{O}
+\]
+より、$\boldsymbol{x}+\boldsymbol{y}=W\left(\alpha\right)$
+
+スカラー倍については略
+
+{[}性質2{]} $W\left(\alpha\right)$はT-不変部分空間
+
+$\because$$\boldsymbol{x}\in W\left(\alpha\right)$に対し、$T\left(\boldsymbol{x}\right)\in W\left(\alpha\right)$を言えば良い。
+
+\begin{eqnarray*}
+\exists m\in\mathbb{N},\text{s.t.}\left(T-\alpha I\right)^{m}\boldsymbol{x}=\boldsymbol{O} & \Rightarrow & T\left(T-\alpha I\right)^{m}\boldsymbol{x}=T\left(\boldsymbol{O}\right)=\boldsymbol{O}\\
+ & \Leftrightarrow & \left(T-\alpha I\right)^{m}\left(T\boldsymbol{x}\right)=\boldsymbol{O}
+\end{eqnarray*}
+
+
+{[}性質3{]} $\alpha\neq\beta$なら、$W\left(\alpha\right)\cap W\left(\beta\right)=\left\{ \boldsymbol{O}\right\} $
+
+$\boldsymbol{x}\in W\left(\alpha\right),\boldsymbol{x}\in W\left(\beta\right),\boldsymbol{x}\neq\boldsymbol{O}$なる$\boldsymbol{x}$が存在したと仮定
+
+→$\exists m\text{s.t.}\left(T-\alpha T\right)^{m}\boldsymbol{x}=\boldsymbol{O}$かつ$\left(T-\alpha I\right)^{m-1}\boldsymbol{x}\neq\boldsymbol{O}$
+
+このとき、$\boldsymbol{y}=\left(T-\alpha I\right)^{m-1}\boldsymbol{x}$と置くと、
+\[
+T\boldsymbol{y}=\alpha\boldsymbol{y},\boldsymbol{y}\neq\boldsymbol{O}
+\]
+となる。(これをうまく使えば、$\alpha=\beta$と矛盾することになる)
+
+{[}性質4{]} $T$の$W\left(\alpha\right)$への制限$T|_{W\left(\alpha\right)}$の固有値は$\alpha$のみ
+
+{[}性質5{]} 固有値$\alpha$に対して、ある自然数$m$が存在し、
+\[
+W_{1}\left(\alpha\right)\subsetneqq W_{2}\left(\alpha\right)\subsetneqq\cdots\subsetneqq W_{m}\left(\alpha\right)=W_{m+1}\left(\alpha\right)=\cdots=W\left(\alpha\right)
+\]
+
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+前回 一般固有空間での直和分解
+
+$V$: ベクトル空間$/\mathbb{C},\mathrm{dim}<+\infty$
+
+$T$: $V$の線形変換($V$から$V$の線形写像)
+
+$\left\{ \beta_{1},\cdots,\beta_{p}\right\} $: $T$の相異なる固有値全体
+
+$W\left(\alpha\right)$: 固有値$\alpha$に対する一般固有空間
+
+このとき、
+\[
+V=\oplus_{j=1}^{p}W\left(\beta_{j}\right)=W\left(\beta_{1}\right)\oplus W\left(\beta_{2}\right)\oplus\cdots\oplus W\left(\beta_{p}\right)
+\]
+
+
+これを使うと、$V$全体でのジョルダン基底の存在・一意性が言える。(6/23プリントの定理2, 6/30プリントの定理4)
+
+
+\paragraph{ストーリー}
+
+\[
+N_{j}:=\left.\left(T-\beta_{j}\underbrace{I}_{\text{恒等変換}}\right)\right|_{W\left(\beta_{j}\right)}
+\]
+とおくと、この$N_{j}$は冪零。
+
+※$T-\beta_{j}I$は冪零でない。
+
+冪零性より、ジョルダン基底が存在し、しかも対応するJNFは``一意''。
+
+こうして作った各$W\left(\beta_{j}\right)$でのジョルダン基底を並べれば、$V$全体の基底となる。
+
+
+\paragraph{ケーリーハミルトンの定理}
+
+$2\times2$の場合(高校の復習)
+
+\[
+A=\left[\begin{array}{cc}
+a & b\\
+c & d
+\end{array}\right]\Rightarrow A^{2}-\left(a+b\right)A+\left(ad-bc\right)E=O
+\]
+
+
+一般の$n\times n$において、固有多項式$\Phi_{A}\left(x\right)=\det\left(xE-A\right)$に対して、$\Phi_{A}\left(A\right)=O$が成立。
+
+ここでは、「JNFの基本定理」を使った証明を紹介する。
+
+
+\paragraph{Prop}
+
+$A$: $\mathbb{C}$成分、$n\times n$病列
+
+$\left\{ \beta_{1},\cdots\beta_{p}\right\} $: $A$の固有値
+
+\begin{align*}
+\Phi_{A}\left(x\right) & =\det\left(xE-A\right)\\
+ & =\left(x-\beta_{1}\right)^{n_{1}}\left(x-\beta_{2}\right)^{n_{2}}\cdots\left(x-\beta_{p}\right)^{n_{p}}
+\end{align*}
+となるとき、
+\[
+n_{j}=\dim W\left(\beta_{j}\right)
+\]
+
+
+$\because$$n_{j}':=\dim W\left(\beta_{j}\right)$とおき、$n_{j}=n_{j}'$を示す。$A$に対応するJNFを考えて、
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mIV008}
+
+このとき、
+\begin{align*}
+\Phi_{A}\left(x\right) & =\det\left(xE-A\right)=\det\left(P\left(xE-J_{A}\right)P^{-1}\right)\\
+ & =\det\left(xE-J_{A}\right)=\left(x-\beta_{1}\right)^{n_{1}'}\left(x-\beta_{2}\right)^{n_{2}'}\cdots\left(x-\beta_{p}\right)^{n_{p}'}
+\end{align*}
+
+
+よって、$n_{j}=n_{j}'\left(j=1,2,\cdots,p\right)$
+
+この$\Phi_{A}\left(x\right)$が、$A$の最小多項式$\varphi_{A}\left(x\right)$($f\left(A\right)=O$となる最小次数の(monic)多項式)で割り切れることを示したい。
+
+Prop プリント定理5 $\varphi_{A}\left(x\right)$は、{[}性質5{]}の``$m$''を用いて表される。
+\[
+\varphi_{A}\left(x\right)=\left(x-\beta_{1}\right)^{m_{1}}\left(x-\beta_{2}\right)^{m_{2}}\cdots\left(x-\beta_{p}\right)^{m_{p}}
+\]
+
+
+上で$m_{j}$は、$W\left(\beta_{j}\right)=\ker\left[\left(A-\beta_{j}E\right)^{m_{j}}\right]$となる最小の自然数。(性質5の``$m$'')
+
+示すべきことは二つ。
+\begin{itemize}
+\item 上の$\varphi_{A}\left(x\right)$に対し、$\varphi_{A}\left(A\right)=O$となること
+\item $f\left(A\right)=O$となる$f\left(x\right)$は、$\varphi_{A}\left(x\right)$で割り切れること。
+\end{itemize}
+前者に対し、$\boldsymbol{x}\left(\in V=\mathbb{C}^{n}\right)$に対して、
+\[
+\boldsymbol{x}=\boldsymbol{x}_{1}+\boldsymbol{x}_{2}+\cdots+\boldsymbol{x}_{p}
+\]
+と(一意的に)書ける。
+
+それぞれの$\boldsymbol{x}_{j}$は$\left(A-\beta_{j}E\right)^{m_{j}}$で消える。
+
+後者に対し、$f\left(A\right)=O$なら、$\left(x-\beta_{1}\right)^{m_{1}}$で割り切れることを示す。
+
+$m_{1}$の定義より、$\exists\boldsymbol{u}\in W\left(\beta_{1}\right)$s.t.
+\[
+\boldsymbol{u}\neq0,\left(A-\beta_{1}E\right)\boldsymbol{u}\neq0,\cdots,\left(A-\beta_{1}E\right)^{m_{1}-1}\boldsymbol{u}\neq0,\left(A-\beta_{1}E\right)^{m_{1}}\boldsymbol{u}=0
+\]
+
+
+また、以前に示したように、$\left\{ \boldsymbol{u},\left(A-\beta_{1}E\right)\boldsymbol{u},\cdots,\left(A-\beta_{1}E\right)^{m_{1}-1}\boldsymbol{u}\right\} $は独立。このことを使う。
+
+ここでは$\deg f\left(x\right)\geqq\deg\varphi_{A}\left(x\right)$とする。
+
+$f\left(x\right)$を$x-\beta_{1}$で展開して、
+\begin{align*}
+f\left(x\right) & =c_{0}+c_{1}\left(x-\beta_{1}\right)+c_{2}\left(x-\beta_{1}\right)^{2}+\cdots+c_{m_{1}-1}\left(x-\beta_{1}\right)^{m_{1}-1}+c_{m_{1}}\left(x-\beta_{1}\right)^{m_{1}}+\cdots\\
+\Rightarrow f\left(A\right) & =c_{0}E+c_{1}\left(A-\beta_{1}E\right)+\cdots+c_{m_{1}-1}\left(A-\beta_{1}E\right)^{m_{1}-1}+c_{m_{1}}\left(A-\beta_{1}E\right)^{m_{1}}+\cdots
+\end{align*}
+$f\left(A\right)=0$と仮定より、先ほどの$\boldsymbol{u}$に作用させて、
+\begin{align*}
+ & \boldsymbol{O}=c_{0}\boldsymbol{u}+c_{1}\left(A-\beta_{1}E\right)\boldsymbol{u}+\cdots+c_{m_{1}-1}\left(A-\beta_{1}E\right)^{m_{1}-1}\boldsymbol{u}\\
+\Rightarrow & c_{0}=c_{1}=\cdots=c_{m_{1}-1}=O
+\end{align*}
+
+
+よって、$f\left(x\right)$は、$\left(x-\beta_{1}\right)^{m_{1}}$で割り切れる。
+
+以上の準備のもとで、次が示される。
+
+定理 プリント系2 $\Phi_{A}\left(x\right)$は$\varphi_{A}\left(x\right)$で割り切れる。
+
+\[
+\Phi_{A}\left(x\right)=\left(x-\beta_{1}\right)^{n_{1}}\left(x-\beta_{2}\right)^{n_{2}}\cdots\left(x-\beta_{p}\right)^{n_{p}}
+\]
+\[
+\varphi_{A}\left(x\right)=\left(x-\beta_{1}\right)^{m}\left(x-\beta_{2}\right)^{m_{2}}\cdots\left(x-\beta_{p}\right)^{m_{p}}
+\]
+
+
+$m_{j}$のdefより、先ほどの$\boldsymbol{u}$に対し、
+\[
+\mathrm{Span}_{\mathbb{C}}\left\{ \boldsymbol{u},\left(A-\beta_{1}E\right)\boldsymbol{u},\cdots,\left(A-\beta_{1}E\right)^{m_{1}-1}\boldsymbol{u}\right\} 
+\]
+は、$m_{1}$次元の$W\left(\beta_{j}\right)$の部分空間。
+
+よって、$m_{1}\leqq n_{1}$。他の$W\left(\beta_{j}\right)$でも同様。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+前回: ケーリーハミルトンの定理
+
+$A$: $\mathbb{C}$成分$n$次正方行列
+
+$\Phi_{A}\left(x\right):=\det\left(xE-A\right)$: $n$次固有多項式
+
+$\varphi_{A}\left(x\right)$: 最小多項式($A$を``代入''して0になる最小時数、monicな多項式)
+
+前回示した定理: $\varphi_{A}\left(x\right)$は$\Phi_{A}\left(x\right)$を割り切る。``$\varphi_{A}\left(x\right)|\Phi_{A}\left(x\right)$''
+
+その系: $\Phi_{A}\left(A\right)=O$(ケーリーハミルトンの定理)
+
+このとき、正方行列$A$に対して$\Phi_{A}\left(x\right),\varphi_{A}\left(x\right)$は計算できるが、$\Phi_{A}\left(x\right),\varphi_{A}\left(x\right)$に対して正方行列$A$は一意でない。さらに、$A$のJNFに対して$\Phi_{A}\left(x\right),\varphi_{A}\left(x\right)$は計算できるが、$\Phi_{A}\left(x\right),\varphi_{A}\left(x\right)$に対して$A$のJNFは一意ではない。
+
+一意にするには、「単因子」を考えて、
+\[
+\Phi_{A}\left(x\right)\xleftarrow[\text{割り切る}]{}\sim\xleftarrow[\text{割り切る}]{}\sim\xleftarrow[\text{割り切る}]{}\sim\xleftarrow[\text{割り切る}]{}\sim\xleftarrow[\text{割り切る}]{}\varphi_{A}\left(x\right)
+\]
+というような多項式列をつくる。
+
+正方行列$A$→他行k式行列$B\left(x\right):=A-xE$
+
+この
+\[
+B\left(x\right)\xrightarrow[\text{行基本変形・列基本変形}]{}\left[\begin{array}{ccccccc}
+d_{1}\left(x\right) & \searrow^{\text{割り切る}}\\
+ & d_{2}\left(x\right) & \searrow^{\text{割り切る}}\\
+ &  & \ddots\\
+ &  &  & d_{r}\left(x\right)=\varphi_{A}\left(x\right)\\
+ &  &  &  & 0\\
+ &  &  &  &  & \ddots\\
+ &  &  &  &  &  & 0
+\end{array}\right]
+\]
+
+
+である。ただし、多項式で割る変形操作は行ってはいけない。
+
+\[
+r=\mathrm{rank}\left(B\left(x\right)\right)
+\]
+
+
+この
+\[
+d_{1}\left(x\right)\cdots d_{r}\left(x\right)
+\]
+が単因子である。
+
+$3\times3$での例
+
+\[
+A=\left[\begin{array}{ccc}
+1\\
+ & 1\\
+ &  & 1
+\end{array}\right]\left(=E\right)\Rightarrow B\left(x\right)=\left[\begin{array}{ccc}
+1-x\\
+ & 1-x\\
+ &  & 1-x
+\end{array}\right]\xrightarrow[\text{各行}\left(-1\right)\text{倍}]{}\left[\begin{array}{ccc}
+x-1 & \curvearrowright^{\text{割り切る}}\\
+ & x-1 & \curvearrowright\\
+ &  & x-1
+\end{array}\right]
+\]
+
+
+別の例
+
+\begin{align*}
+A=\left[\begin{array}{ccc}
+1 & 1\\
+ & 1\\
+ &  & 1
+\end{array}\right]\Rightarrow B\left(x\right) & =\left[\begin{array}{ccc}
+1-x & 1\\
+ & 1-x\\
+ &  & 1-x
+\end{array}\right]\\
+ & \rightarrow\left[\begin{array}{ccc}
+1 & 1-x & 0\\
+1-x & 0 & 0\\
+0 & 0 & 1-x
+\end{array}\right]\\
+ & \xrightarrow[\text{掃き出し}]{}\left[\begin{array}{ccc}
+1 & 1-x & 0\\
+0 & -\left(1-x\right)^{2} & 0\\
+0 & 0 & 1-x
+\end{array}\right]\\
+ & \rightarrow\left[\begin{array}{ccc}
+1 & 0 & 0\\
+0 & \left(x-1\right)^{2} & 0\\
+0 & 0 & x-1
+\end{array}\right]\\
+ & \xrightarrow[\text{並べ替え}]{}\left[\begin{array}{ccc}
+1\\
+ & x-1\\
+ &  & \left(x-1\right)^{2}
+\end{array}\right]
+\end{align*}
+
+
+同様にして$\left[\begin{array}{ccc}
+1 & 1\\
+ & 1\\
+ &  & 1
+\end{array}\right]$に対して
+
+\[
+\begin{cases}
+d_{1}\left(x\right)=1\\
+d_{2}\left(x\right)=1\\
+d_{3}\left(x\right)=\left(x-1\right)^{3}
+\end{cases}
+\]
+$\left[\begin{array}{ccc}
+1 & 1\\
+ & 1\\
+ &  & 1
+\end{array}\right]$に対して
+
+\[
+\begin{cases}
+d_{1}\left(x\right)=1\\
+d_{2}\left(x\right)=x-1\\
+d_{3}\left(x\right)=\left(x-1\right)^{2}
+\end{cases}
+\]
+$\left[\begin{array}{ccc}
+1\\
+ & 1\\
+ &  & 1
+\end{array}\right]$に対して
+
+\[
+\begin{cases}
+d_{1}\left(x\right)=x-1\\
+d_{2}\left(x\right)=x-1\\
+d_{3}\left(x\right)=x-1
+\end{cases}
+\]
+
+
+正方行列$A$に対し、これまでは$A$から$A$のJNFを求めていたが、実は$B\left(x\right)=xE-A\text{の単因子}$から$A$のJNFが直接計算できる。またこのことを用いてジョルダン基底の存在を証明できる。
+
+上記のアイデアは、すなわち、多項式を多項式で割った余りで分類するというものである。
+
+例: (7/7プリント, p.2)
+
+$\boldsymbol{C}\left[x\right]$: $\boldsymbol{C}$係数多項式全体
+
+$\left(x-\alpha\right)^{2}\boldsymbol{C}\left[x\right]$: $\left(\alpha-2\right)^{2}$で割り切れる多項式全体$\left(\alpha\in\boldsymbol{C}\right)$(ベクトル空間として、部分空間)
+
+多項式$f\left(x\right),g\left(x\right)$を$\left(x-\alpha\right)^{2}$で割った余りが等しいとき、つまり、$f\left(x\right)\equiv g\left(x\right)\mod\left(x-\alpha\right)^{2}$のとき、
+\[
+f\left(x\right)\sim g\left(x\right)
+\]
+と書くことにする。(「同値関係」の一例)特にこの講義ではこれを「$f\left(x\right)$は$g\left(x\right)$は仲間」と表現する。
+
+$f\left(x\right)$と「仲間」である多項式全体を
+\[
+\left[f\left(x\right)\right]\left(\text{or}\overline{f\left(x\right)}\right)
+\]
+と表すことにする(同値類)。(c.f. $\boldsymbol{Z}/3\boldsymbol{Z}=\left\{ \left[0\right],\left[1\right],\left[2\right]\right\} $)
+
+注: $\left[f\left(x\right)\right]$が部分空間になるのは$f\left(x\right)\equiv0$のときのみ
+
+この$\left[f\left(x\right)\right]$全体の集合を
+\[
+\boldsymbol{C}\left[x\right]/\left(x-\alpha\right)^{2}\boldsymbol{C}\left[x\right]
+\]
+と表す。これはベクトル空間である(商ベクトル空間)
+
+$\tilde{V}=\boldsymbol{C}\left[x\right]/\left(x-\alpha\right)^{2}\boldsymbol{C}\left[x\right]$とおくと、
+\[
+\dim\tilde{V}=2
+\]
+で余りは1次式である。よって1つの基底は
+\[
+\left\{ \left[1\right],\left[x\right]\right\} 
+\]
+となる。もっと``よい''基底
+\[
+\left\{ \left[1\right],\left[x-\alpha\right]\right\} 
+\]
+ととれる。
+
+$\tilde{T}:\begin{array}{ccc}
+\tilde{V} & \rightarrow & \tilde{V}\\
+\in &  & \in\\
+\left[f\left(x\right)\right] & \mapsto & \left[xf\left(x\right)\right]
+\end{array}$とする。このとき、
+\[
+\left[1\right]\xrightarrow{\tilde{T}-\alpha I}\left[x-\alpha\right]\xrightarrow{\tilde{T}-\alpha I}\left[\left(x-\alpha\right)^{2}\right]=\left[0\right]
+\]
+となるので、$\left\{ \left[1\right],\left[x-\alpha\right]\right\} $は$\tilde{T}$のジョルダン基底となる。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+前回: 多項式を多項式で割った余りで分類
+
+例えば、$\left(x-2\right)^{2}$で割った余りに注目して、
+\[
+\mathbb{C}\left[x\right]/\left(x-2\right)^{2}\mathbb{C}\left[x\right]=\left\{ \underbrace{\left[1\right]}_{\text{余り1となるものの全体}},\underbrace{\left[x-2\right]}_{\text{余り}x-2\text{となるものの全体}}\right\} 
+\]
+のようにベクトル空間として二次元になる。
+
+このとき、``$x$倍''という写像を$T$とすると、つまり、
+\[
+T\left(f\left(x\right)\right)=xf\left(x\right)
+\]
+とすると、
+\[
+\left[1\right]\xrightarrow{T-2}\left[x-2\right]\xrightarrow{T-2}\left[0\right]
+\]
+となる。(本当は、集合全体として移ることを示す必要がある。)
+
+$T$について固有値2の一般固有空間が出てきた。
+
+n実はより一般に、上のような多項式の余りの計算によって、$n$次正方行列$A$のJNFが、$B\left(x\right)=xE-A$の担任し標準形を$D\left(x\right)$とするとき、``$\mod D\left(x\right)$''での``$x$倍''についてのJNFに対応している。
+
+この対応を例で見てみる。(7/14プリント、pp.4\textasciitilde{}5)
+
+\[
+A=\left[\begin{array}{ccc}
+5 & -1 & -1\\
+1 & 2 & 0\\
+3 & -1 & 1
+\end{array}\right]\rightarrow B\left(x\right)=x\left[\begin{array}{ccc}
+1\\
+ & 1\\
+ &  & 1
+\end{array}\right]-A=\left[\begin{array}{ccc}
+x-5 & 1 & 1\\
+-1 & x-2 & 0\\
+-3 & 1 & x-1
+\end{array}\right]
+\]
+\[
+A\text{のJNF}\left[\begin{array}{ccc}
+2\\
+ & 3 & 1\\
+ &  & 3
+\end{array}\right]\leftrightarrow B\left(x\right)\text{の単因子標準系}\left[\begin{array}{ccc}
+1\\
+ & 1\\
+ &  & \left(x-2\right)\left(x-3\right)^{2}
+\end{array}\right]
+\]
+
+
+$\mathbb{C}\left[x\right]$の元を立てに3つ並べた$\left(\mathbb{C}\left[x\right]\right)^{3}$を考える。
+
+各業を、それぞれ``$\mod d_{j}\left(x\right)$''$\left(j=1,2,3\right)$で考える。$d_{1}\left(x\right)=1$なので、1行目は$\left[0\right]$($\text{任意の多項式}\equiv0\mod1$)
+
+2行目も同様。3行目は``$\mod\left(x-2\right)\left(x-3\right)^{2}$''なので、次のように基底を取る。
+\[
+\left\{ \left[\left(x-3\right)^{2}\right],\left[\left(x-2\right)\left(x-3\right)\right],\left[x-2\right]\right\} 
+\]
+``$x$倍''の作用をみると、
+\[
+\begin{cases}
+x\left(x-3\right)^{2}\equiv2\left(x-3\right)^{2}\mod\left(x-2\right)\left(x-3\right)^{2}\\
+x\left(x-2\right)\left(x-3\right)\equiv3\left(x-2\right)\left(x-3\right)\mod\left(x-2\right)\left(x-3\right)^{2}\\
+x\left(x-2\right)\equiv3\left(x-2\right)+\left(x-2\right)\left(x-3\right)^{2}\mod\left(x-2\right)\left(x-3\right)^{2}
+\end{cases}
+\]
+
+
+そこで、
+\[
+\boldsymbol{u}_{1}\left(x\right)=\left[\begin{array}{c}
+0\\
+0\\
+\left(x-3\right)^{2}
+\end{array}\right],\boldsymbol{u}_{2}\left(x\right)=\left[\begin{array}{c}
+0\\
+0\\
+\left(x-2\right)\left(x-3\right)
+\end{array}\right],\boldsymbol{u}_{3}\left(x\right)=\left[\begin{array}{c}
+0\\
+0\\
+x-2
+\end{array}\right]
+\]
+とすると、
+\[
+\begin{cases}
+\boldsymbol{u}_{1}\left(x\right)\xrightarrow{x-2}\boldsymbol{O}\Rightarrow\text{固有値2に関して長さ1の鎖}\\
+\boldsymbol{u}_{3}\left(x\right)\xrightarrow{x-3}\boldsymbol{u}_{2}\left(x\right)\xrightarrow{x-3}\Rightarrow\text{固有値3関して、長さ2の鎖}
+\end{cases}
+\]
+
+
+こうして、$A$のJNFが$\left[\begin{array}{ccc}
+2\\
+ & 3 & 1\\
+ &  & 3
+\end{array}\right]$であることがわかる。
+
+\uline{Q. なぜ上のような対応が成り立つのか?}
+
+\uline{A. ``準同型定理''によって、同一視できる。}
+
+
+\paragraph{準同型定理}
+
+$V$:ベクトル空間
+
+$W$:$V$の部分空間
+
+$\boldsymbol{u},\boldsymbol{v}\in V$に対し、``$\boldsymbol{u}\sim\boldsymbol{v}$''⇔``$\boldsymbol{u}-\boldsymbol{v}\in W$''と定義する。
+
+この``$\sim$''で$\boldsymbol{u}\left(\in V\right)$とつながるもの全体を$\left[\boldsymbol{u}\right]$と表す。
+
+このとき、$V/W$を次で定める。
+\[
+V/W=\left\{ \left[\boldsymbol{u}\right]|\boldsymbol{u}\in V\right\} 
+\]
+
+
+特に、ある線形変換$T$に関して、
+\[
+W=\ker T
+\]
+のときが大切。このとき、
+\[
+V/\ker T\underset{\text{ベクトル空間として同型}}{\simeq}\mathrm{Im}T
+\]
+を準同型定理という。
+
+左辺: $T$の行き先が同じものをまとめて考えている。
+
+行列$A$に対して、2つの写像$\eta_{A},\psi_{A}$を導入する。
+\begin{align*}
+\psi_{A}: & \left(\mathbb{C}\left[x\right]\right)^{n} & \rightarrow & \mathbb{C}^{n}\\
+ & \in &  & \in\\
+ & \sum_{j}x^{j}\vec{c_{j}} & \mapsto & \sum A^{j}\vec{c_{j}}
+\end{align*}
+
+
+e.g. $\left[\begin{array}{c}
+x^{2}+x+3\\
+x+2\\
+0
+\end{array}\right]=x^{2}\left[\begin{array}{c}
+1\\
+0\\
+0
+\end{array}\right]+x\left[\begin{array}{c}
+1\\
+1\\
+0
+\end{array}\right]+\left[\begin{array}{c}
+3\\
+2\\
+0
+\end{array}\right]$
+
+こうすれば、
+\begin{align*}
+\left(\mathbb{C}\left[x\right]\right)^{n} & \xrightarrow{\eta_{A}} & \mathbb{C}^{n}\\
+x\text{倍}\downarrow &  & \downarrow\text{左から}A\\
+\left(\mathbb{C}\left[x\right]\right)^{n} & \xrightarrow{\eta_{A}} & \mathbb{C}^{n}
+\end{align*}
+
+
+つまり、「$\left(\mathbb{C}\left[x\right]\right)^{n}$での$x$倍」と「$\mathbb{C}^{n}$での$A$倍」とが対応している。\textbf{しかし、$\eta_{A}$は単射ではない。($\ker\neq\left\{ \boldsymbol{O}\right\} $)}
+
+アイデア: 「準同型定理」を使って、全単射にしてしまえばいい。
+
+\[
+\left(\mathbb{C}\left[x\right]\right)^{n}/\ker\eta_{A}\simeq\mathrm{Im}\eta_{A}=\mathbb{C}^{n}
+\]
+この$\ker\eta_{A}$とはどういうものかを調べる必要が出てくる。
+
+写像$\psi_{A}$を定義する。
+\begin{align*}
+\psi_{A}: & \left(\mathbb{C}\left[x\right]\right)^{n} & \rightarrow & \left(\mathbb{C}\left[x\right]\right)^{n}\\
+ & \in &  & \in\\
+ & \vec{f}\left(x\right)=\left[\begin{array}{c}
+f_{1}\left(x\right)\\
+f_{2}\left(x\right)\\
+\vdots
+\end{array}\right] & \mapsto & B\left(x\right)\vec{f}\left(x\right)=\left(xE-A\right)\left[\begin{array}{c}
+f_{1}\left(x\right)\\
+f_{2}\left(x\right)\\
+\vdots
+\end{array}\right]
+\end{align*}
+
+
+(重要な)Prop.は、
+\[
+\ker\eta_{A}=\mathrm{Im}\psi_{A}
+\]
+である。$\ker$は方程式のこと、$\mathrm{Im}$は個別の像を調べれば分かる。なので、イメージとして左辺のほうが求めるのが難しいと考えてもらえば構わない。(証明はプリント参照)
+
+$\mathrm{Im}\psi_{A}$は$B\left(x\right)$の単因子から分かる。
+\begin{align*}
+\left(\mathbb{C}\left[x\right]\right)^{n} & \xrightarrow{D\left(x\right)} & \left(\mathbb{C}\left[x\right]\right)^{n}\\
+Q\left(x\right)\downarrow &  & \uparrow P\left(x\right)\\
+\left(\mathbb{C}\left[x\right]\right)^{n} & \xrightarrow[\left(\psi_{A}\right)]{B\left(x\right)} & \left(\mathbb{C}\left[x\right]\right)^{n_{-}}
+\end{align*}
+\[
+B\left(x\right)\xrightarrow[\text{列基本変形}]{\text{行基本変形}}D\left(x\right)=\left[\begin{array}{ccc}
+d_{1}\left(x\right)\\
+ & d_{2}\left(x\right)\\
+ &  & \ddots
+\end{array}\right]
+\]
+
+
+言い換えると、
+\[
+\exists P\left(x\right),\exists Q\left(x\right),D\left(x\right)=P\left(x\right)B\left(x\right)Q\left(x\right)
+\]
+
+
+このPropを使うと、
+\[
+\left(\mathbb{C}\left[x\right]\right)^{n}/\mathrm{Im}\psi_{A}\simeq\mathbb{C}^{n}
+\]
+
+
+ズより、
+\[
+\mathrm{Im}\psi_{A}=\mathrm{Im}B\left(x\right)=\mathrm{Im}\left(P\left(x\right)^{-1}D\left(x\right)\right)
+\]
+がいえる。さらに、次が成立。
+\[
+\left(\mathbb{C}\left[x\right]\right)^{n}\mathrm{Im}\psi_{A}=P\left(x\right)^{-1}\left(\left(\mathbb{C}\left[x\right]\right)^{n}/\mathrm{Im}D\left(x\right)\right)
+\]
+(プリント補題3)
+\end{document}

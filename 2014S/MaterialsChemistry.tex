@@ -1,0 +1,487 @@
+%% LyX 2.0.6 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[LGR,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amstext}
+\usepackage{graphicx}
+\PassOptionsToPackage{version=3}{mhchem}
+\usepackage{mhchem}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\DeclareRobustCommand{\greektext}{%
+  \fontencoding{LGR}\selectfont\def\encodingdefault{LGR}}
+\DeclareRobustCommand{\textgreek}[1]{\leavevmode{\greektext #1}}
+\DeclareFontEncoding{LGR}{}{}
+\DeclareTextSymbol{\~}{LGR}{126}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{物性化学講義ノート}
+
+\maketitle
+
+\section{物性とは}
+
+物質の色・分子の形・磁性などの性質のこと。
+
+
+\paragraph{分子間相互作用}
+\begin{itemize}
+\item 共有結合
+\item イオン結合
+\item 水素結合
+\item 配位(共有)結合
+\item 金属結合
+\item 疎水性相互作用
+
+\begin{itemize}
+\item e.g. 石鹸: 分子構造に親水基と疎水基が含まれており、両親媒性の界面活性剤となる。ここで溶媒という時には水系のものと非水系のもの(有機溶媒など)の2つに分類される。両親媒性の界面活性剤はこの二つの溶媒に対して相互作用を引き起こすような効果をもたらす。
+\end{itemize}
+\end{itemize}
+このように低分子から高分子まで様々なレベルで分子間の相互作用は物理現象として現れ、我々の生活に関与している。
+
+
+\paragraph{共有結合・分子の構造を説明する理論}
+
+共有結合の理論には、古典的な理論と量子論的な理論と2種類が存在する。
+
+\begin{tabular}{|c|c|}
+\hline 
+古典的な理論 & 量子論的な理論\tabularnewline
+\hline 
+\hline 
+わかりやすい & わかりにくい\tabularnewline
+\hline 
+不完全 & 適用範囲が広い\tabularnewline
+\hline 
+ & 正確\tabularnewline
+\hline 
+ルイス理論 & 波動関数を(近似して)解く\tabularnewline
+\hline 
+VSEPR法 & \tabularnewline
+\hline 
+分子力学法 & \tabularnewline
+\hline 
+\end{tabular}
+
+分子力学法: 原子をおもり、原子結合をバネとみなし、力学的な計算により分子の振る舞いを計算する。
+
+
+\paragraph{ルイス理論}
+
+2つの原子が価電子を出しあい形成するのが共有結合
+
+文章中で電子配置を示す場合には、
+\[
+\text{H: }\mathrm{\left(1s\right)^{1}}
+\]
+\[
+\text{B: }\mathrm{\left(2s\right)^{2}\left(2p\right)^{1}}
+\]
+\[
+\text{N: }\mathrm{\left(2s\right)^{2}\left(2p\right)^{3}}
+\]
+\[
+\text{Cl: }\mathrm{\left(3s\right)^{2}\left(3p\right)^{7}}
+\]
+というように表す。
+
+
+\paragraph{その他の用語}
+\begin{itemize}
+\item 電子対
+\item オクテット則
+\item 原子価
+\item 形式電荷
+\end{itemize}
+について説明する。
+
+$\ce{NH3}$を考える。ここで$\ce{N}$は価電子5、$\ce{H}$は価電子1であるので、電子配置は以下のようになる。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat001}
+
+このように、結合は総価電子数が8になるように形成される。これをオクテット則という。このとき、Nが結合できる原子の数3を原子価と呼ぶ。なお、この場合水素の総価電子数は2となるが、これはデュエット則と呼ばれる。
+
+
+\paragraph{形式電荷}
+
+以下の図のように、水素イオンがアンモニア分子に結合した場合、本来Hが持っていた電荷は見かけ上N原子に移動して、N原子が1+の電荷を持っているようにみえる。これを形式電荷と呼ぶ。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat002}
+
+\[
+\ce{NH3 + H+ <-> NH4+}
+\]
+
+
+形式電荷は、
+\[
+\left(\text{元素の持つ価電子数}\right)-\left(\text{共有電子対の数}\right)-\left(\text{孤立電子対}\right)\times2
+\]
+のような式で求められる。
+
+
+\paragraph{オクテット則が当てはまらないケース}
+
+五塩化リン$\ce{PCl5}$を考える。Pは価電子5、Clは価電子7なので、総計40個の価電子が存在する。これを踏まえて電子配置を考えると、
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat003}
+
+のように、リンの周りに10個の電子が配置される。これはリンが10電子則に従っているためである。このように8個以上の原子を総価電子として持ちやすい原子群を、超原子価化合物という。
+
+二酸化炭素$\ce{CO2}$、窒素分子$\ce{N2}$およびアセトン$\ce{(CH3)2CO}$についてルイス構造を書いてみる。価電子数は、それぞれ、C-4,
+O-6, N-5である。
+
+二酸化炭素のルイス構造図は以下のとおりである。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat004}
+
+窒素のルイス構造図は以下のとおりである。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat005}
+
+これらの結果から、二酸化炭素や窒素が二重結合、三重結合をしていることがルイス構造からある程度証明できる。
+
+アセトンのルイス構造図を書いてみると以下のように2通りの構造が考えられる。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat006}
+
+このような場合、どちらの構造が正しいかは、形式電荷を計算することによって判別することができる。
+
+Aの場合、炭素原子の形式電荷は$4-4-0=0$、酸素原子の形式電荷は$6-2-2\times2=0$となる。
+
+Bの場合、炭素原子の形式電荷は$4-2-2\times2=-2$、酸素原子の形式電荷は$6-4-0=+2$となる。
+
+このように、Bの構造の場合炭素原子と酸素原子の間に電荷の偏りが生じる。ルイス構造の理論においては、このように不自然に電荷が偏っているものよりも、電子が全体に均一に非局在化している方がよい。よって、正しい構造はAであると決定される。
+
+
+\paragraph{ルイス理論}
+\begin{itemize}
+\item 価電子
+\item オクテット則
+\item 電子対
+\item 形式電荷
+\item 共鳴
+\item 単結合
+\item 二重結合
+\end{itemize}
+
+\paragraph{共鳴}
+
+炭酸イオン$\ce{CO3^{2-}}$のルイス構造は、以下のように二重結合が1つ、単結合が2つになるはずである。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat007}
+
+しかし、実際に各O-C間の結合の長さを測定したところ、全て等しく127.2pmほどであることがわかる。これをルイス理論で説明するには、共鳴という考え方が必要となる。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat008}
+
+炭酸イオンは、上図のように複数の原子の状態の間の状態を取ると考える。これを共鳴混成体と呼ぶ。これはあくまで概念上の考え方であり、実際にこの内のどれかの状態をとっているわけではないので注意すること。この図におけるそれぞれの原子の状態を極限構造、そのうち主となるものを主極限構造と呼ぶ。
+
+
+\paragraph{共鳴構造を書くときのルール}
+\begin{enumerate}
+\item 価電子数が同じ
+\item オクテット速を満たす
+\item 原子核の位置が不変
+\end{enumerate}
+
+\paragraph{$\ce{NO3^{-}}$のルイス構造}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat010}
+
+ここで、Nの電荷は$5-4-0=1$、左右のOの電荷は$6-1-2\times3=-1$、上のOの電荷は$6-2-2\times2=0$となる。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat011}
+
+ルイス理論に共鳴の概念を取り入れることにより、分子内結合長の議論が可能になる。
+
+
+\paragraph{硝酸のルイス構造}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat012}
+
+2種類のN-O結合の結合量の差を説明せよ。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat013}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat014}
+
+ここで、構造Ⅰと構造Ⅱは等価な主極限構造となる。
+
+右側のN-O結合は二重結合の寄与が大きく、二重結合性が大きくなり、結合間距離が短くなる。逆に、左側のN-O結合は二重結合の寄与が小さく、二重結合性が小さくなり、結合間距離が長くなる。
+
+
+\paragraph{共鳴構造の順位付け}
+\begin{enumerate}
+\item オクテット則を満たす原子が多い
+\item 形式電荷に無理がないこと
+\item 最形式電荷数が少ないこと
+
+
+先の構造Ⅰ・Ⅱは、電荷の絶対値の総和が2となり、Ⅲよりも小さい。これを寄与が大きいという。
+
+\end{enumerate}
+成績評価は、基本的に期末試験の成績のみで評価し、救済措置として演習問題の提出状況を加味して評価する。
+
+
+\paragraph{共鳴という概念を使う}
+
+$\ce{C6H6}$: ベンゼン
+
+ベンゼンの構造を決定するにあたって、以下の様な制約を考える必要があった。
+\begin{itemize}
+\item $\ce{C}$が6つ
+\item $\ce{H}$が6つ
+\item $\ce{C-C}$結合長が1種類
+\end{itemize}
+この条件を満たす構造を見つけるため、様々な構造が考案された。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat015}
+
+これを解決したのが、以下の様な共役系分子による構造である。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat016}
+
+これは以下のようにも書かれる。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat017}
+
+
+\paragraph{アミド結合}
+
+スライド参照
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat018}
+
+
+\paragraph{1,3-ブタジエン$\ce{HBr}$の付加反応}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat019}
+
+マルコフにコス則により、$\ce{H}$は水素が多い方に付加する。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat020}
+
+カルボカチオンの安定性は以下のように評価され、左側を2級、右側を1級と呼ぶ。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat021}
+
+このように、共鳴やカルボカチオンの安定性を考慮することによって、複雑な反応理論においてもルイス反応を用いて説明することができるようになる。
+
+
+\paragraph{分子の立体構造を予測するルイス理論(電子対の反発)}
+
+VSEPR則や原子価殻電子対反応モデルを用いて分子の立体構造を予測する方法について述べる。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat022}
+
+このような電子配置においては以下の様な規則が適用される。
+\begin{enumerate}
+\item 電子対は反発を避ける。離れようとする。
+\item 孤立電子対同士≫孤立結合性≫結合性同士の順に反発力が強い
+\item 120\textdegree{}以上は無視する
+\end{enumerate}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat023}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat024}
+
+以上のような構造は、同一平面上にあることは説明できるものの、この二重結合の特性などについてはVSEPR則では疑問が残ることになる。
+
+
+\paragraph{三フッ化塩素$\ce{ClF3}$の構造}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat025}
+
+\begin{tabular}{|c|c|c|c|}
+\hline 
+ & A & B & C\tabularnewline
+\hline 
+\hline 
+結合-結合 & 2 & 0 & 2\tabularnewline
+\hline 
+孤立-結合 & 4 & 6 & 3\tabularnewline
+\hline 
+孤立-孤立 & 0 & 0 & 1\tabularnewline
+\hline 
+\end{tabular}
+
+AとCを比較するとAのほうが反発が小さく、AとBを比べると、Aが反発が小さいため、Aが最も反発が小さく安定な分子構造であるということができる。
+
+
+\paragraph{混成軌道}
+
+プリント参照
+
+$\ce{BeH2}$を考える。この分子は直線型をとるが、これは$\ce{Be}$: $\left(\mathrm{1s}\right)^{2}\left(\mathrm{2s}\right)^{2}\left(\mathrm{2p}\right)^{0}$であり、以下の様な電子軌道を取る。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat026}
+
+ここから、$\ce{H-Be-H}$の直線性は以下のように言うことができる。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat027}
+
+このような混成軌道をsp混成軌道という。
+
+ここでは電子の混成軌道を考えることにより分子の構造を推定しているが、分子全体の電子の配置を考えるのではなく、あくまで原子どうしの電子のやりとりという形で局所的に電子を考えている点で、のちに述べる軌道論とは大きく異なる点である。
+
+
+\paragraph{$\mathrm{sp^{2}}$混成軌道}
+
+$\ce{BF3}$を考える。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat028}
+
+
+\paragraph{$\mathrm{sp^{3}}$混成軌道}
+
+$\ce{CH4}$を考える。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat029}
+
+
+\paragraph{エチレン}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat030}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat031}
+
+このように、エチレンの二重結合は1個のπ結合と1個の\textgreek{sv}結合によって構成されており、非等価な結合を形成している。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+一回分欠損
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section{分子軌道論}
+\begin{itemize}
+\item ルイス理論
+\item VSEPR
+\item 共鳴理論
+\item 混成理論…ここで扱ったのは原子の軌道であった。
+\end{itemize}
+ここではこれらの理論を踏まえて、最初から分子全体に広がった軌道を考える。
+
+分子軌道を求めるためには、
+\begin{itemize}
+\item 分子軌道を組み立てる(LCAO近似)
+\item シュレディンガーの波動方程式に代入
+\item 変分法、永年方程式
+\item 分子軌道、$E$が算出
+\end{itemize}
+という仮定をたどることになる。
+
+例えば$\ce{H2+}$において原子核$A$と原子核$B$と電子の三粒子系での波動方程式は、
+\[
+H\psi=\left(-\frac{h^{2}}{8\pi^{2}m}\nabla^{2}-\frac{e^{2}}{4\pi\varepsilon_{0}r_{A}}-\frac{e^{2}}{4\pi\varepsilon_{0}r_{B}}+\frac{e^{2}}{4\pi\varepsilon_{0}R}\right)=E\psi
+\]
+となるが、この式はこのままでは解けないので、LCAO近似を用いて近似計算を行う。
+
+LCAO近似…分子軌道は分子を構成する原子軌道の線形近似であるとみなす
+
+\[
+\psi=c_{A}\phi_{A}+c_{B}\phi_{B}
+\]
+
+
+これを先の式に代入する。
+
+
+\paragraph{等核二原子分子}
+
+$H_{2}$: s軌道
+
+$\ce{Li},\ce{N2},\ce{O2}$: 1s, 2s, 2p軌道
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat032}
+
+結合次数…化学結合の相対的な強さ
+
+\[
+\frac{1}{2}\left\{ \left(\text{結合性軌道の電子数}\right)\times\left(\text{反結合性軌道の電子数}\right)\right\} 
+\]
+
+
+$\ce{H2}\Rightarrow\frac{1}{2}\left(2-0\right)=1$
+
+$\ce{N2}:\left(2\sigma_{g}\right)^{2}\left(2\sigma_{u}\right)^{2}\left(1\pi_{u}\right)^{4}\left(3\sigma_{g}\right)^{2}$
+
+$\ce{N2}:\frac{1}{2}\times\left(6-0\right)=3$
+
+$\ce{C2}:\frac{1}{2}\times\left(4-0\right)=2$
+
+
+\paragraph{共役系化合物の分子軌道}
+
+エチレンにおいて
+\begin{enumerate}
+\item $\pi$電子のみを考える。($\pi$電子近似)
+\item LCAO近似 $\psi=c_{1}\chi_{1}+c_{2}\chi_{2}$
+\end{enumerate}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat033}
+
+
+\paragraph{付加環化反応}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat034}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{mat035}
+
+
+\paragraph{π電子化合物の分子軌道と物性}
+
+ヒュッケル近似(π電子近似)やLCAO近似(S=0)を用いて、非常に簡単な方程式でπ電子の分子軌道が洗わせることを学んだ。
+
+π電子の分子軌道から、
+\begin{itemize}
+\item エネルギー(全π電子$E$, 非局在化$E$)
+\item π電子密度
+\item π結合次数(結合の強さ)
+\end{itemize}
+などを知ることができる。
+
+
+\paragraph{光の吸収と分子軌道}
+
+基底状態から励起状態に遷移する際のエネルギーの差分、$\Delta E$が、可視光の領域に位置する場合に、人間の目に色として見えることとなる。
+
+特に、$\pi$から$\pi^{*}$への遷移を$\pi-\pi^{*}$遷移と呼ぶ。
+
+ところでホルムアルデヒドの$\ce{C\bond{=}O}$結合におけるHOMOからLUMOへの遷移は$n-\pi^{*}$遷移と呼ばれる。
+
+可視光領域は波長$400\mathrm{nm}\sim700\mathrm{nm}$程度の領域であり、この範囲での吸光度$A$は、
+\[
+A=-\log_{10}\left(\frac{I_{0}}{I}\right)
+\]
+で表される。ただし、ここで$I_{0}$は入射光強度、$I$は透過光強度である。
+
+
+\paragraph{配位化合物の物性}
+
+共有結合
+\[
+\ce{A^{\cdot} + {}_{\cdot}B -> A_{\cdot}^{\cdot}B}
+\]
+
+
+配位共有結合
+\[
+\ce{C_{\cdot}^{\cdot} + D -> C_{\cdot}^{\cdot}D}
+\]
+
+\end{document}
