@@ -31,10 +31,12 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 		* [レポート2](2015S/Astronomy-report2.tex) - [PDF][Astronomy-report2-pdf]
 		* [レポート3](2015S/Astronomy-report3.tex) - [PDF][Astronomy-report3-pdf]
 	* [相対論](2015S/Relative.tex) - [PDF][Relative-pdf]
-* 2015年度 Aセメスター
-	* 準備中
+* [2015年度 Aセメスター](2015A)
+	* [計算機システム](2015A/ComputerSystem.tex) - [PDF][ComputerSystem-pdf]
+	* [形式言語理論](2015A/FormalLanguageTheory.tex) - [PDF][FormalLanguageTheory-pdf]
+	* [情報数学](2015A/InformationMathematics.tex) - [PDF][InformationMathematics-pdf]
 * 2016年度 Sセメスター
-	* 準備中
+	* 該当なし
 * [2016年度 Aセメスター](2016A)
 	* [電気回路理論第一 前半](2016A/CircuitTheory1.tex) - [PDF][CircuitTheory1-pdf]
 	* [電気回路理論第一 後半](2016A/CircuitTheory1-part2.tex) - [PDF][CircuitTheory1-part2-pdf]
@@ -64,6 +66,9 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 [Astronomy-report2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2015S/Astronomy-report2.pdf
 [Astronomy-report3-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2015S/Astronomy-report3.pdf
 [Relative-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2015S/Relative.pdf
+[ComputerSystem-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2015A/ComputerSystem.pdf
+[FormalLanguageTheory-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2015A/FormalLanguageTheory.pdf
+[InformationMathematics-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2015A/InformationMathematics.pdf
 [CircuitTheory1-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/CircuitTheory1.pdf
 [CircuitTheory1-part2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/CircuitTheory1-part2.pdf
 [Electromagnetics12-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/Electromagnetics12.pdf
