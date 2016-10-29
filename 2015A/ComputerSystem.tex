@@ -1,0 +1,1735 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[LGR,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{calc}
+\usepackage{textcomp}
+\usepackage{amstext}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+
+\newcommand*\LyXbar{\rule[0.585ex]{1.2em}{0.25pt}}
+\DeclareRobustCommand{\greektext}{%
+  \fontencoding{LGR}\selectfont\def\encodingdefault{LGR}}
+\DeclareRobustCommand{\textgreek}[1]{\leavevmode{\greektext #1}}
+\ProvideTextCommand{\~}{LGR}[1]{\char126#1}
+
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[version=3]{mhchem}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\usepackage{listings}
+\renewcommand{\lstlistingname}{\inputencoding{latin9}Listing}
+
+\begin{document}
+
+\title{2015-A 計算機システム}
+
+\author{教員: 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+
+
+\section*{第1回}
+
+コンピュータアーキテクチャ 馬場 オーム社
+
+コンピュータの校正と設計 日経BP
+
+コンピュータの仕組み 尾内
+
+オペレーティングシステムの概念 共立出版
+
+Cプログラミング入門以前 村山
+
+プログラミング言語C ANSI規格準拠 石田
+
+チャールズ・バベッジの階差機関\&解析機関
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\section*{第2回}
+
+\subsection*{データ}
+
+デジタル方式
+\begin{itemize}
+\item 離散化した信号
+\item 通常が0,1→ビット
+\item 物理的な対応
+
+\begin{itemize}
+\item しきい値の電位より高い(低い)と1(0)
+\item コンデンサーに電荷がある(ない)と1(0)
+\item 磁化の向きで0, 1を表現する 
+\item 光の反射率で0, 1を表現する
+\end{itemize}
+\end{itemize}
+
+\subsection*{データ表現}
+
+人間とのインターフェースによる分類
+\begin{itemize}
+\item 0, 1の並びの表記
+\item 2進: 0, 1
+\item 8進: 3ビット=1文字とする
+
+\begin{itemize}
+\item 0, 1, 2, 3, 4, 5, 6, 7
+\item 表記: 先頭を0にする。 例: 036
+\end{itemize}
+\item 16進: 4ビット=1文字とする
+
+\begin{itemize}
+\item 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f
+\item 表記: 先頭を0xにする。 例: 0x82bf
+\end{itemize}
+\end{itemize}
+
+\subsection*{整数データ}
+
+8, 16, 32, 64 ビットのデータ表現が存在する。
+
+\fbox{\begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
+16ビットの例: 1001000111010110%
+\end{minipage}}
+
+最初の桁を最上位ビット(MSB)と呼び、$k=15$、最後の桁を最下位ビット(LSB)と呼び、$k=0$とする。このとき、この整数の値は、
+\[
+\sum_{k=0}^{14}d_{k}2^{k}
+\]
+となり、最上位ビットは整数の符号を表す。
+
+\subsection*{負の整数}
+
+\subsubsection*{2の補数}
+
+Aの2の補数=$2^{n}-A$ ここで$n$は整数データのビット数である。
+
+1の2の補数=$2^{n}-1=\overbrace{\text{111\ensuremath{\cdots}11}}^{n\text{個}}$
+
+計算するには、$2^{n}-A=\left(2^{n}-1\right)-A+1$であることから、$A$のビットを反転させたものに1を加えればよい。
+
+\subsubsection*{2の補数と加算減算}
+
+\paragraph{加算}
+
+実際に計算機でこの2の補数を使用して計算すると、
+
+\[
+A+\left(-B\right)=A+2^{n}-B=2^{n}+\left(A-B\right)
+\]
+となる。データは$n$ビットしかないことを考えると、$2^{n}$は桁上りを表現する。
+
+すなわち、$A$と$B$を符号を考えずに加算しても、桁上りの部分を除けば正しい計算結果になる。
+
+両方が負の数である場合でも、
+\[
+\left(-A\right)+\left(-B\right)=2^{n}-A+2^{n}-B=2^{n}+2^{n}-\left(A+B\right)
+\]
+となり、最初の$2^{n}$を除けば$A+B$の2の補数となっている。
+
+\paragraph{減算}
+
+2の補数に直して計算する
+
+一般に\LyXbar の補数表現を$\overline{A}$とすると、
+\[
+A+\overline{A}=\overbrace{\text{1\ensuremath{\cdots}1}}^{n\text{個}}
+\]
+となる。
+
+\subsection*{文字、文字列}
+
+記号としての文字と、0, 1での表現が1対1で対応してなくてはならない。そのような対応のことを\textbf{文字コード}という。
+
+\paragraph{半角(アルファベット+α)}
+\begin{itemize}
+\item ASCII: 7ビット
+\end{itemize}
+
+\paragraph{全角(漢字)}
+
+多くのコードが存在する。
+\begin{itemize}
+\item JIS: 主にemailで使用
+\item EUC: 主にUNIXで使用
+\item SHIFT JIS: 主にMac, Windowsで使用
+\item Unicode: 最近出現
+
+\begin{itemize}
+\item 符号化の種類: UTF-8(プログラムで使いやすい。漢字は3バイトになる)
+\end{itemize}
+\end{itemize}
+
+\subsection*{実数}
+
+\subsubsection*{浮動小数点数}
+
+IEEE754-2008規格によって定められ、長さは32, 64, 128ビットである。
+
+※図省略
+
+符号部・指数部・仮数部の3つの部分に分かれており、表現される数は、
+\[
+X=\left(-1\right)^{\text{符号}}\times2^{\text{指数}-127}\times\left(1.\text{仮数部}\right)
+\]
+となる。
+
+\subsection*{文字列u}
+
+文字の並びであり、しばしば終端が``0''(NULL)となる。
+
+\subsection*{計算機の動作}
+\begin{itemize}
+\item 命令実行の繰り返し
+
+\begin{itemize}
+\item つまり、命令の並びがプログラムを構成する。
+\end{itemize}
+\end{itemize}
+
+\subsubsection*{フォン・ノイマン計算機}
+
+メモリ上から命令を読み込み、逐次実行する。場合によっては計算結果に寄って条件分岐したり、メモリ上のデータを読み取ったり、レジスタにデータを格納したりする。
+\begin{description}
+\item [{レジスタ}] データを一時的に保持する。少数(8\textasciitilde{}12ビット)で高速
+\item [{メモリ}] 大容量だが速度が遅く、アドレス(番地)を指定してアクセスする。
+\item [{演算器}] 四則演算などを行い、演算結果と各種フラグを出力する。
+
+フラグの内容は後で
+\item [{プログラムカウンタ(PC)}] 次に実行する命令のメモリアドレスを保持する。
+
+分岐命令とは、すなわち命令がPCに代入を実行することである。
+
+通常の命令ではプログラマカウンタは1加算されるだけである。
+\item [{命令レジスタ(IR)}] 現在実行中の命令を保持する。
+\end{description}
+
+\subsubsection*{メモリの内容}
+
+フォン・ノイマンアーキテクチャでは、データ+命令を保持する。
+
+ハーバードアーキテクチャでは、これが分離している。(組み込み系で用いられる)
+
+\subsection*{データ転送の単位}
+\begin{itemize}
+\item バイト: バイトアドレッシング
+\item ビット
+\item ワード(32ビットアーキテクチャ=>4バイト): ワードアドレッシング
+\item ロングワード
+\end{itemize}
+
+\subsubsection*{ビッグエンディアンとリトルエンディアン}
+
+レジスタ(1ワード=32bit)の状態が、\\
+R1: 0D0C0B0A\\
+R2: 1D1C1B1A\\
+であり、これをメモリに書く場合を考える。
+
+メモリのアドレスはバイト単位であるので、リトルエンディアンの場合は、\\
+0A 0B 0C 0D 1A 1B 1C 1D\\
+というようにLSBから順番に詰めていく。
+
+一方、ビッグエンディアンの場合には、\\
+0D 0C 0B 0A 1D 1C 1B 1A\\
+というようにMSBから順番に詰めていく。
+
+例えば、intelのプロセッサはリトルエンディアンであり、ネットワーク上で伝送されるデータはビッグエンディアンである。この過程のどこかで、変換が必要であるということになる。
+
+\subsubsection*{コンディションレジスタ}
+
+N, Z, C, Vの4種類が存在する。
+\begin{description}
+\item [{N}] 計算結果が負
+\item [{Z}] 計算結果が0
+\item [{C}] キャリー(桁上げ、桁下げ)
+\item [{V}] 2の補数として桁に収まらない
+\end{description}
+
+\paragraph{Vフラグ}
+
+加算の場合、
+\begin{itemize}
+\item 正数+正数の計算をしてMSBが1(負数)になった場合
+\item 負数+負数の計算をしてMSBが0(正数)になった場合
+\item 正数+負数の計算をしてMSBが1(負数)になった場合
+\item 負数+正数の計算をしてMSBが0(正数)になった場合
+\end{itemize}
+にオーバーフローが発生し、VフラグがONになる。
+
+\paragraph{Cフラグ}
+
+キャリー。入力を符号なしの数として、Carryのあるなしを考える。(桁下げの場合はBorrowという)
+
+\paragraph{桁下げの扱い}
+
+桁下げありが1の場合(Intel)と桁下げありが0の場合(ARM)が存在する。
+
+\fbox{\begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
+
+\paragraph{課題}
+
+NZCVの解釈を確認せよ。8ビットの場合を考え、例を作って確認せよ。
+
+レポート提出: 次回まで%
+\end{minipage}}
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\section*{第3回}
+
+\subsection*{計算機の命令}
+
+\paragraph{命令}
+
+CPUに具体的操作を伝える
+\begin{itemize}
+\item どのような操作?
+\item 働きかける対象? (オペランド)
+\item 入出力
+\item 次に実行する命令のアドレス?
+\item コンディションを更新?
+\end{itemize}
+
+\paragraph{命令のメモリ上の実態}
+
+ビット列のデータ(0か1)で表現する
+
+→機械語
+
+\paragraph{命令の例}
+
+ここではビット表現は考えない
+
+\paragraph{人間に分かる表現}
+\begin{itemize}
+\item 命令の種類を表現する(アルファベットの)記号→ニーモニック
+
+また、命令の種類のことをオペコードという。
+\item オペランドを表現する記号
+\end{itemize}
+以上2つを並べて命令を表現する(アセンブリ言語)
+
+\paragraph{例}
+
+ADD r1,r2 r1←r1+r2(コンディションレジスタ更新)
+
+SUB r1,r2 r1←r1-r2(コンディションレジスタ更新)
+
+\paragraph{例}
+
+Jcnd Zero,r1
+
+if z=1 then 次命令アドレスはレジスタr1の内容
+
+else 次命令アドレスはPC+1
+
+\subsection*{計算機の動作}
+
+\paragraph{例: ADD命令}
+
+ADD r1,r2: r1←r1+r2
+
+を実行した時、計算機でどのような動作が発生するか。
+
+\paragraph{実行のステップ}
+\begin{enumerate}
+\item 命令を読みだす
+
+PCを見てメモリアドレスを決定する
+
+メモリアドレスの内容をIRに格納
+\item 命令動作の決定
+
+オペコードに対応する部分から、ADD命令であると知る
+
+ADDは2個の入力レジスタと1個の出力レジスタが必要なので、レジスタのアドレスをオペランドに対応する部分から知る
+\item オペランド読み出し
+
+r1,r2の内容を読みだして、オペランドの1番、2番に格納(これをOP1、OP2とする)
+\item 演算
+
+OP1+OP2を計算→出力はF(演算器の中)のまま
+\item オペランド書き込み
+
+Fをr1に書き込む
+\end{enumerate}
+この後、次の命令を実行するために、PC←PC+1する。この後最初の1.に戻れば1命令の実行完了となる。
+
+\subsection*{アセンブリ言語}
+
+\paragraph{機械語・ニーモニック}
+
+\begin{tabular}{|c|c|c|c|}
+\hline 
+番地 & 機械語 & オペコード & オペランド\tabularnewline
+\hline 
+\hline 
+0 & 01010101 & SUB & R1, R2\tabularnewline
+\hline 
+1 & 01011010 & SUB & R2, R2\tabularnewline
+\hline 
+2 & 00101100 & SET & R0, 10\tabularnewline
+\hline 
+3 & 00001010 &  & \tabularnewline
+\hline 
+4 & 01010001 & SUB & R0, R1\tabularnewline
+\hline 
+5 & 00101100 & SET & R0, 13\tabularnewline
+\hline 
+6 & 00001101 &  & \tabularnewline
+\hline 
+7 & 01101000 & Jcnd & Zero, R0\tabularnewline
+\hline 
+8 & 01001001 & ADD & R2, R1\tabularnewline
+\hline 
+9 & 00000101 & INC & R1\tabularnewline
+\hline 
+10 & 00101100 & SET & R0, 2\tabularnewline
+\hline 
+11 & 00000010 &  & \tabularnewline
+\hline 
+12 & 00010000 & J & R0\tabularnewline
+\hline 
+13 & 00000000 & NOP & \tabularnewline
+\hline 
+\end{tabular}
+
+メモリ上の命令列: 機械語
+
+\paragraph{アセンブリ言語}
+
+\inputencoding{latin9}\begin{lstlisting}
+.txt
+.start ; 
+	SUB R1, R1
+	SUB R2, R2
+loop:
+	SET R0, 10
+	SUB R0, R1
+	SET R0, end
+	Jcnd Zero, R0
+	; 2 JZ end ()
+	ADD R2, R1
+	INC R1
+	SET R0, loop
+	J   R0
+	; 2 JP loop ()
+end:
+	NOP
+\end{lstlisting}
+\inputencoding{utf8}
+
+\paragraph{高級言語}
+
+\inputencoding{latin9}\begin{lstlisting}
+int i1 = 0;
+for (i = 0; i < 10; i++) {
+	i1 = i1 + i;
+}
+\end{lstlisting}
+\inputencoding{utf8}
+
+\subsection*{命令の詳細}
+
+\paragraph{命令を構成する情報}
+\begin{itemize}
+\item 入力オペランドの指定(レジスタ、メモリ)
+
+\begin{itemize}
+\item オペランドのアドレス
+
+\begin{itemize}
+\item 指定方法: アドレッシングモード
+\end{itemize}
+\item 即値
+\end{itemize}
+\item オペランドに対する操作
+
+\begin{itemize}
+\item 暗黙オペランド
+\end{itemize}
+\item 出力オペランドの指定
+\item 次に実行する命令のアドレス
+\item 命令実行のヒント
+\end{itemize}
+
+\subsection*{命令の書式}
+
+\paragraph{ビット列の構成}
+\begin{itemize}
+\item 命令長(ビット数)
+
+\begin{itemize}
+\item 固定長
+
+\begin{itemize}
+\item アドレス空間の長さがデータの基本長(=命令長)と対応しないため、アドレス空間の全部は命令の中でも書けない。
+\item 実行が速い
+\end{itemize}
+\item 可変長
+
+\begin{itemize}
+\item 実行が遅い
+\end{itemize}
+\end{itemize}
+\item オペコード|オペランド1|オペランド2|…
+
+\begin{itemize}
+\item オペランドの数によってその内容がだいたい決まっている
+
+\begin{itemize}
+\item 3オペランド: 入力\texttimes 2、出力\texttimes 1
+\item 2オペランド: 入力\texttimes 1、入出力\texttimes 1
+\item 1オペランド: 入出力+アキュムレータ
+\item 0オペランド: スタックマシン
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\paragraph{書式}
+
+オペコード、オペランドの並べ方・ビット幅によって決まる
+
+数種類用意して使い分ける
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\section*{第4回}
+
+\paragraph{前回}
+\begin{itemize}
+\item 命令の中身
+
+\begin{itemize}
+\item オペコード
+\item オペランド
+\end{itemize}
+\end{itemize}
+
+\paragraph{オペランドの内容}
+
+各命令が作用する対象
+\begin{itemize}
+\item 汎用レジスタ: 機械語・レジスタの番号
+
+メモリに比べて高速にアクセスできる
+\item システムレジスタ
+
+CPUの内部管理・制御用
+
+OSがしばしば関係する
+
+例: 仮想記憶、プロセサ状態管理、割り込み処理
+\item メモリ
+
+メモリのアドレス(1個/領域)
+\item スタック
+
+番地はない
+\item 入出力デバイス(I/O)
+
+\begin{itemize}
+\item I/Oマップ
+
+I/Oに使う専用の番地がある
+\item メモリマップ
+
+メモリアドレスの一部に割り当てられている
+\end{itemize}
+\end{itemize}
+
+\paragraph{オペランドの指定法}
+\begin{itemize}
+\item 明示的(命令のビット列の中にある)
+\item 暗黙的(オペコード自体が指定している)
+\end{itemize}
+
+\paragraph{明示的}
+
+ビット模様との対応関係?→\textbf{アドレッシングモード}
+
+\paragraph{分岐命令のアドレッシングモード}
+
+オペランドは次の命令の番地
+\begin{itemize}
+\item 絶対アドレス
+
+次の命令のメモリ上のアドレス: 元のもの
+\item 相対アドレス
+
+PCにオペランドに書いてある定数を加えたアドレス
+
+命令長固定のアーキテクチャでは、アドレス全体は命令に入らないので、こちらが普通である。
+
+繰り返し構文などはPCから見て遠くへはいかない。
+\end{itemize}
+
+\paragraph{演算命令などのアドレッシングモード}
+
+表記: M{[}100{]}は番地100のメモリの内容を示す。
+
+\begin{tabular}{|c|c|c|}
+\hline 
+名前 & アセンブリでの書式 & 意味\tabularnewline
+\hline 
+\hline 
+レジスタ & \%reg & レジスタregの内容\tabularnewline
+\hline 
+即値 & \$3 & 命令に埋め込む定数3\tabularnewline
+\hline 
+レジスタ間接 & (\%reg) & M{[}reg{]}\tabularnewline
+\hline 
+ディスプレースメント & 100(\%reg) & M{[}100+reg{]}\tabularnewline
+\hline 
+インデックス修飾 & (\%breg, \%idxreg) & M{[}breg+idxreg{]}\tabularnewline
+\hline 
+絶対 & (1000) & M{[}1000{]}\tabularnewline
+\hline 
+ディスプレースメント+スケールつきインデックス修飾 & 100(\%breg, \%idxreg, 4) & M{[}1000+breg+4{*}idxreg{]}\tabularnewline
+\hline 
+ディスプレースメント+アドレス更新 & stwa \%sreg, 4(\%reg) & M{[}4+reg{]}←sreg, reg←4+reg\tabularnewline
+\hline 
+\end{tabular}
+
+\paragraph{即値のこと}
+\begin{itemize}
+\item 命令に埋め込まれた定数
+\item 必要性
+
+\begin{itemize}
+\item 複数命令が一命令で住む
+\item メモリアクセス(遅い)を減らす
+\end{itemize}
+\end{itemize}
+
+\paragraph{即値の問題}
+\begin{itemize}
+\item 固定長命令では一語の一部(32bit→12bit分、16bit分)しか命令に入らない
+\item 一語の上半分、下半分を別に指定(LoadH, LoadL)
+\end{itemize}
+
+\paragraph{アセンブリ言語上即値を書いても実際にはメモリからのロードになるケース}
+
+リテラルテーブル: メモリ上で即値をまとめたもの
+
+相対アドレス分岐, 多様なアドレッシングモード
+
+\paragraph{必要性}
+
+プログラムからの要請
+\begin{itemize}
+\item リロケータブル
+
+プログラム、データをメモリアドレスのどこにおいても良い
+\item ベースレジスタ・インデックスレジスタ
+
+\begin{itemize}
+\item 配列変数A{[}x{]}, i: \%idxreg
+
+オペランドアドレスA{[}\%breg, \%idxreg, S(一要素のサイズ){]}
+\item スカラ変数d, ベースレジスタ\%breg
+
+オペランドアドレスd(\%breg)
+\end{itemize}
+\end{itemize}
+
+\paragraph{スタック}
+
+(図省略)
+
+スタックポインタ: メモリ上のスタックの頂上のアドレスを常に返す
+
+stwu \%sreg, 4(\%reg)などの命令は、スタックポインタを管理するものである。
+
+\paragraph{いろいろな命令}
+\begin{itemize}
+\item 算術演算: 四則、論理
+\item シフト命令: ビット演算を操作
+
+\begin{itemize}
+\item 論理シフト: 符号を考えずにビットシフトを行う
+\item 算術シフト: 符号を保護した状態でビットシフトを行う(右シフトでは符号ビットが詰められる)
+\item 回転シフト: はみ出したビットが逆側から詰められる
+\end{itemize}
+\end{itemize}
+
+\paragraph{キャリーフラグとの関係}
+
+キャリーフラグを含めた演算
+\begin{itemize}
+\item ADDX ra, rb
+
+\begin{itemize}
+\item ra+rb+Cを計算して、raに代入する
+\item 複数レジスタ幅での計算に使う
+\end{itemize}
+\item SUBX ra, rb
+
+\begin{itemize}
+\item ra+rb-C
+\end{itemize}
+\item 左シフト1ビット
+
+\begin{itemize}
+\item 左に1ビットシフトして、はみ出したビットをCに格納する。
+\item 右SRLでも同様
+\end{itemize}
+\end{itemize}
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\section*{第5回}
+
+\paragraph{算術右シフト}
+
+符号を保存し、左端に符号ビットを補う。
+
+(数式略)
+
+\paragraph{レポート}
+
+算術左シフトが負の数において適切に作用することを確認せよ。
+
+締切: 次回
+
+\paragraph{正数の加減算命令と、剰余算命令}
+
+加減算: 命令に符号付き、符号なしの区別はない
+
+剰余算: 区別あり
+
+\paragraph{データの移動命令}
+
+一語命令: 単純移動命令
+
+領域: 複合移動命令
+
+条件付き移動命令: (条件分岐の代用)
+
+\paragraph{条件}
+
+コンディションコード: 無条件
+
+\paragraph{無条件分岐命令}
+
+目的(使い方)
+\begin{enumerate}
+\item ループを作る
+\item 即値では表現できない「遠方」への分岐
+
+\begin{enumerate}
+\item JMPでLJMPなどの命令に飛ぶ
+\item LJMPなどはビットフィールドを目一杯詰めてある
+\end{enumerate}
+\end{enumerate}
+
+\paragraph{条件分岐命令}
+
+コンディションコード(セットする命令が命令の直前にある)
+
+SUB: X, Y
+
+J? 行き先
+\begin{itemize}
+\item JZ: X=Y
+\item JN: X<Y
+\item JV X-Yがオーバーフロー
+\end{itemize}
+分岐先: 相対指定が通常
+
+\paragraph{プログラム}
+\begin{itemize}
+\item 量のレシピのようなもの
+\item 手順が記してある
+\item 同一のアドレスを書いているもの(提携手順)を使いたい
+\end{itemize}
+
+\paragraph{特殊なタイプ}
+
+サブルーチン命令
+
+行き側の命令: PC+1をどこかに保存して、分岐
+
+帰り側の命令: 保存したPC+1に戻る。
+
+\paragraph{PC+1の保存先}
+
+スタック: LINKレジスタ
+
+スタックに先入れ・後出し方式の記憶(FIFO/FILO)
+
+\paragraph{その他}
+\begin{itemize}
+\item 排他制御用
+
+ロック命令
+\item 特権命令
+
+OSを書くため
+\end{itemize}
+
+\paragraph{サブルーチン呼び出し}
+\begin{itemize}
+\item PC+1を保存してから、PCに代入
+\item レジスタの内容を保存
+\item 作業領域を確保
+\end{itemize}
+
+\paragraph{サブルーチンからの復帰}
+\begin{itemize}
+\item 作業領域を解放
+\item レジスタの内容を復帰
+\item 保存してあるPC+1にPCを変更
+\end{itemize}
+スタック上に作られるサブルーチン呼び出しのためのデータをアクティベーションレコード(スタックフレーム)と呼ぶ。
+
+サブルーチンのことを関数とも呼ぶ。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\section*{第6回}
+
+\subsection*{I/O}
+
+キーボード、マウス、ディスプレイ、ネットワーク、ディスク
+
+\paragraph{デバイスの状態を知る}
+\begin{itemize}
+\item 読み出せるデータが有るか?
+\item データを書いていいか?
+\item エラー?
+\item コマンドを受け付けられるか?
+\end{itemize}
+
+\paragraph{方法A: Polling}
+
+CPUがデバイスの状態を見て、readyになるまでループする(待つ)
+
+問題点: 待っている間CPUは他のことができない
+
+\paragraph{方法B: I/Oデバイス割り込み}
+
+割り込み処理: ある事象が発生(発生を別に監視)→実行中の処理中断→発生事象を処理・復帰
+
+I/Oデバイスが割り込みを発生させる。
+
+割り込みにはその内容によって番号が付されている。
+
+\paragraph{割り込みベクタ}
+
+割り込み処理プログラムのメモリアドレスと番号の対応表
+
+\paragraph{割り込みベクタの場所}
+
+メモリ上の決まった場所(例: 0番地から)
+
+電源ON→1000番地からスタート
+
+良い点: CPUはデバイスを待たない。別な仕事をできる。
+
+割り込み: 中断できないことがある→無視、遅らせる(CPUが)
+
+\paragraph{割り込みの頻度}
+
+割り込み処理の負荷は大きい
+
+あまり頻繁だと無駄が大きい
+
+I/Oによって頻度が異なる
+
+ディスク: 数msec
+
+ギガビットイーサネット: 12μsec
+
+10ギガビットイーサネット: 1.2μsec
+
+デバイスによっては頻度を制限する機能がある。データが一定以上になったら送信する、など。
+
+\paragraph{デバイスにたいする入出力}
+\begin{itemize}
+\item PIO: Programmed I/O
+\item DMA: Direct Memory Access
+\end{itemize}
+
+\paragraph{PIO}
+
+デバイスの持つ入出力レジスタへCPUのメモリ転送命令でデータを読み書きする。
+
+低速デバイス要
+
+\paragraph{DMA}
+
+CPUはデータ転送しない。デバイス側がメモリバスを使ってデータ転送する。
+
+制御: DMAコントローラ: デバイスが持つ
+
+PIOに比べて高速
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\section*{第8回}
+
+\paragraph{割り込み}
+
+デバイスからのI/Oを処理する
+
+ある事象が発生したら、実行中に処理を中断し、発生した事象に対応する。命令を使ってもできることだが、ハードウェアを使用して割り込みを実装するメリットは、命令実行を使うとコストが高くなるためである。
+
+\paragraph{割り込みの呼び方}
+
+アーキテクチャによって、
+\begin{itemize}
+\item IBM: Interrupt 割り込み
+\item SUN: Trap トラップ
+\item DEC Exception, Fault, Abort, Trap, Interrupt
+\end{itemize}
+
+\paragraph{目的}
+\begin{enumerate}
+\item アーキテクチャの拡張
+
+機能←ハード+ソフト
+
+例: システムコール、浮動小数点例外、ページフォルト、ブレークポイント、トレース
+\item 保護機能の実現
+
+特権命令の乱用に対する保護
+
+メモリ保護、MMUトラップなどと呼ばれる
+\item 非同期事象への対応
+
+デバイス(I/O)などCPU外部からの割り込み
+
+ディスク、ネットワーク、タイマーなど
+\end{enumerate}
+
+\paragraph{事象の例}
+\begin{itemize}
+\item マシンチェック
+
+\begin{itemize}
+\item ハードに発生した以上
+\end{itemize}
+\item リセット
+\item I/O
+\item タイマー
+\item パスエラー
+
+\begin{itemize}
+\item メモリ、デバイスへ
+\end{itemize}
+\item ページフォルト
+
+\begin{itemize}
+\item TLBミス
+\end{itemize}
+\item MMU割り込み
+\item 未定義命令の実行
+\item 特権命令のユーザモードでの使用
+\item 浮動小数点トラップ(例外)
+\item 整数トラップ
+\item デバッグ用
+
+\begin{itemize}
+\item ブレークポイント
+\item トレース
+\end{itemize}
+\item システムコール
+
+\begin{itemize}
+\item OSの機能を呼ぶ
+\end{itemize}
+\end{itemize}
+
+\paragraph{割り込みタスクの分類}
+\begin{itemize}
+\item 内部割り込み
+
+CPUの中から
+\item 外部割り込み
+\item I/Oデバイスなど外から
+\end{itemize}
+2. 受付のタイミング
+\begin{itemize}
+\item 命令間
+\item 命令中
+\end{itemize}
+
+\paragraph{命令実行との関係}
+\begin{itemize}
+\item 完了してから割り込みをソリ
+\item 中止(一度)→再開/終了
+\item 中断→再開しない
+\end{itemize}
+
+\paragraph{割り込み優先度}
+
+同時に複数の事象が発生した場合は、優先度巡に処理する。
+
+→割り込み処理の相互排他と呼ぶ。→優先度/割り込みマスク
+
+\paragraph{割り込みの処理手順 (シーケンス)}
+\begin{enumerate}
+\item 要員を検出←マスク
+\item 実行中命令(完了、中断、中止)
+\item 要員に番号付け(割り込みベクトル)
+
+複数要因で同一の番号のことも
+\item 割り込みベクトル→割り込み処理ルーチンのアドレス
+
+テーブル(メモリ上)
+
+割り込みベクタ
+\item 実行中命令の情報を退避(保存)
+
+PC、レジスタ(特別なものも)
+\item プロセッサを特権モードに
+\item (処理中のものよりも)優先度の低い割り込みを禁止
+\item 処理ルーチン(～ハンドラ)を実行
+\end{enumerate}
+
+\paragraph{割り込みハンドラの内容}
+\begin{enumerate}
+\item プロセッサ状態の保存
+
+レジスタなど残り
+\item 要因を解析
+
+←複数要因が同一のベクトル
+\item 動作の起動(OSへの要求)
+\item 復帰処理
+
+保存してあるものを戻す
+\item 復帰命令
+
+\begin{itemize}
+\item PCなどを戻す
+\item 特権レベルを戻す
+\item 実行再開
+\end{itemize}
+\end{enumerate}
+
+\subsection*{CPUとメモリの「間」}
+
+\paragraph{記憶階層(メモリ階層)}
+
+CPUの処理の速さはメモリアクセスの速さより速く、どうしても通信の際にロスが生じる。
+
+処理速度が近いほど速い
+
+→同一チップ上に存在し、チップ面積は小さく大容量のメモリは入らない
+
+→データは全部は入らない(一部は入る)
+
+→実際に使用している一部だけを同一チップ上に置く。
+
+\paragraph{一般論として}
+
+データアクセスには局所性がある
+\begin{itemize}
+\item 時間的: 同一データがすぐにアクセスされる
+\item 空間的: アクセスしたアドレスの近くがアクセスされる
+\end{itemize}
+
+\paragraph{キャッシュ}
+
+メモリ階層: レジスタ→キャッシュメモリ→主メモリ→～メモリ(ディスク)
+
+\paragraph{キャッシュの階層}
+
+(図省略)
+
+\subsection*{キャッシュの実現}
+
+\paragraph{See Associative方式}
+
+複数のDirect Mapped方式のテーブルを保持し、タグの候補も複数持つ。
+
+古いものを新しいもので入れ替え
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\section*{第9回}
+
+\paragraph{キャッシュ}
+
+CPU→キャッシュ→メモリ
+
+\paragraph{Direct Mapping}
+
+(図省略)
+
+\paragraph{Set Associative方式}
+
+Direct Mappedの表を複数持つ
+
+同一のキーに対してタグを複数(2way, 4way)覚える
+
+\paragraph{細部}
+\begin{itemize}
+\item フラグ
+
+\begin{itemize}
+\item valid: メモリと同一のデータを保持
+\item Dirty: キャッシュの上に有効なデータはメモリに書き込み済みか?
+\end{itemize}
+\item ライトスルー/ライトバック
+
+\begin{itemize}
+\item スルー: 書き込み 常にキャッシュとメモリを更新
+\item バック: 書き込み キャッシュだけ更新
+\end{itemize}
+\end{itemize}
+
+\paragraph{Set Associative}
+
+どのデータを追い出すかを考えなければならない。
+\begin{itemize}
+\item Least Recently Used: 一番長く使われていないものを追い出す
+\end{itemize}
+
+\paragraph{キャッシュの有効活用}
+\begin{itemize}
+\item メモリはとても低速
+\item メモリ⇔キャッシュ: ライン単独(→ラインの内容を全部有効に使う)でのアクセス
+\item データ転送の歩幅(Stride): キャッシュの同期に同調すると単一のラインだけがアクセスされてしまう。(スラッシング)
+\end{itemize}
+
+\paragraph{仮想記憶(メモリ)}
+\begin{itemize}
+\item ソフトウェア側に、物理的なメモリの番地(物理アドレス)を直接見せず、加工したもの(仮想アドレス)を見せる技術
+\end{itemize}
+
+\paragraph{ハードウェアによるアドレス変換気候}
+\begin{itemize}
+\item Page Mapping Tableを使う
+
+\begin{itemize}
+\item メモリアクセス手順
+
+\begin{enumerate}
+\item 仮想アドレス→論理ページ番号→オフセット
+\item PMTから物理アドレスの位置
+\item 物理アドレス=物理アドレスの位置+オフセット
+\end{enumerate}
+\item オフセットのbit数でキマ物理メモリの「ブロック」のサイズ→512byte\textasciitilde{}8kbyte
+\item 稼働メモリ側もこのサイズで分割されている。この単位をページという。
+\end{itemize}
+\end{itemize}
+
+\paragraph{属性}
+\begin{itemize}
+\item 対応するフレームがない状態などが表現される
+\end{itemize}
+対応するフレームがないページヘのアクセス→割り込みが発生
+
+割り込みベクタに登録されている処理ルーチン(OSの一部)が対応
+
+\paragraph{Demand Paging}
+
+必要に応じて、ページにフレームを結びつける。
+\begin{itemize}
+\item 対応フレーム無し(invalid状態)
+
+\begin{itemize}
+\item 割り込み発生
+\item 処理ルーチンは、このページにフレーム(空いているフレームが有るか?)をこの時点で割り当て
+\end{itemize}
+\item 空きフレームがないとき
+
+\begin{itemize}
+\item あまり使われてないページを捜す
+\item そのフレームを2次記憶に追い出す。
+
+\begin{itemize}
+\item すでにディスクに書き込み済みのこともある(属性の一つ(modify, dirty))
+
+\begin{itemize}
+\item →ただフレームを空けるだけ
+\end{itemize}
+\end{itemize}
+\item 空けたフレームを割り当て
+\end{itemize}
+\item 追い出し対象: Least Recently Used
+\end{itemize}
+
+\paragraph{メリット}
+\begin{itemize}
+\item 物理メモリ量以上のメモリを扱うことができる
+\item プロセス(個別のPMT)へのメモリアドレスの割り当てを共通化
+\item プロセス起動の高速化
+
+\begin{itemize}
+\item 全部一度にロードしなくても起動ができる
+\end{itemize}
+\end{itemize}
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\section*{第10回}
+
+\paragraph{仮想記憶}
+
+仮想アドレスを変換し、ハード上の物理的なメモリアドレスにすることで仮想的に記憶領域を扱うことができる。
+
+\paragraph{De-mand Paging}
+
+物理: フレーム
+
+仮想: ページ
+
+見かけのメモリ量が増える。
+
+\paragraph{利点}
+\begin{itemize}
+\item 見かけのメモリ量増大
+\item プロセスへのメモリアドレスの割当の共通化\\
+仮想アドレスはプロセスごとの仮想空間になる
+\item プロセス起動の高速化
+\item 全部のプログラムデータを一度にメモリにロードしなくても良い\\
+一度に必要になったらDemand Paging
+\item プロセスが分身を作る(fork)際に、親子で同一のページを共有する\\
+書き換えたら(割り込み発声)、その時点でコピーを作る。(Copy on Write)
+\item 同一フレームをプロセス間で共有\\
+プロセスの間で通信(shared memory)
+\item Memory-Mapped file\\
+ファイルをbyte列に変換し、プロセスの仮想メモリの一部に取り込む。
+
+\begin{itemize}
+\item Memoryへのread/writeをfileへのread/writeに変換する
+\item shared libraryの実現に使う
+\end{itemize}
+\item 物理メモリ消費の減少(その他)
+
+\begin{itemize}
+\item 同一プログラムを複数プロセスで同時に実行中、複数のプログラムデータのコピーが物理メモリ上に存在してしまう
+
+\begin{itemize}
+\item コピーはただ一つでプロセス間で共有
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\paragraph{システムコール}
+
+OS機能とユーザーのインターフェース
+
+プログラムはシステムコールによってOS機能にアクセスする
+
+CPUの特権モード(特権命令)
+
+\paragraph{システムコールの処理}
+
+ユーザープログラム: ユーザーモード
+
+OS(カーネル)処理: 特権が必要
+
+実行ボードを移行する命令がある
+
+CPUの処理して欲しいデータを引数に
+
+\paragraph{システムコールの種類}
+\begin{itemize}
+\item プロセス制御
+\item ファイル管理
+\item デバイス管理: 入出力まわり
+\item 情報管理: 時刻など
+\item プロセス間通信
+\end{itemize}
+
+\paragraph{プロセス}
+
+プログラムを実行する実態、実行状態
+
+～～～～～
+
+プログラムコード、メモリ上のデータ(仮想空間)、CPUの状態(PC, レジスタ)、オープンしているファイル
+
+\paragraph{一般的OS}
+
+複数プロセスの同時実行(CPU一個でも)
+
+未時間時間間隔で実行を(OSが)切り替え
+
+\paragraph{色々なプロセス}
+
+(プロセスの)権限による分類
+\begin{itemize}
+\item ユーザプロセス
+\item ハイパーバイザプロセス: 特別なシステムコールを使える
+\end{itemize}
+形態
+\begin{itemize}
+\item システムプロセス
+\item デーモンプロセス
+
+OSの機能の一分を実現
+\item サーバプロセス
+
+ネットワークを通して相手先に何かの仕事をする
+\end{itemize}
+
+\paragraph{プロセス実行の切り替え}
+
+プロセスの中身とCPU, 仮想メモリの対応の切り替え
+
+プロセスコンテキストスイッチ: 大変！
+
+→スレッド(Thread): プロセスの中の一連の実行の流れ
+
+実行の流れ(PC, レジスタ, (関数の)スタック)→仮想空間はスレッド間で共有
+
+1プロセス中に複数のスレッド(マルチスレッド)
+
+\paragraph{スレッドが共有するもの}
+\begin{itemize}
+\item オープンしえいるファイル
+\item 環境変数
+\item 実行ディレクトリ
+\end{itemize}
+プロセスは一個以上のスレッドを持つ
+
+\paragraph{スレッドの分類}
+\begin{itemize}
+\item カーネルスレッド(カーネルの中にあるスレッド)
+
+\begin{itemize}
+\item 実行制御をカーネルが行う
+\item ユーザ空間ではLight Weight Process対応 プロセス同様にシステムコールを並行して呼べる
+\end{itemize}
+\item ユーザスレッド
+
+\begin{itemize}
+\item ユーザプロセス内で
+\end{itemize}
+\end{itemize}
+
+\paragraph{スケジューリング}
+
+CPU一個: 実行順はどうすればよいのか?
+
+優先度がプロセス/スレッドに定義されている
+
+{*} いままでの実行実績: 効率・リアルタイム性。資源有効活用
+
+\paragraph{プロセスの実行制御}
+
+(UNIX)シグナル: 割り込みに似ている
+
+プロセスにシグナルを「送る」
+
+登録した処理ルーチンがプロセス厨で起動
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\section*{第11回}
+
+\paragraph{プロセス}
+
+仮想アドレスがそれぞれ違う
+
+多数のプログラムが「同時」に動く
+
+\paragraph{スレッド}
+
+仮想アドレスは共用
+
+\paragraph{シグナル}
+
+仮想CPU/コンピュータ
+
+「割り込み」はイベントの番号で管理する
+
+\subsection*{プロセスの生成}
+
+UNIX系
+
+親プロセス→(生成するシステムコール)→子プロセス
+
+\paragraph{fork() (関数呼び出し)}
+
+親プロセスのコピーとして子プロセスを作る
+
+プログラムの実行状態、PC、レジスタ、スタック、メモリ、オープンしているファイルなどをコピーする
+
+\paragraph{exec()}
+
+現在実行中のプログラムに変えて、或ファイルのプログラムをメモリにロードして実行開始
+\begin{itemize}
+\item コードを上書き
+\item 上書きされないもの
+
+\begin{itemize}
+\item カレントディレクトリ
+\item オープンしているファイル
+\item 環境変数
+\item など
+\end{itemize}
+\end{itemize}
+
+\paragraph{使用例}
+
+親:
+
+pid\_t pid;
+
+pid = fork();
+
+if (pid == 0) exec(program)
+
+else wait()
+
+子:
+
+if (pid == 0) 「ここにexec()するプログラムのための初期化を入れる(上書きされない状態)」exec(program)
+
+else wait()
+
+\paragraph{子プロセスの終了}
+
+exec()
+
+親は、子の終了を検出しなければならない。exit()で子は本当に消える。
+
+\paragraph{親}
+
+親も事同様に仕事をする。
+
+この終了を非同期にしる必要がある。
+
+シグナル: SIGCHLDリダイレクトの実変
+\begin{itemize}
+\item プログラムの入出力
+\item 実行ファイルを書き換えないで入出力先を繋ぎ変え
+
+\begin{itemize}
+\item 決まった番号のファイル記述子を入出力に使用
+
+\begin{itemize}
+\item オープンしているファイルについている番号
+\item デフォルト: キーボード、画面
+\end{itemize}
+\end{itemize}
+\item UNIX系OSコマンド系プログラム
+\end{itemize}
+
+\paragraph{fork()のあと、exec()するまでにつなぎ変え処理}
+
+子はオープンすることなく、もらったファイル記述子で処理する
+
+\paragraph{exec()ですること}
+
+ファイルからプログラムをロード(書式: ELF, a.out)
+
+\paragraph{実行ファイルの生成}
+\begin{itemize}
+\item 大きなプログラムは、単一のファイルからコンパイルして生成することができない。
+\item プログラムを部品の集合に分割する。
+\end{itemize}
+
+\paragraph{分割コンパイル}
+
+部品に対応するソースファイル(C言語など)
+
+→コンパイルされてオブジェクトファイルになる
+
+→集めて「リンク」すると実行ファイルになる
+
+ライブラリ: オブジェクトファイルの内
+
+再利用できる部品を集めたもの
+
+\paragraph{オブジェクトファイルの中身}
+\begin{itemize}
+\item text section
+
+\begin{itemize}
+\item 機械語になったコード
+\item 一部に無効なアドレスが指定されている
+\end{itemize}
+\item data section
+
+\begin{itemize}
+\item ソース・ファイル中のデータ
+\end{itemize}
+\end{itemize}
+
+\paragraph{relocation情報}
+\begin{itemize}
+\item リンクする際に値を決めるコード中の数値の一と対応しているsymbolの情報
+\end{itemize}
+
+\paragraph{symbolテーブル}
+\begin{itemize}
+\item 相互参照用symbolの表
+
+\begin{itemize}
+\item 未定義(外部で定義)、定義
+\end{itemize}
+\end{itemize}
+
+\paragraph{アセンブリ}
+
+アドレスに対するlabel→symbol
+
+ただし.L始まりはで以外
+
+\paragraph{label}
+
+同一ファイルで定義、引用
+
+相対アドレスにできる
+
+アセンブル時に値が決まる
+
+\paragraph{それ以外}
+
+定義されていない
+
+symbol→リンク時に決める
+
+\paragraph{他のファイルからのsymbolの参照}
+
+.global 指令
+
+で可能になる。
+
+.text 指令
+
+続く部分をtext sectionへ。
+
+\paragraph{リンクですること}
+\begin{enumerate}
+\item オブジェクトファイルの中身をアドレス空間に割りつける
+
+\begin{enumerate}
+\item 中身の種類ごとにまとめる
+\item symbolの絶対アドレスが計算できるようにする
+\end{enumerate}
+\item 決定したsymbolのアドレスを未解決状態のsymbolに実装
+\item リロケーション情報: コードの中のアドレスを書き換える。即値も
+\end{enumerate}
+
+\paragraph{リンク処理}
+
+実行ファイルがロードされる際に行うことがある
+
+→動的リンク: shared library
+
+\paragraph{プロセスを表現するもの: プロセス構造体}
+\begin{itemize}
+\item プロセスID: 自分、親、子
+\item アクセス制御: ユーザーID, グループID
+\item 休眠時の保存状態: PC, レジスタ, etc...
+\item プロセス時の状態: 優先度、待っているイベント、環境変数、umask、カレントディレクトリ
+\item 統計
+\item プロセス間通信用バッファ(一時データ領域)
+\item ファイル記述子の実体
+\item 仮想アドレス空間の構成
+\end{itemize}
+
+\subsection*{ファイルシステム}
+
+物理的なディスクはバイトの列なので、そのままでは使いにくい。
+
+seek, read, write
+
+\paragraph{ファイルシステム}
+\begin{itemize}
+\item ファイルの検索・ファイル名付け・階層構造(グラフ・気)
+\item ファイル属性(日付・持ち主・アクセス権)
+\end{itemize}
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\section*{第12回}
+
+\paragraph{ファイルについている「ラベル」}
+\begin{itemize}
+\item ファイルのuser ID group ID ←一個
+\item アクセスモードread, write, execute (ディレクトリの場合、パス名の一分に使えるか?)
+
+\begin{itemize}
+\item それぞれOK/NG 1bit
+\end{itemize}
+\end{itemize}
+ファイルの
+\begin{itemize}
+\item user ID
+\item group ID
+\item other public
+\end{itemize}
+の3カテゴリごとにアクセスモード3bit→全部で9bit
+
+文字列表現rwxrwxrwx (参考: ls -l → r\_xr\_xr\_x)
+
+\paragraph{UNIX系OS}
+
+OSが扱うさまざまなものをファイルとみなす。名前+構造がある何か
+
+→あるファイルシステムで表現
+
+\paragraph{例1}
+
+ネットワークファイルシステム(NFS)
+
+別なコンピュータのファイルにネットワーク慶友でアクセスする機能を自分の中のファイルシステムへのアクセスで置き換え
+
+\paragraph{例2 擬似ファイルシステム}
+
+procfs: プロセスファイルシステム
+
+プロセス自体がファイルで表現
+
+sysfs: デバイスおよびそのドライバ
+
+\paragraph{ファイルシステム自体の階層化}
+
+fsMをfs1にmountする
+
+mountの結節点のことをmount pointという
+
+\paragraph{ファイルシステムの基本操作システムコール}
+\begin{enumerate}
+\item ファイル実体操作
+
+read(), write(), stat(), etc...
+\item ファイル記述子
+
+open(), close(), lseek(), etc...
+\item ファイルシステム操作
+
+mount(), umount(), etc...
+\end{enumerate}
+
+\paragraph{デバイスの扱い (UNIX系)}
+\begin{itemize}
+\item デバイスをスペシャルファイル(多くの場合/devディレクトリ以下)で表現
+\item デバイスへのアクセス
+
+\begin{itemize}
+\item read(), write() etc...
+\item アクセス制御同様
+\end{itemize}
+\end{itemize}
+
+\paragraph{デバイスの2分類}
+\begin{itemize}
+\item キャラクタデバイス(1バイト単位)
+\item ブロックデバイス(ブロック単位): 磁気ディスクetc...
+\end{itemize}
+
+\paragraph{例外}
+\begin{itemize}
+\item ネットワークインターフェース(LAN)
+
+ネットへのアクセスは「ソケット」を使う。
+\item グラフィックデバイス
+
+性能のため別な方法
+\end{itemize}
+
+\paragraph{いろいろなデバイス階層構造}
+
+USB, PCI, PCI Expressのような低速のバスは、それを取りまとめる chip set を用意してCPUに接続させる。
+
+\paragraph{通信}
+
+プロセスからプロセスへ: プロセス間通信
+
+コンピュータ内部⇔内部⇔外
+
+\paragraph{種類(プロセス間通信)}
+\begin{enumerate}
+\item パイプ
+
+共通の親プロセスを持つプロセスの間で通信する。ファイルアクセスを拡張
+\item ソケット
+
+共通の親はいらない
+
+同一コンピューター内/異なるコンピュータ間(ネットワークI/F・インターネット)
+\item メモリ共有
+\item メッセージ・キー
+\end{enumerate}
+
+\paragraph{コンピュータ間ネットワーク}
+
+データの輸送
+
+送信元→経路→受信先
+
+送信元、受信先の識別
+
+人間向けの名前→機械向け(IPアドレス)
+
+\paragraph{データの経路}
+
+識別子→経路?
+
+輸送方式
+
+回線交換
+
+競合? 誤り、訂正
+
+ネットワークプロトコル
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\section*{第13回 (補講)}
+
+\subsubsection*{ネットワーク}
+
+\paragraph{プロトコル}
+
+機器の間の通信(データの書式・手順)
+
+\paragraph{プロトコル階層}
+
+OSI階層モデル
+
+物理層: ケーブルの特性
+
+データリンク層: 伝送媒体で直接接続されたコンピュータの間の通信
+
+ネットワーク層: さまざまなデータリンク層で接続されたコンピュータの間の通信経路、アドレス管理
+
+トランスポート層: プロセス間でのデータ転送を管理
+
+プレゼンテーション層: データの文字コード、フォーマット
+
+アプリケーション層: アプリケーションにおけるプロトコル
+
+\subsubsection*{インターネット (TCP/IP)}
+
+\paragraph{IPアドレス}
+
+``inter'' net: Datalink → 個々のNet
+
+\paragraph{試験}
+
+1月8日(金) 16:50～18:35
+
+場所 1322
+
+範囲は半年の講義内容全部
+\end{document}

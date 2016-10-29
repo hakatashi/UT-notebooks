@@ -1,0 +1,2216 @@
+%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english]{book}
+\usepackage[LGR,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{calc}
+\usepackage{units}
+\usepackage{textcomp}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\DeclareRobustCommand{\greektext}{%
+  \fontencoding{LGR}\selectfont\def\encodingdefault{LGR}}
+\DeclareRobustCommand{\textgreek}[1]{\leavevmode{\greektext #1}}
+\DeclareFontEncoding{LGR}{}{}
+\DeclareTextSymbol{\~}{LGR}{126}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[version=3]{mhchem}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2015-A 形式言語理論}
+
+
+\author{教員: 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+
+
+本講義の資料(教科書およびハンドアウト)は理学部ホームページの「蓮尾一郎」→「TEACHING」→「形式言語」から入手できる。
+
+
+\section*{Intrduction}
+
+
+\paragraph{オートマトンとは}
+
+Automaticという単語は、automaton(複数形はautomata)から生まれた単語である。
+
+オートマトンは
+\begin{itemize}
+\item ノードとエッジを持ち、(グラフと一緒)
+\item エッジ: 文字でラベル付けされる
+\item 丸と二重丸の区別がある
+\item 文字列$\left(\mathrm{aaa},\mathrm{ab},\mathrm{a^{100}b^{100}},\cdots\right)$を受理したり、しなかったりする(単純な)機械
+\item 最後に行き着く状態(state/node)が二重丸ならば受理される
+\item (枝分かれによって、「うまく選んで二重丸に辿り着ける」)
+\end{itemize}
+
+\paragraph{定義}
+
+スクリプト$M$がオートマトンであるとき、
+
+\[
+L\left(M\right)\coloneqq\left\{ M\text{がacceptする文字列全体}\right\} 
+\]
+
+
+
+\paragraph{Q.}
+
+Is there $L\subseteq\Sigma^{*}$s.t. $L\neq L\left(M\right)$, $\forall M$:
+オートマトン
+
+ただし$\Sigma^{*}$は文字列全体である。
+
+言い換えると、Is any $L$ represented by some automaton $M$?
+
+
+\paragraph{A.}
+
+No if restrict to finite automaton.
+
+
+\paragraph{A2.}
+
+Yes if we allow infinitely many states. For example, 文字列$w$と状態$q$
+が1対1対応するようなオートマトンに対して、$w\in L$な状態を二重丸と定義する。
+
+
+\paragraph{オートマトンの先}
+
+FA(finite autom)→PDA(pushdown autom)→TM(turing machine)
+
+という順に計算能力が上がるが、チューリングマシン以上の計算能力は存在しない。実際に研究で扱う際にはチューリングマシン相当の計算能力だけでなく、オートマトン相当の計算能力もしばしば研究対象として用いられる。
+
+なぜオートマトンなのか?→そこまでパワフルではなく、オートマトン上の諸問題の多くはdecidable(アルゴリズムで解ける)だから。
+
+
+\paragraph{例: 定理}
+
+入力されたオートマトン$M_{1},M_{2}$に対して、$L\left(M_{1}\right)\subseteq L\left(M_{2}\right)$を判定するアルゴリズムが存在する。$L\left(M_{1}\right)$および$L\left(M_{2}\right)$は無限集合だが、$M_{1},M_{2}$は有限なので、そちらを操作して判定することが可能である。
+
+これはPDAおよびTMでは不可能である。ここから、システム検証への応用が可能とされる。例えば、$M_{1}$をネットワークプロトコル、$M_{2}$を安全性仕様とすると、ネットワークプロトコルが安全に運用可能かを判定することができる。
+
+
+\chapter{(素朴)集合論の記法}
+
+
+\paragraph{Def1.1}
+
+$\left|x\right|$: $x$の言の個数
+
+
+\paragraph{例}
+
+\[
+\left|\Sigma^{*}\right|=+\infty\text{\ensuremath{\left(\text{if }\Sigma\neq\oslash\right)}}
+\]
+
+
+
+\paragraph{Def1.2}
+
+$f$が\uline{単射}(injective)であるとは、
+
+\begin{align*}
+f:X\rightarrow Y & \stackrel{\mathrm{def.}}{\Leftrightarrow}\left(x\neq x'\Rightarrow f\left(x\right)\neq f\left(x'\right)\right)\\
+ & \Leftrightarrow\left(f\left(x\right)=f\left(x'\right)\Rightarrow x=x'\right)
+\end{align*}
+
+
+$f$が\uline{全射(surjective)}であるとは、
+\[
+\stackrel{\mathrm{def.}}{\Leftrightarrow}\forall y\in Y,\exists x\in X,f\left(x\right)=y
+\]
+
+
+$f$が\uline{全単射(bijection)}であるとは、
+\[
+\stackrel{\mathrm{def.}}{\Leftrightarrow}f\text{が全射かつ単射}
+\]
+
+
+
+\paragraph{Def.1.4.}
+
+$f:X\left(\ni x\right)\rightarrow Y,V\subseteq X$について、
+\[
+f\left(V\right)\coloneqq\left\{ f\left(x\right)|x\in V\right\} \subseteq Y
+\]
+を``$V$の$f$による像''と呼ぶ。
+
+$W\subseteq Y$について、
+\[
+f^{-1}\left(W\right)\coloneqq\left\{ x\in X|f\left(x\right)\in W\right\} \subseteq X
+\]
+を``$W$の$f$による逆像''と呼ぶ。
+
+
+\paragraph{Prop.1.1.}
+
+$f:X\rightarrow Y,V\subseteq X,W\subseteq Y$について、
+\begin{enumerate}
+\item $f\left(f^{-1}\left(W\right)\right)\subseteq W$
+
+
+\paragraph{証明例1}
+
+
+\begin{align*}
+f\left(f^{-1}\left(x\right)\right) & =\left\{ f\left(x\right)|x\in f^{-1}\left(W\right)\right\} \\
+ & =\left\{ f\left(x\right)|f\left(x\right)\in W\right\} \\
+ & =\left\{ y\in W|\exists x.y=f\left(x\right)\right\} \\
+ & \subset W
+\end{align*}
+
+
+
+\paragraph{証明例2}
+
+
+$y\in f\left(f^{-1}\left(W\right)\right)$とする。(Aim. $y\in W$)
+
+
+$f\left(f^{-1}\left(W\right)\right)$のdef.より、ある$x\in f^{-1}\left(W\right)$に対して$y=f\left(x\right)$、また$f^{-1}\left(x\right)$の定義より$f\left(x\right)\in W$。以上より$y\in W$
+
+\item $f$: surjection$\Rightarrow f\left(f^{-1}\left(W\right)\right)=W$
+\item $V\subseteq f^{-1}\left(f\left(V\right)\right)$
+\item $f:\text{injective}\Rightarrow V=f^{-1}\left(f\left(V\right)\right)$
+\end{enumerate}
+
+\paragraph{Thm.1.1}
+
+\begin{align*}
+2^{X} & =p\left(X\right)=\left\{ v\subseteq X\right\} \\
+ & =\left\{ X\text{の部分集合全体}\right\} 
+\end{align*}
+
+
+
+\paragraph{例}
+
+$\Sigma=\left\{ a,b\right\} $のとき、
+\[
+p\left(\Sigma\right)=2^{\Sigma}=\left\{ \left\{ \right\} ,\left\{ a\right\} ,\left\{ b\right\} ,\left\{ a,b\right\} \right\} 
+\]
+
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第2回}
+
+
+\paragraph{有限と無限のせめぎあい}
+
+コンピューターが扱うものは基本的に「無限」のものである。振る舞いが停止する場合を考えるときを可能無限、振る舞いが停止しない場合を考えるときを実無限と呼ぶ。
+
+参考文献: 野矢茂樹『無限論の教室』
+
+しかし、実際に人間が扱う際には有限のものであるため、コンピューターの振る舞いを記述するプログラムは有限の長さでなければならない。このように、有限の記述で無限の振る舞いを規定できるのが、一種の形式言語理論の面白さである。
+
+そこで前回は$L\leq\Sigma^{*}$で$\forall M:\text{有限オートマトン}L\neq L\left(M\right)$なるものは存在するか?という問いを設けた。これに対する回答はYesである。
+
+\begin{align*}
+\Sigma & =\left\{ a,b\right\} \\
+L & =\left\{ a^{n}b^{n}|n\in\mathbb{N}\right\} \left(\ni\varepsilon,ab,aabb,aaabbb,\cdots\right)
+\end{align*}
+
+
+
+\paragraph{Def1.5}
+
+\begin{align*}
+X\cup Y & =\left\{ z|z\in X\text{or}z\in Y\right\} \\
+X\cap Y & =\left\{ z|z\in X\text{and}z\in Y\right\} \\
+X-Y & =\left\{ z|z\in X\text{and}z\notin Y\right\} 
+\end{align*}
+
+
+
+\paragraph{Def1.7}
+
+$X_{1},\cdots,X_{n}$を集合として、
+\[
+X_{1}\times\cdots\times X=\left\{ \left(x_{1},\cdots,x_{n}\right)|x_{i}\in X_{i}\right\} 
+\]
+
+
+このような集合を(Kartesian) product集合と呼ぶ。ただし$\left(\cdots\right)$は順序対(ordered
+tuple)である。
+
+
+\paragraph{Def1.8}
+
+$X$を集合、$Y\subseteq X$として、
+\begin{align*}
+\chi_{Y}: & x\rightarrow\left\{ 0,1\right\} \\
+ & x\mapsto\begin{cases}
+1 & \left(x\in Y\right)\\
+0 & \left(x\notin Y\right)
+\end{cases}
+\end{align*}
+
+
+
+\paragraph{Def1.9}
+
+$X_{1},\cdots,X_{n}$を集合として、$X_{1},\cdots,X_{n}$上の$n$項関係(n-ary relation)とは、
+\[
+R\subseteq X_{1}\times X_{2}\times\cdots\times X_{n}
+\]
+のことである。
+
+例えば$X=\left\{ \text{BO},\text{IH},\text{KM}\right\} $として、$R\subseteq X\times X$となる集合、例えば、
+\[
+R=\left\{ \left(\text{BO},\text{KM}\right),\left(\text{IH},\text{BO}\right),\left(\text{IH},\text{KM}\right),\left(\text{KM},\text{BO}\right)\right\} 
+\]
+のような集合を考えると、これは$X$内の要素どうしの関係を表現していることが分かる。
+
+則ち、「$x$と$y$の間に$R$の関係がある」とは、
+\[
+\left(x,y\right)\in R\left(\subseteq X\times Y\right)
+\]
+である。
+
+
+\paragraph{Def1.10}
+
+$R\subseteq X\times Y$なる二項関係を考える。このとき、$R$が部分関数(partial function)であるとは、
+\[
+\forall x\left(\left(x,y\right)\in R\wedge\left(x,y'\right)\in R\Rightarrow y=y'\right)
+\]
+である。
+
+また、$R$が関数(function)であるとは、
+\begin{itemize}
+\item $R$が部分関数であり、
+\item $\forall x.\exists y.\left(x,y\right)\in R$
+\end{itemize}
+である。
+
+
+\paragraph{Def1.11}
+
+$R\subseteq X\times X$なる二項関係を考える。
+\begin{enumerate}
+\item $R$が反射的(reflexible)であるとは、
+\[
+\forall x\in X,\left(x,x\right)\in R
+\]
+である。
+\item $R$が推移的(transitive)であるとは、
+\[
+\left(x,y\right)\in R,\left(y,z\right)\in R\Rightarrow\left(x,z\right)\in R
+\]
+である。
+\item $R$が対照的(symmetric)であるとは、
+\[
+\left(x,y\right)\in R\Rightarrow\left(y,x\right)\in R
+\]
+である。
+\end{enumerate}
+
+\paragraph{Def}
+
+$R\subseteq X\times X$なる二項関係を考える。$R$の反射的推移閉包(reflexible and transitive
+closure)$R^{*}$を次のように定義する。
+\[
+\cfrac{}{\left(x,x\right)\in R^{*}},\cfrac{\left(x,y\right)\in R^{*}|\left(y,z\right)\in R^{*}}{\left(x,z\right)\in R^{*}},\cfrac{\left(x,y\right)\in R}{\left(x,y\right)\in R^{*}}
+\]
+
+
+
+\paragraph{Lem.}
+
+$\left(x,y\right)\in R^{*}$であるとき、
+\[
+\exists n\in\mathbb{N},\exists x_{0},x_{1},\cdots,x_{n}\in X,x=x_{0}Rx_{1}R\cdots Rx_{n}=y
+\]
+
+
+ただし$R^{*}$は$R$の0回以上の繰り返しでsる。
+
+教科書では、$R^{+}$($R$の1回以上の繰り返し)を$R$のtransitive closureであるとしている。
+
+
+\section{記号列、アルファベット、言語}
+
+
+\paragraph{Def1.12}
+
+文字$a$および文字の集合$\Sigma$とし、
+\[
+a\in\Sigma
+\]
+とする。
+
+
+\paragraph{Def1.13}
+
+$\Sigma$上のword(string)とは、
+\[
+a_{1}a_{2}\cdots a_{n}\left(n\in\mathbb{N},a_{i}\in\mathbb{N}\right)
+\]
+である。
+
+length 0のwordを$\varepsilon$(empty word)と書く。
+
+また、$\left|x\right|$をword $x$の長さとする。(e.g. $\left|\varepsilon\right|=0$)
+
+余談であるが、無限word($a_{0}a_{1}a_{2}\cdots\left(a_{i}\in\Sigma\right)$)をオートマトンで受理することを考えるとき、オートマトンの二重丸を無限回踏めばacceptとする、Büchi
+acceptance conditionというオートマトンも今後登場する。
+
+
+\paragraph{Def1.14}
+
+$x=x_{1}x_{1}\cdots x_{m},y=y_{1}y_{2}\cdots y_{n}$なるwordsを考える。このとき、$x$と$y$の連結(concatenation)$x\cdot y$を、
+\[
+x\cdot y=x_{1}x_{2}\cdots x_{m}y_{1}y_{2}\cdots y_{n}
+\]
+とする。
+
+また、$x^{k}=\overbrace{x\cdot x\cdot\cdots\cdot x}^{k\text{回}}$である。
+
+
+\paragraph{Def1.15}
+
+prefix, suffix, subword, subsequence: (省略)
+
+例えば、AAAAAのsubwordは6個、ABCDEのsubwordはそれ以上存在する。
+
+
+\paragraph{Def1.17}
+
+\[
+\Sigma^{*}=\bigcup_{n\in\mathbb{N}}\Sigma^{n}=\Sigma^{0}\cup\Sigma^{1}\cup\Sigma^{2}\cup\cdots=\left\{ \text{words over }\Sigma\right\} 
+\]
+という。
+
+\begin{align*}
+\Sigma^{+} & =\Sigma^{*}\backslash\left\{ \varepsilon\right\} \\
+ & =\left\{ \text{words over }\Sigma\text{ of length}\ge1\right\} 
+\end{align*}
+
+
+
+\paragraph{Def1.18}
+
+$x^{R}$: reversed
+
+
+\paragraph{Def1.19}
+
+$\Sigma$上の言語(language)とは、$L\subseteq\Sigma^{*}$のことである。
+
+e.g.
+\begin{align*}
+L & =\oslash\\
+L & =\Sigma^{*}
+\end{align*}
+
+
+
+\paragraph{Def1.20}
+
+$L_{1},L_{2}\subseteq\Sigma^{*}$なるlanguagesを考える。
+\[
+L_{1}\cdot L_{2}\coloneqq\left\{ x_{1}\cdot x_{2}|x_{1}\in L_{1},x_{2}\in L_{2}\right\} 
+\]
+
+
+
+\paragraph{Q}
+
+言語の積について、単位元および零元は何となるか?
+
+
+\paragraph{A}
+
+単位元: $L=\left\{ \varepsilon\right\} $
+
+零元: $L=\oslash$
+
+
+\paragraph{Def1.21}
+
+\[
+L^{*}=\bigcup_{n\in\mathbb{N}}L^{n}=\bigcup_{n\in\mathbb{N}}\underbrace{L\cdot\cdots\cdot L}_{n\text{回}}=\left\{ x_{1}x_{2}\cdots x_{n}|n\in\mathbb{N},x_{i}\in L\right\} 
+\]
+\[
+L^{+}=\bigcup_{n\ge1}L^{n}
+\]
+
+
+
+\chapter{有限オートマトンと正則言語}
+
+
+\section{序章}
+
+省略
+
+
+\section{有限オートマトンの定義}
+
+
+\paragraph{Def2.1}
+
+非決定性有限オートマトン(nondeterministic finite automaton: NFA)とは、
+\[
+M=\left(Q,\Sigma,\delta,q_{0},F\right)
+\]
+によって与えられる。このとき、$Q$は有限の状態集合、$\Sigma$はアルファベット、$\delta$は$\delta\subseteq Q\times\Sigma\times Q$なる集合で遷移関係と呼び、$q_{0}$は$q_{0}\in Q$なる元でinitial
+state、$F$は$F\subseteq Q$なる集合でfinite stateである。
+
+$\left(q,a,q'\right)\in\delta$は、状態$q$が$a$で状態$q'$に遷移することを表し、$\delta$が関数である時($Q\times\Sigma\rightarrow Q$)、$M$を決定的有限オートマトン(deterministic
+finite automaton: DFA)と呼ぶ。
+
+
+\paragraph{Def2.2}
+
+$M=\left(Q,\Sigma,\delta,q_{0},F\right)$なるオートマトンを考える。
+
+$M$上のcomputation(run)とは、
+\[
+q_{0}\xrightarrow{a_{1}}q_{1}\xrightarrow{a_{2}}\cdots\xrightarrow{a_{n}}q_{n}
+\]
+であって、
+\begin{itemize}
+\item $q_{0}$はinitial
+\item $\left(q_{i},a_{i+1},q_{i+1}\right)\in\delta\left(i\in\left[0,n-1\right]\right)$
+\end{itemize}
+なるものをいう。
+
+このcomputationがacceptingであるとは、
+\[
+q_{n}\in F
+\]
+である。
+
+word$a_{1}a_{2}\cdots a_{n}$が$M$にacceptedであるとは、$a_{1}a_{2}\cdots a_{n}$上の$M$のaccepting
+computationがあることである。
+
+
+\paragraph{Def}
+
+$M$をNFAとする。このとき、
+\[
+L\left(M\right)\coloneqq\left\{ x\in\Sigma^{*}|M\text{は}x\text{をaccept}\right\} \subseteq\Sigma^{*}
+\]
+を「$M$は$L\left(M\right)$を認識(recognize)する」という。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第3回}
+
+$M$: an NFA / a DFA
+
+\[
+M=\left(Q,\Sigma,\delta\left(\subseteq Q\times\Sigma\times Q\right),q_{0}\left(\subseteq Q\right),F\right)
+\]
+
+
+$L\left(M\right)\coloneqq\left\{ x\in\Sigma^{*}\left(=\bigcup_{n\geq0}\Sigma^{n}\right)|x\text{ is accepted(\ensuremath{\Leftrightarrow\exists}accepting computation) by }M\right\} $
+
+The language recognized by $M$ (accepted/受理するとも言うが、本講義では使用しない)
+
+
+\paragraph{Def.}
+
+$L\subseteq\Sigma^{*}$: Language, $M$: NFA
+
+$M$ recognizes $L$ ⇔ $L\left(M\right)=L$ ⇔ $\forall x\in\Sigma^{*}$($x\in L$
+⇔ $x$ is accepted by $M$)
+
+※$x\in L$ ⇒ $x$ is accepted by $M$ ではない
+
+教科書図2.3は、
+\[
+L\left(M\right)=\left\{ x|x\text{の中に0が偶数個、1が偶数個含まれる}\right\} 
+\]
+のオートマトンである。
+
+
+\paragraph{注意}
+
+\[
+L\coloneqq\left\{ 0^{2n}1^{2n}|n\in\mathbb{N}\right\} 
+\]
+then $\forall x\in\Sigma^{*}$($x\in L\Rightarrow x\in L\left(M\right)$,
+逆は成り立たない)
+
+(p.14 下)
+
+
+\paragraph{Def2.4}
+
+\[
+M=\left(Q,sig,\delta,q_{0}F\right)
+\]
+$\delta$を次のように
+\[
+\delta^{*}:Q\times\Sigma^{*}\rightarrow Q
+\]
+に拡張する。
+
+\[
+\delta^{*}\left(q,\varepsilon\left(\in\Sigma^{*}\right)\right)\coloneqq
+\]
+\[
+\delta^{*}\left(q,xa\right)\coloneqq\delta\left(\delta\left(q,x\right),a\right)
+\]
+$\left(x\in\Sigma^{*},a\in\Sigma\right)$
+
+$\Sigma^{*}$の構成に関する帰納法(induction)
+\[
+\Sigma^{*}\simeq\left\{ \varepsilon\right\} +\Sigma^{*}\times\Sigma
+\]
+
+
+
+\paragraph{Proposition 2.1}
+
+$M=\left(Q,\Sigma,\delta,q_{0},F\right)$: DFA
+
+TFAE(The Following Are Equivalent)
+\begin{enumerate}
+\item $x$ is accepted by $M$
+\item $\delta^{*}\left(q_{0},x\right)\in F$ 
+\end{enumerate}
+
+\paragraph{例 2.3}
+
+$M_{2}$ s.t. $\left(\Sigma=\left\{ 0,1\right\} \right)$
+\[
+L\left(M_{2}\right)=\left\{ x|x\text{を2進数と見たとき3の倍数}\right\} 
+\]
+
+
+
+\paragraph{練 2.1.4}
+
+\[
+L_{00}=\left\{ x|x\text{は00をsuffixに持つ}\right\} 
+\]
+
+
+
+\paragraph{例 2.7.2}
+
+$L_{00}$をrecofnizeするNFAは?
+
+
+\paragraph{Prop 2.3}
+
+$M$: NFA
+
+$M'$: $M$(のinitial state)からunreachableなstaeを除いたNFA
+
+then 
+\[
+L\left(M\right)=L\left(M'\right)
+\]
+
+
+
+\section{Equivalance between NFAs \& DFAs}
+
+
+\paragraph{Thm 2.1}
+
+任意のlang $L\subseteq\Sigma^{*}$について次は同値
+\begin{enumerate}
+\item $\exists M$: NFA.$L=L\left(M\right)$
+\item $\exists M$: DFA.$L=L\left(M\right)$
+\end{enumerate}
+
+\paragraph{%
+\fbox{\begin{minipage}[t]{1\columnwidth}%
+
+\paragraph{注}
+
+Nondet. Büchiautom. ≠ det. Büchiautom%
+\end{minipage}}}
+
+
+\paragraph{Proof}
+
+2.→1.は明らか(DFAはNFA) 
+
+1.→2.を証明する。
+
+$L=L\left(M\right)$、$M$はNFAと仮定する。このとき、
+\[
+\mathrm{DFA:}\tilde{M}=\left(\tilde{Q},\Sigma,\tilde{\delta},\tilde{q_{0}},\tilde{F}\right)
+\]
+を次のように定義する。
+
+\begin{align*}
+\tilde{Q}\coloneqq & \left\{ S|S\subseteq Q\right\} \\
+\tilde{\delta}\coloneqq & \tilde{Q}\times\Sigma\rightarrow\tilde{Q}\\
+ & \left(S,a\right)\mapsto\left\{ q'|\exists q\in S_{1},\left(q,a,q'\right)\in\delta\right\} \\
+\tilde{q_{0}}\coloneqq & \left\{ q_{0}\right\} \left(\text{一点集合: singleton}\right)\\
+\tilde{F}\coloneqq & \left\{ S\subseteq Q|S\cap F\neq\oslash\right\} 
+\end{align*}
+
+
+特に$M\mapsto\tilde{M}$をpowerset constructionという。
+
+
+\paragraph{Def}
+
+言語$L\subseteq\Sigma^{*}$のとき、``$L$ is regular'' ⇔(def) $\exists M:\mathrm{NFA}.L=L\left(M\right)$
+⇔(Thm 2.1) $\exists M:\mathrm{DFA}.L=L\left(M\right)$
+
+
+\section{$\varepsilon$-NFA}
+\begin{itemize}
+\item NFA + $\varepsilon$-transition
+\item これは教科書のあとのほうで使用する(reg.exp. $\mapsto$ DFA)
+\end{itemize}
+
+\paragraph{Def.}
+
+An $\varepsilon$-NFA is
+\[
+M=\left(Q,\Sigma,\delta,q_{0},F\right)
+\]
+の
+\[
+\delta\subseteq Q\times\left(\Sigma\times\left\{ \varepsilon\right\} \right)\times Q
+\]
+(in NFA, $\delta\subseteq Q\times\Sigma\times Q$)であるもののことである。
+
+
+\paragraph{Def.}
+
+A computation of $\varepsilon$-NFA $M$ over $a_{1},a_{2},\cdots,a_{n}\in\Sigma^{*}$is
+\[
+q_{0}\xrightarrow{\varepsilon}\cdots\xrightarrow{\varepsilon}\cdot\xrightarrow{a_{1}}q_{1}\xrightarrow{\varepsilon}\cdots\xrightarrow{\varepsilon}\cdot\xrightarrow{a_{2}}q_{2}\xrightarrow{\varepsilon}\cdots\xrightarrow{a_{n}}q_{n}\xrightarrow{\varepsilon}\cdots\xrightarrow{\varepsilon}q_{n}'
+\]
+
+
+
+\paragraph{Def.}
+
+$x$ is accepted ⇔(def) $\exists$ accepting computation
+
+
+\paragraph{Thm 2.2}
+
+$L\subseteq\Sigma^{*}$ TFTE
+\begin{enumerate}
+\item $\exists M$: $\varepsilon$-NFA, $L=L\left(M\right)$
+\item $\exists M$: DFA, $L=L\left(M\right)$
+\end{enumerate}
+By the powerset construction, 
+\begin{align*}
+\tilde{q_{0}}\coloneqq & \left\{ q'|q\xrightarrow{\varepsilon}\cdots\xrightarrow{\varepsilon}q'\right\} \\
+\tilde{\delta}\left(S,a\right)= & \left\{ q'|\exists q\in S,q\xrightarrow{a}\cdot\xrightarrow{\varepsilon}\cdots\xrightarrow{\varepsilon}q'\right\} 
+\end{align*}
+
+
+
+\paragraph{例}
+
+(図省略)
+
+\[
+L\left(M\right)=\left\{ 0^{n_{1}}1^{n_{2}}2^{n_{3}}|n_{1},n_{2},n_{3}\in\mathbb{N}\right\} 
+\]
+
+
+
+\section{Pumping Lemma(反復補題)}
+
+
+\paragraph{Intro}
+
+$L$: regular ⇔(def) $\exists M$: DFA, $L=L\left(M\right)$
+
+
+\paragraph{Thm 2.3 (Pumping Lemma)}
+
+$L\subseteq\Sigma^{*}$をregularと仮定すると、
+\[
+\exists N\geqq1.\forall x\in L\left(\left|x\right|\geq N\Rightarrow\exists u,v,w\in\Sigma^{*}\left(x=uvw\wedge1\leq\left|v\right|\leq N\wedge\forall m\in N.uv^{m}w\in L\right)\right)
+\]
+
+
+
+\paragraph{Proof}
+
+$L$: regularより、$\exists M.$DFA s.t. $L=L\left(M\right)$
+
+\[
+N\coloneqq\left(M\text{の状態数}\right)
+\]
+
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第4回}
+
+自主休講
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第5回}
+
+
+\paragraph{Quiz}
+
+Input: $M_{1},M_{2}$: NFA
+
+Answer: $L\left(M_{1}\right)=L\left(M_{2}\right)$かどうか判定
+
+
+\paragraph{Algolithm}
+
+$L\left(M_{1}\right)\subseteq L\left(M_{2}\right)$はcheckできる。$L\left(M_{2}\right)\subseteq L\left(M_{1}\right)$もcheck可能。
+
+
+\paragraph{次回レポート}
+
+練習問題2.9: オートマトンの最小化アルゴリズムを実際に実行して理解を深めてみること。
+
+
+\paragraph{Prop.2.6}
+
+とりあえずskip
+
+
+\section{正則表現}
+
+
+\section{有限オートマトンと正則表現}
+
+RegExp$\Sigma$→(変換)→$\varepsilon$-NFA
+
+\[
+\left(\Sigma\ni\right)s,t\coloneqq\oslash\left|a\left(\in\Sigma\right)\right|s+t\left|st\right|s^{k},L\left(s\right)\subseteq\Sigma^{*}
+\]
+
+
+
+\paragraph{Thm.2.7}
+
+任意のRegExp$S$に対して、$L\left(s\right)=L\left(M_{s}\right)$となるような、($\left|F\right|=1$かつ受理状態からの遷移が存在しない)$\varepsilon$-NFA$M_{s}$が構成できる(=存在{*}構成方法(計算方法))。
+
+
+\paragraph{Proof.}
+
+$s\in\text{RegExp}\Sigma$の構成に関する帰納法。
+
+
+\paragraph{Base Case 1}
+
+$s=\oslash$のとき($L\left(s\right)=L\left(\oslash\right)=\oslash$)、
+
+(図省略)
+
+
+\paragraph{Base Case 2}
+
+$s=a\in\Sigma$のとき、
+\[
+L\left(s\right)=\left\{ a\right\} \left(\subseteq\Sigma^{*}\right)
+\]
+
+
+(図省略)
+
+
+\paragraph{Step Case 1}
+
+$s=t+u$のとき、
+\[
+L\left(s\right)=L\left(t\right)\cup L\left(u\right)
+\]
+
+
+帰納法の仮定より、
+\[
+L\left(M_{t}\right)=L\left(t\right),L\left(M_{u}\right)=L\left(u\right)
+\]
+となる$\varepsilon$-NFA$M_{t},M_{u}$の構成が済んでいるとする。
+
+このとき、(図省略)
+
+
+\paragraph{Step Case 2}
+
+$s=t\cdot u$のとき、同様に$M_{t},M_{u}$をとると、(図省略)
+
+
+\paragraph{Step Case 3}
+
+$s=t^{*}$のとき、(図省略)
+
+
+\paragraph{Thm}
+
+$M$: DFA
+
+とすると、$t_{M}\in\text{RegExp}\Sigma$が存在して、$L\left(t_{M}\right)=L\left(M\right)$となる。しかも構成できる。
+
+
+\paragraph{Proof.}
+
+\[
+M=\left(Q,\Sigma,\delta,q_{0},F\right)
+\]
+とする。また
+\[
+Q=\left\{ q_{1},q_{2},\cdots,q_{n}\right\} 
+\]
+とする。
+
+
+\paragraph{アイデア}
+
+\[
+t_{ij}\in\text{RegExp}\Sigma\left(i,j\in\left[1,n\right]\right)\text{s.t.}L\left(t_{ij}\right)=\left\{ x\in\Sigma^{*}|q_{i}\xrightarrow{x}q_{j}\right\} 
+\]
+となる$t_{ij}$を作ると、
+\[
+t_{M}=\sum_{j\text{s.t.}t_{j}\in F}t_{1j}
+\]
+
+
+
+\paragraph{アイデア2}
+
+\[
+t_{ij}^{k}\text{s.t.}L\left(t_{ij}^{k}\right)=\left\{ x\in\Sigma^{*}|q_{i}\xrightarrow{x}q_{j}\right\} 
+\]
+ただし中間の状態は$q_{1},q_{2},\cdots,q_{k}$のみ
+
+各$i,j\in\left[1,n\right],k\in\left[0,n\right]$に対して、$t_{ij}^{k}$を次のように定義する。
+\[
+t_{ij}^{0}=\begin{cases}
+\sum_{a\text{s.t.}q_{i}\xrightarrow{a}q_{j}}a & i\neq j\\
+\sum_{a\text{s.t.}q_{i}\xrightarrow{a}q_{j}}a+\oslash^{*} & i=j
+\end{cases}
+\]
+
+
+\[
+t_{ij}^{k+1}=t_{i\left(k+1\right)}^{k}\left(t_{\left(k+1\right)\left(k+1\right)}^{k}\right)^{*}t_{\left(k+1\right)j}^{k}+t_{ij}^{k}
+\]
+
+
+$t_{ij}\coloneqq t_{ij}^{n}$とすると、
+\[
+L\left(t_{ij}\right)=\left\{ x\in\Sigma^{*}|q_{i}\xrightarrow{x}q_{j}\right\} 
+\]
+\[
+t_{M}\coloneqq\sum_{j\text{s.t.}q_{j}\in F}t_{ij}
+\]
+とすればよい。
+
+
+\section{Reg.Lang.の性質}
+
+
+\paragraph{Thm.2.8 (reg.lang.のclosure property)}
+
+$L_{1},L_{2}$: reg のとき、次もregularである。
+\begin{enumerate}
+\item $L_{1}\cup L_{2}$
+
+
+$L_{1}=L\left(s\right),L_{2}=L\left(t\right)$なるreg.exp.$s,t$があって、このとき
+\begin{align*}
+L\left(s+t\right) & =L\left(s\right)\cup L\left(t\right)\\
+ & =L_{1}\cup L_{2}
+\end{align*}
+
+
+
+\paragraph{Corollary}
+
+
+勝手な$s\in\text{RegExp}\Sigma$について、
+\[
+L\left(s\right)\subseteq\Sigma^{*}
+\]
+はregularである。
+
+
+\paragraph{Quiz}
+
+
+$I$: 無限集合のとき、正則言語$L_{i}$から生成される$\bigcup_{i\in I}L_{i}$は正則ではない。
+
+
+例: $L_{i}=\left\{ 0^{i}1^{i}\right\} $
+
+\item $L_{1}\cap L_{2}$
+\item $\Sigma^{*}\backslash L_{1}$(補集合: complement)
+
+
+\paragraph{Proof.}
+
+
+$L_{1}=L\left(M\right)$となるDFAをとる。
+\[
+M=\left(Q,\Sigma,\delta,q_{0},F\right)
+\]
+に対して
+\[
+\overline{M}=\left(Q,\Sigma,\delta,q_{0},Q\backslash F\right)
+\]
+とすると、
+\[
+L\left(\overline{M}\right)=\Sigma^{*}\backslash L\left(M\right)
+\]
+
+
+
+よって$\Sigma^{*}\backslash L_{1}$もreg.
+
+
+\paragraph{注(重要)}
+
+
+NFAで丸と二重丸を反転しても、recognized languageは反転しない。
+
+
+\paragraph{2.のProof.}
+
+
+de Morganの法則より、
+\[
+L_{1}\cap L_{2}=\overline{\left(\overline{L_{1}}\cup\overline{L_{2}}\right)}
+\]
+
+
+
+理論上はこのように計算できるが、現代的なオートマトンにおいては``Complementation is expensive''である。DFAを反転させる際には$M_{\mathrm{DFA}}\mapsto\overline{M}_{\mathrm{DFA}}$で大きくならないが、NFAを反転させようとすると、$M_{\mathrm{NFA}}\mapsto M_{\mathrm{DFA}}^{d}\mapsto\overline{M^{d}}_{\mathrm{DFA}}$でNFAからDFAの変換がexponentialであるため、計算量が爆発的に増えてしまう。
+
+
+\paragraph{Lem.}
+
+
+$M_{1}=\left(Q_{1},\Sigma,\delta_{1},q_{0}^{\left(1\right)},F_{1}\right),M_{2}=\left(Q_{2},\Sigma,\delta_{2},q_{0}^{\left(2\right)}F_{2}\right)$なるNFAを考える。いま、このようなNFA$M_{1}\times M_{2}$について、
+\[
+L\left(M_{1}\times M_{2}\right)=L\left(M_{1}\right)\cap L\left(M_{2}\right)
+\]
+\[
+M_{1}\times M_{2}=\left(Q_{1}\times Q_{2},\Sigma,\delta,\left(q_{0}^{\left(1\right)},q_{0}^{\left(2\right)}\right),F_{1}\times F_{2}\right)
+\]
+
+
+
+ただし、
+\[
+\left(\left(q,q'\right),a,\left(q'',q'''\right)\right)\in\delta\Leftrightarrow\left(q,a,q''\right)\in\delta_{1}\wedge\left(q',a,q''\right)\in\delta_{2}
+\]
+
+
+\end{enumerate}
+
+\paragraph{Thm.2.10}
+
+$L_{1},L_{2}\subseteq\Sigma^{*}$で$L_{2}$: regのとき、$L_{1}\backslash L_{2}$もregularである。
+
+
+\paragraph{Thm.2.11}
+
+$L_{1},L_{2}\subseteq\Sigma^{*}$で$L_{2}$: regのとき、$L_{2}/L_{1}$もregularである。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第6回}
+
+$\Sigma^{*}$をClassifyする有限formalizmとしての相互変換
+
+
+\section{ブール行列による有限オートマトンの表現}
+
+
+\section{最小オートマトン}
+
+
+\paragraph{Q}
+
+$L$を$L\subseteq\Sigma^{*}$の正則言語として、$L=L\left(M\right)$なるDFA$M$で状態数最小のものはあるか?
+
+
+\paragraph{A}
+
+ある。
+
+
+\paragraph{Q}
+
+そのようなオートマトンは一意であるか?
+
+
+\paragraph{A}
+
+(同型を除いて)一意である。
+
+
+\paragraph{Q}
+
+そのような最小オートマトンを計算することはできるか?
+
+
+\paragraph{A}
+
+できる。
+
+
+\paragraph{Intro}
+
+$M$をDFAとする。「$M$上で同じ役割を果たす語」とは何か。正確に言うと、
+\[
+\delta^{*}\left(q_{0},x_{1}\right)=\delta^{*}\left(q_{0},x_{2}\right)
+\]
+
+
+いま、$\Sigma^{*}$を「役割」でチーム分けする→チーム数は$M$の状態数と同じになる。
+
+
+\paragraph{同値関係(equivalent relation)}
+
+同値関係とは、「抽象的等号」「ある性質において一致」という意味である。
+
+
+\paragraph{Def.2.12}
+
+$\equiv\subseteq X\times X$, $X$上の二項関係とする。
+
+$\equiv$がequiv. relであるとは、
+\begin{enumerate}
+\item 反射性(reflecivility): $\forall x\in X.\lnot\to x\equiv x$
+\item 対称性(symmetry): $x\equiv y\to y\equiv x$
+\item 推移性(transitivity): $x\equiv y\land y\equiv z\to x\equiv z$
+\end{enumerate}
+
+\paragraph{例}
+\begin{itemize}
+\item $\equiv_{3}\subseteq\mathbb{N}\times\mathbb{N}$
+
+
+\[
+x\equiv_{3}y\Leftrightarrow_{\text{def}}x\equiv y\left(\text{mod 3}\right)
+\]
+
+
+\item $M$: DFA, $\equiv_{M}\subseteq\Sigma^{*}\times\Sigma^{*}$
+
+
+\[
+x\equiv_{M}y\Leftrightarrow_{\text{def}}\delta^{*}\left(q_{0},x\right)=\delta^{*}\left(q_{0},y\right)
+\]
+
+
+\end{itemize}
+$X$上のequiv.rel.$\equiv\subseteq X\times X$とする。$x\in X$に対して$x$の同値類であるとは、
+\[
+\left[x\right]\coloneqq\left\{ y\in x|x\equiv y\right\} \subseteq X
+\]
+のことをいう。
+
+また、
+\[
+X/\equiv\coloneqq\left\{ \left[x\right]|x\in X\right\} 
+\]
+を$X$の$\equiv$による商集合(quotient set)という。
+
+
+\paragraph{例}
+
+\begin{align*}
+\mathbb{N}/\equiv_{3} & =\left\{ \left[0\right],\left[1\right],\left[2\right]\cdots\right\} \\
+ & =\left\{ \left[3\right],\left[4\right],\left[2\right]\right\} \\
+ & =\left\{ \left\{ 0,3,6,\cdots\right\} ,\left\{ 1,4,7,\cdots\right\} ,\left\{ 2,5,8,\cdots\right\} \right\} 
+\end{align*}
+
+
+
+\paragraph{Def.2.13}
+
+$R,R'\subseteq X\times X$の$X$上のequiv.rel.とする。
+
+$R'$が$R$の細分(refinement)であるとは、
+\[
+xR'y\Rightarrow xRy
+\]
+であることをいう。
+
+
+\paragraph{例}
+
+$\equiv_{6}$は$\equiv_{3}$のrefinementである。
+
+
+\paragraph{Def.2.14.}
+
+$R\subseteq\Sigma^{*}\times\Sigma^{*}$のequiv.rel.とする。
+
+$R$が右不変(right-invariant)であるとは、
+\[
+xRy\Rightarrow\left(\forall z\in\Sigma^{*}.xzRyz\right)
+\]
+である。
+
+
+\paragraph{Def.2.15. (Myhill-Nerode relation)}
+
+$L\subseteq\Sigma^{*}$の言語とする。(正則とは限らない)
+
+$R_{L}\subseteq\Sigma^{*}\times\Sigma^{*}$を
+\[
+xR_{L}y\Leftrightarrow_{\text{def}}\left(\forall z\in\Sigma^{*}.\left(xz\in L\Leftrightarrow yz\in L\right)\right)
+\]
+とする。
+
+
+\paragraph{Prop.2.10.}
+
+$R_{L}\subseteq\Sigma^{*}\times\Sigma^{*}$はequiv.rel.かつright-invariantである。
+
+
+\paragraph{練習問題}
+
+Prop.2.10.を証明せよ。
+
+
+\paragraph{Prop.2.11.}
+
+$L\subseteq\Sigma^{*}$の言語とする。(正則とは限らない)
+
+決定性オートマトン(有限とは限らない)$M_{L}=\left(Q_{L},\Sigma,\delta_{L},q_{0}^{L},F_{2}\right)$を次のように定義する。
+
+\[
+Q_{L}\coloneqq\left\{ \left[x\right]_{R_{L}}|x\in\Sigma^{*}\right\} =\Sigma^{*}/R_{L}
+\]
+
+
+\begin{align*}
+\delta_{L}\coloneqq & Q_{L}\times\Sigma\to Q\\
+ & \left(\left[x\right]_{L},a\right)\mapsto\left[xa\right]_{L}
+\end{align*}
+
+
+例: $\delta_{L}\left(\left[x\right]_{L},a\right)\coloneqq\left[xa\right]_{L}$
+
+注: $\forall t\in Q_{L}.\exists x\in\Sigma^{*}.t=\left[x\right]_{L}$
+
+注2: $\left[x\right]_{R_{L}}=\left[y\right]_{R_{L}}\Leftrightarrow xR_{L}y$
+
+\[
+q_{0}^{L}\coloneqq\left[\varepsilon\right]_{L}
+\]
+
+
+\[
+F_{2}\coloneqq\left\{ \left[x\right]_{L}|x\in L\right\} 
+\]
+
+
+$\delta_{L},F_{L}$のwell-definednessをcheckする必要がある。
+
+
+\paragraph{Lem}
+
+\[
+xR_{L}x'\Rightarrow\left[xa\right]_{R_{L}}=\left[x'a\right]_{R_{L}}\left(\Leftrightarrow xaR_{L}x'a\right)
+\]
+は$R_{L}$のright-invarianceにより明らか。
+
+
+\paragraph{Lem}
+
+\[
+xR_{L}y\Rightarrow\left(x\in L\Leftrightarrow y\in L\right)
+\]
+は$R_{L}$の定義から明らか
+
+
+\paragraph{Prop.2.11.(続き)}
+
+$M_{L}$は$L$をrecognizeする。
+
+
+\paragraph{Proof}
+
+\[
+\delta_{L}^{*}\left(q_{0},x\right)=\left[x\right]_{R_{L}}
+\]
+\[
+\delta_{L}^{*}\left(q_{0},x\right)\in F_{L}\Leftrightarrow x\in L
+\]
+
+
+
+\paragraph{Thm.2.16. (Myhill-Nerode)}
+
+$L\subseteq\Sigma^{*}$としたとき、以下は同値である。
+\begin{enumerate}
+\item $L$. regular
+\item $\exists R\subseteq\Sigma^{*}\times\Sigma^{*}$(equiv.rel, right-invariant,
+finite-index)
+\[
+\exists x_{1},\cdots,x_{n}\in\Sigma^{*}.s.t.L=\left[x_{1}\right]_{R}\cup\left[x_{2}\right]_{R}\cup\cdots\cup\left[x_{n}\right]_{R}
+\]
+
+\item $R_{L}$ is finite-index
+\end{enumerate}
+
+\paragraph{Proof. 1. → 2.}
+
+$L=L\left(M\right)$なるDFA$M$をとり、$R=\equiv_{M}$とする。すると$R$はequiv.rel,
+right-inv, finit-indexとなる。
+
+しかも、
+\begin{align*}
+L & =\bigcup_{q_{0}\in F}\left\{ x|\delta^{*}\left(q_{0},x\right)=q\right\} \\
+ & \left(=\oslash\text{or}\left[x_{q}\right]_{\equiv_{M}}\left(\text{ただし}\delta^{*}\left(q_{0},x_{q}\right)=q\right)\right)
+\end{align*}
+
+
+
+\paragraph{Proof. 2. → 3.}
+\begin{itemize}
+\item 2. の$R$が$R_{L}$のrefinementであることを示す。(やるだけ)
+\item よって$R_{L}$もfinite-index
+\end{itemize}
+
+\paragraph{Proof. 3. → 1.}
+
+$M_{L}$(Prop.2.11.)は$L=L\left(M_{2}\right)$を満たし、$Q_{L}=\Sigma^{*}/R_{L}$よりDFAである。よって$L$はregular。
+
+
+\paragraph{Thm.2.17.}
+
+$M=\left(Q,\Sigma,\delta,q_{0},F\right),L=L\left(M\right)$とすると、$Q\xrightarrow{\varphi}Q_{L}$なる全射$\varphi$が存在する。
+
+
+\paragraph{Proof.}
+
+$\varphi$を以下のように定義する。
+
+\begin{align*}
+Q & \xrightarrow{\varphi}Q_{L}\\
+q & \mapsto\begin{cases}
+\left[x\right]_{R_{L}} & \text{if }\exists x\in\Sigma.s.t.q=\delta^{*}\left(q_{0},x\right)\\
+\left[\varepsilon\right]_{R_{L}} & \text{otherwise}
+\end{cases}
+\end{align*}
+
+
+
+\paragraph{注}
+
+$\varphi$はwell-defined
+
+$\because$$\delta^{*}\left(q_{0},x\right)=\delta^{*}\left(q_{0},y\right)$とする。(aim.$\left[x\right]_{R_{L}}=\left[y\right]_{R_{L}}\Leftrightarrow xR_{L}y$)
+
+以下省略
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第7章}
+
+
+\paragraph{Myhill-Nerode}
+
+$L\subseteq\Sigma^{*}$を言語、$x,y\in\Sigma^{*}$として、
+\[
+x\equiv_{c}y\Leftrightarrow\forall z\in\Sigma^{*}.\left(xz\in L\Leftrightarrow yz\in L\right)
+\]
+ と定義する。即ち、$x,y$が「$L$に属するか」について同じ役割を持つということである。
+
+
+\paragraph{Cor.2.3. (modified)}
+
+$L$からカノニカル(canonical. ⇔arbitrary)に構成されるオートマトン$M_{L}$を
+\[
+M_{L}=\left(Q_{L}\left(=\nicefrac{\Sigma^{*}}{\equiv_{L}}=\left\{ \left[x\right]_{\equiv_{L}}|x\in\Sigma^{*}\right\} \right),\Sigma,\delta_{L},q_{0}^{L},F_{L}\right)
+\]
+
+
+なお$\left[x\right]_{\equiv_{L}}$を$\left[x\right]_{L}$とも書く。
+
+$M$が決定的オートマトン、$L\left(M\right)=L$、$M=\left(Q,\Sigma,\delta,q_{0},F\right)$であるとき、
+\[
+\left(q\mapsto_{\exists}\left[x\right]_{L}\right)Q\xrightarrow[\varphi]{}Q_{L}
+\]
+(ただし$\delta^{*}\left(q_{0},x\right)=q$)寄って特に$\left|Q\right|\geq\left|Q_{L}\right|$
+
+また、$L$:regular⇔$M_{L}$:DFA
+
+
+\paragraph{Cor.}
+
+$L$:regular とすると、$M_{L}$は$L$をrecognizeする状態数最小のDFA
+
+次に、$\varphi:Q\rightarrow Q_{L}$は「ただの関数」よりも性質がいいことを示す。
+
+
+\paragraph{Def.2.17.}
+
+\begin{align*}
+M_{1} & =\left(Q_{1},\Sigma,\delta_{1},q_{0}^{1},F_{1}\right)\\
+M_{2} & =\left(Q_{2},\Sigma,\delta_{2},q_{0}^{2},F_{2}\right)
+\end{align*}
+なるDFAsを考える。
+
+$M_{1}$から$M_{2}$への\textbf{DFA準同型(homomorphism)}とは、$\varphi:Q_{1}\rightarrow Q_{2}$の型の関数で、
+\begin{enumerate}
+\item $\varphi\left(\delta_{1}\left(q,a\right)\right)=\delta_{2}\left(\varphi\left(q\right),a\right),\forall q\in Q_{1},\forall a\in\Sigma$
+\item $\varphi\left(q_{0}^{1}\right)=q_{0}^{2}$
+\item $q\in F_{1}\Leftrightarrow\varphi\left(q\right)\in F_{2}\forall q\in Q_{1}$
+\end{enumerate}
+なるものをいう。
+
+
+\paragraph{Cor.2.3. (補足)}
+
+Cor.2.3.で引き起こされる
+\[
+\varphi:Q\twoheadrightarrow Q_{L}
+\]
+はDFA-homomorphismである。
+
+
+\paragraph{Proof. (一部)}
+
+$q\in Q,a\in\Sigma$とし、$\delta^{*}\left(q_{0},x\right)=q$とする。(i.e.$\varphi\left(q\right)=\left[x\right]_{\equiv_{L}}$)すると、
+\begin{align*}
+\varphi\left(\delta\left(q,a\right)\right) & =\varphi\left(\delta\left(\delta^{*}\left(q_{0},x\right),a\right)\right)\\
+ & =\varphi\left(\delta^{*}\left(q_{0},xa\right)\right)\\
+ & =\left[xa\right]_{\equiv_{L}}
+\end{align*}
+
+
+また、
+\begin{align*}
+ & \delta_{L}\left(\varphi\left(q\right),a\right)\\
+= & \delta_{L}\left(\left[x\right]_{\equiv_{L}},a\right)\\
+= & \left[xa\right]_{\equiv_{L}}
+\end{align*}
+
+
+よって等しい。(残りは省略)
+
+ここから、minimal DFAのuniquenessが示せる。
+
+
+\paragraph{注}
+
+\begin{align*}
+\left\{ 0,1,2\right\}  & \neq\left\{ \text{りんご},\text{みかん},\text{なし}\right\} \\
+\left\{ 0,1,2\right\}  & \simeq\left\{ \text{りんご},\text{みかん},\text{なし}\right\} 
+\end{align*}
+
+
+
+\paragraph{Def.2.18.}
+
+$M_{1},M_{2}$:DFAで$M_{1}$と$M_{2}$が同型(isomorphic)であるとは、$M_{1}$から$M_{2}$へのDFA-homomorphism$\varphi:Q_{1}\rightarrow Q_{2}$で、全単射であるものが存在するということである。
+
+
+\paragraph{Ex.}
+
+$\varphi$が全単射でDFA-homならば$\varphi^{-1}:Q_{2}\rightarrow Q_{1}$も(自動的に)DFA-homとなる。(やってみよう)
+
+
+\paragraph{Thm.2.18.}
+
+$L$;reg.lang.とすると、$L$をrecognizeするminimal DFAは\textbf{同型を除き一意(unique
+up to isomorphisms)}である。
+
+即ち、
+\[
+L=L\left(M_{1}\right)=L\left(M_{2}\right)
+\]
+
+
+$M_{1},M_{2}$: minimal ⇒ $M_{1}\xrightarrow[\simeq]{\varphi}M_{2}$
+
+
+\paragraph{Proof.}
+
+Cor.2.3.より、
+\[
+Q_{1}\xrightarrow{\varphi_{1}}Q_{L}\xleftarrow{\varphi_{2}}Q_{2}
+\]
+
+
+しかし、$M_{1}$:minimalより$\varphi_{1}$は全単射、$\varphi_{2}$も全単射。ゆえに$M_{1},M_{2},M_{L}$はすべて同型。
+
+
+\subsubsection*{coalgebla}
+
+
+\paragraph{Lem.}
+
+$\varphi:Q_{1}\rightarrow Q_{2}$,$M_{1}$から$M_{2}$へのDFA-hom ⇒
+\[
+L\left(M_{1}\right)=L\left(M_{2}\right)
+\]
+
+
+
+\paragraph{Proof.}
+
+\[
+x\in L\left(M_{1}\right)\Leftrightarrow x\in L\left(M_{2}\right)
+\]
+を$\left|x\right|$についての帰納法で示す。
+
+
+\paragraph{Prop.2.14.}
+
+以下は同値である。
+\begin{enumerate}
+\item $x\equiv_{L}y$
+\item $x\backslash L\left(=\left\{ z|xz\in L\right\} \right)=y\backslash L$
+\end{enumerate}
+
+\paragraph{Proof.}
+
+やるだけ
+
+
+\paragraph{Thm.2.19.}
+
+$L\subseteq\Sigma^{*}$を言語として、
+\[
+M_{L}'\coloneqq\left(Q_{L}',\Sigma,\delta_{L}',q_{0}'^{L},F_{L}'\right)
+\]
+\[
+Q_{L}'\coloneqq\left\{ x\backslash L|x\in\Sigma^{*}\right\} 
+\]
+\[
+q_{0}'^{L}=L
+\]
+\[
+\delta_{L}':Q_{L}'\times\Sigma\rightarrow Q_{L}'\left(\left(x\backslash L,a\right)\mapsto\left(xa\right)\backslash L\right)
+\]
+\[
+F_{L}'=\left\{ X\in Q_{L}'|\varepsilon\in X\right\} \left(=\left\{ x\backslash L|x\in L\right\} \right)
+\]
+とすると、$M_{L}'$と$M_{L}$はisomorphicである。
+
+
+\paragraph{Proof.}
+
+略
+
+
+\paragraph{例}
+
+\[
+L=L\left(0^{*}10^{*}\right)
+\]
+
+
+(図省略)
+
+\begin{align*}
+0\backslash L= & \left\{ x|0x\in L\left(0^{*}10^{*}\right)\right\} \\
+= & L\left(0^{*}10^{*}\right)\\
+= & L\\
+1\backslash L= & \left\{ x|1x\in L\left(0^{*}10^{*}\right)\right\} \\
+= & L\left(0^{*}\right)\\
+11\backslash L= & \left\{ x|11x\in L\right\} \\
+= & \oslash
+\end{align*}
+
+
+
+\paragraph{3つ目のminimal DFAの作り方}
+
+\[
+L=L\left(M\right)\rightsquigarrow\text{minimal DFA }M
+\]
+
+
+すなわち、
+\[
+M\rightsquigarrow\left(\text{オートマトン最小化}\right)M'
+\]
+
+
+↑partition-refinement algorithmによる
+
+
+\paragraph{idea}
+\begin{itemize}
+\item 「最低限必要な区別」を求める
+\item 区別の必要のないstateは同一視(「つぶす」)
+\end{itemize}
+
+\paragraph{Def.2.10.}
+
+$p$と$q$がdistinguishableであるとは、
+\[
+\exists z\in\Sigma^{*}.\left(\delta^{*}\left(p,q\right)\in F\not\Leftrightarrow\delta^{*}\left(q,z\right)\in F\right)
+\]
+である。
+
+
+\paragraph{Thm.2.20.}
+
+$M$:DFA、$\equiv_{M}$:indiistinguishability on $M$とする。ただし、
+\[
+p\equiv_{M}q\Leftrightarrow\exists z.\left(\delta^{*}\left(p,q\right)\in F\Leftrightarrow\delta^{*}\left(q,z\right)\in F\right)
+\]
+と定義される。すると、$\nicefrac{M}{\equiv_{M}}$がwell-definedでminimalとなる。
+
+
+\paragraph{Q}
+
+$\equiv_{M}$は計算できるか?
+
+
+\paragraph{A}
+
+できる。
+
+
+\paragraph{例.2.18.}
+
+(図省略)
+\begin{enumerate}
+\item $8\times8$ matrix (実は半分でOK)ではじめは空とする。
+\item $\left(x,y\right)\leftarrow\left\{ x\in F,y\notin F\text{または}x\notin F,y\in F\right\} $に\texttimes をつける
+\item $x\xrightarrow{a}x',y\xrightarrow{a}y',\left(x',y'\right)$が\texttimes →$\left(x,y\right)$も\texttimes{}
+\item saturateするまで3.を繰り返す
+\item $\left(x,y\right)$が\texttimes なら$x\not\equiv_{n}y$、そうでないなら$x\equiv_{n}y$である。
+\end{enumerate}
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第8回}
+
+
+\chapter{---}
+
+入力待ち
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第9回}
+
+$\left\{ 0^{n}1^{n}|n\in\mathbb{N}\right\} $っは、not regular, but context-free.
+
+\[
+\begin{cases}
+S\rightarrow0\;1\\
+S\rightarrow0\;S\;1
+\end{cases}\rightsquigarrow\text{derivation trees production rules}
+\]
+
+
+\[
+r\in V\times\left(V\times T\right)
+\]
+
+
+(図省略: derivation tree)
+
+
+\paragraph{前回}
+
+\[
+G=\left(V,T,P,S\right)
+\]
+
+
+\begin{align*}
+w & \Rightarrow aw'\left(w,w'\in\left(V\cup T\right)^{*}\right)\\
+ & \Leftrightarrow_{\text{def}}\exists\alpha,\beta\in\left(V\cup T\right)^{*}.\exists\left(A,\gamma\right)\in P.w=\alpha A\beta,w'=\alpha\gamma\beta
+\end{align*}
+
+
+
+\paragraph{Def.}
+
+$w\in T^{*}$とする。
+
+$w$が$G$(CFG)によって導出される(derived)とは、
+\[
+S\Rightarrow_{G}^{*}w
+\]
+
+
+\[
+L\left(G\right)\coloneqq\left\{ w\in T^{*}|S\Rightarrow_{G}^{*}w\right\} 
+\]
+
+
+
+\paragraph{例.3.3.}
+
+\[
+L\left(G\right)=\left\{ w|\left(a\text{の個数}\right)=\left(b\text{の個数}\right)\right\} 
+\]
+
+
+\[
+V=\left\{ S,A,B\right\} 
+\]
+\[
+T=\left\{ a,b\right\} 
+\]
+\[
+P=\begin{cases}
+S\rightarrow aB\\
+S\rightarrow bA\\
+A\rightarrow a\\
+A\rightarrow aS\\
+A\rightarrow bAA\\
+B\rightarrow b\\
+B\rightarrow bS\\
+B\rightarrow aBB
+\end{cases}
+\]
+
+
+
+\paragraph{Q}
+
+Given $w\in T^{*}$ and $G$, can we check if $w\in L\left(G\right)$?
+
+
+\paragraph{Def.}
+
+$L\subseteq T^{*}$is \uline{context-free} とは、
+\[
+\exists G:\text{CFG}.L=L\left(G\right)
+\]
+
+
+
+\paragraph{Ex.3.2. (Closure properties of CFL)}
+
+$L_{1},L_{2}$:CFLとする。このとき$L_{1}\cup L_{2}$はCFLである。
+\[
+\begin{cases}
+S\rightarrow S_{1}\\
+S\rightarrow S_{2}
+\end{cases}
+\]
+
+\begin{itemize}
+\item $L_{1}\cap L_{2}$はCFLでない。
+\item $\overline{L_{1}}$もCFLでない。
+\item $L_{1}\cdot L_{2}$はCFLである。$\left(s\rightarrow S_{1}S_{2}\right)$
+\item $L_{1}^{*}$はCFLである。$\left(\begin{cases}
+s\rightarrow\varepsilon\\
+s\rightarrow S_{1}S
+\end{cases}\right)$
+\item $L_{1}^{R}$はCFLである。($G_{1}$のprod.ruleのRHSをrevise)
+\end{itemize}
+
+\subsection*{§3.1.1}
+
+導出木(derivation rule)=構文木(parse tree)
+
+Consider 
+\[
+a\coloneqq\left(\left\{ E\right\} ,\left\{ +,(,),\text{id}\right\} ,\begin{cases}
+E\rightarrow\text{id}\\
+E\rightarrow\left(E+E\right)
+\end{cases},E\right)
+\]
+
+
+\[
+L\left(G\right)\ni\text{id},\text{id}+\text{id},\text{id}+\text{id}+\text{id}
+\]
+
+
+問題: $\text{id}+\text{id}+\text{id}$は複数のderivation treeを持つ
+
+
+\paragraph{Def.3.6.}
+\begin{itemize}
+\item $G$:CFGとする。$G$がambiguousであるとは、
+\[
+\exists w\in T
+\]
+
+\item $L\subseteq T^{*}$がingerently ambiguousであるとは、
+\[
+L=L\left(G\right)\Rightarrow G:\text{ambiguous}
+\]
+である。
+\end{itemize}
+
+\paragraph{Agenda}
+\begin{itemize}
+\item CFGの簡素化、正規化(Chomsky normal form)
+\item →Pumping Lemma
+\end{itemize}
+
+\paragraph{Lem.3.7.}
+
+例
+
+\[
+\begin{cases}
+S\rightarrow\varepsilon\\
+S\rightarrow B\\
+B\rightarrow BB
+\end{cases}
+\]
+とすると、これが生成する言語は$\left\{ \varepsilon\right\} $となり、2番目と3番目の式が無駄になる。
+
+\[
+G\rightsquigarrow_{\text{変形}}G'
+\]
+
+\begin{itemize}
+\item $L\left(G\right)=L\left(G'\right)$
+\item $G'$の任意のnonterminal $A$について、$\exists w\in T^{*}.A\Rightarrow_{G'}^{*}w$
+\end{itemize}
+
+\paragraph{Lem.3.2.}
+
+例: 
+\[
+\begin{cases}
+S\rightarrow ab\\
+A\rightarrow a
+\end{cases}
+\]
+
+
+$A$はunreachableなので無駄である。
+
+
+\paragraph{Thm.3.4.}
+
+例:
+\[
+\begin{cases}
+S\rightarrow BC\\
+B\rightarrow\varepsilon\\
+C\rightarrow\varepsilon
+\end{cases}
+\]
+
+
+において$B,C$は無駄である。
+
+
+\paragraph{Thm.3.5.}
+
+\[
+\begin{cases}
+S\rightarrow A\\
+A\rightarrow a
+\end{cases}
+\]
+
+
+において$A$は無駄である。
+
+
+\paragraph{Thm.3.5.}
+
+$G=\left(V,T,P,S\right)$:CFG
+
+$G$を次の条件を満たすCFG $G'$に変形できる。
+\begin{itemize}
+\item $\forall A\in V.\exists w,w'\in\left(V\cup T\right)^{*}.S\Rightarrow_{G'}^{*}wAw'$
+\item $\forall A\in V.\exists w\in T^{*}.A\Rightarrow_{G'}^{*}w$
+\item $\forall A\in V.\left(A\rightarrow\varepsilon\right)\notin P$
+\item $\forall A,B\in V.\left(A\rightarrow B\right)\notin P$
+\item $\forall w\in T^{*}\left(=T^{*}\backslash\left\{ \varepsilon\right\} \right).w\in L\left(G\right)\Leftrightarrow w\in L\left(G'\right)$
+\end{itemize}
+
+\paragraph{Thm.3.6.}
+
+$G$:CFGとする。$G$を次の条件を満たすCFG $G'$に変形できる。
+\begin{itemize}
+\item $\forall w\in T^{*}\left(=T^{*}\backslash\left\{ \varepsilon\right\} \right).w\in L\left(G\right)\Leftrightarrow w\in L\left(G'\right)$、すなわち
+\[
+L\left(G\right)\backslash\left\{ \varepsilon\right\} =L\left(G'\right)\backslash\left\{ \varepsilon\right\} 
+\]
+
+\item Production ruleが全て
+\[
+\begin{cases}
+A\rightarrow BC\\
+A\rightarrow a
+\end{cases}
+\]
+の形(nonterminal 2つか、terminal1つ)
+\end{itemize}
+
+\paragraph{証明}
+
+例で、
+\[
+\begin{cases}
+S\rightarrow SaS\\
+S\rightarrow b
+\end{cases}
+\]
+
+
+Step 1: terminal $a,b$に対してfreshなnonterminal $C_{a},C_{b}$を導入する
+
+\[
+\begin{cases}
+S\rightarrow C_{a}S\\
+S\rightarrow C_{b}\\
+C_{a}\rightarrow a\\
+C_{b}\rightarrow b
+\end{cases}
+\]
+
+
+Step 2: terminalが現れるのは必ず$A\rightarrow a$の形。他のruleは必ず
+\[
+A\rightarrow B_{1}B_{2}\cdots B_{n_{1}}
+\]
+の形。
+
+\[
+\begin{cases}
+S\rightarrow SD_{1}\\
+D\rightarrow C_{a}S\\
+S\rightarrow C_{b}\\
+C_{a}\rightarrow a\\
+C_{b}\rightarrow b
+\end{cases}
+\]
+
+
+最初の$G$がThm.3.5.のようにsimplifyされていれば、こうしてChomsky nf.に変形できる。
+
+
+\subsection*{§3.4. CFGのPumping Lem}
+
+(図省略)
+
+
+\paragraph{Thm.3.7.}
+
+$L$: context-free language
+
+このとき、
+\[
+\exists N\in\mathbb{N}.\forall z\in T^{*}\left(\left|z\right|\geq N\Rightarrow\exists u,v,w,x,y\in T^{*}.\left[\text{condition}\right]\right)
+\]
+
+
+ここでconditionは、
+\begin{enumerate}
+\item $z=uvwxy$
+\item $\left|vx\right|\geq1$
+\item $\left|vwx\right|\leq N$
+\item $\forall n\in N.uv^{n}wt^{n}y\in L$
+\end{enumerate}
+
+\paragraph{Proof}
+
+$L$:CFLなので、$\exists G:\text{CFG s.t. }L=L\left(G\right)$
+
+Thm.3.6.より$G$はchomsky normal formとしてよい。$G$のderiv. treeに対して図のように考える。
+
+
+\paragraph{Q}
+
+$N=\left|V\right|+1$\_ $2^{\left(\left|V\right|+1\right)}$?
+
+
+\paragraph{A}
+
+$N=2^{\left|V\right|}+1$
+
+なぜなら、(図省略)
+
+
+\paragraph{Thm.3.4.1.}
+
+$\left\{ \left|a^{n}b^{n}c^{n}\right|n\geq1\right\} $はnot CFL
+
+
+\paragraph{Proof}
+
+Pumping Lemmaの$N$をとって$a^{N}b^{N}c^{N}$を考えられる。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第10回}
+
+Regular lang. ⇒ CFL. ⇒ languages (ingeneral)
+
+は成り立つが、逆は成り立たない。反例は例えば、
+\[
+\left\{ 0^{n}1^{n}|n\in\mathbb{N}\right\} 
+\]
+はCFLだがRegular lang.ではなく、
+\[
+\left\{ 0^{n}1^{n}0^{n}|n\in\mathbb{N}\right\} 
+\]
+はlanguageだがCFLではない。
+
+
+\paragraph{Thm.3.9.}
+
+$\left\{ 0^{n}1^{n}0^{n}|n\in\mathbb{N}\right\} $はcontext-freeでない。
+
+
+\paragraph{Proof.}
+
+$L$をcontext-freeと仮定し、pubping lemmaの定数$N$をとり、$0^{N}1^{N}0^{N}$を考える。ここで$0^{N}1^{N}0^{N}\in L$である。
+
+Pum;ing Lemmaより、$\exists u,v,w,x,y\in\Sigma^{*}$s.t.
+\begin{itemize}
+\item $0^{N}1^{N}0^{N}=uvwxy$
+\item $v\neq\varepsilon$or$x\neq\varepsilon$
+\item $\left|vwx\right|\leq N$
+\item $\forall n\in\mathbb{N}.uv^{n}wx^{n}y\in L$
+\end{itemize}
+$0^{N}1^{N}0^{N}$と$uvwxy$のいち関係による場合分けを行う。
+\begin{enumerate}
+\item $v$と$x$がともに最初の0のブロックに含まれる
+
+
+$uv^{0}wx^{0}y$は明らかに$L$に属さない。矛盾
+
+\item $x$が0と1にまたがっている。
+
+
+$x^{n}$の中で0と1が$n$回flipし、明らかに$uv^{n}wx^{n}y\notin L$である
+
+\item $v$が最初の0のブロック、$x$が1のブロックに含まれる
+
+
+$uv^{0}wx^{0}y$は明らかに$L$に属さない。矛盾
+
+\item $v$が最初の0のブロック、$x$が最後の0のブロックに含まれる
+
+
+$\left|vwx\right|\leq N$より、不可能
+
+\end{enumerate}
+以上より証明完了
+
+
+\paragraph{Thm.3.10. (Ogden's Lemma)}
+
+$L$: CFLとすると、$\exists N$ s.t. $\left|z\right|\geq N\Rightarrow\exists u,v,w,x,y$
+s.t.
+\begin{itemize}
+\item $z=uvwxy$
+\item \sout{$\left|vx\right|\geq1$} $vx$は少なくとも1つの区間を含む
+\item \sout{$\left|uwx\right|\leq N$} $vwx$はたかだか$N$この区間を含む
+\item $\forall n.uv^{n}wx^{n}y\in L$
+\end{itemize}
+
+\paragraph{Proof.}
+
+省略
+
+
+\paragraph{Thm.3.9.1.}
+
+$\left\{ 0^{n}1^{n}0^{n}|n\in\mathbb{N}\right\} $は、context-freeでない。
+
+
+\paragraph{Proof.}
+
+さっきと同じく$0^{N}1^{N}0^{N}$を考えて、最初の$0^{N}$を特定位置とする。
+
+
+\subsection*{3.5 CFGのmembership problem.}
+
+input: CFG$G$と$w\in\Sigma^{*}$
+
+output: $w\in L\left(G\right)$ or not?
+
+
+\paragraph{例 3.10}
+
+\[
+\begin{cases}
+S\rightarrow AB|BC\\
+A\rightarrow BA|a\\
+B\rightarrow CC|b\\
+C\rightarrow AB|a
+\end{cases}\eqqcolon G
+\]
+\begin{align*}
+w & =baaba\\
+ & =w_{1}w_{2}\cdots w_{5}\left(w_{i}\in\Sigma\right)
+\end{align*}
+
+
+
+\paragraph{ideas}
+\begin{enumerate}
+\item $V_{ij}=\left\{ X\in V|X\xrightarrow{G}w_{i}w_{i+1}\cdots w_{i+j-1}\right\} $
+\item $G$はChomsky normal form
+\item 
+\begin{align*}
+V_{2,3} & =\left\{ X|X\Rightarrow w_{2}w_{3}w_{4}\right\} \\
+ & =\left\{ X|X\rightarrow YZ,\left(Y\in V_{2,1}\wedge Z\in V_{3,2}\right)\vee\left(Y\in V_{2,2}\wedge Z\in V_{4,1}\right)\right\} 
+\end{align*}
+
+\end{enumerate}
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第11回}
+
+入力待ち
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第12回}
+
+
+\chapter{Turing Machines}
+
+
+\paragraph{intuitions}
+\begin{enumerate}
+\item tapeを走査するheadは$q\in Q\left(\text{finite set}\right)$なるinternal stateを持つ
+\item The length of the tape is \uline{unbounded} (before: $\left|\text{tape}\right|=\left|\text{input word}\right|$)
+\item head can move to the left and the right (before: only →)
+\item The head can write in the tape
+\end{enumerate}
+
+\paragraph{Def.4.7.}
+
+A Turing machine is 
+\[
+M=\left(Q,\Sigma,\Gamma,\delta,q_{0},B,F\right)
+\]
+
+
+$Q$: finite set of head's \uline{states}
+
+$\Sigma$: \uline{input alphabet}, $\Sigma\subseteq\Gamma,B\notin\Sigma$
+
+$\Gamma$: \uline{tape alpabet}
+
+$\delta$: $Q\times\Gamma\rightarrow Q\times\Gamma\times\left\{ L,R\right\} $($Q$:
+current set (of the head), $\Gamma$: symbol read, $\rightarrow$:
+partial function (can be undefined), $Q$: next state, $\Gamma$:
+symbol to write, $\left\{ L,R\right\} $: movement)
+
+$B$: \uline{blank symbol}, $B\in\Gamma\;\left(B\in\Gamma\backslash\Sigma\right)$
+
+$F$: the set of accepting states $F\subseteq Q$
+
+
+\paragraph{Def.4.2,4.3.}
+
+Skip
+
+Turing machines' tasks is
+\begin{itemize}
+\item word classifier
+\item compute functions (§4.2)
+\end{itemize}
+
+\paragraph{Def.4.4.}
+
+$M$: TM
+
+$L\left(M\right)\subseteq\Sigma^{*}$is defined by $L\left(M\right)=\left\{ w\in\Sigma^{*}|\text{read w and state changes from q\_0 and q},\exists q\in F\right\} $
+
+\uline{しかし!}
+
+TMは``word classifier''としては、オートマトンとはだいぶ違う。
+
+wordが受理される場合は有限時間でわかるが、受理されない場合は、
+\begin{itemize}
+\item $\delta\left(q,a\right)$がundefined(detect可能)
+\item 同じIDに戻る(堂々巡り。detect可能)
+\item その他、無限に動き続ける
+\end{itemize}
+cf. The Halting Problem is undecidable (停止問題の非決定性)
+
+これを決定するalgorithmはない。
+
+In other words, What is the mightiest notion of computation/machine?
+(theory of computational models)
+
+It turns out...
+
+TM = aTM = nondet. TM = λ-calculus = recursive functions
+
+⇒ Church's thesis: Def. A computable funtction if what is computable
+by TM.
+
+
+\paragraph{Algorithms for automata}
+\begin{itemize}
+\item state minimization
+\item emptiness check
+
+\begin{itemize}
+\item Given: $M$: NFA
+\item Answer: $L\left(M\right)=\oslash$
+\end{itemize}
+\item inclusion check
+
+\begin{itemize}
+\item Given: $M_{1},M_{2}$
+\item Answer: $L\left(M_{1}\right)\subseteq L\left(M_{2}\right)$
+\end{itemize}
+\end{itemize}
+Q. Emptiness check for TM. Decidable? - 16:15
+
+
+\paragraph{おまけ}
+
+帰納的 = decidable = computable
+
+帰納的可算集合 = semidecidable = semiconputable
+
+
+\paragraph{Negation Theorem}
+
+$P$と$\text{not}P$が両方semidecidableであるとき、$P$はdecidableである。
+\end{document}

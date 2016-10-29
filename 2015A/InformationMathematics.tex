@@ -1,0 +1,1503 @@
+%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[version=3]{mhchem}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2015-A 情報数学}
+
+
+\author{教員: 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+
+
+
+\paragraph{授業の構成}
+\begin{itemize}
+\item 前半: 数学
+\item 後半: 情報
+\end{itemize}
+
+\paragraph{集合}
+
+コンピューターで扱う際には、ほとんどの集合は有限集合となる。有限集合の家で成り立つ幾つかの集合の規則について確認する。
+\begin{description}
+\item [{元}] 要素の集まり
+
+
+\[
+A=\left\{ a,b,c\right\} ,A=\left\{ x|\text{性質}\right\} 
+\]
+
+
+\item [{空集合}] $\oslash=\left\{ \right\} $
+
+
+$a$と$\left\{ a\right\} $(単元集合)は異なるものである。
+
+\item [{$a\in A$}] $a$が$A$の元である
+\item [{$a\notin A$}] $a$が$A$の元でない
+\item [{$\left|A\right|$}] 元の数・基数・濃度ともいう
+\item [{$A\subseteq B,B\supseteq A$}] $B$が$A$を含む
+
+
+$A$は$B$の部分集合
+
+
+定義すると、「任意の$a$について、$a\in A$ならば$a\in B$」
+
+
+※$A\subseteq B$を$A\subset B$と書くこともある。
+
+
+※真部分集合($A\subseteq B$かつ$A\neq B$)であるとき$A\subsetneq B$と書くこともある。
+
+\end{description}
+
+\paragraph{性質}
+
+任意の集合$A$について
+\[
+\oslash\subseteq A,A\subseteq A
+\]
+
+\begin{description}
+\item [{$2^{A}$}] べき集合。$A$のすべての部分集合からなる集合
+
+
+\paragraph{例}
+
+
+\[
+A=\left\{ a,b,c\right\} 
+\]
+のとき、
+\[
+2^{A}=\left\{ \left\{ \right\} ,\left\{ a\right\} ,\left\{ b\right\} ,\left\{ c\right\} ,\left\{ a,b\right\} ,\left\{ b,c\right\} ,\left\{ c,a\right\} ,\left\{ a,b,c\right\} \right\} 
+\]
+
+
+
+※$\left|2^{A}\right|=2^{\left|A\right|}$
+
+
+※$\oslash\in2^{A},A\in2^{A}$
+
+\item [{直積}] $A\times B=\left\{ \left(a,b\right)|a\in A,b\in B\right\} $
+
+
+$\left(a,b\right)$は順序に意味がある集合である。
+
+
+\paragraph{例}
+
+
+\[
+A=\left\{ 0,1\right\} ,B=\left\{ a,b\right\} 
+\]
+ならば
+\[
+A\times B=\left\{ \left(0,a\right),\left(1,a\right),\left(0,b\right),\left(1,b\right)\right\} 
+\]
+
+
+
+※$\left|A\times B\right|=\left|A\right|\times\left|B\right|$
+
+\item [{和集合(合併)}] $A\cup B=\left\{ a|a\in A\text{または}a\in B\right\} $
+
+\begin{description}
+\item [{べき等律}] $A\cup A=A$
+\item [{交換律}] $A\cup B=B\cup A$
+\item [{結合律}] $\left(A\cup B\right)\cup C=A\cup\left(B\cup C\right)$
+\end{description}
+
+※$A=B$を証明せよという際の常套手段として、$A\subseteq B$および$B\subseteq A$から$A=B$を導出するというものがある。
+
+\item [{積集合(共通部分)}] $A\cap B=\left\{ a|a\in A\text{かつ}a\in B\right\} $
+
+\begin{description}
+\item [{べき等律}] $A\cap A=A$
+\item [{交換律}] $A\cap B=B\cap A$
+\item [{結合律}] $\left(A\cap B\right)\cap C=A\cap\left(B\cap C\right)$
+\end{description}
+
+\paragraph{性質}
+
+
+\begin{align*}
+A\cap B=A & \Leftrightarrow A\subseteq B\\
+ & \Leftrightarrow A\cup B=B
+\end{align*}
+
+
+\item [{吸収律}] $A\cup\left(A\cap B\right)=A,A\cap\left(A\cup B\right)=A$
+\item [{分配率}] $A\cup\left(B\cap C\right)=\left(A\cup B\right)\cap\left(A\cup C\right),A\cap\left(B\cup C\right)=\left(A\cap B\right)\cup\left(A\cap C\right)$
+\item [{互いに素}] $A\cap B=\oslash$のとき、$A$と$B$は互いに素という。
+\item [{直和}] $A+B=\left(\left\{ 0\right\} \times A\right)\cup\left(\left\{ 1\right\} \times B\right)$
+
+
+※$\left|A+B\right|=\left|A\right|+\left|B\right|$
+
+\item [{差集合}] $A-B=\left\{ a|a\in A\text{かつ}a\notin B\right\} $
+
+
+※$A\backslash B$と書く場合もある。
+
+\item [{補集合}] $\overline{X}=A-X$(ただし$X\subseteq A$)を$A$に関する$X$の補集合という。
+\item [{相補律}] $X\cup\overline{X}=A,X\cap\overline{X}=\oslash$
+
+\begin{itemize}
+\item $\overline{\overline{X}}=X$
+\item de Morgan律 $\begin{cases}
+\overline{X\cup Y}=\overline{X}\cap\overline{Y}\\
+\overline{X\cap Y}=\overline{X}\cup\overline{Y}
+\end{cases}$
+\end{itemize}
+\end{description}
+
+\paragraph{束(lattice)}
+
+集合$L$と演算$\vee$(vee), $\wedge$(wedge)を考える。この際、
+\begin{align*}
+a,b & \in L\\
+a\vee b & \in L\\
+a\wedge b & \in L
+\end{align*}
+であるとし、演算$\vee,\wedge$が$L$で閉じているものとする。
+
+任意の$a,b,c\in L$に対し、
+\begin{description}
+\item [{べき等律}] $a\vee a=a,a\wedge a=a$
+\item [{交換律}] $a\vee b=b\vee a,a\wedge b=b\wedge a$
+\item [{結合律}] $a\vee\left(b\vee c\right)=\left(a\vee b\right)\vee c$\\
+$a\wedge\left(b\wedge c\right)=\left(a\wedge b\right)\wedge c$
+\item [{吸収律}] $a\wedge\left(a\vee b\right)=a$\\
+$a\wedge\left(a\vee b\right)=a$
+\end{description}
+以上をすべて満たすとき、束という。
+\begin{itemize}
+\item $\left(2^{A},\cup,\cap\right)$は束である。\end{itemize}
+\begin{description}
+\item [{モジュラ律}] $a\vee b=b$ならば$\forall c\in L\;\left(a\vee c\right)\wedge b=a\vee\left(c\wedge b\right)$を満たすとき、$L$は\textbf{モジュラ束}という。
+
+
+※$a\vee b=b\Leftrightarrow a\wedge b=a$は一般の束で成り立つ。$\because a\wedge\left(a\vee b\right)=a\wedge b$
+
+\item [{分配律}] $a\vee\left(b\wedge c\right)=\left(a\vee b\right)\wedge\left(a\vee c\right)$\\
+$a\wedge\left(b\vee c\right)=\left(a\wedge b\right)\vee\left(a\wedge c\right)$\\
+を満たす束を\textbf{分配束}と呼ぶ。
+\end{description}
+
+\paragraph{定理}
+
+分配束はモジュラ束である。
+
+$\because$$a\wedge b=a$と仮定する。
+\begin{align*}
+\left(a\vee c\right)\wedge b & =\left(a\wedge b\right)\vee\left(c\wedge b\right)\\
+ & =a\vee\left(c\wedge b\right)
+\end{align*}
+
+
+
+\paragraph{定義}
+
+$M\in L$が$\forall a\in L\;a\vee M=M$を満たすとき、$M$を\textbf{最大元}といい、$\forall a\in L\;a\wedge m=m$を満たすとき、$m$を\textbf{最小元}という。
+
+
+\paragraph{定義}
+
+最大元$M$最小元$m$を持つ束で、$a\in L$のとき、
+\[
+a\vee b=M,a\wedge b=m
+\]
+を満たす$b$を$a$の\textbf{補元}という。
+
+
+\paragraph{定義}
+
+任意の元に補元があるとき、\textbf{相補束}という。
+
+例: $\left(2^{A},\cup,\cap\right)$は相補束
+
+
+\paragraph{定義}
+
+分配束かつ相補束のとき、\textbf{Bool束}という。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第2回}
+
+休講
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第3回}
+
+
+\paragraph{二項関係}
+
+$A,B$を集合とし、
+\[
+R\subseteq A\times B
+\]
+となる二項関係$R$から、
+\[
+\left(a,b\right)\in R
+\]
+として、
+\[
+aRb
+\]
+と書く。
+
+
+\paragraph{例}
+\begin{itemize}
+\item $\mathbb{N}\times\mathbb{N}$の$\leqq$(※$\mathbb{N}$: 自然数全体)
+\begin{align*}
+\left(a,b\right)\in\leqq & \Leftrightarrow a\leqq\\
+\leqq & =\left\{ \left(a,b\right)\in A\times B|a\leqq b\right\} 
+\end{align*}
+
+\item $\mathbb{N}\times\mathbb{N}$の$m|n$(``$m$ divides $n$'', $m$が$n$を割り切る)
+\item 直線の平行
+\item $\mathbb{R}\times\mathbb{R}$の$xy<0$
+\end{itemize}
+$A\times A$の上の二項関係を、$A$の上の二項関係という。
+
+
+\paragraph{二項関係の性質}
+\begin{itemize}
+\item $\forall a\in A,aRa$となるとき、二項関係は反射的という。
+\item $\forall a,b\in A,aRb\Rightarrow bRa$となるとき、対称的という。
+\item $\forall a,b\in A,\left(aRb\text{かつ}bRa\right)\Rightarrow a=b$となるとき、反対称的という。
+\item $\forall a,b,c\in A,\left(aRb\text{かつ}bRc\right)\Rightarrow aRc$となるとき、推移的という。
+\end{itemize}
+
+\paragraph{同値関係}
+\begin{itemize}
+\item 反射的、対照的、推移的な二項関係
+\[
+\left[a\right]=\left\{ b\in A|aRb\right\} 
+\]
+を同値類と呼び、$\left[a\right]$を代表元と呼ぶ。
+\end{itemize}
+
+\paragraph{性質}
+\begin{enumerate}
+\item $\forall a\in,a\in\left[a\right]$\\
+$\because$反射的
+\item $b\in\left[a\right]\Rightarrow\left[a\right]=\left[b\right]$\\
+$\because$$aRb,\forall c\in\left[b\right]$は$bRc.$推移的\\
+対称性$bRa.$$\forall c\in\left[a\right]\Rightarrow c\in\left[b\right]$
+\item $c\notin\left[a\right]\Rightarrow\left[a\right]\cap\left[c\right]=\oslash$\\
+$\because\left[a\right]\cap\left[c\right]\notin\oslash$と仮定すると\\
+$\left[a\right]\cap\left[c\right]\ni d\Rightarrow\left[a\right]=\left[d\right]=\left[c\right]$となり矛盾
+\end{enumerate}
+\[
+A=A_{1}\cup A_{2}\cup A_{3}
+\]
+で
+\[
+A_{i}\cap A_{j}\neq\oslash
+\]
+となるようなものを$A$の分割という。
+
+\[
+A/R=\left\{ A_{1},A_{2},A_{3},\cdots\right\} 
+\]
+を商集合という。
+
+
+\paragraph{半順序}
+\begin{itemize}
+\item 反射的、反対称的、推移的な二項関係
+\end{itemize}
+
+\paragraph{半順序の例}
+\begin{itemize}
+\item $2^{A}$上の$\subseteq$
+\item 文字列$x$は$y$の先頭部分
+\end{itemize}
+
+\paragraph{よく使う記号}
+
+\[
+a\preceq b
+\]
+
+\begin{itemize}
+\item $a\preceq b$または$b\preceq a$のとき、$a$と$b$は比較可能という。
+\end{itemize}
+
+\paragraph{定義}
+
+$x\preceq y$かつ$x\neq y$かつ$x\preceq\forall x\preceq y\Rightarrow z=x$または$z=y$
+
+このとき$y$は$x$直上、$x$は$y$の直下という。
+
+
+\paragraph{Hasse図}
+
+3元集合$A=\left\{ a,b,c\right\} $の$2^{A}$の包含関係
+
+(図省略)
+
+以下、$A$上の半順序$\preceq$があるとしたとき、
+
+
+\paragraph{定義}
+
+$b\in A$が$\forall x\in A,x\preceq b$のとき、$b$を$A$の最大元と言い、$b=\max A$で表す。(最小元も同様)
+
+
+\paragraph{定義}
+
+$b\in A$が$\forall x\in A,b\preceq x\Rightarrow x=b$が成り立つ土岐、$b$は$A$の極大元という。(極小元も同様)
+
+以下、$U\subseteq A$としたとき、
+
+
+\paragraph{定義}
+
+$b\in A$が$\forall x\in U,x\preceq b$のとき、$b$は$U$の上界という。(下界も同様)
+
+(図省略)
+
+
+\paragraph{定義}
+
+上界全体に最小限があるとき、$U$の上限といい、$\sup U$と書く。(下限も同様。$\inf U$と書く)
+
+
+\paragraph{定理}
+
+$A$上の半順序$\preceq$が、$\forall a,b\in A$$\sup\left\{ a,b\right\} $および$\inf\left\{ a,b\right\} $が存在するとする。このとき$A$上の二項演算$\vee$と$\wedge$を$a\vee b=\sup\left\{ a,b\right\} ,a\wedge b=\inf\left\{ a,b\right\} $と定義すると、$\left(A,\vee,\wedge\right)$は束となる。
+
+
+\paragraph{補題}
+\begin{enumerate}
+\item 
+\begin{align*}
+x & \preceq x\vee y\\
+x\wedge y & \preceq x
+\end{align*}
+
+\item $x\preceq y$のとき、
+\begin{align*}
+x\vee y & =y\\
+x\wedge y & =x
+\end{align*}
+
+\item $x\preceq u,y\preceq v$のとき、
+\begin{align*}
+x\vee y & \preceq u\vee v\\
+x\wedge y & \preceq u\wedge v
+\end{align*}
+
+\end{enumerate}
+
+\paragraph{定理の証明}
+\begin{enumerate}
+\item $x\vee y=\sup\left\{ x,x\right\} =x$より$x\wedge x=x$
+\item $x\vee y=\sup\left\{ x,y\right\} =y\vee x$ $\wedge$同様
+\item 
+\[
+x,y,z\preceq x\vee\left(y\vee z\right)
+\]
+\[
+x,y,x\preceq w\Rightarrow x\vee\left(y\vee z\right)\preceq w
+\]
+上より
+\[
+x\vee\left(y\vee z\right)=\sup\left\{ x,y,z\right\} 
+\]
+
+\item $x\preceq x\vee y$より$x\wedge\left(x\vee y\right)=x$\\
+$x\wedge y\preceq x$より$x\vee\left(x\wedge y\right)=x$
+\end{enumerate}
+
+\paragraph{定理}
+
+任意の束$\left(A,\vee,\wedge\right)$に対し、
+\[
+x\preceq y\overbrace{\Longleftrightarrow}^{\text{def}}x\vee y=y
+\]
+と定義すると、$\preceq$は半順序となる。
+
+
+\paragraph{証明}
+\begin{enumerate}
+\item $x\vee x=x$より$x\preceq x$
+\item $x\preceq y$かつ$u\preceq x$とすると、
+\[
+x\vee y=y,y\vee x=x\Rightarrow x=y
+\]
+
+\item $x\preceq y$かつ$y\preceq z$とすると、
+\[
+x\vee y=y,y\vee z=z
+\]
+\begin{align*}
+x\vee z & =x\vee\left(y\vee z\right)\\
+ & =\left(x\vee y\right)\vee z\\
+ & =y\vee z\\
+ & =z
+\end{align*}
+\end{enumerate}
+\begin{itemize}
+\item 束→半順序→束と変換した場合は元に戻る。
+\item 半順序→束→半順序も同じものになる。
+\end{itemize}
+
+\paragraph{定義}
+
+半順序であって、任意の2元が比較可能な土岐、全順序という。
+
+
+\paragraph{定義}
+
+全順序集合$A$のに似の部分集合$B$が最小元を持つ土岐、$A$を整列集合という。
+
+
+\paragraph{例}
+\begin{itemize}
+\item $\mathbb{N}$上の$\leqq$
+\item $\mathbb{N}\cup\left\{ -\infty\right\} $($-\infty\notin\mathbb{N},\forall a\in\mathbb{N},-\infty<a$とする)
+\end{itemize}
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第4回}
+
+散逸
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第5回}
+
+\begin{tabular}{|c|c|}
+\hline 
+ & \tabularnewline
+\hline 
+\hline 
+加法$+$ & 乗法$\cdot$\tabularnewline
+\hline 
+単位元$0$ & 単位元$1$\tabularnewline
+\hline 
+逆元$-a$ & 逆元$a^{-1}$\tabularnewline
+\hline 
+ & \tabularnewline
+\hline 
+\end{tabular}
+\begin{itemize}
+\item 分配律
+\begin{align*}
+\left(a+b\right)\cdot c & =a\cdot c+b\cdot c\\
+a\cdot\left(b+c\right) & =a\cdot b+a\cdot c
+\end{align*}
+
+\item $a+\left(-b\right)$を$a-b$とも書く
+\item $a\cdot b$を$ab$とも書く
+\end{itemize}
+\begin{tabular}{|c|c|c|}
+\hline 
+環 & 可換群 & モノイド\tabularnewline
+\hline 
+\hline 
+整域 & 〃 & 1を持つモノイド、0意外に零因子なし\tabularnewline
+\hline 
+体 & 〃 & 1を持つモノイド、0以外が全て単元\tabularnewline
+\hline 
+\end{tabular}
+
+
+\paragraph{定義}
+
+$R$を環とする。$a\in R$が$\exists b\in R.b\neq0\wedge a\cdot b=0$のとき、$a$を零因子という。
+
+
+\paragraph{定義}
+
+$a\in R$が、$\exists b\in R.a\cdot b=b\cdot a=1$となるとき、$a$を単元あるいは可逆元という。
+
+
+\paragraph{定義}
+
+乗法が可換な環を可換環という。
+
+
+\paragraph{定義}
+
+乗法が非可換な体をとくに斜体という。
+
+また、
+\[
+R=\left\{ 0\right\} 
+\]
+を零環という。
+
+以下では$R$は可換環とする。
+
+
+\paragraph{定義}
+
+$I\subseteq R$がイデアルであるとは、
+\begin{enumerate}
+\item $I$は$R$の加法について部分群
+\item $\forall r\in R\forall a\in I.ra\in I$
+\end{enumerate}
+
+\paragraph{定義}
+
+$\forall a\in R.\left(a\right)=\left\{ ra|r\in R\right\} $はイデアルである。これを単項イデアルと言う。
+
+$a$を生成元という。
+
+
+\paragraph{例}
+
+$m\in\mathbb{Z}\left(m\right)=\left\{ zm|a\in\mathbb{Z}\right\} $
+
+
+\paragraph{例}
+
+$K\left[x\right]$では$p\in K\left[x\right]$
+\[
+\left(p\right)=\left\{ p\cdot q|q\in K\left\{ x\right\} \right\} 
+\]
+
+
+
+\paragraph{例}
+
+$\left(0\right)=\left\{ 0\right\} ,\left(1\right)=R$
+
+
+\paragraph{定義}
+
+全てのイデアルが単項イデアルの時、単項イデアル環と呼ぶ。
+
+
+\paragraph{定理}
+
+可換環$A$とそのイデアル$I$に対して、
+\[
+R=\left\{ \left(a,b\right)|a-b\in I\right\} 
+\]
+は同値関係である。
+\begin{itemize}
+\item 同値類は$\left[a\right]=a+1$
+\item $R$による$A$の商集合$A/R$を$A/I$とも書く。
+\item $A/I$は環になる。剰余環という。
+
+\begin{itemize}
+\item $\left[a\right]+\left[b\right]=\left[a+b\right]$
+\item $\left[a\right]\cdot\left[b\right]=\left[a\cdot b\right]$
+\end{itemize}
+
+とすればよい。
+
+\end{itemize}
+
+\paragraph{例}
+
+$A$として$\mathbb{Z}$、$I$として$\left(m\right)$
+\begin{itemize}
+\item $\left[a\right]=a+I$は$m$で割って$za$余る数
+\item $\mathbb{X}/\left(m\right)=\left\{ \left[0\right],\left[1\right],\cdots,\left[m-a\right]\right\} $
+\item $\left\{ a+b\right\} =\left[a\right]+\left[b\right],\left[a\right]\left[b\right]=\left[ab\right]$
+\end{itemize}
+
+\paragraph{定理}
+
+1を持つ環$R$について、次の4条件は同値である。
+\begin{enumerate}
+\item 0以外のすべての元が零因子でない
+\item $a,b\in R,ab=0\Rightarrow a=0\vee b=0$
+\item $R-\left\{ 0\right\} $は乗法について閉じている\\
+$\because$0でないものをかけて0でない
+\item $a\in R,a\neq0,x,y\in R$に対し、
+\[
+ax=by\Rightarrow x=y
+\]
+\\
+$\because$$ax=ay$の両辺に$a\left(-y\right)$を足して$a\left(x-y\right)=0$、2.より$x-y=0$\\
+$\Leftarrow$$a$が零因子なら、$ab=0,b\neq0$。これと$a0=0$より$b=0$となり矛盾
+\end{enumerate}
+
+\paragraph{定理}
+
+$R$を環、$U$を単元全体となる集合とする。
+
+$U$は乗法に関し群となる。$U$を単位群という。
+
+
+\paragraph{定理}
+
+$m=\left|U\right|<\infty$とすると、$\forall a\in U.a^{m}=1$
+
+$\because$$a$の位数は$m$の約数
+
+$X$を不足元、$R$を可換環とする。
+
+
+\paragraph{定義}
+
+$f\left(x\right)=a_{n}x^{n}+a_{n-1}x^{n-1}+\cdots+a_{1}x+a_{0}$
+
+$a_{i}\in R$を$R$上の多項式という。
+
+加法・乗法はみなさんが知っている方法で環になる。
+
+
+\paragraph{定義}
+
+$R\left[x\right]$を$R$上すべての多項からなる集合とする。
+
+
+\paragraph{定義}
+
+$a_{n}\neq0$のとき$f$は次数$n$であるという。
+
+次数を$\deg f=n$と書く。ただし$\deg0=-\infty$と定義する。
+
+
+\paragraph{定義}
+
+最高次係数が1のとき、モニックであるという。
+\begin{itemize}
+\item $R$が整域とすると、
+\[
+\deg f\cdot g=\deg f+\deg g
+\]
+
+\item $R$が整域なら、$R\left[x\right]$も整域\\
+$\because$乗法単位元1
+\end{itemize}
+$K$を体とする。$K\left[x\right]$は割り算できる。つまり、$f\left(x\right),g\left(x\right)\in K\left[x\right]$で$g\left(x\right)\neq0$とする
+\[
+f\left(x\right)=q\left(x\right)\cdot q\left(x\right)+r\left(x\right),\deg r<\deg g
+\]
+となる$q\left(x\right)$と$r\left(x\right)$が存在する。
+
+
+\paragraph{定義}
+
+整域$R$の元$a$が規約元であるとは、
+\begin{enumerate}
+\item $a$は単元でも0でもなく、
+\item $a=b\cdot c$となるとき$b$か$c$は単元
+\end{enumerate}
+を満たすことを言う。
+
+
+\paragraph{定義}
+
+整域$R$が、$\forall a\in Ra\neq0$は既約元の積に一意に分解されるとき、一意分解環またはガウス整域という。
+
+
+\paragraph{定義}
+
+$a\in R$が一意的に分解されるとは、単元$u$、規約元$p_{i}\left(i=1,2,\cdots,n\right)$により、$a=up_{1}p_{2}\cdots p_{n}$と書いて、単元と積の順序を除いて一意である。
+
+
+\paragraph{定理}
+
+単項イデアル整域は一意分解環である。証明は教科書定理3.5を見てください。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第6回}
+
+散逸
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第7回}
+
+
+\paragraph{離散対数問題}
+
+$G$を巡回群、$\alpha$を生成元とすると、
+\[
+\forall\beta\in G.\exists n\in\mathbb{Z}.\alpha^{n}=\beta
+\]
+となる。そこで、$n=\log_{\alpha}\beta$と書き、離散対数という。
+
+Diffie-Hellmanの対称鍵$G$と$\alpha$は公開する。Aliceは乱数$n$を生成し、$\alpha^{n}$をBobに送る。Bobは乱数$m$を生成し、$\alpha^{m}$をAliceに送る。$\alpha^{nm}$を共通秘密鍵とする。
+
+
+\paragraph{El-Gamal暗号}
+
+$G$を巡回群、$\alpha$を生成元、$n\in\mathbb{Z}$を秘密鍵、$\beta=\alpha^{m}$を公開鍵、$k$を乱数秘密鍵として、
+\[
+e_{K}\left(x,k\right)=\left(\alpha^{k},x\beta^{k}\right)=\left(y_{1},y_{2}\right)
+\]
+\begin{align*}
+d_{K}\left(y_{1},y_{2}\right) & =y_{2}\left(y_{1}^{n}\right)^{-1}\\
+ & =x\beta^{k}\left(\left(\alpha^{k}\right)^{n}\right)^{-1}=k
+\end{align*}
+
+
+
+\paragraph{定義}
+
+$f\left(x\right)\in K\left[x\right],\deg f>0,\deg g>0,\deg h>0$とする。
+\[
+f\left(x\right)=g\left(x\right)h\left(x\right)
+\]
+とならない場合、$f$を既約という。
+
+
+\paragraph{定理}
+
+$f\left(x\right)\in K\left[x\right]$が規約であれば、$K\left[x\right]/\left(f\left(x\right)\right)$は体である。
+
+$\because$$K\left[x\right]/\left(f\left(x\right)\right)$の言は「$f\left(x\right)$で割った余り」なので、次数が$\deg f$未満の多項式
+
+\[
+K\left[x\right]/\left(f\left(x\right)\right)\sim\left\{ g\left(x\right)\in K\left[x\right]|\deg g<\deg f\right\} 
+\]
+$g\neq0$とすると$\gcd\left(f,g\right)=1$であるから、
+\[
+f\left(x\right)p\left(x\right)+g\left(x\right)q\left(x\right)=1
+\]
+となる$p,q$がある。
+
+$p$が素数の時$\mathbb{Z}/p\mathbb{Z}\sim\mathbb{Z}p$は体。これを$\mathbb{F}_{p}$あるいは$GF\left(p\right)$と書く。
+
+
+\paragraph{例}
+
+\begin{align*}
+GF\left(2\right) & =\left\{ 0,1\right\} \\
+GF\left(5\right) & =\left\{ 0,1,2,3,4\right\} 
+\end{align*}
+
+
+$K=\mathbb{F}_{p}$として$f\left(x\right)\in\mathbb{F}_{p}\left[x\right]$の規約多項式とすると、$\mathbb{F}_{p}\left[x\right]/\left(f\left(x\right)\right)$は体になる。
+
+\[
+\mathbb{F}_{p}\left[x\right]/\left(f\left(x\right)\right)\sim\left\{ g\left(x\right)|\deg g<\deg f\right\} 
+\]
+
+
+\[
+g\left(x\right)=a_{0}+a_{1}x+a_{2}x^{2}+\cdots+a_{k-1}x^{k-1}\leftrightarrow\left(a_{0},a_{1},a_{2},\cdots,a_{k-1}\right)\in\left(\mathbb{F}_{p}\right)^{k}
+\]
+
+
+この体は$p^{k}$個の元からなる。$\mathbb{F}_{p^{k}}GF\left(p^{k}\right)$
+
+
+\paragraph{有限体}
+
+(教科書定理7.6)
+
+有限体$\mathbb{F}_{q}$の乗法群$\mathbb{F}_{q}^{*}\left(=\mathbb{F}_{q}-\left\{ 0\right\} \right)$は巡回群となる。
+
+例: $GF\left(5\right)\rightarrow2^{0}=1,2^{1}=2,2^{2}=4,2^{3}=3,2^{4}=1$
+
+例: $GF\left(7\right)\rightarrow3^{0}=1,3^{1}=3,3^{2}=2,3^{3}=6,3^{4}=4,3^{5}=5,3^{6}=1$
+
+
+\paragraph{定義}
+
+$\mathbb{F}_{q}^{*}$の生成元を$\mathbb{F}_{q}$の原始根という。
+
+
+\paragraph{定義}
+
+$L$が体、$K\subseteq L$で$K$が($L$の)加法と乗法で体となるとき、$L$を$K$の拡大体、$K$を$L$の部分体と呼ぶ。これを「体の拡大$L/K$」と書く。
+
+
+\paragraph{例}
+
+\[
+\mathbb{Q}\left(\sqrt{2}\right)=\left\{ a+\sqrt{2}b|a,b\in\mathbb{Q}\right\} 
+\]
+は$\mathbb{Q}$の拡大体
+
+$L$は$K$のベクトル空間となる。この意味での$L$の次元を$\left[L:K\right]$と書き、拡大次数と呼ぶ。
+
+
+\paragraph{例}
+
+$GF\left[\right]$
+
+
+\paragraph{定義}
+
+$f\left(x\right)\in K\left[x\right]$に対し、$f\left(x\right)$の$x$を$b\in K$に置き換えたものを$f\left(b\right)$と書く。代入と呼ぶ。
+
+
+\paragraph{定義}
+
+$f\left(b\right)=0$となる$b$を$f\left(x\right)$の根と呼ぶ。
+
+
+\paragraph{因数定理}
+
+$f\left(x\right)\in K\left[x\right],a\in K$とする。
+
+\[
+f\left(a\right)=0\Leftrightarrow\exists g\left(x\right)\in K\left[x\right].f\left(x\right)=g\left(x\right)\left(x-a\right)
+\]
+
+
+$\because$$f\left(x\right)$を$x-a$で割ると、
+\[
+f\left(x\right)=g\left(x\right)\left(x-a\right)+r\left(x\right)
+\]
+となる。
+\[
+f\left(a\right)=g\left(a\right)\left(a-a\right)+r\left(a\right)=0
+\]
+より$r\left(a\right)=0$
+
+$\deg r<1$であるが、$\deg r=0$だと$r=a_{0}$
+
+
+\paragraph{定理(根の個数)}
+
+$f\left(x\right)$は0でなく、$\deg f=n$とする。このとき$f\left(x\right)$の根は$n$個以下。
+
+$\because$帰納法による。$n=0$は自明。
+
+ある$n\geq1$を考えて、$n=1$までは低利成立と仮定。すると$f\left(a\right)=0$とすると因数定理から$f\left(x\right)=g\left(x\right)\left(x-a\right)$となる。
+
+$b\neq a$に対し、$f\left(b\right)=0$なら$g\left(b\right)=0$とならなければならない。$g\left(x\right)$の根の数は$n-1$以下なので、$f\left(x\right)$の根の数は$n$以下である。
+
+
+\paragraph{定義}
+
+体の拡大$L/K$において$\alpha\in L$が$K$上代数的であるとする$f\left(z\right)=0$を満たす$f\left(x\right)\in K\left[x\right]$のうち次数最小デモニックなものを最小多項式と呼ぶ。
+
+
+\paragraph{定理}
+
+最小多項式は既約である。
+
+$\because$既約でないとすると$f\left(x\right)=g\left(x\right)h\left(x\right)$$\alpha$を代入すると$f\left(\alpha\right)=g\left(\alpha\right)h\left(\alpha\right)=0$。よって$g\left(\alpha\right)=0$または$h\left(\alpha\right)=0$これは$f$の定義に矛盾する。
+\begin{itemize}
+\item $f\left(x\right)$を$\alpha$の最小多項式とすると、$K\left[\alpha\right]/\left(f\left(x\right)\right)$は体である。
+\item $K\left[\alpha\right]=\left\{ g\left(\alpha\right)|g\left(x\right)\in K\left[x\right]\right\} $の部分環である。
+\end{itemize}
+\[
+K\left[\alpha\right]=\left\{ r\left(\alpha\right)|r\left(x\right)\in K\left[x\right],\deg r<\deg f\right\} 
+\]
+
+
+$\because$
+\begin{align*}
+g\left(x\right) & =f\left(x\right)q\left(x\right)+r\left(x\right)\\
+g\left(\alpha\right) & =f\left(\alpha\right)q\left(\alpha\right)+r\left(\alpha\right)
+\end{align*}
+
+\begin{itemize}
+\item $\deg g<\deg f,\deg h<\deg f$のとき、$g\left(x\right)\neq h\left(x\right)$なら$g\left(\alpha\right)\neq h\left(\alpha\right)$
+
+
+$\because$$g\left(\alpha\right)-h\left(\alpha\right)=0$は$f$の定義に矛盾
+
+\end{itemize}
+
+\paragraph{定理}
+
+\[
+K\left[\alpha\right]\sim K\left[x\right]/\left(f\left(x\right)\right)
+\]
+
+\begin{itemize}
+\item 元の数が同じ
+\item 加算・乗算が同じ
+\item $K\left[\alpha\right]$も体である。
+\end{itemize}
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第8回}
+
+入力待ち
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第9回}
+
+
+\paragraph{情報源符号化}
+
+情報源→
+\[
+\text{事象}\in\left\{ a_{1},\cdots,a_{n}\right\} .P_{r}\left\{ a_{i}\right\} =p_{i}
+\]
+
+
+
+\paragraph{定義(記憶のない定常情報源)}
+\begin{itemize}
+\item 事象が次々と発生する
+\item 各事象は他時刻の事象と確率的に独立
+\item 発生確率$p_{i}$は時刻によらない
+\end{itemize}
+
+\paragraph{符号化(2元符号)}
+\begin{itemize}
+\item 符号アルファベットを$\left\{ 0,1\right\} $とする
+\end{itemize}
+符号化: 描く事象$a_{i}$に符号アルファベットの列(符号語)$c_{i}$に対応させる。
+\begin{itemize}
+\item 事象の列は符号語の列に対応する
+\end{itemize}
+復号化: 符号語の列を対応する事象の列に戻す。
+
+
+\paragraph{定義}
+
+語頭符号とは、どの符号語も他の符号語の語頭になっていない⇔瞬時に複合可能
+
+
+\paragraph{定義}
+
+一意複合可能とは、任意の符号語の系列が情報源の事象の列に一意に対応
+
+
+\paragraph{符号語長}
+
+符号語に含まれる符号アルファベットの数 $l_{i}$
+
+
+\paragraph{平均符号語長}
+
+\[
+L=\sum_{i}p_{i}l_{i}
+\]
+
+
+符号語の列を与えられたら木を作ることができる……(省略)
+
+符号語長$l_{i}$=葉の深さ
+
+
+\paragraph{補題}
+
+ご豆腐号において深さ$d$にある節点$p$を根とする部分着に含まれる符号語の集合を$X_{p}$とすると、
+\[
+\sum_{x\in X_{p}}2^{-l\left(x\right)}\leq2^{-d}
+\]
+
+
+ただし$l\left(x\right)$は符号語$x$の長さである。
+
+$\because$帰納法
+
+$p$が葉のとき、自明に成立
+
+それ以外の場合、左の子を$q$、右の子を$r$
+
+帰納法の仮定から
+\[
+\sum_{x\in X_{g}}2^{-l\left(x\right)}\leq2^{-d-1},\sum_{x\in X_{r}}2^{-l\left(x\right)}\leq2^{-d-1}
+\]
+
+
+両者を足して補題を得る
+
+
+\paragraph{定理 Kraftの不等式}
+
+補題で$d=0$とすると$\sum_{l}2^{-l_{i}}\leq1$
+
+逆も成立(宿題)
+
+※Kraftの不等式⇔語頭符号の存在
+
+
+\paragraph{定理(情報源符号化定理)}
+
+記憶のない定常情報源は任意の$\varepsilon>0$に対し、
+\[
+H\leq L\leq H+\varepsilon
+\]
+を満たす平均符号長$L$の浦東符号に符号化できる。
+
+逆に一意復号可能なら
+\[
+H\leq L
+\]
+
+
+
+\paragraph{補題}
+
+性方向で$\varepsilon=1$としたもの
+
+$\because$$-\log_{2}p_{i}\leq l_{i}<-\log_{2}p_{i}+1$を満たす整数$l_{i}$を定める。
+
+\[
+\sum_{i}2^{l_{i}}\leq\sum_{i}p_{i}=1
+\]
+よりKraftの不等式を満たす。
+
+また
+\begin{align*}
+-\sum_{i}p_{i}\log_{2}p_{i} & \leq\sum_{i}p_{i}l_{i}<-\sum_{i}p_{i}\left(\log_{2}p_{i}-1\right)\\
+H & \leq L<H+1
+\end{align*}
+
+
+
+\paragraph{定理の前半}
+
+情報源の事象を$n$個まとめて1の事象と考えると$m^{n}$この事象を持つ情報源とみなせる。これを$n$次拡大という。
+\begin{itemize}
+\item $n$次拡大のエントロピーは$H_{n}=n\cdot H$
+\item $n$次拡大に対する符号の平均符号語長を$L_{n}$とすると、もとの情報源で$\frac{L_{n}}{n}$にあたる。
+\end{itemize}
+$n$次拡大に補題を適用すると
+\begin{align*}
+H_{n} & \leq L_{n}<H_{n}+1\\
+nH & \leq nL<nH+1\\
+H & \leq L<H+\frac{1}{n}
+\end{align*}
+
+
+※$n$を十分小さく取れば$\frac{1}{n}<\varepsilon$
+
+
+\paragraph{定理の後半}
+
+一意復号可能な符号語長を$l_{i}$とする。
+
+\begin{align*}
+H-L & =-\sum_{i}p_{i}\log_{2}p_{i}-\sum_{i}p_{i}l_{i}\\
+ & =\sum_{i}p_{i}\log_{2}\frac{2^{-l_{i}}}{p_{i}}
+\end{align*}
+
+
+$\log_{2}x\leq x-1$より
+\begin{align*}
+H-L & \leq\sum_{i}p_{i}\left(\frac{2^{-l_{i}}}{p_{i}}-1\right)\log_{2}e\\
+ & =\left(\sum_{i}2^{-l_{i}}-\sum_{i}p_{i}\right)\log_{2}e\\
+ & \leq0
+\end{align*}
+
+
+Kraftの不等式を用いた。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第10回}
+
+入力待ち
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第11回}
+
+ブロック符号
+
+GF(2)で考える
+
+↓$\boldsymbol{u}=\left(u_{1},u_{2},\cdots,u_{k}\right)$$n$ビット
+
+通信路符号化
+
+↓$\boldsymbol{x}=\left(x_{1},x_{2},\cdots,x_{n}\right)$$n$ビット
+
+通信路
+
+↓$\boldsymbol{y}=\boldsymbol{x}+\boldsymbol{e}$$n$ビット
+
+通信路復号化
+
+↓$\boldsymbol{x}$を復元、$\boldsymbol{u}$に戻す
+
+(図省略)
+
+
+\paragraph{定義}
+
+同じ長さの2つのビットベクトルの異なるビットの数をHamming距離といい、$d\left(\boldsymbol{x},\boldsymbol{y}\right)$と書く。
+
+
+\paragraph{例}
+
+\[
+d\left(\text{010110},\text{110100}\right)=2
+\]
+
+
+
+\paragraph{定義}
+
+ビットベクトル中の1の数をHamming重みという。
+
+
+\paragraph{例}
+
+\[
+w\left(\text{101101}\right)=4
+\]
+
+
+※$d\left(\boldsymbol{x},\boldsymbol{y}\right)=w\left(\boldsymbol{x}-\boldsymbol{y}\right)$
+
+
+\paragraph{定義}
+
+受信後$\boldsymbol{y}$に対し、$p\left(\boldsymbol{y}|\boldsymbol{x}\right)$を最大にする$\boldsymbol{x}$に複合する方法を最尤復号という。
+
+※BSCの場合、
+\[
+p\left(\boldsymbol{x}+\boldsymbol{e}|\boldsymbol{x}\right)=\left(1-p\right)^{n-t}p^{t}
+\]
+
+
+$w\left(\boldsymbol{e}\right)=t$
+
+よってBSCの最尤復号は、Hamming距離が近い符号語に復号
+
+
+\paragraph{線型符号(群符号)}
+
+
+\paragraph{定義}
+
+任意の符号語$\boldsymbol{x}_{1},\boldsymbol{x}_{2}$に対し$\boldsymbol{x}_{1}+\boldsymbol{x}_{2}$も符号語になるとき、線型符号という。
+
+※$t=\left[\frac{d-1}{2}\right]$とすると、$t$ビット誤り訂正符号
+
+※$\left[\frac{d}{2}\right]$ビット誤り訂正符号
+
+つまり符号語の集合$C$が$\mathrm{GF}\left(2\right)^{n}$($n$次元の$\mathrm{GF}\left(2\right)$上のベクトル空間)の線型部分空間
+
+
+\paragraph{定義}
+
+線型符号で$\boldsymbol{O}$でない符号語のHamming重みmの最小値を最小重みという。
+
+※線型符号では、最小距離=最小重み
+
+$\because$
+\begin{align*}
+ & \min\left\{ d\left(\boldsymbol{x}_{1},\boldsymbol{x}_{2}\right)|\boldsymbol{x}_{1},\boldsymbol{x}_{2}\in C,\boldsymbol{x}_{1}\neq\boldsymbol{x}_{2}\right\} \\
+= & \min\left\{ w\left(\boldsymbol{x}_{1}-\boldsymbol{x}_{2}\right)|\boldsymbol{x}_{1}\neq\boldsymbol{x}_{2}\right\} \\
+= & \min\left\{ w\left(\boldsymbol{x}\right)|\boldsymbol{x}\neq\boldsymbol{O},\boldsymbol{x}\in C\right\} 
+\end{align*}
+
+
+※$k\times n$の$\mathrm{GF}\left(2\right)$の行列$G$、$\boldsymbol{x}=\boldsymbol{u}G$で符号化しよう。線型符号$C=\left\{ \boldsymbol{u}G|u\in\mathrm{GF}\left(2\right)^{k}\right\} $
+
+このとき$G$を生成行列という。特に$G=\left(I_{k},G_{R}\right)$とすると$\boldsymbol{x}=\left(\boldsymbol{u}\left(\text{情報ビット}\right),\boldsymbol{u}G_{R}\left(\text{パリティ検査ビット}\right)\right)$
+
+$G=\left(I_{k},G_{R}\right)$の形のとき、組織符号という。
+
+
+\paragraph{定義}
+
+$H$が
+\[
+H\boldsymbol{x}^{T}=\boldsymbol{O}\Leftrightarrow\boldsymbol{x}\in C
+\]
+を満たすとき、パリティ検査行列という。
+
+※$H$が$C$の「直交補空間」を生成する
+
+※$H$: $\mathrm{GF}\left(2\right)$の行列とする。$HG^{T}=O$とすると、任意の符号語$\boldsymbol{x}=\boldsymbol{u}G$に対し、$H\boldsymbol{x}^{T}=HG^{T}\boldsymbol{u}^{T}=\boldsymbol{O}$
+
+※組織符号とのき
+\[
+H=\left(\begin{array}{cc}
+G_{R}^{T} & I_{k}\end{array}\right)
+\]
+
+
+$\because$
+\[
+HG^{T}=H=\left(\begin{array}{cc}
+G_{R}^{T} & I\end{array}\right)\left(\begin{array}{c}
+I\\
+G_{R}^{T}
+\end{array}\right)=G_{R}^{T}+G_{R}^{T}=O
+\]
+
+
+※$H$を決めれば$C$が決まる
+
+※$\boldsymbol{x}\in C\Leftrightarrow\boldsymbol{e}=\boldsymbol{y}-\boldsymbol{x}$は$H\boldsymbol{y}^{T}=H\boldsymbol{e}^{T}$を満たす
+
+$\because H\boldsymbol{x}^{T}=\boldsymbol{O}$より$H\boldsymbol{y}^{T}=H\left(\boldsymbol{x}+\boldsymbol{e}\right)^{T}=H\boldsymbol{e}$
+
+逆に$H\boldsymbol{y}=H\boldsymbol{e}$なら$H\left(\boldsymbol{y}-\boldsymbol{e}\right)^{T}=H\boldsymbol{x}=\boldsymbol{O}$より$\boldsymbol{x}\in C$
+
+よって以下の3つの問題は同値である。
+
+即ち、$\boldsymbol{y}$が与えられたとき、
+\begin{itemize}
+\item $\boldsymbol{x}\in C$で$d\left(\boldsymbol{x},\boldsymbol{y}\right)$を最小にする$\boldsymbol{x}$を求める。
+\item $\left\{ \boldsymbol{e}=\boldsymbol{y}-\boldsymbol{x}|\boldsymbol{x}\in C\right\} $の中で、$w\left(\boldsymbol{e}\right)$を最小とする$\boldsymbol{e}$を求める。
+\item $\left\{ \boldsymbol{e}|H\boldsymbol{y}^{T}=H\boldsymbol{e}^{T}\right\} $の中で$w\left(\boldsymbol{e}\right)$を最小とする$\boldsymbol{e}$を求める。
+\end{itemize}
+$H\boldsymbol{y}^{T}$をシンドロームという。
+
+$\left\{ \boldsymbol{e}|H\boldsymbol{y}^{T}=H\boldsymbol{e}^{T}\right\} $をコセット、$\arg\min_{\boldsymbol{e}}\left\{ w\left(\boldsymbol{e}\right)|H\boldsymbol{y}^{T}=H\boldsymbol{e}^{T}\right\} $をコセットリーダーという。
+
+受信語$\boldsymbol{y}$
+
+→$\boldsymbol{s}^{T}=H\boldsymbol{y}^{T}$(シンドローム)
+
+→(計算か表引き)→$\boldsymbol{e}$(コセットリーダー)を求める
+
+→$\boldsymbol{x}=\boldsymbol{y}-\boldsymbol{e}$で復号できる
+
+
+\paragraph{定理}
+
+$C$の最小距離は、パリティ検査行列$H$の一次従属な列数の最小値に等しい。
+
+$\because H\boldsymbol{x}^{T}=\boldsymbol{O}$は$\sum_{i=1}^{n}\boldsymbol{h}_{i}x_{i}=\boldsymbol{O}$だが、$H=\left(\right)$
+
+
+\paragraph{定義}
+
+パリティ検査行列$H$の列として、$\boldsymbol{O}$以外のベクトルを取ったものをHamming符号という。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\section*{第12回}
+
+
+\paragraph{定義}
+
+$\boldsymbol{x}\in C$, $C$は符号語全体からなる集合である。
+
+$\boldsymbol{x}=\left(x_{1},x_{2},x_{3},\cdots,x_{n}\right)$に対して、$\left(x_{2},x_{3},x_{4},\cdots,x_{n-1},x_{n},x_{1}\right)$を巡回符号と仕様。
+
+
+\paragraph{定義}
+
+任意の符号語の巡回シフトも符号語であるような線形符号を巡回符号という。
+
+
+\paragraph{定義}
+
+符号語$\boldsymbol{x}=\left(x_{1},x_{2},\cdots,x_{n}\right)$に多項式$f\left(z\right)=\sum_{i=1}^{n}x_{i}z^{n-1}$を対応させ、多項式表現という。
+
+
+\paragraph{性質}
+
+\begin{align*}
+zf\left(z\right) & =x_{1}z^{n}+x_{2}z^{n-1}+\cdots+x_{n}z^{1}\\
+ & =x_{2}z^{n-1}+\cdots+x_{n}z^{1}+x_{1}+x_{1}\left(z^{n}-1\right)
+\end{align*}
+
+
+よって$zf\left(z\right)\mod z^{n}-1$は巡回シフトの多項式表現になっている。
+
+つまり$GF\left(2\right)\left[z\right]/\left(z^{n}-1\right)$で考えれば、巡回シフトは単に$z$倍に対応。
+
+
+\paragraph{性質}
+
+巡回符号は線形符号なので、$\boldsymbol{x}\in C$, $\sum_{i}a_{i}z^{n-i}x\left(z\right)$,
+$a_{i}\in GF\left(2\right)$も符号語である。つまり$a\left(z\right)=\sum_{i=1}^{n}a_{i}z^{n-i}$とすると、$a\left(z\right)x\left(z\right)$も符号語である。
+
+
+\paragraph{定義}
+
+$C$がイデアルなのでこれを生成する多項式$g\left(z\right)$がある。この$g\left(z\right)$を生成多項式という。
+\begin{itemize}
+\item $g\left(z\right)$は$C-\left\{ 0\right\} $の中で次数が最小の多項式
+\item $C=\left\{ a\left(z\right)g\left(z\right)|a\left(z\right)\in GF\left(2\right)/\left(z^{n}-1\right)\right\} $
+\end{itemize}
+
+\paragraph{性質}
+
+$I=\left\{ a\left(z\right)x\left(z\right)|a\left(z\right)\in GF\left(2\right)/\left(z^{n}-1\right),x\left(z\right)\in C\right\} $は$GF\left(2\right)/\left(z^{n}-1\right)$のイデアル
+
+
+\paragraph{定理}
+
+ある多項式$h\left(z\right)\in GF\left(2\right)/\left(z^{n}-1\right)$があって、
+\[
+x\in C\Leftrightarrow h\left(z\right)x\left(z\right)=0
+\]
+となる。これをパリティ検査多項式という。
+
+$\because$$g\left(z\right)$は$z^{n}-1$を割り切る$\left(\because z^{n}-1=g\left(z\right)h\left(z\right)+r\left(z\right),r\left(z\right)\equiv-g\left(z\right)h\left(z\right)\mod z^{n}-1\text{よって}r\in C\right)$
+
+$x\notin C$なら$x\left(z\right)=a\left(z\right)g\left(z\right)+r\left(z\right)$の形$\left(r\left(z\right)\neq0\right)$
+
+\[
+h\left(z\right)x\left(z\right)=a\left(z\right)g\left(z\right)h\left(z\right)+r\left(z\right)h\left(z\right)
+\]
+$\deg\left(rh\right)=\deg r+\deg h<n$よって$\not\equiv0\mod z^{n}-1$
+
+$x\in C$なら$x\left(z\right)=a\left(z\right)g\left(z\right)$の形
+\[
+h\left(z\right)x\left(z\right)=a\left(z\right)g\left(z\right)h\left(z\right)\equiv0\mod z^{n}-1
+\]
+
+
+多項式を使った組織符号$\deg g=m$とする。入力$u$
+
+
+\paragraph{符号化}
+
+$u\left(z\right)z^{m}=q\left(z\right)g\left(z\right)+r\left(z\right)$として、
+\[
+y\left(z\right)=u\left(z\right)z^{m}-r\left(z\right)
+\]
+とおく。
+
+
+\paragraph{復号化}
+
+$y\left(z\right)h\left(z\right)=s\left(z\right)$がシンドロームとなる。
+
+Hamming符号は$H$の列が$\boldsymbol{O}$以外のものすべて1回ずつとる
+
+$GF\left(2^{m}\right)\simeq GF\left(2\right)^{m}$
+
+原始元$\alpha$
+
+\[
+\left\{ \alpha^{0},\alpha^{1},\alpha^{2},\cdots,\alpha^{n-1}\right\} =GF\left(2^{m}\right)-\left\{ 0\right\} 
+\]
+
+
+するとHamming富豪のパリティ検査行列は
+\[
+H=\left(\alpha^{0},\alpha^{1},\alpha^{2},\cdots,\alpha^{n-1}\right)
+\]
+と書ける。
+
+このとき符号語の条件$H\boldsymbol{x}^{T}=\boldsymbol{O}^{T}$は$\sum_{i=1}^{n}x_{i}\alpha^{n-i}=0$に対応
+
+つまり$x\left(\alpha\right)=0\Leftrightarrow x\in C$
+
+つまり
+\[
+C=\left\{ x\left(z\right)\in GF\left(2\right)\left[z\right]|\deg x<n,x\left(\alpha\right)=0\right\} 
+\]
+
+
+原始元の性質より$\alpha^{n}=1$つまり$\alpha^{n}-1=0$
+\begin{itemize}
+\item $f\left(z\right)\in GF\left(2\right)\left[z\right]$が$f\left(\alpha\right)=0$とすると、
+\[
+f\left(z\right)=q\left(z\right)\left(z^{n}-1\right)+x\left(z\right)
+\]
+とすると、
+\[
+f\left(\alpha\right)=x\left(\alpha\right)=0
+\]
+となる。つまり$GF\left(2\right)\left[z\right]/\left(z^{n}-1\right)$と考えても$f\left(x\right)=0$の意味は同じ。
+\end{itemize}
+よって
+\[
+C=\left\{ x\left(z\right)\in GF\left(2\right)\left[z\right]/\left(z^{n}-1\right)|x\left(\alpha\right)=0\right\} 
+\]
+
+
+これは$GF\left(2\right)\left[z\right]/\left(z^{n}-1\right)$のイデアル巡回符号である。
+
+
+\paragraph{定義(BCH符号: Bose Chaudhuri Hocquenghem)}
+
+\[
+C=\left\{ x\left(z\right)|x\left(\alpha\right)=0,x\left(\alpha^{2}\right)=0,x\left(\alpha^{3}\right)=0,\cdots,x\left(\alpha^{2t}\right)=0\right\} 
+\]
+
+
+$t$: 正整数
+
+
+\paragraph{定理}
+
+BCH符号の最小距離は$2t+1$以上である。
+
+$\because x\left(\alpha\right)=x\left(\alpha^{2}\right)=\cdots=x\left(\alpha^{2t}\right)=0$は
+\[
+H=\left(\begin{array}{ccccc}
+\alpha^{0} & \alpha^{1} & \alpha^{2} & \cdots & \alpha^{n}\\
+\left(\alpha^{2}\right)^{0} & \left(\alpha^{2}\right)^{1} & \left(\alpha^{2}\right)^{2} & \cdots & \left(\alpha^{2}\right)^{n}\\
+\vdots & \vdots & \vdots &  & \vdots\\
+\left(\alpha^{2t}\right)^{0} & \left(\alpha^{2t}\right)^{1} & \left(\alpha^{2t}\right)^{2} & \cdots & \left(\alpha^{2t}\right)^{n}
+\end{array}\right)
+\]
+
+
+$H$から任意の$2t$列を取り出す。
+
+\[
+H=\left(\begin{array}{ccccc}
+\alpha^{i_{1}} & \alpha^{i_{2}} & \alpha^{i_{3}} & \cdots & \alpha^{i_{2t}}\\
+\left(\alpha^{2}\right)^{i_{1}} & \left(\alpha^{2}\right)^{i_{2}} & \left(\alpha^{2}\right)^{i_{3}} & \cdots & \left(\alpha^{2}\right)^{i_{2t}}\\
+\vdots & \vdots & \vdots &  & \vdots\\
+\left(\alpha^{2t}\right)^{i_{1}} & \left(\alpha^{2t}\right)^{i_{2}} & \left(\alpha^{2t}\right)^{i_{3}} & \cdots & \left(\alpha^{2t}\right)^{i_{2t}}
+\end{array}\right)
+\]
+
+
+\begin{align*}
+\left|D\right| & =\left|\begin{array}{cccc}
+\alpha^{i_{1}} & \alpha^{i_{2}} & \cdots & \alpha^{i_{t}}\end{array}\right|\\
+ & =\left|\begin{array}{cccc}
+1 & 1 & \cdots & 1\\
+\alpha^{i_{1}} & \alpha^{i_{2}} & \cdots & \alpha^{i_{2t}}\\
+\vdots & \vdots &  & \vdots\\
+\alpha^{\left(2t-1\right)i_{1}} & \alpha^{\left(2t-1\right)i_{2}} & \cdots & \alpha^{\left(2t-1\right)i_{2t}}
+\end{array}\right|
+\end{align*}
+
+
+Undermonde行列なので
+\[
+\left|D\right|=\left|\right|
+\]
+
+\end{document}
