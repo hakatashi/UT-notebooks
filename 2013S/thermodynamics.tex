@@ -1,0 +1,3100 @@
+%% LyX 2.0.0 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,a4]{article}
+ 
+\setlength{\textwidth}{17cm}
+\setlength{\textheight}{24cm}
+\setlength{\leftmargin}{-1cm}
+\setlength{\topmargin}{-2cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+ 
+\usepackage{xltxtra}
+\setmainfont{RyuminPr5-Light}
+\setsansfont{IPAPGothic}
+\setmonofont{IPAGothic}
+\XeTeXlinebreaklocale "ja"
+ 
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{amsmath,amssymb}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+ 
+\title{熱力学講義ノート}
+\author{博多市}
+ 
+\begin{document}
+\maketitle
+
+\section{---}
+
+
+\subsection{---}
+
+
+\subsection{温度の定義}
+
+(理想)気体の法則 $pV=nRT$ ($T=273.15+t(\text{℃})$)
+
+T: {}``絶対温度''(単位: ケルビン(K))
+
+絶対温度の定義は本当はもっと厳密に行わないといけないが、今はこの気体の法則を用いて絶対温度を定義することにする。
+
+ケルビン: 通常正の値をとるが、統計力学などの理論上ではマイナスの値を定義することもできる。高い方はいくらでも高い値を定義することができる。
+
+
+\subsection{状態量と状態方程式}
+
+
+\subsubsection{状態量}
+
+状態量: 熱平衡状態で、決まった値をとる巨視的な物質量
+
+(注)どのようにその状態ができたかによらない
+
+e.g. 温度、内部エネルギー、圧力、エントロピー
+
+(注)熱や仕事は状態量ではない
+
+
+\subsubsection{状態変数}
+
+状態変数(熱力学変数): 状態量と同義語
+
+状態変化を強調する際に用いられる
+\begin{description}
+\item [{示強変数}] (intensive variable)
+
+\begin{description}
+\item [{物質の量によらない}] e.g. 温度、圧力
+\end{description}
+\item [{示量変数}] (extensive variable)
+
+\begin{description}
+\item [{物質の量に比例}] e.g. 内部エネルギー、エントロピー
+\end{description}
+\end{description}
+
+\subsubsection{状態方程式}
+
+一般に熱平衡状態と指定する独立な状態量の数は制限され他の状態量との間に物質固有の関係がある。この関係を状態方程式(Equation
+of State)と呼ぶ。
+
+e.g. 理想気体の状態方程式 $pV=nRT$、ゴム弾性$X=AT$
+
+
+\section{熱力学第一法則}
+
+
+\subsection{熱量と仕事の等価性}
+
+
+\subsubsection{熱量(Quantity of Heat)}
+
+Qと書く。(熱と温度は違う)
+
+高温($T_{1}$)の物質と低温($T_{2}$)の物質を接触させて十分時間が経つとその物質は温度$T_{3}$で熱平衡になる。ここで$T_{1}>T_{3}>T_{2}$
+
+この時、高温の物質から低温の物質に熱量Qが移行したと考える。
+
+\[
+Q=C_{1}(T_{1}-T_{3})=C_{2}(T_{3}-T_{2})
+\]
+
+
+$C_{1}:$ 物質1の熱容量(heat of capacity)
+
+$C_{2}:$ 物質2の熱容量
+
+熱容量は物質固有の性質で状態量ではない。
+
+温度変化が小さいときCは温度によらないと考え、
+
+\[
+\Delta Q=C\Delta T
+\]
+
+
+
+\subsubsection{熱の単位}
+
+熱の単位: カロリー(Calorie)
+
+1cal=1gの水の温度を14.5℃から15.5℃に上げるのに必要な熱量
+
+水の比熱(単位質量あたりの熱容量)=1(cal/gK)
+
+
+\subsubsection{潜熱(Lateut heat)}
+
+温度変化がなくても熱の移行があることがある。
+
+e.g. 固体の融解、液体の気化
+
+この時物質が放出したり吸収したりする熱量を潜熱という。
+
+e.g. 氷→水 L=80cal/g
+
+e.g. 水→水蒸気 L=540cal/g
+
+
+\subsubsection{熱量計(calorimeter)、温度計(thermometer)}
+
+
+\subsubsection{熱の移行の直感的理解}
+
+熱素説(calorique): 質量を持たない物質が熱の正体とする。ラボアジェによって提唱された。
+
+
+\subsubsection{気体と仕事}
+
+力学的仕事(work): Wと書く
+
+気体が膨張によってする仕事
+
+(仕事)=(力)×(変位)
+
+\[
+\Delta W=pS\Delta h
+\]
+
+
+
+\subsubsection{仕事の単位}
+
+$1\mathrm{N\cdot m}=1\mathrm{J}$(ジュール)
+
+$1\mathrm{N}=1\mathrm{kg\cdot m/s^{2}}$
+
+$1\mathrm{J}=1\mathrm{kg\cdot m^{2}/s^{2}}$(MKS単位)
+
+
+\subsubsection{気体と仕事}
+
+気体の体積が等温で$V_{1}\rightarrow V_{2}$と変化するとき外界にする仕事
+
+\begin{eqnarray*}
+W & = & \int_{V_{1}}^{V_{2}}p\mathrm{d}V\\
+ & = & nRT\int_{V_{1}}^{V_{2}}\frac{1}{V}\mathrm{d}V\\
+ & = & nRT\ln\left(\frac{V_{1}}{V_{2}}\right)
+\end{eqnarray*}
+
+
+$\ln=\log_{e}$ 自然対数(natural logarithm)
+
+\[
+e=\lim_{n\rightarrow\infty}\left(1+\frac{1}{n}\right)^{n}=2.71828\cdots
+\]
+
+
+\[
+\begin{cases}
+y=\ln x\rightarrow x=e^{y}\\
+\frac{\mathrm{d}\ln x}{\mathrm{d}x}=\frac{1}{x}
+\end{cases}
+\]
+
+
+ちなみに$e^{3}=20.08\cdots\thickapprox20$
+
+$\ln20=2.9957\thickapprox3$
+
+
+\subsubsection{熱と仕事の相互変換(等価性)}
+
+熱の仕事当量 1cal=4.186J
+\begin{itemize}
+\item ランフォード伯(Rumford)
+\item マイヤー(Mayor)
+\item ジュール(Jouls)
+\end{itemize}
+
+\subsubsection{参考}
+
+成人一人あたりの発熱量
+
+一日の熱放出量: 2000kcal
+
+\[
+Q=2000\mathrm{kcal}=2000\times10^{3}\mathrm{cal}=8.4\times10^{6}\mathrm{J}
+\]
+
+
+$1\text{日}=24\times60\times60\text{秒}=8.64\times10^{4}\text{秒}$
+
+
+\subsection{熱力学第一法則}
+
+系の状態がある状態1から別の状態2に変化するとき、始状態と終状態が同じであれば、系に加えられた熱量Qと仕事Wの和は一定で途中の変化の仕方によらない。
+
+\[
+\text{状態1}:P_{1},T_{1},V_{1}\xrightarrow{+Q,+W}\text{状態2}:P_{2},T_{2},V_{2}
+\]
+
+
+\[
+Q+W=\text{(一定)}
+\]
+
+
+これは、$\Delta U=Q+W=U_{2}-U_{1}$となる状態量Uが存在することを意味する。Uのことを内部エネルギーと呼ぶ。
+
+(注)QやWは状態量ではない
+
+
+\subsubsection{応用例}
+
+p-V図における同じ状態1から状態2に遷移するときの経路Aと経路Bで挟まれた領域の面積$=Q_{A}-Q_{B}$
+
+
+\subsubsection{証明}
+
+経路Aで系が外界からされる仕事は
+\[
+W_{A}=-\int_{A}p\mathrm{d}V
+\]
+同様に経路Bについて
+\[
+W_{B}=-\int_{B}p\mathrm{d}V
+\]
+
+
+囲う面積は
+
+\[
+\int_{A}p\mathrm{d}V-\int_{B}p\mathrm{d}V=-W_{A}+W_{B}
+\]
+
+
+第一法則より
+\[
+Q_{A}+W_{A}=Q_{B}+W_{B}-W_{A}+W_{B}=Q_{A}-Q_{B}
+\]
+
+
+
+\subsubsection{例題}
+
+図略
+
+経路A: 等圧膨張+体積一定で圧力をかける
+
+経路B: 等温膨張
+
+気体 1気圧 1mol 15℃(始状態)→体積を二倍にする。
+\[
+V_{2}=2V_{1}
+\]
+
+
+\[
+\Delta Q=P_{1}\left(V_{2}-V_{1}\right)-\int_{B}p\mathrm{d}V
+\]
+
+
+$V_{2}=2V_{1},pV=nRT$ より、
+
+\begin{eqnarray*}
+\Delta Q & = & p_{1}V_{1}-RT_{1}\int_{V_{1}}^{V_{2}}\frac{1}{V}\mathrm{d}V\\
+ & = & p_{1}V_{1}-RT_{1}\ln\left(\frac{V_{2}}{V_{1}}\right)\\
+ & = & RT_{1}\left(1-\ln2\right)\\
+ & = & 8.3\times\left(273+15\right)\times\left(1-0.693\right)\mathrm{J}\\
+ & = & 1.66\times10^{3}\mathrm{J}
+\end{eqnarray*}
+
+
+
+\subsubsection{エネルギー保存}
+
+熱力学の第一法則=エネルギーの保存則
+
+かつて放射能が発見された際にエネルギーの保存則の破れが危惧された時があった。
+
+熱量と仕事はエネルギーが移行するときの異なる形態で、それぞれは保存量ではない。
+
+→第一種永久機関の存在の否定
+
+
+\subsection{微分形の第一法則}
+\begin{itemize}
+\item 状態の微小変化を$\mathrm{d}t,\mathrm{d}p,\mathrm{d}V,\mathrm{d}U$などと書く。
+\item 非状態量の微小量は、$\mathrm{d'}W,\mathrm{d'}Q$などと表す。
+\end{itemize}
+ただし、$\mathrm{d'}W=-p\mathrm{d}V$という関係がある。
+
+第一法則は
+
+\[
+\mathrm{d}U=\mathrm{d'}Q+\mathrm{d'}W=\mathrm{d'}Q-p\mathrm{d}V
+\]
+
+
+これより、
+
+\[
+\mathrm{d'}Q=\mathrm{d}U+p\mathrm{d}V
+\]
+
+
+
+\subsubsection{式の意味}
+
+系の内部エネルギーの微小変化$\mathrm{d}U$、体積の微小変化$\mathrm{d}V$に伴って系に流入した熱量を表す式。
+
+
+\subsubsection{状態量の相関関係}
+
+状態量は全て独立ではないので、状態量の微小変化の間には関係がある。
+
+例　$T$と$V$の微小変化$\mathrm{d}T,\mathrm{d}V$に対する内部エネルギーの微小変化$\mathrm{d}U$は、$U$を$\left(T,V\right)$の関数と考えると
+
+\[
+\mathrm{d}U=\left(\frac{\partial U}{\partial T}\right)_{V}\mathrm{d}T+\left(\frac{\partial U}{\partial V}\right)_{T}\mathrm{d}V
+\]
+
+
+とも表される。
+
+ここで$\left(\frac{\partial U}{\partial T}\right)_{V}$はVが一定で、温度Tを微笑変化させた時のUの変化率を表す。
+
+$\left(\frac{\partial U}{\partial V}\right)_{T}$はTが一定で、体積Vを微笑変化させた時のUの変化率を表す。
+
+
+\subsubsection{数学的補足}
+
+偏微分の定義
+
+2変数関数$f\left(x,y\right)$が与えられたとき、
+
+\[
+\frac{\partial f}{\partial x}=\lim\limits _{\Delta x\rightarrow0}\frac{f\left(x+\Delta x,y\right)-f(x,y)}{\Delta x}
+\]
+
+
+\[
+\frac{\partial f}{\partial y}=\lim\limits _{\Delta y\rightarrow0}\frac{f\left(x,y+\Delta y\right)-f(x,y)}{\Delta y}
+\]
+
+
+を関数$f\left(x,y\right)$の$x,y$についての偏微分と呼ぶ。
+
+
+\subsubsection{例}
+
+\[
+f\left(x,y\right)=ax^{3}+bxy^{2}+cy^{3}
+\]
+ただし$a,b,c$は定数である。
+
+\[
+\frac{\partial f}{\partial x}=3ax^{2}+by^{2}
+\]
+
+
+\[
+\frac{\partial f}{\partial y}=2bxy+3cy^{2}
+\]
+
+
+2階、3階の偏微分も同様に定義できる。
+
+\[
+\frac{\partial^{2}f}{\partial x^{2}}=\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial x}\right)=6ax
+\]
+
+
+\[
+\frac{\partial^{2}f}{\partial y^{2}}=\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial y}\right)=2bx+6cy
+\]
+
+
+\[
+\frac{\partial^{2}f}{\partial x\partial y}=\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}\right)=2by
+\]
+
+
+\[
+\frac{\partial^{2}f}{\partial y\partial x}=\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}\right)=2by
+\]
+この結果は上と一致する。
+
+一般に$f\left(x,y\right)$が$\left(x,y\right)$についてなめらかな(微分可能な)関数のとき、
+\[
+\frac{\partial^{2}f}{\partial x\partial y}=\frac{\partial^{2}f}{\partial y\partial x}
+\]
+
+
+
+\subsubsection{偏微分の幾何学的意味}
+
+通常の微分；1変数関数$f\left(x\right)$
+
+$y=f\left(x\right)$は$\left(x,y\right)$面上では曲線を表す。
+
+$\frac{df}{dx}=f'\left(x\right)$は接線の傾きを表す。
+
+2変数関数への拡張z=f(x,y)は三次元ユークリッド空間の中の曲面を表す。
+
+$\frac{\partial f}{\partial x}\left(x_{0},y_{0}\right),\:\frac{\partial f}{\partial y}\left(x_{0},y_{0}\right)$は、この曲面上の点$\left(x_{0},y_{0},z_{0}=f\left(x_{0},y_{0}\right)\right)$でのこの曲面に接する平面(接平面)のx方向、y方向の傾きを表す。
+
+$\left(\frac{\partial U}{\partial T}\right)_{V}$: 温度方向の傾き
+
+$\left(\frac{\partial U}{\partial V}\right)_{T}$: 体積方向の傾き
+
+
+\subsection{---}
+
+
+\subsection{---}
+
+
+\subsection{気体の準静的断熱過程}
+
+断熱過程(adiabetic): 熱の出入りがない
+
+準静的(quasi-static): ゆっくりとした変化で途中の状態はすべて熱平衡状態とみなせる(近似)
+
+注: 気体の真空への自由膨張は断熱的ではあるが準静的ではない。
+
+注: 気体の等温膨張は純正的であるが断熱的ではない。
+
+ジュールトムソンの過程は？
+
+→準静的ではない可逆な過程
+
+→可逆ではない！
+
+第二法則より、微小変化に対して
+
+$\mathrm{d}Q=\mathrm{d}U+p\mathrm{d}V=0$(断熱的)(2.6.1)
+
+ここからは気体を考える。
+
+\[
+\mathrm{d}U=C_{v}\mathrm{d}T
+\]
+
+
+\[
+pV=nRT\rightarrow p=\frac{nRT}{V}
+\]
+
+
+(2.6.1)に代入すると
+
+\[
+C_{v}\mathrm{d}T+\frac{nRT}{V}\mathrm{d}V=0
+\]
+
+
+$\mathrm{d}T$と$\mathrm{d}V$の間に関係がある。これより
+
+\[
+\frac{C_{v}}{T}\mathrm{d}T=-\frac{nR}{V}\mathrm{d}V
+\]
+
+
+両辺を状態1から状態2まで積分すると、
+
+\[
+C_{v}\int_{T_{1}}^{T_{2}}\frac{1}{T}\mathrm{d}T=nR\int_{V_{1}}^{V_{2}}\frac{1}{V}\mathrm{d}V
+\]
+
+
+\[
+C_{v}\ln\left(\frac{T_{2}}{T_{1}}\right)=-nR\ln\left(\frac{V_{2}}{V_{1}}\right)
+\]
+
+
+\begin{eqnarray*}
+\ln\left(\frac{T_{2}}{T_{1}}\right) & = & -\frac{nR}{C_{v}}\ln\left(\frac{V_{2}}{V_{1}}\right)\\
+ & = & \ln\left(\frac{V_{2}}{V_{1}}\right)^{-\frac{nR}{C_{v}}}
+\end{eqnarray*}
+
+
+これより
+
+\begin{eqnarray*}
+\frac{T_{2}}{T_{1}} & = & \left(\frac{V_{2}}{V_{1}}\right)^{-\frac{nR}{C_{v}}}\\
+ & = & \left(\frac{V_{1}}{V_{2}}\right)^{\frac{nR}{C_{v}}}
+\end{eqnarray*}
+
+
+したがって
+
+\[
+T_{1}V_{1}^{\tfrac{nR}{C_{v}}}=T_{2}V_{2}^{\tfrac{nR}{C_{v}}}
+\]
+
+
+ここでマイヤーの関係式を用いると
+
+\[
+\frac{nR}{C_{v}}=\frac{C_{r}-C_{v}}{C_{v}}=\frac{C_{r}}{C_{v}}-1=\gamma-1\:(2.6.2)
+\]
+
+
+ここで$\gamma=\frac{C_{r}}{C_{v}}$
+
+\[
+T_{1}V_{1}^{\gamma-1}=T_{2}V_{2}^{\gamma-1}
+\]
+
+
+すなわち
+
+\[
+TV^{\gamma-1}=\mathrm{cond}\:(2.6.3)
+\]
+
+
+気体の断熱過程を表す。
+
+$pV=nRT\text{を用いて}T\text{を}pV\text{で置き換えると}$
+
+\[
+pV\cdot V^{\gamma-1}=\mathrm{const}
+\]
+
+
+これより
+
+\[
+pV^{\gamma}=\mathrm{const}\:(2.6.4)
+\]
+これをポアソンの式という。
+
+$pV=nRT=\mathrm{const}$の等温線(isotherm)と$pV^{\gamma}=\mathrm{const}$の断熱線(adiabat)を比較すると、
+
+断熱線のほうが膨張による圧力の低下は急。
+\begin{itemize}
+\item 温度Tが下がる
+\item 内部エネルギーが減少する
+\end{itemize}
+\[
+\Delta U=C_{v}\left(T_{2}-T_{1}\right)<0
+\]
+
+
+
+\subsubsection{例題}
+
+nモル、温度$T_{1}$の理想気体が純正的断熱膨張$\left(V_{1}\rightarrow V_{2}\right)$によって外界にする仕事Wを求めよ。
+
+\[
+W=\int_{V_{1}}^{V_{2}}p\mathrm{d}V=c\int_{V_{1}}^{V_{2}}\frac{1}{V^{\gamma}}\mathrm{d}V\leftarrow pV^{\gamma}=c=p_{1}V_{1}^{\gamma}=p_{2}V_{2}^{\gamma}
+\]
+
+
+より
+
+\[
+p=\frac{c}{V^{\gamma}}
+\]
+
+
+不定積分
+
+\[
+\int x^{\alpha}\mathrm{d}x=\frac{1}{\alpha+1}x^{\alpha+1}
+\]
+
+
+$x\rightarrow V,\:\alpha\rightarrow-\gamma$
+
+\begin{eqnarray*}
+W & = & c\frac{1}{1-\gamma}\left[V^{1-\gamma}\right]_{V_{1}}^{V_{2}}\\
+ & = & \frac{c}{1-\gamma}\left[V_{2}^{1-\gamma}-V_{1}^{1-\gamma}\right]\\
+ & = & \frac{1}{1-\gamma}\left[p_{2}V_{2}^{\gamma}V_{2}^{1-\gamma}-p_{1}V_{1}^{\gamma}V_{1}^{1-\gamma}\right]\\
+ & = & \frac{1}{1-\gamma}\left[p_{2}V_{2}-p_{1}V_{1}\right]\\
+ & = & \frac{1}{1-\gamma}\left[nRT_{2}-nRT_{1}\right]\\
+ & = & \frac{nR}{1-\gamma}\left(T_{2}-T_{1}\right)
+\end{eqnarray*}
+
+
+マイヤーの関係式$C_{p}-C_{v}=nR$と$\gamma=\frac{C_{p}}{C_{v}}$を用いると、
+
+\begin{eqnarray*}
+\frac{nR}{1-\gamma} & = & \frac{C_{p}-C_{v}}{1-\frac{C_{p}}{C_{v}}}\\
+ & = & \frac{C_{p}-C_{v}}{C_{v}-C_{p}}C_{v}\\
+ & = & -C_{v}
+\end{eqnarray*}
+
+
+したがって
+
+\begin{eqnarray*}
+W & = & -C_{v}\left(T_{2}-T_{1}\right)\\
+ & = & -\left(U_{2}-U_{1}\right)\\
+ & = & -\Delta U
+\end{eqnarray*}
+
+
+外界にした仕事は内部エネルギーの減少分に等しい。第一法則=エネルギーの保存則
+
+
+\subsubsection{例}
+
+大気の温度分布
+
+対流圏($h\lesssim10km$)では空気がゆっくり流れ地上で温められた空気が断熱的に上昇して冷やされる。
+
+大気の圧力pと高さhの関係
+
+\[
+\Delta p=p\left(h+\Delta h\right)-p\left(h\right)=-g\rho\Delta h
+\]
+
+
+$\rho:\:\text{空気の密度}$
+
+$g:\:\text{重力加速度}$
+
+$\Delta h\text{が小さいとき}$
+
+\[
+p\left(h+\Delta h\right)=p\left(h\right)+\frac{\mathrm{d}p}{\mathrm{d}h}\Delta h\:(\text{テイラー展開})
+\]
+
+
+\[
+\frac{\mathrm{d}p}{\mathrm{d}h}\Delta h=-g\rho\Delta h
+\]
+
+
+\[
+\frac{\mathrm{d}p}{\mathrm{d}h}=-g\rho
+\]
+
+
+重力中での流体静平衡条件
+
+第一法則より
+
+\[
+\mathrm{d'}Q=\mathrm{d}U+p\mathrm{d}V=\mathrm{d}H-V\mathrm{d}p
+\]
+
+
+\[
+H=U+pV\:(\text{エンタルピー})
+\]
+
+
+断熱過程では$\mathrm{d'}Q=0$
+
+\[
+\mathrm{d}H-V\mathrm{d}p=0
+\]
+
+
+\[
+\mathrm{d}H=V\mathrm{d}p
+\]
+
+
+理想気体では$\mathrm{d}H=C_{p}\mathrm{d}T$
+
+\[
+U=C_{v}T+U_{0}
+\]
+
+
+\begin{eqnarray*}
+H & = & U+pV\\
+ & = & U+nRT\\
+ & = & \left(C_{v}+nR\right)T+U_{0}\\
+ & = & C_{p}T+U_{0}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+\mathrm{d}H & = & C_{p}\mathrm{d}T\\
+ & = & V\mathrm{d}p\\
+ & = & V\frac{\mathrm{d}p}{\mathrm{d}h}\mathrm{d}h\\
+ & = & V\cdot\left(-g\rho\right)\mathrm{d}h
+\end{eqnarray*}
+
+
+これより
+\[
+\mathrm{d}T=-\frac{Vg\rho}{C_{p}}\mathrm{d}h=-\frac{gM}{C_{p}}\mathrm{d}h
+\]
+
+
+ここで$M=\rho V$: 空気の質量
+
+$c_{p}=\frac{C_{p}}{M}$: 空気の定圧比熱
+
+を用いると
+
+\[
+\mathrm{d}T=-\frac{g}{C_{p}}\mathrm{d}h
+\]
+
+
+\[
+c_{p}=\frac{C_{p}}{M}
+\]
+
+
+\[
+C_{p}-C_{v}=cR\:(\text{マイヤー})
+\]
+
+
+\[
+\gamma=\frac{C_{p}}{C_{v}}=1.41\:(\text{空気の場合})
+\]
+ 
+
+を使って計算する
+
+$C_{p}=C_{p}\frac{1}{\gamma}=nR$より
+
+\[
+C_{p}=\frac{nR}{1-\frac{1}{\gamma}}=\frac{\gamma}{\gamma-1}nR
+\]
+
+
+よって
+
+\[
+c_{p}=\frac{C_{p}}{M}=\frac{\gamma}{\gamma-1}\frac{nR}{M}
+\]
+
+
+$\frac{M}{n}=m$: 分子量
+
+空気は$m=28.8J/K\cdot mol$
+
+\begin{eqnarray*}
+\mathrm{d}T & = & -\frac{\gamma-1}{\gamma}\frac{gm}{R}\mathrm{d}h\\
+ & = & -\frac{0.41}{1.41}\frac{9.8\mathrm{m/s^{2}}\cdot28.8\times10^{-3}\mathrm{kg/mol}}{8.31\mathrm{kg\cdot m^{2}/s^{2}\cdot/k\cdot mol}}\mathrm{d}h\\
+ & = & -9.7\times10^{-3}\mathrm{d}h\left(\mathrm{K/m}\right)
+\end{eqnarray*}
+
+
+100m上昇すると温度が1K下がる
+
+実際にはこの値は\textasciitilde{}0.6Kとなる。
+
+理由: 水蒸気が含まれていると$\gamma$が小さくなる
+
+理由2: 水蒸気の液化固化による潜熱の放出がある。
+
+レポート課題: 1-2,3,9,10
+
+
+\subsection{気体分子運動論(Kinetic theory)と気体の法則}
+
+容器に閉じ込められた気体=ランダムに運動するたくさんの気体分子
+
+気体の圧力=単位時間、単位面積当たりに壁に衝突する気体分子が壁に与える運動量
+
+弾性散乱
+
+x方向に気体分子が衝突したとすると、
+
+\[
+\vec{v}=\left(v_{x},v_{y},v_{z}\right)
+\]
+
+
+\[
+\vec{v'}=\left(-v_{x},v_{y},v_{z}\right)
+\]
+
+
+一回の衝突で与えられる運動量
+
+\[
+\Delta p_{x}=2mv_{x}
+\]
+
+
+\[
+\Delta p_{y}=\Delta p_{z}=0
+\]
+\[
+\text{圧力}p=\left\langle \frac{N}{2V}v_{x}\Delta p_{x}\right\rangle =\frac{N}{V}m\left\langle v_{x}^{2}\right\rangle =\frac{N}{V}m\frac{1}{3}\left\langle \vec{v}^{2}\right\rangle \:(\left\langle \right\rangle :\text{平均})
+\]
+ 
+
+(等方向分布 $\left\langle v_{x}^{2}\right\rangle =\left\langle v_{y}^{2}\right\rangle =\left\langle v_{z}^{2}\right\rangle =\frac{1}{3}\left\langle \vec{v}^{2}\right\rangle $)
+
+従って
+
+\[
+pV=\frac{1}{3}Nm\left\langle \vec{v}^{2}\right\rangle =\frac{2}{3}N\frac{1}{2}m\left\langle \vec{v}^{2}\right\rangle =\frac{2}{3}U
+\]
+
+
+気体の状態方程式: $pV=nRT$(温度の定義)
+
+\[
+nRT=\frac{2}{3}U\rightarrow U=\frac{3}{2}nRT\Leftrightarrow U=C_{v}T+U_{0}
+\]
+
+
+\[
+C_{v}=\frac{3}{2}nR
+\]
+
+
+マイヤーの法則より
+
+\[
+C_{p}=C_{v}+nR=\frac{5}{2}nR
+\]
+
+
+\[
+\gamma=\frac{C_{p}}{C_{v}}=\frac{\frac{5}{2}}{\frac{3}{2}}=\frac{5}{3}=1.666\ldots
+\]
+
+
+ヘリウムガスはこの法則に従う。
+
+\[
+U=N\frac{1}{2}m\left\langle \vec{v}^{2}\right\rangle =N\frac{1}{2}m\left(\left\langle v_{x}^{2}\right\rangle +\left\langle v_{y}^{2}\right\rangle +\left\langle v_{z}^{2}\right\rangle \right)=\frac{3}{2}nRT
+\]
+
+
+\[
+\frac{1}{2}m\left\langle \vec{v}^{2}\right\rangle =\frac{3}{2}\frac{nR}{N}T=\frac{3}{2}k_{B}T
+\]
+
+
+\[
+\frac{nR}{N}=\frac{R}{N_{A}}=k_{B}=1.38\times10^{-25}J/K:\text{ボルツマン定数}
+\]
+
+
+\[
+N_{A}=\frac{N}{n}:\:\text{アボガドロ定数}
+\]
+
+
+1運動の自由度あたり$\frac{1}{2}k_{B}T$のエネルギーをもつ
+
+二原子分子($\mathrm{O_{2},\: N_{2}...}$)の場合、回転の自由度にもエネルギーが配分される
+
+二つの回転の自由度にもエネルギーが当分配5されると
+
+\[
+U=\frac{1}{2}k_{B}T\left(3+2\right)=\frac{5}{2}k_{B}T
+\]
+
+
+\begin{eqnarray*}
+U & = & N\times\frac{5}{2}k_{B}T\\
+ & = & N\times\frac{5}{2}\frac{nR}{N}T\\
+ & = & \frac{5}{2}nRT
+\end{eqnarray*}
+
+
+\[
+C_{v}=\frac{5}{2}nR
+\]
+
+
+\[
+C_{p}=\frac{5}{2}nR+nR=\frac{7}{2}nR
+\]
+
+
+\[
+\gamma=\frac{\frac{7}{2}}{\frac{5}{2}}=1.4
+\]
+
+
+
+\section{熱力学第二法則}
+
+第一法則: 熱量、仕事はエネルギーの移行形態。エネルギーは保存される
+
+第二法則: 移行過程の不可逆性。変換の限界
+
+
+\subsection{第二法則のいくつかの表現}
+
+(a) クラウジウス(P. Clausius)の原理
+
+熱を低温の物質から高温の物質に移して他になんの変化も残さないようにすることは不可能。(熱は常に高温から低温に移動する。熱伝導の不可逆性)
+
+(b) トムソン(=ケルビン)の原理
+
+物質から熱を奪って仕事に変え、他になんの変化も残さないようにするのは不可能。
+
+→第二種永久機関の否定
+
+クラウジウスの原理とトムソンの原理は等価一証明
+
+1. (a)ならば(b)の証明
+
+(b)が成り立たなければ(a)も成り立たないことを示す。(帰謬法、背理法)
+
+(b)が成り立たなければある装置(a)が存在し、熱量Qを低温物質から取り出して全て仕事に変え、なんの変化も残さないことが可能。
+
+摩擦によってこの仕事を高音物質に熱として与えることができる→(a)の否定
+
+2. (b)ならば(a)の証明
+
+熱機関(heat engine)の導入
+
+サイクル運動して熱の一部を仕事に変える装置(例:蒸気機関)
+
+二つの異なる温度の熱浴(heat resewair)の間で働き、高温熱浴$R_{2}$から熱量$Q_{2}$を奪って低温熱浴$R_{1}$に熱量$Q_{1}\left(<Q_{2}\right)$を移しその差$\left(Q_{2}-Q_{1}\right)$を仕事Wに変える。
+
+
+\subsubsection{カルノーサイクル(可逆熱機関)(Sadi Carnot(1824))}
+
+ピストンによりシリンダーの中に閉じ込められた作業物質を考える。簡単のため気体と考える。
+
+4つの準静的過程からなるサイクル
+
+A 等温膨張
+
+B 断熱膨張 $T_{2}\rightarrow T_{1}$
+
+C 等温圧縮
+
+D 断熱圧縮 $T_{1}\rightarrow T_{2}$
+
+作業物質が受け取る熱量 
+\[
+Q_{2}-Q_{1}
+\]
+
+
+第一法則より
+\[
+W=Q_{2}-Q_{1}
+\]
+
+
+熱機関の効率(efficiency)
+
+\[
+\eta=\frac{W}{Q_{2}}=\frac{Q_{2}-Q_{1}}{Q_{2}}=1-\frac{Q_{1}}{Q_{2}}\left(<1\right)
+\]
+
+
+カルノーサイクルは可逆過程
+
+Heat Pump(ヒートポンプ)エアコン、冷蔵庫
+
+
+\subsection{カルノーの定理とケルビンの熱力学的絶対温度}
+
+
+\subsubsection{カルノーの定理}
+
+可逆熱機関の効率は全て等しく、いかなる可逆熱機関の効率より大きい。
+
+
+\subsubsection{証明}
+
+二つの熱機関c,c'を連動した複合熱機関と考え、可逆機関cを逆運転する。
+
+第一法則より
+
+\[
+Q_{2}-Q_{1}=W
+\]
+
+
+\[
+Q'_{2}-Q'_{1}=W'
+\]
+
+
+\[
+\eta=\frac{W}{Q_{2}}\rightarrow W=\eta Q_{2}
+\]
+
+
+\[
+\eta'=\frac{W}{Q'_{2}}\rightarrow W=\eta Q'_{2}
+\]
+
+
+$Q_{2}=Q'_{2}$と取る。
+
+\[
+W'=\eta'Q'_{2}=\eta'Q{}_{2}
+\]
+
+
+であるから
+
+\begin{eqnarray*}
+W'-W & = & \eta'Q_{2}-\eta Q_{2}\\
+ & = & \left(\eta'-\eta\right)Q_{2}
+\end{eqnarray*}
+
+
+第一法則より
+
+\[
+W'-W=Q'_{2}-Q'_{1}-\left(Q'_{2}-Q_{1}\right)=Q_{1}-Q'_{1}
+\]
+
+
+であるから、もし$\eta'>\eta$であれば、低熱浴から熱量$Q_{1}-Q'_{1}$を取り出して、仕事$W'-W$にかえる第二種永久機関ができたことになり、(b)に反する。従って$\eta'\leqq\eta$。もしc'も可逆であれば、両方の熱機関を逆運転させると、同様の理由から$\eta'\geqq\eta$が導かれる。従ってこの場合$\eta'=\eta$が証明された。
+
+
+\subsubsection{トムソン(=ケルビン)の熱力学的絶対温度}
+
+可逆熱機関の効率は作業物質の取り方にはよらず、熱浴の温度によって決まる。
+
+\[
+\eta=\frac{W}{Q_{2}}=\frac{Q_{2}-Q_{1}}{Q_{2}}=1-\frac{Q_{1}}{Q_{2}}
+\]
+
+
+\[
+1-\eta_{c}=\frac{Q_{1}}{Q_{2}}=\frac{T_{1}}{T_{2}}\:(3.2.1)
+\]
+
+
+で温度を定義する。これがトムソンの熱力学的絶対温度である。
+
+(注)この定義は温度の比を決めるだけで、そのスケールの絶対値は決まらない。
+
+摂氏温度では水の三重点によって絶対温度スケールを決めている。
+
+
+\subsubsection{例題}
+
+作業物質をnモルの理想気体とした時のカルノーサイクルの効率を求め、理想気体の法則を用いて導入した絶対温度がケルビンの熱力学的温度に一致することを示せ。
+
+Tを$pV=nRT$で定義して、$\frac{Q_{1}}{Q_{2}}$を計算し$\frac{T_{1}}{T_{2}}$となることを示せば良い。
+
+1→2(等温膨張)で気体が得る熱量
+
+\begin{eqnarray*}
+Q_{2} & = & \int_{V_{1}}^{V_{2}}pdV\\
+ & = & nRT_{2}\int_{V_{1}}^{V_{2}}\frac{1}{V}dV\\
+ & = & nRT_{2}\ln\left(\frac{V_{2}}{V_{1}}\right)
+\end{eqnarray*}
+
+
+同様に、3→4(等温圧縮)で気体が放出する熱量は、
+
+\begin{eqnarray*}
+Q_{1} & = & -\int_{V_{1}}^{V_{2}}pdV\\
+ & = & -nRT_{1}\int_{V_{1}}^{V_{2}}\frac{1}{V}dV\\
+ & = & -nRT_{1}\ln\left(\frac{V_{4}}{V_{3}}\right)\\
+ & = & nRT_{1}\ln\left(\frac{V_{4}}{V_{3}}\right)
+\end{eqnarray*}
+
+
+一方、断熱膨張2→3では、
+
+\[
+T_{2}V_{2}^{\gamma-1}=T_{1}V_{3}^{\gamma-1}
+\]
+
+
+断熱圧縮4→1では、
+
+\[
+T_{1}V_{4}^{\gamma-1}=T_{2}V_{3}^{\gamma-1}
+\]
+
+
+であるから、
+
+\[
+\left(\frac{V_{2}}{V_{1}}\right)^{\gamma-1}=\left(\frac{V_{3}}{V_{4}}\right)^{\gamma-1}\Rightarrow\frac{V_{2}}{V_{1}}=\frac{V_{3}}{V_{4}}
+\]
+
+
+これより、
+
+\[
+\frac{Q_{1}}{Q_{2}}=\frac{nRT_{1}\ln\left(\frac{V_{3}}{V_{4}}\right)}{nRT_{2}\ln\left(\frac{V_{2}}{V_{1}}\right)}=\frac{T_{1}}{T_{2}}
+\]
+
+
+
+\subsection{クラウジウスの不等式とエントロピー}
+
+カルノーの定理より、一般に熱機関の効率は
+
+\[
+\eta=1-\frac{Q_{1}}{Q_{2}}\leqq\eta_{c}=1-\frac{T_{1}}{T_{2}}
+\]
+
+
+であるから、
+\[
+\frac{Q_{1}}{Q_{2}}\geqq\frac{T_{1}}{T_{2}}
+\]
+
+
+これより
+\[
+\frac{Q_{1}}{T_{1}}\geqq\frac{Q_{2}}{T_{2}}\:(3.3.1)
+\]
+
+
+これをクラウジウスの不等式という。
+
+可逆機関では
+
+\[
+\Delta S=\frac{Q_{2}}{T_{2}}=\frac{Q_{1}}{T_{1}}\:(3.3.2)
+\]
+
+
+という量が高温熱浴から低温熱浴に移動したと考えることができる。この量をエントロピー(entropy)と呼ぶ。
+
+一般に不可逆機関の場合にはクラウジウスの不等式(3.3.1)より、
+
+\[
+\frac{Q_{2}}{T_{2}}<\frac{Q_{1}}{T_{1}}
+\]
+
+
+$\Delta S_{2}=\frac{Q_{2}}{T_{2}}$は高温熱浴$R_{1}$が失ったエントロピー。
+
+$\Delta S_{1}=\frac{Q_{1}}{T_{1}}$は低温熱浴$R_{2}$が失ったエントロピー。
+
+熱機関の作業物質は変化なし
+
+全体のエントロピーの変化
+\[
+\Delta S_{1}-\Delta S_{2}=\frac{Q_{1}}{T_{1}}-\frac{Q_{2}}{T_{2}}>0
+\]
+
+
+
+\subsubsection{エントロピーは増大する}
+
+
+\subsubsection{より一般的なエントロピーの定義}
+
+準静的過程(可逆過程)を用いて状態変化させたときのエントロピーの変化を定義する。
+
+等温過程では系が受け取る熱量をQとすると、エントロピーの変化は
+
+\[
+\Delta S=\frac{Q}{T}
+\]
+
+
+(準静的)断熱過程(Q=0)では
+
+\[
+\Delta S=0
+\]
+
+
+すべての状態の変化はこの等温過程と純正的な断熱過程の組み合わせで行うことができる。
+
+
+\subsubsection{例}
+
+p-V図の点(状態)1から点2への状態変化におけるエントロピーの変化を求める。
+\begin{enumerate}
+\item 1を通る等温線と2を通る断熱線を引き、交点3を求める。(物質によってこの点は異なる)
+\item 1→3でのエントロピーの変化\\
+\[
+\Delta S_{13}=\frac{Q_{13}}{T}
+\]
+
+\item 3→2でのエントロピーの変化\\
+\[
+\Delta S_{32}=0
+\]
+
+\end{enumerate}
+\[
+\Delta S_{12}=\Delta S_{13}+\Delta S_{32}=\Delta S_{13}
+\]
+
+
+
+\subsubsection{エントロピーの状態量性}
+
+このように定義されたエントロピーは状態量となる。つまり変化の経路の取り方によらない事の証明。
+
+1→3→2と異なる経路として、任意の点4を通る経路を考える。
+
+4を通る断熱線と等温線をひき、断熱線と等温線13の交点を5、等温線と断熱線32の交点を6とする。新しい経路として1→5→4→6→2をとる。
+
+この新しい経路に沿ったエントロピーの変化は、
+
+\[
+\Delta S'_{12}=\Delta S_{15}+\Delta S_{54}+\Delta S_{46}+\Delta S_{62}
+\]
+
+
+\[
+\Delta S_{54}=\Delta S_{62}=0\:(\text{断熱過程})
+\]
+
+
+5→3→6→4→5はカルノーサイクルなので、
+
+\[
+\Delta S_{53}+\Delta S_{64}=0
+\]
+
+
+\[
+\Delta S_{46}=-\Delta S_{64}=\Delta S_{53}
+\]
+
+
+従って、
+
+\[
+\Delta S_{23}=\Delta S_{15}+\Delta S_{46}=\Delta S_{15}+\Delta S_{53}=\Delta S_{13}=\Delta S_{12}
+\]
+
+
+よって示された。
+
+途中の通過点をさらに多く指定しても、それらの点を通る断熱線と等温線を引き、それらの点をたどるエントロピーの変化が$\Delta S_{12}=\Delta S_{13}$と同じであることを示すことができる。
+
+(注)エントロピーの変化$\Delta S=\frac{Q}{T}$は、状態方程式によらない。これは絶対温度と同じく物質の性質によらない定義。ただし、それが体積変化$V_{1}\rightarrow V_{2}$圧力変化$p_{1}\rightarrow p_{2}$でどう変化するかは、状態方程式に依存する。
+
+
+\subsubsection{例題}
+
+nモルの理想気体が温度T下で等温膨張して体積が$V_{1}\rightarrow V_{2}$に変化した時のエントロピーの変化を求めよ。
+
+\begin{eqnarray*}
+Q & = & \int_{V_{1}}^{V_{2}}pdV\\
+ & = & nRT\int_{V_{1}}^{V_{2}}\frac{1}{V}dV\\
+ & = & nRT\ln\left(\frac{V_{2}}{V_{1}}\right)
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+\Delta S & = & \frac{Q}{T}\\
+ & = & nR\ln\left(\frac{V_{2}}{V_{1}}\right)
+\end{eqnarray*}
+
+
+気体の体積が二倍になるとエントロピーは$nR\ln2$だけ増加する。
+
+(注)エントロピーの単位はJ/K。熱容量の単位と等しい。
+
+(注)エントロピーは物質の量に比例する示量変数
+
+ジュールの気体の自由膨張の実験でエントロピーは増大している。断熱過程なのになぜ増加しているのか？→不可逆過程でエントロピーが増加している。
+
+ジュール・トムソン過程ではどうか？
+
+
+\subsubsection{例題2}
+
+nモルの理想気体の体積一定で温度が$T_{1}\rightarrow T_{2}$に上昇した時のエントロピーの変化を求めよ。
+
+$T_{1}\text{を通る断熱線と}T_{2}$を通る当温泉を引き、交点を3とする。
+
+\begin{eqnarray*}
+\Delta S_{12} & = & \Delta S_{13}+\Delta S_{32}\\
+ & = & nR\ln\left(\frac{V_{1}}{V_{3}}\right)
+\end{eqnarray*}
+
+
+ここで断熱過程1→3について$TV^{\gamma-1}$が一定なので、
+
+\[
+T_{1}V_{1}^{\gamma-1}=T_{2}V_{3}^{\gamma-1}
+\]
+
+
+より、
+
+\[
+\left(\frac{V_{1}}{V_{3}}\right)^{\gamma-1}=\frac{T_{2}}{T_{1}}
+\]
+
+
+両辺の対数をとると
+
+\[
+\left(\gamma-1\right)\ln\left(\frac{V_{1}}{V_{3}}\right)=\ln\left(\frac{T_{2}}{T_{1}}\right)
+\]
+
+
+これより、
+
+\[
+\Delta S_{12}=\frac{nR}{\gamma-1}\ln\left(\frac{T_{2}}{T_{1}}\right)
+\]
+
+
+ここで
+
+\[
+nR=C_{p}-C_{v}\:(\text{マイヤーの関係式})
+\]
+
+
+\[
+\gamma=\frac{C_{r}}{C_{v}}
+\]
+
+
+\[
+\frac{nR}{\gamma-1}=\frac{C_{p}-C_{v}}{\frac{C_{p}}{C_{v}}-1}=C_{v}
+\]
+
+
+従って
+
+\[
+\Delta S_{12}=C_{v}\ln\left(\frac{T_{2}}{T_{1}}\right)
+\]
+
+
+
+\subsection{エントロピーの微分}
+
+微小な準静的状態変化に対してエントロピーの変化を
+
+\[
+dS=\frac{dQ}{T}
+\]
+
+
+あるいは
+
+\[
+d'Q=TdS\:(3.4.1)
+\]
+
+
+c.f. $d'W=-pdV$(仕事)
+
+第一法則より
+
+\[
+dU=d'Q+d'W=TdS-pdV\:(3.4.2)
+\]
+
+
+これより
+
+\[
+dS=\frac{dU+pdV}{T}\:(3.4.3)
+\]
+
+
+これをエントロピーの定義とみなすこともできる。
+
+(3.4.2)はUを(S,V)の関数とした時、
+
+\[
+T=\left(\frac{\partial U}{\partial S}\right)_{V},\: p=-\left(\frac{\partial U}{\partial V}\right)_{T}
+\]
+
+
+(3.4.3)の意味: Sを(U,V)の関数とした時、
+
+\[
+\frac{1}{T}=\left(\frac{\partial S}{\partial U}\right)_{U},\:\frac{p}{T}=\left(\frac{\partial S}{\partial V}\right)_{U}
+\]
+
+
+
+\subsubsection{例題}
+
+理想気体のエントロピーをTとVの関数として求めよ。
+
+$dS=\frac{dU+pdV}{T}$に
+
+\[
+dU=C_{v}dT
+\]
+
+
+\[
+p=\frac{nRT}{V}
+\]
+
+
+を代入すると、
+
+\[
+dS=C_{v}\frac{1}{T}dT+\frac{nR}{V}dV
+\]
+
+
+状態1から状態2まで変化させると
+
+\begin{eqnarray*}
+S_{2}-S_{1} & = & C_{v}\int_{T_{1}}^{T_{2}}\frac{1}{T}dT+nR\int_{V_{1}}^{V_{2}}\frac{1}{V}dV\\
+ & = & C_{v}\ln\left(\frac{T_{2}}{T_{1}}\right)+nR\ln\left(\frac{V_{2}}{V_{1}}\right)
+\end{eqnarray*}
+
+
+\[
+T_{1}\rightarrow T_{0}\:(\text{基準点})
+\]
+
+
+\[
+T_{2}\rightarrow T
+\]
+
+
+\[
+S\left(T,V\right)=C_{v}\ln\left(\frac{T}{T_{0}}\right)+nR\ln\left(\frac{V}{V_{0}}\right)+S_{0}\:(3.4.4)
+\]
+
+
+
+\subsubsection{補足}
+
+
+\paragraph{スターリングサイクル}
+
+2つの等温線(isotherms)と2つの等積線(isocores)で構成される熱機関
+
+
+\paragraph{オットーサイクル}
+
+2つの断熱線(adiabats)と2つの等積線で構成される熱機関
+
+
+\paragraph{ディーゼルサイクル}
+
+1つの等圧線、1つの等積線、2つの断熱線で構成される熱機関
+
+
+\subsubsection{エントロピーの一般的公式}
+
+Sを(T,V)の関数として求める方法
+
+\[
+dS=\left(\frac{\partial S}{\partial T}\right)_{V}dT+\left(\frac{\partial S}{\partial T}\right)_{T}dV
+\]
+
+
+一方Sの定義より
+\[
+dS=\frac{dU+pdV}{T}
+\]
+
+
+\[
+dU=\left(\frac{\partial U}{\partial T}\right)_{V}dT+\left(\frac{\partial U}{\partial T}\right)_{T}dV
+\]
+
+
+を代入する。
+
+\[
+dS=\frac{1}{T}\left(\frac{\partial U}{\partial T}\right)_{V}dT+\left[\frac{1}{T}\left(\frac{\partial U}{\partial V}\right)_{T}+\frac{P}{T}\right]dV
+\]
+
+
+よって
+
+\begin{eqnarray*}
+\left(\frac{\partial S}{\partial T}\right)_{V} & = & \frac{1}{T}\left(\frac{\partial U}{\partial T}\right)_{V}\\
+ & = & \frac{C_{v}}{T}\:(3.4.5)
+\end{eqnarray*}
+
+
+理想気体のとき$U=C_{v}T$なので、この式は満たされる。
+
+\[
+\left(\frac{\partial S}{\partial V}\right)_{T}=\frac{1}{T}\left(\frac{\partial U}{\partial V}\right)_{T}+\frac{P}{T}\:(3.4.6)
+\]
+
+
+(3.4.5)をVで偏微分し、(3.4.6)をTで偏微分すると、同じものになるはず。
+
+\begin{eqnarray*}
+\frac{\partial}{\partial V}(3.4.5) & = & \frac{\partial^{2}S}{\partial V\partial T}\\
+ & = & \frac{1}{T}\frac{\partial^{2}U}{\partial V\partial T}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+\frac{\partial}{\partial T}(3.4.6) & = & -\frac{1}{T^{2}}\left(\frac{\partial U}{\partial V}\right)_{T}+\frac{\partial^{2}U}{\partial T\partial V}-\frac{p}{T^{2}}+\frac{1}{T}\left(\frac{\partial p}{\partial T}\right)_{V}
+\end{eqnarray*}
+
+
+この2つの表式が一致するためには、
+
+\[
+-\frac{1}{T^{2}}\left(\frac{\partial U}{\partial V}\right)_{T}-\frac{p}{T^{2}}+\frac{1}{T}\left(\frac{\partial p}{\partial T}\right)_{V}=0
+\]
+
+
+これより
+
+\[
+\left(\frac{\partial U}{\partial V}\right)_{T}=T\left(\frac{\partial p}{\partial T}\right)_{V}-p\:(3.4.7)
+\]
+
+
+(3.4.7)はエントロピーが状態量となるための条件。
+
+(3.4.6)に代入すると、
+
+\begin{eqnarray*}
+\left(\frac{\partial S}{\partial V}\right)_{T} & = & \left(\frac{\partial p}{\partial T}\right)_{V}-\frac{p}{T}+\frac{p}{T}\\
+ & = & \left(\frac{\partial p}{\partial T}\right)_{V}
+\end{eqnarray*}
+
+
+よって
+
+\[
+\left(\frac{\partial S}{\partial V}\right)_{T}=\left(\frac{\partial p}{\partial T}\right)_{V}\:(3.4.8)
+\]
+
+
+この関係式をマクスウェル(Maxwell)の関係式と呼ぶ。
+
+
+\subsubsection{理想気体への応用}
+
+\[
+pV=nRT\rightarrow p=\frac{nRT}{V}
+\]
+
+
+\begin{eqnarray*}
+\left(\frac{\partial p}{\partial T}\right)_{V} & = & \frac{nR}{V}\\
+ & = & \left(\frac{\partial S}{\partial V}\right)_{T}
+\end{eqnarray*}
+
+
+\[
+dS=\frac{C_{v}}{T}dT+\frac{nR}{V}dV
+\]
+
+
+\[
+\rightarrow S\left(T,V\right)=C_{v}\ln\left(\frac{T}{T_{0}}\right)+nR\ln\left(\frac{V}{V_{0}}\right)+S_{0}
+\]
+
+
+\begin{eqnarray*}
+\left(\frac{\partial U}{\partial V}\right)_{T} & = & T\frac{nR}{V}-p\\
+ & = & p-p\\
+ & = & 0
+\end{eqnarray*}
+
+
+実験的に求められたジュールの法則を理論によって証明した。
+
+
+\subsubsection{例題}
+
+ファン・デル・ヴァールス(van der Wals)の状態方程式
+
+\[
+p=\frac{nRT}{V-b}-\frac{a}{V^{2}}
+\]
+
+
+に従う非理想気体のS(T,V)とU(T,V)を求めよ。
+
+※ポテンシャル $F=-\nabla V$
+
+a: 長距離引力の効果\\
+b: 短距離圧力の効果
+
+マクスウェルの関係式を用いると
+
+\begin{eqnarray*}
+\left(\frac{\partial S}{\partial V}\right)_{T} & = & \left(\frac{\partial p}{\partial T}\right)_{V}\\
+ & = & \frac{nR}{V-b}
+\end{eqnarray*}
+
+
+これより、
+
+\[
+dS=\frac{C_{v}}{T}dT+\frac{nR}{V-b}dV
+\]
+
+
+\[
+S\left(T,V\right)=C_{v}\ln\left(\frac{T}{T_{0}}\right)+nR\ln\left(\frac{V-b}{V_{0}-b}\right)+S_{0}
+\]
+
+
+$C_{v}$は温度によらないとした。
+
+\begin{eqnarray*}
+\left(\frac{\partial U}{\partial V}\right)_{T} & = & T\left(\frac{nR}{V-b}\right)-\left(\frac{nRT}{V-b}-\frac{a}{V^{2}}\right)\\
+ & = & \frac{a}{V^{2}}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+dU & = & \left(\frac{\partial U}{\partial T}\right)_{V}dT+\left(\frac{\partial U}{\partial V}\right)_{T}dV\\
+ & = & C_{v}dT+\frac{a}{V^{2}}dV
+\end{eqnarray*}
+
+
+これを積分すると、
+
+\[
+U\left(T,V\right)=C_{v}T-\frac{a}{V}+U_{0}
+\]
+
+
+最初の項が理想気体の場合の値である。
+
+
+\subsubsection{例題}
+
+0℃、100gの氷が溶けて、15℃の水になった時のエントロピーの増加を求めよ。
+
+0℃、100gの氷が溶けて0℃の水になった時のエントロピーの変化を$\Delta S_{1}$とする。
+
+\begin{eqnarray*}
+\Delta S_{1} & = & \frac{\Delta Q_{1}}{T_{0}}\\
+ & = & \mathrm{\frac{80(cal/g)\times100(g)\times4.2(J/cal)}{273(K)}}\\
+ & = & \mathrm{123(J/K)}
+\end{eqnarray*}
+
+
+0℃の水が15℃の水になる時のエントロピーの変化
+
+\begin{eqnarray*}
+dS & = & \frac{dU+pdV}{T}\\
+ & = & \frac{dH-Vdp}{T}\\
+ & = & \frac{dH}{T}\\
+ & = & \frac{C_{p}dT}{T}
+\end{eqnarray*}
+
+
+\[
+C_{p}=\left(\frac{\partial H}{\partial T}\right)_{p}
+\]
+\begin{eqnarray*}
+C_{p} & = & \mathrm{1(cal/g\cdot K)\times4.2(J/cal)}\\
+ & = & \mathrm{420(J/K)}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+\Delta S_{2} & = & \int_{T_{2}}^{T_{1}}\frac{C_{p}}{T}dT\\
+ & = & C_{p}\ln\left(\frac{T_{1}}{T_{2}}\right)\\
+ & = & \mathrm{420(J/K)\ln\left(\frac{273+15}{273}\right)}\\
+ & = & \mathrm{22.5(J/K)}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+\Delta S & = & \Delta S_{1}+\Delta S_{2}\\
+ & = & 123+22.5\\
+ & = & \mathrm{145(J/K)}
+\end{eqnarray*}
+
+
+
+\subsection{不可逆過程とエントロピーの増大則}
+
+
+\subsubsection{例1 熱伝導}
+
+$T_{2}>T_{1}$のとき、熱の移動は必ず2→1の方向に起こる。
+
+\begin{eqnarray*}
+\Delta S & = & \frac{Q}{T_{1}}-\frac{Q}{T_{2}}\\
+ & = & Q\left(\frac{T_{2}-T_{1}}{T_{1}T_{2}}\right)>0
+\end{eqnarray*}
+
+
+
+\subsubsection{例2 気体の自由膨張}
+
+温度変化なし
+
+体積変化 $V_{1}\rightarrow V_{2}$
+
+\[
+\Delta S=nR\ln\left(\frac{V_{2}}{V_{1}}\right)>0
+\]
+
+
+
+\subsubsection{ジュール・トムソン過程}
+
+$p_{1}>p_{2}$
+
+理想気体ではT=一定
+
+\begin{eqnarray*}
+p_{1}V_{1} & = & nRT\\
+ & = & p_{2}V_{2}
+\end{eqnarray*}
+
+
+\[
+\Delta S=nR\ln\left(\frac{V_{2}}{V_{1}}\right)>0
+\]
+
+
+\[
+\frac{p_{1}}{p_{2}}=\frac{V_{2}}{V_{1}}>1
+\]
+
+
+
+\subsubsection{例4 混合のエントロピー(mixing entropy)}
+
+2つの同じ温度で異なる気体を混合するときの拡散
+
+\[
+V=V_{A}+V_{B}
+\]
+
+
+\[
+S=S_{A}+S_{B}
+\]
+
+
+\[
+S_{A}=C_{v}^{A}\ln\left(\frac{T}{T_{0}}\right)+n_{A}R\ln\left(\frac{V_{A}}{V_{0}}\right)+S_{0}
+\]
+
+
+\[
+S_{B}=C_{v}^{B}\ln\left(\frac{T}{T_{0}}\right)+n_{B}R\ln\left(\frac{V_{B}}{V_{0}}\right)+S_{0}
+\]
+
+
+\[
+S'=S'_{A}+S'_{B}
+\]
+
+
+\[
+S'_{A}=C_{v}^{A}\ln\left(\frac{T}{T_{0}}\right)+n_{A}R\ln\left(\frac{V}{V_{0}}\right)+S_{0}
+\]
+
+
+\[
+S'_{B}=C_{v}^{B}\ln\left(\frac{T}{T_{0}}\right)+n_{B}R\ln\left(\frac{V}{V_{0}}\right)+S_{0}
+\]
+
+
+\begin{eqnarray*}
+\Delta S & = & S'-S\\
+ & = & \left(n_{A}+n_{B}\right)R\ln\left(\frac{V}{V_{0}}\right)-n_{A}R\ln\left(\frac{V_{A}}{V_{0}}\right)-n_{B}R\ln\left(\frac{V_{B}}{V_{0}}\right)\\
+ & = & n_{A}R\ln\left(\frac{V}{V_{A}}\right)+n_{B}R\ln\left(\frac{V}{V_{B}}\right)>0
+\end{eqnarray*}
+
+
+
+\subsubsection{補足:マクスウェルの方程式の幾何学的意味}
+
+$pV$図と$TS$図
+
+\[
+\mathrm{d}U=T\mathrm{d}S-p\mathrm{d}V
+\]
+
+
+閉じた経路にそって積分
+
+\[
+\oint\mathrm{d}U=0
+\]
+
+
+\[
+\oint T\mathrm{d}S-\oint p\mathrm{d}V=0
+\]
+
+
+従って
+
+\[
+\oint T\mathrm{d}S=\oint p\mathrm{d}V
+\]
+
+
+どのような経路であっても閉じたものは等しい。
+
+\begin{eqnarray*}
+\oint T\mathrm{d}S & = & \left(T_{2}-T_{1}\right)\left(S_{2}-S_{1}\right)\\
+ & = & T_{2}\left(S_{2}-S_{1}\right)-T_{1}\left(S_{2}-S_{1}\right)\\
+ & = & Q_{2}-Q_{1}
+\end{eqnarray*}
+
+
+\[
+W=Q_{2}-Q_{1}
+\]
+
+
+$\oint p\mathrm{d}V=\oint T\mathrm{d}S$は$pV$図と$TS$図で描かれた状態のサイクル変化に対応する前提で囲まれた面積が等しい。
+
+
+\subsubsection{例:微小スターリングサイクル}
+
+$pV$図と$TS$図を比較する。
+
+$p,V$と$S,T$をそれぞれ微小変化させた2つの平行四辺形の面積が等しいことから、
+
+\[
+\Delta p\mathrm{d}V=\Delta S\Delta T\rightarrow\left(\frac{\partial p}{\partial t}\right)_{V}\Delta T\Delta V=\left(\frac{\partial S}{\partial V}\Delta V\Delta T\right)
+\]
+
+
+\[
+\Delta p=\left(\frac{\partial p}{\partial T}\right)_{V}\mathrm{d}T
+\]
+
+
+\[
+\Delta S=\left(\frac{\partial S}{\partial V}\right)_{T}\Delta V
+\]
+
+
+
+\subsection{(補足)統計力学的エントロピーと理想気体の法則}
+
+熱力学的状態: 状態量により指定された巨視的な状態
+
+微視的状態: ミクロな粒子の位置や運動量のすべての情報が与えられて決まる状態
+
+一つの熱力学的状態にはたくさんの微視的包帯が対応する。
+
+$W\left(U,V,N\right)$を、粒子数$N$、体積$V$、エネルギー$U$に対応する微視的な状態の数とする。
+
+統計力学的エントロピーとは
+\[
+S\left(U,V,N\right)=k_{B}l_{n}W
+\]
+
+
+で与えられる。ボルツマンの定理(プランワ 1900)。
+
+
+\subsubsection{理想気体のエントロピー}
+
+空間を小さいセルに分割し、$N$個の粒子をこのセルに分割する方法の数を数える。
+
+\[
+W_{R}=\left(\frac{V}{N_{0}}\right)^{N}
+\]
+
+
+$N_{0}$: セル体積
+
+次に、このそれぞれの場合に対しエネルギー$U$を$N$個の粒子に分配する方法を考える。
+
+\[
+\frac{\left\langle p^{2}\right\rangle }{2m}N=U
+\]
+
+
+半径$\sqrt{\left\langle p^{2}\right\rangle }=\sqrt{\frac{U}{N}2m}$の球をセル分割して粒子の運動量を配分する場合の数を$W_{p}$とする。
+\[
+W_{p}\sim\left(\frac{\sqrt{\frac{U}{N}2m}}{p_{0}}\right)^{8N}
+\]
+
+
+全体の場合の数は
+
+\begin{eqnarray*}
+W & = & W_{R}\times W_{p}\\
+ & = & \left(\frac{V}{N_{0}}\right)^{N}\times\left(\frac{\sqrt{\frac{U}{N}2m}}{p_{0}}\right)^{3N}
+\end{eqnarray*}
+
+
+$p_{0}$; セルの一辺の長さ
+
+\begin{eqnarray*}
+S & = & k_{B}\ln W\\
+ & = & k_{B}\ln\left[\left(\frac{V}{N_{0}}\right)^{N}-\left(\frac{\sqrt{\frac{U}{N}2m}}{p_{0}}\right)^{3N}\right]\\
+ & = & Nk_{B}\ln\left(\frac{V}{N_{0}}\right)-\frac{3N}{2}k_{B}\ln\left(\frac{\frac{U}{N}2m}{p_{0}^{2}}\right)
+\end{eqnarray*}
+
+
+\[
+\mathrm{d'}S=\frac{\mathrm{d}V+p\mathrm{d}V}{T}
+\]
+
+
+\[
+\frac{1}{T}=\left(\frac{\partial S}{\partial U}\right)_{V}=\frac{3}{2}Nk_{B}\frac{1}{U}
+\]
+
+
+\[
+\rightarrow U=\frac{3}{2}Nk_{B}T=\frac{3}{2}nRT
+\]
+
+
+\[
+\frac{p}{T}=\left(\frac{\partial S}{\partial U}\right)_{U}=Nk_{B}\frac{1}{V}
+\]
+
+
+\[
+\rightarrow pV=Nk_{B}T=nRT
+\]
+
+
+状態方程式が得られる。
+
+
+\section{自由エネルギーと熱力学ポテンシャル}
+
+力学系: 仕事→ポテンシャルエネルギー→仕事
+
+熱力学系: 第二法則の制約のもとで可能。取り出せるエネルギーを自由エネルギーと呼ぶ。
+
+
+\subsection{ヘルムホルツの自由エネルギー}
+
+等温過程$Q\leqq T\Delta S$ (等号は可逆過程で成立)
+
+この時系が外界にした仕事を$W$とすると、
+
+\[
+\Delta U=Q-W\rightarrow W=Q-\Delta U\leqq T\Delta S-\Delta U=T\left(S_{2}-S_{1}\right)-\left(U_{2}-U_{1}\right)
+\]
+
+
+\[
+W\leqq\left(U_{1}-TS_{1}\right)-\left(U_{2}-TS_{2}\right)
+\]
+
+
+新しい状態量
+
+\[
+F=U-TS\text{(4.1.1)}
+\]
+
+
+で定義。ヘルムホルツの自由エネルギーと呼ぶ。
+
+\[
+W\leqq F_{1}-F_{2}
+\]
+
+
+等温過程で取り出せるエネルギーの上限値は自由エネルギーの差で与えられる。
+
+
+\subsubsection{例}
+
+外界にする仕事
+
+\begin{eqnarray*}
+W & = & \int_{V_{1}}^{V_{2}}p\mathrm{d}V\\
+ & = & nRT\ln\left(\frac{V_{2}}{V_{1}}\right)
+\end{eqnarray*}
+
+
+等温→$\Delta U=0$
+
+ところが、
+
+\begin{eqnarray*}
+F_{2}-F_{1}=\Delta F & = & \Delta U-T\Delta S\\
+ & = & -TnR\ln\left(\frac{V_{2}}{V_{1}}\right)\\
+ & = & -W
+\end{eqnarray*}
+
+
+\[
+\rightarrow W=F_{1}-F_{2}
+\]
+
+
+外界にした仕事は気体の自由エネルギーの変化に等しい。
+
+系の体積が一定の時外界に仕事をしないので、
+\[
+W=0\leqq F_{1}-F_{2}\rightarrow F_{2}\leqq F_{1}
+\]
+
+
+これは不可逆な変化が、$F$が減少する方向に起こることを意味する。自由エネルギーが最低の状態はもうこれ以上変化できない最も安定の状態となる。
+
+\textbf{$F$は定積熱力学ポテンシャルとも呼ぶ。}
+
+
+\subsubsection{例題}
+
+体積$V$の箱のなかに自由に動く仕切りを入れ、その両側に$n_{1},n_{2}$モルの気体を入れる。平衡点での仕切りの位置を求めよ。
+
+\[
+V=V_{1}+V_{2}=\text{一定}
+\]
+
+
+ヘルムホルツの自由エネルギー
+\[
+F\left(T,V,V_{1}\right)=F_{1}\left(T,V_{1}\right)+F_{2}\left(T,V_{2}\right)
+\]
+
+
+ただし$V_{1}+V_{2}=V$は一定
+
+$F$の値が最低値を取る条件
+
+\[
+\left(\frac{\partial F}{\partial V_{1}}\right)_{T,V}=0
+\]
+
+
+\begin{eqnarray*}
+\left(\frac{\partial F}{\partial V_{1}}\right)_{T,V} & = & \left(\frac{\partial F_{1}}{\partial V_{1}}\right)_{T}+\left(\frac{\partial F_{2}}{\partial V_{2}}\right)_{T}\left(\frac{\partial V_{2}}{\partial V_{1}}\right)_{V}\\
+ & = & \left(\frac{\partial F_{1}}{\partial V_{1}}\right)_{T}-\left(\frac{\partial F_{2}}{\partial V_{2}}\right)_{T}=0
+\end{eqnarray*}
+
+
+$V_{2}=V-V_{1}$
+
+\[
+F\left(T,V\right)=U-TS
+\]
+
+
+\begin{eqnarray*}
+\mathrm{d}F & = & \mathrm{d}U-T\mathrm{d}S-S\mathrm{d}T\\
+ & = & -p\mathrm{d}V-S\mathrm{d}T
+\end{eqnarray*}
+
+
+\[
+\left(\frac{\partial F}{\partial V}\right)_{T}=-p
+\]
+
+
+平衡条件は
+
+\[
+-p_{1}=-p_{2}
+\]
+
+
+\[
+\therefore p_{1}=p_{2}
+\]
+
+
+圧力平衡
+
+
+\subsubsection{復習}
+
+ヘルムホルツの自由エネルギー
+\[
+F=U-TS
+\]
+
+
+$T$と$S$を入れ替えて
+
+\[
+\mathrm{d}F=-S\mathrm{d}T-p\mathrm{d}V
+\]
+
+
+また、
+
+\[
+\mathrm{d}U=T\mathrm{d}S-p\mathrm{d}V
+\]
+
+
+\[
+S=-\left(\frac{\partial F}{\partial T}\right)_{V}
+\]
+
+
+\[
+p=-\left(\frac{\partial F}{\partial V}\right)_{T}
+\]
+
+
+
+\subsection{ギブス(Gibbs)の自由エネルギー}
+
+温度と圧力が一定の時、
+\[
+W=p\left(V_{2}-V_{1}\right)\leqq F_{1}-F_{2}
+\]
+
+
+であるから、
+
+\[
+F_{2}+pV_{2}\leqq F_{1}+pV_{1}
+\]
+
+
+従って、
+\[
+G=F+pV=U-TS+pV\text{(ギブスの自由エネルギー) (42.1)}
+\]
+
+
+とおくと、
+
+\[
+G_{2}\leqq G_{1}
+\]
+
+
+圧力一定のとき成り立つ。
+
+等温、等圧のもとでは、系の不可逆な変化は$G$を減少させる方向に起こる。$G$は\textbf{定圧熱力学的ポテンシャル}とも呼ぶ。
+
+$\left(T,P\right)$が一定のもとで熱力学的に最も安定な状態は$G$が最低値をとる状態。
+
+
+\subsection{ルジャンドル変換とマクスウェルの方程式}
+
+内部エネルギーの微分
+
+\[
+\mathrm{d}U=T\mathrm{d}S-p\mathrm{d}V\text{(4.3.1)}
+\]
+
+
+$U$を$\left(S,V\right)$の関数と見ると、
+
+\[
+T=\left(\frac{\partial U}{\partial S}\right)_{V}\text{(4.3.1a)}
+\]
+
+
+\[
+p=\left(\frac{\partial U}{\partial V}\right)_{T}\text{(4.3.1b)}
+\]
+
+
+\begin{eqnarray*}
+\left(\frac{\partial T}{\partial V}\right)_{S} & = & \frac{\partial^{2}U}{\partial V\partial S}\\
+ & = & \frac{\partial^{2}U}{\partial S\partial V}\\
+ & = & -\left(\frac{\partial p}{\partial S}\right)_{V}
+\end{eqnarray*}
+
+
+\[
+\left(\frac{\partial T}{\partial V}\right)_{S}=-\left(\frac{\partial p}{\partial S}\right)_{V}\text{(4.3.1c)}
+\]
+
+
+これはマクスウェルの関係式の一つ。
+
+$\left(S,V\right)$は$U$の自然な独立変数と呼ばれる。
+
+ヘルムホルツの自由エネルギーの微分: $F=U-TS$
+
+\begin{eqnarray*}
+\mathrm{d}F & = & \mathrm{d}U-T\mathrm{d}S-S\mathrm{d}T\\
+ & = & -S\mathrm{d}T-p\mathrm{d}V
+\end{eqnarray*}
+
+
+\[
+\mathrm{d}F=-S\mathrm{d}T-p\mathrm{d}V\text{(4.3.2)}
+\]
+
+
+$\left(T,V\right)$は$F$の自然な独立変数
+
+\[
+S=-\left(\frac{\partial F}{\partial T}\right)_{V}\text{(4.3.2a)}
+\]
+
+
+\[
+p=-\left(\frac{\partial F}{\partial V}\right)_{T}\text{(4.3.2b)}
+\]
+
+
+\begin{eqnarray*}
+\left(\frac{\partial S}{\partial V}\right)_{T} & = & -\frac{\partial^{2}F}{\partial V\partial T}\\
+ & = & -\frac{\partial^{2}F}{\partial T\partial V}\\
+ & = & \left(\frac{\partial p}{\partial T}\right)_{V}
+\end{eqnarray*}
+
+
+\[
+\left(\frac{\partial S}{\partial V}\right)_{T}=\left(\frac{\partial p}{\partial T}\right)_{V}\text{(4.3.2c)}
+\]
+
+
+マクスウェルの関係式である。
+
+ギブスの自由エネルギーの微分: $G=F+pV$
+
+\begin{eqnarray*}
+\mathrm{d}G & = & \mathrm{d}F+p\mathrm{d}V+V\mathrm{d}p\\
+ & = & -S\mathrm{d}T
+\end{eqnarray*}
+
+
+\[
+\mathrm{d}G=-S\mathrm{d}T+V\mathrm{d}p\text{(4.3.3)}
+\]
+
+
+$\left(T,p\right)$は$G$の自然な独立変数。
+
+\[
+S=-\left(\frac{\partial G}{\partial T}\right)_{p}\text{(4.3.3a)}
+\]
+
+
+\[
+V=\left(\frac{\partial G}{\partial p}\right)_{T}\text{(4.3.3b)}
+\]
+
+
+\[
+-\left(\frac{\partial S}{\partial p}\right)_{T}=\left(\frac{\partial V}{\partial T}\right)_{p}\text{(4.3.3c)}
+\]
+
+
+マクスウェルの関係式である。
+
+エンタルピーの微分: $H=U+pV$
+
+\begin{eqnarray*}
+\mathrm{d}H & = & \mathrm{d}U+p\mathrm{d}V+V\mathrm{d}p\\
+ & = & T\mathrm{d}S
+\end{eqnarray*}
+
+
+\[
+\mathrm{d}H=T\mathrm{d}S+V\mathrm{d}p\text{(4.3.4)}
+\]
+
+
+$\left(S,p\right)$は$H$の自然な独立変数。
+
+\[
+T=\left(\frac{\partial H}{\partial S}\right)_{p}\text{(4.3.4a)}
+\]
+
+
+\[
+V=\left(\frac{\partial H}{\partial p}\right)_{S}\text{(4.3.4b)}
+\]
+
+
+\[
+\left(\frac{\partial T}{\partial p}\right)_{S}=\left(\frac{\partial V}{\partial S}\right)_{p}\text{(4.3.4c)}
+\]
+
+
+\[
+\mathrm{d}U=T\mathrm{d}S-p\mathrm{d}V
+\]
+
+
+\[
+\mathrm{d}F=-S\mathrm{d}T-p\mathrm{d}V
+\]
+
+
+\[
+\mathrm{d}G=-S\mathrm{d}T+V\mathrm{d}p
+\]
+
+
+\[
+\mathrm{d}H=T\mathrm{d}S+V\mathrm{d}p
+\]
+
+
+\[
+F=U-TS
+\]
+
+
+\[
+G=F+pV=U-TS+pV
+\]
+
+
+\[
+H=U+pV=G+TS
+\]
+
+
+$T\leftrightarrow S$、$p\leftrightarrow V$と変換する。ルジャンドル変換である。
+
+
+\subsubsection{補足(プリント):ルジャンドル変換の幾何学的意味}
+
+1変数関数$f\left(x\right)$
+
+曲線$f\left(x\right)$に$x=x_{0}$で接線を引く。
+
+傾き$f'\left(x_{0}\right)=v_{0}$
+
+接線の式
+\[
+y=v_{0}\left(x-x_{0}\right)+f\left(x_{0}\right)
+\]
+
+
+$y$切片を$\psi_{0}$とする。
+
+\[
+\psi_{0}=-v_{0}x_{0}+f\left(x_{0}\right)
+\]
+
+
+今、$f\left(x\right)$が与えられた時、
+\[
+v=f'\left(x\right)=\frac{\mathrm{d}f}{\mathrm{d}x}
+\]
+
+
+として、
+
+\[
+\psi\left(v\right)=f\left(x\right)-vx
+\]
+
+
+を$f\left(x\right)$のルジャンドル変換と呼ぶ。
+
+$\psi\left(v\right)$は、$f\left(x\right)$の接線の描く包絡線(envelope)を与える式。
+
+$f\left(x\right)\rightarrow\psi\left(v\right)$によって曲線の情報は保存される。
+
+
+\subsubsection{例}
+
+\[
+f\left(x\right)=\frac{1}{2}x^{2}-x+1
+\]
+
+
+のルジャンドル変換を与える。
+
+\[
+v=\frac{\mathrm{d}f}{\mathrm{d}x}=x-1\rightarrow x=v+1
+\]
+
+
+\[
+\psi\left(v\right)=f\left(x\right)-vx
+\]
+
+
+\begin{eqnarray*}
+\psi\left(v\right) & = & \frac{1}{2}x^{2}-x+1-vx\\
+ & = & \frac{1}{2}\left(v+1\right)^{2}-\left(v+1\right)+1-v\left(v+1\right)\\
+ & = & -\frac{1}{2}v^{2}+v+\frac{1}{2}-v-1+1-v^{2}-v\\
+ & = & -\frac{1}{2}v^{2}-v+\frac{1}{2}
+\end{eqnarray*}
+
+
+
+\paragraph{逆変換}
+
+\[
+\psi\left(v\right)\rightarrow f\left(x\right)
+\]
+
+
+\[
+x=-\frac{\mathrm{d}\psi}{\mathrm{d}v}=v+1
+\]
+
+
+\begin{eqnarray*}
+f\left(x\right) & = & \psi\left(v\right)+vx\\
+ & = & -\frac{1}{2}v^{2}-v+\frac{1}{2}+vx\\
+ & = & -\frac{1}{2}\left(x-1\right)^{2}-\left(x-1\right)+\frac{1}{2}+\left(x-1\right)x
+\end{eqnarray*}
+
+
+
+\subsubsection{熱力学正方形}
+
+両対角線を引いた大きな正方形を書き、対角線の両端に対を成す状態変数$\left(T,S\right),\left(p,V\right)$を置く。次に4つの辺の両端に自然な独立変数がくるように$U,F,G,H$を対応させる。
+
+
+\paragraph{マクスウェルの関係式の読み取り方}
+
+同じ底辺を共有する2つの直角三角形をとり、それぞれに偏微分を対応させる。
+
+
+\section{化学ポテンシャルと相平衡}
+
+これまでは物質の出入りのない閉じた系(closed system)を考えてきた。従って外界とのエネルギーのやり取りは熱の移行と仕事に限られてきた。
+
+これを物質のやり取りのある開いた系(open system)に拡張する。
+
+
+\subsection{開いた系の平衡条件と化学ポテンシャル}
+
+$T,V_{1}$の空間と$T,V_{2}$の空間に$N$モルの気体を閉じ込める場合を考える。
+
+$T,V_{1},V_{2}$は一定、$N=N_{1}+N_{2}$で一定、$N_{1},N_{2}$は変化する。
+
+平衡条件
+
+\[
+F=F_{1}\left(T_{1},V_{1},N_{1}\right)+F_{2}\left(T,V_{2},N_{2}\right)
+\]
+
+
+\begin{eqnarray*}
+\left(\frac{\partial F}{\partial N_{1}}\right)_{T,V,N} & = & \left(\frac{\partial F_{1}}{\partial N_{1}}\right)_{T,V_{1}}+\left(\frac{\partial F_{2}}{\partial N_{2}}\right)_{T,V_{2}}\left(\frac{\partial N_{2}}{\partial N_{1}}\right)_{N}\\
+ & = & 0
+\end{eqnarray*}
+
+
+平衡条件
+
+\[
+\left(\frac{\partial F_{1}}{\partial N_{1}}\right)_{T,V_{1}}=\left(\frac{\partial F_{2}}{\partial N_{2}}\right)_{T,V_{2}}
+\]
+
+
+$F$を$\left(T,V,N\right)$の関数と考え、
+
+\[
+\eta=\left(\frac{\partial F}{\partial N}\right)_{T,V}\text{(5.1.1)}
+\]
+
+
+で化学ポテンシャルを定義する。このとき平衡条件は
+
+\[
+\eta_{1}=\eta_{2}\text{(5.1.2)}
+\]
+
+
+これより
+
+\[
+\mu=\left(\frac{\partial G}{\partial N}\right)_{T,p}=g\left(T,p\right)=\frac{G}{N}
+\]
+
+
+したがって化学ポテンシャル$\mu$は1粒子あたりのギブス自由エネルギーにほかならない。従って
+
+\[
+G=\mu N\text{(5.1.10)}
+\]
+
+
+他の熱力学的ポテンシャルもこれより
+
+\[
+F=G-pV=\mu N-pV\text{(5.1.11)}
+\]
+
+
+\[
+U=F+TS=TS-pV+\mu N\text{(5.1.12)}
+\]
+
+
+\[
+\leftrightarrow\mathrm{d}V=T\mathrm{d}S-p\mathrm{d}V+\mu\mathrm{d}N
+\]
+
+
+\[
+\mathrm{d}p=-s\mathrm{d}T+v\mathrm{d}p\text{(5.1.14)}
+\]
+
+
+これは$\left(T,p,\mu\right)$が独立変数として取れないことを意味し、$\mu$は$\left(T,p\right)$の関数となっていることを意味する。これは(5.1.4)より明らか。また、$\mu$を$\left(T,p\right)$の関数として与えれば、
+
+\[
+S=-\left(\frac{\partial\mu}{\partial T}\right)_{p}\text{(5.1.14a)}
+\]
+
+
+\[
+v=-\left(\frac{\partial\mu}{\partial p}\right)_{T}\text{(5.1.14b)}
+\]
+
+
+ギブス・デュエルの式より、
+
+\begin{eqnarray*}
+\mathrm{d}\mu & = & -\frac{S}{N}\mathrm{d}T-\frac{V}{N}\mathrm{d}p\\
+ & = & -s\mathrm{d}T-v\mathrm{d}p
+\end{eqnarray*}
+
+
+$s=\frac{S}{N}$: 1粒子あたりのエントロピー
+
+$v=\frac{V}{N}$: 1粒子あたりの体積
+
+
+\subsection{二相平衡とクラペイロンクラウジウスの式}
+
+物質の相(phase): 気相、液相、固相
+
+
+\subsubsection{二相平衡の条件}
+
+温度平衡 $T_{A}=T_{B}$ (熱伝導が起きない)
+
+圧力平衡 $p_{A}=p_{B}$ (境界面の力学的安定性)
+
+化学平衡 $\mu_{A}=\mu_{B}$ (粒子のやり取りに関する平衡)
+
+それぞれの層において化学ポテンシャルを$\left(T,p\right)$の関数と考えると
+
+\[
+\mu_{A}\left(T,p\right)=\mu_{B}\left(T,p\right)\text{(5.2.1)}
+\]
+
+
+とまとめることができる(二相平衡の条件)
+
+この関係式は$\left(T,p\right)$面上で曲線を与える。
+
+気液お境界線上では2つの関数の値は一致する。
+
+今この曲線上で$\left(T,p\right)$の変化を考える。
+
+\[
+\left(T,p\right)\rightarrow\left(T+\Delta T,p+\Delta p\right)
+\]
+
+
+再び二相平衡の条件が成立するためには、
+
+\[
+\mu_{A}\left(T+\Delta T,p+\Delta p\right)=\mu_{B}\left(T+\Delta T,p+\Delta p\right)
+\]
+
+
+$\Delta T,\Delta p$が小さい時、両辺を$\Delta T,\Delta p$で展開する(テーラー展開)
+
+\begin{eqnarray*}
+\mu_{A}\left(T+\Delta T,p+\Delta p\right) & = & \mu_{A}\left(T,p\right)+\left(\frac{\partial\mu_{A}}{\partial T}\right)_{p}\Delta T+\left(\frac{\partial\mu_{A}}{\partial p}\right)_{T}\Delta p+\cdots\\
+\mathrm{d}\mu_{A} & = & \left(\frac{\partial\mu_{A}}{\partial T}\right)_{p}\mathrm{d}T+\left(\frac{\partial\mu_{A}}{\partial p}\right)_{T}\mathrm{d}p\\
+\mu_{A}\left(T+\Delta T,p+\Delta p\right) & = & \mu_{A}\left(T,p\right)+s_{A}\Delta T+v_{A}\Delta p+\cdots
+\end{eqnarray*}
+
+
+同様に
+
+\[
+\mu_{B}\left(T+\Delta T,p+\Delta p\right)=\mu_{B}\left(T,p\right)+s_{B}\Delta T+v_{B}\Delta p+\cdots
+\]
+
+
+この2つの値が一致する条件は、$\mu_{A}\left(T,p\right)=\mu_{B}\left(T,p\right)$であったので、
+
+\[
+-s_{A}\Delta T+v_{A}\Delta p=-s_{B}\Delta T+v_{B}\Delta p
+\]
+
+
+\[
+\left(v_{A}-v_{B}\right)\Delta p=\left(s_{A}-s_{B}\right)\Delta T
+\]
+
+
+これより
+
+\[
+\frac{\Delta p}{\Delta T}=\frac{s_{A}-s_{B}}{v_{A}-v_{B}}
+\]
+
+
+二相並行の曲線の傾きを与える式
+
+\begin{eqnarray*}
+\frac{\mathrm{d}p}{\mathrm{d}T} & = & \frac{s_{A}-s_{B}}{v_{A}-v_{B}}\\
+ & = & \frac{T\left(s_{A}-s_{B}\right)}{T\left(v_{A}-v_{B}\right)}\\
+ & = & \frac{l_{AB}}{T\left(v_{A}-v_{B}\right)}
+\end{eqnarray*}
+
+
+$l_{AB}$: $A\rightarrow B$に相変化した時活性する1粒子あたりの潜熱
+
+$v_{A}-v_{B}$: その時の1粒子あたりの体積変化
+
+$N$個の粒子に対しては
+
+\begin{eqnarray*}
+\frac{\mathrm{d}p}{\mathrm{d}T} & = & \frac{l_{AB}N}{T\left(v_{A}-v_{B}\right)N}\\
+ & = & \frac{L_{AB}}{T\left(V_{A}-V_{B}\right)}
+\end{eqnarray*}
+
+
+\[
+\frac{\mathrm{d}p}{\mathrm{d}T}=\frac{L_{AB}}{T\left(V_{A}-V_{B}\right)}\text{(5.2.2)}
+\]
+
+
+クラペイロンクラウジウスの式という。これは二相平衡曲線の傾きを決める式である。
+
+(注) $L_{AB},\left(V_{A}-V_{B}\right)$は一般に$T\left(p\right)$の関数、傾きは変化する。
+
+
+\subsubsection{例題}
+
+蒸気圧が1.2気圧上昇した時の沸点の温度変化を求めよ。
+
+水1gあたりの粒子数を$N$とする$\left(N=\frac{1}{18}N_{A}\right)$
+
+\begin{eqnarray*}
+L_{AB} & = & l_{AB}N\\
+ & = & 540\mathrm{cal/g}\\
+ & = & 2.26\times10^{3}\mathrm{J/g}
+\end{eqnarray*}
+
+
+\[
+V_{A}=v_{A}N=\frac{1}{\rho_{A}}
+\]
+
+
+\begin{eqnarray*}
+\rho_{A} & = & 0.60\mathrm{kg/m^{2}}\\
+ & = & 0.60\times10^{3}\mathrm{g/m^{2}}
+\end{eqnarray*}
+
+
+\[
+V_{B}=v_{B}N=\frac{1}{\rho_{B}}
+\]
+
+
+\begin{eqnarray*}
+\rho_{B} & = & 0.96\times10^{6}\mathrm{g/m^{2}}
+\end{eqnarray*}
+
+
+$\rho_{B}\gg\rho_{A}\rightarrow V_{A}\gg V_{B}$より、
+
+\begin{eqnarray*}
+\frac{\Delta p}{\Delta T} & = & \frac{L_{AB}}{T\left(V_{A}-V_{B}\right)}\\
+ & \simeq & \frac{L_{AB}}{TV_{A}}\\
+ & \simeq & \frac{L_{AB}\rho_{A}}{T}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+\frac{\Delta p}{\Delta T} & = & \frac{L_{AB}}{T}\rho_{A}\\
+ & = & \frac{2.26\times10^{3}\mathrm{J/g}\times0.60\times10^{3}\mathrm{J/m^{3}}}{\left(273+100\right)\mathrm{K}}\\
+ & = & 3.6\times10^{3}\mathrm{J/m^{2}\cdot K}\\
+ & = & 3.6\times10^{3}\mathrm{Pa/K}
+\end{eqnarray*}
+
+
+$\Delta p=0.2\times10^{5}\mathrm{Pa}$のとき、
+
+\[
+\Delta T=\frac{0.2\times10^{5}}{3.6\times10^{3}}=5.6\mathrm{K}
+\]
+
+
+これは$V_{A}-V_{B}$や$L_{AB}$が温度によらないという近似を用いた。
+
+$V_{A}$が温度によって変化する効果を考えると、
+
+\begin{eqnarray*}
+V_{A}-V_{B} & \simeq & V_{A}\\
+ & = & \frac{nRT}{p}
+\end{eqnarray*}
+
+
+を用いて
+
+\begin{eqnarray*}
+\frac{\mathrm{d}p}{\mathrm{d}T} & = & \frac{L_{AB}}{T\left(V_{A}-V_{B}\right)}\\
+ & \simeq & \frac{L_{AB}}{TV_{A}}\\
+ & = & \frac{L_{AB}}{nR}\frac{p}{T^{2}}
+\end{eqnarray*}
+
+
+\[
+\frac{\mathrm{d}p}{p}=\frac{L_{AB}}{nR}\frac{1}{T^{2}}\mathrm{d}T
+\]
+
+
+この微分方程式を解いて
+
+\[
+\ln\left(\frac{p}{p_{0}}\right)=\frac{L_{AB}}{nR}\left(-\frac{1}{T}+\frac{1}{T_{0}}\right)
+\]
+
+
+\[
+p=p_{0}\mathrm{e}^{-\frac{L_{AB}}{nR}\left(-\frac{1}{T}+\frac{1}{T_{0}}\right)}
+\]
+
+
+これを
+\[
+p=p_{0}'\mathrm{e}^{-\frac{L_{AB}}{nRT}}
+\]
+
+
+とまとめる。
+
+$T=373\mathrm{K}$で$p=10^{5}\mathrm{Pa}$としたときの$p_{0}'$を各自求めてみよ。提出はアドミニ棟のボックス、期限は7月最後の授業である。
+
+
+\subsection{ファン・デル・ヴァールス(van der Waals)の状態方程式と気相・液相相転移}
+
+\[
+p=\frac{nRT}{V-b}-\frac{a}{V^{2}}
+\]
+
+
+右辺が全て示強変数となるように書き換える。
+
+\[
+\begin{cases}
+v=\frac{V}{N}\\
+nR=k_{B}N
+\end{cases}
+\]
+
+
+を使うと、
+
+\[
+p=\frac{k_{B}T}{v-b_{0}}-\frac{a_{0}}{v^{2}}\text{(5..3.1)}
+\]
+
+
+ただし
+
+\[
+\begin{cases}
+a=a_{0}N^{2}\\
+b=b_{0}N
+\end{cases}
+\]
+
+
+これにより変数が全て示強変数となった。
+
+$T=\text{一定}$で$p$を$v$の関数として図示するとき、
+\begin{itemize}
+\item 高温では無視できる
+\item 低温では第二項は重要、$v$が小さいところで極小値を持つ
+\end{itemize}
+の二点が適用される。
+
+この図において圧力の等しい三点を体積の小さい順に$A,C,B$とすると、
+\begin{itemize}
+\item $A,B$では圧力上昇にともなって$v$は小さくなり(圧縮され)安定
+\item $C$では圧縮すると($v\rightarrow\text{小}$)圧力が減少→自然収縮(不安定)→二相分離
+\end{itemize}
+つまり、一様な状態から部分的に密度の高い部分$A$(液相)と密度の低い部分$B$(液相)に分離する。この二相が平衡状態となる時を考える。
+
+$A$と$B$は圧力と温度が等しい。加えて二相平衡にはもうひとつの条件$p_{A}=p_{B}$が必要である。この条件を状態方程式(5.3.1)から求める。
+
+一粒子あたりのヘルムホルツ自由エネルギーを考える。
+\begin{eqnarray*}
+F & = & G-pV\\
+ & = & \mu N-pvN\\
+ & = & \left(\mu-pv\right)N
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+f & = & \frac{F}{N}\\
+ & = & \mu-pv\text{(5.3.2)}
+\end{eqnarray*}
+
+
+$\mathrm{d}\mu=-s\mathrm{d}T+v\mathrm{d}p$なので、
+
+\[
+\mathrm{d}f=-s\mathrm{d}T-p\mathrm{d}v\text{(5.3.3)}
+\]
+
+
+\[
+p=-\left(\frac{\partial f}{\partial v}\right)_{T}\text{(5.3.3')}
+\]
+
+
+ファンデルワールスの状態方程式$p=\frac{k_{B}T}{v-b_{0}}-\frac{a_{0}}{v^{2}}$を使うと、
+
+\begin{eqnarray*}
+f & = & -\int_{v_{0}}^{v}p\mathrm{d}v\\
+ & = & -\int_{v_{0}}^{v}\left(\frac{k_{B}T}{v-b_{0}}-\frac{a_{0}}{v^{2}}\right)p\mathrm{d}v
+\end{eqnarray*}
+
+
+$f=f\left(T,v\right)$と置き直して、
+
+\[
+f\left(T,v\right)=-k_{B}T\ln\left(\frac{v-b_{0}}{v_{0}-b_{0}}\right)-a_{0}\frac{1}{v}+h\left(T\right)\text{(5.3.4)}
+\]
+
+
+$f-v$グラフにおける曲線に二点で接する直線(二重接線, double tangent)が一本引ける。この接点を$v$の小さい順に$A,B$とする。
+\begin{itemize}
+\item $A,B$は温度が等しい
+\item $A,B$は圧力が等しい
+\end{itemize}
+$p=-\left(\frac{\partial f}{\partial v}\right)$: 傾き
+\begin{itemize}
+\item また$A,B$で接線は同じであるから$y$切片も共有している。
+\end{itemize}
+ルジャンドル変換→$y$切片
+
+$f$のルジャンドル変換→$\mu$(化学ポテンシャル)
+
+\begin{eqnarray*}
+f & = & \left(\frac{\partial f}{\partial v}\right)_{T}v+\psi\\
+ & = & -pv+\psi
+\end{eqnarray*}
+
+
+\[
+\psi=f+pv=\mu
+\]
+
+
+従って$\mu_{A}=\mu_{B}$となり二相平衡の条件が満たされている。
+
+\[
+\begin{cases}
+\mu_{A}=f\left(v_{A}\right)+p_{0}v_{A}\\
+\mu_{B}=f\left(v_{B}\right)+p_{0}v_{B}\\
+\mu_{A}-\mu_{B}=0
+\end{cases}
+\]
+
+
+\[
+f\left(v_{B}\right)-f\left(v_{A}\right)+p_{0}\left(v_{B}-v_{A}\right)=0
+\]
+
+
+\[
+-\int_{v_{A}}^{v_{B}}p\left(v\right)\mathrm{d}v+p_{0}\int_{v_{A}}^{v_{B}}\mathrm{d}v=0
+\]
+
+
+\[
+\int_{v_{A}}^{v_{B}}\left(p_{0}-p\left(v\right)\right)\mathrm{d}v=0
+\]
+
+
+このとき直線$p=p_{0}$と等温線が囲む2つの領域の面積が等しくなる。これをマクスウェルの等面積則という。
+
+また$f-v$グラフにおいて二重接線と等温線が囲む領域は実際には存在せず、$A,B$間の等温線は直線となる。
+
+※以下は試験範囲とならない。
+
+
+\subsection{多成分系の相平衡とギブスの相律(phase rule)}
+
+$k$種類の粒子からなる系(混合系, mixture)への拡張を考える。
+
+ヘルムホルツの自由エネルギー$F\left(T,V,N_{1},N_{2},\cdots,N_{k}\right)$
+
+$N_{i}$: $i$番目の粒子の数
+
+\[
+\mathrm{d}F=-S\mathrm{d}T-p\mathrm{d}V+\mu_{1}\mathrm{d}N_{1}+\mu_{2}\mathrm{d}N_{2}+\cdots+\mu_{k}\mathrm{d}N_{k}
+\]
+
+
+\[
+\mathrm{d}G=-S\mathrm{d}T-V\mathrm{d}p+\mu_{1}\mathrm{d}N_{1}+\mu_{2}\mathrm{d}N_{2}+\cdots+\mu_{k}\mathrm{d}N_{k}
+\]
+
+
+\[
+G\left(T,p,N_{1},N_{2},\cdots,N_{k}\right)=\mu_{1}N_{1}+\mu_{2}N_{2}+\cdots+\mu_{k}N_{k}
+\]
+
+
+全粒子数を$N=N_{1}+N_{2}+\cdots+N_{k}$とする。
+
+$c_{i}=\frac{N_{i}}{N}$: 濃度(concentration)
+
+\[
+G=Ng\left(T,p,c_{1},c_{2},\cdots,c_{k}\right)
+\]
+
+
+$\sum_{i=1}^{k}c_{i}=1$なので、$c_{1},\cdots,c_{k}$は全て独立ではない。
+
+\[
+g=\mu_{1}c_{1}+\mu_{2}c_{2}+\mu_{k}c_{k}
+\]
+
+
+これは平均化された化学ポテンシャルである。
+
+混合系が$f$種類の相に分離して平衡であるとする。
+
+$N_{i}^{\left(j\right)}$: $j$相に入っている$i$粒子の数
+
+\[
+N^{\left(j\right)}=N_{1}^{\left(j\right)}+N_{2}^{\left(j\right)}+\cdots+N_{k}^{\left(j\right)}
+\]
+
+
+$c_{i}^{\left(j\right)}=\frac{N_{i}^{\left(j\right)}}{N^{\left(j\right)}}$:
+$j$相の$i$粒子の濃度
+
+
+\paragraph{平衡条件}
+
+$\left(T,p\right)$は同じ。
+
+$i=1,2,\cdots,k$について
+
+\[
+\mu_{i}^{\left(1\right)}=\mu_{i}^{\left(2\right)}=\mu_{i}^{\left(3\right)}=\cdots=\mu_{i}^{\left(f\right)}
+\]
+
+
+これは$k\times\left(f-1\right)$の条件式である。
+
+全体の変数の数は$T,p$の2つと
+
+\[
+\begin{array}{c}
+c_{1}^{\left(1\right)},\cdots,c_{1}^{\left(f\right)}\\
+\vdots\\
+c_{k}^{\left(1\right)},\cdots,c_{k}^{\left(f\right)}
+\end{array}
+\]
+
+
+の$f\times k$個。
+
+ただし
+\[
+c_{1}^{\left(i\right)}+c_{2}^{\left(i\right)}+\cdots+c_{k}^{\left(i\right)}=1
+\]
+
+
+の$k$個の条件が適用される。
+
+自由に変化させることのできる独立変数の数は
+
+\begin{eqnarray*}
+\nu & = & 2+f\times k-f-k\cdot\left(f-1\right)\\
+ & = & 2-f+k\text{(5.4.5)}
+\end{eqnarray*}
+
+
+ここで
+
+$f$: 相の数\\
+$k$: 粒子の種類の数
+
+これをギブスの相律と呼ぶ。
+
+
+\subsubsection{例}
+
+
+\paragraph{1.}
+
+1成分で1つの相$k=f=1$
+
+\[
+\nu=2-1+1=2
+\]
+
+
+$\left(T,p\right)$を独立に選べる。
+
+
+\paragraph{2.}
+
+1成分で2つの相$k=1,f=2$
+
+\[
+\nu=2-2+1=1
+\]
+
+
+$\left(T,p\right)$は曲線上に拘束される。
+
+
+\paragraph{3.}
+
+1成分で3つの相$k=1,f=3$
+
+\[
+\nu=2-3+1=0
+\]
+
+
+$\left(T,p\right)$は三重点のただ一点のみ。
+
+
+\paragraph{4.}
+
+2成分で1つの相$k=2,f=1$
+
+\[
+\nu=2-1+2=3
+\]
+
+
+$\left(T,p,G\right)$を独立に選べる。
+
+
+\paragraph{5.}
+
+2成分で2つの相$k=2,f=2$
+
+\[
+\nu=2-2+2=2
+\]
+
+
+$\left(T,p\right)$を独立に選べる。これはコップの中の水の状態と同じである。コップの中の水は$T<100^{\circ}\mathrm{C}$でも水面が存在する理由となる。
+
+
+\paragraph{6.}
+
+0成分の場合?$k=0,f=1$
+
+\[
+\nu=2-1+0=1
+\]
+
+
+これは空洞輻射である。
+
+\[
+p=cT^{4}
+\]
+
+
+であり、シュテファン・ボルツマンの法則という。
+
+宿題: 例題3の5,8,13,15を解いて7/31(水)までにアドミニ棟のBOXに提出のこと。
+\end{document}

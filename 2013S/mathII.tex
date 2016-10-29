@@ -1,0 +1,4412 @@
+%% LyX 2.0.0 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\setlength{\textwidth}{17cm}
+\setlength{\textheight}{24cm}
+\setlength{\leftmargin}{-1cm}
+\setlength{\topmargin}{-2cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+
+\usepackage{xltxtra}
+\setmainfont{RyuminPr5-Light}
+\setsansfont{IPAPGothic}
+\setmonofont{IPAGothic}
+\XeTeXlinebreaklocale "ja"
+
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\DeclareRobustCommand{\greektext}{%
+  \fontencoding{LGR}\selectfont\def\encodingdefault{LGR}}
+\DeclareRobustCommand{\textgreek}[1]{\leavevmode{\greektext #1}}
+\DeclareFontEncoding{LGR}{}{}
+\DeclareTextSymbol{\~}{LGR}{126}
+
+\makeatother
+
+\usepackage{babel}
+\usepackage{xunicode}
+\begin{document}
+
+\title{数学II 講義ノート}
+
+
+\author{寺杣 友秀}
+
+
+\date{2013夏学期}
+\maketitle
+\begin{abstract}
+授業科目名: 数学Ⅱ①
+
+時間割コード: 10520
+
+曜限: 火3
+
+開講区分: 夏学期
+
+単位数: 2
+
+教室: 531教室
+
+対象クラス: 1年 理一(25-27)
+
+科目区分: 基礎科目 数理科学
+
+入力: 博多市
+\end{abstract}
+この講義で扱う内容: 線形代数
+\begin{itemize}
+\item ベクトル空間
+\item 線形写像
+\end{itemize}
+教科書: http://gauss.ms.u-tokyo.ac.jp/
+
+
+\subsection{講義(期末テスト)と演習(小テスト)}
+
+一回目 一回目の内容(解答)
+
+二回目 休み
+
+三回目 一回目のテスト＋2,3回目の内容(解答)
+
+
+\subsection{今後の予定}
+
+
+\subsubsection{前期}
+
+一回目 平面、空間ベクトル・複素数
+
+二回目 行列
+
+三回目 線形写像
+
+四回目 一次方程式の解法
+
+五回目 行列式
+
+
+\subsubsection{後期}
+
+抽象的なベクトル空間
+
+線形写像
+
+固有値、固有空間、円積空間
+
+
+\section{平面ベクトル、空間ベクトル、複素数}
+
+
+\subsection{集合論の復習}
+
+集合=ものの集まり
+
+集合論はモノの集まりを記述する言葉を用いる
+
+E.g. 1以上3以下の自然数 → $\left\{ 1,2,3\right\} $,$\left\{ x\text{は自然数}|1\text{≦}x\text{≦}3\right\} $
+
+$\left\{ \right\} $: 集合を表すときに使う括弧
+
+$\left\{ \text{集合の元}|\text{条件}\right\} $と表す
+
+
+\subsubsection{よく使う記号}
+
+$\mathbb{N}$: 自然数全体の集合 = $\left\{ 1,2,3\cdots\right\} $
+
+$\mathbb{Z}$: 整数全体の集合 = $\left\{ 0,\pm1,\pm2\cdots\right\} $
+
+$\mathbb{R}$: 実数全体の集合
+
+$\mathbb{C}$: 複素数全体の集合 = $\left\{ x+yi|x,y\text{は実数、}i\text{は虚数単位}\right\} $
+
+
+\subsubsection{属する}
+
+$A$: 集合
+
+$x$が$A$に属しているものとする=$x$は$A$の元である
+
+→記号$x\in A$と書く
+
+そうでないとき$x\notin A$と書く
+
+e.g. $A=\left\{ 1,2,3\right\} $
+
+$1\in A,4\notin A$
+
+
+\subsubsection{包含関係}
+
+$A=\left\{ 1,2,3\right\} ,B=\left\{ 2,3\right\} ,C=\left\{ 3,4\right\} $
+
+この時、$B$は$A$に含まれる→$B\subset A$と書く
+
+正確な定義: 「$B$が$A$に含まれる」ということは「$x\in B$ ならば$x\in A$」
+
+そうでない時、$C$は$A$に含まれない→$C\not\subset A$と書く 
+
+「$B$は$A$に入っている」などの曖昧な言葉は使わない
+
+
+\subsubsection{ならば}
+
+$A\Rightarrow B$: 「$A$ならば$B$」
+
+「$A$が成立していれば$B$が成立する」
+
+$A$が成立していない時は？
+
+「$A$ならば$B$」は「$A$であって$B$でない」ことはないということ
+
+$x$は実数とする。
+
+「$x^{2}+1=0$ならば$x=3$である」は正しい命題
+
+「$x^{2}+1=0$ならば$x\neq3$である」も正しい命題
+
+
+\subsubsection{同値}
+
+$A\Leftrightarrow B$: 「$A$ならば$B$」かつ「$B$ならば$A$」
+
+
+\subsection{平面ベクトル、空間ベクトル}
+
+
+\subsubsection{平面ベクトルの定義}
+
+始点と終点が定まっているもの
+
+記号$\vec{v}$、始点$P$、終点$Q$、記号$\vec{v}'$、始点$P'$、終点$Q'$とする。
+
+$P$を$P'$に移し、$Q$を$Q'$に移す平行移動がある時は同一視する。
+
+始点$P$、終点$Q$のベクトルは$\vec{PQ}$と表す。
+
+
+\subsubsection{成分表示}
+
+平面の座標を取り、$\vec{v}=\vec{PQ}$に対して始点が原点になるように平行移動する。その時の終点の座標を$\left(x_{1},y_{1}\right)$とすると、2つの実数の組$\left(x_{1},y_{1}\right)$が定まる。この$\left(x_{1},y_{1}\right)$を$\vec{v}$の成分表示という。
+
+この対応で、「平面ベクトル全体の集合」と「2つの実数の組の2つの集合」は一対一に対応する。
+
+
+\subsubsection{加法}
+
+$\vec{v},\vec{w}$を2つの平面ベクトルとする。
+
+$\vec{w}$の始点を$\vec{v}$の終点と一致させる。→$\vec{v}$の始点を始点として、$\vec{w}$の終点を終点とするベクトルが定まる。これを$\vec{v}+\vec{w}$と書く。
+
+これにより、ベクトルの加法が定まる。
+
+
+\subsubsection{スカラー倍}
+
+$\vec{v}$をベクトル、$r$を実数とする。
+\begin{enumerate}
+\item $r>0$のとき、$r\vec{v}$は$\vec{v}$と同じ方向で長さ$r$倍のベクトル
+\item $r=0$のとき、始点＝終点のベクトルとして$r\vec{v}$を定める。
+\item $r<0$のとき、$r\vec{v}$は$\vec{v}$と逆方向で長さ$\left|r\right|$倍のベクトル
+\end{enumerate}
+
+\subsubsection{成分表示の関係}
+
+
+\paragraph{加法}
+
+$\vec{v_{1}}=\left(x_{1},y_{1}\right),\vec{v_{2}}=\left(x_{2},y_{2}\right)$
+
+\[
+\vec{v_{1}}+\vec{v_{2}}=\left(x_{1}+x_{2},y_{1}+y_{2}\right)
+\]
+
+
+
+\paragraph{スカラー倍}
+
+$r\in\mathbb{R},\vec{v_{1}}=\left(x_{1},y_{1}\right)$とする。
+
+\[
+r\vec{v_{1}}=\left(rx_{1},ry_{1}\right)
+\]
+
+
+
+\subsubsection{法則}
+
+$\vec{v_{1}},\vec{v_{2}},\vec{v_{3}}$をベクトル、$r_{1},r_{2}\in\mathbb{R}$とする。
+\begin{enumerate}
+\item $\vec{v_{1}}+\vec{v_{2}}=\vec{v_{2}}+\vec{v_{1}}$
+\item $\left(\vec{v_{1}}+\vec{v_{2}}\right)+\vec{v_{3}}=\vec{v_{1}}+\left(\vec{v_{2}}+\vec{v_{3}}\right)$
+\item $\vec{0}+\vec{v_{1}}=\vec{v_{1}}$
+\item $\left(-1\right)\cdot\vec{v_{1}}=-\vec{v_{1}}$とおくと、$\vec{v_{1}}+\left(-\vec{v_{1}}\right)=\vec{0}$
+\item $1\cdot\vec{v_{1}}=\vec{v_{1}}$
+\item $\left(r_{1}r_{2}\right)\vec{v_{1}}=r_{1}\left(r_{2}\vec{v_{1}}\right)$
+\item $\left(r_{1}+r_{2}\right)\vec{v_{1}}=r_{1}\vec{v_{1}}+r_{2}\vec{v_{1}}$、$r_{1}\left(\vec{v_{1}}+\vec{v_{2}}\right)=r_{1}\vec{v_{1}}+r_{1}\vec{v_{2}}$
+\end{enumerate}
+
+\subsubsection{空間ベクトル}
+
+空間ベクトルについても同様にできる。
+
+
+\subsubsection{始点、終点、成分表示}
+
+$\vec{v}$を空間ベクトルとし、座標を固定する。
+
+$\vec{v}$の始点を原点→終点の座標$\left(x_{1},y_{1},z_{1}\right)$となるとき、$\left(x_{1},y_{1},z_{1}\right)$を$\vec{v}$の成分表示という。
+
+他に、加法、スカラー倍も求まる。→1.～7.成立
+
+
+\subsection{ベクトルの内積}
+
+
+\subsubsection{定義}
+
+$\vec{v},\vec{w}$を平面ベクトルとする。
+
+$\vec{v}\cdot\vec{w}$あるいは$\left(\vec{v},\vec{w}\right)$を次のように定める。
+
+$\left\Vert \vec{v}\right\Vert =\vec{v}\text{の長さ}$
+
+$\theta=\text{2つのベクトルのなす角}$
+
+\[
+\left(\vec{v},\vec{w}\right)=\left\Vert \vec{v}\right\Vert \left\Vert \vec{w}\right\Vert \cos\theta
+\]
+
+
+ただし$\vec{v},\vec{w}$のいずれかが$\vec{0}$の場合$\left(\vec{v},\vec{w}\right)=\vec{0}$と定める。
+
+
+\subsubsection{命題1.9}
+
+$\vec{v_{1}}=\left(x_{1},y_{1}\right),\vec{v_{2}}=\left(x_{2},y_{2}\right)$とおく。
+
+このとき、
+\[
+\left(\vec{v_{1}},\vec{v_{2}}\right)=x_{1}x_{2}+y_{1}y_{2}
+\]
+
+
+
+\subsubsection{証明}
+
+$\left\Vert \vec{v_{1}}\right\Vert \neq0,\left\Vert \vec{v_{2}}\right\Vert \neq0$とする。
+
+$\theta=\text{2つのベクトルのなす角}$
+
+第二余弦定理より
+
+\[
+\cos\theta=\frac{\left\Vert \vec{v_{1}}\right\Vert ^{2}+\left\Vert \vec{v_{2}}\right\Vert ^{2}-\left\Vert \vec{v_{1}}-\vec{v_{2}}\right\Vert ^{2}}{2\left\Vert \vec{v_{1}}\right\Vert \left\Vert \vec{v_{2}}\right\Vert }
+\]
+
+
+$\vec{v_{1}}=\left(x_{1},y_{1}\right),\vec{v_{2}}=\left(x_{2},y_{2}\right),\vec{v_{1}}-\vec{v_{2}}=\left(x_{1}-x_{2},y_{1}-y_{2}\right)$より、
+
+\begin{eqnarray*}
+\cos\theta & = & \frac{\left\Vert \vec{v_{1}}\right\Vert ^{2}+\left\Vert \vec{v_{2}}\right\Vert ^{2}-\left\Vert \vec{v_{1}}-\vec{v_{2}}\right\Vert ^{2}}{2\left\Vert \vec{v_{1}}\right\Vert \left\Vert \vec{v_{2}}\right\Vert }\\
+2\left\Vert \vec{v_{1}}\right\Vert \left\Vert \vec{v_{2}}\right\Vert \cos\theta & = & \left(x_{1}^{2}+y_{1}^{2}\right)+\left(x_{2}^{2}+y_{2}^{2}\right)-\left(\left(x_{1}^{2}-x_{2}^{2}\right)+\left(y_{1}^{2}-y_{2}^{2}\right)\right)\\
+ & = & 2\left(x_{1}x_{2}+y_{1}y_{2}\right)
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+\left(\vec{v_{1}},\vec{v_{2}}\right) & = & \left\Vert \vec{v_{1}}\right\Vert \left\Vert \vec{v_{2}}\right\Vert \cos\theta\\
+ & = & x_{1}x_{2}+y_{1}y_{2}
+\end{eqnarray*}
+
+
+空間ベクトルの場合も同様に$\vec{v_{1}}=\left(x_{1},y_{1},z_{1}\right),\vec{v_{2}}=\left(x_{2},y_{2},z_{3}\right)$とおくと、
+\[
+\left(\vec{v_{1}},\vec{v_{2}}\right)=x_{1}x_{2}+y_{1}y_{2}+z_{1}z_{2}
+\]
+
+
+となる。
+
+
+\subsection{複素数}
+
+
+\subsubsection{極形式、ド・モアブルの定理}
+
+$x,y\in\mathbb{R}$のとき、$x+y\mathrm{i}$の形のものを複素数という。(規則、$\mathrm{i}^{2}=-1$)(結合法則、分配法則)
+
+この時、$z=x+y\mathrm{i}$に対して複素共役$\overline{z}=x-y\mathrm{i}$と定めた。(xはzの実部$\mathrm{Re}\left(z\right)$、yはzの虚部$\mathrm{Im}\left(z\right)$と書く)
+
+
+\subsubsection{性質}
+
+\[
+z\cdot\overline{z}=\sqrt{z\cdot\overline{z}}
+\]
+として定める。これをzの絶対値という。
+
+\[
+z\left(\dfrac{\overline{z}}{|z|^{2}}\right)=1
+\]
+より$z\neq0$なら逆数がある。
+
+
+\subsubsection{複素平面}
+
+$\mathbb{C}$=複素数全体の集合
+
+$z=x+y\mathrm{i}\in\mathbb{C}$に対して座標平面上の一点$\left(x,y\right)$を対応させる。
+
+「複素数全体の集合⇔平面内の点の集合」で一対一で対応する。
+
+x-y座標平面における$x$軸を実軸と呼び、$y$軸を虚軸と呼ぶ。
+
+$z$は原点からの距離と実軸の正の部分のなす角$\theta$で表せる($z\neq0$とする)。
+
+\[
+r=\sqrt{x^{2}+y^{2}}+\sqrt{z\cdot\overline{z}}=|z|
+\]
+
+
+$\theta=z\text{の偏角}$(角は弧度法で実軸から反時計回りを正の方向とする。)
+
+このとき、
+
+\[
+x=r\cos\theta
+\]
+
+
+\[
+y=r\sin\theta
+\]
+なので、
+\[
+z=r\left(\cos\theta+i\sin\theta\right)
+\]
+となる。
+
+$r$と$\theta$を用いて$z$を表した形を極形式という。
+
+⇒極形式は、乗法に関する振る舞いがよい
+
+\begin{eqnarray*}
+z_{1} & = & x_{1}+y_{1}\mathrm{i}\\
+ & = & r_{1}\left(\cos\theta_{1}+\mathrm{i}\sin\theta_{1}\right)
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+z_{2} & = & x_{2}+y_{2}\mathrm{i}\\
+ & = & r_{2}\left(\cos\theta_{2}+\mathrm{i}\sin\theta_{2}\right)
+\end{eqnarray*}
+
+
+と置くと、
+
+\begin{eqnarray*}
+z_{1}z_{2} & = & r_{1}r_{2}\left(\cos\theta_{1}+\mathrm{i}\sin\theta_{1}\right)\left(\cos\theta_{2}+\mathrm{i}\sin\theta_{2}\right)\\
+ & = & r_{1}r_{2}\left\{ \left(\cos\theta\cos\theta_{2}-\sin\theta_{1}\sin\theta_{2}\right)+\left(\cos\theta_{1}\sin\theta_{2}+\sin\theta_{1}\cos\theta_{2}\right)\right\} \\
+ & = & r_{1}r_{2}\left(\cos\left(\theta_{1}+\theta_{2}\right)+\sin\left(\theta_{1}+\theta_{2}\right)\mathrm{i}\right)\\
+ & = & r_{1}r_{2}\left(\cos\left(\theta_{1}+\theta_{2}\right)+\mathrm{i}\sin\left(\theta_{1}+\theta_{2}\right)\right)
+\end{eqnarray*}
+
+
+
+\subsubsection{記号}
+
+zの偏角を$\mathrm{ang}\left(z\right)$と書く($\mathrm{ang}\left(z\right)$は2πの整数倍の差を除いて定まる)
+
+従って$z,\omega\in\mathbb{C}\Rightarrow\mathrm{ang}\left(z\right)+\mathrm{ang}\left(\omega\right)$も2πの整数倍を除いて定まる。
+
+命題 1.20
+
+(1) $\left|z_{1}z_{2}\right|=\left|z_{1}\right|\left|z_{2}\right|$
+
+(2) $\mathrm{ang}\left(z_{1}z_{2}\right)=\mathrm{ang}\left(z_{1}\right)+\mathrm{ang}\left(z_{2}\right)$(ただし2πの整数倍の差は除く)
+
+
+\subsubsection{系}
+
+$n\geqq1$の整数として、
+
+$z=r\left(\cos\theta+\mathrm{i}\sin\theta\right)$とすると、
+
+\[
+z^{n}=\overbrace{z\cdots z}^{n}=r^{n}\left(\cos\left(n\theta\right)+\mathrm{i}\sin\left(n\theta\right)\right)
+\]
+(ド・モアブルの定理)
+
+
+\subsubsection{演習問題}
+
+(1)$z\neq0,n>0,n\in\mathbb{N}$
+
+\[
+z^{-n}=\dfrac{1}{\underbrace{z\cdot z\cdots z}_{n}}\in\mathbb{C}
+\]
+
+
+と定めると、$-n\left(n>0\right)$の時もド・モアブルの定理が成立することを示せ。
+
+(2) $n>1,n\in\mathbb{N}$
+
+$z^{n}=1$となる$z\in\mathbb{C}$をすべて求めよ。
+
+
+\subsubsection{オイラーの記法}
+
+$\omega=a+b\mathrm{i}$
+
+\[
+e=\text{自然対数の底}=2.71828\cdots
+\]
+
+
+(ネーピアの定数)
+
+$\mathrm{e}^{\omega}=\mathrm{e}^{a+b\mathrm{i}}$を
+\[
+\mathrm{e}^{a}\left(\cos b+\mathrm{i}\sin b\right)
+\]
+と定める。
+
+\[
+\omega_{1}=a_{1}+b_{1}\mathrm{i}
+\]
+\[
+\omega_{2}=a_{2}+b_{2}\mathrm{i}
+\]
+とすると、
+
+\begin{eqnarray*}
+\mathrm{e}^{\omega_{1}}\mathrm{e}^{\omega_{2}} & = & \mathrm{e}^{a_{1}}\left(\cos b_{1}+\mathrm{i}\sin b_{1}\right)\mathrm{e}^{a_{2}}\left(\cos b_{2}+\mathrm{i}\sin b_{2}\right)\\
+ & = & \mathrm{e}^{a_{1}+a_{2}}\left(\cos\left(b_{1}+b_{2}\right)+\mathrm{i}\sin\left(b_{1}+b_{2}\right)\right)\\
+ & = & \mathrm{e}^{a_{1}+a_{2}+\mathrm{i}\left(b_{1}+b_{2}\right)}\\
+ & = & \mathrm{e}^{\omega_{1}+\omega_{2}}
+\end{eqnarray*}
+
+
+\[
+\mathrm{e}^{\omega_{1}}\mathrm{e}^{\omega_{2}}=\mathrm{e}^{\omega_{1}\omega_{2}}
+\]
+指数定理は複素数まで拡張できる。
+
+これは自然な拡張ということができる。
+
+
+\subsubsection{問題}
+
+$z\in\mathbb{C}$に対して、
+
+\[
+\sin\left(z\right)=\dfrac{\mathrm{e}^{\mathrm{i}z}-\mathrm{e}^{-\mathrm{i}z}}{2i}
+\]
+
+
+\[
+\cos\left(z\right)=\dfrac{\mathrm{e}^{\mathrm{i}z}+\mathrm{e}^{-\mathrm{i}z}}{2}
+\]
+
+
+と定めると$z\in\mathbb{R}$の時は今までの三角関数と一致することを示せ。
+
+
+\section{行列}
+
+\[
+m,n\geqq1,m,n\in\mathbb{R}
+\]
+
+
+数が縦に$m$個、横に$n$個で長方形の形に並んでいるものを$\left(m,n\right)$行列という。
+
+\[
+\left(\begin{array}{ccccc}
+a_{11} & a_{12} & a_{13} & \cdots & a_{1n}\\
+a_{21} & a_{22} & a_{23} & \cdots & a_{2n}\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+a_{m1} & a_{m2} & a_{m3} & \cdots & a_{mn}
+\end{array}\right)
+\]
+
+
+$i$行目$\left(1\leqq i\leqq m\right)$$j$列目$\left(1\leqq j\leqq n\right)$を$\left(i,j\right)$成分という。
+
+
+\subsection{行列の定め方}
+\begin{itemize}
+\item すべての要素を与える
+\item $\left(i,j\right)$に来る数を規則によって与える\\
+例 $\left(i,j\right)$成分に$\left(i+j\right)$が並んでいる$\left(2\times3\right)$行列\\
+$\left(\begin{array}{ccc}
+2 & 3 & 4\\
+3 & 4 & 5
+\end{array}\right)$
+\end{itemize}
+
+\subsection{記法}
+
+$a_{ij}$が$\left(i,j\right)$成分に並んでいる行列を$\left(a_{ij}\right)_{ij}$と書く。
+(例 $\left(i+j\right)_{ij}$)
+
+\[
+\left(a_{ij}\right)_{ij}=\left(\begin{array}{cccc}
+a_{11} & a_{12} & a_{13} & \cdots\\
+a_{21} & a_{22} & a_{23} & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{array}\right)
+\]
+なので、時にi,jを略して$\left(a_{ij}\right)$と書く
+
+
+\subsection{色々な行列と呼称}
+
+(1) $\left(\begin{array}{ccc}
+0 & \cdots & 0\\
+\vdots & \ddots & \vdots\\
+0 & \cdots & 0
+\end{array}\right)$を0行列という。記号$\mathbb{O}$と書く。
+
+(2) $m=n$の時の$\left(m,n\right)$行列を$n$次正方行列という。
+
+このとき$i=j$である$\left(i,j\right)$成分を対角成分という。
+
+(3) 対角成分以外がすべて0である正方行列を対角行列という。
+
+更に対角成分が1の行列を単位行列という。
+
+$n$次の単位行列を$\mathbb{E}_{n}$と書く。
+
+例 4次の単位行列$\mathbb{E}_{4}=\left(\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{array}\right)$
+
+(4) 対角線の上側/下側にある成分が全て0の行列
+
+$\left(a_{ij}\right)_{ij}$について$a_{ij}=0$$\left(i>j\right)$であるものを上半三角行列という。
+
+$\left(a_{ij}\right)_{ij}$について$a_{ij}=0$$\left(i<j\right)$であるものを下半三角行列という。
+
+例 3×3の上半三角行列$\left(\begin{array}{ccc}
+a_{11} & a_{12} & a_{13}\\
+0 & a_{22} & a_{23}\\
+0 & 0 & a_{33}
+\end{array}\right)$
+
+(5) $m=1$のとき(1行)、行ベクトルという。
+
+\[
+\left(\begin{array}{cccc}
+a_{11} & a_{12} & \cdots & a_{1n}\end{array}\right)\:(n\text{次元})
+\]
+
+
+$n=1$のとき(1列)、列ベクトルという。
+
+\[
+\left(\begin{array}{c}
+a_{11}\\
+a_{21}\\
+\vdots\\
+a_{m1}
+\end{array}\right)\:(m\text{次元})
+\]
+
+
+
+\subsection{行列の和、スカラー倍}
+
+$A,B$を$\left(m\times n\right)$行列とする。
+
+$A$の$\left(i,j\right)$成分を$a_{ij}$とすると
+\[
+A=\left(a_{ij}\right)_{ij}
+\]
+
+
+以下このように表記する
+
+$B=\left(b_{ij}\right)_{ij}$とする。
+
+
+\subsubsection{和}
+
+$A$と$B$の和$A+B$を
+\[
+A+B=\left(a_{ij}+b_{ij}\right)_{ij}
+\]
+で定める。(つまり$\left(i,j\right)$成分が$a_{ij}+b_{ij}$で与えられている)
+
+
+\subsubsection{スカラー倍}
+
+$r\in\mathbb{R}$
+
+以下、数=実数(スカラー)とする。理論的には複素数、有理数などでも可である
+
+$rA=\left(ra_{ij}\right)_{ij}$として定める。($\left(i,j\right)$成分に$ra_{ij}$を与えたもの)
+
+例 $A=\left(\begin{array}{cc}
+1 & 2\\
+3 & 4
+\end{array}\right)$ $B=\left(\begin{array}{cc}
+2 & 3\\
+4 & 1
+\end{array}\right)$
+
+\begin{eqnarray*}
+3A+2B & = & \left(\begin{array}{cc}
+3\cdot1 & 3\cdot2\\
+3\cdot3 & 3\cdot4
+\end{array}\right)+\left(\begin{array}{cc}
+4 & 6\\
+8 & 2
+\end{array}\right)\\
+ & = & \left(\begin{array}{cc}
+7 & 12\\
+17 & 14
+\end{array}\right)
+\end{eqnarray*}
+
+
+
+\subsection{命題}
+\begin{enumerate}
+\item $A+\mathbb{O}=A$
+\item $A+B=B+A$ ($A,B$は$\left(m\times n\right)$行列)
+\[
+\left(A+B\right)+C=A+\left(B+C\right)
+\]
+
+\item $1\cdot A=A$\\
+$r,s\in\mathbb{R}$について
+\[
+\left(rs\right)A=r\left(sA\right)
+\]
+
+\item $r,s\in\mathbb{R}$\\
+$A,B$を$\left(m\times n\right)$行列とすると
+\[
+\left(r+s\right)A=rA+sA
+\]
+\[
+r\left(A+B\right)=rA+rB
+\]
+
+\end{enumerate}
+これは各成分ごとに見れば実数について成り立つ性質から導かれる。
+
+
+\section{--}
+
+
+\subsection{--}
+
+
+\subsection{行列の和・積、スカラー倍}
+
+$A,B$を$\left(m\times n\right)$行列とする。
+
+$A=\left(a_{ij}\right)_{ij},B=\left(b_{ij}\right)_{ij}$
+
+つまり
+
+\[
+A=\left(\begin{array}{cccc}
+a_{11} & a_{12} & \cdots & a_{1n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{array}\right)
+\]
+
+
+
+\paragraph{和}
+
+\[
+A+B=\left(a_{ij}+b_{ij}\right)_{ij}\:\left(\left(i,j\right)\text{成分が}a_{ij}+b_{ij}\text{で与える}\right)
+\]
+で定める
+
+
+\paragraph{スカラー倍}
+
+$r\in\mathbb{R}\text{に対して}rA=\left(ra_{ij}\right)_{ij}\text{で定める}$
+
+
+\subsubsection{行列の積}
+
+$A:\left(m\times n\right)\text{行列}$
+
+$B:\left(n\times l\right)\text{行列}$
+
+のとき、積$AB$が定義される($A$の列数=$B$の行数)
+
+$AB$は$\left(m\times l\right)$行列である。
+
+\[
+A=\left(a_{ij}\right)_{ij},B=\left(b_{jk}\right)_{jk}
+\]
+
+
+$AB\text{の}\left(i,k\right)\text{成分を}C_{ik}\text{とおくと、}$
+
+\[
+C_{ik}=\sum_{j=1}^{n}a_{ij}b_{jk}
+\]
+
+
+で定める…(1)
+
+
+\subsubsection{例}
+
+\[
+A=\left(\begin{array}{cc}
+a_{11} & a_{12}\\
+a_{21} & a_{22}
+\end{array}\right)
+\]
+
+
+\[
+B=\left(\begin{array}{cc}
+b_{11} & b_{12}\\
+b_{21} & b_{22}
+\end{array}\right)
+\]
+
+
+(1) 定義に従って
+
+\[
+c_{11}=\sum_{j=1}^{2}a_{1j}b_{j1}=a_{11}b_{11}+a_{12}b_{21}
+\]
+
+
+\[
+c_{12}=\sum_{j=1}^{2}a_{1j}b_{j2}=a_{11}b_{12}+a_{12}b_{22}
+\]
+
+
+図形的に
+
+\[
+\left(\begin{array}{cc}
+a_{11} & a_{12}\\
+a_{21} & a_{22}
+\end{array}\right)\left(\begin{array}{cc}
+b_{11} & b_{12}\\
+b_{21} & b_{22}
+\end{array}\right)=\left(\begin{array}{cc}
+a_{11}b_{11}+a_{12}b_{21} & a_{11}b_{12}+a_{12}b_{22}\\
+a_{21}b_{11}+a_{22}b_{21} & a_{21}b_{12}+a_{22}b_{22}
+\end{array}\right)
+\]
+
+
+
+\subsubsection{命題}
+
+$A\text{を}\left(m\times n\right)\text{行列とする}$
+
+\[
+E_{m}A=A
+\]
+
+
+\[
+AE_{n}=A
+\]
+
+
+
+\subsubsection{証明}
+
+クロネッカーのデルタ記号$\delta_{ij}$
+
+\[
+\delta_{ij}=\begin{cases}
+1 & \left(i=j\right)\\
+0 & \left(i\neq j\right)
+\end{cases}
+\]
+
+
+を用いると、$E_{m}=\left(\delta_{ij}\right)_{ij}$と書ける
+
+$A=\left(a_{ij}\right)_{ij}=\left(a_{jk}\right)_{jk}$とおく。
+
+$E_{m}A\text{の}\left(j,k\right)\text{成分を求める。}$
+
+\[
+\left(E_{m}A\right)_{ik}=\sum_{j=1}^{m}\delta_{ij}a_{jk}
+\]
+
+
+この和においてjがiでないところは寄与しない。
+
+\begin{eqnarray*}
+\left(E_{m}A\right)_{ik} & = & \delta_{ij}a_{ik}\\
+ & = & a_{ik}\\
+ & = & \left(A\right)_{ik}
+\end{eqnarray*}
+
+
+\[
+\therefore E_{m}A=A
+\]
+
+
+(つまり$E_{m}$は左からの乗法に対する単位元)
+
+$A\cdot E_{m}=A\text{も同様に示せる。}Q.E.D$
+
+
+\subsubsection{行列の積に関する結合法則}
+
+$A\left(m\times n\right)\text{行列、}B\left(n\times p\right)\text{行列、}C\left(p\times q\right)\text{行列とする}$
+
+$AB\text{は}\left(m\times q\right)\text{行列、}BC\text{は}\left(n\times q\right)\text{行列}\text{となる。このとき、}$
+
+\[
+\left(AB\right)C=A\left(BC\right)\:(\text{ともに}\left(m\times q\right)\text{行列})
+\]
+
+
+
+\subsubsection{定理}
+
+A,B,Cを上記のサイズの行列とすると
+
+\[
+\left(AB\right)C=A\left(BC\right)
+\]
+
+
+が成立する。
+
+
+\subsubsection{証明}
+
+\[
+A=\left(a_{ij}\right)_{ij}
+\]
+
+
+\[
+B=\left(b_{js}\right)_{js}
+\]
+
+
+\[
+C=\left(c_{st}\right)_{st}
+\]
+
+
+$\left(1\leqq i\leqq m,\;1\leqq j\leqq n,\;1\leqq s\leqq p,\;1\leqq t\leqq q\right)$
+
+(1) $\left(AB\right)C$を求める。
+
+\[
+\left(AB\right)_{is}=\sum_{j=1}^{n}a_{ij}b_{js}
+\]
+
+
+\begin{eqnarray*}
+\left(\left(AB\right)C\right)_{it} & = & \sum_{s=1}^{p}\left(AB\right)_{is}c_{st}\\
+ & = & \sum_{s=1}^{p}\left(\sum_{j=1}^{n}a_{ij}b_{js}\right)c_{st}\\
+ & = & \sum_{s=1}^{p}\left(\sum_{j=1}^{n}a_{ij}b_{js}c_{st}\right)\\
+ & = & \sum_{1\leqq s\leqq p,1\leqq j\leqq n}\left(a_{ij}b_{js}c_{st}\right)
+\end{eqnarray*}
+…(2)
+
+(2) $a\left(BC\right)\text{を求める}\text{。}$
+
+\[
+\left(BC\right)_{jt}=\sum_{s=1}^{p}b_{js}c_{st}
+\]
+
+
+\begin{eqnarray*}
+\left(A\left(BC\right)\right)_{it} & = & \sum_{j=1}^{n}a_{ij}\left(BC\right)_{jt}\\
+ & = & \sum_{j=1}^{n}a_{ij}\left(\sum_{s=1}^{p}b_{js}c_{st}\right)\\
+ & = & \sum_{j=1}^{n}\left(\sum_{j=1}^{p}a_{ij}b_{js}c_{st}\right)\\
+ & = & \sum_{1\leqq s\leqq p,1\leqq j\leqq n}\left(a_{ij}b_{js}c_{st}\right)
+\end{eqnarray*}
+
+
+…(2)
+
+
+\subsubsection{命題}
+
+$A_{1},A_{2}\text{を}\left(m\times n\right)\text{行列}\text{、}B_{1},B_{2}\text{を}\left(n\times l\right)\text{行列}$とする。この時、
+
+\[
+\left(A_{1}+A_{2}\right)B_{1}=A_{1}B_{1}+A_{2}B_{1}
+\]
+
+
+\[
+A_{1}\left(B_{1}+B_{2}\right)=A_{1}B_{1}+A_{1}B_{2}
+\]
+
+
+
+\subsubsection{証明}
+
+\[
+A_{1}=\left(a_{ij}\right)_{ij},A_{2}=\left(a_{ij}'\right)_{ij},B_{1}=\left(b_{jk}\right)_{jk}
+\]
+とおく。
+
+\[
+\left(A_{1}+A_{2}\right)_{ij}=\left(a_{ij}+a_{ij}'\right)_{ij}
+\]
+
+
+\begin{eqnarray*}
+\therefore\left(\left(A_{1}+A_{2}\right)B\right)_{ik} & = & \sum_{j=1}^{n}\left(a_{ij}+a_{ij}'\right)b_{jk}\\
+ & = & \sum_{j=1}^{n}a_{ij}b_{jk}+\sum_{j=1}^{n}a_{ij}'b_{jk}\\
+ & = & \left(A_{1}B_{1}\right)_{ik}+\left(A_{2}B_{1}\right)_{ik}\\
+ & = & \left(A_{1}B_{1}+A_{2}B_{1}\right)_{ik}
+\end{eqnarray*}
+
+
+\[
+\therefore\left(A_{1}+A_{2}\right)B_{1}=A_{1}B_{1}+A_{2}B_{1}
+\]
+
+
+Q.E.D.
+
+
+\subsubsection{転置行列}
+
+$A\text{を}\left(m\times n\right)\text{行列とする}$
+
+行と列を入れ替えた行列を転置行列という。
+
+\[
+A=\left(\begin{array}{ccc}
+1 & 3 & 5\\
+2 & 4 & 6
+\end{array}\right)
+\]
+の転置は
+\[
+^{t}A=\left(\begin{array}{cc}
+1 & 2\\
+3 & 4\\
+5 & 6
+\end{array}\right)
+\]
+である。
+
+Aの転置行列を$^{t}A$と書く。(トランポーズA)
+
+$^{t}A\text{は}\left(n\times m\right)\text{行列}$
+
+
+\subsubsection{命題}
+
+$A\text{を}\left(m\times n\right)\text{行列}\text{、}B\text{を}\left(n\times l\right)\text{行列とする}$
+
+\[
+^{t}\left(AB\right)=^{t}B^{t}A
+\]
+が成立する。
+
+証明は省略
+
+
+\subsection{正則行列と逆行列}
+
+Aをn次正方行列とする。
+
+
+\subsubsection{定義}
+
+あるn次正方行列Bで$AB=E_{n}=BA$を満たすものがあるとき、Aは正則行列であるという。
+
+このとき
+\[
+A\text{が正則}\Leftrightarrow ad-bc\neq0
+\]
+
+
+さらにその時
+
+\[
+A^{-1}=\dfrac{1}{ad-bc}\left(\begin{array}{cc}
+d & -b\\
+-c & a
+\end{array}\right)
+\]
+
+
+で与えられる。
+
+
+\subsubsection{行列の分割}
+
+$A\left(m\times n\right),B\left(n\times l\right)\text{行列}$
+
+方針　これら(R1)～(R3)の同値変形を用いて
+
+\[
+\left(\begin{array}{ccccccc}
+1 & 0 & \cdots & 0 & b_{1,r+1} & \cdots & b_{1,n}\\
+0 & 1 & \cdots & 0 & \cdots & \cdots & \cdots\\
+0 & \cdots & 0 & 1 & b_{r,r+1} & \cdots & b_{r,n}
+\end{array}\right)
+\]
+
+
+の形に持って行きたい。
+
+もしこの形に同値変形させられたら、……ともとの方程式は同値なので
+
+$x_{r+1},\cdots,x_{n}$は自由に動くこれらを用いて$x_{1},\cdots,x_{r}$は表せる。
+
+これでいつもうまくいくか？
+
+←はじめにある変数について解く
+
+
+\subsubsection{例}
+
+\[
+x+y+z+\omega=0
+\]
+
+
+\[
+2x+2y+3z+4\omega=0
+\]
+
+
+\[
+\left(\begin{array}{cccc}
+1 & 1 & 1 & 1\\
+2 & 2 & 3 & 4
+\end{array}\right)\rightarrow\underbrace{\left(\begin{array}{cccc}
+1 & 1 & 1 & 1\\
+0 & 0 & 1 & 2
+\end{array}\right)}_{x,y,z,\omega}\rightarrow\underbrace{\left(\begin{array}{cccc}
+1 & 1 & 1 & 1\\
+0 & 1 & 0 & 2
+\end{array}\right)}_{x,z,y,\omega}\rightarrow\left(\begin{array}{cccc}
+1 & 0 & 1 & -1\\
+0 & 1 & 0 & 2
+\end{array}\right)
+\]
+
+
+\[
+x+y+\omega=0
+\]
+
+
+\[
+z+\omega=0
+\]
+
+
+$y=s,\omega=t$と置く。
+
+\[
+x=-s+t
+\]
+
+
+\[
+z=-t
+\]
+
+
+\[
+\left(\begin{array}{c}
+x\\
+y\\
+z\\
+\omega
+\end{array}\right)=\left(\begin{array}{c}
+-s+t\\
+s\\
+-t\\
+t
+\end{array}\right)\cdots\text{一般解}
+\]
+
+
+変数の入れ替え⇔係数行列では列の入れ替え
+
+(C3) i列目とj列目を入れ替える
+
+以下$\left(\begin{array}{cc}
+I_{r} & B\\
+0 & 0
+\end{array}\right)$タイプの行列を正規形という
+
+方針 (R1)(R2)(R3)(C3)を用いて行列を正規形にする
+
+２つ目の表し方
+
+\begin{eqnarray*}
+\left(\begin{array}{c}
+x\\
+y\\
+z\\
+\omega
+\end{array}\right) & = & \left(\begin{array}{c}
+-s+t\\
+s\\
+-t\\
+t
+\end{array}\right)\\
+ & = & \left(\begin{array}{c}
+-s\\
+s\\
+0\\
+0
+\end{array}\right)\\
+ & = & \left(\begin{array}{c}
+t\\
+0\\
+-t\\
+t
+\end{array}\right)\\
+ & = & s\left(\begin{array}{c}
+-1\\
+1\\
+0\\
+0
+\end{array}\right)+t\left(\begin{array}{c}
+1\\
+0\\
+-1\\
+1
+\end{array}\right)\\
+ & = & sv_{1}+tv_{2}
+\end{eqnarray*}
+
+
+つまり$v_{1}\text{と}v_{2}$の一次結合の形である。
+
+
+\subsubsection{定理4.3}
+
+A:(m×n)行列とする
+
+この時変形(R1)\textasciitilde{}(R3)と(C3)を用いて正規形にすることができる
+
+
+\subsubsection{証明}
+
+mに関する帰納法 (m=行数)
+
+
+\paragraph{1. m=1のとき}
+
+\[
+A=\left(a_{11},a_{12},\cdots a_{1n}\right)
+\]
+
+
+
+\subparagraph{(a) $A=\left(0,0,\cdots0\right)$}
+
+r=0として正規型
+
+
+\subparagraph{(b) $A\neq\left(0,0,\cdots0\right)$}
+\begin{enumerate}
+\item $a_{1i}\neq0$でないiがあるので、(C3)を用いて$a_{1i}$を一列目に持ってくる。
+\item その結果$\left(a'_{11},a'_{12},\cdots a'_{1n}\right)$となったとして、$a'_{11}\left(\neq0\right)$で割る。
+\[
+\left(1,\dfrac{a'_{12}}{a'_{11}},\cdots,\dfrac{a'_{1n}}{a'_{11}}\right)
+\]
+正規形になる。
+\end{enumerate}
+
+\paragraph{2. (m-1)行の行列が(R1)\textasciitilde{}(R3)(C3)を用いて正規形にできると仮定する。...({*})}
+
+A: (m×n)行列であると仮定する
+
+Aの1\textasciitilde{}(m-1)行目に着目して、(R1)\textasciitilde{}(R3)(C3)を用いてAを変形する
+
+({*})を用いて
+
+
+\subparagraph{(a) $b'_{1}=\left(0.0.\cdots,0\right)$のとき}
+
+これですでに正規形。
+
+
+\subparagraph{(b)$b'_{2}+\left(0,0,\cdots,0\right)\text{のとき}$}
+
+(r+1)列目\textasciitilde{}n列目を入れ替えて、$b'_{2}$の初めの成分≠0とする。結果$b''_{2}$になったとする
+
+\[
+b''_{2}=\left(b''_{2r+1},\cdots,b''_{2n}\right)
+\]
+
+
+なので、m行目を$b''_{2r+1}$で割る
+
+
+\subsubsection{定義}
+
+最終的に得られるrのことをAの階数(rank)と呼ぶ。
+
+$r=\mathrm{rank}\left(A\right)$と書く。
+
+(R3)i行目とj行目を入れ替える
+
+(C3)i列目とj列目を入れ替える
+
+$\mbox{\ensuremath{\left(\begin{array}{cc}
+ I_{r}  &  B\\
+0  &  0 
+\end{array}\right)}}$の形に変形できる。
+
+例
+
+\[
+2x+y+z+3w=0
+\]
+
+
+\[
+-2x+y+z+2w=0
+\]
+
+
+\[
+-10x-y-z-5w=0
+\]
+
+
+方程式の係数行列は
+
+\[
+\left(\begin{array}{cccc}
+2 & 1 & 1 & 3\\
+-2 & 1 & 1 & 2\\
+-10 & -1 & -1 & -5
+\end{array}\right)
+\]
+
+
+1を(1,1)にもっていく
+
+(C3)で変数の順番を入れ替える
+
+\[
+\left(\begin{array}{cccc}
+1 & 1 & 2 & 3\\
+1 & 1 & -2 & 2\\
+-1 & -1 & -10 & -5
+\end{array}\right)
+\]
+
+
+\[
+\rightarrow\left(\begin{array}{cccc}
+1 & 1 & 2 & 3\\
+0 & 0 & -4 & -1\\
+0 & 0 & -8 & -2
+\end{array}\right)
+\]
+
+
+\[
+\rightarrow\left(\begin{array}{cccc}
+1 & 3 & 2 & 1\\
+0 & -1 & -4 & 0\\
+0 & -2 & -8 & 0
+\end{array}\right)
+\]
+
+
+\[
+\rightarrow\left(\begin{array}{cccc}
+1 & 3 & 2 & 1\\
+0 & 1 & 4 & 0\\
+0 & -2 & -8 & 0
+\end{array}\right)
+\]
+
+
+\[
+\rightarrow\left(\begin{array}{cccc}
+1 & 0 & -10 & 1\\
+0 & 1 & 4 & 0\\
+0 & 0 & 0 & 0
+\end{array}\right)
+\]
+
+
+\[
+z-10x+y=0,\: w+4x=0
+\]
+
+
+\[
+z=10x-y,\: w=-4x
+\]
+
+
+x,yは自由に動く
+
+$s=s,\: y=t\text{とおいて、}$
+
+\[
+\left(\begin{array}{c}
+x\\
+y\\
+z\\
+w
+\end{array}\right)=s\left(\begin{array}{c}
+1\\
+0\\
+10\\
+-4
+\end{array}\right)+t\left(\begin{array}{c}
+0\\
+1\\
+-1\\
+0
+\end{array}\right)
+\]
+
+
+これが一般の解の形
+
+
+\subsection{線形写像の核}
+
+f: $\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}$ 線形写像
+
+$\left\{ \mathbf{x}\in\mathbb{R}|f\left(\mathbf{x}\right)=\mathbb{O}\right\} $をfの核(kernel)と言い、$\ker\left(f\right)$と書く。
+
+※$\mathbb{O}=\left(\begin{array}{c}
+0\\
+\vdots\\
+0
+\end{array}\right)$
+
+例 f: $\mathbb{R}^{4}\rightarrow\mathbb{R}^{3}$ を線形写像で$\left(\begin{array}{cccc}
+2 & 1 & 1 & 3\\
+-2 & 1 & 1 & 2\\
+-10 & -1 & -1 & -5
+\end{array}\right)$に対応するものとする。
+
+この時$\ker\left(f\right)$を求めよ。
+
+$x=\left(\begin{array}{c}
+x\\
+y\\
+z\\
+w
+\end{array}\right)$とおく。
+
+\begin{eqnarray*}
+f\left(\mathbf{x}\right)=\mathbb{O} & \Leftrightarrow & \left(\begin{array}{cccc}
+2 & 1 & 1 & 3\\
+-2 & 1 & 1 & 2\\
+-10 & -1 & -1 & -5
+\end{array}\right)\left(\begin{array}{c}
+x\\
+y\\
+z\\
+w
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+0\\
+0
+\end{array}\right)\\
+ & \Leftrightarrow & \text{さっきやった方程式を}x\text{が満たす}\\
+ & \Leftrightarrow & \mathbf{x}=s\left(\begin{array}{c}
+1\\
+0\\
+10\\
+-4
+\end{array}\right)+t\left(\begin{array}{c}
+0\\
+1\\
+-1\\
+0
+\end{array}\right)\\
+ & \Leftrightarrow & x\text{は}\left(\begin{array}{c}
+1\\
+0\\
+10\\
+-1
+\end{array}\right)\text{と}\left(\begin{array}{c}
+0\\
+1\\
+-1\\
+0
+\end{array}\right)\text{の一次結合で表せる。}
+\end{eqnarray*}
+
+
+
+\section{---}
+
+
+\section{---}
+
+
+\subsection{---}
+
+
+\subsection{---}
+
+行基本変形(R1)(R2)(R3)と基本行列の関係
+
+
+\subsection{基本行列}
+
+(R1)i行目をC倍する(C!=0)
+
+i行目を$C^{-1}$倍すると$\bar{x}$に戻る。
+
+この操作の逆操作はCとなる。
+
+(R2) i行目をC倍してj行目に加える
+
+R2の操作は行列Qを左から書ける操作。
+
+逆操作はi行目を-i倍してq行目に加える。
+
+=$Q\left(-c,i,j\right)$を左からかける。
+
+$Q\left(-c,i,j\right)=Q\left(c,i,j\right)^{-1}$で
+
+Q(c,i,j)は正則行列である。
+
+(R3) i行目とj行目を入れ替える操作は行列R(i,j)を左からかける操作と一致。
+
+i行目とj行目を入れ替える操作の逆操作はi行目とj行目を入れ替える操作なので、
+
+\[
+R\left(i,j\right)^{-1}=R\left(i,j\right)
+\]
+でR(i,j)は正則行列
+
+
+\subsubsection{定義}
+
+\[
+P\left(c,i\right)\:\left(C\neq0\right)
+\]
+\[
+Q\left(c,i,j\right)\:\left(i\neq j\right)
+\]
+\[
+R\left(i,j\right)\:\left(i\neq j\right)
+\]
+
+
+のタイプの行列を基本行列という。
+
+全く同様にして列基本変形を
+
+(C1)1つの列をc倍する($c\neq0$)
+
+(C2)j列目のc倍をi列目に加える ($i\neq j$)
+
+(C3)i列目とj列目を入れ替える
+
+という操作によって定める。
+
+この操作は同様に行列の掛け算として表せるか？
+
+答えはYes.
+
+(C2)を見る。
+
+\[
+A=\left(\mathbb{Q}_{1}\:\cdots\:\mathbb{Q}_{m}\right)
+\]
+列ベクトル分割する。
+
+\[
+A=\left(\begin{array}{ccccccc}
+\mathbb{Q}_{1} & \cdots & \mathbb{Q}_{i} & \cdots & \mathbb{Q}_{j} & \cdots & \mathbb{Q}_{m}\end{array}\right)\left(\begin{array}{ccccccc}
+1\\
+ & \ddots\\
+ &  & 1\\
+ &  & \vdots & \ddots\\
+ &  & c & \cdots & 1\\
+ &  &  &  &  & \ddots\\
+ &  &  &  &  &  & 1
+\end{array}\right)\left(=Q\left(c,i,j\right)\right)
+\]
+
+
+(C2)はp(c,i,j)を右からかける操作に一致する。
+
+(C1),(C3)はそれぞれp(c,i),R(i,j)を右からかける操作となる。
+
+定理4.3を基本行列の言葉で言えば、行列Aはいくつかの基本行列を左から掛け、R(i,j)の形の行列を右からかけると$\left(\begin{array}{cc}
+I_{r} & B\\
+0 & 0
+\end{array}\right)$の形になる
+
+
+\subsubsection{逆行列を求めることへの応用}
+
+$A=\left(n\times n\right)\text{行列}$
+
+\[
+\left(A,E_{n}\right)\rightarrow\left(\left(R1\right)\left(R2\right)\left(R3\right)\text{の繰り返し}\right)\rightarrow\left(E_{n},B\right)
+\]
+
+
+この時、いくつかの基本行列$P_{1},\: P_{2},\: P_{3}\cdots,\: P_{k}$が存在し、
+
+\begin{eqnarray*}
+\left(A,E_{n}\right) & \rightarrow & P_{1}\left(A,E_{n}\right)\\
+ & \rightarrow & P_{2}P_{1}\left(A,E_{n}\right)\\
+ & \rightarrow & P_{k}P_{k-1}\cdots P_{2}P_{1}\left(A,E_{n}\right)=\left(E_{n},B\right)
+\end{eqnarray*}
+
+
+$Q=P_{k}P_{k-1}\cdots P_{2}P_{1}$とおくと、
+
+\begin{eqnarray*}
+Q\left(A,E_{n}\right) & = & \left(E_{n},B\right)\\
+ & = & \left(QA,QE_{n}\right)\\
+ & = & \left(QA,Q\right)
+\end{eqnarray*}
+
+
+ブロック比較…$BA=E_{n}$
+
+$QA=E_{n}$…B=Aの逆行列
+
+\[
+Q=B
+\]
+
+
+例 
+
+$\left(\begin{array}{cc}
+1 & 2\\
+2 & 3
+\end{array}\right)$の逆行列を求める。
+
+\[
+A=\left(\begin{array}{cc}
+1 & 2\\
+2 & 3
+\end{array}\right)
+\]
+
+
+\[
+\left(A,E_{n}\right)=\left(\begin{array}{cc}
+1 & 2\\
+2 & 3
+\end{array}|\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)
+\]
+
+
+標準形の(C3)はダメ
+
+\begin{eqnarray*}
+\left(\begin{array}{cc}
+1 & 2\\
+2 & 3
+\end{array}|\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right) & \rightarrow & \left(\begin{array}{cc}
+1 & 2\\
+0 & -1
+\end{array}|\begin{array}{cc}
+1 & 0\\
+-2 & 1
+\end{array}\right)\\
+ & \rightarrow & \left(\begin{array}{cc}
+1 & 2\\
+0 & 1
+\end{array}|\begin{array}{cc}
+1 & 0\\
+2 & -1
+\end{array}\right)\\
+ & \rightarrow & \left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}|\begin{array}{cc}
+-3 & 2\\
+2 & -1
+\end{array}\right)
+\end{eqnarray*}
+
+
+\[
+\therefore\left(\begin{array}{cc}
+1 & 2\\
+2 & 3
+\end{array}\right)^{-1}=\left(\begin{array}{cc}
+-3 & 2\\
+2 & -1
+\end{array}\right)
+\]
+
+
+
+\subsubsection{演習問題解説}
+
+1. 係数行列=$\overbrace{\left(\begin{array}{cccc}
+-2 & 4 & 1 & -5\\
+-3 & 11 & 3 & -11\\
+-3 & 8 & 2 & -9
+\end{array}\right)}^{x,y,z,w}$
+
+文字の入れ替えを積極的に使っていく
+
+\[
+\rightarrow\overbrace{\left(\begin{array}{cccc}
+1 & 4 & -2 & -5\\
+3 & 11 & -3 & -11\\
+2 & 8 & -3 & -9
+\end{array}\right)}^{z,y,x,w}\rightarrow\overbrace{\left(\begin{array}{cccc}
+1 & 4 & -2 & -5\\
+0 & -1 & 3 & 4\\
+0 & 0 & 1 & 1
+\end{array}\right)}^{z,y,x,w}\rightarrow\overbrace{\left(\begin{array}{cccc}
+1 & 4 & -2 & -5\\
+0 & 1 & -3 & -4\\
+0 & 0 & 1 & 1
+\end{array}\right)}^{z,y,x,w}\rightarrow\overbrace{\left(\begin{array}{cccc}
+1 & 0 & 10 & 11\\
+0 & 1 & -3 & -4\\
+0 & 0 & 1 & 1
+\end{array}\right)}^{z,y,x,w}\rightarrow\overbrace{\left(\begin{array}{cccc}
+1 & 0 & 0 & 1\\
+0 & 1 & 0 & -1\\
+0 & 0 & 1 & 1
+\end{array}\right)}^{z,y,x,w}
+\]
+
+
+\[
+z=-w
+\]
+
+
+\[
+y=w
+\]
+
+
+\[
+z=-w
+\]
+
+
+$\therefore w=s$とおくと、
+\[
+\left(\begin{array}{c}
+x\\
+y\\
+z\\
+w
+\end{array}\right)=s\left(\begin{array}{c}
+-1\\
+1\\
+-1\\
+1
+\end{array}\right)
+\]
+
+
+2. 階数(rank)
+
+(R1)(R2)(R3)(C3)を用いて$\left(\begin{array}{cc}
+I_{r} & B\\
+0 & 0
+\end{array}\right)$の形にした時のr=rank
+
+(1) $A=\left(\begin{array}{cccc}
+1 & -1 & 2 & 1\\
+-2 & 1 & 1 & 3\\
+-4 & 1 & 9 & 11
+\end{array}\right)\rightarrow\left(\begin{array}{cccc}
+1 & -1 & 2 & 1\\
+0 & -1 & 5 & 5\\
+0 & -3 & 15 & 15
+\end{array}\right)\rightarrow\left(\begin{array}{cccc}
+1 & -1 & 2 & 1\\
+0 & 1 & -5 & -5\\
+0 & -3 & 15 & 15
+\end{array}\right)\rightarrow\left(\begin{array}{cccc}
+1 & 0 & -3 & -4\\
+0 & 1 & -5 & -5\\
+0 & 0 & 0 & 0
+\end{array}\right)$
+
+rankは2 rank(A)=2
+
+(2) $\left(\begin{array}{cc}
+3+a & *\\
+* & *
+\end{array}\right)$ 3+aが(1,1)に来ないようにする。吐き出しの要にしない。
+
+\begin{eqnarray*}
+\left(\begin{array}{cc}
+3+a & -1\\
+-1 & 2+b
+\end{array}\right) & \rightarrow & \left(\begin{array}{cc}
+-1 & 2+b\\
+3+a & -1
+\end{array}\right)\\
+ & \rightarrow & \left(\begin{array}{cc}
+1 & -2-b\\
+3+a & -1
+\end{array}\right)\\
+ & \rightarrow & \left(\begin{array}{cc}
+1 & -2-b\\
+0 & \left(2+b\right)\left(3+a\right)-1
+\end{array}\right)=\left(\begin{array}{cc}
+1 & -2-b\\
+0 & ab+2a+3b+5
+\end{array}\right)
+\end{eqnarray*}
+
+
+(i) $ab+2a+3b+5=0$のとき、正規形でrank(A)=1
+
+(ii) $ab+2a+3b+5\neq0$のとき、$\rightarrow\left(\begin{array}{cc}
+1 & -2-b\\
+0 & 1
+\end{array}\right)\rightarrow\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)$
+
+この時rank(A)=2(変数が入った行列のrankは行基本変形の要になるべく文字が入らないように)
+
+3.
+
+$\left(\begin{array}{cccc}
+2 & 1 & 0 & 3\\
+1 & 1 & -1 & -2\\
+-7 & -5 & 3 & 0
+\end{array}\right)\left(\begin{array}{c}
+x\\
+y\\
+z\\
+w
+\end{array}\right)=\mathbb{O}$を解く。
+
+\begin{eqnarray*}
+\left(\begin{array}{cccc}
+2 & 1 & 0 & 3\\
+1 & 1 & -1 & -2\\
+-7 & -5 & 3 & 0
+\end{array}\right) & \rightarrow & \left(\begin{array}{cccc}
+1 & 1 & -1 & -2\\
+2 & 1 & 0 & 3\\
+-7 & -5 & 3 & 0
+\end{array}\right)\\
+ & \rightarrow & \left(\begin{array}{cccc}
+1 & 1 & -1 & -2\\
+0 & -1 & 2 & 7\\
+0 & 2 & -4 & -14
+\end{array}\right)\\
+ & \rightarrow & \left(\begin{array}{cccc}
+1 & 1 & -1 & -2\\
+0 & 1 & -2 & -7\\
+0 & 2 & -9 & -14
+\end{array}\right)\\
+ & \rightarrow & \left(\begin{array}{cccc}
+1 & 0 & 1 & 5\\
+0 & 1 & -2 & -7\\
+0 & 0 & 0 & 0
+\end{array}\right)
+\end{eqnarray*}
+
+
+\[
+x=-z-5w
+\]
+
+
+\[
+y=2z+7w
+\]
+
+
+\[
+\left(\begin{array}{c}
+x\\
+y\\
+z\\
+w
+\end{array}\right)=s\left(\begin{array}{c}
+-1\\
+2\\
+1\\
+0
+\end{array}\right)+t\left(\begin{array}{c}
+-5\\
+7\\
+0\\
+1
+\end{array}\right)
+\]
+
+
+確認
+
+\[
+\left(\begin{array}{cccc}
+2 & 1 & 0 & 3\\
+1 & 1 & -1 & -2\\
+-7 & -5 & 3 & 0
+\end{array}\right)\left(\begin{array}{cc}
+-1 & -5\\
+2 & 7\\
+1 & 0\\
+0 & 1
+\end{array}\right)=\left(\begin{array}{cc}
+0 & 0\\
+0 & 0\\
+0 & 0
+\end{array}\right)
+\]
+
+
+O.K.
+
+一般のker(f)の元は$s\left(\begin{array}{c}
+-1\\
+2\\
+1\\
+0
+\end{array}\right)+t\left(\begin{array}{c}
+-5\\
+7\\
+0\\
+1
+\end{array}\right)$の形$\left(s,t\in\mathbb{R}\right)$
+
+4.
+
+$\left(\begin{array}{ccc}
+-1 & -3 & 3\\
+-2 & -6 & 5\\
+-2 & -7 & 6
+\end{array}|\begin{array}{ccc}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{array}\right)\rightarrow\left(\begin{array}{ccc}
+1 & 3 & -3\\
+-2 & -6 & 5\\
+-2 & -7 & 6
+\end{array}|\begin{array}{ccc}
+-1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{array}\right)\rightarrow\left(\begin{array}{ccc}
+1 & 3 & -3\\
+0 & 0 & -1\\
+0 & -1 & 0
+\end{array}|\begin{array}{ccc}
+-1 & 0 & 0\\
+-2 & 1 & 0\\
+-2 & 0 & 1
+\end{array}\right)\rightarrow\left(\begin{array}{ccc}
+1 & 3 & -1\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{array}|\begin{array}{ccc}
+-1 & 0 & 0\\
+2 & 0 & -1\\
+2 & -1 & 0
+\end{array}\right)\rightarrow\left(\begin{array}{ccc}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{array}|\begin{array}{ccc}
+-1 & -3 & 3\\
+2 & 0 & -1\\
+2 & -1 & 0
+\end{array}\right)$
+
+答 $\left(\begin{array}{ccc}
+-1 & -3 & 3\\
+2 & 0 & -1\\
+3 & -1 & 0
+\end{array}\right)$
+
+5.
+
+\[
+A_{1}=\left(\begin{array}{cc}
+3 & 5\\
+4 & 7
+\end{array}\right)
+\]
+
+
+\[
+A_{2}=\left(\begin{array}{cc}
+1 & 0\\
+-1 & 1
+\end{array}\right)A_{1}=\left(\begin{array}{cc}
+3 & 5\\
+1 & 2
+\end{array}\right)
+\]
+
+
+\[
+A_{3}=\left(\begin{array}{cc}
+1 & -3\\
+0 & 1
+\end{array}\right)A_{2}=\left(\begin{array}{cc}
+0 & -1\\
+1 & 2
+\end{array}\right)
+\]
+
+
+\[
+A_{4}=\left(\begin{array}{cc}
+1 & 0\\
+2 & 1
+\end{array}\right)A_{3}=\left(\begin{array}{cc}
+0 & -1\\
+1 & 0
+\end{array}\right)
+\]
+
+
+\[
+A_{5}=\left(\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}\right)A_{4}=\left(\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right)
+\]
+
+
+\[
+A_{6}=\left(\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right)A_{5}=\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)=E_{2}
+\]
+
+
+\[
+E_{2}=\left(\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right)A_{5}=\left(\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right)\left(\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}\right)A_{4}=\cdots=\left(\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right)\left(\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}\right)\left(\begin{array}{cc}
+1 & 0\\
+2 & 1
+\end{array}\right)\left(\begin{array}{cc}
+1 & -3\\
+0 & 1
+\end{array}\right)\left(\begin{array}{cc}
+1 & 0\\
+-1 & 1
+\end{array}\right)A_{1}
+\]
+
+
+\[
+A_{1}=\left\{ \left(\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right)\left(\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}\right)\cdots\left(\begin{array}{cc}
+1 & 0\\
+-1 & 1
+\end{array}\right)\right\} ^{-1}=\left(\begin{array}{cc}
+1 & 0\\
+1 & 1
+\end{array}\right)\left(\begin{array}{cc}
+1 & 3\\
+0 & 1
+\end{array}\right)\left(\begin{array}{cc}
+1 & 0\\
+-2 & 1
+\end{array}\right)\left(\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}\right)\left(\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right)
+\]
+
+
+
+\subsection{行列式}
+
+A $\left(n\times n\right)$正方行列→行列式
+
+$\left(2\times2\right)$の場合、図的に言えば平行四辺形の面積。
+
+平面(xy平面)内の2津のベクトル$v_{1},\: v_{2}$で$v_{1}\neq0,\: v_{2}\neq0$、平行でない
+
+$v_{2}$は$v_{1}$に対して反時計方向にある。
+
+$S\left(v_{1},v_{2}\right)=v_{1}$と$v_{2}$で作られる平行四辺形の面積
+
+(1) $r\in\mathbb{R},\: r>0$とすると、
+
+\[
+S\left(rv_{1},v_{2}\right)=rS\left(v_{1},v_{2}\right)=S\left(v_{1},rv_{2}\right)
+\]
+
+
+(2) $v_{2},v_{2}'$共に$v_{1}$に対して反時計方向。
+
+\[
+S\left(v_{1},v_{2}\right)+S\left(v_{1},v_{2}'\right)=S\left(v_{1},v_{2}+v_{2}'\right)
+\]
+
+
+(3) $C\in\mathbb{R}$とすると、
+
+$v_{2}$が$v_{1}$に対して反時計回り
+
+$\Rightarrow v_{2}+cv_{1}$も$v_{1}$に対して反時計回りであり、
+
+\[
+S\left(v_{1},v_{2}\right)=S\left(v_{1},v_{2}+cv_{1}\right)
+\]
+
+
+(1)(2)の制限を取りたい。
+
+(2)でもし$v_{2}'$が$v_{1}$に対して時計回りなので、$S\left(v_{1},v_{2}+v_{2}'\right)$は面積に符号を付けて考える。(符号付き面積''向き付けされた図形の面積'')
+
+一般に
+
+\[
+S\left(v_{1},v_{2}\right)=\begin{cases}
+v_{1}\text{と}v_{2}\text{のなす平行四辺形の面積} & \left(v_{2}\text{が}v_{1}\text{に対して反時計回り}\right)\\
+-v_{1}\text{と}v_{2}\text{のなす平行四辺形の面積} & \left(v_{2}\text{が}v_{1}\text{に対して時計回り}\right)
+\end{cases}
+\]
+
+
+(1) 
+\[
+S\left(v_{1,}-v_{2}\right)=-S\left(v_{1},v_{2}\right)
+\]
+
+
+より、$r\in\mathbb{R}$ならば
+
+\[
+S\left(rv_{1},v_{2}\right)=rS\left(v_{1},v_{2}\right)=S\left(v_{1},rv_{2}\right)
+\]
+
+
+(2) $v_{1},v_{2},v_{2}'$
+
+\[
+S\left(v_{1},v_{2}+v_{2}'\right)=S\left(v_{1},v_{2}\right)+S\left(v_{1},v_{2}'\right)
+\]
+
+
+また、$v_{1}$と$v_{2}$を入れ替えると、
+
+\[
+S\left(v_{2},v_{1}\right)=-S\left(v_{1}v_{2}\right)
+\]
+
+
+
+\subsection{$S\left(v_{1},v_{2}\right)$の計算}
+
+座標を一つ固定。
+
+\[
+\mathbb{C}_{1}=\left(\begin{array}{c}
+1\\
+0
+\end{array}\right),\mathbb{C}_{2}=\left(\begin{array}{c}
+1\\
+0
+\end{array}\right)
+\]
+
+
+を基本単位ベクトルとする。
+
+上の性質から導かれる性質
+
+
+\subsubsection{性質1 
+\[
+S\left(v_{1},v_{1}\right)=0
+\]
+}
+
+
+\subsubsection{証明}
+
+\[
+S\left(v_{1},v_{1}\right)=-S\left(v_{1},v_{1}\right)
+\]
+
+
+移行して、
+\[
+2S\left(v_{1},v_{1}\right)=0
+\]
+
+
+\[
+S\left(v_{1},v_{1}\right)=0
+\]
+
+
+
+\subsubsection{性質2}
+
+\[
+S\left(\mathbb{C}_{1},\mathbb{C}_{2}\right)=1
+\]
+
+
+\[
+S\left(\mathbb{C}_{2},\mathbb{C}_{1}\right)=-1
+\]
+
+
+これらを用いて、$v_{1}=\left(\begin{array}{c}
+a\\
+b
+\end{array}\right),v_{2}=\left(\begin{array}{c}
+c\\
+d
+\end{array}\right)$として$S\left(v_{1},v_{2}\right)$を求める。
+
+\[
+v_{1}=a\mathbb{C}_{1}+b\mathbb{C}_{2}
+\]
+
+
+\[
+v_{2}=c\mathbb{C}_{1}+d\mathbb{C}_{2}
+\]
+
+
+\begin{eqnarray*}
+S\left(v_{1},v_{2}\right) & = & S\left(a\mathbb{C}_{1}+b\mathbb{C}_{2},v_{2}\right)\\
+ & = & S\left(a\mathbb{C}_{1},v_{2}\right)+S\left(b\mathbb{C}_{2},v_{2}\right)\\
+ & = & aS\left(\mathbb{C}_{1},v_{2}\right)+bS\left(\mathbb{C}_{2},v_{2}\right)\\
+ & = & aS\left(\mathbb{C}_{1},c\mathbb{C}_{1}+d\mathbb{C}_{2}\right)+bS\left(\mathbb{C}_{2},c\mathbb{C}_{1}+d\mathbb{C}_{2}\right)\\
+ & = & acS\left(\mathbb{C}_{1},\mathbb{C}_{1}\right)+adS\left(\mathbb{C}_{1},\mathbb{C}_{2}\right)+bcS\left(\mathbb{C}_{2},\mathbb{C}_{1}\right)+bdS\left(\mathbb{C}_{2},\mathbb{C}_{2}\right)\\
+ & = & ad-bc
+\end{eqnarray*}
+
+
+
+\subsubsection{定義}
+
+$A=\left(v_{1},v_{2}\right)$ $\left(2\times2\right)$行列
+
+Aの行列式を$S\left(v_{1},v_{2}\right)$で定める。
+
+$\det\left(A\right)$と書く。(determinant)
+
+以下、章の目標は一般のnについての行列式を求めることである。(体積の満たすべき性質)
+
+
+\subsubsection{まとめ}
+
+(1) $S\left(v_{1},v_{2}\right)$は$v_{1},v_{2}$について線形写像
+
+(2) $S\left(v_{1},v_{2}\right)=-S\left(v_{2},v_{1}\right)$
+
+(3) $S\left(\left(\begin{array}{c}
+1\\
+0
+\end{array}\right),\left(\begin{array}{c}
+0\\
+1
+\end{array}\right)\right)=1$
+
+
+\subsubsection{置換と符号}
+
+記号$\left[1,n\right]=\left\{ 1,2,3,\cdots,n\right\} $
+
+$1\leqq m<n$、m,nは自然数
+
+$\left[m,n\right]=\left\{ m,m+1,m+2,\cdots,n\right\} $
+
+
+\subsubsection{定義}
+
+(1) $\left[1,n\right]$から$\left[1,n\right]$の全単射を(n次の)置換という。
+
+例
+
+n=3のとき
+
+1→2, 2→3, 3→1 は{[}1,3{]}の置換。
+
+n=3のとき$\sigma$写像が置換である→$\sigma\left(1\right),\sigma\left(2\right),\sigma\left(3\right)$が1～3の順列である。
+
+従って{[}1,3{]}の置換は全部で3!=6個。
+
+n=4の時は全部で24個。
+
+(2) {[}1,n{]}の置換の集合を$\delta_{n}$と書く。
+
+
+\subsubsection{置換の符号の定義}
+
+数字と対応する写像を曲線で結ぶ。ただし下向き。
+
+・３つの線は交わらない
+
+・接することはできない
+
+例えば上の例では交点の数=8
+
+
+\subsubsection{命題}
+
+交点の数の偶奇は結び方によらない。
+
+
+\subsubsection{証明}
+
+1つの結び方から外の結び方に変形する。(終点、始点は変わらないように変形させる)
+
+変化の起こるパターン
+
+(1) 交点変化なし
+
+(2) 交点の数が2つ増えるもしくは2つ減る
+
+(1)と(2)の繰り返しですべての結び方は移り合うので、偶奇は変わらない。
+
+
+\subsubsection{定義}
+
+$\sigma\in\mathfrak{S}_{n}$とする。
+
+1と$\sigma\left(1\right)$、2と$\sigma\left(2\right)$、・・・、nと$\sigma\left(n\right)$を結んでできる交点が偶数の時、$sqn\left(\sigma\right)=1$、奇数の時、$sqn\left(\sigma\right)=-1$と定める。
+
+$sqn\left(\sigma\right)$を$\sigma$の符号という。
+
+
+\subsubsection{命題5.8}
+
+$\sigma=\mathfrak{S}_{n}$
+
+(1) $\sigma\left(1\right)=1,\sigma\left(2\right)=2,\cdots\sigma\left(n\right)=n$
+
+となる$\sigma$を恒等置換という。これをeと書く。
+
+$sqn\left(e\right)=1$
+
+(2) $\sigma,\tau\in\mathfrak{S}_{n}$とする。
+
+$\sigma$と$\tau$の合成$\tau\circ\sigma$を$\tau\sigma$と書く。
+
+この$\tau\sigma\in\mathfrak{S}_{n}$について、
+
+$sqn\left(\tau\sigma\right)=sqn\left(\tau\right)sqn\left(\sigma\right)$
+
+(3) $i<j,\: i,j\in\left[1,n\right]$
+
+\[
+\sigma\left(k\right)=\begin{cases}
+k & k\neq i,j\\
+i & k=j\\
+j & k=i
+\end{cases}
+\]
+
+
+(つまり$\sigma$は$i$と$j$を入れ替えて他を動かさない)
+
+これを$i$と$j$の互換という。
+
+$sgn\left(\sigma\right)=-1$
+
+
+\subsubsection{証明}
+
+(1) 下向きにまっすぐ結ぶ→交点数0
+
+$sgn\left(e\right)=1$
+
+(2) $\tau\sigma$に対する結び方として$\sigma$に対する結び方と$\tau$に対する結び方をつなげたものが取れる。
+
+全体の交点数=前半の交点数+後半の交点数→$sgn\left(\tau\sigma\right)=sgn\left(\tau\right)sgn\left(\sigma\right)$
+
+(3) i-j以外の交点は全て２つずつペアになっている。→全体で奇数。
+
+
+\subsubsection{命題}
+
+\[
+\mathrm{sgn}\left(\tau\sigma\right)=\mathrm{sgn}\left(\tau\right)\mathrm{sgn}\left(\sigma\right)
+\]
+
+
+
+\subsubsection{証明}
+
+$i$と$\sigma\left(i\right)$を結び(交点a個)、さらに$\sigma\left(i\right)$と$\tau\sigma\left(i\right)$を結ぶ(交点b個)
+
+→全体として$i$と$\tau\sigma\left(i\right)$が結ばれる交点の数は$\left(a+b\right)$個
+
+この時、
+\[
+\mathrm{sgn}\left(\sigma\right)=\left(-1\right)^{a}
+\]
+
+
+\[
+\mathrm{sgn}\left(\tau\right)=\left(-1\right)^{b}
+\]
+
+
+\begin{eqnarray*}
+\mathrm{sgn}\left(\tau\sigma\right) & = & \left(-1\right)^{a+b}\\
+ & = & \mathrm{sgn}\left(\tau\right)+\mathrm{sgn}\left(\sigma\right)
+\end{eqnarray*}
+
+
+
+\subsubsection{互換}
+
+$1\sim n$のうち2つの元を入れ替えてほかは動かさないものを互換という。
+
+2つの元を$i,j$とすると、
+
+\[
+\sigma\left(k\right)=\begin{cases}
+k & k\neq i,j\\
+j & k=i\\
+i & k=j
+\end{cases}
+\]
+
+
+
+\subsubsection{命題}
+
+$\sigma\in\mathfrak{S}_{n}$、互換とする。
+
+\[
+\mathrm{sgn}\left(\sigma\right)=-1
+\]
+
+
+
+\subsubsection{例}
+
+$\left[1,7\right]$ 2と5の互換
+
+入れ替えた2つの線の交点以外は全て2つずつ組になる→交点の数は奇数
+
+
+\subsubsection{互換の合成}
+
+置換は互換の合成として書ける。
+
+$\left(\sigma\left(1\right),\sigma\left(2\right),\sigma\left(3\right),\sigma\left(4\right),\sigma\left(5\right)\right)=\left(5,3,4,1,2\right)$
+
+$\left(\tau_{1}\left(1\right),\tau_{1}\left(2\right),\tau_{1}\left(3\right),\tau_{1}\left(4\right),\tau_{1}\left(5\right)\right)=\left(1,3,4,5,2\right)$
+
+1と5の互換を$\gamma\left(1,5\right)$と書く。
+
+\[
+\gamma\left(1,5\right)\tau_{1}=\sigma
+\]
+
+
+$\left(\tau_{2}\left(1\right),\tau_{2}\left(2\right),\tau_{2}\left(3\right),\tau_{2}\left(4\right),\tau_{2}\left(5\right)\right)=\left(1,2,4,5,3\right)$
+
+\[
+\gamma\left(2,3\right)\tau_{2}=\tau_{1}
+\]
+
+
+\[
+\therefore\sigma=\gamma\left(1,5\right)\gamma\left(2,3\right)\tau_{2}
+\]
+
+
+繰り返して$\tau_{3},\tau_{4}\cdots$を作って、
+
+$\tau_{i}=\left(1,2,3,4,5\right)$になるまで行う。
+
+以下、$\tau_{i}$の推移。
+
+\[
+\left(5,3,4,1,2\right)
+\]
+
+
+\[
+\left(1,3,4,5,2\right)
+\]
+
+
+\[
+\left(1,2,4,5,3\right)
+\]
+
+
+\[
+\left(1,2,3,5,4\right)
+\]
+
+
+\[
+\left(1,2,3,4,5\right)
+\]
+
+
+よって
+\[
+\sigma=\gamma\left(1,5,\right)\gamma\left(2,3\right)\gamma\left(3,4\right)\gamma\left(4,5\right)
+\]
+
+
+$\therefore$σは4つの互換の積に書けた。
+
+\[
+\mathrm{sgn}\left(\gamma\left(1,5\right)\right)=-1
+\]
+
+
+\[
+\mathrm{sgn}\left(\sigma\tau\right)=\mathrm{sgn}\left(\sigma\right)\mathrm{sgn}\left(\tau\right)
+\]
+
+
+\[
+\therefore\mathrm{sgn}\left(\sigma\right)=\left(-1\right)^{4}
+\]
+
+
+
+\subsubsection{まとめ σの符号の求め方}
+\begin{enumerate}
+\item $\left(\sigma\left(1\right),\sigma\left(2\right),\cdots,\sigma\left(n\right)\right)$という順列を考える。
+\item 数字の入れ替えを繰り返して$\left(1,2,3,\cdots,n\right)$の形に持ってくる。
+\item かかった階数をaとすると、$\mathrm{sgn}\left(\sigma\right)=\left(-1\right)^{a}$
+\end{enumerate}
+
+\subsubsection{特別な置換}
+
+$e\in\mathfrak{S}_{n}$
+
+$e\left(1\right)=1,e\left(2\right)=2,\cdots,e\left(n\right)=n$
+
+単位元、恒等写像という。
+
+\[
+\sigma e=\sigma=e\sigma
+\]
+
+
+$\sigma$は全単射なので逆写像$\sigma^{-1}$がある。
+
+\[
+\sigma\sigma^{-1}=e=\sigma^{-1}\sigma
+\]
+
+
+\begin{eqnarray*}
+\mathrm{sgn}\left(\sigma\right)\mathrm{sgn}\left(\sigma^{-1}\right) & = & \mathrm{sgn}\left(\sigma\sigma^{-1}\right)\\
+ & = & \mathrm{sgn}\left(e\right)\\
+ & = & 1
+\end{eqnarray*}
+
+
+\[
+\therefore\mathrm{sgn}\left(\sigma\right)=\mathrm{sgn}\left(\sigma^{-1}\right)
+\]
+
+
+今までの議論をそのまま用いて、$\left[1,n\right]$の代わりに$\left[m,n\right]=\left\{ m,m+1,\cdots,n\right\} $を用いると、集合$\left[m,n\right]$の置換、符号も考えることができる。
+
+この置換の全体を$\mathfrak{S}\left[m,n\right]$と書く。
+
+$\mathfrak{S}\left[3,5\right]$は$\left(\sigma\left(3\right),\sigma\left(4\right),\sigma\left(5\right)\right)$が3から5の数の置換。
+
+さらに、$\mathfrak{S}\left[1,m\right]\in\sigma$と$\mathfrak{S}\left[m+1,n\right]\in\tau$を並べて$\left(\sigma,\tau\right)\in\mathfrak{S}\left[1,n\right]$が定義できる。
+
+
+\subsubsection{例}
+
+$\left(\sigma\left(1\right),\sigma\left(2\right),\sigma\left(3\right)\right)=\left(3,1,2\right)$
+
+$\left(\tau\left(4\right),\tau\left(5\right)\right)=\left(5,4\right)$
+
+$\Rightarrow\left(\sigma,\tau\right)=\gamma$と書くと、$\gamma\in\mathfrak{S}\left[1,5\right]$で、$\left(\gamma\left(1\right),\gamma\left(2\right),\gamma\left(3\right),\gamma\left(4\right),\gamma\left(5\right)\right)=\left(3,1,2,5,4\right)$となるものである。
+
+図(略)より
+
+\[
+\mathrm{sqn}\left(\sigma,\tau\right)=\mathrm{sqn}\left(\sigma\right)\mathrm{sqn}\left(\tau\right)
+\]
+
+
+
+\subsection{行列式の定義}
+
+$n=2$のとき、
+
+\[
+\left|\begin{array}{cc}
+a_{1} & a_{2}\\
+b_{1} & b_{2}
+\end{array}\right|=a_{1}b_{2}-a_{2}b_{1}
+\]
+
+
+を、$\left(\begin{array}{cc}
+a_{1} & a_{2}\\
+b_{1} & b_{2}
+\end{array}\right)$の行列式と定めた。
+
+
+\subsubsection{一般のn次正方行列の行列式の定義}
+
+A: n次正方行列
+
+\begin{eqnarray*}
+A & = & \left(a_{ij}\right)_{ij}\\
+ & = & \left(\begin{array}{cccc}
+a_{11} & a_{12} & \cdots & a_{1n}\\
+a_{21} & a_{22} & \cdots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{array}\right)
+\end{eqnarray*}
+
+
+
+\subsubsection{行列式の作り方}
+\begin{enumerate}
+\item $\sigma\in\mathfrak{S}_{n}$をとる。
+\item 1行目から$\sigma\left(1\right)$列目をとり、2行目から$\sigma\left(2\right)$列目をとり、…、n行目から$\sigma\left(n\right)$列目をとり、掛け合わせる。
+\item 2. で得られた結果に$\mathrm{sgn}\left(\sigma\right)$を掛ける。
+\item 1. \textasciitilde{} 3. をすべての$\sigma$について行い、和をとる。
+\end{enumerate}
+こうして得られたものがAの行列式(determinant)である。
+
+これを$\mathrm{det}\left(A\right)$と書く。
+
+$n=3$のとき、
+
+\[
+\left|\begin{array}{ccc}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}\\
+a_{31} & a_{32} & a_{33}
+\end{array}\right|=+a_{11}a_{22}a_{33}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{12}a_{22}a_{31}
+\]
+
+
+これをサラスの公式と呼ぶ。
+
+\begin{eqnarray*}
+\left|\begin{array}{ccc}
+1 & 4 & 2\\
+1 & 3 & 3\\
+2 & 1 & 2
+\end{array}\right| & = & 1\times3\times2+3\times4\times2+1\times1\times2-1\times1\times3-2\times3\times2-1\times4\times2\\
+ & = & 9
+\end{eqnarray*}
+
+
+※3つのベクトル$\left(\begin{array}{c}
+1\\
+1\\
+2
+\end{array}\right),\left(\begin{array}{c}
+4\\
+3\\
+1
+\end{array}\right),\left(\begin{array}{c}
+2\\
+3\\
+2
+\end{array}\right)$で作られる平行六面体の体積が9
+
+行列式を作る操作を$\sum$記号で表す。(すべての順列を動く)
+
+\[
+\sum_{\sigma\in\mathfrak{S}_{n}}a_{1\sigma\left(1\right)}a_{2\sigma\left(2\right)}\cdots a_{n\sigma\left(n\right)}\mathrm{sgn}\left(\sigma\right)=\sum_{\sigma\in\mathfrak{S}_{n}}\mathrm{sgn}\left(\sigma\right)\prod_{j=1}^{n}a_{j\sigma\left(j\right)}
+\]
+
+
+
+\subsubsection{演習問題解説}
+
+
+\paragraph{1.}
+
+\[
+v_{1}=\left(\begin{array}{c}
+7\\
+3
+\end{array}\right)
+\]
+
+
+\[
+v_{2}=\left(\begin{array}{c}
+4\\
+5
+\end{array}\right)
+\]
+
+
+\begin{eqnarray*}
+\det\left(v_{1},v_{2}\right) & = & \left(\begin{array}{cc}
+7 & 4\\
+3 & 5
+\end{array}\right)\\
+ & = & 35-12\\
+ & = & 23
+\end{eqnarray*}
+
+
+
+\paragraph{2.}
+
+\[
+\det\left(v_{1},v_{2}\right)>0\Leftrightarrow v_{2}\text{は}v_{1}\text{に対して反時計回り}
+\]
+
+
+\begin{eqnarray*}
+\det\left(\begin{array}{cc}
+1 & -2\\
+-3 & 5
+\end{array}\right) & = & 5-6\\
+ & = & -1\\
+ & < & 0
+\end{eqnarray*}
+
+
+$v_{2}$は$v_{1}$に対して時計回り
+
+$v_{1}$は$v_{2}$に対して反時計回り
+
+
+\paragraph{3. (1)}
+
+\begin{eqnarray*}
+\left(\sigma\left(1\right),\sigma\left(2\right),\sigma\left(3\right),\sigma\left(4\right),\sigma\left(5\right)\right) & = & \left(5,1,4,3,2\right)\\
+ & \rightarrow & \left(1,5,4,3,2\right)\\
+ & \rightarrow & \left(1,2,4,3,5\right)\\
+ & \rightarrow & \left(1,2,3,4,5\right)
+\end{eqnarray*}
+
+
+3回互換。
+\begin{eqnarray*}
+\mathrm{sqn}\left(\sigma\right) & = & \left(-1\right)^{3}\\
+ & = & -1
+\end{eqnarray*}
+
+
+
+\paragraph{3. (2)}
+
+\begin{eqnarray*}
+\left(\sigma\left(1\right),\sigma\left(2\right),\cdots,\sigma\left(n\right)\right) & = & \left(2,3,4,\cdots,n,1\right)\\
+ & \rightarrow & \left(2,3,4,\cdots,1,n\right)\\
+ & \rightarrow & \left(2,3,4,\cdots,1,n-1,n\right)\\
+ & \vdots & \vdots\\
+ & \rightarrow & \left(1,2,3,4,\cdots,n-1,n\right)\:\left(n-1\right)\text{回目}
+\end{eqnarray*}
+
+
+\[
+\mathrm{sqn}\left(\sigma\right)=\left(-1\right)^{n-1}
+\]
+
+
+
+\paragraph{3. (3)}
+
+$\sigma\left(1\right)=n,\sigma\left(2\right)=n-1,\cdots,\sigma\left(n-1\right)=2,\sigma\left(n\right)=1$
+
+
+\subparagraph{$n=2m$の時}
+
+互換m個で$\left(1,2,3,\cdots,2m\right)$
+
+\[
+\mathrm{sgn}\left(\sigma\right)=\left(-1\right)^{m}
+\]
+
+
+
+\subparagraph{$n=2m+1$の時}
+
+互換ｍ個で$\left(1,2,3,\cdots,2m+1\right)$
+
+\[
+\mathrm{sgn}\left(\sigma\right)=\left(-1\right)^{m}
+\]
+
+
+
+\paragraph{4.}
+
+\begin{eqnarray*}
+\left(\sigma\left(1\right),\sigma\left(2\right),\sigma\left(3\right),\sigma\left(4\right)\right) & = & \left(4,1,3,2\right)\\
+\left(\tau\left(1\right),\tau\left(2\right),\tau\left(3\right),\tau\left(4\right)\right) & = & \left(2,3,4,1\right)
+\end{eqnarray*}
+\[
+\sigma\tau\left(1\right)=\sigma\left(2\right)=1,\sigma\tau\left(2\right)=3,\sigma\tau\left(3\right)=2,\sigma\tau\left(4\right)=4
+\]
+
+
+\[
+\tau\sigma\left(1\right)=1,\tau\sigma\left(2\right)=2,\tau\sigma\left(3\right)=4,\tau\sigma\left(4\right)=3
+\]
+
+
+
+\paragraph{5. (1)}
+
+\begin{eqnarray*}
+\left|\begin{array}{cc}
+6 & -1\\
+8 & 3
+\end{array}\right| & = & 18-\left(-8\right)\\
+ & = & 26
+\end{eqnarray*}
+
+
+
+\paragraph{5. (2)}
+
+\begin{eqnarray*}
+\left|\begin{array}{ccc}
+1 & 2 & 2\\
+3 & 4 & 2\\
+2 & 5 & 3
+\end{array}\right| & = & 12+8+30-\left(16+10+18\right)\\
+ & = & 50-44\\
+ & = & 6
+\end{eqnarray*}
+
+
+
+\paragraph{6. (1)}
+
+\begin{eqnarray*}
+\left|\begin{array}{ccc}
+a_{1} & b_{1} & c_{1}\\
+a_{2} & b_{2} & c_{2}\\
+a_{2} & b_{2} & c_{2}
+\end{array}\right| & = & a_{1}b_{2}c_{2}+b_{1}c_{2}a_{2}+c_{1}a_{2}b_{2}-\left(a_{1}c_{2}b_{2}+b_{1}a_{2}c_{2}+c_{1}b_{2}a_{2}\right)\\
+ & = & 0
+\end{eqnarray*}
+
+
+
+\paragraph{6. (2)}
+
+\[
+y=\frac{b_{1}-b_{2}}{a_{1}-a_{2}}\left(x-a_{1}\right)+b_{1}
+\]
+
+
+\[
+\left(a_{1}-a_{2}\right)y-\left(b_{1}-b_{2}\right)x+b_{1}\left(a_{2}-b_{1}\right)=0
+\]
+\begin{eqnarray*}
+\left|\begin{array}{ccc}
+a_{1} & b_{1} & 1\\
+a_{2} & b_{2} & 1\\
+x & y & 1
+\end{array}\right| & = & a_{1}b_{2}+b_{1}x+a_{2}y-a_{1}y-b_{1}a_{2}-b_{2}x\\
+ & = & \left(-1\right)\times\left(\text{左辺}\right)
+\end{eqnarray*}
+
+
+
+\paragraph{6. (2) 別解}
+
+この行列式はx,yの一次式。$\left|\begin{array}{ccc}
+a_{1} & b_{1} & 1\\
+a_{2} & b_{2} & 1\\
+x & y & 1
+\end{array}\right|=0$は直線。
+
+$\left(x,y\right)=\left(a_{1},b_{1}\right)$を代入、$\left(a_{2},b_{2}\right)$を代入して計算すると、この二点を通ることが確かめられる。
+
+
+\paragraph{6. (3)}
+
+$\left|\begin{array}{ccc}
+a_{1} & b_{1} & c_{1}\\
+a_{2} & b_{2} & c_{2}\\
+x & y & z
+\end{array}\right|$はx,y,zの一次式→平面の方程式
+
+$\left(x,y,z\right)=\left(0,0,0\right),\left(a_{1},b_{1},c_{1}\right),\left(a_{2},b_{2},c_{2}\right)$を代入して0になることを確かめる
+
+
+\subsection{行列式}
+
+\[
+A=\left\{ a_{ij}\right\} _{ij}
+\]
+
+
+$\sigma\in\mathfrak{S}_{n}\text{について}$
+
+\[
+\sum_{\sigma\in\mathfrak{S}_{n}}\mathrm{sgn}\left(\sigma\right)a_{1\sigma\left(1\right)}a_{2\sigma\left(2\right)}\cdots a_{n\sigma(n)}
+\]
+
+
+を行列式といい、記号$\mathrm{det}\left(A\right)$と書く。
+
+
+\subsubsection{いくつかの計算}
+
+計算する回数は、
+
+$n=3$のとき$3!=6$回
+
+$n=4$のとき$4!=24$回
+
+$n=5$のとき$5!=120$回
+
+能率良いやり方が必要
+
+
+\paragraph{命題5.13}
+
+(1) $E_{n}$は単位行列
+
+$\mathrm{det}(E_{n})=1$
+
+(2) $A$: $\left(n\times n\right)$行列
+
+→$^{t}A$ $t\left(n\times n\right)$行列
+
+$\mathrm{det}\left(A\right)=\mathrm{det}\left(tA\right)$
+
+証明
+
+(1) クロネッカーのデルタ記号を用いて、
+
+※ $\delta_{ij}=\begin{cases}
+1 & (i=j)\\
+0 & (i\neq j)
+\end{cases}$
+
+\[
+E_{n}=\left(\delta_{ij}\right)_{ij}
+\]
+
+
+\[
+dit\left(E_{n}\right)=\sum_{\sigma\in\mathfrak{S}_{n}}\mathrm{sgn}\left(\sigma\right)\delta_{1\sigma\left(1\right)}\delta_{2\sigma\left(2\right)}\cdots\delta_{n\sigma\left(n\right)}
+\]
+
+
+この和に寄与してくるのは、$1=\sigma\left(1\right),2=\sigma\left(2\right),\cdots,n=\sigma\left(n\right)$の時のみ。
+
+$\therefore\sigma=e$の時のみ。
+
+$\mathrm{sgn}\left(e\right)=1$なので、
+
+\[
+\mathrm{det}\left(E_{n}\right)=1
+\]
+
+
+(2) $A=\left(a_{ij}\right)_{ij}\rightarrow^{t}A=\left(a_{ij}\right)_{ij}$
+
+\[
+\mathrm{det}\left(^{t}A\right)=\sum_{\sigma\in\mathfrak{S}_{n}}\mathrm{sgn}\left(\sigma\right)a_{\sigma\left(1\right)1}a_{\sigma\left(2\right)2}\cdots a_{\sigma\left(n\right)n}
+\]
+
+
+掛け算を交換して、
+
+\[
+a_{\sigma\left(1\right)1}a_{\sigma\left(2\right)2}\cdots a_{\sigma\left(n\right)n}=a_{1\sigma^{-1}\left(1\right)}a_{2\sigma^{-1}\left(2\right)}a_{3\sigma^{-1}\left(3\right)}\cdots a_{n\sigma^{-1}\left(n\right)}
+\]
+
+
+なので、
+
+\[
+\mathrm{det}\left(^{t}A\right)=\sum_{\sigma\in\mathfrak{S}_{n}}\mathrm{sgn}\left(\sigma\right)a_{1\sigma^{-1}\left(1\right)}\cdots a_{n\sigma^{-1}\left(n\right)}
+\]
+
+
+実は$\mathrm{sgn}\left(\sigma\right)=\mathrm{sgn}\left(\sigma^{-1}\right)\in\left\{ 1,-1\right\} $
+
+($\mathrm{sgn}\left(\sigma\right)\mathrm{sgn}\left(\sigma^{-1}\right)=\mathrm{sgn}\left(\sigma\sigma^{-1}\right)=\mathrm{sgn}\left(e\right)=1$より)
+
+$\sigma$が$\mathfrak{S}_{n}$を一回ずつ動く
+
+→$\sigma^{-1}$も$\mathfrak{S}_{n}$を一回ずつ動く
+
+\[
+\mathrm{det}\left(^{t}A\right)=\sum_{\sigma^{-1}\in\mathfrak{S}_{n}}\mathrm{sgn}\left(\sigma^{-1}\right)a_{1\sigma^{-1}\left(1\right)}\cdots a_{n\sigma^{-1}\left(n\right)}=\mathrm{det}\left(A\right)
+\]
+
+
+QED
+
+例
+
+\[
+\left|\begin{array}{cc}
+1 & 2\\
+3 & 4
+\end{array}\right|=1\times4-3\times2=-2
+\]
+
+
+\[
+\left|\begin{array}{cc}
+1 & 3\\
+2 & 4
+\end{array}\right|=1\times4-3\times2=-2
+\]
+
+
+
+\subsection{5.4 ブロック分割と行列式}
+
+$n\geq1$、自然数$n=p+q\left(p,q\geq1\right)$
+
+$A$の行、列ともに植えのnの分割に応じて分割する。
+
+
+\paragraph{仮定}
+
+この分割で$A_{21}$の部分の値が全て0になるものとする。
+
+つまり
+
+$A=\left(a_{ij}\right)_{ij}$とした時、$i\geq p+1,j\leq p$ならば、$a_{ij}=0$とする。
+
+
+\paragraph{定理5.14}
+
+\[
+\mathrm{det}\left(A\right)=\mathrm{det}\left(A_{11}\right)\mathrm{det}\left(A_{22}\right)
+\]
+
+
+(注) $\left[1,p\right]$の置換全体を$\mathfrak{S}\left[1.p\right]$、$\left[p+1,n\right]$の置換全体を$\mathfrak{S}\left[p+1.n\right]$とおく。
+
+\[
+\mathrm{det}\left(A\right)=\sum_{\sigma\in\mathfrak{S}_{n}}\mathrm{sgn}\left(\sigma\right)a_{1\sigma\left(1\right)}\cdots a_{n\sigma\left(n\right)}
+\]
+
+
+$i\geq p+1,\sigma\left(i\right)\leq p$のとき、
+
+\[
+a_{i\sigma\left(i\right)}=0
+\]
+
+
+なので、和に寄与してくるのは、$i\geq p+1\Rightarrow\sigma\left(i\right)\geq p+1$となる$\sigma$のみ。
+
+$\underbrace{\Longrightarrow}_{\text{全単射}}1\leq p\Rightarrow\sigma\left(i\right)\leq p$
+
+\[
+\sigma=\tau_{1}\times\tau_{2}
+\]
+
+
+※$\tau_{1}\in\mathfrak{S}\left[1,p\right],\tau_{2}\in\mathfrak{S}\left[p+1,n\right]$
+
+この時
+
+\[
+\mathrm{sgn}\left(\sigma\right)=\mathrm{sgn}\left(\tau_{1}\right)\mathrm{sgn}\left(\tau_{2}\right)
+\]
+
+
+$\sigma$の動く範囲は
+
+\[
+\left\{ \left(\tau_{1},\tau_{2}\right)|\tau_{1}\in\mathfrak{S}\left[1,p\right],\tau_{2}\in\mathfrak{S}\left[p+1,n\right]\right\} 
+\]
+
+
+で、
+\begin{eqnarray*}
+\mathrm{det}\left(A\right) & = & \sum_{\begin{subarray}{c}
+\tau_{1}\in\mathfrak{S}\left[1,p\right]\\
+\tau_{2}\in\mathfrak{S}\left[p+1,n\right]
+\end{subarray}}\mathrm{sgn}\left(\sigma\right)a_{1\tau_{1}\left(1\right)}\cdots a_{p\tau_{1}\left(p\right)}a_{p+1\tau_{2}\left(p+1\right)}\cdots a_{n\tau_{2}\left(n\right)}\\
+ & = & \left(\sum_{\tau_{1}\in\mathfrak{S}\left[1,p\right]}\mathrm{sgn}\left(\tau_{1}\right)a_{1\tau_{1}\left(1\right)}\cdots a_{p\tau_{1}\left(p\right)}\right)\left(\sum_{\tau_{2}\in\mathfrak{S}\left[p+1,n\right]}\mathrm{sgn}\left(\tau_{2}\right)a_{p+1\tau_{2}\left(p+1\right)}\cdots a_{n\tau_{2}\left(n\right)}\right)\\
+ & = & \mathrm{det}\left(A_{11}\right)\mathrm{det}\left(A_{22}\right)
+\end{eqnarray*}
+
+
+系
+
+\[
+A=\left(\begin{array}{cc}
+A_{11} & 0\\
+A_{21} & A_{22}
+\end{array}\right)
+\]
+
+
+この時
+\[
+\mathrm{det}\left(A\right)=\mathrm{det}\left(A_{11}\right)\mathrm{det}\left(A_{22}\right)
+\]
+
+
+\begin{eqnarray*}
+\mathrm{det}\left(A\right) & = & \mathrm{det}\left(^{t}\! A\right)\\
+ & = & \mathrm{det}\left(\begin{array}{cc}
+^{t}\! A_{11} & ^{t}\! A_{21}\\
+0 & ^{t}\! A_{22}
+\end{array}\right)\\
+ & = & \mathrm{det}\left(^{t}\! A_{11}\right)\mathrm{det}\left(^{t}\! A_{22}\right)\\
+ & = & \mathrm{det}\left(A_{11}\right)\mathrm{det}\left(A_{22}\right)
+\end{eqnarray*}
+
+
+Q.E.D.
+
+
+\subsubsection{例}
+
+$p=1,q=n-1$の場合は
+
+\[
+\mathrm{det}\left(A\right)=a_{11}\mathrm{det}\left(A_{22}\right)
+\]
+
+
+
+\subsection{5.5 多重線形性交代性}
+
+A: $\left(n\times n\right)$行列
+
+$A=\left(\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{n}\right)$と列ベクトル分解する。
+
+\begin{eqnarray*}
+\mathrm{det}\left(A\right) & = & \mathrm{det}\left(\left(\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{n}\right)\right)\\
+ & = & \mathrm{det}\left(\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{n}\right)
+\end{eqnarray*}
+
+
+と表記する。
+
+
+\subsubsection{命題5.19 (列に関する多重線形性)}
+
+(1) $\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{n}$
+n次元ベクトル($r\in\mathbb{R}$)
+
+\[
+\mathrm{det}\left(\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,r\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{n}\right)=r\mathrm{det}\left(\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{n}\right)
+\]
+
+
+(2) $\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{i-1},\boldsymbol{a}_{i+1},\cdots,\boldsymbol{a}_{n},\boldsymbol{a}_{i}',\boldsymbol{a}_{i}''$
+n次元ベクトル
+
+\[
+\mathrm{det}\left(\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{i}'+\boldsymbol{a}_{i}'',\cdots,\boldsymbol{a}_{n}\right)=\mathrm{det}\left(\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{i}',\cdots,\boldsymbol{a}_{n}\right)+\mathrm{det}\left(\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{i}'',\cdots,\boldsymbol{a}_{n}\right)
+\]
+
+
+(これをi列目に関する線形性という)
+
+
+\subsubsection{証明}
+
+(1)
+
+\begin{eqnarray*}
+\mathrm{det}\left(\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,r\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{n}\right) & = & \sum_{\sigma\in\mathfrak{S}_{n}}\mathrm{sgn}\left(\sigma\right)a_{1\sigma\left(1\right)}a_{2\sigma\left(2\right)}\cdots a_{n\sigma\left(n\right)}\\
+ & = & \sum_{\sigma\in\mathfrak{S}_{n}}\mathrm{sgn}\left(\sigma\right)a_{\sigma\left(1\right)1}a_{\sigma\left(2\right)2}\cdots ra_{\sigma\left(i\right)i}\cdots a_{\sigma\left(n\right)n}\\
+ & = & r\sum_{\sigma\in\mathfrak{S}_{n}}\mathrm{sgn}\left(\sigma\right)a_{\sigma\left(1\right)1}a_{\sigma\left(2\right)2}\cdots a_{\sigma\left(i\right)i}\cdots a_{\sigma\left(n\right)n}\\
+ & = & r\mathrm{det}\left(\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{n}\right)
+\end{eqnarray*}
+
+
+(2)
+
+$\boldsymbol{a}_{i}=\boldsymbol{a}_{i}'+\boldsymbol{a}_{i}''$とおく
+
+\begin{eqnarray*}
+\mathrm{det}\left(\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{i}'+\boldsymbol{a}_{i}'',\cdots,\boldsymbol{a}_{n}\right) & = & \sum_{\sigma\in\mathfrak{S}_{n}}\mathrm{sgn}\left(\sigma\right)a_{1\sigma\left(1\right)}a_{2\sigma\left(2\right)}\cdots a_{n\sigma\left(n\right)}\\
+ & = & \sum_{\sigma\in\mathfrak{S}_{n}}\mathrm{sgn}\left(\sigma\right)a_{1\sigma\left(1\right)}\cdots\left(a_{\sigma\left(i\right)i}'+a_{\sigma\left(i\right)i}''\right)\cdots a_{n\sigma\left(n\right)}\\
+ & = & \sum_{\sigma\in\mathfrak{S}_{n}}\mathrm{sgn}\left(\sigma\right)a_{1\sigma\left(1\right)}\cdots a_{\sigma\left(i\right)i}'\cdots a_{n\sigma\left(n\right)}+\sum_{\sigma\in\mathfrak{S}_{n}}\mathrm{sgn}\left(\sigma\right)a_{1\sigma\left(1\right)}\cdots a_{\sigma\left(i\right)i}''\cdots a_{n\sigma\left(n\right)}\\
+ & = & \mathrm{det}\left(\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{i}',\cdots,\boldsymbol{a}_{n}\right)+\mathrm{det}\left(\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{i}'',\cdots,\boldsymbol{a}_{n}\right)
+\end{eqnarray*}
+
+
+
+\subsubsection{例}
+
+\begin{eqnarray*}
+\left|\begin{array}{cc}
+1 & 3+4\\
+2 & 5+6
+\end{array}\right| & = & \left|\begin{array}{cc}
+1 & 3\\
+2 & 5
+\end{array}\right|+\left|\begin{array}{cc}
+1 & 4\\
+2 & 6
+\end{array}\right|\\
+-3 & = & \left(-1\right)+\left(-2\right)
+\end{eqnarray*}
+
+
+
+\subsubsection{命題5.12}
+
+$i\leq j$とすると、
+
+\[
+\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{j},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{n}\right)=-\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{j},\cdots,\boldsymbol{a}_{n}\right)
+\]
+
+
+
+\subsubsection{証明}
+
+\[
+\left(\text{左辺}\right)=\sum_{\sigma\in\mathfrak{S}_{n}}\mathrm{sgn}\left(\sigma\right)a_{\sigma\left(1\right)1}a_{\sigma\left(2\right)2}\cdots a_{\sigma\left(i\right)j}\cdots a_{\sigma\left(j\right)i}\cdots a_{\sigma\left(n\right)n}
+\]
+
+
+$\sigma\cdot\left(i\text{と}j\text{の互換}\right)=\sigma'$とおく。
+\[
+\sigma'\left(k\right)=\begin{cases}
+j & \left(k=i\right)\\
+i & \left(k=j\right)\\
+k & \left(k\neq i,j\right)
+\end{cases}
+\]
+
+
+\[
+\mathrm{sgn}\left(\sigma'\right)=\mathrm{sgn}\left(\sigma\right)
+\]
+
+
+$\sigma$が$S_{n}$を動くと$\sigma^{-1}$も$S_{n}$を動く。
+
+.
+
+\begin{eqnarray*}
+\left(\text{左辺}\right) & = & \sum_{\sigma\in\mathfrak{S}_{n}}-\mathrm{sgn}\left(\sigma\right)a_{\sigma\left(1\right)1}a_{\sigma\left(2\right)2}\cdots a_{\sigma\left(i\right)i}\cdots a_{\sigma\left(j\right)j}\cdots a_{\sigma\left(n\right)n}\\
+ & = & -\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{j},\cdots,\boldsymbol{a}_{n}\right)
+\end{eqnarray*}
+
+
+\[
+\left|\begin{array}{cc}
+1 & 2\\
+3 & 4
+\end{array}\right|=-\left|\begin{array}{cc}
+2 & 1\\
+4 & 3
+\end{array}\right|
+\]
+
+
+
+\subsubsection{定理}
+
+(1)
+
+\[
+\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{n}\right)=0
+\]
+
+
+(2)
+
+\[
+\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{j}+c\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{n}\right)=\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{j},\cdots,\boldsymbol{a}_{n}\right)
+\]
+
+
+
+\subsubsection{証明}
+
+(1)
+
+\[
+\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{n}\right)=-\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{n}\right)
+\]
+
+
+移行して
+
+\[
+2\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{n}\right)=0
+\]
+
+
+\[
+\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{n}\right)=0
+\]
+
+
+(2)
+
+\begin{eqnarray*}
+\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{j}+c\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{n}\right) & = & \mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{j},\cdots,\boldsymbol{a}_{n}\right)+c\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{n}\right)\\
+ & = & \mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{j},\cdots,\boldsymbol{a}_{n}\right)
+\end{eqnarray*}
+
+
+
+\subsubsection{例}
+
+(1)
+
+\[
+\left|\begin{array}{cc}
+1 & 1\\
+2 & 2
+\end{array}\right|=0
+\]
+
+
+(2)
+
+\[
+\left|\begin{array}{cc}
+1 & 2\\
+3 & 4
+\end{array}\right|=\left|\begin{array}{cc}
+1 & 2+3\times1\\
+3 & 4+3\times3
+\end{array}\right|=\left|\begin{array}{cc}
+1 & 5\\
+3 & 13
+\end{array}\right|
+\]
+
+
+交代性とは、1つの列に他の列の何倍かを加えても行列式の値は変わらないこと。
+
+
+\subsubsection{まとめ}
+
+列に関する線形性、交代性から、行に関する線形性、交代性もいえる。
+
+(A)(B)(C)の操作で要領よく計算できる。
+
+
+\subsubsection{例題5.30}
+
+\[
+\left|\begin{array}{ccccc}
+3 & 4 & 1 & 2 & -1\\
+1 & 1 & -1 & 2 & 2\\
+2 & 2 & 1 & -1 & 1\\
+3 & 1 & -4 & 13 & 17\\
+1 & 2 & 2 & -1 & -1
+\end{array}\right|
+\]
+
+
+を求める。
+
+行についての交代性、線形性を用いる。
+
+$\left(1.2\right)$成分の1を一番上に持ってくる。
+
+\[
+\left|\begin{array}{ccccc}
+3 & 4 & 1 & 2 & -1\\
+1 & 1 & -1 & 2 & 2\\
+2 & 2 & 1 & -1 & 1\\
+3 & 1 & -4 & 13 & 17\\
+1 & 2 & 2 & -1 & -1
+\end{array}\right|=-\left|\begin{array}{ccccc}
+1 & 1 & -1 & 2 & 2\\
+3 & 4 & 1 & 2 & -1\\
+2 & 2 & 1 & -1 & 1\\
+3 & 1 & -4 & 13 & 17\\
+1 & 2 & 2 & -1 & -1
+\end{array}\right|
+\]
+
+
+一つの行の何倍かを他の行に加えても不変であることから
+
+\[
+-\left|\begin{array}{ccccc}
+1 & 1 & -1 & 2 & 2\\
+3 & 4 & 1 & 2 & -1\\
+2 & 2 & 1 & -1 & 1\\
+3 & 1 & -4 & 13 & 17\\
+1 & 2 & 2 & -1 & -1
+\end{array}\right|=-\left|\begin{array}{ccccc}
+1 & 1 & -1 & 2 & 2\\
+0 & 1 & 4 & -4 & -7\\
+0 & 0 & 3 & -5 & -3\\
+0 & -2 & -6 & 7 & 11\\
+0 & 1 & 3 & -3 & -3
+\end{array}\right|
+\]
+
+
+1+4のブロック分割より
+
+\[
+-\left|\begin{array}{ccccc}
+1 & 1 & -1 & 2 & 2\\
+0 & 1 & 4 & -4 & -7\\
+0 & 0 & 3 & -5 & -3\\
+0 & -2 & -6 & 7 & 11\\
+0 & 1 & 3 & -3 & -3
+\end{array}\right|=-\left|\begin{array}{cccc}
+1 & 4 & -4 & 7\\
+0 & 3 & -5 & -3\\
+-2 & -6 & 7 & 11\\
+1 & 3 & -3 & -3
+\end{array}\right|
+\]
+
+
+一つの行の何倍かを他の行に加えても不変であることから
+
+\[
+-\left|\begin{array}{cccc}
+1 & 4 & -4 & 7\\
+0 & 3 & -5 & -3\\
+-2 & -6 & 7 & 11\\
+1 & 3 & -3 & -3
+\end{array}\right|=-\left|\begin{array}{cccc}
+1 & 4 & -4 & 7\\
+0 & 3 & -5 & -3\\
+0 & 2 & -1 & -3\\
+0 & -1 & 1 & 4
+\end{array}\right|
+\]
+
+
+1+3のブロック分割より
+
+\[
+-\left|\begin{array}{cccc}
+1 & 4 & -4 & 7\\
+0 & 3 & -5 & -3\\
+0 & 2 & -1 & -3\\
+0 & -1 & 1 & 4
+\end{array}\right|=-\left|\begin{array}{ccc}
+3 & -5 & -3\\
+2 & -1 & -3\\
+-1 & 1 & 4
+\end{array}\right|
+\]
+
+
+これを計算して
+
+\[
+-\left|\begin{array}{ccc}
+3 & -5 & -3\\
+2 & -1 & -3\\
+-1 & 1 & 4
+\end{array}\right|=-19
+\]
+
+
+よって
+
+\[
+\left|\begin{array}{ccccc}
+3 & 4 & 1 & 2 & -1\\
+1 & 1 & -1 & 2 & 2\\
+2 & 2 & 1 & -1 & 1\\
+3 & 1 & -4 & 13 & 17\\
+1 & 2 & 2 & -1 & -1
+\end{array}\right|=-19
+\]
+
+
+
+\subsubsection{演習問題解説}
+
+
+\paragraph{1. (1)\textmd{
+\[
+\left|\protect\begin{array}{cccc}
+3 & 2 & 4 & 1\protect\\
+5 & 3 & 2 & 3\protect\\
+0 & 0 & 2 & 1\protect\\
+0 & 0 & 3 & 5
+\protect\end{array}\right|=\left|\protect\begin{array}{cc}
+3 & 2\protect\\
+5 & 3
+\protect\end{array}\right|\left|\protect\begin{array}{cc}
+2 & 1\protect\\
+3 & 5
+\protect\end{array}\right|=\left(-1\right)\times7=-7
+\]
+}}
+
+
+\paragraph{1. (2)}
+
+\begin{eqnarray*}
+\left|\begin{array}{cccc}
+3 & 0 & 4 & 0\\
+2 & 3 & 1 & 3\\
+1 & 0 & 2 & 0\\
+3 & 2 & 4 & 5
+\end{array}\right| & = & -\left|\begin{array}{cccc}
+3 & 0 & 4 & 0\\
+1 & 0 & 2 & 0\\
+2 & 3 & 1 & 3\\
+3 & 2 & 4 & 5
+\end{array}\right|\\
+ & = & \left|\begin{array}{cccc}
+3 & 4 & 0 & 0\\
+1 & 2 & 0 & 0\\
+2 & 1 & 3 & 3\\
+3 & 4 & 2 & 5
+\end{array}\right|\\
+ & = & \left|\begin{array}{cc}
+3 & 4\\
+1 & 2
+\end{array}\right|\left|\begin{array}{cc}
+3 & 3\\
+2 & 5
+\end{array}\right|\\
+ & = & 2\times9\\
+ & = & 18
+\end{eqnarray*}
+
+
+
+\paragraph{2. (1)}
+
+\begin{eqnarray*}
+\left|\begin{array}{cccc}
+3 & 1 & 4 & 2\\
+4 & 3 & 1 & 3\\
+1 & 2 & 4 & 1\\
+2 & 2 & 5 & 3
+\end{array}\right| & = & -\left|\begin{array}{cccc}
+1 & 2 & 4 & 1\\
+4 & 3 & 1 & 3\\
+3 & 1 & 4 & 2\\
+2 & 2 & 5 & 3
+\end{array}\right|\\
+ & = & -\left|\begin{array}{cccc}
+1 & 2 & 4 & 1\\
+0 & -5 & -15 & -1\\
+0 & -5 & -8 & -1\\
+0 & -2 & -3 & 1
+\end{array}\right|\\
+ & = & -\left|\begin{array}{ccc}
+-5 & -15 & -1\\
+-5 & -8 & -1\\
+-2 & -3 & 1
+\end{array}\right|\\
+ & = & \left|\begin{array}{ccc}
+5 & 15 & 1\\
+5 & 8 & 1\\
+2 & 3 & -1
+\end{array}\right|\\
+ & = & 49
+\end{eqnarray*}
+
+
+
+\paragraph{2. (2)}
+
+3回入れ替えが行われていることから
+
+\[
+\left|\begin{array}{cccc}
+3 & 1 & 4 & 2\\
+4 & 3 & 1 & 3\\
+1 & 2 & 4 & 1\\
+2 & 2 & 5 & 3
+\end{array}\right|=\left|\begin{array}{cccc}
+4 & 3 & 1 & 3\\
+2 & 2 & 5 & 3\\
+3 & 1 & 4 & 2\\
+1 & 2 & 4 & 1
+\end{array}\right|\times\left(-1\right)^{3}
+\]
+
+
+\[
+x=-1
+\]
+
+
+
+\paragraph{3.}
+
+\begin{eqnarray*}
+\left|\begin{array}{ccccc}
+1 & 1 & 2 & 3 & 2\\
+2 & 3 & 6 & 7 & 5\\
+2 & 3 & 8 & 8 & 6\\
+1 & 3 & 7 & 7 & 5\\
+2 & 3 & 7 & 8 & 7
+\end{array}\right| & = & \left|\begin{array}{ccccc}
+1 & 1 & 2 & 3 & 2\\
+0 & 1 & 2 & 1 & 1\\
+0 & 1 & 4 & 2 & 2\\
+0 & 2 & 5 & 4 & 3\\
+0 & 1 & 3 & 2 & 3
+\end{array}\right|\\
+ & = & \left|\begin{array}{cccc}
+1 & 2 & 1 & 1\\
+1 & 4 & 2 & 2\\
+2 & 5 & 4 & 3\\
+1 & 3 & 2 & 3
+\end{array}\right|\\
+ & = & \left|\begin{array}{cccc}
+1 & 2 & 1 & 1\\
+0 & 2 & 1 & 1\\
+0 & 1 & 2 & 1\\
+0 & 1 & 1 & 2
+\end{array}\right|\\
+ & = & \left|\begin{array}{ccc}
+2 & 1 & 1\\
+1 & 2 & 1\\
+1 & 1 & 2
+\end{array}\right|\\
+ & = & 4
+\end{eqnarray*}
+
+
+
+\paragraph{4.}
+
+\begin{eqnarray*}
+S & = & \frac{1}{2}\left|\begin{array}{ccc}
+1 & x_{1} & y_{1}\\
+1 & x_{2} & y_{2}\\
+1 & x_{3} & y_{3}
+\end{array}\right|\\
+ & = & \frac{1}{2}\left|\begin{array}{ccc}
+1 & x_{1} & y_{1}\\
+0 & x_{2}-x_{1} & y_{2}-y_{1}\\
+0 & x_{3}-x_{1} & y_{3}-y_{1}
+\end{array}\right|\\
+ & = & \frac{1}{2}\left|\begin{array}{cc}
+x_{2}-x_{1} & y_{2}-y_{1}\\
+x_{3}-x_{1} & y_{3}-y_{1}
+\end{array}\right|
+\end{eqnarray*}
+
+
+$v_{1}=\left(x_{1},y_{1}\right),v_{2}=\left(x_{2},y_{2}\right),v_{3}=\left(x_{3},y_{3}\right)$とおくと、
+
+\[
+S=\frac{1}{2}\times\left(\left(v_{2}-v_{1}\right),\left(v_{3}-v_{1}\right)\text{で作られる平行四辺形の面積}\right)
+\]
+
+
+となる。
+
+
+\paragraph{5. (1)}
+
+\[
+f\left(x,y,z\right)=\left|\begin{array}{cccc}
+1 & x_{1} & y_{1} & z_{1}\\
+1 & x_{2} & y_{2} & z_{2}\\
+1 & x_{3} & y_{3} & z_{3}\\
+1 & x & y & z
+\end{array}\right|
+\]
+
+
+とおく。
+
+$f\left(x,y,z\right)$は、$x,y,z$の一次式になるので、$f\left(x,y,z\right)=0$は平面の方程式になる。
+
+他方、
+\begin{eqnarray*}
+f\left(x_{1},y_{1},z_{1}\right) & = & \left|\begin{array}{cccc}
+1 & x_{1} & y_{1} & z_{1}\\
+1 & x_{2} & y_{2} & z_{2}\\
+1 & x_{3} & y_{3} & z_{3}\\
+1 & x_{1} & y_{1} & z_{1}
+\end{array}\right|\\
+ & = & 0\left(\because\text{交代性}\right)
+\end{eqnarray*}
+
+
+同様にして
+
+\[
+f\left(x_{2},y_{2},z_{2}\right)=0
+\]
+
+
+\[
+f\left(x_{3},y_{3},z_{3}\right)=0
+\]
+
+
+よって、$f$は3点$P_{1},P_{2},P_{3}$を通る。
+
+$P_{1},P_{2},P_{3}$は一直線上にないので、$f\left(x,y,z\right)=0$は3天を通る平面の方程式である。
+
+
+\paragraph{5. (2)}
+
+\begin{eqnarray*}
+\left|\begin{array}{cccc}
+1 & 1 & 1 & 1\\
+1 & 1 & 2 & 3\\
+1 & 2 & 3 & 6\\
+1 & x & y & z
+\end{array}\right| & = & \left|\begin{array}{cccc}
+1 & 1 & 1 & 1\\
+0 & 0 & 1 & 2\\
+0 & 1 & 2 & 5\\
+0 & x-1 & y-1 & z-1
+\end{array}\right|\\
+ & = & \left|\begin{array}{ccc}
+0 & 1 & 2\\
+1 & 2 & 5\\
+x-1 & y-1 & z-1
+\end{array}\right|\\
+ & = & x+2y-z-2=0
+\end{eqnarray*}
+
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\[
+barAA=\left(\begin{array}{ccc}
+5 & -3 & 1\\
+-2 & 4 & -2\\
+-1 & -1 & 1
+\end{array}\right)\left(\begin{array}{ccc}
+1 & 1 & 1\\
+2 & 3 & 4\\
+3 & 4 & 7
+\end{array}\right)=\left(\begin{array}{ccc}
+2 & 0 & 0\\
+0 & 2 & 0\\
+0 & 0 & 2
+\end{array}\right)=dit\left(A\right)I_{3}
+\]
+
+
+\[
+dit\left(A\right)=\left(\begin{array}{ccc}
+1 & 1 & 1\\
+2 & 3 & 4\\
+3 & 4 & 7
+\end{array}\right)=21+12+8-9-16-14=2
+\]
+
+
+
+\subsubsection{定理5.36}
+
+$A$: $\left(n\times n\right)$行列
+
+$\tilde{A}$を$A$の余因子行列とする。
+
+\[
+\tilde{A}A=\mathrm{det}\left(A\right)I_{n}=A\tilde{A}
+\]
+
+
+
+\paragraph{補題}
+
+$A$: $\left(n\times n\right)$行列$=\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{j},\cdots,\boldsymbol{a}_{n}\right)$
+
+$\boldsymbol{e}_{i}=\left(\begin{array}{c}
+0\\
+\vdots\\
+1\\
+\vdots\\
+0
+\end{array}\right)$として、
+
+\[
+\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{e}_{i},\cdots,\boldsymbol{a}_{n}\right)=\tilde{A}_{ij}
+\]
+
+
+
+\subsubsection{証明}
+
+$\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{e}_{i},\cdots,\boldsymbol{a}_{n}\right)$は、行について$\left(i-1\right)$回飛び越し、列について$\left(j-1\right)$回飛び越すので、
+
+\begin{eqnarray*}
+\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{e}_{i},\cdots,\boldsymbol{a}_{n}\right) & = & \left(-1\right)^{i+j}\mathrm{det}\left(A_{ij}\right)\\
+ & = & \tilde{A_{ij}}
+\end{eqnarray*}
+
+
+QED
+
+
+\subsubsection{定理5.3.4 展開公式}
+
+
+\paragraph{(1)}
+
+任意の$j$について
+
+\[
+\sum_{i=1}^{n}a_{ij}\tilde{A_{ij}}=\mathrm{det}\left(A\right)
+\]
+
+
+
+\paragraph{(2)}
+
+任意の$i$について
+\[
+\sum_{j=1}^{n}a_{ij}\tilde{A_{ij}}=\mathrm{det}\left(A\right)
+\]
+
+
+
+\subsubsection{証明}
+
+
+\paragraph{(1)}
+
+$A=\left(\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{j},\cdots,\boldsymbol{a}_{n}\right)$と書く。
+
+\[
+\boldsymbol{a}_{j}=\left(\begin{array}{c}
+a_{1j}\\
+a_{2j}\\
+\vdots\\
+a_{nj}
+\end{array}\right)=a_{1j}\boldsymbol{e}_{1}+a_{2j}\boldsymbol{e}_{2}+\cdots+a_{nj}\boldsymbol{e}_{n}
+\]
+
+
+(ただし$\boldsymbol{e}_{i}$は$i$番目の値が1でその他の値が0の$\left(n\times1\right)$行列)
+
+を(1)に代入して$j$列目に関する線形性
+
+\begin{eqnarray*}
+\mathrm{det}\left(A\right) & = & \mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\sum_{i=1}^{n}a_{ij}\boldsymbol{e}_{i},\cdots,\boldsymbol{a}_{n}\right)\\
+ & = & \sum_{i=1}^{n}a_{ij}\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{e}_{i},\cdots\boldsymbol{a}_{n}\right)
+\end{eqnarray*}
+
+
+従って(1)が出る。
+
+(2)は行と列の役割を変えて証明できる。
+
+
+\subsubsection{系}
+
+
+\paragraph{(1)}
+
+$j\neq k$のとき
+
+\[
+\sum_{i=1}^{n}a_{ij}\tilde{A_{ik}}=0
+\]
+
+
+
+\paragraph{(2)}
+
+$i\neq k$のとき
+
+\[
+\sum_{j=1}^{n}a_{ij}\tilde{A_{kj}}=0
+\]
+
+
+
+\subsubsection{証明}
+
+
+\paragraph{(1)}
+
+\[
+\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{j}\left(j\text{列目}\right),\cdots,\boldsymbol{a}_{j}\left(k\text{列目}\right),\cdots,\boldsymbol{a}_{n}\right)
+\]
+
+
+k列目に対して展開公式を用いて、
+
+\[
+=\sum_{i=1}^{n}a_{ij}\times\left(A'\text{の}\left(i,k\right)\text{余因子}\right)
+\]
+
+
+$A'$から$k$列目と$i$行目を取り去る$=A$の$\left(i,k\right)$余因子
+
+\[
+=\sum_{i=1}^{n}a_{ij}\tilde{A_{ik}}
+\]
+
+
+\[
+\therefore\sum_{i=1}^{n}a_{ij}\tilde{A_{ik}}=0
+\]
+
+
+QED
+
+(2)も同様。
+
+
+\subsubsection{定理5.36}
+
+
+\paragraph{(1)}
+
+\[
+\sum_{i=1}^{n}a_{ij}\tilde{A_{ik}}=\delta_{jk}\mathrm{det}\left(A\right)
+\]
+
+
+
+\paragraph{(2)}
+
+\[
+\sum_{j=1}^{n}a_{ij}\tilde{A_{kj}}=\delta_{ik}\mathrm{det}\left(A\right)
+\]
+
+
+特に
+
+
+\paragraph{(1)}
+
+\[
+\tilde{A}A=\mathrm{det}\left(A\right)E_{n}
+\]
+
+
+
+\paragraph{(2)}
+
+\[
+A\tilde{A}=\mathrm{det}\left(A\right)E_{n}
+\]
+
+
+
+\subsubsection{系}
+
+$\mathrm{det}\left(A\right)\neq0$のとき
+
+\[
+\left(\frac{1}{\mathrm{det}\left(A\right)}\tilde{A}\right)A=E_{n}=A\left(\frac{1}{\mathrm{det}\left(A\right)}\tilde{A}\right)
+\]
+
+
+なので、$A$は正則かつ
+
+\[
+A^{-1}=\frac{1}{\mathrm{det}\left(A\right)}\tilde{A}
+\]
+
+
+と逆行列が求められる。
+
+
+\subsubsection{命題5.37}
+
+$A$: $\left(n\times n\right)$行列とすると次は同値である。
+\begin{enumerate}
+\item $A$は正則行列
+\item $\mathrm{det}\left(A\right)\neq0$
+\item $AB=E_{n}$となる$B$がある。
+\item $BA=E_{n}$となる$B$がある。
+\end{enumerate}
+(2)→(1)は先程の系である。
+
+(1)→(3)は正則行列の条件の一部
+
+(1)→(4)は正則行列の条件の一部
+
+(3)→(2)、(4)→(2)は
+
+$AB=E_{n}$の行列式をとる。
+
+\[
+\mathrm{det}\left(AB\right)=\mathrm{det}\left(E_{n}\right)=1
+\]
+
+
+他方
+\[
+\mathrm{det}\left(AB\right)=\mathrm{det}\left(A\right)\mathrm{det}\left(B\right)
+\]
+
+
+よって
+
+\[
+\mathrm{det}\left(A\right)\neq0
+\]
+
+
+によって証明される。
+
+
+\subsubsection{命題5.38}
+
+$A$: $n$次正方行列
+
+→$A$は基本行列の積に書ける
+
+(行基本変形は基本行列の左からの掛け算で表せる)
+
+(注) これを用いて正則行列の逆行列は掃き出し法で必ず求まる。
+
+
+\subsubsection{証明}
+
+$A$: $\left(n\times n\right)$行列・正則とする。
+
+行基本変形、列の入れ替えを用いて、$r+\left(n-r\right)$分割の$\left(\begin{array}{cc}
+E_{r} & B\\
+0 & 0
+\end{array}\right)$の形になる
+
+$A$に右、左から基本行列$P_{1},\cdots,P_{m}$$Q_{1},\cdots,Q_{l}$をかけて上の形になる、
+
+\[
+Q_{l}\cdots Q_{2}Q_{1}AP_{1}P_{2}\cdots P_{m}=\left(\begin{array}{cc}
+E_{r} & B\\
+0 & 0
+\end{array}\right)
+\]
+
+
+基本行列は正則
+
+\[
+\mathrm{det\left(P_{i}\right)\neq0,}\mathrm{det}\left(Q_{j}\right)
+\]
+
+
+左辺の行列式は
+
+\[
+\mathrm{det}\left(Q_{l}\right)\mathrm{det}\left(Q_{l-1}\right)\cdots\mathrm{det}\left(Q_{1}\right)\mathrm{det}\left(A\right)\cdots\mathrm{det}\left(P_{m}\right)\neq0
+\]
+
+
+右辺の行列式は
+\[
+\begin{cases}
+0 & \left(r<n\right)\\
+1 & \left(r=n\right)
+\end{cases}
+\]
+
+
+より
+\[
+r=n
+\]
+
+
+\[
+\begin{array}{c}
+Q_{l}\cdots Q_{1}AP_{1}\cdots P_{m}=E_{n}\\
+Q_{l-1}\cdots Q_{1}AP_{1}\cdots P_{m}=Q_{l}^{-1}\\
+\vdots
+\end{array}
+\]
+
+
+と計算していくと
+\[
+A=Q_{1}^{-1}Q_{2}^{-1}\cdots Q_{l}^{-1}P_{m}^{-1}\cdots P_{1}^{-1}
+\]
+
+
+よって$A$は基本行列の積に書ける
+
+QED
+
+
+\subsection{5.8 ファンデルモンドの行列式}
+
+$n\geqq2$自然数 $\lambda_{1},\cdots,\lambda_{n}\in\mathbb{R}$
+
+$\left(n\times n\right)$行列$D\left(\lambda_{1},\lambda_{2},\cdots,\lambda_{n}\right)$を
+
+\[
+\left(\begin{array}{cccc}
+1 & 1 & \cdots & 1\\
+\lambda_{1} & \lambda_{2} & \cdots & \lambda_{n}\\
+\lambda_{1}^{2} & \lambda_{2}^{2} & \cdots & \lambda_{n}^{2}\\
+\vdots & \vdots &  & \vdots\\
+\lambda_{1}^{n-1} & \lambda_{2}^{n-1} & \cdots & \lambda_{n}^{n-1}
+\end{array}\right)
+\]
+
+
+と定める。
+
+
+\subsubsection{定理5.39}
+
+\[
+\Delta\left(\lambda_{1},\cdots,\lambda_{n}\right)=\mathrm{det}\left(D\left(\lambda_{1},\cdots,\lambda_{n}\right)\right)
+\]
+
+
+よすると
+
+\[
+\Delta\left(\lambda_{1},\cdots,\lambda_{n}\right)=\left(\left(\lambda_{2}-\lambda_{1}\right)\left(\lambda_{3}-\lambda_{1}\right)\cdots\left(\lambda_{n}-\lambda_{1}\right)\right)\left(\left(\lambda_{3}-\lambda_{2}\right)\cdots\left(\lambda_{n}-\lambda_{2}\right)\right)\cdots\left(\lambda_{n}-\lambda_{n-1}\right)
+\]
+
+
+この右側の式のような値を差積といい、
+\[
+\prod_{1\leqq i<j\leqq n}\left(\lambda_{j}-\lambda_{i}\right)
+\]
+
+
+と書く。
+
+
+\subsubsection{証明}
+
+$n$に関する帰納法
+
+$n=2$のとき
+
+\[
+\left|\begin{array}{cc}
+1 & 1\\
+\lambda_{1} & \lambda_{2}
+\end{array}\right|=\lambda_{2}-\lambda_{1}
+\]
+
+
+$n-1$の場合に成立すると仮定して$n$のときに示す。
+
+\[
+D\left(\lambda_{1},\cdots,\lambda_{n}\right)
+\]
+
+
+今までの通り
+
+\[
+f\left(x\right)=\left(x-\lambda_{1}\right)\cdots\left(x-\lambda_{n-1}\right)
+\]
+
+
+\[
+f\left(\lambda_{1}\right)=f\left(\lambda_{2}\right)=\cdots=f\left(\lambda_{n-1}\right)=0
+\]
+
+
+展開して
+
+\[
+f\left(x\right)=x^{n-1}+a_{1}x^{n-2}+\cdots+a_{n-2}x+a_{n-1}
+\]
+
+
+とする。
+
+\begin{eqnarray*}
+\left(\begin{array}{cccccc}
+1 & 0 & \cdots & 0 & 0 & 0\\
+0 & 1 & \cdots & 0 & 0 & 0\\
+\vdots & \vdots &  & \vdots & \vdots & \vdots\\
+0 & 0 & \cdots & 1 & 0 & 0\\
+0 & 0 & \cdots & 0 & 1 & 0\\
+a_{n-1} & a_{n-2} & \cdots & a_{2} & a_{1} & 1
+\end{array}\right)\left(\begin{array}{cccc}
+1 & 1 & \cdots & 1\\
+\lambda_{1} & \lambda_{2} & \cdots & \lambda_{n}\\
+\vdots & \vdots &  & \vdots\\
+\lambda_{1}^{n-2} & \lambda_{2}^{n-2} & \cdots & \lambda_{n}^{n-2}\\
+\lambda_{1}^{n-1} & \lambda_{2}^{n-1} & \cdots & \lambda_{n}^{n-1}
+\end{array}\right) & = & \left(\begin{array}{ccccc}
+ &  &  &  & \lambda_{1}\\
+ &  & D\left(\lambda_{1},\cdots,\lambda_{n-1}\right) &  & \vdots\\
+ &  &  &  & \lambda_{n}^{n-2}\\
+\left(*1\right) & 0 & \cdots & 0 & \left(*2\right)
+\end{array}\right)\\
+ & = & f\left(\lambda_{1}\right)\\
+ & = & 0
+\end{eqnarray*}
+
+
+ただし
+\[
+\left(*1\right)=a_{n-1}+\lambda_{1}a_{n-2}+\cdots+\lambda_{1}^{n-2}a_{1}+\lambda_{1}^{n-1}
+\]
+
+
+\begin{eqnarray*}
+\left(*2\right) & = & a_{n-1}+\lambda_{n}a_{n-2}+\cdots+\lambda_{n}^{n-1}\\
+ & = & f\left(\lambda_{n}\right)\\
+ & = & \left(\lambda_{n}-\lambda_{1}\right)\left(\lambda_{n}-\lambda_{2}\right)\cdots\left(\lambda_{n}-\lambda_{n-1}\right)
+\end{eqnarray*}
+
+
+上野式より
+
+\[
+\mathrm{det}\left(M\right)\Delta\left(\lambda_{1},\cdots,\lambda_{n}\right)=\mathrm{det}\left(D\left(\lambda_{1},\cdots,\lambda_{n-1}\right)\right)\times\left(\lambda_{n}-\lambda_{1}\right)\left(\lambda_{n}-\lambda_{2}\right)\cdots\left(\lambda_{n}-\lambda_{n-1}\right)
+\]
+
+
+従って
+
+\begin{eqnarray*}
+\Delta\left(\lambda_{1},\cdots,\lambda_{n}\right) & = & \Delta\left(\lambda_{1},\cdots,\lambda_{n-1}\right)\left(\lambda_{n}-\lambda_{1}\right)\left(\lambda_{n}-\lambda_{n-1}\right)\\
+ & = & \prod_{1\leqq i<j\leqq n-1}\left(\lambda_{j}-\lambda_{i}\right)\times\prod_{k=1}^{n-1}\left(\lambda_{n}-\lambda_{k}\right)\\
+ & = & \prod_{1\leqq i<j\leqq n}\left(\lambda_{j}-\lambda_{i}\right)
+\end{eqnarray*}
+
+
+よって$n$の場合も成立。QED
+
+
+\subsection{5.9 クラメルの公式}
+
+$A=\left(a_{ij}\right)_{ij}$
+
+$A$は正則とする。
+
+$\left(\begin{array}{c}
+b_{1}\\
+\vdots\\
+b_{n}
+\end{array}\right)\in\mathbb{R}^{n}$とする
+
+\[
+\left(*\right)=\begin{cases}
+a_{11}x_{1}+\cdots+a_{1n}x_{n}=b_{1}\\
+a_{21}x_{1}+\cdots+a_{2n}x_{n}=b_{2}\\
+\vdots\\
+a_{n1}x_{1}+\cdots+a_{nn}x_{n}=b_{n}
+\end{cases}
+\]
+
+
+
+\subsubsection{命題5.42}
+
+$\left(*\right)$には解が存在してただ一つ
+
+
+\subsubsection{証明}
+
+$\left(*\right)$を行列を使って解く。$\boldsymbol{x}=\left(\begin{array}{c}
+x_{1}\\
+\vdots\\
+x_{n}
+\end{array}\right)$とおくと$A\boldsymbol{x}=\boldsymbol{b}$と書ける。
+
+$A^{-1}$を左からかけて
+
+\[
+A^{-1}A\boldsymbol{x}=A^{-1}\boldsymbol{b}
+\]
+
+
+$\therefore\boldsymbol{x}=A^{-1}\boldsymbol{b}$となる。
+
+逆に$A^{-1}\boldsymbol{b}=\boldsymbol{x}$とおけば$A\boldsymbol{x}=\boldsymbol{b}$を満たすので十分である。QED
+
+
+\subsubsection{定理(クラメルの公式)}
+
+今までの条件で$A=\left(\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{n}\right)$とおくと、
+
+\[
+\boldsymbol{x}_{i}=\frac{\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i-1},\boldsymbol{b},\boldsymbol{a}_{i+1},\cdots,\boldsymbol{a}_{2}\right)}{\mathrm{det}\left(A\right)}
+\]
+
+
+
+\subsubsection{例}
+
+\[
+\begin{cases}
+2x+3y+7z=4\\
+x-y+11z=13\\
+3x+2y+z=8
+\end{cases}
+\]
+
+
+\[
+A=\left(\begin{array}{ccc}
+2 & 3 & 7\\
+1 & -1 & 11\\
+3 & 2 & 1
+\end{array}\right)
+\]
+
+
+ここで$z$だけ求めたいとき、
+
+\[
+z=\frac{\left|\begin{array}{ccc}
+2 & 3 & 4\\
+1 & -1 & 13\\
+3 & 2 & 8
+\end{array}\right|}{\left|\begin{array}{ccc}
+2 & 3 & 7\\
+1 & -1 & 11\\
+3 & 2 & 1
+\end{array}\right|}
+\]
+
+
+で求まる。
+
+
+\subsubsection{証明}
+
+$A=\left(\boldsymbol{a}_{1},\boldsymbol{a}_{2},\cdots,\boldsymbol{a}_{n}\right),x=\left(\begin{array}{c}
+x_{1}\\
+\vdots\\
+x_{n}
+\end{array}\right),A\boldsymbol{x}=\boldsymbol{b}$より、
+
+\[
+x_{1}\boldsymbol{a}_{1}+x_{2}\boldsymbol{a}_{2}+\cdots+x_{n}\boldsymbol{a}_{n}=\boldsymbol{b}
+\]
+
+
+ここで、
+
+\begin{eqnarray*}
+\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i-1},\boldsymbol{b},\boldsymbol{a}_{i+1},\cdots,\boldsymbol{a}_{n}\right) & = & \mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\sum_{p=1}^{n}\boldsymbol{a}_{p}x_{p},\cdots,\boldsymbol{a}_{n}\right)\\
+ & = & \sum_{p=1}^{n}x_{p}\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{p}\left(i\text{番目}\right),\cdots,\boldsymbol{a}_{n}\right)\\
+ & = & x_{i}\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i},\cdots,\boldsymbol{a}_{n}\right)
+\end{eqnarray*}
+
+
+($p+1$なる和は同じ行あるので寄与することはない。)
+\[
+\boldsymbol{x}_{i}=\frac{\mathrm{det}\left(\boldsymbol{a}_{1},\cdots,\boldsymbol{a}_{i-1},\boldsymbol{b},\boldsymbol{a}_{i+1},\cdots,\boldsymbol{a}_{2}\right)}{\mathrm{det}\left(A\right)}
+\]
+
+
+QED
+
+
+\subsection{5.10 三次元行列式の幾何学的意味}
+
+$n=2$→面積
+
+$n=3$→体積(符号付き)
+
+$v_{1}$と$v_{2}$がなす平行四辺形を$v_{3}$に沿って平行移動してできる立体
+
+\[
+v_{1},v_{2},v_{3}\text{のなす平行六面体の面積}\times\left(\pm1\right)=\mathrm{det}\left(v_{1},v_{2},v_{3}\right)
+\]
+
+
+符号は、$v_{1},v_{2},v_{3}$が右手の親指、人差し指、中指の関係(右手系)のとき$+1$
+
+$v_{1},v_{2},v_{3}$が左手の親指、人差し指、中指の関係(左系)のとき$-1$
+
+
+\subsubsection{外積}
+
+$v_{1},v_{2}\in\mathbb{R}^{3}$空間ベクトル
+
+\[
+v_{1}\times v_{2}=\begin{cases}
+\text{長さ}=v_{1}\text{と}v_{2}\text{のなす平行四辺形の面積}\\
+\text{向き}=v_{1},v_{2}\text{に垂直で}v_{1},v_{2},v_{1}\times v_{2}\text{が右手系となるような向き}
+\end{cases}
+\]
+
+\end{document}

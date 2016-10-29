@@ -1,0 +1,3434 @@
+%% LyX 2.0.0 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[]{jarticle}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=-2cm,bmargin=-2cm,lmargin=-1cm,rmargin=-1cm,headheight=1cm,headsep=1cm,footskip=1cm}
+\setlength{\parskip}{10pt}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{bbding}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\DeclareRobustCommand{\greektext}{%
+  \fontencoding{LGR}\selectfont\def\encodingdefault{LGR}}
+\DeclareRobustCommand{\textgreek}[1]{\leavevmode{\greektext #1}}
+\DeclareFontEncoding{LGR}{}{}
+\DeclareTextSymbol{\~}{LGR}{126}
+
+\makeatother
+
+
+\begin{document}
+
+\title{数学IA 講義ノート}
+
+
+\author{宮岡　洋一}
+
+
+\date{2013夏学期}
+\maketitle
+\begin{abstract}
+授業科目名:数学ⅠＡ①
+
+時間割コード:10722
+
+曜限:水2
+
+開講区分:夏学期
+
+単位数:2
+
+教室:761教室
+
+対象クラス:1年理一(23-27)
+
+科目区分:基礎科目 数理科学
+
+入力:博多市
+\end{abstract}
+
+\section{授業の予定}
+
+夏学期に微分、冬学期に積分を扱う。
+
+
+\subsection{夏学期の内容}
+
+極限(数列/関数)
+
+微分(1変数の微分/全微分,偏微分)
+
+関数の多項式 近似/級数表示
+
+e.g. 
+\[
+\mathrm{e}^{x}=1+x+\dfrac{x^{2}}{2}+...+\dfrac{x^{n}}{n!}+...
+\]
+\[
+\sin x=x-\dfrac{x^{3}}{6}+\dfrac{x^{5}}{5!}+(-1)^{n}\dfrac{x^{2n+1}}{(2n+1)!}
+\]
+(Taylar展開)
+
+高階微分と最大最小
+
+
+\section{序論}
+
+
+\subsection{実数}
+
+今後扱うのは「実数」=無限小数
+
+e.g. $0=0.00...$, $\pi=3.14...$, $\dfrac{1}{7}=0.14...$
+
+ここで$0.999...$について考える。
+
+\[
+0.\overbrace{9...9}^{n}\neq1
+\]
+
+
+\[
+1-0.\overbrace{0.99...9}^{n}=\dfrac{1}{10^{n}}
+\]
+
+
+\[
+0\leqq1-0.\overbrace{99...9}^{n}<\dfrac{1}{10^{n}}
+\]
+
+
+これはどんな$n$についても成立する
+
+∴$0.1-0.99...=0$
+
+∴$1=0.999...$
+
+9が無限に連続→切り上げた数と等しい
+
+実数全体(real number)⇔直線(数直線)(real line)
+
+
+\subsection{記号(notation, symbols)}
+
+$\mathbb{R}$: 字数全体が作る集合
+
+$\mathbb{Q}$: 有理数(rational number)。$\dfrac{m}{n}$と書けるもの。
+
+(ラテン語のratioが理性、比という意味を持つことに由来する)
+
+$\mathbb{Z}$: 整数(integer) (0, 1, -1, 2, -2...)
+
+
+\subsection{集合}
+
+集合Aに対してあるものがAに入るか否かを判定できなければならない
+
+e.g. 「2より大きな実数の集合」$=\left\{ \text{2より大きな実数}\right\} =\left\{ x\in\mathbb{R}|x>2\right\} $
+
+e.g. 「大きな実数全体」は集合ではない
+
+e.g. $\left\{ \text{12字で定義されない実数}\right\} $は集合ではない
+
+→$\left\{ x\in\mathbb{R}|\text{12字で定義されない実数}\right\} $と定義するとそれ自体が12字で定義され矛盾が生じる
+
+
+\subsubsection{「∈」「⊂」などの記号}
+
+e.g. $0.1\in\mathbb{Z\subset\mathbb{Q}\subset\mathbb{R}}$
+
+
+\subsection{数の性質}
+
+
+\subsubsection{実数の性質}
+\begin{itemize}
+\item 四則演算(加減乗除)が自由にできる
+\item ☆大小関係がある
+
+\begin{itemize}
+\item 2つの性質の間の関連
+\item 
+\[
+x<y\Rightarrow x+z<y+z
+\]
+
+\item 
+\[
+x<y,z>0\Rightarrow zx<zy
+\]
+
+\item 2つの性質から
+\item 
+\[
+x,y\Rightarrow-x>-y
+\]
+
+\item 
+\[
+z<0,x<y\Rightarrow zx>zy
+\]
+
+\item が言える
+
+\begin{itemize}
+\item e.g. $x>0\Rightarrow-x<0$
+\item 両辺に$-x$を加える
+\item $0=-x+x>-x+0=-x$
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\subsubsection{それぞれの数の性質}
+
+$\mathbb{Q}$: 四則演算は自由、大小関係もある
+
+$\mathbb{Z}$: 割り算は一般にはできない。大小関係あり。
+
+$\mathbb{C}$: 複素数(complex number)。四則演算自由。大小関係なし。
+
+実数は極限操作で閉じている。
+
+有理数の極限が会ったとしても一般には有理数ではない。
+
+e.g. $\sqrt{2}$を小数点第n位で切り捨てた数$\notin\mathbb{Q}$
+
+
+\subsubsection{実数の計算}
+
+実数計算を100\%性格におこなうことは事実上不可能。
+
+e.g. $\sqrt{2}\times\sqrt{2}=1.41421356...\times1.41421356...=2$だが、無限桁の計算を行うことはできない。途中で打ち切ると2よりも小さくなる。
+
+つまり実数の計算とは実際のところ近似計算である。
+
+→誤差を評価する必要がある。その評価の方法が今後学習していくε-δ論法やε-N論法である。→あとで解説
+
+
+\subsection{ε-δ論法}
+
+$f(x)$を実数値をとる連続関数(正確な定義は後ほど)とする。
+
+$a_{n}$を実数$a$に漸近する数列とすると、
+
+\[
+f\left(a\right)=\lim_{n\to0}f\left(a_{n}\right)
+\]
+
+
+$\left|f\left(a\right)-f\left(a_{n}\right)\right|$を$10^{-10}=\dfrac{1}{10^{10}}$以下にしたい。nをどのくらい大きくすればよいか？
+
+e.g. $\left(10^{-10}=\right)\varepsilon>0$を一つ固定する。($\varepsilon$は小さい)
+
+このときある$N>0\in\mathbb{Z}$があって、$n<N$なら必ず$\left|f\left(a\right)-f\left(a_{n}\right)\right|<\varepsilon$となることが示されたとする。($N$は$f$や$a$や$\varepsilon$に依存)
+\begin{enumerate}
+\item $\text{数列}a_{n}\text{が}a\text{に収束する}\Leftrightarrow$
+(定義)どんな$\varepsilon>0$をとってもある($\varepsilon$に依存するかもしれない)正の整数$N$が定まって、$n>N$なら$|a-a_{n}|<\varepsilon$\\
+e.g. $a$を正の実数、$a_{n}$を$a$の小数点$n$桁以下の切り捨て($\in\mathbb{Q}$)とする。
+\[
+|a-a_{n}|<\dfrac{1}{10^{n}}
+\]
+$\varepsilon>0$をとり、$\varepsilon>\dfrac{1}{10^{N}}>1$となる$N$を取ると、
+\[
+\left|a-a_{n}\right|<\varepsilon
+\]
+
+\item $a\in\mathbb{R}$、実数値を取る関数$f\left(x\right)$が$a$で連続する→直感的には$x$が$a$に近ければ$\left|f\left(x\right)-f\left(a\right)\right|$は小さい\\
+⇔(定義)どんな数$\varepsilon>0$をとっても、ある数$\delta>0$($f$や$a$や$\varepsilon$に依存する)が定まって、$|x-a|<\delta$ならば、
+\[
+\left|f\left(x\right)-f\left(a\right)\right|<\varepsilon
+\]
+e.g. $f\left(x\right)=x^{2},a=\sqrt{2}=1.41421356\cdots$とする。
+\[
+f\left(x\right)-f\left(a\right)=x^{2}-a^{2}=\left(x+a\right)\left(x-a\right)
+\]
+$1.4<a<1.5$, $1.4<x<1.5$とする。($\left|a-x\right|<\dfrac{1}{100}$ならよい)\\
+$\varepsilon>0$に対し、$\left|a-x\right|<\dfrac{\varepsilon}{3}$とすると、$\left|f\left(x\right)-f\left(a\right)\right|<\varepsilon$となる。\\
+$\delta=\dfrac{\varepsilon}{3}$とすればよい。(aによって分母の数は変わる)\\
+これを$\varepsilon-\delta$論法と呼ぶ。出力の誤差を$\varepsilon$で抑える時、入力が$\delta$未満ならば正しい。
+\end{enumerate}
+e.g. 
+\[
+e^{x}=1+x+\dfrac{x^{2}}{2}+...+\dfrac{x^{n}}{n!}+...
+\]
+
+
+$e=e^{1}$を$10^{-10}$の精度で求めたい
+
+\[
+e=1+1+\dfrac{1}{2}+...+\dfrac{1}{n!}+...
+\]
+
+
+$e\fallingdotseq1+1+\dfrac{1}{2}+...+\dfrac{1}{13!}$は求める精度を持っている。
+
+e.g. $sin1=1-\dfrac{1}{3!}+\dfrac{1}{5!}-\dfrac{1}{7!}+...+\dfrac{1}{13!}\text{も}\text{\ensuremath{10^{-10}}}$の精度
+
+
+\subsection{実数(有理数でない)の特別な性質}
+
+
+\subsubsection{実数の連続性(continuity of the real numbers)}
+
+
+\subsubsection{実数の切断(cut of the real numbers)}
+
+次のような部分集合$A,B<\mathbb{R}$を考える
+\begin{enumerate}
+\item $a\in A,b\in B\Rightarrow a<b$特に$A\cap B=\phi$
+\item $A\cup B=\mathbb{R}$
+\end{enumerate}
+つまり、数直線を右半分、左半分に分割する。これをA<Bと書く。
+
+A<Bを実数の切断とすると、次の２つだけが成立する。
+\begin{enumerate}
+\item Aの元であって、$A\in x$ならば$x\leqq a$(Aの右端の点があり、Bの左端の数がない)
+\item Bの元であって、$B\in x$ならば$b\leqq x$(Bの左端の点があり、Aの右端の数がない)
+\end{enumerate}
+注意1 $A=\left\{ x\in\mathbb{Q}|x<\sqrt{2}\right\} $, $B=\left\{ x\in\mathbb{Q}|x>\sqrt{2}\right\} $のとき
+
+$A\cup B=\mathbb{Q}$, $A\cap B=\phi$, $A<B$を満たすが、Aの右端もBの左端もない。
+
+注意2 $\mathbb{\mathbb{Z}}\supset A,B$, $A=\{x\in\mathbb{Z}|x<0\}$,
+$B=\{x\in\mathbb{Z}|x\geqq0\}$
+
+Aの左端=-1, Bの右端=0
+
+
+\subsection{最小上界・最大下界}
+
+このとき、$A\subset\mathbb{R}$であり、Aが上に有界である。(=Aの上界Mが一つはある=$a\in A\Rightarrow a\leqq M$)
+
+→Aの最小上界/最小上限(least upper bound supremum)がただ一つある
+
+最小上界は記号$\sup A$で表す。(supremum of A)
+
+$A$が下に有界ならば$A$の最大下界/最大下限(greatest lower bound infimum)
+
+→記号$\inf A$
+
+
+\subsubsection{数列への応用}
+
+数列(sequence) $a_{1},a_{2},a_{3}\cdots$ 実数の列
+
+→言い換え
+
+$\mathbb{N}=\left\{ 0,1,2,3\cdots\right\} =\left\{ \text{自然数}\right\} $としたとき、
+
+$\mathbb{N}\text{上定義され、実数に値を取る関数}a\left(n\right)\text{を考え、}$
+
+$a\left(n\right)=a_{n}$
+
+
+\subsection{単調増加}
+
+$a\left(n\right),\left\{ a_{n}\right\} \text{数列が単調増加(monotone increasing)であるとは、}$
+
+$m\leqq n\text{ならば}a_{m}\leqq a_{n}\text{（番号が増えたとき小さくならない）}$
+
+
+\subsubsection{例}
+
+(1) $a_{n}=1-\dfrac{1}{2^{n}}$は単調増加
+
+(2) $a_{n}=1$も単調増加
+
+
+\subsubsection{定理}
+
+$a\left(n\right)=a_{n}$数列が上に有界で単調増加
+
+→数列$a_{n}$はある実数aに収束
+
+すなわち、どんな$\varepsilon>0$をとっても、ある番号Nがあって、
+\[
+n\geqq N\Rightarrow\left|a_{n}-a\right|<\varepsilon
+\]
+
+
+$\left\{ a_{n}\right\} \text{のうち最大元}\text{が}$極
+
+(イ)ある場合 
+\[
+a_{N}\text{が最大}\Rightarrow a_{N}=a_{N+1}=a_{N+2}=\cdots
+\]
+ (あるところから先はすべて同じ数)→例1
+
+(ロ)ない場合 どんな$a_{m}\text{をとっても}a_{m}<a_{n}$→例2
+
+(イ)のとき、極限$a=a_{N}$
+
+(ロ)のとき、極限$a\text{について}a>a_{n}\text{（すべてのn）}$
+
+証明
+
+数列に現れる数の集合$A\ni a_{n}$
+
+上に有界なので、$\sup A=a$がある。
+
+aは最小の上界なので、$\varepsilon>0\text{としたとき}a-\varepsilon<a\text{は上界ではない}$
+
+$\therefore A\ni a_{N}\text{があって}a-\varepsilon<a_{N}\leqq a_{N+1}\leqq\cdots\leqq a_{n}\leqq\cdots\leqq a$
+
+$n\geqq N\text{なら}\left|a_{n}-a\right|\leqq\left|a_{N}-a\right|<\left|a_{N}-\left(a-\varepsilon\right)\right|=\varepsilon$
+
+定理 数列$a_{n}$が単調減少で下に有界ならば、極限を持つ
+
+
+\subsection{部分列(subsequence)}
+
+数列の部分列とは、
+
+$\nu:\mathbb{N}\rightarrow\mathbb{N}$の写像で、$n<m$なら$\nu\left(m\right)<\nu\left(n\right)$を満たすものとして、
+
+$b_{n}=a_{\nu\left(n\right)}\text{と定義される数列}$
+
+
+\subsubsection{例}
+
+(1) $\nu\left(n\right)=2^{n}$
+
+$a_{n}=a-\dfrac{1}{n+1}$
+
+$b_{n}=a_{2^{n}}=1-\dfrac{1}{2^{n}+1}$ 部分列
+
+(2) $\nu\left(n\right)=n$に対応する部分列は$a_{n}\text{と同じ}$
+
+
+\subsection{Bolzano-Weierstrassの定理}
+
+$\left\{ a_{n}\right\} \text{が有界な数列なら、}\left\{ a_{n}\right\} \text{の適当な部分列}\left\{ b_{n}=a_{\nu\left(n\right)}\right\} \text{はある数}b\text{に収束}(\nu\left(0\right)<\nu\left(1\right)<\nu\left(2\right)<\cdots)$
+
+
+\subsection{集積点(accummulation point)}
+
+$\left\{ a_{n}\right\} $数列とする。$c\in\mathbb{R}\text{が}\left\{ a_{n}\right\} \text{の集積点であるとは、}$
+
+どんな$\varepsilon>0$に対しても、$\left|a_{n}-c\right|<\varepsilon$となるnが無限個ある
+
+
+\subsubsection{例}
+
+(1) $\left\{ a_{n}\right\} \text{が}c\text{に収束}\Rightarrow c\text{は}\left\{ a_{n}\right\} \text{の集積点}$
+
+(2) $a_{n}=\left(-1\right)^{n}\left(1-\dfrac{1}{n+1}\right)\Rightarrow1,-1\text{は}a_{n}\text{の集積点}$
+
+(3) $a_{n}=sinn\text{とすると、}\left[-1,1\right]\text{の全ての点は集積点}$
+
+(4) $a_{n}=\left(-1\right)^{n}\Rightarrow1,-1\text{が集積点}$
+
+
+\subsubsection{定理の証明}
+
+$B=\left\{ x\in\mathbb{R}|a_{n}\leqq x\text{となる}n\text{が無限個ある}\right\} $
+
+$A=\left\{ x\in\mathbb{R}|a_{n}\leqq x\text{となる}n\text{は有限個}\right\} $
+
+とすると、
+
+$\mathbb{R}=A\cup B$
+
+$x\leqq y\Rightarrow y\in A$
+
+$y\leqq x\Rightarrow y\in B$
+
+実数の切断になる。
+
+Bの下限cがある($c\in B,c\notin B\text{の両方ありえる}$)
+
+cが集積点であることを示す。
+
+$\left(c-\varepsilon,c+\varepsilon\right)\text{に無数の}a_{n}\text{がある。}$
+
+$c<c+\varepsilon\in B$ $c+\varepsilon\text{より}a_{n}\text{が小さい}n\text{は無数にある}$
+
+$\because\varepsilon_{n}=\dfrac{1}{2^{n}}\searrow0$
+
+$\left(c-\varepsilon_{n},c+\varepsilon_{n}\right)\text{の間に入る}a_{n}\text{は無数にある}$
+
+$a_{n}\in\left(c-\varepsilon_{n},c+\varepsilon_{n}\right)$ すべてのnについて選べる
+
+$\left|c-a_{n}\right|<\dfrac{1}{2^{n}}$ $\therefore a_{n}\text{は}c\text{に収束}$
+
+今の取り方は最大の集積点$limsup\left\{ a_{n}\right\} $ 上極限(superior limit)
+
+同様に最小集積点$liminf\left\{ a_{n}\right\} $(inferior limit)もある。
+
+
+\subsubsection{例}
+
+$a_{n}=n$上に有界でない→集積点なし
+
+無数の番号を入れると混雑点(集積点)がでる。
+
+
+\subsection{級数(series)}
+
+$\text{数列}\left\{ a_{n}\right\} \text{に対し、}S_{n}=\sum_{k=0}^{n}a_{k}\text{と定義すれば、新しい数列}S_{n}\text{ができる。}$
+
+$\sum_{k=0}^{\infty}a_{k}$と書いて、$a_{n}\text{から始まる級数}$
+
+
+\subsubsection{例}
+
+(1) 
+\[
+\sum_{n=0}^{\infty}\dfrac{x^{n}}{n!}
+\]
+
+
+\[
+S_{n}=\sum_{k=0}^{n}\dfrac{x^{k}}{k!}
+\]
+ $\left(S_{n}\rightarrow e^{x}\right)$
+
+(2) $\sum_{n=0}^{\infty}\dfrac{\left(-1\right)^{n}x^{2n}}{\left(2n\right)!}$
+
+$\sum_{k=0}^{\infty}\dfrac{\left(-1\right)^{k}x^{2k}}{\left(2k\right)!}$
+$\left(S_{n}\rightarrow cosx\right)$
+
+
+\subsubsection{注意}
+
+$\left\{ S_{n}\right\} \text{数列}$
+
+\[
+\begin{cases}
+a_{0}=S_{0}\\
+a_{1}=S_{1}-S_{0}\\
+a_{2}=S_{2}-S_{1}\\
+\vdots
+\end{cases}
+\]
+とおくと、
+\[
+S_{n}=\sum_{k=0}^{n}a_{k}
+\]
+
+
+$S_{n}\text{の階差数列(difference sequence)なので、どんな数列も級数として表示できる。}$
+
+
+\subsubsection{命題}
+
+$\sum_{n=0}^{\infty}a_{n}\text{級数が単調増加}\Leftrightarrow0\text{以外のすべての}n\text{に対し、}a_{n}\geqq0$
+
+$\because S_{n}=\sum_{k=0}^{n}a_{k}$
+
+\[
+\left\{ S_{n}\right\} \text{単調増加}\Leftrightarrow\forall n\text{に対し}S_{n+1}\geqq S_{n}\Leftrightarrow a_{n+1}=S_{n+1}-S_{n}\geqq0
+\]
+
+
+
+\subsection{正項級数(series with nonnegative terms)}
+
+$a_{n}\geqq0\left(n=0,1,2\cdots\right)$となる級数を正項級数と呼ぶ
+
+正項級数は単調増加
+
+
+\subsubsection{定理}
+
+正項級数$\sum_{n=0}^{\infty}a_{n}\text{について、}$
+
+$S_{n}=\sum_{k=0}^{n}a_{k}\text{が収束\ensuremath{\Leftrightarrow\left\{  a_{n}\right\} } は有界}$
+
+
+\subsection{絶対収束(absolutely conuergent)}
+
+一般の級数$\sum_{n=0}^{\infty}a_{n}\text{について、正項級数}\sum_{n=0}^{\infty}\left|a_{n}\right|\text{を考える。}$
+
+$\sum_{n=0}^{\infty}\left|a_{n}\right|\text{が収束するとき、}\sum_{n=0}^{\infty}a_{n}\text{は絶対収束するという。}$
+
+
+\subsubsection{定理}
+
+$\sum_{n=0}^{\infty}a_{n}\text{が絶対収束\ensuremath{\left(\sum_{n=0}^{\infty}\left|a_{n}\right|\text{が有界}\right)\Rightarrow\sum_{n=0}^{\infty}a_{n}}は収束}$
+
+
+\subsection{Cauchyの判定法}
+
+$\left\{ a_{n}\right\} \text{数列がある数に収束}\Leftrightarrow\text{どんな}\varepsilon>0$に対してもある$N\text{があって、}n,m\geqq N\text{なら}\left|a_{m}-a_{n}\right|<\varepsilon$
+
+
+\subsubsection{証明}
+
+$\Rightarrow$について、
+
+収束したとすると$c=lima_{n}$
+
+十分$n,m\text{が大きい}\left(\geqq N\right)\text{なら、}\left|a_{m}-c\right|<\dfrac{\varepsilon}{2},\left|a_{n}-c\right|<\dfrac{\varepsilon}{2}\text{が成立}$
+
+$\left|a_{n}-a_{m}\right|\leqq\left|a_{n}-c\right|+\left|a_{m}-c\right|<\varepsilon$
+
+$\Leftarrow$について、
+
+$a_{N}\text{を固定}\text{する}$
+
+$\left|a_{N}-a_{M}\right|<\varepsilon\left(\text{すべての}n\geqq N\text{について}\right)$
+
+$a_{n}\in\left(a_{N}-\varepsilon,a_{N}+\varepsilon\right)$
+
+$\therefore\left\{ a_{n}\right\} \text{は有界数列}$
+
+部分列$\left\{ b_{n}\right\} \text{はある数cに収束。}$
+
+$\left|c-a_{n}\right|\leqq\left|c-b_{n'}\right|+\left|b_{n'}-a_{n}\right|$
+
+$b_{n'}=a_{\nu\left(n'\right)}$
+
+$\nu\left(n'\right)\geqq n'$
+
+$n,n'\text{が}N$より大$\Rightarrow\left|b_{n'}-a_{n}\right|<\dfrac{\varepsilon}{2}$,$\left|c-b_{n'}\right|<\dfrac{\varepsilon}{2}$にできる
+
+$\therefore\left|c-a_{n}\right|<\varepsilon$
+
+$a_{n}\text{はcに収束}$
+
+
+\subsubsection{各種定義}
+
+数列$\left\{ a_{n}\right\} \text{がある数aに収束}\Leftrightarrow\text{十分大きなnに対して}\left|a_{n}-a\right|\text{が小}\Leftrightarrow\text{そんな}\varepsilon>0\text{に対してもある番号Nがあって}n\geqq N\text{なら}\left|a_{n}-a\right|<\varepsilon$
+
+$\text{(未知の)ある数に}\left\{ a_{n}\right\} \text{が収束}\text{\ensuremath{\Leftrightarrow}}\mathrm{Cauchy\text{列である}}\Leftrightarrow\text{番号が大きければ変動幅小}\Leftrightarrow\text{どんな}\varepsilon>0$をとってもある数Nがあって、$m,n\geqq N\text{なら}\left|a_{n}-a_{m}\right|<\varepsilon$
+
+
+\subsection{条件収束}
+
+$\left\{ S_{n}=\sum_{k=0}^{n}a_{k}\right\} \text{が数列としては収束。}$
+
+$\sum_{n=0}^{\infty}b_{n}\rightarrow\infty$
+
+$\sum_{n=0}^{\infty}c_{n}\rightarrow\infty$
+
+加法の順序を変えることができないので、「取扱注意」。絶対収束する級数をできるだけ使用する。
+
+
+\subsection{補足}
+
+どういうときに$\sum_{n=0}^{\infty}a_{n}\text{が絶対収束するか？}$
+
+
+\subsubsection{命題}
+
+$\left\{ a_{n}\right\} ,\:\left\{ a'_{n}\right\} \text{の2つの数列について、すべてのnで}\left|a_{n}\right|\leqq\left|a'_{n}\right|$
+\begin{enumerate}
+\item $\sum_{n=0}^{\infty}\left|a'_{n}\right|<+\infty\left(\Leftrightarrow\sum_{n=0}^{\infty}a'_{n}\text{が絶対収束}\text{、有界である}\right)\Rightarrow\sum_{n=0}^{\infty}\left|a_{n}\right|\text{は絶対収束}\Leftrightarrow\sum_{n=0}^{\infty}a_{n}\text{も絶対収束}$
+\item $\sum_{n=0}^{\infty}\left|a{}_{n}\right|\text{が発散}\left(\Leftrightarrow\sum\left|a{}_{n}\right|\rightarrow+\infty\Leftrightarrow\text{絶対収束しない}\right)\Rightarrow\sum_{n=0}^{\infty}\left|a'_{n}\right|\text{も発散}\Leftrightarrow\sum_{n=0}^{\infty}a'_{n}\text{は絶対収束しない}$
+\end{enumerate}
+
+\subsection{系}
+\begin{enumerate}
+\item $\left|a_{n}\right|<cr^{n},\:0\leqq r<1,\: c\text{は}\text{定数}\Rightarrow\sum_{n=0}^{\infty}a_{n}\text{は絶対収束}$
+\item $l\geqq2\:\text{整数},\: f\left(n\right)\neq0\left(n\geqq0\right)$\\
+$f\left(x\right)=x^{l}+a_{k-1}x^{l-1}+\cdots+a_{0}$\\
+最高次係数1のl次多項式\\
+$\sum_{n=0}^{\infty}\dfrac{1}{f\left(n\right)}\text{は絶対収束}$\\
+$\sum_{n=0}^{\infty}\dfrac{1}{x^{l}}\text{は絶対収束}\: l\geqq2$
+\end{enumerate}
+
+\subsubsection{証明}
+\begin{enumerate}
+\item $\sum_{k=0}^{n}cr^{k}=\dfrac{c\left(1-r^{n+1}\right)}{1-r}$\\
+$r<1\Rightarrow r^{n+1}\rightarrow0$\\
+$\sum_{n=0}^{\infty}cr^{n}=\dfrac{c}{1-r}\:\text{で収束}$
+\item $S_{n}=\dfrac{-1}{\left(n+1\right)\cdots\left(n+l-1\right)}$\\
+単調増加数列$\rightarrow0$\\
+$a_{n}=S_{n+1}-S_{n}=\dfrac{1}{\left(n+2\right)\cdots\left(n+l-1\right)}\times\left(\dfrac{1}{n+1}-\dfrac{1}{n+l}\right)=\dfrac{l-1}{\left(n+1\right)\cdots\left(n+l\right)}$\\
+$\sum_{k=0}^{n}a_{k}=S_{n+1}-S_{0}$\\
+$\sum_{k=0}^{\infty}a_{k}=-S_{0}\:\text{で収束}$\\
+$\sum_{n=0}^{\infty}\dfrac{1}{\left(n+1\right)\cdots\left(n+l\right)}\:\text{は収束}$\\
+$a'_{n}=a_{n+N}\text{とおくと、これも収束}$\\
+$\dfrac{1}{\left(n+N+1\right)\cdots\left(n+N+l\right)}$\\
+f(x)を$l$ 次多項式$\left(x^{l}\text{の係数}=1\right)$とすると、Nを十分大きくとれば\\
+$\left|f\left(n\right)\right|\leqq\left(n+N+1\right)\cdots\left(n+N+l\right)$
+\end{enumerate}
+
+\section{関数と写像}
+
+$A,B\text{は集合}\text{とする。}$
+
+$f:A\rightarrow B$が写像(mapping)であるということは、
+
+Aの各元(要素)aに対し、f(a)というBの元がただひとつ決まっている(その規則)
+
+
+\subsection{例}
+\begin{enumerate}
+\item $A=\mathbb{R}^{3}\left(=\left\{ \left(x,y,z\right)|x,y,z\text{はっ実数}\right\} \right)$\\
+$B=\mathbb{R}$\\
+$f_{x}\left(x,y,z\right)=x\text{は写像}$
+\item $A\text{を}\mathbb{R}^{3}\text{の中の直線とする}$\\
+$A=\left\{ \left(at+a',\: bt+b',\: ct+c'\right)\in\mathbb{R}^{3}|t\in\mathbb{R}\right\} $\\
+$B=\mathbb{R}^{3}$\\
+Aの点$\left(at_{0}+a',\: bt_{0}+b',\: ct_{0}+c'\right)$をそのままBの点だと思う\\
+f:A→B
+\item A: 集合\\
+id: A→A id(a)=a\\
+これは恒等写像(identity mapping)と呼ぶ
+\end{enumerate}
+
+\subsection{関数}
+
+f: A→B 写像で、$B=\mathbb{R},\:\mathbb{C}\text{であるとき、fを関数(function)という。}$(実数値(real-valued)、複素数値(complex-valued))
+
+
+\subsubsection{定義}
+
+A,B: 集合
+
+f: A→B 写像
+\begin{enumerate}
+\item fが単射(injection)/1:1写像(one-to-one mapping)であるとは、\\
+$a\neq a'\in A\text{なら}f\left(a\right)\neq f\left(a'\right)\text{が成立しているということ。}$
+\item fが全射(surjection)/上への写像(onto mapping)であるとは、\\
+「f(a)がすべてのBを覆い尽くす」すべての$b\in B$に対し、ある$a\in A$があって、$f\left(a\right)=b$となる。
+\item fが全射でありかつ単射であるとき、fは全単射であるという。
+\end{enumerate}
+
+\subsubsection{例}
+\begin{enumerate}
+\item $\mathbb{R}^{3}\rightarrow\mathbb{R},\:\left(x,y,z\right)\mapsto x$は全射\\
+$\left(\mapsto:\:\text{左側の元が右側の元にうつされる}\right)$
+\item A=直線、 B=$\mathbb{R}^{3}$\\
+$\left(x,y,z\right)\mapsto\left(x,y,z\right)$\\
+A→B\\
+は単射
+\item id: A→A\\
+は全単射
+\end{enumerate}
+
+\subsection{合成写像}
+
+
+\subsubsection{定義}
+
+A,B,Cを3つの集合とする
+
+f: A→B
+
+g: B→C
+
+$\mathrm{g\circ f}$: A→C を以下で定義
+
+$a\left(\in A\right)\mapsto g\left(f\left(x\right)\right)\left(\in C\right)$
+
+これをfとgの合成写像(compsite mapping)と呼ぶ
+
+
+\subsubsection{命題}
+\begin{enumerate}
+\item $f,g\text{がともに単射}\Rightarrow g\circ f\text{も単射}$
+\item $f,g\text{がともに全射}\Rightarrow g\circ f\text{も全射}$
+\end{enumerate}
+
+\subsubsection{証明}
+\begin{enumerate}
+\item $a\neq a'\in A$\\
+$\Rightarrow f\left(a\right)\neq f\left(a'\right)\in B\:\left(f\text{は単射}\right)$\\
+$\Rightarrow g\left(f\left(a\right)\right)\neq g\left(f\left(a'\right)\right)\in C\:\left(g\text{は単射}\right)$\\
+$\Leftrightarrow\left(g\circ f\right)\left(a\right)\neq\left(g\circ f\right)\left(a'\right)\Leftrightarrow g\circ f\text{は単射}$
+\item $c\in C\text{としたとき、}$\\
+$\Rightarrow\text{ある}b\text{があって}g\left(b\right)=c\:\left(g\text{は全射}\right)$\\
+$\Rightarrow\text{ある}a\text{があって}f\left(a\right)=b\:\left(f\text{は全射}\right)$\\
+$g\left(f\left(a\right)\right)=g\left(b\right)=c$ $g\circ f\text{は全射}$
+\end{enumerate}
+
+\subsection{逆写像}
+
+
+\subsubsection{命題}
+
+f: A→Bが全単射なら、写像 g: B→A がただ1つだけあって、
+
+$g\circ f=id:\: A\Rightarrow A$を満たす。
+
+gも全単射でgをfの逆写像(inverse mapping)と呼び、$g=f^{-1}\text{と書く。}$
+
+
+\subsubsection{証明}
+
+gを構成する。
+
+$b\in B\text{に対し、}$$g\left(b\right)\text{を以下のように定義する}$
+
+fは全射なので、$f\left(a\right)=b$となるaが存在する。
+
+単射なので、$f\left(a\right)=b$となるaはただひとつ。
+
+これを$g\left(b\right)=a$と定める。
+
+定義から$\left(g\circ f\right)\left(a\right)=a\: g\circ f=id$
+
+$\left(f\circ g\right)\left(b\right)=b\: f\circ g=id:\: B\rightarrow B$
+
+$a=g\left(b\right)\text{は}f\left(a\right)=b\text{を満たすもの}$
+
+gは全単射
+\begin{enumerate}
+\item $a\in A,\: a=\left(g\circ f\right)\left(a\right),\: b=f\left(a\right)\text{とおけば、}a=g\left(b\right)\: g\text{は}\text{全射}$
+\item $b\neq b'\text{とする。}g\left(b\right)\neq g\left(b'\right)\text{を示したい。}$\\
+$g\left(b\right)=g\left(b'\right)=a\text{ならば}b=f\left(a\right)=b'\text{となり矛盾}$
+\end{enumerate}
+
+\subsubsection{例}
+
+$A=\left(a,a'\right)\subset\mathbb{R}$
+
+注: $\left(a,a'\right)=\left\{ x|a<x<a'\right\} $
+
+$B=\left(b,b'\right)\subset\mathbb{R}$
+
+f: A→B の実数値関数とする。
+
+$x<y\Rightarrow f\left(x\right)<f\left(y\right)\text{のとき、狭義単調増加(strictly monotone increasing)と呼ぶ}$
+
+このとき、fが全射ならば$g=f^{-1}:\: B\rightarrow A$がただひとつある。
+
+
+\subsubsection{例}
+
+$a>1\text{において}$$f\left(x\right)=a^{x}\text{は狭義単調増加}$
+
+$f:\:\mathbb{R}\rightarrow\left(0,+\infty\right)=\left\{ x\in\mathbb{R}|x>0\right\} \text{で全射}$
+
+逆関数は$g:\:\left(0,+\infty\right)\rightarrow\mathbb{R}$
+
+$g=\log_{a}$で対数関数
+
+
+\subsubsection{蛇足・$a^{x}$の定義}
+
+$a^{n}=\overbrace{a\cdot a\cdot\cdots\cdot a}^{n\text{個}}$
+
+$a^{\frac{n}{m}}=\sqrt[m]{a^{n}}$
+
+$a^{x}=\lim_{x'\rightarrow x}a^{x'}$$\left(x'\in\mathbb{Q},\: x\in\mathbb{R}\right)$
+
+$\{\begin{array}{c}
+x\rightarrow\infty\: a^{x}\rightarrow\infty\\
+x\rightarrow-\infty\: a^{x}\rightarrow0
+\end{array}$
+
+
+\subsubsection{証明}
+
+$a^{n}\rightarrow+\infty\text{を示す}\left(n\rightarrow\infty\right)$ 
+
+$a=1+h$としてよい。$h>0$
+
+$\left(a+h\right)^{n}\text{が上に有界であるとして矛盾を導く}$
+
+上に有界とすると上限bがある。
+
+$b=\varepsilon\left(\varepsilon>0\right)\text{を取ると}$
+
+$b-\varepsilon<\left(1+h\right)^{n}$となるnがある。
+
+εを十分小さく取ると、$\dfrac{b}{1+h}<b-\varepsilon<\left(1+h\right)^{n}$
+
+$b<\left(1+h\right)^{n+1}$
+
+上限の定義に反する。矛盾。
+
+
+\subsection{連続}
+
+
+\subsubsection{定義}
+
+fが$a\in A\left(\text{点}a\right)$で連続(continuous)であるとは、「xがaに近ければ、f(x)はf(a)に近い」⇔どんなε>0をとっても、あるδ>0があって、$\left|x-a\right|<\delta$なら$\left|f\left(x\right)-f\left(a\right)\right|<\varepsilon$
+
+入力の誤差が小さければ、出力の誤差も小さい。
+
+f(x)がx=aで連続でない⇔あるε>0があって、どんな正の数δをとっても、$\left|x-a\right|<\delta$なのに$\left|f\left(x\right)-f\left(a\right)\right|\geqq\varepsilon$となるxがある。
+
+
+\subsubsection{例}
+\begin{enumerate}
+\item $f\left(x\right)=\begin{cases}
+x & x\neq0\\
+1 & x=0
+\end{cases}$\\
+はx=0で連続でない。その他の点では連続。
+\item $f\left(x\right)=\begin{cases}
+0 & x\in\mathbb{Q}\\
+1 & x\not\in\mathbb{Q}
+\end{cases}$\\
+はどの点でも連続でない
+\end{enumerate}
+
+\subsubsection{命題}
+
+次の二つは同値
+\begin{enumerate}
+\item f(x)は$a\in A$で連続
+\item aに収束するAの任意の点列$a_{i}\in A$について数列$f\left(a_{i}\right)$は$f\left(a\right)$に収束
+\end{enumerate}
+1. ⇒ 2.
+
+$\left\{ a_{i}\right\} \: a_{i}\rightarrow a$とする。
+
+番号iが十分に大きければ、$\left|a_{i}a\right|<\delta$となる。
+
+fはaで連続 $\left|f\left(a_{i}\right)-f\left(a\right)\right|<\varepsilon$
+
+2. ⇒ 1.
+
+連続でないと仮定する。
+
+あるε>0があって、
+
+$\left|x-a\right|<\dfrac{1}{2^{i}}$であって$\left|f\left(x\right)-f\left(a\right)\right|\geqq\varepsilon$となるxがある。そのようなxを一つとって$a_{i}$とおく。
+
+$\left|a_{i}-a\right|<\dfrac{1}{2^{i}}\rightarrow0$
+
+$\left\{ a_{i}\right\} \rightarrow a$ 収束
+
+$\left|f\left(a_{i}\right)-f\left(a\right)\right|\geqq\varepsilon$なので、
+
+$f\left(a_{i}\right)$は$f\left(a\right)$に収束しない。
+
+注意: $a_{i}\rightarrow a$を「うまく選べば」$f\left(a_{i}\right)$は$f\left(a\right)$に収束しない。$a_{i}$をうまく選ばなければ収束することもある。
+
+
+\subsubsection{例}
+
+$f\left(a\right)=\begin{cases}
+0 & x\notin\mathbb{Q}\\
+1 & x\in\mathbb{Q}
+\end{cases}$
+
+$a_{i}=\dfrac{1}{i+1}\rightarrow0$
+
+$f\left(a_{i}\right)=1\rightarrow f\left(0\right)=1$
+
+しかし、$a_{i}=\dfrac{\sqrt{2}}{i+1}$とあるとすると、
+
+$a_{i}\rightarrow0$
+
+$f\left(a_{i}\right)=0\not\rightarrow f\left(0\right)=1$
+
+収束しない。
+
+
+\subsection{連続関数}
+
+
+\subsubsection{連続関数の例}
+
+$A=\mathbb{R},\: x^{n},\: x\text{の多項式},\:\sin x$ →全ての点で連続
+
+
+\subsubsection{定義}
+
+f: A($\subset\mathbb{R}$)→$\mathbb{R}$
+
+が(A上の)連続関数(continuous function (on A))であるとは、すべての$a\in A$で連続であること
+
+
+\subsubsection{命題}
+
+$A\subset\mathbb{R}$
+
+f, gはA上の連続関数(aで連続な関数)
+\begin{enumerate}
+\item $\left(f\pm g\right)\left(x\right)=f\left(x\right)\pm g\left(x\right)$は連続(aで連続)
+\item $f\left(x\right)g\left(x\right)$も連続(aで連続)
+\item $f\left(x\right)>0$なら$\dfrac{1}{f\left(x\right)}$も連続(aで連続)
+\end{enumerate}
+
+\subsubsection{証明}
+
+f, gはaで連続とする
+\begin{enumerate}
+\item $\left|x-a\right|<\delta$なら、$\left|f\left(x\right)-f\left(a\right)\right|<\dfrac{\varepsilon}{2},\:\left|g\left(x\right)-g\left(a\right)\right|<\dfrac{\varepsilon}{2}$としてよい。\\
+$\left|f\left(x\right)+g\left(x\right)-f\left(a\right)-g\left(a\right)\right|\leqq\left|f\left(x\right)-f\left(a\right)\right|+\left|g\left(x\right)-g\left(a\right)\right|<\varepsilon$
+\item $f\left(a\right)\leqq\alpha>0,\: g\left(a\right)\leqq\beta>0$とおく。\\
+$\left|f\left(x\right)g\left(x\right)-f\left(a\right)g\left(a\right)\right|$\\
+$=\left|f\left(x\right)g\left(x\right)-f\left(x\right)g\left(a\right)+f\left(x\right)g\left(a\right)-f\left(a\right)g\left(a\right)\right|$\\
+$\leq\left|f\left(x\right)\right|\left|g\left(x\right)-g\left(a\right)\right|+\left|g\left(a\right)\right|\left|f\left(x\right)-f\left(a\right)\right|$\\
+($\varepsilon',\:\varepsilon''$を正の数とすると、$\delta$を十分に小さく取ると)\\
+$\left|x-a\right|<\delta$とすると、$\left|f\left(x\right)-f\left(a\right)\right|<\varepsilon',\:\left|g\left(x\right)-g\left(a\right)\right|<\varepsilon''$\\
+特に$\left|f\left(x\right)\right|$はある定数$\alpha'$以下、$\left|f\left(x\right)g\left(x\right)-f\left(a\right)g\left(a\right)\right|<\alpha'\varepsilon'+\beta\varepsilon''$となる。\\
+最初に$\varepsilon>0$を与えたとき、$\varepsilon'=\dfrac{\varepsilon}{2\alpha'},\:\varepsilon''=\dfrac{\varepsilon}{2\beta'}$\\
+として、δを選べば良い。
+\item $\alpha=f\left(a\right)>0$とする。\\
+xはaに十分近ければ、\\
+$f\left(x\right)>\dfrac{\alpha}{2}$\\
+$\left|\dfrac{1}{f\left(x\right)}-\dfrac{1}{f\left(a\right)}\right|=\dfrac{\left|f\left(x\right)-f\left(a\right)\right|}{\left|f\left(x\right)f\left(a\right)\right|}$\\
+$<\dfrac{\left|f\left(x\right)-f\left(a\right)\right|}{\dfrac{\alpha}{2}\cdot\alpha}=\dfrac{2}{\alpha^{2}}\left|f\left(x\right)-f\left(a\right)\right|$\\
+δを十分に小さくとれば$\left|x-a\right|<\delta$なら、\\
+$\left|f\left(x\right)-f\left(a\right)\right|<\dfrac{\alpha^{2}}{2}\varepsilon$とできる。\\
+$\therefore\left|\dfrac{1}{f\left(x\right)}-\dfrac{1}{f\left(a\right)}\right|<\varepsilon$
+\end{enumerate}
+
+\subsubsection{系}
+\begin{enumerate}
+\item 多項式は連続関数($\mathbb{R}$上)
+\item $A\subset\mathbb{R}$ $f\left(x\right),\: g\left(x\right)$\\
+多項式$f\left(x\right)>0$が$x\in A$のとき成立\\
+と仮定する。\\
+$\Rightarrow\dfrac{g\left(x\right)}{f\left(x\right)}$はA上連続。
+\end{enumerate}
+
+\subsubsection{証明}
+\begin{enumerate}
+\item 定数関数$f\left(x\right)=c$は連続\\
+$f\left(x\right)=x$も連続\\
+xと定数の和と積で多項式は表せる。
+\item $\dfrac{1}{f\left(x\right)}$も連続\\
+$\dfrac{g\left(x\right)}{f\left(x\right)}=g\left(x\right)\times\dfrac{1}{f\left(x\right)}$も連続
+\end{enumerate}
+
+\subsubsection{定理A}
+
+$\left[a,b\right]\subset\mathbb{R}$有界閉区間
+
+f(x)は$\left[a,b\right]\text{上の連続関数}$
+
+⇒f(x)は最大値(maximum)、最小値(minimum)を持つ。
+
+すなわち、ある$\alpha,\:\beta\in\left[a,b\right]$があって、
+
+すべての$x\in\left[a,b\right]$に対して、
+
+$f\left(\alpha\right)\leqq f\left(x\right)\leqq f\left(\beta\right)$
+
+
+\subsubsection{定理B(中間値の定理)}
+
+{[}a,b{]} 有界閉区間
+
+f(x)は{[}a,b{]}上の連続関数
+
+$f\left(a\right)<f\left(b\right)$と仮定
+
+$\Rightarrow y\in\mathbb{R}$が$f\left(a\right)<y<f\left(b\right)$を満たせば、
+
+$f\left(x\right)=y$となる$x\in\left[a,b\right]$が一つはある。
+
+
+\subsubsection{定理Aの証明}
+
+記号$B\leqq A\subset\mathbb{R}$ f:A上の関数
+
+この時、$f\left(B\right)=\left\{ f\left(x\right)|x\in B\right\} $と書く。
+
+第一段階
+
+$f\left(\left[a,b\right]\right)\subset\mathbb{R}$は有界集合である。
+
+$\because$ f({[}a,b{]})は有界でないとする。
+
+$c_{n}\in\left[a,b\right]$があって、
+
+$\left|f\left(c_{n}\right)\right|\rightarrow\infty$
+
+$\left[a,b\right]$ 有界集合
+
+$\left\{ c_{n}\right\} $ 有界
+
+うまく部分列をとると収束$c\in\mathbb{R}$
+
+もともと、$c_{n}\rightarrow c$と仮定して良い
+
+$a\leqq c_{n}\leqq b\rightarrow a\leqq c\leqq b$
+
+$\therefore c\in\left[a,b\right]$
+
+$\left|f\left(c_{n}\right)\right|\rightarrow+\infty$
+
+一方$c_{n}\rightarrow c$なので、$f\left(c_{n}\right)\rightarrow f\left(c\right)$となり矛盾
+
+$\therefore f\left(\left[a,b\right]\right)\text{は有界}$
+
+第二段階
+
+最大値がある
+
+$f\left(\left[a,b\right]\right)\in\mathbb{R}$有界
+
+この集合の上限をβとする。
+
+上限の定義から
+
+1. $f\left(x\right)=y\in f\left(\left[a,b\right]\right)\rightarrow f\leqq\beta$
+
+2. $f\left(\left[a,b\right]\right)\text{の点列}d_{n}=f\left(c_{n}\right)$があって、$d_{n}\rightarrow\beta$
+
+$\left\{ c_{n}\right\} \left(\in\left[a,b\right]\right)\text{が有界だったので、}c\in\left[a,b\right]\text{に収束}$
+
+例
+
+1. (a,b)上では必ずしも最大最小はない。
+
+例えばf(x)=x
+
+2. (a,+∞)もダメ
+
+f(x)=x 最大値なし
+
+
+\subsubsection{定理Bの証明}
+
+$A\subset\left[a,b\right]$
+
+$A=\left\{ x\in\left[a,b\right]|f\left(x\right)\leqq y\right\} $
+
+$A\ni a,\: A\not\ni b$
+
+$\left[a,b\right]\text{＼}A=B\ni b$
+
+$A\subset\left[a,b\right]$ 有界集合
+
+Aの上限$c\in\left[a,b\right]$
+
+$f\left(c\right)=y\text{であることを示す}$
+
+$\left\{ c_{n}\right\} \in A,\: c_{n}\rightarrow c$となる
+
+1. $c_{n}\in A\text{なので}f\left(c_{n}\right)\leqq y$
+
+$\therefore f\left(c\right)\leq y$
+
+2. c<bである。
+
+$\because c=b\text{とすると、}$
+
+$c_{n}\rightarrow b$ $f\left(b\right)>y$
+
+$f\left(c\right)=f\left(b\right)\leqq y$
+
+矛盾
+
+3. Bの点列$d_{n}\rightarrow c$が存在する。
+
+($d>c\Rightarrow d\in B$)
+
+$f\left(d_{n}\right)\geqq y$
+
+$f\left(d\right)=\lim f\left(d_{n}\right)\geqq y$
+
+
+\subsubsection{定理A+定理B}
+
+f: $\left[a,b\right]$上の連続関数
+
+⇒実数α、βがあって、$f\left(\left[a,b\right]\right)=\left[\alpha,\beta\right]$が成立。
+
+fの像(image)
+
+最大、最小の間すべての値をとる
+
+「有界へ行く環状の連続関数の像は有界閉区間」
+
+
+\subsubsection{証明の本質}
+
+有界閉区間の中の点列は(部分列を取ると)、同じ区間の連に収束(閉区間なら収束点ははみ出す可能性あり。有界でなかったら収束しない)
+
+
+\subsubsection{定理}
+
+fが$\alpha\in\left[a,b\right]$で連続
+
+gが$f\left(x\right)\in\left[c,d\right]$で連続
+
+なら、$g\left(f\left(x\right)\right)=\left(g\cdot f\right)\left(x\right)$はαで連続
+
+「連続関数の合成は連続」
+
+
+\subsubsection{証明}
+
+ε<0をとる
+
+gはf(x)で連続なので、あるδ'があって、
+
+$\left|y-f\left(x\right)\right|<\delta'\Rightarrow\left|g\left(y\right)-g\left(f\left(x\right)\right)\right|<\varepsilon$
+
+fはαで連続なので、あるδ'>0があって、
+
+$\left|x-\alpha\right|<\delta\text{なら}\left|f\left(x\right)-f\left(\alpha\right)\right|<\delta'$
+
+$\Rightarrow\left|g\left(f\left(x\right)\right)-g\left(f\left(x\right)\right)\right|<\varepsilon$
+
+有限閉区間{[}a,b{]}上の連続関数は、最大値、最小値を持つ$c,d\in\left[a,b\right]$があって、
+
+$f\left(c\right)\leq f\left(x\right)\leq f\left(d\right)$
+
+がすべての$x\in\left[a,b\right]$について成立。
+
+
+\subsubsection{補足}
+
+f: $\left[a,b\right]$上の連続関数とする
+
+fが単射⇔fは狭義単調減少または狭義単調増加
+
+狭義単調増加⇔x<yならf(x)<f(y)
+
+⇒x≠yならf(x)≠f(y)
+
+⇒fは単射
+
+fが狭義単調でないと仮定すると、
+
+$c,d,e\in\left[a,b\right]$があって、
+
+(i) $f\left(c\right)<f\left(d\right)>f\left(e\right)$
+
+(ii) $f\left(c\right)>f\left(d\right)<f\left(e\right)$
+
+のいずれかである。
+
+(i)の場合、
+
+あるyがあって、
+
+$f\left(c\right),f\left(e\right)<f\left(d\right)$
+
+fを{[}c,d{]}上の連続関数と見る。
+
+$f\left(x_{1}\right)=y$となる$c<x_{1}<d$がある
+
+fを{[}d,e{]}上の連続関数と見る。
+
+$f\left(x_{2}\right)=y$となる$d<x_{2}<e$がある
+
+$f\left(x_{1}\right)=f\left(x_{2}\right)\:\left(a<x_{1}<d<x_{2}<b\right)$
+
+単射でない。よって矛盾
+
+注意: 連続性がなければダメ
+
+
+\subsubsection{連続関数の例}
+
+(i) 多項式
+
+$\cos x\text{は}\mathbb{R}\text{上の連続関数}$
+
+$\therefore\left(\cos\left(x+\delta\right)-\cos x\right)=\cos x\cos\delta-\sin x\sin\delta$
+
+$=\left(\cos\delta-1\right)\cos x-\sin\delta\sin x$
+
+(ii)指数関数
+
+t>1実数
+
+m 整数
+
+$t^{m}$は定義される。連続。
+
+m>0整数⇒$t^{m}$
+
+mに関しては狭義単調増加。
+
+tについても狭義単調増加
+
+mを固定してtの関数と思うと、$f\left(x\right)=t^{m}$は単射かつ、値は$\left(1,+\infty\right)$
+
+$t\mapsto t^{m}$の逆関数$s\mapsto s^{\frac{1}{m}}$
+
+$\left[1,+\infty\right]\rightarrow\left(1,+\infty\right)$
+
+$t^{\frac{1}{m}}$が定義されて、連続関数。
+
+注意: $\left[a,b\right]\rightarrow\left[c,d\right]\text{が狭義単調増加}$
+
+
+\subsubsection{復習}
+
+$c\in\left(a,b\right)$
+
+f: (a,b)上の関数
+
+fがcに微分可能(differenciable at c)
+
+$\Leftrightarrow\dfrac{f\left(x\right)-f\left(c\right)}{x-c}\rightarrow\alpha$収束$x\rightarrow c$
+
+$\Leftrightarrow\text{任意のcについて}\left|x-c\right|\text{が十分小なら}\alpha-\varepsilon<\dfrac{f\left(x\right)-f)c}{x-c}<\alpha+\varepsilon$
+
+$\Leftrightarrow f\left(x\right)-f\left(c\right)\doteqdot\alpha\left(x-c\right)$
+
+$\Leftrightarrow\text{どんな}\varepsilon>0\text{をとっても}\min\left\{ \left(\alpha+\varepsilon\right)\left(x-c\right),\left(\alpha-\varepsilon\right)\left(x-c\right)\right\} \leqq f\left(x\right)-f\left(c\right)\leqq\max\left\{ \left(\alpha+\varepsilon\right)\left(x-c\right),\left(\alpha-\varepsilon\right)\left(x-c\right)\right\} $
+
+が十分xに近いcについて成立
+
+この書き方から、x=cのときも成立
+
+$\Leftrightarrow f\left(x\right)\text{は}x=c$の近くでは一次関数$\alpha\left(x-c\right)+f\left(c\right)$に近似できる。
+
+$\alpha=f'\left(c\right)=\dfrac{df}{dx}\left(c\right)\text{と書いて}$微分係数(dirivative)という。
+
+f,g 微分可能
+
+$\Rightarrow f\pm g,fg\text{も微分可能}$
+
+$\dfrac{d\left(f\left(x\right)g\left(x\right)\right)}{dx}\left(c\right)=f\left(c\right)g'\left(c\right)+g\left(c\right)f'\left(c\right)$
+
+$\dfrac{d\left(\dfrac{f\left(x\right)}{g\left(x\right)}\right)}{dx}=\dfrac{g\left(x\right)f'\left(x\right)-f\left(x\right)g'\left(x\right)}{g\left(x\right)^{2}}$
+
+
+\subsection{合成関数の微分}
+
+
+\subsubsection{定理}
+
+f: (a,b)上の関数
+
+f: (a,b)→(c,d)
+
+g: (c,d)→R 関数
+
+$h\left(x\right)=\left(g\circ f\right)\left(x\right)=g\left(f\left(x\right)\right)$
+
+fは$e\in\left(a,b\right)$で微分可能
+
+gは$f\left(e\right)\in\left(c,d\right)\text{で微分可能}$
+
+⇒hはx=eで微分可能で、$h'\left(e\right)=f'\left(e\right)g'\left(f\left(e\right)\right)$が成立
+
+
+\subsubsection{証明}
+
+任意のε>0に対して
+
+$\left(\alpha\mp\varepsilon\right)\left(x-e\right)\leq f\left(x\right)-f\left(e\right)\leq\left(\alpha\pm\varepsilon\right)\left(x-e\right)$
+
+|x-e|が小なら非常に0に近い
+
+$\beta=g'\left(e\right)$とすると、
+
+$\left(\beta\mp e\right)\left(f\left(x\right)-f\left(e\right)\right)\leq g\left(f\left(x\right)\right)-g\left(f\left(e\right)\right)\leq\left(\beta\pm e\right)\left(f\left(x\right)-f\left(e\right)\right)$
+
+$\left(\alpha\pm\varepsilon\right)\left(\beta\pm\varepsilon\right)\left(x-e\right)\leq g\left(f\left(x\right)\right)-g\left(f\left(e\right)\right)\leq\left(\alpha\pm\varepsilon\right)\left(\beta\pm\varepsilon\right)\left(x-e\right)$
+
+$h\left(x\right)-h\left(e\right)=g\left(f\left(x\right)\right)-g\left(f\left(x\right)\right)\doteqdot\alpha\beta\left(x-e\right)$
+
+hは微分可能で微分係数=αβ
+
+
+\subsubsection{例}
+
+$\left(e^{\sin x}\right)'=\cos xe^{\sin x}$
+
+$\left(e^{y}\right)'=e^{y}$
+
+$y=\sin x$
+
+$\left(\sin x\right)'=\cos x$
+
+fが狭義単調増加(減少)のとき、$f^{-1}=g$とする。(逆関数)
+
+$g\left(f\left(x\right)\right)=x$
+
+今の定理を適用すると
+
+$1=\dfrac{dx}{dx}=g'\left(f\left(x\right)\right)\cdot f'\left(x\right)$
+
+
+\subsubsection{定理}
+
+f: 狭義単調で連続
+
+f: (a,b)→(c,d) 全射(全単射)
+
+$g=f^{-1}$: (c,d)→(a,b)
+
+$e\in\left(a,b\right)\: f'\left(e\right)\neq0$のとき、
+
+gもf(e)で微分可能で、$g'\left(f\left(e\right)\right)=\dfrac{1}{f'\left(e\right)}$
+
+
+\subsubsection{証明}
+
+$\left(\alpha\pm\varepsilon\right)\left(x-e\right)\leq f\left(x\right)-f\left(e\right)\leq\left(\alpha\pm\varepsilon\right)\left(x-e\right)$
+
+$\dfrac{f\left(x\right)-f\left(e\right)}{\alpha\pm\varepsilon}\leq x-e\leq\dfrac{f\left(x\right)-f\left(e\right)}{\alpha\pm\varepsilon}$
+
+$f\left(x\right)=y$
+
+$f\left(e\right)=\hat{e}$
+
+$x=g\left(y\right)$
+
+$e=g\left(\hat{e}\right)$
+
+$\dfrac{y-\hat{e}}{\alpha\pm\varepsilon}\leq g\left(y\right)-g\left(\hat{e}\right)\leq\dfrac{y-\hat{e}}{\alpha\pm\varepsilon}$
+
+gは$\hat{e}$で微分可能で微分係数は$\dfrac{1}{\alpha}$
+
+
+\subsubsection{例1}
+
+$f\left(x\right)=e^{x}=y$
+
+$\left(e^{x}\right)'=e^{x}$
+
+$g\left(y\right)=\log y$は逆関数
+
+$g'\left(y\right)=\dfrac{1}{e^{x}}=\dfrac{1}{y}$
+
+$\therefore\left(\log x\right)'=\dfrac{1}{x}$
+
+
+\subsubsection{例2}
+
+$f=\sin:\left(-\dfrac{\pi}{2},\dfrac{\pi}{2}\right)\rightarrow\left(-1,1\right)$
+
+逆関数$g=\arcsin$
+
+$g'\left(y\right)=\dfrac{1}{\left(\sin x\right)'}=\dfrac{1}{\cos x}=\dfrac{1}{\sqrt{1-\sin x}}=\dfrac{1}{\sqrt{1-y^{2}}}$
+
+$\left(\arcsin x\right)'=\dfrac{1}{\sqrt{1-x^{2}}}$
+
+
+\subsubsection{例3}
+
+$f=\tan:\left(-\dfrac{\pi}{2},\dfrac{\pi}{2}\right)\rightarrow\left(-\infty,+\infty\right)=\mathbb{R}$
+
+逆関数 $g=f^{-1}=\arctan$
+
+$y=\tan x=f\left(x\right)$
+
+$g'\left(y\right)=\dfrac{1}{f'\left(x\right)}$
+
+$\left(\tan x\right)'=\left(\dfrac{\sin x}{\cos x}\right)'=\dfrac{\cos x\cos x-\sin x\left(-\sin x\right)}{\cos^{2}x}=1+\left(\tan x\right)^{2}=1+y^{2}$
+
+$g'\left(y\right)=\dfrac{1}{1+y^{2}}$
+
+$\left(\arctan x\right)'=\dfrac{1}{1+x^{2}}$
+
+
+\subsubsection{Rolleの定理}
+
+f: $\left[a,b\right]$上の連続で$\left(a,b\right)$上で微分可能とする。
+
+$f\left(a\right)=f\left(b\right)$と仮定
+
+$\Rightarrow c\in\left(a,b\right)\text{があってf'\ensuremath{\left(c\right)}=0}\text{となる}$
+
+
+\subsubsection{証明}
+
+1. $f\left(x\right)=f\left(a\right)=f\left(b\right)$が常に成立⇒$f'\left(a\right)=0$は常に成立
+
+2. $f\left(x\right)\neq f\left(a\right)=f\left(b\right)$もしくは$f\left(x\right)\neq f\left(a\right)=f\left(b\right)$が成立
+
+$\max f\left(x\right)>f\left(a\right)=f\left(b\right)$と仮定し、これを$f\left(c\right)$とする。
+
+$f\left(x\right)-f\left(c\right)\leqq0$
+
+x<cなら$\dfrac{f\left(x\right)-f\left(c\right)}{x-c}\geqq0$
+
+x>cなら$\dfrac{f\left(x\right)-f\left(c\right)}{x-c}\leqq0$
+
+$x\rightarrow c$なら極限f'(c)となる。$f'\left(c\right)\leqq0,\: f'\left(c\right)\geqq0\:\Rightarrow\: f'\left(c\right)=0$
+
+
+\subsubsection{Cauchyの平均値の定理}
+
+$f\left(x\right),\: g\left(x\right):$ {[}a,b{]}で連続、(a,b)で微分可能
+
+$g\left(b\right)\neq g\left(a\right)$,$x\in\left(a,b\right)$で
+
+$g\left(x\right)-g\left(a\right)\neq0$
+
+$g'\left(x\right)\neq0$
+
+$\Rightarrow\dfrac{f\left(b\right)-f\left(a\right)}{g\left(b\right)-g\left(a\right)}=\dfrac{f'\left(c\right)}{g'\left(c\right)}$
+
+となる$c\in\left(a,b\right)\text{がある。}$
+
+
+\subsubsection{証明}
+
+$F\left(x\right)=\left(g\left(b\right)-g\left(a\right)\right)\left(f\left(x\right)-f\left(a\right)\right)-\left(f\left(b\right)-f\left(a\right)\right)\left(g\left(x\right)-g\left(a\right)\right)$
+
+$F\left(a\right)=0,\: F\left(b\right)=0$
+
+Rolleの定理より$F'\left(c\right)=0$
+
+$\left(g\left(b\right)-g\left(a\right)\right)f'\left(c\right)-\left(f\left(b\right)-f\left(a\right)\right)g'\left(c\right)=0$
+
+
+\subsubsection{系、L'hôpitalの定理}
+
+$f\left(x\right),g\left(x\right)$ x=cのまわりで微分可能
+
+$f'\left(x\right),g'\left(x\right)$は連続
+
+$g'\left(c\right)\neq0$
+
+とすると、$\lim_{x\rightarrow c}\dfrac{f\left(x\right)-f\left(c\right)}{g\left(x\right)-g\left(c\right)}=\dfrac{f'\left(c\right)}{g'\left(c\right)}$
+
+
+\subsubsection{証明}
+
+b>cとする。
+
+$\dfrac{f\left(b\right)-f\left(c\right)}{g\left(b\right)-g\left(c\right)}=\dfrac{f'\left(e\right)}{g'\left(e\right)}\rightarrow\dfrac{f'\left(c\right)}{g'\left(c\right)}$
+
+$b\doteqdot c\text{なら、}g'\: f'\:\text{は連続なので、}f'\left(e\right)\rightarrow f'\left(c\right),\: g'\left(e\right)\rightarrow g'\left(c\right)$
+
+a<e<c
+
+$\dfrac{f\left(a\right)-f\left(c\right)}{g\left(a\right)-g\left(c\right)}=\dfrac{f\left(c\right)-f\left(e\right)}{g\left(c\right)-g\left(e\right)}=\dfrac{f'\left(e\right)}{g'\left(e\right)}\rightarrow\dfrac{f'\left(c\right)}{g'\left(c\right)}$
+
+
+\subsubsection{注意}
+
+f(x)が(a,b)で微分可能であっても、f'(x)が連続とは限らない
+
+
+\subsubsection{例}
+
+$f\left(x\right)=x^{2}\sin\dfrac{1}{x^{2}}\left(x\neq0\right)$
+
+$x\neq0$では微分可能。x=0では？
+
+$-x^{2}\leqq f\left(x\right)\leqq x^{2}$
+
+f(x)はx=0で微分可能
+
+f'(0)=0
+
+$f'\left(x\right)=\left(x^{2}\sin\dfrac{1}{x^{2}}\right)'=2x\sin\dfrac{1}{x^{2}}+x^{2}\left(\sin\dfrac{1}{x^{2}}\right)'=2x\sin\dfrac{1}{x^{2}}-\dfrac{2}{x}\cos\dfrac{1}{x^{2}}$
+
+※$\left(\sin\dfrac{1}{x^{2}}\right)'=\left(\cos\dfrac{1}{x^{2}}\right)\times\left(-\dfrac{2}{x^{3}}\right)$
+
+
+\subsection{微分と増加の関係}
+
+
+\subsubsection{定理}
+
+f(x)がx=cで微分可能
+
+f'(c)>0とする。この時、δ>0であって、
+
+$c-\delta<x\leqq c$ならば$f\left(x\right)<f\left(c\right)$
+
+$c<x<c+\delta$ならば$f\left(x\right)>f\left(c\right)$
+
+
+\subsubsection{証明}
+
+$f\left(x\right)-f\left(c\right)=f'\left(c\right)\left(x-c\right)$(xがcに近いとき)
+
+cの近くでf(x)が単調増加であるとは限らない。
+
+
+\subsubsection{定理}
+
+f(x)は(a,b)で微分可能
+
+f'(x)は連続
+
+f'(c)>0とする。
+
+この時、x=cの近くでは、f(x)は狭義単調増加
+
+
+\subsubsection{証明}
+
+f'(x)は連続、f(c)>0より、
+
+δを十分小さく取ると、
+
+$x\in\left(c-\delta,c+\delta\right)\text{なら\ensuremath{f'\left(x\right)>0}}$
+
+$\alpha,\beta\in\left(c-\delta,c+\delta\right)$
+
+$\alpha<\beta\rightarrow\dfrac{f\left(\beta\right)-f\left(\alpha\right)}{\beta-\alpha}=f'\left(\gamma\right)>0$
+
+$\alpha<\gamma<\beta$
+
+$\therefore f\left(\beta\right)>f\left(\alpha\right)$
+
+注意 連続性は不要
+
+$f\left(x\right)=x+x^{2}\sin^{2}\dfrac{1}{x^{2}}$
+
+$f\left(0\right)=0$
+
+全ての点で微分可能
+
+f'(x)は連続ではない。
+
+$f'\left(0\right)=1>0$
+
+$f'\left(x\right)=1+2x\sin\dfrac{1}{x^{2}}-\dfrac{2}{x}\cos\dfrac{1}{x^{2}}$
+
+x=0のいくらでも近くにf'(x)>0となるxがある。
+
+x=0の近くで単調増加ではない。
+
+
+\subsubsection{高階微分とTaylor展開}
+
+f: n+1回微分可能
+
+(xが点aに近い時)
+
+\[
+f\left(x\right)=f\left(a\right)+f'\left(a\right)\left(x-a\right)+\cdots+f^{(n)}\left(a\right)\left(x-a\right)^{n}+f^{\left(n+1\right)}\left(y\right)\left(x-a\right)^{n+1}
+\]
+
+
+yはaとxの間にある。
+
+特に$f$が$C^{n+1}$級の時、
+\[
+f^{\left(n+1\right)}\left(y\right)=f^{\left(n+1\right)}\left(a\right)
+\]
+
+
+\[
+\left|\text{n次までのTaylor展開}-f\left(x\right)\right|<\left(\left|f\left(a\right)\right|+\varepsilon\right)\frac{\left|x-a\right|^{n+1}}{\left(n+1\right)!}
+\]
+
+
+$f\left(x\right)$はn次式
+\[
+\sum_{k=0}^{n}f^{\left(k\right)}\left(a\right)\frac{\left(x-a\right)^{k}}{k!}
+\]
+
+
+でよく近似できる。
+
+
+\subsubsection{合成関数のTaylor展開}
+
+$f:\:\left(a,b\right)\rightarrow\left(c,d\right)$
+
+$g:\:\left(c,d\right)\rightarrow\mathbb{R}$
+
+$h\left(x\right)=g\left(f\left(x\right)\right)$
+
+f,g: $n+1$回微分可能($x=\alpha,y=\beta=f\left(\alpha\right)$で)ならば$h+n+1$回微分可能。
+
+$f\left(x\right)$のn次までのTaylor展開
+\[
+f\left(\alpha\right)+f'\left(\alpha\right)\left(x-\alpha\right)+\cdots+f^{\left(n\right)}\left(\alpha\right)\frac{\left(x-\alpha\right)^{n}}{n!}
+\]
+
+
+$g\left(x\right)$のn次までのTaylor展開
+
+\[
+g\left(\beta\right)+g'\left(\beta\right)\left(y-\beta\right)+\cdots+g^{\left(n\right)}\left(\beta\right)\frac{\left(y-\beta\right)^{n}}{n!}
+\]
+
+
+とすると、$h=g\left(f\left(x\right)\right)$のTaylor展開は
+
+\[
+y-\beta
+\]
+
+
+に
+\[
+\left(x-\alpha\right)\left(f\left(\alpha\right)+f'\left(\alpha\right)\frac{x-\alpha}{2}+\cdots+f^{\left(n\right)}\frac{\left(x-\alpha\right)^{n-1}}{n!}\right)
+\]
+
+
+を代入し、$\left(x-\alpha\right)$のn+1次以上の項を無視したもの。
+
+
+\subsubsection{$f'\left(x\right)$の意味}
+
+関数の増減を見ている。
+
+\[
+f'\left(x\right)\geq0\Leftrightarrow\text{単調増加}
+\]
+
+
+\[
+f'\left(x\right)>0\Rightarrow\text{単調増加}
+\]
+
+
+
+\subsubsection{物理的解釈}
+
+$x$: 時間
+
+$f\left(x\right)$: 数直線上の位置
+
+$f'\left(x\right)$: 速度(velocity)(方向の情報を含んだ速さ)(↔speed)
+
+$f''\left(x\right)$: 物理的には、加速度(acceleration)、幾何学的には、グラフの凹凸を表す。
+
+
+\subsubsection{定理}
+
+\[
+f''\left(x\right)\geq0\Leftrightarrow f'\left(x\right)\text{が単調増加}\Leftrightarrow g=f\left(x\right)\text{のグラフが下に凸(complex)}
+\]
+
+
+\[
+f''\left(x\right)>0\Rightarrow f'\left(x\right)\text{が狭義単調増加}\Rightarrow g=f\left(x\right)\text{のグラフが真に下に凸}
+\]
+
+
+$y=f\left(x\right)$のグラフが下に凸であるとは、
+
+$a<b<c$であるならば、
+
+\[
+\frac{f\left(b\right)-f\left(a\right)}{b-a}\leq\frac{f\left(c\right)-f\left(b\right)}{c-b}
+\]
+
+
+が成立すること。つまり、$\left(a,f\left(a\right)\right)$と$\left(c,f\left(c\right)\right)$を結ぶ線分の下に$\left(b,f\left(b\right)\right)$がある。
+
+
+\subsubsection{証明}
+
+\[
+f''\left(x\right)\geq0\Leftrightarrow f'\left(x\right)\text{は単調増加}
+\]
+
+
+はすでに示した。このとき、
+
+$a<b<c$のとき、
+
+\[
+\frac{f\left(b\right)-f\left(a\right)}{b-a}=f'\left(\alpha\right)
+\]
+
+
+ただし$a<\alpha<b$
+
+\[
+\frac{f\left(c\right)-f\left(b\right)}{c-b}=f'\left(\gamma\right)
+\]
+
+
+ただし$b<\gamma<c$
+
+$\alpha<\gamma$より
+
+\[
+f'\left(\alpha\right)\leq f'\left(\gamma\right)
+\]
+
+
+$\therefore$ $y=f\left(x\right)$は下に凸
+
+「上に凸」はconcave
+
+
+\subsubsection{系}
+
+$f\left(x\right)$は$C^{2}$級
+
+$f'\left(a\right)=0$、$f''\left(a\right)>0$ならば$f\left(a\right)$は$f\left(x\right)$の極小値
+
+xがaに十分近く、$x\neq a$なら
+
+\[
+f\left(x\right)>f\left(a\right)
+\]
+
+
+$\because$
+
+$f'\left(x\right)$は狭義単調増加である。また、
+
+\[
+\frac{f\left(x\right)-f\left(a\right)}{x-a}=f'\left(y\right)
+\]
+
+
+ただし$y$は$x$と$a$の間
+
+$a<x$のとき、
+
+\[
+a<y<x
+\]
+
+
+\[
+0=f'\left(a\right)<f'\left(y\right)
+\]
+
+
+\[
+\therefore f\left(x\right)-f\left(a\right)>0
+\]
+
+
+$x<a$の場合も同様
+
+
+\paragraph{3回以上の微分}
+
+あまり自然な解釈はない
+
+
+\subsubsection{N p3ewton法}
+
+$f\left(a\right)=0$となるaを近似計算する方法
+
+
+\subsubsection{例}
+
+$\sqrt[3]{10}$を求める。つまり、
+\[
+f\left(x\right)=x^{3}-10
+\]
+
+
+において$f\left(a\right)=0$となるaを求める。
+
+\[
+f\left(x\right)=x^{5}+ax^{4}+bx^{3}+cx^{2}+dx+e
+\]
+
+
+の根を求める。(代数的な根の公式は存在しない)
+
+
+\subsubsection{仮定}
+
+$f$は$C^{2}$級、$f''\left(x\right)$は連続
+
+正しい答え(a: f(a)=0)の近くで$f'\left(x\right)\neq0$、$f''\left(x\right)\neq0$とする。
+
+fの代わりに$\pm f\left(x\right)$、xの代わりに$y=\pm x$で置き換えて、
+
+$f'\left(x\right)>0$、$f''\left(x\right)$を仮定して良い。
+
+
+\subsubsection{注意}
+
+\[
+\left(\pm f\right)'\left(x\right)=\pm f'\left(x\right)
+\]
+
+
+\[
+\left(\pm f\right)''\left(x\right)=\pm f''\left(x\right)
+\]
+
+
+$y=-x$のとき、
+
+\[
+f\left(x\right)=f\left(-y\right)=g\left(y\right)
+\]
+
+
+\[
+g'\left(y\right)=-f'\left(-x\right)
+\]
+
+
+\[
+g''\left(y\right)=f''\left(-x\right)
+\]
+
+
+$a$の近似値$a_{1}$(>a)をとる。
+
+$\left(a_{1},f\left(a_{1}\right)\right)$における$y=f\left(x\right)$の接線とx軸の交点を$a_{2}$とする。
+
+よりよい近似値$a_{2}$をとる。($a<a_{2}<a_{1}$)
+
+\[
+\frac{f\left(a_{1}\right)}{a_{1}-a}=f'\left(a_{1}\right)
+\]
+
+
+\[
+a_{1}-a_{2}=\frac{f\left(a_{1}\right)}{f'\left(a_{1}\right)}
+\]
+
+
+一方、
+
+\[
+\frac{f\left(a_{1}\right)-f\left(a\right)}{a_{1}-a}=f'\left(b_{1}\right)
+\]
+
+
+ただし$a<b_{1}<a_{1}$
+
+\[
+a_{1}-a=\frac{f\left(a_{1}\right)-f\left(a\right)}{f'\left(b_{1}\right)}
+\]
+
+
+\[
+a_{1}-a_{2}=\frac{f\left(a_{1}\right)-f\left(a\right)}{f'\left(a_{1}\right)}
+\]
+
+
+\begin{eqnarray*}
+\left(0\leq\right)a_{2}-a & = & \left(f\left(a_{1}\right)-f\left(a\right)\right)\left(\frac{1}{f'\left(b_{1}\right)}-\frac{1}{f'\left(a_{1}\right)}\right)\\
+ & = & f'\left(b_{2}\right)\left(a_{1}-a\right)\left(\frac{1}{f'}\right)'\left(b_{3}\right)\left(b_{1}-a_{1}\right)\\
+ & = & f'\left(b_{2}\right)\frac{f''\left(b_{3}\right)}{f'\left(b_{3}\right)}\left(a_{1}-a\right)\left(a_{1}-b_{1}\right)
+\end{eqnarray*}
+
+
+ただし$a<b_{2},b_{3}<a_{1}$
+
+$f',f''$は連続より、$f'\left(b_{2}\right),f''\left(b_{3}\right),f'\left(b_{3}\right)$は有界
+
+\[
+\left|f'\left(b_{2}\right)\frac{f''\left(b_{3}\right)}{f'\left(b_{3}\right)^{2}}\right|\leq M\doteqdot\frac{f''\left(a\right)}{f'\left(a\right)}
+\]
+
+
+ただしMはある定数
+
+$\therefore$
+
+\begin{eqnarray*}
+0 & \leq & a_{2}-a\\
+ & \leq & M\left(a_{1}-a\right)^{2}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+0 & \leq & M\left(a_{2}-a\right)\\
+ & \leq & \left(M\left(a_{1}-a\right)\right)^{2}
+\end{eqnarray*}
+
+
+$a_{2},a_{1}$のかわりに$a_{1}$を$a_{2}$に置き換えて同じ事を繰り返し、$a_{3}$を得る。
+
+$a_{1},a_{2},a_{3}\ldots$でより良い近似を得る。
+
+\[
+\left(M\left(a_{n}-a\right)\right)\leq\left(M\left(a_{n-1}-a\right)\right)^{2}\leq\left(M\left(a_{n-2}-a\right)\right)^{4}\leq\cdots\leq\left(M\left(a_{1}-a\right)\right)^{2^{n-1}}
+\]
+
+
+二重指数的に誤差が小さくなる。
+
+$M\left(a_{1}-a\right)\leq10^{-1}$とすると、
+
+\[
+M\left(a_{n}-1\right)\leq10^{-2^{n}}
+\]
+
+
+$n=10$とすると、$2^{10}=1024$
+
+\[
+M\left(a_{n}-a\right)\leq10^{-1024}
+\]
+
+
+$n=20$とすると、約1000000桁まで正確に求まる。
+
+$n=30$とすると、約10億桁まで正確に求まる。
+
+
+\subsubsection{多変数関数のための準備}
+
+\[
+\mathbb{R}^{n}=\left\{ \left(x_{1},\ldots,x_{n}\right)|x_{k}\in\mathbb{R}\right\} 
+\]
+
+
+n次元ユークリッド空間(Eucliden space of dimension n)である。
+
+$P=\left(a_{1},a_{2},\ldots,a_{n}\right)\in\mathbb{R}^{n}$を空間の点と呼ぶ。
+
+$P=\left(a_{1},\ldots,a_{n}\right)$、$Q=\left(b_{1},\ldots,b_{n}\right)$として、PとQの距離(distance)を
+
+\[
+\mathrm{d}\left(P,Q\right)=\sqrt{\left(a_{1}-b_{1}\right)^{2}+\cdots+\left(a_{n}-b_{n}\right)^{2}}
+\]
+
+
+で定義する。
+
+$P=\left(a_{1},\ldots,a_{n}\right)$を一つ固定し、$P$を中心とする半径$r$の開球体(openball)とは
+
+\[
+\left\{ Q=\left(x_{1},\ldots,x_{n}\right)\in\mathbb{R}^{n}|\mathrm{d}\left(P,Q\right)<r\right\} =\left\{ \left(x_{1},\ldots,x_{n}\right)\in\mathbb{R}^{n}|\left(x_{1}-a_{1}\right)^{2}+\cdots+\left(x_{n}-a_{n}\right)^{2}<r^{2}\right\} 
+\]
+
+
+のことを指す。
+
+$n=2$の時は、半径$r$の開円板(opendisc)という(円の内部)。
+
+$\varepsilon>0$とした時、$p$のε-近傍(ε-neiborhood)とは、$p$を中心とする半径εの開球体のこと。
+
+$D\subset\mathbb{R}^{n}$の部分集合、$p\in\mathbb{R}^{n}$の点をとる。
+
+\[
+p\text{は}D\text{の内部にある(inside D)}\Leftrightarrow\text{ある}\varepsilon>0\text{があって、}p\text{の}\varepsilon\text{近傍は}D\text{に含まれる}
+\]
+
+
+このとき$p$は$D$の内点(interior point)と呼ぶ
+
+\[
+p\text{は}D\text{の外部にある(off D)}\Leftrightarrow\text{ある}\varepsilon>0\text{があって、}p\text{の}\varepsilon\text{近傍は}D\text{に交わらない}
+\]
+
+
+このとき$p$は$D$の外点(exterior point)と呼ぶ
+
+\[
+p\text{は}D\text{の境界にある(on the boundary of D)}\Leftrightarrow\text{どんな}\varepsilon>0\text{をとっても、}p\text{の}\varepsilon\text{近傍は}D\text{とも}\mathbb{R}^{n}\setminus D\text{とも交わる}
+\]
+
+
+このとき$p$は$D$の境界点(boundary point)と呼ぶ
+
+
+\subsubsection{命題}
+
+$p\in\mathbb{R}^{n}$は$D$の内点、外点、境界点のいずれかである。
+
+$\because$
+
+\[
+\mathbb{R}^{n}=D\cup\left(\mathbb{R}^{n}\setminus D\right)
+\]
+
+
+$Q\in\mathbb{R}^{n}$となるどんな点をとっても、$Q\in D$または$Q\in\mathbb{R}^{n}\setminus D$
+
+\[
+B\varepsilon=p\text{の}\varepsilon\text{近傍\ensuremath{\ni}p}
+\]
+
+
+$\left\{ p\right\} \cap D$と$\left\{ B\right\} \cap\left(\mathbb{R}^{n}\setminus D\right)$のどちらかは空でない。
+
+$B_{\varepsilon}\cap D=\phi$、$B_{\varepsilon}\cap\left(\mathbb{R}^{n}\setminus D\right)=\phi$は不可能。
+
+$p\in D$($p\cap D\neq\phi$)とする。
+
+$B_{\varepsilon}\cap D\neq\phi$のとき、ある$\varepsilon>0$について$B_{\varepsilon}\subset D$である、またはどんな$\varepsilon<0$についても$B_{\varepsilon}\cap\left(\mathbb{R}^{n}\setminus D\right)=\phi$である。
+
+$p\cap\left(\mathbb{R}^{n}\setminus D\right)=\phi$とする。
+
+
+\subsubsection{復習}
+
+$\mathbb{R}^{n}$: $n$次ユークリッド空間
+
+$P=\left(a_{1},\cdots,a_{n}\right)$
+
+$Q=\left(b_{1},\cdots,b_{n}\right)$
+
+\[
+\mathrm{d}\left(P,Q\right)=\sqrt{\left(a_{1}-b_{1}\right)^{2}+\cdots+\left(a_{n}-b_{n}\right)^{2}}
+\]
+
+
+$P,Q$の距離
+
+$P\in\mathbb{R}^{n}$
+
+$B_{r}\left(P\right)=\left\{ Q\in\mathbb{R}^{n}|\mathrm{d}\left(P,Q\right)<r\right\} $
+
+$P$の$r$近傍: $P$を中心とする半径$r$の開球体
+
+$A\subset\mathbb{R}^{n}$: 部分集合
+
+\[
+A^{O}=A\text{の内部}=\left\{ Q\in\mathbb{R}^{n}|\text{ある}\varepsilon\text{があって}B\left(Q\right)\subset A\right\} \subset A
+\]
+
+
+\[
+A^{C}=\mathbb{R}^{n}\setminus A
+\]
+
+
+$\left(A^{C}\right)^{O}\subset A^{C}$を$A$の外部(compliment of A)という。
+
+\[
+\partial A=\left\{ Q\in\mathbb{R}^{n}|\text{どんな}\varepsilon>0\text{に対しても}B_{\varepsilon}\left(Q\right)\cap A\neq\phi,B_{\varepsilon}\left(Q\right)\cap A^{C}\neq\phi\right\} 
+\]
+
+
+境界点は$A$の点であることもないこともありうる。
+
+\[
+\left(A^{O}\right)^{O}=A^{O}
+\]
+
+
+
+\paragraph{証明}
+
+$p\in A^{O}$とする。$B_{\varepsilon}\left(P\right)\subset A,B_{\varepsilon/x}\left(P\right)\subset A$を示せば良い。
+
+\[
+B_{\varepsilon/e}\left(Q\right)\subset B_{\varepsilon}\left(P\right)\subset A
+\]
+
+
+\[
+\therefore Q\in A^{O}
+\]
+
+
+
+\paragraph{注意}
+
+$\partial\left(\partial B\right)$と$\partial B$とは一定の関係はない。
+
+例 $n=1$
+
+\[
+\mathbb{Q}\subset\mathbb{R}
+\]
+
+
+\[
+\partial\mathbb{Q}=\mathbb{R}
+\]
+
+
+\[
+\partial\left(\partial\mathbb{Q}\right)=\phi
+\]
+
+
+\[
+\mathbb{R}^{n}=A^{O}\cup\left(A^{C}\right)^{O}\cup\partial A
+\]
+
+
+互いに共通点はない。
+
+\[
+A^{O}\subset A
+\]
+
+
+\[
+\left(A^{C}\right)^{O}\subset A^{C}
+\]
+
+
+\[
+A^{O}\subset A\subset A^{O}\cup\partial A
+\]
+
+
+上式は常に成立
+
+
+\subsubsection{定義}
+
+$A=A^{O}$のとき
+
+$A$: 開集合($\Leftrightarrow A^{C}$が開集合)
+
+$A=A^{O}\cup\partial A$のとき
+
+$A$: 閉集合($\Leftrightarrow\left(A^{C}\right)^{O}=A^{C},A^{C}\text{が開集合}$)
+
+
+\subsection{点列と閉集合との関係}
+
+$\left\{ P_{k}\right\} \left(k=0,1,2,\cdots\right)$を点列(sequence)という。
+
+\[
+P_{k}\in\mathbb{R}^{n}
+\]
+
+
+$\left\{ P_{k}\right\} $が$P\in\mathbb{R}^{n}$に収束する\\
+\[
+\Leftrightarrow\mathrm{d}\left(P_{k},P\right)\rightarrow0
+\]
+
+
+\[
+\Leftrightarrow P_{k}=\left(a_{k1},\cdots a_{kn}\right)\in\mathbb{R}^{n}\text{とした}P=\left(a_{1},\cdots,a_{n}\right)
+\]
+
+
+\[
+\left|a_{kj}-a_{j}\right|\rightarrow0\left(j=1,\cdots,n\text{に対して}\right)
+\]
+
+
+$\left\{ P_{k}\right\} $が$A$内の点列であるとは、$P_{k}\in A$ 
+
+
+\subsubsection{命題}
+
+$\left\{ P_{k}\right\} $が$P\in\mathbb{R}^{n}$に収束したとすると、
+
+\[
+P\in A^{O}\cup\partial A
+\]
+
+
+$\because)$
+
+$P\in\left(A^{C}\right)^{O}$として矛盾を出す。
+
+ある$\varepsilon>0$があって$B_{\varepsilon}\left(P\right)\subset A^{C}$
+
+$\therefore P_{k}\in A\Rightarrow\mathrm{d}\left(P_{k},P\right)>\varepsilon$ 
+
+$P_{k}$は$P$に収束できない
+
+
+\subsubsection{命題}
+
+$P\in A^{O}\cup\partial A$ならば$P$に収束する$A$の点列$\left\{ P_{k}\right\} $が存在する
+
+$\because)$
+
+どんな$\varepsilon>0$をとっても
+
+\[
+B_{\varepsilon}\left(P\right)\cap A\neq\phi
+\]
+
+
+$\varepsilon_{1}>\varepsilon_{2}>\cdots>0$となる列をとる。
+
+\[
+B_{\varepsilon_{k}}\left(P\right)\cap A\ni P_{k}\in A
+\]
+
+
+\[
+\mathrm{d}\left(P_{k},P\right)<\varepsilon_{k}\rightarrow0
+\]
+
+
+$\therefore P_{k}$は$P$に収束
+
+
+\subsubsection{系}
+
+$A$が閉集合で$A$の点列$\left\{ P_{k}\right\} $がある店$P$に収束すれば$P\in A$
+
+
+\subsubsection{定義}
+
+$\mathbb{R}^{n}$の点列が有界
+
+$\Leftrightarrow\mathrm{d}\left(P_{k},0\right)\leqq M$
+
+$\Leftrightarrow P_{k}$のどの座標$a_{jk}$についても
+
+\[
+\left|a_{kj}\right|\leqq M'\Rightarrow\sqrt{\sum a_{kj}^{2}}\leqq\sqrt{n}M'
+\]
+
+
+\[
+\sqrt{\sum a_{kj}^{2}}\leqq M\Rightarrow\left|a_{kj}\right|\leqq M
+\]
+
+
+
+\subsubsection{定理(Bolzano-Weierstrass)}
+
+有界な点列$\in\mathbb{R}^{n}$は部分列をとれば収束
+
+$\because)$
+
+$n$による帰納法を用いる
+
+$n=1$は正しい。
+
+$n=1$まで正しいとする。
+
+\[
+P_{k}=\left(P_{k}',a_{k}\right)
+\]
+$a_{k}$は有界数列
+
+部分列で置き換えると、$a\in\mathbb{R}$は収束
+
+$a_{k}\rightarrow a$と仮定して良い。
+
+$P_{k}'$: 有界点列
+
+帰納法の仮定から、また部分列で置き換えると$P_{k}'$は$P'$に収束
+
+$P_{k}'\rightarrow P',a_{k}\rightarrow a$としてよい⇔$P_{k}$が$P=\left(P',a\right)$に収束
+
+
+\subsubsection{系}
+
+$A$が有界閉集合ならば、$A$の点列$\left\{ P_{k}\right\} $は部分列をうまくとれば$A$の点に収束。
+
+
+\subsubsection{定義}
+
+$A$が点列コンパクト(sequentially compact)とは、$A$の任意の点列$\left\{ P_{k}\right\} $は$A$の点に収束する部分列を持つ。
+
+
+\subsubsection{定理}
+
+$A\subset\mathbb{R}^{n}$に対し、
+
+\[
+A\text{は点列コンパクト}\Leftrightarrow A\text{は有界閉集合}
+\]
+
+
+$\Leftarrow$: もう示した。
+
+$\Rightarrow$:
+
+有界でなければ点列コンパクトでない。
+
+$\because)$
+
+1. 有界でないとすると、
+\[
+P_{k}\in A
+\]
+
+
+$P_{k}$の座標の絶対値の最大→$+\infty$となるように取れる。
+
+$P_{k}$: 発散
+
+2. 閉でなければ点列コンパクトでない。
+
+$A\not\supset\partial A$とする。
+
+$k\in\partial A\cup A^{C}$となる点がある。
+
+\[
+P_{k}\in B_{\varepsilon_{k}}\left(b\right)\cap A\neq\phi
+\]
+
+
+\[
+\varepsilon_{k}\rightarrow0
+\]
+
+
+$\left\{ P_{k}\right\} $は$A$の点列である。
+
+\[
+P_{k}\rightarrow b\notin A
+\]
+
+
+
+\subsubsection{連続関数}
+
+$A\subset\mathbb{R}^{n}$部分集合
+
+$A$上の関数とは$A$の各店$P$に対し$f\left(P\right)\in\mathbb{R}$が定まっていること。
+
+$f$が$P\in A$で連続⇔どんな$\varepsilon>0$をとってもある$\delta>0$があって、$\mathrm{d}\left(Q,P\right)<d$なら$\left|f\left(Q\right)-f\left(P\right)\right|<\varepsilon$
+
+
+\subsubsection{定理}
+
+$A\subset\mathbb{R}^{n}$有界閉集合(点列コンパクト)
+
+$f$は$A$の連続関数
+
+$\Rightarrow f$は最大値、最小値を持つ。$P_{1},P_{2}\in A$があって、任意の$Q\in A$に対し
+\[
+f\left(P_{1}\right)\leqq f\left(Q\right)\leqq f\left(P_{2}\right)
+\]
+
+
+とくに$f$の値は有界
+
+
+\subsubsection{証明}
+
+まず$f\left(Q\right)$が有界を示す。
+
+$f$が有界でないとする。
+
+$Q_{1},Q_{2}Q_{3},\cdots\in A$
+
+$\left|f\left(Q_{k}\right)\right|\rightarrow+\infty$とする。
+
+部分列で置き換える。$Q_{k}\rightarrow Q\in A$に収束。
+
+連続性より
+\[
+f\left(Q_{k}\right)\rightarrow f\left(Q\right)=\text{有限値}
+\]
+
+
+となり矛盾
+
+有界なので
+
+\[
+\sup_{Q\in A}f\left(Q\right)=\alpha
+\]
+
+
+\[
+\inf_{Q\in A}f\left(Q\right)=\beta
+\]
+
+
+$\sup$の定義から、$f\left(Q_{1}\right)\rightarrow\alpha$となる$Q_{q}\in A$
+
+部分列を置き換えて、$Q_{1}\rightarrow P_{2}\in A$としてよい。
+
+\[
+f\left(Q_{1}\right)\rightarrow f\left(P_{2}\right)=\alpha
+\]
+
+
+$\alpha$が最大値
+
+
+\subsubsection{多変数の微分}
+
+$A\subset\mathbb{R}^{n}$開集合
+
+$f$: $A$上の連続関数
+
+$P\in A$
+
+$f$が$P$で(全)微分可能(differentiable)であるとは、
+
+$f$が$P$の近くでは一次関数でよく近似できる
+
+すなわち$P=\left(a_{1},\cdots,a_{n}\right),Q=\left(x_{1},\cdots,x_{n}\right)$として、
+
+$Q$には依存しない$\alpha_{1},\cdots,\alpha_{n}\in\mathbb{R}$があって、
+
+\[
+f\left(x_{1},\cdots,x_{n}\right)\doteqdot f\left(a_{1},\cdots,a_{n}\right)+\alpha_{1}\left(x_{1}-a_{1}\right)+\cdots+\alpha_{n}\left(x_{n}-a_{n}\right)
+\]
+
+
+この$\alpha_{k}=\frac{\partial f}{\partial x_{k}}\left(a_{1},\cdots,a_{n}\right)$と書く。(偏微分係数)
+
+さらに正確には
+
+\[
+f\left(x_{1},\cdots,x_{n}\right)=f\left(a_{1}.\cdots,a_{n}\right)+\sum_{k=1}^{n}\alpha_{k}\left(x_{k}-a_{k}\right)+g\left(x_{1},\cdots,x_{n}\right)
+\]
+
+
+と書いた時、
+
+\[
+\frac{\left|g\left(Q\right)\right|}{\mathrm{d}\left(P,Q\right)}\rightarrow0\:\left(\mathrm{d}\left(P,Q\right)\rightarrow0\text{のとき}\right)
+\]
+
+
+\[
+\left(\frac{\mathrm{d}\left(P,Q\right)}{\sqrt{n}}\leqq\max\left|x_{1}-a_{1}\right|\leqq\mathrm{d}\left(P,Q\right)\right)
+\]
+
+
+記号として
+
+$\mathrm{d}\left(P,Q\right)\rightarrow0$であるとき、
+
+\[
+f\left(x_{1},\cdots,x_{n}\right)-f\left(a_{1},\cdots,a_{n}\right)=\mathrm{d}f\left(x_{1},\cdots,x_{n}\right)
+\]
+
+
+\[
+x_{k}-a_{k}=\mathrm{d}x_{k}
+\]
+
+
+と書く。
+
+☆を$\mathrm{d}f\left(x_{1},\cdots,x_{n}\right)=\frac{\partial f}{\partial x_{1}}\left(a_{1},\cdots,a_{n}\right)\mathrm{d}x_{1}+\cdots+\frac{\partial f}{\partial x_{n}}\left(a_{1},\cdots,a_{n}\right)$と書き表す。
+
+$n=2,3$の場合を主に扱う。
+
+
+\subsubsection{例}
+
+$\mathrm{e}^{xy}$
+
+$P=\left(1,1\right)$
+
+$y=1$を代入して、$y$の関数を思う。
+
+\[
+\mathrm{e}^{x}\doteqdot\mathrm{e}+\mathrm{e}\left(x-1\right)
+\]
+
+
+$x=1$を代入して$y$の関数と思う。
+
+\[
+\mathrm{e}+\mathrm{e}\left(y+1\right)
+\]
+
+
+$n=2$のとき、
+
+$f\left(x,y\right)$が$P=\left(a,b\right)$において$x$で偏微分可能(partially
+differentialable in x)
+
+$\Leftrightarrow f\left(a,b\right)$が$x$の関数として$x=a$で微分可能
+
+\[
+\frac{\partial f}{\partial x}\left(a_{1},\cdots,a_{n}\right)
+\]
+
+
+$y$で偏微分可能
+
+$\Leftrightarrow f\left(a,b\right)$が$y=b$で微分可能
+
+$f\left(a,b\right)$が$A$において$x$で微分可能
+
+$\Leftrightarrow$各店で微分可能
+
+\[
+\frac{\partial P}{\partial x}\left(x_{1},\cdots,x_{n}\right)
+\]
+
+
+偏導関数という。
+
+
+\subsubsection{定理}
+
+$f$が$A$で$C$級なら、$f$は$A$の各店で全微分可能。
+
+
+\subsubsection{証明}
+
+$n=2$
+
+\[
+f\left(x,y\right)-f\left(a,b\right)=f\left(x,y\right)-f\left(x,b\right)+f\left(x,b\right)-f\left(a,b\right)
+\]
+
+
+$f\left(x,y\right)-f\left(x,b\right)$を$y$の関数と思うと、
+
+\[
+f\left(x,y\right)-f\left(a,b\right)=\frac{\partial f}{\partial y}\left(x,c\right)\left(y-b\right)
+\]
+
+
+$c$は$y$と$b$の間
+
+同様に
+
+\[
+f\left(x,b\right)-f\left(a,b\right)=\frac{\partial f}{\partial x}\left(x',b\right)\left(x-a\right)
+\]
+
+
+$x'$は$x$と$a$の間
+
+\[
+f\left(x,y\right)-f\left(a,b\right)=\frac{\partial f}{\partial x}\left(a,b\right)\left(x-a\right)+\frac{\partial f}{\partial y}\left(a,b\right)\left(y-b\right)+\left(\frac{\partial f}{\partial x}\left(x',b\right)-\frac{\partial f}{\partial x}\left(a,b\right)\right)\left(x-a\right)+\left(\frac{\partial f}{\partial y}\left(x,c\right)-\frac{\partial f}{\partial y}\left(a,b\right)\right)\left(y-b\right)
+\]
+
+
+誤差項において、
+
+\[
+\left|x-a\right|<\mathrm{d}\left(P,Q\right)
+\]
+
+
+\[
+\left|y-b\right|<\mathrm{d}\left(P,Q\right)
+\]
+
+
+\[
+\left|\frac{\partial f}{\partial x}\left(x',b\right)-\frac{\partial f}{\partial x}\left(a,b\right)\right|\rightarrow0
+\]
+
+
+\[
+\left|\frac{\partial f}{\partial y}\left(x,c\right)-\frac{\partial f}{\partial y}\left(a,b\right)\right|\rightarrow0
+\]
+
+
+$\frac{\text{誤差項}}{\mathrm{d}\left(P,Q\right)}\rightarrow0$
+
+$\therefore$前微分可能
+
+$P$で全微分可能⇒偏微分可能
+
+\[
+f\left(x,y\right)-f\left(a,b\right)\doteqdot\alpha\left(x-a\right)+\beta\left(y-b\right)
+\]
+
+
+$C$級⇒全微分可能⇒偏微分可能
+
+
+\subsection{多変数合成関数の微分・高階微分と多変数のTaylorの定理}
+
+
+\subsubsection{復習}
+
+全微分$\mathrm{d}f=\frac{\partial f}{\partial x}\mathrm{d}x+\frac{\partial f}{\partial y}\mathrm{d}y$
+(2変数)
+
+$\mathrm{d}f=\sum_{i=1}^{n}\frac{\partial f}{\partial x_{i}}\mathrm{d}x_{i}$
+(n変数)
+
+$\left(x_{1},\cdots,x_{n}\right)=\left(a_{1},\cdots,a_{n}\right)$でとは、
+
+\[
+f\left(x_{1},\cdots,x_{n}\right)-f\left(a_{1},\cdots,a_{n}\right)=\frac{\partial f}{\partial x_{i}}\left(a_{1},\cdots,a_{n}\right)\left(x_{1}-a_{1}\right)+\cdots+\frac{\partial f}{\partial x_{n}}\left(a_{1},\cdots,a_{n}\right)\left(x_{n}-a_{n}\right)+\text{誤差}
+\]
+
+
+一次式による近似である。
+
+\[
+\frac{\left|\text{誤差}\right|}{\mathrm{d}\left(P,P_{0}\right)}\rightarrow0
+\]
+
+
+各変数について各点で偏微分できて、$\frac{\partial f}{\partial x_{i}}$が全て連続($f$は$C^{1}$級)⇒$f$は全微分可能
+
+証明は$n=2$で行った。(一般でも可能)
+
+$A\subset\mathbb{R}^{n}$: 開集合、$\left(x_{1},\cdots,x_{n}\right)$座標
+
+$B\subset\mathbb{R}^{m}$: 開集合、$\left(y_{1},\cdots,y_{m}\right)$座標
+
+$\mathbb{R}^{l}$: 開集合、$\left(z_{1},\cdots,z_{l}\right)$座標
+
+$F$: $A\rightarrow B$写像
+
+\[
+F=\left(f_{1}\left(x_{1},\cdots,x_{n}\right),\cdots,f_{m}\left(x_{1},\cdots,x_{n}\right)\right)
+\]
+
+
+これはベクトル値関数と思える。
+
+$F$が連続⇔各$f_{i}$が連続
+
+全微分可能⇔(定義)各$f_{i}$が全微分可能
+
+$C^{1}$級⇔各$f_{i}$が$C^{1}$級
+
+$G$: $B\rightarrow\mathbb{R}^{l}$
+
+\[
+G=\left(g_{1}\left(y_{1},\cdots,y_{m}\right),\cdots,g_{l}\left(y_{1},\cdots,y_{m}\right)\right)
+\]
+
+
+ベクトル値関数
+
+$H\left(x_{1},\cdots,x_{n}\right)=G\left(F\left(x_{1},\cdots,x_{n}\right)\right)\left(=G\circ F\left(x_{1},\cdots,x_{n}\right)\right)$が定義される。
+
+\[
+H\left(x_{1},\cdots,x_{n}\right)=\left(h_{1}\left(x_{1},\cdots,x_{n}\right),\cdots,h_{l}\left(x_{1},\cdots,x_{n}\right)\right)
+\]
+
+
+具体的には、
+
+\[
+h_{i}\left(x_{1},\cdots,x_{n}\right)=g_{i}\left(f_{1}\left(x_{1},\cdots,x_{n}\right),\cdots,f_{m}\left(x_{1},\cdots,x_{n}\right)\right)
+\]
+
+
+
+\subsubsection{定理}
+
+
+\paragraph{(1)}
+
+$F$が$P=\left(a_{1},\cdots,a_{n}\right)$で全微分可能かつ$G$が$F\left(P\right)=\left(b_{1},\cdots,b_{m}\right)$で全微分可能ならば、$H=G\circ F$も$\left(a_{1},\cdots,a_{n}\right)$で全微分可能。
+
+\[
+\frac{\partial h_{i}}{\partial x_{j}}\left(a_{1},\cdots,a_{n}\right)=\sum_{k=1}^{m}\frac{\partial f_{k}}{\partial x_{j}}\left(a_{1},\cdots,a_{n}\right)\frac{\partial g_{i}}{\partial y_{k}}\left(b_{1},\cdots,b_{m}\right)
+\]
+
+
+
+\paragraph{(2)}
+
+$F,G$が$C^{1}$級→$H=G\circ F$も$C^{1}$級
+
+
+\subsubsection{証明}
+
+(復習
+
+$n=1$
+
+$f$: $A\left(\subset\mathbb{R}\right)\rightarrow B\left(\subset\mathbb{R}\right)$
+
+$g$: $B\rightarrow\mathbb{R}$
+
+$h=g\left(f\left(x\right)\right)$
+
+\[
+\frac{\mathrm{d}h}{\mathrm{d}x}=\frac{\mathrm{d}g}{\mathrm{d}y}\frac{\mathrm{d}f}{\mathrm{d}x}
+\]
+
+
+$f\left(x\right)-f\left(a\right)=\frac{\mathrm{d}f}{\mathrm{d}x}\left(a\right)\left(x-a\right)+\text{誤差項}$
+
+$g\left(y\right)-g\left(b\right)=\frac{\mathrm{d}g}{\mathrm{d}y}\left(b\right)\left(y-b\right)+\text{誤差項}$
+
+\begin{eqnarray*}
+h\left(x\right)-h\left(a\right) & = & g\left(f\left(x\right)\right)-g\left(f\left(a\right)\right)\\
+ & = & \frac{\mathrm{d}g}{\mathrm{d}y}\left(b\right)\left(f\left(x\right)-f\left(a\right)\right)+\text{誤差項}\\
+ & = & \frac{\mathrm{d}g}{\mathrm{d}y}\left(b\right)\left(\frac{\mathrm{d}f}{\mathrm{d}x}\left(a\right)+\text{誤差項}\right)+\text{誤差項}
+\end{eqnarray*}
+
+
+$\frac{\text{誤差項}}{\left|x-a\right|}\rightarrow0$が示せた。
+
+\[
+h\left(x\right)-h\left(a\right)=\frac{\mathrm{d}g}{\mathrm{d}y}\left(b\right)\frac{\mathrm{d}f}{\mathrm{d}x}\left(a\right)\left(x-a\right)+\text{小さい誤差}
+\]
+
+
+多変数でも全く同じ証明(誤差が小さいこと)→省略
+
+
+\paragraph{(2)の証明}
+
+$C^{1}$級→全微分可能
+
+全微分可能より
+
+\[
+\frac{\partial k_{i}}{\partial x_{j}}\left(x\right)=\sum\frac{\partial f_{k}}{\partial x_{j}}\left(x\right)\frac{\partial g_{i}}{\partial y_{k}}\left(F\left(x\right)\right)
+\]
+
+
+と書けた。よって$\frac{\partial k_{i}}{\partial x_{j}}\left(x\right)$は連続で$C^{1}$級。
+
+\begin{eqnarray*}
+h_{i}\left(x_{1},\cdots,x_{n}\right)-h_{i}\left(a_{1},\cdots,a_{n}\right) & = & g_{i}\left(f_{1}\left(x_{1},\cdots,x_{n}\right),\cdots,f_{m}\left(x_{1},\cdots,x_{n}\right)\right)-g_{i}\left(f_{1}\left(a_{1},\cdots,a_{n}\right),\cdots,f_{m}\left(a_{1},\cdots,a_{n}\right)\right)\\
+ & = & \sum_{k=1}^{m}\frac{\partial g_{i}}{\partial y_{k}}\left(b_{1},\cdots,b_{m}\right)\left(y_{k}-b_{k}\right)
+\end{eqnarray*}
+
+
+\[
+f_{k}\left(x_{1},\cdots,x_{m}\right)-f_{k}\left(a_{1},\cdots,a_{n}\right)\doteqdot\sum_{j=1}^{m}\frac{\partial f_{k}}{\partial x_{j}}\left(a_{1},\cdots,a_{n}\right)\left(x_{j}-a_{j}\right)
+\]
+
+
+代入して
+\begin{eqnarray*}
+h_{i}\left(x\right)-h_{i}\left(a\right) & \doteqdot & \sum_{k=1}^{m}\sum_{j=1}^{n}\frac{\partial g_{i}}{\partial g_{k}}\left(b\right)\frac{\partial f_{k}}{\partial x_{j}}\left(a\right)\left(x_{j}-a_{j}\right)\\
+ & = & \sum_{j=1}^{n}\left(\sum_{k=1}^{m}\frac{\partial f_{k}}{\partial x_{j}}\left(a\right)\frac{\partial g_{i}}{\partial y_{k}}\left(b\right)\right)\left(x_{j}-a_{j}\right)
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+\mathrm{d}h_{i} & = & \sum_{j=1}^{n}\left(\sum_{k=1}^{m}\frac{\partial f_{k}}{\partial x_{j}}\left(a\right)\frac{\partial g_{i}}{\partial y_{k}}\left(b\right)\right)\mathrm{d}x_{j}\\
+ & = & \frac{\partial h_{i}}{\partial x_{j}}\left(a\right)
+\end{eqnarray*}
+
+
+$x=\left(x_{1},\cdots,x_{n}\right)$
+
+\begin{eqnarray*}
+\mathrm{d}f\left(x\right) & = & \mathrm{d}x_{1}\frac{\partial f}{\partial x_{1}}+\cdots+\mathrm{d}x_{n}\frac{\partial f}{\partial x_{n}}\\
+ & = & \left(\begin{array}{ccc}
+\mathrm{d}x_{1} & \cdots & \mathrm{d}x_{n}\end{array}\right)\left(\begin{array}{c}
+\frac{\partial f}{\partial x_{1}}\\
+\vdots\\
+\frac{\partial f}{\partial x_{n}}
+\end{array}\right)
+\end{eqnarray*}
+
+
+\[
+\left(\begin{array}{ccc}
+\mathrm{d}f_{1} & \cdots & \mathrm{d}f_{m}\end{array}\right)=\left(\begin{array}{ccc}
+\mathrm{d}x_{1} & \cdots & \mathrm{d}x_{n}\end{array}\right)\left(\begin{array}{ccc}
+\frac{\partial f_{1}}{\partial x_{1}} & \cdots & \frac{\partial f_{m}}{\partial x_{1}}\\
+\vdots &  & \vdots\\
+\frac{\partial f_{1}}{\partial x_{n}} & \cdots & \frac{\partial f_{m}}{\partial x_{n}}
+\end{array}\right)
+\]
+
+
+\[
+\left(\begin{array}{ccc}
+\mathrm{d}g_{1} & \cdots & \mathrm{d}g_{l}\end{array}\right)=\left(\begin{array}{ccc}
+\mathrm{d}y_{1} & \cdots & \mathrm{d}y_{m}\end{array}\right)\left(\begin{array}{ccc}
+\frac{\partial g_{1}}{\partial y_{1}} & \cdots & \frac{\partial g_{l}}{\partial y_{1}}\\
+\vdots &  & \vdots\\
+\frac{\partial g_{1}}{\partial y_{m}} & \cdots & \frac{\partial g_{l}}{\partial y_{m}}
+\end{array}\right)
+\]
+
+
+$y_{i}=f_{i}$とおくと、
+
+\begin{eqnarray*}
+\left(\begin{array}{ccc}
+\mathrm{d}h_{1} & \cdots & \mathrm{d}h_{l}\end{array}\right) & = & \left(\begin{array}{ccc}
+\mathrm{d}g_{1} & \cdots & \mathrm{d}g_{l}\end{array}\right)\\
+ & = & \left(\begin{array}{ccc}
+\mathrm{d}f_{1} & \cdots & \mathrm{d}f_{m}\end{array}\right)\left(\begin{array}{ccc}
+\frac{\partial g_{1}}{\partial y_{1}} & \cdots & \frac{\partial g_{l}}{\partial y_{1}}\\
+\vdots &  & \vdots\\
+\frac{\partial g_{1}}{\partial y_{m}} & \cdots & \frac{\partial g_{l}}{\partial y_{m}}
+\end{array}\right)\\
+ & = & \left(\begin{array}{ccc}
+\mathrm{d}x_{1} & \cdots & \mathrm{d}x_{n}\end{array}\right)\left(\begin{array}{ccc}
+\frac{\partial f_{1}}{\partial x_{1}} & \cdots & \frac{\partial f_{m}}{\partial x_{1}}\\
+\vdots &  & \vdots\\
+\frac{\partial f_{1}}{\partial x_{n}} & \cdots & \frac{\partial f_{m}}{\partial x_{n}}
+\end{array}\right)\left(\begin{array}{ccc}
+\frac{\partial g_{1}}{\partial y_{1}} & \cdots & \frac{\partial g_{l}}{\partial y_{1}}\\
+\vdots &  & \vdots\\
+\frac{\partial g_{1}}{\partial y_{m}} & \cdots & \frac{\partial g_{l}}{\partial y_{m}}
+\end{array}\right)
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+\mathrm{d}h-h\left(x\right)-h\left(a\right) & = & g\left(f\left(x\right)\right)-g\left(f\left(a\right)\right)\\
+ & = & g\left(y\right)-g\left(b\right)\\
+ & = & \mathrm{d}g
+\end{eqnarray*}
+
+
+
+\subsubsection{例}
+
+極座標$x=r\cos\theta,y=r\sin\theta$
+
+$k\left(r,\theta\right)=g\left(r\cos\theta,r\sin\theta\right)$
+
+\begin{eqnarray*}
+h_{r} & = & \frac{\partial h}{\partial r}=\frac{\partial x}{\partial r}\frac{\partial h}{\partial x}+\frac{\partial y}{\partial r}\frac{\partial h}{\partial y}\\
+ & = & \left(\cos\theta\right)h_{x}+\left(\sin\theta\right)h_{y}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+h_{\theta} & = & \frac{\partial h}{\partial\theta}=\frac{\partial x}{\partial\theta}h_{x}+\frac{\partial y}{\partial\theta}h_{y}\\
+ & = & \left(-r\sin\theta\right)h_{x}+\left(r\cos\theta\right)h_{y}
+\end{eqnarray*}
+
+
+\[
+\left(\cos\theta\right)h_{r}-\frac{\left(\sin\theta\right)}{r}h_{\theta}=h_{x}
+\]
+
+
+\[
+\left(\sin\theta\right)h_{r}-\frac{\left(\cos\theta\right)}{r}h_{\theta}=h_{y}
+\]
+
+
+\[
+\frac{\partial}{\partial x}=\cos\theta\frac{\partial}{\partial r}-\frac{\sin\theta}{r}\frac{\partial}{\partial\theta}
+\]
+
+
+\[
+\frac{\partial}{\partial y}=\sin\theta\frac{\partial}{\partial r}-\frac{\cos\theta}{r}\frac{\partial}{\partial\theta}
+\]
+
+
+\[
+\frac{\partial}{\partial r}=\cos\theta\frac{\partial}{\partial x}+\sin\theta\frac{\partial}{\partial y}=\frac{x}{\sqrt{x^{2}+y^{2}}}\frac{\partial}{\partial x}+\frac{y}{\sqrt{x^{2}+y^{2}}}\frac{\partial}{\partial y}
+\]
+
+
+\[
+\frac{\partial}{\partial\theta}=-r\sin\theta\frac{\partial}{\partial x}+r\cos\theta\frac{\partial}{\partial y}=-x\frac{\partial}{\partial x}+y\frac{\partial}{\partial y}
+\]
+
+
+
+\subsection{高階微分}
+
+$f\left(x_{1},\cdots,x_{n}\right)$が$C^{1}$級
+
+$\frac{\partial f}{\partial x_{1}},\cdots,\frac{\partial f}{\partial x_{n}}$は連続
+
+$\frac{\partial f}{\partial x_{i}}$がまた全て$C^{1}$球である時、$C^{2}$級
+
+以下同様にn回微分して連続である時$C^{n}$級という。
+
+
+\subsubsection{定理}
+
+$f$が$C^{2}$級なら、
+
+\[
+\frac{\partial}{\partial x_{j}}\left(\frac{\partial f}{\partial x_{i}}\right)=\frac{\partial}{\partial x_{i}}\left(\frac{\partial f}{\partial x_{_{j}}}\right)
+\]
+
+
+もっと一般に$C^{n}$級なら$n$回の偏微分の順序を入れ替えても同じ関数になる。
+
+
+\subsubsection{証明}
+
+$n=2$で$\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}\right)=\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}\right)$を示す。
+
+\begin{eqnarray*}
+f\left(x,y\right)-f\left(a,b\right) & = & f\left(x,y\right)-f\left(x,b\right)+f\left(x,b\right)-f\left(a,b\right)\\
+ & = & \left(\frac{\partial f}{\partial y}\left(x,y'\right)\right)\left(y-b\right)+\left(\frac{\partial f}{\partial x}\left(x',b\right)\right)\left(x-a\right)
+\end{eqnarray*}
+
+
+ただし$y'$は$y$と$b$の間、$x'$は$x$と$a$の間
+
+\[
+f\left(x,y\right)-f\left(a,b\right)=\left(\frac{\partial f}{\partial y}\left(x,y'\right)-\frac{\partial f}{\partial y}\left(a,y'\right)\right)\left(y-b\right)+\frac{\partial f}{\partial y}\left(a,y'\right)\left(y-b\right)+\left(\frac{\partial f}{\partial x}\left(x',b\right)-\frac{\partial f}{\partial x}\left(a,b\right)\right)\left(x-a\right)+\frac{\partial f}{\partial x}\left(a,b\right)\left(x-a\right)
+\]
+
+
+最終的には
+
+\begin{eqnarray*}
+\text{左辺} & = & \frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}\right)\left(a,b\right)\left(x-a\right)\left(y-b\right)+\text{誤差項}\\
+ & = & \frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}\right)\left(a,b\right)\left(x-a\right)\left(y-b\right)+\text{誤差項}
+\end{eqnarray*}
+
+
+から
+\[
+\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}\right)=\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}\right)
+\]
+
+
+を示す。(具体的な証明は次週)
+
+
+\subsubsection{帰結}
+
+$C^{3}$級なら
+
+\[
+\frac{\partial}{\partial x}\left(\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}\right)\right)=\frac{\partial}{\partial y}\left(\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial x}\right)\right)
+\]
+
+
+これを
+\[
+\frac{\partial^{3}f}{\partial x^{2}\partial y}
+\]
+
+
+と表す。
+
+一般に$C^{m}$のとき
+
+\[
+\frac{\partial^{m}f}{\partial x_{1}^{m_{1}}\cdots\partial x_{n}^{m_{n}}}
+\]
+
+
+と表記する$\left(m=m_{1}+\cdots+m_{n}\right)$
+
+
+\subsubsection{例}
+
+\[
+\left(\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}\right)f=\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial x}\right)+\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial y}\right)
+\]
+
+
+この$\left(\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}\right)$をラプラス演算子$\Delta$で表す。(Laplacian)
+
+\[
+\frac{\partial^{2}}{\partial x_{1}^{2}}+\cdots+\frac{\partial^{2}}{\partial x_{n}^{2}}=\Delta
+\]
+
+
+\[
+\frac{\partial}{\partial x}=\cos\theta\frac{\partial}{\partial r}-\frac{\sin\theta}{r}\frac{\partial}{\partial\theta}
+\]
+
+
+\[
+\frac{\partial}{\partial y}=\sin\theta\frac{\partial}{\partial r}-\frac{\cos\theta}{r}\frac{\partial}{\partial\theta}
+\]
+
+
+\begin{eqnarray*}
+\frac{\partial^{2}}{\partial x^{2}}f & = & \frac{\partial}{\partial x}\left(\cos\theta\frac{\partial f}{\partial x}-\frac{\sin\theta}{r}\frac{\partial f}{\partial\theta}\right)\\
+ & = & \cos\theta\frac{\partial}{\partial r}\left(\cos\theta\frac{\partial f}{\partial r}-\frac{\sin\theta}{r}\frac{\partial f}{\partial\theta}\right)-\frac{\sin\theta}{r}\frac{\partial}{\partial\theta}\left(\cos\theta\frac{\partial f}{\partial r}-\frac{\sin\theta}{r}\frac{\partial f}{\partial\theta}\right)\\
+ & = & \cos^{2}\theta\frac{\partial^{2}f}{\partial r^{2}}-\frac{\sin\theta\cos\theta}{r}\frac{\partial^{2}f}{\partial r\partial\theta}+\frac{\cos\theta\sin\theta}{r^{2}}\frac{\partial f}{\partial\theta}-\frac{\sin\theta\cos\theta}{r}\frac{\partial^{2}f}{\partial r\partial\theta}+\frac{\sin^{2}\theta}{r}\frac{\partial f}{\partial\theta}+\frac{\sin^{2}\theta}{r^{2}}\frac{\partial^{2}f}{\partial\theta^{2}}+\frac{\sin\theta\cos\theta}{r^{2}}\frac{\partial f}{\partial\theta}
+\end{eqnarray*}
+
+
+$\Delta=\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}$を$r$と$\theta$の偏微分で表せ。(各自求めてみよ)
+
+
+\subsubsection{復習}
+
+
+\paragraph{(1)}
+
+$f\left(x_{1},\cdots,x_{n}\right)$: $C^{2}$級
+
+\[
+\Rightarrow\frac{\partial}{\partial x_{j}}\left(\frac{\partial f}{\partial x_{i}}\right)=\frac{\partial}{\partial x_{i}}\left(\frac{\partial f}{\partial x_{j}}\right)=\begin{cases}
+\frac{\partial^{2}f}{\partial x_{i}\partial x_{j}} & \left(i\neq j\right)\\
+\frac{\partial^{2}f}{\partial x_{i}^{2}} & \left(i=j\right)
+\end{cases}
+\]
+
+
+$f\left(x_{1},\cdots,x_{n}\right)$: $C^{r}$級
+
+\[
+\Rightarrow r\text{以下の偏微分順番を自由に変えて良い}
+\]
+
+
+これを
+\[
+\frac{\partial^{r}f}{\partial x_{1}^{r_{1}}\partial x_{2}^{r_{2}}\cdots\partial x_{n}^{r_{n}}}\:\left(r_{1}+\cdots+r_{n}=r\right)
+\]
+
+
+のように書く
+
+
+\paragraph{(2)}
+
+Taylor展開
+
+$f\left(x_{1},\cdots,x_{n}\right)$: $C^{r+1}$級
+
+\[
+\Rightarrow f\left(x_{1},\cdots,x_{n}\right)=f\left(a_{1},\cdots,a_{n}\right)+\sum_{r_{1}+\cdots+r_{n}=r}\frac{\partial^{r}f}{\partial x_{1}^{r_{1}}\cdots\partial x_{n}^{r_{n}}}\times\frac{\left(x_{1}-a_{1}\right)^{r_{1}}\cdots\left(x_{n}-a_{n}\right)^{r_{n}}}{r_{1}!\cdots r_{n!}}+\text{剰余項}
+\]
+
+
+
+\paragraph{(1)の証明}
+
+$r=2$(2変数)のとき
+
+\[
+\frac{\partial}{\partial y}\left(\frac{\partial f\left(x,y\right)}{\partial x}\right)\left(a,b\right)=\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}\right)\left(a,b\right)
+\]
+
+
+を示す。
+
+$\left(a,b\right)$を固定して$\alpha,\beta$を0に近い実数とする。
+
+\[
+\begin{cases}
+\varphi\left(x\right)=f\left(x,b+\beta\right)-f\left(x,b\right)\\
+\xi\left(y\right)=f\left(a+\alpha,y\right)-f\left(a,y\right)
+\end{cases}
+\]
+
+
+とおく。
+
+\[
+\begin{cases}
+\frac{\mathrm{d}\varphi}{\mathrm{d}x}=\frac{\partial f}{\partial x}\left(x,b+\beta\right)-\frac{\partial f}{\partial x}\left(x,b\right)\\
+\frac{\mathrm{d}\xi}{\mathrm{d}y}=\frac{\partial f}{\partial y}\left(a+\alpha,y\right)-\frac{\partial f}{\partial y}\left(a,y\right)
+\end{cases}
+\]
+
+
+が成立する。
+
+\begin{eqnarray*}
+\Delta & = & f\left(a+\alpha,b+\beta\right)-f\left(a,b+\beta\right)-f\left(a+\alpha,b\right)+f\left(a,b\right)\\
+ & = & \begin{cases}
+\varphi\left(a+\alpha\right)-\varphi\left(a\right)=\frac{\mathrm{d}\varphi}{\mathrm{d}x}\left(a+\theta\alpha\right)\times\alpha\\
+\xi\left(b+\beta\right)-\xi\left(b\right)
+\end{cases}
+\end{eqnarray*}
+
+
+ただし$0<\theta<1$
+
+\begin{eqnarray*}
+\alpha\times\frac{\mathrm{d}\varphi}{\mathrm{d}x}\left(a+\theta\alpha\right) & = & \alpha\left[\frac{\partial f}{\partial x}\left(a+\theta\alpha,b+\beta\right)+\frac{\partial f}{\partial x}\left(a+\theta\alpha,b\right)\right]\\
+ & = & \alpha\beta\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}\right)\left(a+\theta\alpha,b+\theta'\beta\right)
+\end{eqnarray*}
+
+
+平均値の定理を使った。ただし$0<\theta'<1$
+
+\[
+\Delta=\alpha\beta\frac{\partial}{\partial y}\frac{\partial f}{\partial x}\left(a+\theta\alpha,b+\theta'\beta\right)
+\]
+
+
+\[
+\frac{\Delta}{\alpha\beta}=\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}\right)\left(a+\theta\alpha,b+\theta'\beta\right)
+\]
+
+
+$\xi\left(b+\beta\right)-\xi\left(b\right)$にも同様の変形を行うと
+
+\[
+\frac{\Delta}{\alpha\beta}=\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}\right)\left(a+\eta'\alpha,b+\eta\beta\right)
+\]
+
+
+ただし$0<\eta,\eta'<1$
+
+\[
+\alpha,\beta\rightarrow0
+\]
+
+
+$C^{2}$級だったので
+
+\[
+\frac{\Delta}{\alpha\beta}\rightarrow\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}\right)\left(a,b\right)=\frac{\partial}{\partial x}\frac{\partial f}{\partial y}\left(a,b\right)
+\]
+
+
+
+\subsubsection{極大・極小}
+
+
+\paragraph{一変数の場合}
+
+\[
+f\left(a\right)\text{が極大}\Rightarrow\begin{cases}
+f'\left(a\right)=0\\
+f''\left(a\right)\leq0
+\end{cases}
+\]
+
+
+\[
+f\left(a\right)\text{が極大}\Leftarrow\begin{cases}
+f'\left(a\right)=0\\
+f''\left(a\right)\leq0
+\end{cases}
+\]
+
+
+$f\left(x\right)$は$x=a$のそばで
+
+\[
+f\left(x\right)\doteqdot f\left(a\right)+f'\left(a\right)\left(x-a\right)+f''\left(a\right)\frac{\left(x-a\right)^{2}}{2}+\cdots
+\]
+
+
+
+\paragraph{多変数の場合}
+
+$C^{3}$級とする。
+
+\[
+f\left(a_{1},\cdots,a_{n}\right)\text{が極値}\Rightarrow\frac{\partial f}{\partial x_{i}}\left(a_{1},\cdots,a_{n}\right)=0
+\]
+
+
+このとき2次までのTaylor展開
+
+\[
+f\left(x_{1},\cdots,x_{n}\right)\doteqdot f\left(a_{1},\cdots,a_{n}\right)+\sum_{i=1}^{n}\frac{\partial^{2}f}{\partial x_{i}^{2}}\frac{\left(x_{i}-a_{1}\right)^{2}}{2}+\sum_{i<j}\frac{\partial^{2}f}{\partial x_{i}\partial x_{j}}\left(x_{i}-a_{i}\right)\left(x_{j}-a_{j}\right)
+\]
+
+
+
+\subsubsection{線形代数}
+
+\[
+\sum_{1\leqq i,j\leqq n}a_{ij}x_{i}x_{j}
+\]
+
+
+(ただし$a_{ij}=a_{ji}$とする)
+
+($n=2$のとき$a_{11}x^{2}+2a_{12}xy+a_{22}y^{2}$)
+
+に対して対称行列$\left(\begin{array}{ccc}
+a_{11} & \cdots & a_{1n}\\
+\vdots &  & \vdots\\
+a_{n1} & \cdots & a_{nn}
+\end{array}\right)$を考える。
+
+すると次が知られている。
+
+正則行列$U$をうまく取ると
+
+\[
+^{t}UHU=\left(\begin{array}{ccc}
+\lambda_{1} & 0 & 0\\
+0 & \ddots & 0\\
+0 & 0 & \lambda_{n}
+\end{array}\right)
+\]
+
+
+の対角行列にできる。
+
+うまい座標変換
+
+\[
+s_{i}=\sum_{j=1}^{n}u_{ij}y_{j}
+\]
+
+
+を行うと、
+
+\[
+\sum a_{ij}\left(\sum u_{ik}y_{k}\right)\left(\sum u_{il}y_{l}\right)=\sum_{i=1}^{n}\lambda_{i}y_{i}^{2}
+\]
+
+
+$n=2$のとき
+
+\[
+H=\alpha x^{2}+2\beta xy+\gamma y^{2}
+\]
+
+
+$a\neq0$のとき
+
+\[
+\alpha\left(x-\frac{\beta}{\alpha}y\right)^{2}+\left(\gamma-\frac{\beta^{2}}{\alpha}\right)y^{2}=\alpha\left(x-\frac{\beta}{\alpha}y\right)^{2}+\frac{1}{\alpha}\left(\alpha\gamma-\beta^{2}\right)y^{2}
+\]
+
+
+$\alpha\gamma-\beta^{2}=\mathrm{det}\left(\begin{array}{cc}
+\alpha & \beta\\
+\beta & \gamma
+\end{array}\right)$となっている。
+
+$\gamma\neq0$の時も同様に
+
+\[
+\gamma\left(y-\frac{\beta}{\gamma}x\right)^{2}+\frac{1}{\gamma}\left(\alpha\gamma-\beta^{2}\right)x^{2}
+\]
+
+
+$\alpha=\gamma=0$のとき$\beta\neq0$
+
+\begin{eqnarray*}
+H & = & 2\beta xy\\
+ & = & \frac{\beta}{2}\left\{ \left(x+y\right)^{2}-\left(x-y\right)^{2}\right\} 
+\end{eqnarray*}
+
+
+
+\subsubsection{定理}
+
+$f\left(x_{1},\cdots,x_{n}\right)$が$C^{3}$級とする。
+
+\[
+\frac{\partial f}{\partial x_{i}}\left(a_{1},\cdots,a_{n}\right)=0
+\]
+
+
+のとき、$p=a_{1},\cdots,a_{n}$とおいて
+
+\[
+^{t}U\left(\begin{array}{ccc}
+\frac{\partial^{2}f}{\partial x_{1}^{2}}\left(p\right) & \cdots & \frac{\partial^{2}f}{\partial x_{1}\partial x_{n}}\left(p\right)\\
+\vdots &  & \vdots\\
+\frac{\partial^{2}f}{\partial x_{n}\partial x_{1}}\left(p\right) & \cdots & \frac{\partial^{2}f}{\partial x_{n}^{2}}\left(p\right)
+\end{array}\right)=\left(\begin{array}{ccc}
+\lambda_{1} & 0 & 0\\
+0 & \ddots & 0\\
+0 & 0 & \lambda_{n}
+\end{array}\right)
+\]
+
+
+と書いたとき、$\lambda_{1},\cdots,\lambda_{n}>0$ならば、$f\left(a_{1},\cdots,a_{n}\right)$は極小(極大)となる。
+
+
+\subsubsection{厳密でない証明}
+
+$\because)$
+
+\[
+f\left(x_{1},\cdots,x_{n}\right)\doteqdot f\left(a_{1},\cdots,a_{n}\right)+\frac{1}{2}\sum_{1\leqq i,j\leqq2}\frac{\partial^{2}f}{\partial x_{i}\partial y_{j}}\left(p\right)\left(x_{i}-a_{i}\right)\left(y_{j}-a_{j}\right)
+\]
+
+
+適当に変数変換
+
+\[
+x_{i}-a_{i}=\sum u_{ij}y_{j}
+\]
+
+
+を行うと
+
+\[
+f\left(x_{1}\left(y\right),\cdots,x_{n}\left(y\right)\right)\doteqdot f\left(a_{1},\cdots,a_{n}\right)+\frac{1}{2}\sum\lambda_{i}y_{i}^{2}
+\]
+
+
+すべての$\lambda_{i}>0$ なら$y_{i}=0$が極小を与える。
+
+すべての$\lambda_{j}>0$ なら$y_{i}=0$が極大を与える。
+
+($\lambda_{i}$のうち正のものも負のものもあれば極値ではない)
+
+$n=2$のとき
+
+\[
+Q\left(x,y\right)=\frac{1}{2}\alpha\left(x-a\right)^{2}+\beta\left(x-a\right)\left(y-b\right)+\frac{1}{2}\gamma\left(y-b\right)^{2}
+\]
+
+
+が$x=0,y=b$で極値をとるための条件。
+
+
+\subsubsection{命題}
+
+
+\paragraph{(1)}
+
+$\alpha,\gamma$のどちらかが正の時
+
+\[
+\alpha\gamma-\beta^{2}>0\Rightarrow Q\left(x,y\right)\text{は}x=a,y=b\text{で極小値}
+\]
+
+
+
+\paragraph{(2)}
+
+$\alpha,\gamma$のどちらかが負の時
+
+\[
+\alpha\gamma-\beta^{2}>0\Rightarrow Q\left(x,y\right)\text{は}x=a,y=b\text{で極大}
+\]
+
+
+
+\paragraph{(3)}
+
+\[
+\alpha\gamma-\beta^{2}<0\Rightarrow Q\left(x,y\right)\text{は}x=a,y=b\text{では極値を取らない}
+\]
+
+
+$\because)$
+
+
+\paragraph{(1)}
+
+$\alpha>0,\alpha\gamma-\beta^{2}>0$
+
+\[
+\begin{cases}
+x*=x-a\\
+y*=y-b
+\end{cases}
+\]
+
+
+として
+
+\[
+\alpha x*^{2}+2\beta x*y*+\gamma y*^{2}=\alpha\left(x*-\frac{\beta}{\alpha}y*\right)^{2}+\frac{1}{\alpha}\left(\alpha\gamma-\beta^{2}\right)y*^{2}>0
+\]
+
+
+(2)も同様
+
+
+\paragraph{(3)}
+
+$\alpha\neq0$
+
+$\alpha$と$\frac{1}{\alpha}\left(\alpha\gamma-\beta^{2}\right)$は符号が逆なので極値を取れない
+
+厳密には
+
+$\left(b_{1},\cdots,b_{n}\right)$を0に近い点とする。
+
+$g\left(t\right)=f\left(b_{1}t,\cdots,b_{n}t\right)$とおく。
+
+\begin{eqnarray*}
+\frac{\mathrm{d}^{2}g\left(t\right)}{\mathrm{d}t^{2}}\left(0\right) & = & \sum_{a\leqq i,j\leqq n}\frac{\partial^{2}f}{\partial x_{i}\partial x_{j}}\left(O\right)b_{i}b_{j}\\
+ & = & \left(\begin{array}{ccc}
+b_{1} & \cdots & b_{n}\end{array}\right)H\left(\begin{array}{c}
+b_{1}\\
+\vdots\\
+b_{n}
+\end{array}\right)
+\end{eqnarray*}
+
+
+ただし$H=\left(\frac{\partial^{2}f}{\partial x_{i}\partial x_{j}}\left(O\right)\right)$
+
+座標$\left(x_{1},\cdots,x_{n}\right)$をうまく線形変換($x_{i}=\sum u_{ij}y_{j}$)すると
+
+$H=\left(\begin{array}{ccc}
+\lambda_{1} & 0 & 0\\
+0 & \ddots & 0\\
+0 & 0 & \lambda_{n}
+\end{array}\right)$であると考えて良い。
+
+\[
+\frac{\mathrm{d}^{2}g\left(t\right)}{\mathrm{d}t^{2}}\left(0\right)=\lambda_{1}b_{1}^{2}+\cdots+\lambda_{n}b_{n}^{2}
+\]
+
+
+の形
+
+$\lambda_{i}>0$ならば
+
+\[
+\frac{\mathrm{d}^{2}g}{\mathrm{d}t^{2}}\left(0\right)>0
+\]
+
+
+$\frac{\mathrm{d}g}{\mathrm{d}t}\left(0\right)=0$の仮定のもとで
+
+$0<t\leqq1$ならば
+
+\[
+g\left(t\right)>g\left(0\right)
+\]
+
+
+\[
+f\left(b_{1},\cdots,b_{n}\right)>f\left(0,\cdots,0\right)=\text{極小}
+\]
+
+
+模擬試験の問題は作成するので数理の受付に来てもらえば問題を受け取れるようにしておく。金曜日以降に数理科学棟の二階の受付に行くと受け取れる。
+\end{document}
