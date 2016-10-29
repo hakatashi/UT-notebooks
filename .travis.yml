@@ -4,7 +4,8 @@ dist: trusty
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y texlive-lang-cjk texlive-fonts-recommended texlive-latex-extra
-    texlive-fonts-extra texlive-lang-greek texlive-generic-recommended texlive-math-extra --no-install-recommends
+    texlive-fonts-extra texlive-lang-greek texlive-generic-recommended texlive-math-extra
+    texlive-science --no-install-recommends
   # Install git-lfs
   - mkdir -p $HOME/bin
   - wget https://github.com/github/git-lfs/releases/download/v1.4.3/git-lfs-linux-amd64-1.4.3.tar.gz
