@@ -1,0 +1,2406 @@
+%% LyX 2.0.6 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{fancybox}
+\usepackage{calc}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{esint}
+\PassOptionsToPackage{version=3}{mhchem}
+\usepackage{mhchem}
+\usepackage{babel}
+\begin{document}
+
+\title{電磁気学講義ノート}
+
+\maketitle
+
+\section{電磁気とは}
+
+電磁気の世界は全て場の理論に還元される。(電場・磁場)ここではそれらがどのようにしてできたのかなどという点は考えない。
+
+その他、電圧・電流・電荷などのキーワードを扱う。
+
+
+\subsection{場とはなにか}
+
+\textbf{座標$\left(x,y,z,\left(t\right)\right)$に対応して存在する物理量}
+
+電磁気学では、重力場などという場合の場より広い意味を持つ。
+
+
+\paragraph{例}
+\begin{description}
+\item [{スカラー場}] 向きなし 値1個
+
+
+温度・密度・電荷の分布など
+
+\item [{ベクトル場}] 向き・大きさあり 値3個
+
+
+風の流れ・電流・電場・磁場・重力など
+
+\end{description}
+\includegraphics{images/ele001}
+
+
+\subsection{ベクトル場の表現の仕方}
+\begin{description}
+\item [{A}] 空間中の各点に矢印があり、その長さが場の大きさ、向きが場の向きに対応する。
+\item [{B}] ある場所から場の方向に移して微小量ずつずらしながら曲線を描くと、場の向きは曲線の接線によって、場の強さは曲線の直交面での曲線の密度によって表される。
+\end{description}
+\includegraphics{images/ele002}
+
+Bによる表現のほうが人間の直感に近い。
+
+
+\subsection{「流束」の概念}
+
+\includegraphics{images/ele003}
+
+場$\boldsymbol{A}$の存在する空間中に微小面$\Delta S$(法線$\boldsymbol{n}$)を考える。
+
+$\Delta S$を通過する$\boldsymbol{A}$の流束を
+\[
+\Delta S\cdot A_{\bot}=\Delta S\cdot\boldsymbol{A}\cdot\boldsymbol{n}
+\]
+と定義する。
+
+
+\paragraph{例}
+
+\includegraphics{images/ele004}
+
+密度$\rho\left(=\text{const}\right)$の流体を考える。
+
+速度場$\boldsymbol{v}$があるとき、$\Delta S$を単位時間に通過する物質量$\Delta M$は
+\begin{eqnarray*}
+\Delta M & = & \Delta S\cdot\boldsymbol{v}\cdot\boldsymbol{n}\cdot\rho\\
+ & = & \Delta S\text{を通る}\boldsymbol{v}\text{の流束}
+\end{eqnarray*}
+
+
+
+\subsection{電荷/電流}
+
+
+\paragraph{電荷とは}
+\begin{enumerate}
+\item 正電荷・負電荷がある
+\item 素電荷$e=1.6\times10^{-19}\left[C\right]$
+\item 電荷は保存する
+\item 正負の電荷は引き合う\end{enumerate}
+\begin{description}
+\item [{電流}] 単位時間に移動する電荷量
+
+\begin{description}
+\item [{単位}] {[}A{]}={[}C/s{]}
+\end{description}
+\end{description}
+
+\subsection{SI単位系の中での電荷/電流の取り扱い}
+
+6つの基本単位で構成される
+\begin{enumerate}
+\item s(秒)
+\item m(メートル)
+\item K(温度)
+\item A(電流)
+\item mol
+\item cd(カンデラ)
+\end{enumerate}
+\includegraphics{images/ele005}
+
+並行する2本の電流が引き合う力$F=2\times10^{-7}N$となる電流$i=1A$と定義する。
+
+
+\subsection{参考: 本講義の目標となるMaxwell方程式について}
+
+
+\paragraph{微分系}
+
+\[
+\begin{cases}
+\nabla\cdot\boldsymbol{E}=\frac{\rho}{\varepsilon_{0}}\\
+\nabla\cdot\boldsymbol{B}=0\\
+\nabla\times\boldsymbol{E}=-\frac{\partial\boldsymbol{B}}{\partial t}\\
+c^{2}\nabla\times\boldsymbol{B}=\frac{\boldsymbol{j}}{\varepsilon_{0}}+\frac{\partial\boldsymbol{E}}{\partial t}
+\end{cases}
+\]
+
+\begin{description}
+\item [{$\boldsymbol{E}$}] 電場
+\item [{$\boldsymbol{B}$}] 磁場
+\item [{$\boldsymbol{j}$}] 電流密度
+\item [{$\rho$}] 電荷密度
+\item [{$\nabla$}] ナブラベクトル
+\item [{$c$}] 光速(=$3.0\times10^{8}m/s$)
+\item [{$\varepsilon_{0}$}] 真空の誘電率(=$8.854\times10^{-12}F/m$)
+\end{description}
+
+\paragraph{積分系}
+
+\[
+\begin{cases}
+\int_{S}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S=\int_{V}\frac{\rho}{\varepsilon_{0}}\mathrm{d}V\\
+\int_{S}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S=0\\
+\oint_{c}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{S}=-\frac{\partial}{\partial t}\int_{S}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S\\
+c^{2}\oint_{c}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{S}=\frac{1}{\varepsilon_{0}}\int_{S}\boldsymbol{j}\cdot\boldsymbol{n}\mathrm{d}S+\frac{\partial}{\partial t}\int_{S}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S
+\end{cases}
+\]
+
+\begin{description}
+\item [{$\int_{V}\mathrm{d}V$}] 体積積分
+\item [{$\int_{S}\boldsymbol{n}\mathrm{d}S$}] 面積分
+\item [{$\oint_{c}\mathrm{d}\boldsymbol{S}$}] 線積分
+\end{description}
+
+\section{積分}
+
+\begin{minipage}[t]{1\columnwidth}%
+第二回欠損%
+\end{minipage}
+
+
+\subsection{面積分}
+
+\includegraphics{images/ele010}
+
+\includegraphics{images/ele011}
+
+ここで$S$についての面積分は、
+\[
+\int_{S}\boldsymbol{A}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+と表せる。
+
+$\boldsymbol{A}=\left(\begin{array}{c}
+A_{x}\\
+A_{y}\\
+A_{z}
+\end{array}\right)$とすると、
+\[
+\int_{S}\boldsymbol{A}\cdot\boldsymbol{n}\mathrm{d}S=\int_{S}\left(A_{x}n_{x}+A_{y}n_{y}+A_{z}n_{z}\right)\mathrm{d}S
+\]
+となる。また
+\[
+\mathrm{d}S'=\mathrm{d}x\mathrm{d}y=\mathrm{d}S\cos\theta
+\]
+と変換できる。
+
+上の図を拡大
+
+\includegraphics{images/ele012}
+
+より、
+\[
+\cos\theta=\frac{n_{z}}{\left|\boldsymbol{n}\right|}=n_{z}
+\]
+から
+\[
+\mathrm{d}x\mathrm{d}y=n_{z}\cos\theta
+\]
+
+
+これを最初の式に代入して
+\begin{eqnarray*}
+\int_{S}\boldsymbol{A}\cdot\boldsymbol{n}\mathrm{d}S & = & \int\left(A_{x}n_{x}+A_{y}n_{y}+A_{z}n_{z}\right)\frac{\mathrm{d}x\mathrm{d}y}{n_{z}}\\
+ & = & \int_{S'}\left(A_{x}\frac{n_{x}}{n_{z}}+A_{y}\frac{n_{y}}{n_{z}}+A_{z}\right)\mathrm{d}x\mathrm{d}y
+\end{eqnarray*}
+と書き下せる。
+
+
+\paragraph{例題}
+
+\includegraphics{images/ele013}
+
+(i) $\boldsymbol{A}=\left(\begin{array}{c}
+x\\
+1\\
+1
+\end{array}\right)$のとき
+\begin{eqnarray*}
+\int_{S}\boldsymbol{A\cdot}\boldsymbol{n}\mathrm{d}S & = & \int_{S}\left(\begin{array}{c}
+x\\
+1\\
+1
+\end{array}\right)\cdot\left(\begin{array}{c}
+0\\
+0\\
+1
+\end{array}\right)\mathrm{d}S\\
+ & = & \int_{S}\mathrm{d}S\\
+ & = & \int_{0}^{2}\int_{0}^{2}\mathrm{d}x\mathrm{d}y\\
+ & = & 4
+\end{eqnarray*}
+
+
+(ii) $\boldsymbol{A}=\left(\begin{array}{c}
+1\\
+1\\
+xy
+\end{array}\right)$のとき
+\begin{eqnarray*}
+\int_{S}\boldsymbol{A}\cdot\boldsymbol{n}\mathrm{d}S & = & \int_{0}^{2}\int_{0}^{2}xy\mathrm{d}x\mathrm{d}y\\
+ & = & \int_{0}^{2}\left[\frac{x^{2}y}{2}\right]_{0}^{2}\mathrm{d}y\\
+ & = & 2\int_{0}^{2}y\mathrm{d}y\\
+ & = & 2\left[\frac{y^{2}}{2}\right]_{0}^{2}\\
+ & = & 4
+\end{eqnarray*}
+
+
+
+\section{Maxwell方程式の意味}
+
+
+\subsection{Maxwell方程式}
+
+\[
+\begin{cases}
+\int_{S}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S=\int_{V}\frac{\rho}{\varepsilon_{0}}\mathrm{d}V\\
+\int_{S}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S=0\\
+\oint_{c}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}=-\frac{\partial}{\partial t}\int_{S}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S\\
+c^{2}\oint_{c}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{S}=\frac{1}{\varepsilon_{0}}\int_{S}\boldsymbol{j}\cdot\boldsymbol{n}\mathrm{d}S+\frac{\partial}{\partial t}\int_{S}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S
+\end{cases}
+\]
+
+
+
+\subsection{一番目の式の意味}
+
+\[
+\int_{S}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S=\int_{V}\frac{\rho}{\varepsilon_{0}}\mathrm{d}V
+\]
+
+
+\includegraphics{images/ele014}
+
+閉曲面$S$とその体積$V$を考えた時の電場$\boldsymbol{E}$と電荷密度$\rho$について表している。
+\begin{description}
+\item [{左辺}] $S$を垂直に貫く電場の和
+\item [{右辺}] $V$中の電荷の総和
+\end{description}
+\shadowbox{\begin{minipage}[t]{1\columnwidth}%
+「任意の閉曲面$S$をとったときに、その内部にある電荷の和は、$S$を通過する電場の流束の和$\left(\times\varepsilon_{0}\right)$に等しい」%
+\end{minipage}}
+
+これをGaussの法則と呼ぶ。またこの式はクーロンの法則の拡張でもある。
+
+
+\paragraph{例}
+
+\includegraphics{images/ele015}
+
+$S$は点電荷$e$を囲む半径$r$の球面とする。
+
+\begin{eqnarray*}
+\text{左辺} & = & 4\pi r^{2}E\\
+\text{右辺} & = & \frac{e}{\varepsilon_{0}}
+\end{eqnarray*}
+
+
+よって
+\[
+E=\frac{e}{4\pi r^{2}\varepsilon_{0}}
+\]
+となりクーロンの逆自乗則となる。
+
+
+\paragraph{例2}
+
+\includegraphics{images/ele016}
+
+\begin{eqnarray*}
+\int_{S_{1}+S_{2}+S_{3}}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S & = & \int_{V}\frac{\rho}{\varepsilon_{0}}\mathrm{d}V\\
+-S_{1}E_{1}+S_{2}E_{2} & = & 0\\
+S_{1}E_{1} & = & S_{2}E_{2}
+\end{eqnarray*}
+
+
+これは電荷がない限り電場は湧き出さないことを示している。
+
+
+\subsection{二番目の式の意味}
+
+\[
+\int_{S}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S=0
+\]
+
+
+一番目の式とほぼ同じ形になっている。
+\begin{description}
+\item [{左辺}] $S$を垂直に貫く磁場の和
+\item [{右辺}] 0
+\end{description}
+\shadowbox{\begin{minipage}[t]{1\columnwidth}%
+「任意の閉曲面$S$をとったときに、$S$を通過する磁場の流束の和は常に0となる」%
+\end{minipage}}
+
+単独で磁場を湧き出させるような存在がないことを表している。「電荷に対して磁荷というものは存在しない」
+
+
+\subsection{三番目の式の意味}
+
+\[
+\oint_{c}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}=-\frac{\partial}{\partial t}\int_{S}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+
+
+\includegraphics{images/ele017}
+
+閉曲線$C$と、$C$で囲まれた閉曲面$S$を考える。
+\begin{description}
+\item [{左辺}] $C$にそって存在する電場の和
+\item [{右辺}] $S$を通る磁場の流束の和の時間微分
+\end{description}
+これは電磁誘導の定理を表現しており、レンツの法則
+\[
+V=N\left|\frac{\mathrm{d}\Phi}{\mathrm{d}t}\right|
+\]
+を一般化したものであるといえる。
+
+時間変動するような磁場がないときには
+\[
+\oint_{C}\boldsymbol{E}\mathrm{d}s=0
+\]
+となる。
+
+
+\subsection{四番目の式の意味}
+
+\[
+c^{2}\oint_{c}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}=\frac{1}{\varepsilon_{0}}\int_{S}\boldsymbol{j}\cdot\boldsymbol{n}\mathrm{d}S+\frac{\partial}{\partial t}\int_{S}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+
+
+$c$は光速、$\boldsymbol{j}$は電流を表す。
+
+右辺第一項を右辺1、右辺第二項を右辺2と呼ぶ。
+\begin{description}
+\item [{左辺}] $C$にそって存在する磁場の和
+\item [{右辺1}] $S$を通る電流束の和
+\item [{右辺2}] $S$を通る電場の流束の時間微分
+\end{description}
+右辺2が0のとき、この式は右ねじの法則を表す。(電磁石)
+
+
+\paragraph{例}
+
+\includegraphics{images/ele018}
+
+\begin{eqnarray*}
+\text{左辺} & = & 2\pi rBc^{2}\\
+\text{右辺1} & = & i
+\end{eqnarray*}
+より、
+\[
+B=\frac{i}{2\pi c^{2}r}
+\]
+
+
+
+\paragraph{左辺=右辺2の意味}
+
+Maxwellの思考実験
+
+\includegraphics{images/ele019}
+
+(i) 電流$i$の途中にコンデンサを入れる
+
+(ii) $C$を貼る面として$S'+S''$を考える。右辺2がないと
+\begin{eqnarray*}
+c^{2}\oint_{C}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s} & = & \frac{1}{\varepsilon_{0}}\int_{S}\boldsymbol{i}\cdot\boldsymbol{n}\mathrm{d}S\\
+ & = & \frac{1}{\varepsilon_{0}}\int_{S'+S''}\boldsymbol{i}\cdot\boldsymbol{n}\mathrm{d}S\\
+ & = & 0
+\end{eqnarray*}
+となり、他に何らかの項を加えないとおかしいことになる。
+
+$S\rightarrow S'+S''$に変えたときに何が生じたか？
+
+コンデンサにたまっている電荷$Q$が毎秒$i$ずつ増加し、$Q$に比例して$\boldsymbol{E}$も増加。
+
+
+\section{クーロンの法則, ガウスの法則}
+
+
+\paragraph{Coulombの法則}
+
+点電荷の相互作用を与える法則
+
+\includegraphics{images/ele020}
+
+\begin{eqnarray*}
+\boldsymbol{F} & = & -k\cdot\frac{q_{1}q_{2}}{r^{2}}\boldsymbol{e}\\
+ & = & -k\cdot\frac{q_{1}q_{2}}{r^{2}}\cdot\frac{\boldsymbol{r}}{r}\\
+ & = & -k\frac{q_{1}q_{2}}{r^{3}}\boldsymbol{r}
+\end{eqnarray*}
+
+
+
+\paragraph{複数($\geq3$)の電荷の場合？}
+
+重ねあわせ(ベクトル和)が適用される
+
+\includegraphics{images/ele021}
+
+\begin{eqnarray*}
+\boldsymbol{F} & = & \boldsymbol{F}_{12}+\boldsymbol{F}_{13}\\
+ & = & -\frac{1}{4\pi\varepsilon_{0}}\left(q_{1}q_{2}\frac{\boldsymbol{r}_{12}}{r_{12}^{3}}+q_{1}q_{3}\frac{\boldsymbol{r}_{13}}{r_{13}^{3}}\right)\\
+ & = & -\frac{1}{4\pi\varepsilon_{0}}\left(q_{2}\frac{\boldsymbol{r}_{12}}{r_{12}^{3}}+q_{3}\frac{\boldsymbol{r}_{13}}{r_{13}^{3}}\right)q_{1}
+\end{eqnarray*}
+
+
+$q_{1}$が括り出せることから、電場の概念へと拡張できる。
+
+
+\paragraph{電場}
+
+空間中の任意の場所$\left(x,y,z\right)$においた素電荷が受ける力を電場と呼び、$\boldsymbol{E}_{\left(x,y,z\right)}$と書く。
+
+
+\paragraph{例 2つの電荷があるとき}
+
+\includegraphics{images/ele022}
+
+\[
+\boldsymbol{E}=-\frac{1}{4\pi\varepsilon_{0}}\left(\frac{\boldsymbol{r}_{2}-\boldsymbol{r}}{\left|\boldsymbol{r}_{2}-\boldsymbol{r}\right|^{3}}q_{2}+\frac{\boldsymbol{r}_{3}-\boldsymbol{r}}{\left|\boldsymbol{r}_{3}-\boldsymbol{r}\right|^{3}}q_{3}\right)
+\]
+
+
+
+\paragraph{電場の表現}
+
+一電荷の場合
+
+\includegraphics{images/ele023}
+
+\[
+\left|\boldsymbol{E}\right|=\frac{q}{4\pi\varepsilon_{0}r^{2}}
+\]
+
+
+二電荷の場合
+
+\includegraphics{images/ele024}
+
+$x$軸上では簡単にわかるが、その他の場所ではまるでわからない
+
+
+\paragraph{電気力線}
+\begin{enumerate}
+\item 電場の向きが力線の接線になるように引く
+\item 電場の強さが力線の密度になるように引く
+\item 力線は正電荷から始まり、負電荷で終わる
+\item 力線は分岐しない
+\end{enumerate}
+単電荷の場合
+
+\includegraphics{images/ele025}
+
+二電荷の場合
+
+\includegraphics{images/ele026}
+
+
+\paragraph{多数の点電荷が存在するとき}
+
+\[
+\boldsymbol{E}=\sum_{i=1}^{N}\frac{1}{4\pi\varepsilon_{0}}q_{i}\frac{\boldsymbol{r}-\boldsymbol{r}_{i}}{\left|\boldsymbol{r}-\boldsymbol{r}_{i}\right|^{3}}
+\]
+
+
+
+\paragraph{電荷分布$\rho\left(\boldsymbol{r}\right)$があるとき}
+
+\includegraphics{images/ele027}
+
+$\rho\left(\boldsymbol{r}\right)\Delta V_{i}$の作る電荷は
+\begin{eqnarray*}
+\boldsymbol{E} & \sim & \sum\frac{\rho\Delta V}{4\pi\varepsilon_{0}}\frac{\boldsymbol{r}-\boldsymbol{r}'}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{3}}\\
+ & = & \int\frac{\rho}{4\pi\varepsilon_{0}}\frac{\boldsymbol{r}-\boldsymbol{r}'}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{3}}\mathrm{d}V'
+\end{eqnarray*}
+
+
+
+\paragraph{再度点電荷$q$に戻る}
+
+(i) $q$を囲む球面を考える
+
+\includegraphics{images/ele028}
+
+\[
+\boldsymbol{E}=\frac{q}{4\pi\varepsilon_{0}}\frac{\boldsymbol{r}}{r^{3}}
+\]
+
+
+$S$上の$\boldsymbol{E}$の面積積分が一定になる。
+
+\begin{eqnarray*}
+\int_{S}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S & = & \frac{q}{4\pi\varepsilon_{0}}\frac{1}{r^{2}}\cdot4\pi r^{2}\\
+ & = & \frac{q}{\varepsilon_{0}}
+\end{eqnarray*}
+
+
+(ii) 任意の閉曲面$S'$上はどうなるか
+
+\includegraphics{images/ele029}
+\begin{itemize}
+\item $q$と$\mathrm{d}S'$が作る錘を考え、
+\item $\boldsymbol{E}$に直行する面と錘が作る面$\mathrm{d}S''$を考える。
+\item $\mathrm{d}S'$と$\mathrm{d}S''$がなす角を$\theta$とする。
+\end{itemize}
+\includegraphics{images/ele030}
+
+すると、
+\begin{eqnarray*}
+\mathrm{d}S'\cdot\cos\theta & = & \mathrm{d}S''\\
+\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S' & = & E\cos\theta\mathrm{d}S'
+\end{eqnarray*}
+
+
+より
+\[
+\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S'=E\cdot\mathrm{d}S''
+\]
+
+
+さらに任意の半径$r'''$の球面と錘が作る面を$\mathrm{d}S'''$とすると、逆自乗則より
+\[
+E\cdot\mathrm{d}S''=E\cdot\mathrm{d}S'''
+\]
+
+
+結局、
+\[
+\int_{S'}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S=\int_{S'''}E\cdot\mathrm{d}S'''=\frac{q}{\varepsilon_{0}}
+\]
+
+
+→単一電荷のガウスの法則
+
+
+\paragraph{任意の電荷分布}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele031.jpg}
+
+$\rho\cdot\mathrm{d}V$が作る電場$\mathrm{d}\boldsymbol{E}$について
+\[
+\int_{S}\mathrm{d}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S=\frac{\rho\mathrm{d}V}{\varepsilon_{0}}
+\]
+
+
+積分して
+\[
+\int_{S}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S=\int_{V}\frac{\rho}{\varepsilon_{0}}\mathrm{d}V
+\]
+
+
+これが積分系のガウスの法則である。
+
+
+\paragraph{ガウスの法則の応用}
+
+1. 無限長の線電荷の作る電場
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele032.jpg}
+\begin{itemize}
+\item 半径$r$、長さ$l$の円筒面を考え
+\item 対称性を考えると$S_{1},S_{2}$に直行する$\boldsymbol{E}$はない。
+\end{itemize}
+\begin{eqnarray*}
+\int_{S=S_{1}+S_{2}+S_{3}}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S & = & \int_{S_{3}}E\left(r\right)\cdot\mathrm{d}S\\
+ & = & 2\pi rl\cdot E\left(r\right)\\
+ & = & \int_{V}\frac{\rho}{\varepsilon_{0}}\mathrm{d}V\\
+ & = & \sigma l\frac{1}{\varepsilon_{0}}
+\end{eqnarray*}
+
+
+\[
+E\left(r\right)=\frac{\sigma}{2\pi\varepsilon_{0}}\frac{1}{r}
+\]
+
+
+2. 無限平面
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele033.jpg}
+
+\begin{eqnarray*}
+\int_{S}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S & = & 2\cdot E\left(z\right)\cdot l^{2}\\
+ & = & \frac{1}{\varepsilon_{0}}\int\rho\mathrm{d}V\\
+ & = & \frac{1}{\varepsilon_{0}}l^{2}\sigma
+\end{eqnarray*}
+
+
+\[
+E\left(z\right)=\frac{\sigma}{2\varepsilon_{0}}
+\]
+
+
+
+\paragraph{積分系のGaussの法則}
+
+\includegraphics{images/ele034}
+
+\[
+\int_{S}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S=\frac{1}{\varepsilon_{0}}\int_{V}\rho\mathrm{d}V
+\]
+
+
+この形の式は、面積分と体積積分が用いられており、空間中の任意の点での電場を取り扱うことができない。
+
+
+\subsection{divergence(発散)・ガウスの定理}
+
+
+\paragraph{定義}
+
+場$\boldsymbol{A}$への演算としてdivergenceを以下の通り定義する。
+
+演算子$\nabla=\left(\begin{array}{c}
+\frac{\partial}{\partial x}\\
+\frac{\partial}{\partial y}\\
+\frac{\partial}{\partial z}
+\end{array}\right)$を導入し、
+\begin{eqnarray*}
+\mathrm{div}\boldsymbol{A} & \equiv & \nabla\cdot\boldsymbol{A}\\
+ & \equiv & \frac{\partial}{\partial x}A_{x}+\frac{\partial}{\partial y}A_{y}+\frac{\partial}{\partial z}A_{z}
+\end{eqnarray*}
+と定義する。この値はスカラー場である。
+
+
+\paragraph{ガウスの定理}
+
+任意の体積$V$とその表面$S$について、
+\[
+\int_{S}\boldsymbol{M}\cdot\boldsymbol{n}\mathrm{d}S=\int_{V}\mathrm{div}\boldsymbol{A}\mathrm{d}V
+\]
+が成り立つ。
+
+
+\paragraph{証明}
+
+\includegraphics{images/ele035}
+
+微小体せ基礎編$\mathrm{d}V=\mathrm{d}x\mathrm{d}y\mathrm{d}z$を考える。中心$\left(x,y,z\right)$での場を$\boldsymbol{A}$として、面2における場を$\boldsymbol{A}''$とすると、
+\[
+\boldsymbol{A}''=\left(\begin{array}{c}
+A_{x}+\frac{\partial A_{x}}{\partial x}\cdot\frac{\mathrm{d}x}{2}\\
+A_{y}+\frac{\partial A_{y}}{\partial x}\cdot\frac{\mathrm{d}x}{2}\\
+A_{z}+\frac{\partial A_{z}}{\partial x}\cdot\frac{\mathrm{d}x}{2}
+\end{array}\right)
+\]
+となる。逆に面1での場を$\boldsymbol{A}'$とすると、
+\[
+\boldsymbol{A}'=\left(\begin{array}{c}
+A_{x}-\frac{\partial A_{x}}{\partial x}\cdot\frac{\mathrm{d}x}{2}\\
+A_{y}-\frac{\partial A_{y}}{\partial x}\cdot\frac{\mathrm{d}x}{2}\\
+A_{z}-\frac{\partial A_{z}}{\partial x}\cdot\frac{\mathrm{d}x}{2}
+\end{array}\right)
+\]
+となる。
+
+面1, 2での$\boldsymbol{A}$の面積積分の和は、
+\[
+A_{x}+\frac{\partial A_{x}}{\partial x}\frac{\mathrm{d}x}{2}-\left(A_{x}-\frac{\partial A_{x}}{\partial x}\frac{\mathrm{d}x}{2}\right)=\frac{\partial A_{x}}{\partial x}\mathrm{d}x
+\]
+
+
+他の面でも同様にして、
+\begin{eqnarray*}
+\boldsymbol{A}\cdot\boldsymbol{n}\mathrm{d}S & = & \left(\frac{\partial}{\partial x}A_{x}+\frac{\partial}{\partial y}A_{y}+\frac{\partial}{\partial z}A_{z}\right)\mathrm{d}V\\
+ & = & \mathrm{div}\boldsymbol{A}\cdot\mathrm{d}V
+\end{eqnarray*}
+
+
+有限の体積は微小体積素片に分割可能。
+
+\includegraphics{images/ele036}
+
+このように有限の体積内の隣り合った面通しは全て打ち消し合うため、これらを全て足し上げると、最終的には有限な体積の表面のみが効果を持つようになる。
+
+\[
+\int_{S}\boldsymbol{A}\cdot\boldsymbol{n}\mathrm{d}S=\int_{V}\mathrm{div}\boldsymbol{A}\mathrm{d}V
+\]
+
+
+
+\paragraph{Gaussの法則の微分形}
+
+先ほどやったように、積分系は
+\[
+\int_{S}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S=\frac{1}{\varepsilon_{0}}\int_{V}\rho\mathrm{d}V
+\]
+であった。これをガウスの定理を用いて微分系で表現すると、
+\[
+\int_{V}\mathrm{div}\boldsymbol{E}\mathrm{d}V=\frac{1}{\varepsilon_{0}}\int_{V}\rho\mathrm{d}V
+\]
+より、
+\[
+\mathrm{div}\boldsymbol{E}=\frac{\rho}{\varepsilon_{0}}
+\]
+となる。これはMaxwell方程式の一番目の式である。
+
+
+\section{静電ポテンシャル}
+
+
+\paragraph{スカラー場の微分: gradient(勾配)}
+
+\includegraphics{images/ele037}
+
+微小量$\left(\mathrm{d}x,\mathrm{d}y,\mathrm{d}z\right)$離れた点$X,Y$間でのスカラー場$f$の違い
+\begin{eqnarray*}
+\mathrm{d}f & = & f\left(x+\mathrm{d}x,y+\mathrm{d}y,z+\mathrm{d}z\right)-f\left(x,y,z\right)\\
+ & = & \frac{\partial f}{\partial x}\mathrm{d}x+\frac{\partial f}{\partial y}\mathrm{d}y+\frac{\partial f}{\partial z}\mathrm{d}z\\
+ & = & \left(\begin{array}{c}
+\frac{\partial f}{\partial x}\\
+\frac{\partial f}{\partial y}\\
+\frac{\partial f}{\partial z}
+\end{array}\right)\cdot\left(\begin{array}{c}
+\mathrm{d}x\\
+\mathrm{d}y\\
+\mathrm{d}z
+\end{array}\right)\\
+ & = & \mathrm{grad}f\cdot\left(\begin{array}{c}
+\mathrm{d}x\\
+\mathrm{d}y\\
+\mathrm{d}z
+\end{array}\right)
+\end{eqnarray*}
+
+
+すなわち、
+\[
+\mathrm{grad}f\equiv\left(\begin{array}{c}
+\frac{\partial}{\partial x}\\
+\frac{\partial}{\partial y}\\
+\frac{\partial}{\partial z}
+\end{array}\right)f\equiv\nabla f
+\]
+と定義する。この値もスカラー場となっている。
+
+
+\paragraph{静電磁場内での静電位}
+
+\includegraphics{images/ele038}
+
+電場$\boldsymbol{E}$の中で単位電荷(1C)を運ぶのに必要な仕事量は、
+\[
+W=-\int_{L}\boldsymbol{E}\cdot\mathrm{d}S
+\]
+
+
+一般に無限遠から単位電荷を動かすのに必要な仕事を静電ポテンシャル(電位)と予呼び、
+\[
+\phi=-\int_{\infty}^{B}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{S}
+\]
+とする。
+
+
+\paragraph{例}
+
+点電荷が原点にあるときの電位$\phi\left(r\right)$は？
+
+\includegraphics{images/ele039}
+
+\[
+\phi\left(r\right)=-\int_{\infty}^{r}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{S}
+\]
+
+
+$\boldsymbol{E}$は動径方向に大きさ
+\[
+E\left(r\right)=\frac{q}{4\pi\varepsilon_{0}}\frac{1}{r^{2}}
+\]
+\[
+\phi=-\int_{\infty}^{r}\frac{q}{4\pi\varepsilon_{0}}\frac{\mathrm{d}r}{r^{2}}
+\]
+となり、
+\[
+\phi=\left[\frac{q}{4\pi\varepsilon_{0}}\frac{1}{r}\right]_{\infty}^{r}=\frac{q}{4\pi\varepsilon_{0}r}
+\]
+
+
+
+\paragraph{電位と電場の関係}
+
+\begin{eqnarray*}
+\phi & = & -\int\boldsymbol{E}\mathrm{d}\boldsymbol{S}\\
+ & = & -\int\left(\begin{array}{c}
+E_{x}\\
+E_{y}\\
+E_{z}
+\end{array}\right)\cdot\left(\begin{array}{c}
+\mathrm{d}x\\
+\mathrm{d}y\\
+\mathrm{d}z
+\end{array}\right)\\
+ & = & -\int\left(E_{x}\mathrm{d}x+E_{y}\mathrm{d}y+E_{z}\mathrm{d}z\right)
+\end{eqnarray*}
+
+
+両辺を$x$で偏微分して、
+\begin{eqnarray*}
+\frac{\partial\phi}{\partial x} & = & \frac{\partial}{\partial x}\left(-\int E_{x}\mathrm{d}x\right)\\
+ & = & -E_{x}
+\end{eqnarray*}
+
+
+$y,z$についても同様に計算して、
+\[
+\left(\begin{array}{c}
+\frac{\partial\phi}{\partial x}\\
+\frac{\partial\phi}{\partial y}\\
+\frac{\partial\phi}{\partial z}
+\end{array}\right)=-\left(\begin{array}{c}
+E_{x}\\
+E_{y}\\
+E_{z}
+\end{array}\right)
+\]
+\[
+\mathrm{grad}\phi=-\boldsymbol{E}
+\]
+
+
+
+\paragraph{電位の一意性}
+
+\includegraphics{images/ele040}
+
+電位が一意に定義できる条件は、任意の点$\mathrm{A,B,L_{1},L_{2}}$について
+\[
+\int_{\mathrm{L_{1}}}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{S}=\int_{\mathrm{L_{2}}}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{S}
+\]
+\begin{eqnarray*}
+0 & = & \int_{\mathrm{A\rightarrow B,L_{2}}}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{S}-\int_{A\rightarrow B,\mathrm{L_{1}}}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{S}\\
+ & = & \int_{\mathrm{A\rightarrow B,L_{2}}}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{S}+\int_{B\rightarrow A,\mathrm{L_{1}}}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{S}\\
+ & = & \oint_{C}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{S}
+\end{eqnarray*}
+つまり任意の閉曲線$C$について
+\[
+\oint\boldsymbol{E}\mathrm{d}\boldsymbol{S}=0
+\]
+であることが必要十分条件となる。
+
+これはMaxwell方程式の三番目
+\[
+\oint_{c}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}=-\frac{\partial}{\partial t}\int_{S}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+の右辺が静磁場においては0となることを示している。
+
+電位$\phi$を
+\[
+\phi=\int_{L}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{S}
+\]
+と定義すると、この式の微分系は
+\[
+\mathrm{grad}\phi=-\boldsymbol{E}
+\]
+となる。
+
+成分ごとに書き下すと、
+\[
+\phi=-\int E_{x}\mathrm{d}x+E_{y}\mathrm{d}y+E_{z}\mathrm{d}z
+\]
+となる。
+
+\includegraphics{images/ele041}
+
+定積分で書き出すと、
+\[
+\phi\left(x,y,z\right)=-\int_{\infty}^{x}E_{x'}\mathrm{d}x'-\int_{\infty}^{y}E_{y'}\mathrm{d}y'-\int_{\infty}^{z}E_{z'}\mathrm{d}z'
+\]
+より、
+\[
+\frac{\partial\phi}{\partial x}=-E_{x}-0-0
+\]
+
+
+
+\paragraph{rotation(循還)}
+
+$\boldsymbol{A}$への演算として、rotation$\nabla=\left(\frac{\partial}{\partial x},\frac{\partial}{\partial y},\frac{\partial}{\partial z}\right)$について、
+\[
+\mathrm{rot}\boldsymbol{A}\equiv\mathrm{curl}\boldsymbol{A}\equiv\nabla\times\boldsymbol{A}=\left(\begin{array}{c}
+\frac{\partial}{\partial x}\\
+\frac{\partial}{\partial y}\\
+\frac{\partial}{\partial z}
+\end{array}\right)\times\left(\begin{array}{c}
+A_{x}\\
+A_{y}\\
+A_{z}
+\end{array}\right)=\left(\begin{array}{c}
+\frac{\partial A_{z}}{\partial y}-\frac{\partial A_{y}}{\partial z}\\
+\frac{\partial A_{x}}{\partial z}-\frac{\partial A_{z}}{\partial x}\\
+\frac{\partial A_{y}}{\partial x}-\frac{\partial A_{x}}{\partial y}
+\end{array}\right)
+\]
+を定義する。
+
+
+\paragraph{ストークスの定理}
+
+\includegraphics{images/ele042}
+
+任意の辺$S$と其れを囲む閉曲線$C$について、
+\[
+\oint_{C}\boldsymbol{A}\cdot\mathrm{d}\boldsymbol{S}=\int_{S}\mathrm{rot}\boldsymbol{A}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+が成立する。
+
+
+\paragraph{証明}
+
+$x$-$y$平面上で微小な面素片$\mathrm{d}x\mathrm{d}y=\mathrm{d}S$を一周する積分は？
+
+\includegraphics{images/ele043}
+
+\[
+\boldsymbol{A}'=\left(\begin{array}{c}
+A_{x}+\frac{\partial A_{x}}{\partial y}\cdot\left(-\frac{\mathrm{d}y}{2}\right)\\
+A_{y}+\frac{\partial A_{y}}{\partial y}\cdot\left(-\frac{\mathrm{d}y}{2}\right)\\
+A_{z}+\frac{\partial A_{z}}{\partial y}\cdot\left(-\frac{\mathrm{d}y}{2}\right)
+\end{array}\right)
+\]
+となることから、1.では、
+\begin{eqnarray*}
+\boldsymbol{A}'\cdot\mathrm{d}\boldsymbol{S} & = & \left(\begin{array}{c}
+A_{x}'\\
+A_{y}'\\
+A_{z}'
+\end{array}\right)\cdot\left(\begin{array}{c}
+\mathrm{d}x\\
+0\\
+0
+\end{array}\right)\\
+ & = & A_{x}'\cdot\mathrm{d}x\\
+ & = & \left(A_{x}-\frac{\partial A_{x}}{\partial y}\frac{\mathrm{d}y}{2}\right)\cdot\mathrm{d}x
+\end{eqnarray*}
+2.では、
+\[
+\boldsymbol{A}''\cdot\mathrm{d}\boldsymbol{S}=\left(A_{y}+\frac{\partial A_{y}}{\partial y}\frac{\mathrm{d}x}{2}\right)\cdot\mathrm{d}y
+\]
+3.では、
+\[
+\boldsymbol{A}'''\cdot\mathrm{d}\boldsymbol{S}=\left(A_{x}+\frac{\partial A_{x}}{\partial y}\cdot\frac{\mathrm{d}y}{2}\right)\cdot\left(-\mathrm{d}x\right)
+\]
+4.では、
+\[
+\boldsymbol{A}''''\mathrm{d}\boldsymbol{S}=\left(A_{y}-\frac{\partial A_{y}}{\partial x}\frac{\mathrm{d}x}{2}\right)\cdot\left(-\mathrm{d}y\right)
+\]
+
+
+以上より、$\mathrm{d}S$を一周する積分\textbf{$\mathrm{d}I$}は、
+\begin{eqnarray*}
+\mathrm{d}I & = & -\frac{\partial A_{x}}{\partial y}\mathrm{d}x\mathrm{d}y+\frac{\partial A_{y}}{\partial x}\mathrm{d}x\mathrm{d}y\\
+ & = & \left(\frac{\partial A_{y}}{\partial x}-\frac{\partial A_{x}}{\partial y}\right)\mathrm{d}x\mathrm{d}y\\
+ & = & \left(\mathrm{rot}\boldsymbol{A}\right)_{z}\mathrm{d}S\\
+ & = & \mathrm{rot}\boldsymbol{A}\cdot\boldsymbol{n}\mathrm{d}S
+\end{eqnarray*}
+となり、任意の微小面上で上記の関係は成立することが分かる。
+
+\includegraphics{images/ele044}
+
+広がった面$S$は微小面素片に分解できるが、隣り合った素片の外周の線積は互いに打ち消し合う。
+
+\[
+\int_{S}\mathrm{rot}\boldsymbol{A}\cdot\boldsymbol{n}\mathrm{d}S=\oint_{C}\boldsymbol{A}\cdot\mathrm{d}\boldsymbol{S}
+\]
+が成立する。証明終
+
+
+\paragraph{電位の一意性}
+
+電位の一意性が成り立つには
+\[
+\oint\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{S}=0
+\]
+が必要であった。ストークスの定理を用いてこれを変形すると、
+\[
+\int_{S}\mathrm{rot}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S=0
+\]
+となる。すなわち、
+\[
+\mathrm{rot}\boldsymbol{E}=0
+\]
+となる。
+
+Maxwell方程式の三番目の式によると、
+\[
+\mathrm{rot}\boldsymbol{E}=-\frac{\partial\boldsymbol{B}}{\partial t}
+\]
+であるので、磁束の時間変動がなければこの関係が成り立ち、電位の定義ができることが分かる。
+
+
+\paragraph{$\mathrm{rot}\boldsymbol{E}=0$が電位$\phi=-\mathrm{grad}\boldsymbol{E}$となる必要十分条件であることの証明}
+
+(i) $\boldsymbol{E}-\mathrm{grad}\phi$とかけるとき
+
+\begin{eqnarray*}
+\mathrm{rot}\boldsymbol{E} & = & -\mathrm{rot}\left(\mathrm{grad}\phi\right)\\
+ & = & -\mathrm{rot}\left(\begin{array}{c}
+\frac{\partial\phi}{\partial x}\\
+\frac{\partial\phi}{\partial y}\\
+\frac{\partial\phi}{\partial z}
+\end{array}\right)\\
+ & = & 0
+\end{eqnarray*}
+
+
+(ii) 逆に$\mathrm{rot}\boldsymbol{E}=0$
+
+\[
+\phi=\int_{\infty}^{r}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{S}
+\]
+
+
+両辺の$\mathrm{grad}$をとって
+\[
+\mathrm{grad}\phi-\boldsymbol{E}
+\]
+
+
+
+\section{静電場のエネルギー}
+
+ある``系''が持つエネルギー$\equiv$静エネルギー$U$
+
+1. 2つの点電荷の系: この系を作るには片方を無限遠から運ぶ仕事が必要
+
+\includegraphics{images/ele045}
+
+$q_{1}$が作るポテンシャル$\phi_{1}$は
+\[
+\phi_{1}=\frac{1}{4\pi\varepsilon_{0}}\frac{q_{1}}{r}
+\]
+$q_{1}$が作るポテンシャル$\phi_{2}$は
+\[
+\phi_{2}=\frac{1}{4\pi\varepsilon_{0}}\frac{q_{2}}{r}
+\]
+だから、
+\begin{eqnarray*}
+U & = & \frac{1}{4\pi\varepsilon_{0}}\frac{q_{1}q_{2}}{d_{12}}\\
+ & = & \phi_{1}q_{2}\\
+ & = & \phi_{2}q_{1}\\
+ & = & \frac{1}{2}\left(\phi_{1}q_{2}+\phi_{2}q_{1}\right)
+\end{eqnarray*}
+
+
+2. 3つの点電荷の系？: 1.の系にもう１個足す。
+
+\includegraphics{images/ele046}
+
+\[
+U=\frac{1}{4\pi\varepsilon_{0}}\left(\frac{q_{1}q_{2}}{d_{12}}+\frac{q_{1}q_{3}}{d_{13}}+\frac{q_{2}q_{3}}{d_{23}}\right)
+\]
+
+
+3. $n$個の点電荷
+
+\[
+U=\frac{1}{4\pi\varepsilon_{0}}\sum_{i,j}\frac{q_{i}q_{j}}{d_{ij}}
+\]
+
+
+\includegraphics{images/ele047}
+
+ここで$\sum_{i,j}$は$i,j$の全ての組み合わせであり、$_{n}\mathrm{C}_{2}$組存在する。
+
+\[
+U=\frac{1}{4\pi\varepsilon_{0}}\sideset{}'\sum_{i=1}^{n}\sideset{}'\sum_{j=1}^{n}\frac{q_{i}q_{j}}{d_{ij}}\frac{1}{2}
+\]
+
+
+ここで$\sum'$は$i=j$であるものを除くという意味である。
+
+\[
+U=\frac{1}{4\pi\varepsilon_{0}}\sideset{}'\sum_{i=1}^{n}\frac{q_{i}}{2}\sideset{}'\sum_{j=1}^{n}\frac{q_{j}}{d_{ij}}
+\]
+
+
+$\frac{1}{4\pi\varepsilon_{0}}\sideset{}'\sum_{j=1}^{n}\frac{q_{j}}{d_{ij}}$は$q_{i}$以外が作るポテンシャル$\phi_{i}$となるので、
+\[
+U=\frac{1}{2}\sum_{i=1}^{n}\phi_{i}q_{i}
+\]
+となる。
+
+\includegraphics{images/ele049}
+
+3'. 連続分布する電荷$\rho$
+
+\includegraphics{images/ele048}
+
+\includegraphics{images/ele050}
+
+$\rho$が作る電場の電位$\phi$とすると、
+\[
+U=\frac{1}{2}\int_{V}\phi\rho\cdot\mathrm{d}V
+\]
+
+
+$\rho=\varepsilon_{0}\mathrm{div}\boldsymbol{E}$であることより
+\begin{eqnarray*}
+U & = & \frac{1}{2}\int\varepsilon_{0}\mathrm{div}\boldsymbol{E}\cdot\phi\mathrm{d}V\\
+ & = & \frac{\varepsilon_{0}}{2}\int\nabla\cdot\left(-\mathrm{grad}\phi\right)\cdot\phi\mathrm{d}V\\
+ & = & -\frac{\varepsilon_{0}}{2}\int\left(\frac{\partial^{2}}{\partial x^{2}}\phi+\frac{\partial^{2}}{\partial y^{2}}\phi+\frac{\partial^{2}}{\partial z^{2}}\phi\right)\cdot\phi\mathrm{d}V
+\end{eqnarray*}
+
+
+$\phi\frac{\partial^{2}}{\partial x^{2}}\phi$とは何かを考える。
+
+\[
+\frac{\partial}{\partial x}\left(\phi\frac{\partial\phi}{\partial x}\right)=\left(\frac{\partial\phi}{\partial x}\right)^{2}+\phi\frac{\partial^{2}\phi}{\partial x^{2}}
+\]
+であるから、
+\[
+\phi\frac{\partial^{2}}{\partial x^{2}}\phi=\frac{\partial}{\partial x}\left(\phi\frac{\partial\phi}{\partial x}\right)-\left(\frac{\partial\phi}{\partial x}\right)^{2}
+\]
+
+
+$y,z$成分についても同様なので、
+\begin{eqnarray*}
+U & = & -\frac{\varepsilon_{0}}{2}\int\left\{ \frac{\partial}{\partial x}\left(\phi\frac{\partial\phi}{\partial x}\right)+\frac{\partial}{\partial y}\left(\phi\frac{\partial\phi}{\partial y}\right)+\frac{\partial}{\partial z}\left(\phi\frac{\partial\phi}{\partial z}\right)-\left(\frac{\partial\phi}{\partial x}\right)^{2}-\left(\frac{\partial\phi}{\partial y}\right)^{2}-\left(\frac{\partial\phi}{\partial z}\right)^{2}\right\} \mathrm{d}V\\
+ & = & -\frac{\varepsilon_{0}}{2}\int\left\{ \mathrm{div}\left(\phi\mathrm{grad}\phi\right)-\left(\mathrm{grad}\phi\right)^{2}\right\} \mathrm{d}V\\
+ & = & \frac{\varepsilon_{0}}{2}\int\left\{ \mathrm{div}\left(\phi\boldsymbol{E}\right)+\boldsymbol{E}^{2}\right\} \mathrm{d}V\\
+ & = & \frac{\varepsilon_{0}}{2}\int\boldsymbol{E}^{2}\mathrm{d}V+\frac{\varepsilon_{0}}{2}\int_{S}\phi\cdot\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S
+\end{eqnarray*}
+
+
+ここで、
+\begin{eqnarray*}
+\int_{S}\phi\cdot\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S & \sim & E\left(r\right)\phi\left(r\right)\cdot S\\
+ & \propto & \frac{1}{r}\rightarrow0\left(r\rightarrow\infty\right)
+\end{eqnarray*}
+\[
+\left|E\right|\propto\frac{1}{r^{2}}
+\]
+\[
+\phi\propto\frac{1}{r}
+\]
+\[
+S'\propto r^{2}
+\]
+であるから、十分大きい体積では、
+\[
+U\sim\frac{\varepsilon_{0}}{2}\int_{V}\boldsymbol{E}^{2}\mathrm{d}V
+\]
+と書ける。
+
+あるいは単位体積あたりの系のエネルギー$u$は、
+\[
+U\sim\frac{\varepsilon_{0}}{2}\boldsymbol{E}^{2}
+\]
+となる。
+
+
+\paragraph{例 平行平板コンデンサ}
+
+\includegraphics{images/ele051}
+
+面積$S$、距離$a$の平行平板に$Q$帯電しているとする。
+
+
+\paragraph{1. 電場$E$は？}
+
+$S\gg a^{2}$と仮定する$\Rightarrow$$\boldsymbol{E}$=一定
+
+Gaussの法則より、
+\[
+\int_{S''}\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S=\frac{1}{\varepsilon_{0}}\int_{V'}\rho\mathrm{d}V
+\]
+\[
+E=\frac{1}{\varepsilon_{0}}\frac{Q}{S}
+\]
+となる。
+
+
+\paragraph{2. 電荷をためていくときに必要なエネルギーは？}
+
+電荷$\mathrm{d}q$を反対側の電極に移すと
+\[
+\mathrm{d}q\cdot E\cdot a=\frac{a}{\varepsilon_{0}}\frac{Q}{S}\mathrm{d}q
+\]
+のエネルギーを必要とする。
+
+上側の電極でのポテンシャル$\phi=\frac{a}{\varepsilon_{0}}\frac{Q}{S}$である。
+
+電荷を0から積み上げて$Q$にするのに必要な仕事は
+\begin{eqnarray*}
+U & = & \int_{0}^{Q}\phi\mathrm{d}q\\
+ & = & \int_{0}^{Q}\frac{aq}{\varepsilon_{0}S}\mathrm{d}q\\
+ & = & \frac{a_{1}}{\varepsilon_{0}S}\left[\frac{q^{2}}{2}\right]_{0}^{Q}\\
+ & = & \frac{aQ^{2}}{2\varepsilon_{0}S}\\
+ & = & \frac{a\left(E\varepsilon_{0}S\right)^{2}}{2\varepsilon_{0}S}\\
+ & = & \frac{a\varepsilon_{0}SE^{2}}{2}\\
+ & = & \frac{\varepsilon_{0}}{2}E^{2}\cdot V
+\end{eqnarray*}
+
+
+エネルギー密度は
+\[
+u=\frac{\varepsilon_{0}}{2}E^{2}
+\]
+
+
+
+\section{電流の取り扱い}
+
+
+\paragraph{電流→電流の流れ}
+
+電流密度$\boldsymbol{j}$: 単位体積あたり・単位時間あたりに単位面積を通過する電荷の流れ
+
+電流$I$: とある面$S$を単位時間あたりに通過する電荷の量
+
+\includegraphics{images/ele052}
+
+\[
+I=\int_{S}\boldsymbol{j}\cdot\boldsymbol{n}\cdot\mathrm{d}S
+\]
+となる。
+
+
+\paragraph{電流とキャリアの関係}
+
+\includegraphics{images/ele053}
+
+\[
+\boldsymbol{j}=\rho\boldsymbol{v}
+\]
+
+
+
+\paragraph{例 金属の場合}
+
+キャリアは$\ce{e-}=-1.6\times10^{-19}(\mathrm{C})$、$n=10^{23}(\mathrm{cm^{-2}})$、$\rho=n\ce{e-}=10^{4}(\mathrm{C/m^{3}})$
+
+断面積$\mathrm{1mm^{2}}$の銅線に$\mathrm{1A}$流した時の$v$は、$j=\rho v$、$I=jS$より$v\sim10^{-2}(\mathrm{m/s})$となる。
+
+
+\paragraph{電流と電荷の保存則}
+
+\includegraphics{images/ele054}
+
+電荷の保存より
+\[
+\int_{S}\boldsymbol{j}\cdot\boldsymbol{n}\mathrm{d}S=-\frac{\mathrm{d}}{\mathrm{d}t}\int_{V}\rho\mathrm{d}V
+\]
+
+
+$\int_{S}\boldsymbol{j}\cdot\boldsymbol{n}\mathrm{d}S$は単位時間あたりに$S$を通じて流出する量、$\int_{V}\rho\mathrm{d}V$は$V$内の全電化である。
+
+Gaussの定理より、
+\[
+\int_{S}\boldsymbol{j}\cdot\boldsymbol{n}\mathrm{d}S=\int_{V}\mathrm{div}\boldsymbol{j}\cdot\mathrm{d}V
+\]
+だから、
+\[
+\mathrm{div}\boldsymbol{j}=-\frac{\mathrm{d}}{\mathrm{d}t}\rho
+\]
+
+
+ただし電荷分布が変化しない電流→定常電流で$\mathrm{div}\boldsymbol{j}=0$とする。
+
+
+\section{静磁場}
+
+\includegraphics{images/ele055}
+\begin{enumerate}
+\item 常にNとSがペアになる(磁気双極子)
+\item 「電荷」の流れ(電流)が磁場を作る
+\item 電流は磁場から力を受ける
+\end{enumerate}
+
+\paragraph{電荷と電磁場の相互作用}
+
+\[
+\boldsymbol{F}=\underbrace{q\boldsymbol{E}}_{\text{クーロン力}}+\underbrace{q\boldsymbol{v}\times\boldsymbol{B}}_{\text{ローレンツ力}}
+\]
+
+
+\includegraphics{images/ele056}
+
+
+\paragraph{電荷に働く磁場の力}
+
+\includegraphics{images/ele057}
+
+$\Delta S\cdot\Delta L$にかかる力は
+\begin{eqnarray*}
+\boldsymbol{F} & = & q\boldsymbol{v}\times\boldsymbol{B}\\
+ & = & \rho\cdot\Delta S\cdot\Delta L\boldsymbol{v}\times\boldsymbol{B}\\
+ & = & \Delta S\cdot\Delta L\cdot\boldsymbol{j}\times\boldsymbol{B}\\
+ & = & \Delta L\cdot\boldsymbol{I}\times\boldsymbol{B}
+\end{eqnarray*}
+
+
+すなわち、単位長さあたり$\boldsymbol{I}\times\boldsymbol{B}$の力を受ける。
+
+
+\paragraph{磁束密度}
+
+$\boldsymbol{B}$: 磁束密度$\left[\mathrm{N\cdot s/C/m}\right]=\left[\mathrm{N/A/m}\right]=\left[\mathrm{T}\left(\text{テスラ}\right)\right]$
+
+$1\mathrm{T}$の磁場は、$1\mathrm{A}$の電流が$1\mathrm{m}$あたり$1\mathrm{N}$の力を受けるもので、かなり強力なものである。
+
+
+\paragraph{電流の作る磁場(電流同士の相互作用)}
+
+\includegraphics{images/ele058}
+
+2本の電流間に働く力
+\begin{eqnarray*}
+F & = & \sim\times\boldsymbol{I}_{1}\times\boldsymbol{B}_{2}=\sim\times\boldsymbol{I}_{2}\times\boldsymbol{B}_{1}\\
+ & = & \sim\times I_{1}\cdot I_{2}\\
+ & = & \frac{\mu_{0}I_{1}I_{2}}{2\pi r}
+\end{eqnarray*}
+\begin{eqnarray*}
+\mu_{0} & = & \text{真空の透磁率}\\
+ & = & 8.85\times10^{-12}\left(\mathrm{F/m}\right)\\
+ & = & \frac{1}{\varepsilon_{0}c^{2}}
+\end{eqnarray*}
+\begin{eqnarray*}
+c^{2}\nabla\times\boldsymbol{B} & = & \frac{\boldsymbol{j}}{\varepsilon_{0}}+\frac{\partial\boldsymbol{E}}{\partial t}\\
+\varepsilon_{0}c^{2}\nabla\times\boldsymbol{B} & = & \boldsymbol{j}+\varepsilon_{0}\frac{\partial\boldsymbol{E}}{\partial t}\\
+\frac{1}{\mu_{0}}\nabla\times\boldsymbol{B} & = & \boldsymbol{j}+\varepsilon_{0}\frac{\partial\boldsymbol{E}}{\partial t}
+\end{eqnarray*}
+
+
+
+\paragraph{Viot-Savartの法則: 静電場のアナロジー}
+
+静電場: Coulombの法則
+
+\includegraphics{images/ele059}
+
+\begin{eqnarray*}
+\boldsymbol{E} & = & \sum_{i}\frac{1}{4\pi\varepsilon_{0}}\frac{q_{i}\boldsymbol{r}_{i}}{r_{i}^{3}}\\
+ & = & \frac{1}{4\pi\varepsilon_{0}}\int_{V}\frac{\rho\boldsymbol{r}'}{r'^{3}}\mathrm{d}V
+\end{eqnarray*}
+
+
+磁場の場合: 電流素片$\mathrm{d}\boldsymbol{j}$
+
+\includegraphics{images/ele060}
+
+$\mathrm{d}\boldsymbol{j}$が作る磁場を$\mathrm{d}\boldsymbol{B}$は、
+\[
+\mathrm{d}\boldsymbol{B}=\frac{\mu_{0}}{4\pi}\mathrm{d}\boldsymbol{j}\times\frac{\boldsymbol{r}}{r^{3}}
+\]
+で与えられる。(Viot-Savartの法則)
+
+例: 上図の場合
+
+\begin{eqnarray*}
+\boldsymbol{B} & = & \frac{\mu_{0}}{4\pi}\int_{C}\mathrm{d}\boldsymbol{j}\times\frac{\boldsymbol{r}}{r^{3}}\\
+ & = & \frac{\mu_{0}}{4\pi}\int_{C}j\mathrm{d}\boldsymbol{S}\times\frac{\boldsymbol{r}}{r^{3}}
+\end{eqnarray*}
+
+
+例: 無限長の直線電流の作る磁場(1)
+
+\includegraphics{images/ele061}
+
+Viot-Savartの法則より、
+\begin{eqnarray*}
+\left|\mathrm{d}\boldsymbol{j}\times\boldsymbol{r}\right| & = & \mathrm{d}x\cdot y\cdot I\\
+ & = & \mathrm{d}x\cdot Ir\sin\theta
+\end{eqnarray*}
+より
+\[
+\mathrm{d}\boldsymbol{B}=\frac{\mu_{0}}{4\pi}\mathrm{d}x\cdot r\sin\theta\cdot I\cdot\frac{1}{r^{3}}
+\]
+
+
+よって
+\[
+B=\frac{\mu_{0}}{4\pi}I\int_{-\infty}^{\infty}\frac{\sin\theta}{r^{2}}\mathrm{d}x
+\]
+
+
+\includegraphics{images/ele062}
+
+$r\mathrm{d}\theta=\mathrm{d}x\sin\theta,y=r\sin\theta$より、
+\begin{eqnarray*}
+B & = & \frac{\mu_{0}}{4\pi}I\int_{0}^{\pi}\frac{r\mathrm{d}\theta}{r^{2}}\\
+ & = & \frac{\mu_{0}I}{4\pi}\int_{0}^{\pi}\frac{\sin\theta}{y}\mathrm{d}\theta\\
+ & = & \frac{\mu_{0}I}{2\pi y}
+\end{eqnarray*}
+
+
+すなわち、別の電流$I'$を持ってくると受ける力$\boldsymbol{F}$は、
+\begin{eqnarray*}
+\left|\boldsymbol{F}\right| & = & \left|I'\times\boldsymbol{B}\right|\\
+ & = & I'B\\
+ & = & \frac{\mu_{0}II'}{2\pi y}
+\end{eqnarray*}
+
+
+
+\paragraph{静磁場のMaxwell方程式}
+
+微分形
+
+\[
+\mathrm{div}\boldsymbol{B}=0
+\]
+\[
+c^{2}\mathrm{rot}\boldsymbol{B}=\frac{\boldsymbol{j}}{\varepsilon_{0}}
+\]
+
+
+積分形
+
+\[
+\int_{S}\boldsymbol{B}\boldsymbol{n}\mathrm{d}S=0
+\]
+\[
+c^{2}\oint_{c}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}=\frac{1}{\varepsilon_{0}}\int_{S}\boldsymbol{j}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+
+
+それぞれ、二番目の式がアンペールの法則となる。
+
+\includegraphics{images/ele063}
+
+すなわち、任意の閉曲線$C$とそれを張るる面$S$について
+\[
+c^{2}\oint_{c}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}=\frac{1}{\varepsilon_{0}}\int_{S}\boldsymbol{j}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+
+
+ストークスの定理より
+\[
+\oint_{C}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{S}=\int_{S}\mathrm{rot}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+だから、
+\[
+c^{2}\mathrm{rot}\boldsymbol{B}=\frac{\boldsymbol{j}}{\varepsilon_{0}}
+\]
+
+
+
+\paragraph{Ampereの法則の応用}
+\begin{enumerate}
+\item 直線電流の作る磁場(2)
+
+
+\includegraphics{images/ele064}
+
+
+アンペールの法則より
+\[
+c^{2}\oint_{C}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{S}=c^{2}\cdot2\pi y\cdot\boldsymbol{B}
+\]
+\[
+\frac{1}{\varepsilon_{0}}\int\boldsymbol{j}\cdot\boldsymbol{n}\mathrm{d}S=\frac{1}{\varepsilon_{0}}I
+\]
+だから、
+\[
+B=\frac{I}{2\pi\varepsilon_{0}c^{2}y}=\frac{\mu_{0}I}{2\pi y}
+\]
+
+
+\item 面電流($J\left[\mathrm{A/m}\right]$の電流密度)
+
+
+\includegraphics{images/ele065}
+
+
+\[
+c^{2}\oint_{C}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{S}=c^{2}\left(Bl+Bl\right)=2Bl\cdot c^{2}
+\]
+\[
+\frac{1}{\varepsilon_{0}}\int_{S}\boldsymbol{j}\cdot\boldsymbol{n}\mathrm{d}S=\frac{1}{\varepsilon_{0}}Jl
+\]
+より、
+\[
+B=\frac{J}{2\varepsilon_{0}c^{2}}=\frac{\mu_{0}J}{2}
+\]
+
+
+\item 無限長のソレノイド
+
+
+\includegraphics{images/ele066}
+\begin{enumerate}
+\item 円電流が中心軸上につくる磁場
+
+
+\includegraphics{images/ele067}
+
+
+$\mathrm{d}l$を流れる電流素片が$z$軸上に作る磁場は、Biot-Savartの法則より
+\[
+\mathrm{d}B=\frac{\mu_{0}}{4\pi}\frac{I\mathrm{d}l}{a^{2}}
+\]
+かつ
+\[
+\mathrm{d}B_{z}=\mathrm{d}B\cos\alpha
+\]
+
+
+
+ここで
+\[
+a=\sqrt{r^{2}z^{2}}
+\]
+\[
+\cos\alpha=\frac{r}{a}
+\]
+\[
+\mathrm{d}l=r\mathrm{d}\theta
+\]
+より
+\begin{eqnarray*}
+\mathrm{d}B_{z} & = & \mathrm{d}B\frac{r}{a}\\
+ & = & \frac{\mu_{0}Ir\mathrm{d}\theta}{4\pi\sqrt{r^{2}+z^{2}}^{2}}\frac{r}{\sqrt{r^{2}+z^{2}}}\\
+ & = & \frac{\mu_{0}Ir^{2}\mathrm{d}\theta}{4\pi\left(r^{2}+z^{2}\right)^{\frac{3}{2}}}
+\end{eqnarray*}
+\begin{eqnarray*}
+B_{z} & = & \int_{\theta=0}^{2\pi}\mathrm{d}B_{z}\\
+ & = & \frac{\mu_{0}Ir^{2}}{4\pi\left(r^{2}+z^{2}\right)^{\frac{3}{2}}}\int_{0}^{2\pi}\mathrm{d}\theta\\
+ & = & \frac{\mu_{0}Ir^{2}}{2\left(r^{2}+z^{2}\right)^{\frac{3}{2}}}
+\end{eqnarray*}
+
+
+\item ソレノイド軸上の磁場
+
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele068.jpg}
+
+
+長さ$\mathrm{d}z$の円柱を流れる電流が原点に作る磁場$\mathrm{d}B_{z}$
+
+
+円柱を流れる電流は$I\cdot N\mathrm{d}z$であるから、
+\[
+\mathrm{d}B_{z}=\frac{\mu_{0}r^{2}\cdot I\cdot N\cdot\mathrm{d}z}{2\left(r^{2}+z^{2}\right)^{\frac{3}{2}}}
+\]
+よりソレノイド全体が作る磁場は
+\[
+B_{z}=\int\mathrm{d}B_{z}=\frac{\mu_{0}r^{2}IN}{2}\int_{-\infty}^{\infty}\frac{\mathrm{d}z}{\left(r^{2}+z^{2}\right)^{\frac{3}{2}}}
+\]
+
+
+
+$\tan\theta=\frac{z}{r}$とすると$\mathrm{d}\theta=-\frac{\sin\theta}{r}\mathrm{d}z,\frac{1}{\left(r^{2}+z^{2}\right)^{\frac{3}{2}}}=\frac{\sin^{2}\theta}{r^{3}}$より、
+\[
+B_{0}=\frac{\mu_{0}r^{2}IN}{2}\int_{\pi}^{0}\frac{\sin\theta\mathrm{d}\theta}{r^{2}}=\mu_{0}IN
+\]
+
+
+\item ソレノイド内の磁場
+
+
+$C_{1}$での線積分を考えて、
+\[
+\oint_{C_{1}}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}=\mu_{0}\int_{S_{1}}\boldsymbol{j}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+\[
+B\cdot\mathrm{d}l-B'\cdot\mathrm{d}l=0
+\]
+\[
+B=B'
+\]
+より、どこでも$\mu_{0}IN$
+
+\item ソレノイド外
+
+
+$C_{2}$で考えて、
+\[
+\oint_{C_{2}}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{S}=\mu_{0}\int_{S_{2}}\boldsymbol{j}\cdot\boldsymbol{n}\cdot\mathrm{d}S
+\]
+\[
+B\mathrm{d}l-B''\mathrm{d}l=\mu_{0}\cdot NI\mathrm{d}l
+\]
+\begin{eqnarray*}
+B'' & = & B-\mu_{0}IN\\
+ & = & 0
+\end{eqnarray*}
+
+
+\end{enumerate}
+\end{enumerate}
+
+\section{ベクトルポテンシャル}
+
+静磁場のMaxwell方程式
+\[
+\begin{cases}
+\mathrm{div}\boldsymbol{B}=0 & \text{電場と違う}\\
+c^{2}\mathrm{rot}\boldsymbol{B}=\frac{\boldsymbol{j}}{\varepsilon_{0}} & \text{スカラーポテンシャルは定義不可}
+\end{cases}
+\]
+
+
+一般に$\mathrm{div}\left(\mathrm{rot}\boldsymbol{A}\right)=0$であるので、$\boldsymbol{B}\equiv\mathrm{rot}\boldsymbol{A}$として書くことができる。この$\boldsymbol{A}$を「ベクトルポテンシャル」と呼ぶ。
+
+
+\paragraph{例証}
+
+$\boldsymbol{A}=\left(\begin{array}{c}
+0\\
+\int_{0}^{x}B_{z}\left(x',y,z\right)\mathrm{d}x'-\int_{0}^{z}B_{x}\left(0,y,z'\right)\mathrm{d}z'\\
+-\int_{0}^{x}B_{y}\left(x',y,z\right)\mathrm{d}x'
+\end{array}\right)$に対して$\mathrm{rot}\boldsymbol{A}=\boldsymbol{B}$となる。
+
+
+\paragraph{ゲージ変換}
+
+$\boldsymbol{A}$は$\boldsymbol{A}'=\boldsymbol{A}+\mathrm{grad}f$($f$は任意のスカラー場)の変換について不変(Gauge変換)
+
+
+\paragraph{証明}
+
+$\mathrm{rot}\boldsymbol{A}=\boldsymbol{B}$であるとき
+\[
+\mathrm{rot}\boldsymbol{A}'=\mathrm{rot}\left(\boldsymbol{A}+\mathrm{grad}f\right)=\mathrm{rot}\boldsymbol{A}+\mathrm{rot}\left(\mathrm{grad}f\right)=\mathrm{rot}\boldsymbol{A}=\boldsymbol{B}
+\]
+
+
+$\mathrm{grad}f$で与える制限をゲージと呼ぶ。
+\begin{itemize}
+\item $\mathrm{div}\boldsymbol{A}=0$: クーロンゲージ
+\item $\mathrm{div}\boldsymbol{A}=-\frac{1}{c^{2}}\frac{\partial\phi}{\partial t}$:
+ローレンツゲージ
+\end{itemize}
+
+\paragraph{電流とベクトルポテンシャル}
+
+アンペールの法則
+\begin{eqnarray*}
+\frac{\boldsymbol{j}}{\varepsilon_{0}c^{2}} & = & \mathrm{rot}\boldsymbol{B}\\
+ & = & \mathrm{rot}\left(\mathrm{rot}\boldsymbol{A}\right)\\
+ & = & \mathrm{grad}\left(\mathrm{div}\boldsymbol{A}\right)-\nabla^{2}\boldsymbol{A}
+\end{eqnarray*}
+
+
+クーロンゲージを選ぶと、$\mathrm{div}\boldsymbol{A}=0$より、
+\[
+\frac{\boldsymbol{j}}{\varepsilon_{0}c^{2}}=-\nabla^{2}\boldsymbol{A}=-\left(\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}+\frac{\partial^{2}}{\partial z^{2}}\right)\boldsymbol{A}
+\]
+
+
+cf. 電場ではどうなるか
+
+\[
+\begin{cases}
+\mathrm{div}\boldsymbol{E}=\frac{\rho}{\varepsilon_{0}}\\
+\boldsymbol{E}=-\mathrm{grad}\phi
+\end{cases}
+\]
+より$-\mathrm{div}\left(\mathrm{grad}\phi\right)=\frac{\rho}{\varepsilon_{0}}$
+
+\[
+-\left(\frac{\partial}{\partial x},\frac{\partial}{\partial y},\frac{\partial}{\partial z}\right)\cdot\left(\frac{\partial\rho}{\partial x},\frac{\partial\phi}{\partial y},\frac{\partial\phi}{\partial z}\right)=-\nabla^{2}\phi=\frac{\rho}{\varepsilon_{0}}
+\]
+
+
+これをPoisson方程式と呼ぶ。
+
+電場の場合: クーロンの法則より
+\[
+\boldsymbol{E}=\frac{1}{4\pi\varepsilon_{0}}\int_{V}\frac{\rho\left(\boldsymbol{r}'\right)\left(\boldsymbol{r}-\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{3}}\mathrm{d}V'
+\]
+であるが、
+\[
+\frac{1}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}=-\frac{\boldsymbol{r}-\boldsymbol{r}'}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}
+\]
+となる($\boldsymbol{r}'=\text{const}$)から、
+\begin{eqnarray*}
+\boldsymbol{E} & = & \frac{1}{4\pi\varepsilon_{0}}\int\rho\mathrm{grad}\frac{1}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}V'\\
+ & = & \mathrm{grad}\left(\frac{1}{4\pi\varepsilon_{0}}\int\rho\frac{\mathrm{d}V}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\right)
+\end{eqnarray*}
+と書けるので、
+\[
+\phi=\frac{1}{4\pi\varepsilon_{0}}\int_{V}\frac{\rho\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}V'
+\]
+と書ける。($\phi$の一般解)
+
+
+\paragraph{電流ベクトルとポテンシャル}
+
+電流分布とベクトルポテンシャルの関係は
+\[
+A_{x}=\frac{\mu_{0}}{4\pi}\int_{V}\frac{j_{x}\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}V
+\]
+\[
+\Rightarrow\boldsymbol{A}=\frac{\mu_{0}}{4\pi}\int_{V}\frac{\boldsymbol{j}\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}V'
+\]
+($\boldsymbol{A}$の一般解)
+
+
+\paragraph{ベクトルポテンシャルの応用}
+\begin{enumerate}
+\item 無限長の電流の作る磁場 3
+
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele069.jpg}
+
+
+\[
+\boldsymbol{A}=\frac{\mu_{0}}{4\pi}\int\frac{\boldsymbol{j}}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}V'
+\]
+
+
+
+$jx=0,jy=0$なので、
+\[
+A_{x}=\text{const},A_{y}=\text{const}
+\]
+
+
+
+またベクトルポテンシャルのPoisson方程式は
+\[
+-\nabla^{2}\boldsymbol{A}=\mu_{0}\boldsymbol{j}
+\]
+の$z$成分
+\[
+\nabla^{2}A_{z}=-\mu_{0}j_{z}
+\]
+これの解を求める。この式は電場のPoisson方程式の解のアナロジーで考えることができる。すなわち、直線電荷の作る電場ポテンシャルと考える。
+
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele070.jpg}
+
+
+$-\nabla^{2}\varphi=\frac{\rho}{\varepsilon_{0}}$のポテンシャルは?
+\[
+E\left(r\right)=\frac{\sigma}{2\pi\varepsilon_{0}r}\left(r=\sqrt{x^{2}+y^{2}}\right)
+\]
+であるから、
+\[
+\varphi=-\int E\left(r^{2}\right)\mathrm{d}r=-\int\frac{\sigma}{2\pi\varepsilon_{0}r'}\mathrm{d}r'=-\frac{\sigma}{2\pi\varepsilon_{0}}l_{n}\left(r\right)+\text{const}
+\]
+
+
+
+上記を踏まえると、
+\[
+A_{z}=-\frac{\mu_{0}I}{2\pi}l_{n}\left(r\right)\left(r=\sqrt{x^{2}+y^{2}}\right)
+\]
+より、
+\[
+\boldsymbol{A}=\left(\begin{array}{c}
+0\\
+0\\
+-\frac{\mu_{0}I}{2\pi l_{n}\left(r\right)}
+\end{array}\right)+\text{const}
+\]
+\[
+\boldsymbol{B}=\mathrm{rot}\boldsymbol{A}=\frac{\mu_{0}I}{2\pi r^{2}}\left(\begin{array}{c}
+-y\\
+x\\
+0
+\end{array}\right)
+\]
+
+
+\item 無限長ソレノイドの作るベクトルポテンシャル
+
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele071.jpg}
+
+
+$\mathrm{rot}\boldsymbol{A}=\boldsymbol{B}$より、ストークスの定理から
+\[
+\oint_{C}\boldsymbol{A}\cdot\mathrm{d}\boldsymbol{S}=\int_{S}\mathrm{rot}\boldsymbol{A}\cdot\boldsymbol{n}\mathrm{d}S=\int_{S}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+
+
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele072.jpg}
+\begin{itemize}
+\item $r<a$のとき
+
+
+\[
+\oint_{C_{1}}\boldsymbol{A}\cdot\mathrm{d}\boldsymbol{s}=\int_{S}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S=\pi r^{2}\underbrace{\mu_{0}IN}_{B}
+\]
+
+
+
+$C_{1}$にそっての$A\left(=A_{\theta}\right)$は一定なので、
+\[
+A_{\theta}\cdot2\pi r=\pi r^{2}\mu_{0}IN
+\]
+\[
+A_{\theta}=\frac{\mu_{0}IN}{2}r
+\]
+
+
+\item $r>a$のとき
+
+
+\[
+\oint_{C_{2}}\boldsymbol{A}\cdot\mathrm{d}\boldsymbol{s}=\int_{S}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S=\pi a^{2}\mu_{0}IN
+\]
+\[
+A_{\theta}=\frac{\mu_{0}NIa^{2}}{2}\frac{1}{r}
+\]
+
+
+\end{itemize}
+
+このように、ベクトルポテンシャルは磁場が存在しない場所でも座標に依存しうる。ベクトルポテンシャルは数学上の概念で実際に存在するものではないと近年まで考えられてきたが、1986年に行われた電子スリットの応用実験により、ベクトルポテンシャルが実際に存在する場の概念であることが実証された。これはAB効果、ボーム効果と呼ばれている。
+
+\end{enumerate}
+
+\section{時間変動する電磁場}
+
+
+\paragraph{電場の誘導: Maxwellの電磁誘導}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele073.jpg}
+
+Maxwell方程式より
+\[
+\mathrm{rot}\boldsymbol{E}=-\frac{\partial\boldsymbol{B}}{\partial t}
+\]
+\begin{eqnarray*}
+\underbrace{\oint_{C}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}}_{\text{発生する電位(起電力)}\nabla} & = & -\int_{S}\frac{\partial\boldsymbol{B}}{\partial t}\cdot\boldsymbol{n}\mathrm{d}S\\
+ & = & -\frac{\partial}{\partial t}\int_{S}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S\\
+ & = & -\frac{\partial\Phi}{\partial t}
+\end{eqnarray*}
+
+
+
+\paragraph{例 静磁場中を移動する回路}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele074.jpg}
+\begin{enumerate}
+\item $C$に生じる起電力$\varepsilon$
+
+
+\begin{eqnarray*}
+\varepsilon & = & \oint_{C}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}\\
+ & = & -\int\frac{\partial B}{\partial t}\cdot\boldsymbol{n}\mathrm{d}S\\
+ & = & -\frac{\partial\Phi}{\partial t}\\
+ & = & -\frac{\partial}{\partial t}\left(B\cdot S\right)\\
+ & = & -B\mathrm{d}v
+\end{eqnarray*}
+
+
+\item ローレンツ力で考える
+
+
+電荷$q$の受ける力は
+\[
+\boldsymbol{F}=q\cdot\boldsymbol{v}\times\boldsymbol{B}
+\]
+\[
+F=qvB
+\]
+
+
+
+→動く線の端から端まで$q$が動いたときにうけた仕事$W$
+\[
+W=F\cdot d=qvBd
+\]
+\[
+\Rightarrow\varepsilon=\frac{W}{q}=vBd
+\]
+
+
+\end{enumerate}
+
+\paragraph{磁場の誘導}
+
+Maxwell方程式より
+\[
+C^{2}\mathrm{rot}\boldsymbol{B}=\frac{\boldsymbol{j}}{\varepsilon_{0}}+\frac{\partial\boldsymbol{E}}{\partial t}
+\]
+\[
+c^{2}\oint_{C}\boldsymbol{B}\cdot\mathrm{d}S=\frac{1}{\varepsilon_{0}}\int_{S}\boldsymbol{j}\cdot\boldsymbol{n}\mathrm{d}S+\int_{S}\frac{\partial\boldsymbol{E}}{\partial t}\cdot\boldsymbol{n}\cdot\mathrm{d}S
+\]
+
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele075.jpg}
+\begin{enumerate}
+\item $C,S_{1}$で考える
+
+
+\[
+c^{2}\oint_{C}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}=\frac{1}{\varepsilon_{0}}\int_{S}\boldsymbol{j}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+
+
+
+アンペールの法則
+
+\item $C,S_{2}$を考える
+
+
+増加する電場が電流の代わりとなる。これに基づきアンペールの法則を拡張したのが上記のアンペール・マクスウェルの法則である。
+
+\end{enumerate}
+
+\section{Maxwell方程式と電磁波}
+
+
+\paragraph{時間変動入りMaxwell方程式}
+
+\[
+\begin{cases}
+\mathrm{div}\boldsymbol{E}=\frac{\rho}{\varepsilon_{0}}\\
+\mathrm{div}\boldsymbol{B}=0\\
+\mathrm{rot}\boldsymbol{E}=-\frac{\partial\boldsymbol{B}}{\partial t}\\
+c^{2}\mathrm{rot}\boldsymbol{B}=\frac{\boldsymbol{j}}{\varepsilon_{0}}+\frac{\partial\boldsymbol{E}}{\partial t}
+\end{cases}
+\]
+
+
+3式、4式は3パラメータなので、8方程式に対し6パラメータであるが、これが過不足なく解けることを示す。
+\begin{enumerate}
+\item 3式の両辺の$\mathrm{div}$をとる
+
+
+\[
+\mathrm{div}\left(\mathrm{rot}\boldsymbol{E}\right)=-\frac{\partial}{\partial t}\mathrm{div}\boldsymbol{B}
+\]
+\[
+\frac{\partial}{\partial t}\mathrm{div}\boldsymbol{B}=0
+\]
+となり、2式を満たす。
+
+\item 4式の両辺の$\mathrm{div}$をとる
+
+
+\[
+\sim=\frac{1}{\varepsilon_{0}}\mathrm{div}\boldsymbol{j}+\frac{\partial}{\partial t}\mathrm{div}\boldsymbol{E}
+\]
+
+
+
+電磁波の保存則より$\mathrm{div}\boldsymbol{j}=-\frac{\partial\rho}{\partial t}$であった。
+
+
+\[
+\frac{\partial}{\partial t}\left(\mathrm{div}\boldsymbol{E}-\frac{\rho}{\varepsilon_{0}}\right)=0
+\]
+より、1式を満たす。
+
+\end{enumerate}
+
+\paragraph{真空中、電流なしのMaxwell方程式を解く}
+
+Maxwell方程式は、
+\[
+\begin{cases}
+\mathrm{div}\boldsymbol{E}=0\\
+\mathrm{div}\boldsymbol{B}=0\\
+\mathrm{rot}\boldsymbol{E}=-\frac{\partial\boldsymbol{B}}{\partial t}\\
+c^{2}\mathrm{rot}\boldsymbol{B}=\frac{\partial\boldsymbol{E}}{\partial t}
+\end{cases}
+\]
+となる。
+
+4式の両辺を時間微分して
+\begin{eqnarray*}
+\frac{\partial^{2}\boldsymbol{E}}{\partial t^{2}} & = & c^{2}\mathrm{rot}\left(\frac{\partial\boldsymbol{B}}{\partial t}\right)\\
+ & = & c^{2}\mathrm{rot}\left(-\mathrm{rot}\boldsymbol{E}\right)\\
+ & = & -c^{2}\mathrm{rot}\left(\mathrm{rot}\boldsymbol{E}\right)
+\end{eqnarray*}
+\[
+\mathrm{rot}\left(\mathrm{rot}\boldsymbol{E}\right)=\mathrm{grad}\left(\mathrm{div}\boldsymbol{E}\right)-\nabla^{2}\boldsymbol{E}
+\]
+であるので、
+\[
+\frac{\partial^{2}\boldsymbol{E}}{\partial t^{2}}=c^{2}\nabla^{2}\boldsymbol{E}\rightarrow\nabla^{2}\boldsymbol{E}=\frac{1}{c^{2}}\frac{\partial^{2}\boldsymbol{E}}{\partial t^{2}}
+\]
+($\frac{\partial^{2}}{\partial x^{2}}E_{x}+\frac{\partial^{2}}{\partial y^{2}}E_{x}+\frac{\partial^{2}}{\partial z^{2}}E_{x}=\frac{1}{c^{2}}\frac{\partial^{2}E_{x}}{\partial t^{2}}$,
+$y,z$についても同じ)
+
+同様に
+\[
+\nabla^{2}\boldsymbol{B}=\frac{1}{c^{2}}\frac{\partial^{2}\boldsymbol{B}}{\partial t^{2}}
+\]
+
+
+このような式のことを一般に波動方程式と呼ぶ。
+
+
+\paragraph{波動方程式を電場について解く}
+
+一次元の平面解を考える。すなわち、
+\[
+\boldsymbol{E}=\left(0,0,E\left(x,t\right)\right)
+\]
+で$y,z$には依存しないような状況を考える。これを波動方程式に代入すると、$z$成分は、
+\[
+\nabla^{2}E\left(x,t\right)=\frac{1}{c^{2}}\frac{\partial E\left(x,t\right)}{\partial t}
+\]
+\[
+\rightarrow\frac{\partial^{2}}{\partial x^{2}}E+\frac{\partial^{2}}{\partial y^{2}}E+\frac{\partial^{2}}{\partial z^{2}}E=\frac{1}{c^{2}}\frac{\partial^{2}}{\partial t^{2}}E
+\]
+
+
+結局、
+\[
+\frac{\partial^{2}E\left(x,t\right)}{\partial x^{2}}=\frac{1}{c^{2}}\frac{\partial^{2}E\left(x,t\right)}{\partial t^{2}}
+\]
+となる。この一般解は$E=f\left(x+\alpha t\right)$の形になる。
+
+(証明) 代入すると
+\[
+\frac{\partial^{2}f}{\partial x^{2}}=\frac{1}{c^{2}}\frac{\partial^{2}f}{\partial t^{2}}
+\]
+であるが、$X=x+\alpha t$とすると、$\frac{\partial}{\partial x}=\frac{\partial}{\partial X},\frac{\partial}{\partial X}=\frac{\partial}{\partial t}\frac{\partial t}{\partial X}=\frac{1}{\alpha}\frac{\partial}{\partial t}$より、
+\[
+\frac{\partial^{2}f}{\partial X^{2}}=\frac{\alpha^{2}}{c^{2}}\frac{\partial^{2}f}{\partial X^{2}}\Rightarrow\alpha^{2}=c^{2}\Rightarrow\alpha=\pm c
+\]
+であるから、
+\[
+E\left(x,t\right)=f_{+}\left(x-ct\right)+f_{-}\left(x+ct\right)
+\]
+と書ける。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele076.jpg}
+
+
+\paragraph{磁場の解は?}
+
+$E\left(x,t\right)=f_{+}\left(x-ct\right)$のときを考えます。
+
+Maxwell方程式の3より、
+\begin{eqnarray*}
+\frac{\partial\boldsymbol{B}}{\partial t} & = & -\mathrm{rot}\boldsymbol{E}\\
+ & = & -\mathrm{rot}\left(0,0,f_{+}\left(x-ct\right)\right)\\
+ & = & \left(0,\frac{\partial f_{+}}{\partial x},0\right)
+\end{eqnarray*}
+
+
+\[
+\frac{\partial B_{x}}{\partial t}=\frac{\partial B_{z}}{\partial t}=0
+\]
+より、$B_{x}=B_{z}=0$とできる。
+
+\[
+\frac{\partial B_{y}}{\partial t}=\frac{\partial f_{+}\left(x-ct\right)}{\partial x}
+\]
+より、$X=x-ct$の変数変換を考えると、
+\[
+\begin{cases}
+\frac{\partial B_{y}}{\partial t}\left(=\frac{\partial B_{y}}{\partial X}\frac{\partial X}{\partial t}=-c\frac{\partial B_{y}}{\partial X}\right)\\
+\frac{\partial f_{+}}{\partial x}=\frac{\partial f_{+}}{\partial X}=\frac{\partial t}{\partial X}\frac{\partial f_{+}}{\partial t}=\frac{-1}{c}\frac{\partial f_{+}}{\partial t}
+\end{cases}
+\]
+\[
+\frac{\partial B_{y}}{\partial t}=-\frac{1}{c}\frac{\partial f_{+}}{\partial t}
+\]
+
+
+時間一定の項を無視する。
+
+\[
+B_{y}=-\frac{1}{c}f_{+}\!\left(x-ct\right)
+\]
+
+
+まとめると、
+\[
+\begin{cases}
+\boldsymbol{E}=\left(0,0,f_{+}\!\left(x-ct\right)\right)\\
+\boldsymbol{B}=\left(0,-\frac{1}{c}f_{+}\!\left(x-ct\right),0\right)
+\end{cases}
+\]
+より、$\boldsymbol{E}\bot\boldsymbol{B}$で、$\boldsymbol{E},\boldsymbol{B}$は同じ形。$c=\frac{1}{\sqrt{\varepsilon_{0}\mu_{0}}}$
+
+
+\paragraph{電磁場の持つエネルギー}
+
+電場→$\frac{1}{2}\varepsilon_{0}\boldsymbol{E}^{2}$と書ける。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele077.jpg}
+\begin{itemize}
+\item $\boldsymbol{B},\boldsymbol{E}$がある体積$V$
+\item $n\left(\text{個}/\mathrm{m^{3}}\right)$のでんッシが$\boldsymbol{v}$で動いている→系の収支?
+\end{itemize}
+電子に掛かる力
+\[
+\boldsymbol{F}=-\left(\boldsymbol{E}+\boldsymbol{v}\times\boldsymbol{B}\right)e
+\]
+
+
+→定速$\boldsymbol{v}$で動かすのになされる仕事
+\[
+\frac{\mathrm{d}w}{\mathrm{d}t}=\left|\boldsymbol{F}\cdot\boldsymbol{v}\right|=\boldsymbol{E}\cdot\boldsymbol{v}e
+\]
+
+
+系全体($V$内)でのエネルギー収支(電流づくりに使われているエネルギー)
+\begin{eqnarray*}
+\frac{\mathrm{d}w}{\mathrm{d}t} & = & -\int_{V}\boldsymbol{E}\boldsymbol{v}en\mathrm{d}V\\
+ & = & -\int_{V}\boldsymbol{E}\boldsymbol{j}\mathrm{d}V\\
+ & = & -\int_{V}\boldsymbol{E}\left(\varepsilon_{0}c^{2}\mathrm{rot}-\varepsilon_{0}\frac{\partial\boldsymbol{E}}{\partial t}\right)\mathrm{d}V\\
+ & = & -\varepsilon_{0}c^{2}\int_{V}\boldsymbol{E}\mathrm{rot}\boldsymbol{B}\mathrm{d}V+\varepsilon_{0}\int_{V}\boldsymbol{E}\frac{\partial\boldsymbol{E}}{\partial t}\mathrm{d}V
+\end{eqnarray*}
+\begin{eqnarray*}
+\frac{\mathrm{d}W}{\mathrm{d}W} & = & \frac{1}{\mu_{0}}\int_{V}\mathrm{div}\left(\boldsymbol{E}\times\boldsymbol{B}\right)\mathrm{d}V+\int_{V}\left(\varepsilon_{0}c^{2}\boldsymbol{B}\frac{\partial\boldsymbol{B}}{\partial t}+\varepsilon_{0}\boldsymbol{E}\frac{\partial\boldsymbol{E}}{\partial t}\right)\mathrm{d}V\\
+ & = & \frac{1}{\mu_{0}}\int_{S}\left(\boldsymbol{E}\times\boldsymbol{B}\right)\cdot\boldsymbol{n}\mathrm{d}S+\int\frac{\partial}{\partial t}\left(\frac{\boldsymbol{B}^{2}}{2\mu_{0}}+\frac{\varepsilon_{0}}{2}\boldsymbol{E}^{2}\right)\mathrm{d}V
+\end{eqnarray*}
+
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele078.jpg}
+\begin{itemize}
+\item $S=\frac{\boldsymbol{E}\times\boldsymbol{B}}{\mu_{0}}$ Poyntingベクトル→系から流出する項
+\item $\frac{\boldsymbol{B}^{2}}{2\mu_{0}}+\frac{\varepsilon_{0}\boldsymbol{E}^{2}}{2}$→系の電磁場のエネルギー
+\end{itemize}
+\[
+\frac{\mathrm{d}W}{\mathrm{d}W}=\frac{1}{\mu_{0}}\int_{V}\mathrm{div}\left(\boldsymbol{E}\times\boldsymbol{B}\right)\mathrm{d}V+\int_{V}\left(\varepsilon_{0}c^{2}\boldsymbol{B}\frac{\partial\boldsymbol{B}}{\partial t}+\varepsilon_{0}\boldsymbol{E}\frac{\partial\boldsymbol{E}}{\partial t}\right)\mathrm{d}V
+\]
+
+
+
+\section{物質中の電場の取り扱い}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele079.jpg}
+
+
+\paragraph{電子双極子}
+
+微小距離$d$離れた電荷$+q,-q$の対えお考える。$\left(x,y,z\right)$でのポテンシャルは
+
+\[
+\nabla=\frac{q}{4\pi\varepsilon_{0}}\left(\frac{1}{\sqrt{x^{2}+y^{2}+\left(z-\frac{d}{2}\right)^{2}}}-\frac{1}{\sqrt{x^{2}+y^{2}+\left(z+\frac{d}{2}\right)^{2}}}\right)
+\]
+
+
+ここで
+\[
+\begin{cases}
+r^{2}=x^{2}+y^{2}+z^{2}\\
+z\gg d\left(r\gg d\right)
+\end{cases}
+\]
+とすると、
+\[
+\left(x^{2}+y^{2}+\left(z-\frac{d}{2}\right)^{2}\right)^{-\frac{1}{2}}=\left(x^{2}+y^{2}+z^{2}\left(1-\frac{d}{2z}\right)^{2}\right)^{-\frac{1}{2}}
+\]
+
+
+などから
+\[
+\nabla\sim\frac{qzd}{4\pi\varepsilon_{0}r^{3}}=\frac{qd}{4\pi\varepsilon_{0}}\frac{\cos\theta}{r^{2}}\left(z=r\cos\theta\right)
+\]
+
+
+すなわち点電荷$q$のとき$\nabla=\frac{q}{4\pi\varepsilon_{0}}\frac{1}{r}$
+
+よって
+\[
+\boldsymbol{E}=-\mathrm{grad}\nabla=\frac{qd}{4\pi\varepsilon_{0}}\left(\begin{array}{c}
+\frac{3xz}{r^{5}}\\
+\frac{3yz}{r^{5}}\\
+\frac{\left(3\cos^{2}\theta-1\right)}{r^{3}}
+\end{array}\right)
+\]
+
+
+
+\paragraph{電子双極子モーメント}
+
+ベクトル$\boldsymbol{p}$
+\begin{itemize}
+\item $ $$\left|\boldsymbol{p}\right|=qd$
+\item 方向は$-q\rightarrow+q$
+\end{itemize}
+と定義する。
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele080.jpg}
+
+\[
+\nabla=\frac{1}{4\pi\varepsilon_{0}r^{2}}\frac{\boldsymbol{p}\cdot\boldsymbol{r}}{r}
+\]
+と書ける。($\boldsymbol{p}\cdot\boldsymbol{r}=qd\cos\theta r$より)
+
+
+\paragraph{誘電体}
+
+絶縁体は電圧をかけると?
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele081.jpg}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele082.jpg}
+
+このような状態を分kに良くという。
+
+物質の両端に電荷$Q_{p},-Q_{p}$が現れる。分極し電荷で作られる単位面積当たりの双極子ベクトル
+
+分極ベクトル$\boldsymbol{p}=q_{p}\boldsymbol{\delta}=Nq\boldsymbol{\delta}$
+
+すると図の$S,V$について
+\[
+-Q_{p}=\int_{s}\boldsymbol{p}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+もしくは
+\[
+\rho_{p}=-\mathrm{div}\boldsymbol{p}
+\]
+
+
+ここで$\rho_{p}$は分極電荷密度である。
+
+\[
+\mathrm{div}\boldsymbol{E}=\frac{\rho}{\varepsilon_{0}}
+\]
+
+
+
+\paragraph{誘電体中の電場と電束密度}
+
+誘電体厨ではGaussの法則は
+\[
+\mathrm{div}\boldsymbol{E}=\frac{1}{\varepsilon_{0}}\left(\rho+\rho_{p}\right)
+\]
+
+
+分極$\boldsymbol{p}$を用いて
+\[
+\mathrm{div}\left(\varepsilon_{0}\boldsymbol{E}+\boldsymbol{p}\right)=\rho
+\]
+と書ける。「電束密度」$\boldsymbol{D}\equiv\varepsilon_{0}\boldsymbol{E}+\boldsymbol{p}$とすると、
+\[
+\mathrm{div}\boldsymbol{D}=\rho
+\]
+
+
+一般には分極は$\boldsymbol{E}$に比例して
+\[
+\boldsymbol{p}=\chi\varepsilon_{0}\boldsymbol{E}
+\]
+と書ける。($\chi$=分極律)
+
+\[
+\boldsymbol{D}=\varepsilon_{0}\left(1+\chi\right)\boldsymbol{E}\equiv\varepsilon\boldsymbol{E}
+\]
+
+
+($\varepsilon$=誘電率)
+
+$\left(1+\chi\right)\equiv\kappa$: 比誘電率(空気で1.0006)
+
+
+\paragraph{物質中の電磁波}
+
+真空中では$\mathrm{div}\boldsymbol{E}=0,\mathrm{div}\boldsymbol{B}=0,\mathrm{rot}\boldsymbol{B}=-\frac{\partial\boldsymbol{E}}{\partial t},c^{2}\mathrm{rot}\boldsymbol{E}=-\frac{\partial\boldsymbol{B}}{\partial t}$出会ったが、これは物質中では成り立たない。
+
+$\boldsymbol{D}$を用いると物質中では
+\begin{enumerate}
+\item $\mathrm{div}\boldsymbol{D}=0$ 
+\item $\mathrm{div}\boldsymbol{B}=0$
+\item $\mathrm{rot}\boldsymbol{E}=\frac{1}{\varepsilon}\mathrm{rot}\boldsymbol{D}=-\frac{\partial\boldsymbol{B}}{\partial t}$
+\item 時間変化する分極はでんyるになる
+\[
+\frac{\partial\rho_{p}}{\partial t}=-\mathrm{div}\boldsymbol{j}_{p}
+\]
+
+\end{enumerate}
+$\mathrm{div}\boldsymbol{D}=-\rho_{p}$なので、
+\[
+\mathrm{div}\frac{\partial\boldsymbol{p}}{\partial t}=\mathrm{div}\boldsymbol{j}_{p}
+\]
+\[
+\frac{\partial\boldsymbol{p}}{\partial t}=\boldsymbol{j}_{p}
+\]
+が成立
+
+分極入りMaxwell方程式は$c^{2}\mathrm{rot}\boldsymbol{B}\frac{\boldsymbol{j}_{p}}{\varepsilon_{0}}+\frac{\partial\boldsymbol{E}}{\partial t}$だが、
+\[
+c^{2}\mathrm{rot}\boldsymbol{B}\frac{\boldsymbol{j}_{p}}{\varepsilon_{0}}+\frac{\partial\boldsymbol{E}}{\partial t}=\frac{1}{\varepsilon_{0}}\frac{\partial\boldsymbol{p}}{\partial t}+\frac{\partial\boldsymbol{E}}{\partial t}=\frac{\partial}{\partial t}\left(\frac{\boldsymbol{p}}{\varepsilon_{0}}+\boldsymbol{E}\right)=\frac{1}{\varepsilon_{0}}\frac{\partial\boldsymbol{D}}{\partial t}
+\]
+より
+\[
+\frac{1}{\mu_{0}}\mathrm{rot}\boldsymbol{B}=\frac{\partial\boldsymbol{D}}{\partial t}
+\]
+
+
+上の4式を解いて
+\[
+\frac{\partial^{2}\boldsymbol{D}}{\partial t^{2}}=\frac{1}{\mu_{0}}\mathrm{rot}\frac{\partial\boldsymbol{B}}{\partial t}=\cdots=\frac{1}{\varepsilon\mu_{0}}\nabla^{2}\boldsymbol{D}
+\]
+
+
+速さ$\frac{1}{\sqrt{\varepsilon\mu_{0}}}$の電磁波となる。
+
+
+\paragraph{磁気双極子}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele083.jpg}
+
+極小のループ電流を考える。
+
+ベクトル@お転写ル
+\[
+\boldsymbol{A}=\frac{\mu_{0}iS}{4\pi}\frac{1}{r^{2}}\left(\begin{array}{c}
+-\sin\theta\\
+\cos\theta\\
+0
+\end{array}\right)
+\]
+
+
+磁気双極子モーメントを
+\[
+\boldsymbol{m}\equiv is\left(\begin{array}{c}
+0\\
+0\\
+1
+\end{array}\right)
+\]
+と取ると、
+\[
+\boldsymbol{A}=\frac{\mu_{0}}{4\pi}\frac{\boldsymbol{m}\times\boldsymbol{r}}{r^{3}}
+\]
+となって、
+\[
+\boldsymbol{B}=\mathrm{rot}\boldsymbol{A}=\frac{\mu_{0}\left|\boldsymbol{m}\right|}{4\pi}\left(\begin{array}{c}
+\frac{3xz}{r^{5}}\\
+\frac{3yz}{r^{5}}\\
+\frac{3z^{2}}{r^{5}}-\frac{1}{r^{3}}
+\end{array}\right)
+\]
+
+
+
+\paragraph{磁性体と磁化}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele084.jpg}
+
+磁場で磁気双極子が揃うことを磁化と呼び$\boldsymbol{M}$で表す。
+
+
+\paragraph{磁化電流}
+
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ele085.jpg}
+
+$\boldsymbol{M}$: $\boldsymbol{B}$によって誘導される単位体積あたりの磁気モーメント→ここの双極子絵dん竜$j_{m}$都の関係が$\boldsymbol{j}_{m}=\mathrm{rot}\boldsymbol{M}$となる
+
+Ampereの法則
+\[
+\mathrm{rot}\boldsymbol{B}=\mu_{0}\left(\boldsymbol{j}+\boldsymbol{j}_{m}\right)
+\]
+\[
+\mathrm{rot}\left(\boldsymbol{B}-\mu_{0}\boldsymbol{M}\right)=\mu_{0}\boldsymbol{j}
+\]
+\[
+\frac{1}{\mu_{0}}\left(\boldsymbol{B}-\boldsymbol{M}\right)\equiv\boldsymbol{H}
+\]
+\[
+\mathrm{rot}\boldsymbol{H}=\boldsymbol{j}
+\]
+
+\end{document}

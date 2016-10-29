@@ -1,0 +1,4519 @@
+%% LyX 2.0.6 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{esint}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfm,bookmarks=true,bookmarksnumbered=true,bookmarkstype=toc]{hyperref}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{数学IA講義ノート}
+
+\maketitle
+
+\paragraph{積分}
+
+冬学期の主な内容は積分である。
+
+積分は微分の逆というより、本来の意味では部分を足し上げて全体を求めることである。
+
+
+\paragraph{一次元の積分(定積分)}
+
+$I=\left[a,b\right]$, $f\left(x\right)$を$I$上定義された有界な関数とする。
+
+$\Delta=\left(a_{0}=a<a_{1}<\cdots<a_{m}=b\right)$となる点の増大列を$I$の(有限個区間への)分割(partition)という。ここで
+
+\[
+I_{k}=\left[a_{k-1},a_{k}\right]
+\]
+\[
+I=I_{1}\cup\cdots\cup I_{m}
+\]
+\[
+I_{k}\cap I_{j}=\text{たかだか一点}
+\]
+である。
+
+ここで
+\[
+\underline{S}\left(\Delta,f\left(x\right)\right)=\sum_{k=1}^{m}\left(\inf_{x\in I_{k}}f\left(x\right)\right)w\left(I_{k}\right)
+\]
+とおく。ただし$w\left(I_{k}\right)$は$I_{k}$の幅$a_{k}-a_{k-1}$である。同様に
+\[
+\overline{S}\left(\Delta,f\left(x\right)\right)=\sum_{k=1}^{m}\left(\sup_{x\in I_{k}}f\left(x\right)\right)w\left(I_{k}\right)
+\]
+とおく。
+
+\[
+\left(\inf_{x\in I}f\left(x\right)\right)w\left(I\right)\leq\underline{S}\left(\Delta,f\left(x\right)\right)\leq\overline{S}\left(\Delta,f\left(x\right)\right)\leq\left(\sup_{x\in I}f\left(x\right)\right)w\left(I\right)
+\]
+が常に成立する。
+
+$\Delta$をより細かくする。例えば$I_{k}$を2つに分割する。
+
+\[
+I_{k}=I_{k}'\cup I_{k}''
+\]
+\[
+\inf_{x\in I_{k}}\left(x\right)\leq\inf_{x\in I_{k}'}f\left(x\right)
+\]
+\[
+\inf_{x\in I_{k}}\left(x\right)\leq\inf_{x\in I_{k}''}f\left(x\right)
+\]
+\[
+w\left(I_{k}'\right)+w\left(I_{k}''\right)=w\left(I_{k}\right)
+\]
+なので、
+\[
+\left(\inf_{x\in I_{k}}f\left(x\right)\right)w\left(I_{k}\right)\leq\left(\inf_{x\in I_{k}'}f\left(x\right)\right)w\left(I_{k}'\right)+\left(\inf_{x\in I_{k}''}f\left(x\right)\right)w\left(I_{k}''\right)
+\]
+
+
+よって、$\Delta$を細分化したものを$\Delta'$とすると、
+\[
+\underline{S}\left(\Delta,f\right)\leq\underline{S}\left(\Delta',f\right)
+\]
+
+
+同様に
+\[
+\overline{S}\left(\Delta',f\right)\leq\overline{S}\left(\Delta,f\right)
+\]
+
+
+$\Delta=\Delta_{0},\Delta_{1},\Delta_{2},\cdots$とより細分すると
+\[
+\underline{S}\left(\Delta_{0},f\right)\leq\underline{S}\left(\Delta_{1},f\right)\leq\cdots\leq\underline{S}\left(\Delta_{n},f\right)\leq\overline{S}\left(\Delta_{n},f\right)\leq\cdots\leq\overline{S}\left(\Delta_{1},f\right)\leq\overline{S}\left(\Delta_{0},f\right)
+\]
+
+
+$\Delta$の分割をさらに細かくした時の極限
+\[
+\lim_{\Delta}\underline{S}\left(\Delta,f\right)=\underline{\int_{I}}f\left(x\right)\mathrm{d}x=\underline{\int_{a}^{b}}f\left(x\right)\mathrm{d}x
+\]
+を$f\left(x\right)$の$I$における下積分(lower integral)、
+\[
+\lim_{\Delta}\overline{S}\left(\Delta,f\right)=\overline{\int_{I}}f\left(x\right)\mathrm{d}x=\overline{\int_{a}^{b}}f\left(x\right)\mathrm{d}x
+\]
+を$f\left(x\right)$の$I$における上積分(upper integral)と呼ぶ。
+
+
+\paragraph{定義}
+
+\[
+\underline{\int_{I}}f\left(x\right)\mathrm{d}x=\overline{\int_{I}}f\left(x\right)\mathrm{d}x
+\]
+となるとき、$f\left(x\right)$は$I$上積分可能または可積分(integrable Riemann, integrable
+in the sence of Riemann)であると言い、一致した値を
+\[
+\int_{I}f\left(x\right)\mathrm{d}x=\int_{a}^{b}f\left(x\right)\mathrm{d}x
+\]
+と書いて、$f\left(x\right)$の$I$における積分(integral of f(x) on I)と呼ぶ。
+
+
+\paragraph{例}
+
+(1) 連続関数は積分可能
+
+(2)
+\[
+f\left(x\right)=\begin{cases}
+0 & x:\text{有理数}\\
+1 & x:\text{無理数}
+\end{cases}
+\]
+\[
+w\left(I_{k}\right)>0
+\]
+\[
+\begin{cases}
+\sup_{x\in I_{k}}f\left(x\right)=1\\
+\inf_{x\in I_{k}}f\left(x\right)=0
+\end{cases}
+\]
+\[
+\overline{S}\left(\Delta,f\right)=\sum_{k=1}^{m}1w\left(I_{k}\right)=w\left(I_{k}\right)=b-a
+\]
+\[
+\underline{S}\left(\Delta,f\right)=0
+\]
+
+
+(3) $I=\left[-1,1\right]$
+\[
+f\left(x\right)=\begin{cases}
+1 & x\in\left\{ 1,\frac{1}{2},\frac{1}{3},\cdots\right\} \\
+0 & \text{それ以外}
+\end{cases}
+\]
+となり積分可能。
+
+
+\paragraph{命題}
+
+(1) $f\left(x\right),g\left(x\right)$が$I$上で積分可能なら$f\left(x\right)+g\left(x\right)$も積分可能。
+
+\[
+\int_{I}\left(f\left(x\right)+g\left(x\right)\right)\mathrm{d}x=\int_{I}f\left(x\right)\mathrm{d}x+\int_{I}g\left(x\right)\mathrm{d}x
+\]
+
+
+(2) $f\left(x\right)$が積分可能、$c$定数のとき、$cf\left(x\right)$も積分可能で、
+\[
+\int_{I}cf\left(x\right)\mathrm{d}x=c\int_{I}f\left(x\right)\mathrm{d}x
+\]
+
+
+
+\paragraph{証明}
+
+(1)
+\[
+\inf_{x\in I_{k}}\left(f\left(x\right)+g\left(x\right)\right)\geq\inf_{x\in I_{k}}f\left(x\right)+\inf_{x\in I_{k}}g\left(x\right)
+\]
+\[
+\underline{S}\left(\Delta,f\right)+\underline{S}\left(\Delta,g\right)\leq\underline{S}\left(\Delta,f+g\right)\leq\overline{S}\left(\Delta,f+g\right)\leq\overline{S}\left(\Delta,f\right)+\overline{S}\left(\Delta,g\right)
+\]
+
+
+$\Delta$を細くすると差が0に近づくので、この両辺の差も0に近づく。
+
+(2) 略
+
+
+\paragraph{定理}
+
+$I=\left[a,b\right]$上の連続関数$f\left(x\right)$は一様連続(uniformly continuous)である。すなわち、$\varepsilon>0$を任意に取ると、$\delta>0$($I,f$に依存)があって、$x,y\in I,\left|x-y\right|<\delta$なら$\left|f\left(x\right)-f\left(y\right)\right|<\varepsilon$
+
+注：普通の連続 どんな$x\in I,\varepsilon>0$に対してもある$\delta>0$があって…
+
+
+\paragraph{定理}
+
+$D\subset\mathbb{R}^{n}$有界閉集合
+
+$f\left(\mathbf{x}\right)=f\left(x_{1},x_{2},\cdots,x_{n}\right)$
+$D$上の連続関数
+
+は一様連続
+
+すなわち$\varepsilon>0$に対し$\delta>0$があって$\mathbf{x},\mathbf{y}\in D$で$d\left(\mathbf{x},\mathbf{y}\right)<\delta$なら
+\[
+\left|f\left(\mathbf{x}\right)-f\left(\mathbf{y}\right)\right|<\varepsilon
+\]
+
+
+
+\paragraph{証明}
+
+一様連続でないと仮定して矛盾を導く。
+
+ある$\varepsilon>0$があってどんな$\delta>0$に対しても$\mathbf{x},\mathbf{y}\in D$が存在して
+\[
+\begin{cases}
+\left|f\left(\mathbf{x}\right)-f\left(\mathbf{y}\right)\right|\geq\varepsilon\\
+d\left(\mathbf{x},\mathbf{y}\right)<\delta
+\end{cases}
+\]
+
+
+とする。
+
+\[
+\delta_{1}>\delta_{2}>\cdots\rightarrow0
+\]
+とすると、$\mathbf{x}_{i},\mathbf{y}_{i}\in D$があって、
+\[
+d\left(\mathbf{x}_{i},\mathbf{y}_{i}\right)<\delta_{i}\rightarrow0
+\]
+\[
+\left|f\left(\mathbf{x}_{i}\right)-f\left(\mathbf{y}_{i}\right)\right|\geq\varepsilon
+\]
+
+
+$\mathbf{x}_{i}$は$D$上の点列。部分列で置き換えれば$\mathbf{x}_{i}\rightarrow\mathbf{x}_{\infty}\in D$に収束。
+
+$d\left(\mathbf{y}_{i},\mathbf{x}_{i}\right)\rightarrow0$なので、$\mathbf{y}_{i}\rightarrow\mathbf{x}_{\infty}=\mathbf{y}_{\infty}$に収束。
+
+$f\left(\mathbf{x}\right)$は$\mathbf{x}=\mathbf{x}_{\infty}$で連続でない。
+
+$\because\mathbf{x}_{i}\rightarrow\mathbf{x}_{\infty}$, $\mathbf{y}_{i}\rightarrow\mathbf{x}_{\infty}$
+
+$f\left(\mathbf{x}\right)$が$\mathbf{x}_{\infty}$で連続なら、十分に大きい$i$に対して
+\[
+\left|f\left(\mathbf{x}_{i}\right)-f\left(\mathbf{x}_{\infty}\right)\right|<\frac{\varepsilon}{2}
+\]
+\[
+\left|f\left(\mathbf{y}_{i}\right)-f\left(\mathbf{x}_{\infty}\right)\right|<\frac{\varepsilon}{2}
+\]
+
+
+\[
+\therefore\left|f\left(\mathbf{x}_{i}\right)-f\left(\mathbf{y}_{i}\right)\right|<\varepsilon
+\]
+
+
+よって矛盾
+
+
+\paragraph{系}
+
+$I=\left[a,b\right]$上の連続関数は可積分である。
+
+
+\paragraph{証明}
+
+$\varepsilon>0$に対し$\delta>0$があって$\left|x-y\right|<\delta$なら
+\[
+\left|f\left(x\right)-f\left(y\right)\right|<\varepsilon
+\]
+
+
+$\left|x-y\right|\leq\delta$なら$\left|f\left(x\right)-f\left(y\right)\right|\leq\varepsilon$
+
+分割$\Delta$に現れる小区間$I_{k}$の幅が全て$\delta$以下なら
+\[
+\left|\sup_{x\in I_{k}}f\left(x\right)-\inf_{x\in I_{k}}f\left(x\right)\right|<\varepsilon
+\]
+\begin{eqnarray*}
+\overline{S}\left(\Delta,f\right)-\underline{S}\left(\Delta,f\right) & = & \sum\left(\sup_{x\in I_{k}}f-\inf_{x\in I_{k}}f\right)w\left(I_{k}\right)\\
+ & = & \varepsilon w\left(I\right)
+\end{eqnarray*}
+
+
+$\varepsilon$は任意だったので、
+\[
+0\leq\overline{\int}f\left(x\right)\mathrm{d}x-\underline{\int}f\left(x\right)\mathrm{d}x<\varepsilon w\left(I_{k}\right)
+\]
+
+
+
+\paragraph{注意}
+
+証明を見ると
+\[
+w\left(\Delta\right)=\max_{k}w\left(I_{k}\right)
+\]
+が十分小なら$\overline{S}\left(\Delta,f\right)-\underline{S}\left(\Delta,f\right)$も充分に小。ただし$f$は連続。(Darbowxの定理)
+
+連続でなくて可積分の時は一般に成り立たない。
+
+
+\paragraph{復習(一変数関数の積分)}
+
+$I=\left[a,b\right]$有界閉区間
+
+$f\left(x\right)$: $I$上定義された有界
+
+$\Delta$: $\left\{ a_{0}=a<a_{1}<\cdots<a_{r}=b\right\} $ $I$の分割
+
+$I_{k}=\left[a_{k-1},a_{k}\right]$: 小区間
+
+とする。ここで
+\[
+I=\bigcup_{k=1}^{r}I_{k}
+\]
+である。
+
+\[
+\underline{S}\left(\Delta,f\left(x\right)\right)=\sum_{k=1}^{m}\left(\inf_{x\in I_{k}}f\left(x\right)\right)w\left(I_{k}\right)
+\]
+\[
+\overline{S}\left(\Delta,f\left(x\right)\right)=\sum_{k=1}^{m}\left(\sup_{x\in I_{k}}f\left(x\right)\right)w\left(I_{k}\right)
+\]
+において$\Delta$を細くすると$\underline{S}$は増加、$\overline{S}$は減少する。この極限$\underline{\int_{I}}f\left(x\right)\mathrm{d}x,\overline{\int_{I}}f\left(x\right)\mathrm{d}x$が一致する時$f\left(x\right)$は$I$上積分可能である。
+
+また、$f\left(x\right)$が$I$上連続⇒$f\left(x\right)$は積分可能である。
+
+
+\paragraph{積分の性質}
+
+(1)
+
+$f\left(x\right)$を$I=\left[a,b\right]$上の関数、$a<c<b$, $I=I_{1}\cup I_{2}$,
+$I_{1}=\left[a,c\right]$, $I_{2}=\left[c,b\right]$とすると、$f\left(x\right)$が$I$上積分可能⇔$I_{1},I_{2}$双方で積分可能で
+
+\[
+\int_{I}f\left(x\right)\mathrm{d}x=\int_{I_{1}}f\left(x\right)\mathrm{d}x+\int_{I_{2}}f\left(x\right)\mathrm{d}x
+\]
+
+
+これを区間に対する積分の加法性という。
+
+(2)
+
+$f\left(x\right),g\left(x\right)$が$I$上積分可能⇒$f\left(x\right)+g\left(x\right)$が$I$上積分可能で
+
+\[
+\int_{I}\left\{ f\left(x\right)+g\left(x\right)\right\} \mathrm{d}x=\int_{I}f\left(x\right)\mathrm{d}x+\int_{I}g\left(x\right)\mathrm{d}x
+\]
+
+
+$c$定数のとき、$cf\left(x\right)$も積分可能で
+
+\[
+\int_{I}cf\left(x\right)\mathrm{d}x=c\int_{I}f\left(x\right)\mathrm{d}x
+\]
+
+
+この二つの声質を合わせて積分の線形性と呼ぶ。
+
+(3)
+
+$f\left(x\right)\geqq0$で積分可能⇒$\int_{I}f\left(x\right)\mathrm{d}x\geqq0$
+
+これを積分の単調性と呼ぶ。
+
+
+\paragraph{注意}
+
+$f\left(x\right)>0$となる$x$が無数にあったとしても$\int f\left(x\right)\mathrm{d}x=0$となることがある
+
+
+\paragraph{注意}
+
+有限個の$x$の値について$f\left(x\right)$の値を変えても積分には影響しない。
+
+(4)
+
+$f\left(x\right)$が積分可能⇒$\left|f\left(x\right)\right|$も積分可能
+
+$\because$
+
+\begin{eqnarray*}
+0 & \leqq & \overline{S}\left(\Delta,\left|f\right|\right)-\underline{S}\left(\Delta,\left|f\right|\right)\\
+ & = & \sum\left(\sup\left|f\left(x\right)\right|-\inf\left|f\left(x\right)\right|\right)w\left(I_{k}\right)\\
+ & \leqq & \sum\left(\sup f\left(x\right)-\inf f\left(x\right)\right)w\left(I_{k}\right)\rightarrow0
+\end{eqnarray*}
+
+
+(5)
+
+$f\left(x\right),g\left(x\right)$が$I$上積分可能⇒$f\left(x\right)g\left(x\right)$も積分可能
+
+$\because$
+
+$f,g$有界
+
+\[
+\left|f\left(x\right)\right|,\left|g\left(x\right)\right|\leq C
+\]
+と仮定して良い。($C$は定数)
+
+$x,y\in I$で
+\begin{eqnarray*}
+\left|f\left(x\right)g\left(x\right)-f\left(y\right)g\left(y\right)\right| & = & \left|f\left(x\right)g\left(x\right)-f\left(y\right)g\left(x\right)+f\left(y\right)g\left(x\right)-f\left(y\right)g\left(y\right)\right|\\
+ & \leqq & \left|g\left(x\right)\right|\left|f\left(x\right)-f\left(y\right)\right|+\left|f\left(y\right)\right|\left|g\left(x\right)-g\left(y\right)\right|\\
+ & \leqq & C\left(\left|f\left(x\right)-f\left(y\right)\right|+\left|g\left(x\right)-g\left(y\right)\right|\right)
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+0 & \leqq & \sum\left(\sup_{x\in I_{k}}f\left(x\right)g\left(x\right)-\inf_{x\in I_{k}}f\left(x\right)g\left(x\right)\right)w\left(I_{k}\right)\\
+ & \leqq & C\sum\left(\sup f\left(x\right)-\inf f\left(x\right)\right)w\left(I_{k}\right)+C\sum\left(\sup g\left(x\right)-\inf g\left(x\right)\right)w\left(I_{k}\right)\rightarrow0
+\end{eqnarray*}
+
+
+(6)
+
+$f\left(x\right)$積分可能で$f\left(x\right)\neq0$, $I$上$\left|\frac{1}{f\left(x\right)}\right|\leqq c>0$⇒$\frac{1}{f\left(x\right)}$も積分可能
+
+
+\paragraph{定理(微積分学の基本定理, foudamental theorem of calculs)}
+
+※$\int_{a}^{a}f\left(x\right)\mathrm{d}x=0$を約束する。
+
+$f\left(x\right)$: $I=\left[a,b\right]$上連続
+
+$a\leqq x\leqq b$としたとき$a<x<b,\: I=\left[a,x\right]\cup\left[x,b\right]$なので$f\left(x\right)$は$\left[a,x\right]$積分可能
+
+ここで$F\left(x\right)=\int_{a}^{x}f\left(x\right)\mathrm{d}x$とおくと、$F\left(x\right)$は$\left[a,b\right]$で微分可能で、$I$上連続。
+
+\[
+\begin{cases}
+F'\left(x\right)=f\left(x\right)\\
+F\left(a\right)=0
+\end{cases}
+\]
+
+
+さらに、
+
+$G\left(x\right)$: $I=\left[a,b\right]$上連続で$\left(a,b\right)$上微分可能
+
+のとき、$G'\left(x\right)=f\left(x\right)$なら$G\left(x\right)=F\left(x\right)+G\left(a\right)$となる。
+
+
+\paragraph{注意}
+
+$f\left(x\right)$が連続の仮定は本質的なものである。
+
+
+\paragraph{証明}
+
+\begin{eqnarray*}
+F\left(x+h\right)-F\left(x\right) & = & \int_{a}^{x+h}f\left(x\right)\mathrm{d}x+\int_{a}^{x}f\left(x\right)\mathrm{d}x\\
+ & = & \int_{x}^{x+h}f\left(t\right)\mathrm{d}t
+\end{eqnarray*}
+
+
+ここで
+\[
+\inf_{t\in\left[x,x+h\right]}f\left(t\right)\leqq f\left(t\right)\leqq\sup_{t\in\left[x,x+h\right]}f\left(t\right)
+\]
+なので、$\alpha=\inf_{t\in\left[x,x+h\right]}f\left(t\right),\beta=\sup_{t\in\left[x,x+h\right]}f\left(t\right)$とすると、
+\[
+\alpha\times h\leqq\int_{x}^{x+h}f\left(t\right)\mathrm{d}t\leqq\beta\times h
+\]
+\[
+\alpha\times h\leqq F\left(x+h\right)-F\left(x\right)\leqq\beta\times h
+\]
+
+
+$f\left(t\right)$は連続だったので、$h\rightarrow0$のとき$\alpha,\beta\rightarrow f\left(x\right)$
+
+\[
+\alpha\leqq\frac{F\left(x+h\right)-F\left(x\right)}{h}\leqq\beta
+\]
+
+
+$\alpha\rightarrow f\left(x\right),\beta\rightarrow f\left(x\right)$より極限が存在し$f\left(x\right)$に等しい。
+
+\[
+F'\left(x\right)=f\left(x\right)
+\]
+
+
+$F\left(a\right)=0$は自明
+
+次に、$G'\left(x\right)=F'\left(x\right)$とすると、
+
+\[
+H'\left(x\right)=\left(G\left(x\right)-F\left(x\right)\right)'=0
+\]
+
+
+平均値の定理より
+\[
+H\left(c\right)-H\left(a\right)=\left(c-a\right)H'\left(y\right)=0
+\]
+
+
+このとき$c$を動かしても$H\left(c\right)=H\left(a\right)$となり、定数である。
+
+よって
+\[
+G\left(x\right)=F\left(x\right)+\text{定数}
+\]
+
+
+
+\paragraph{系}
+
+$f\left(x\right)$: $I$上連続
+
+$G'\left(x\right)=f\left(x\right)$となる、連続で$\left(a,b\right)$上微分可能な関数とする(こういう$G\left(x\right)$を$f\left(x\right)$の不定積分と呼ぶ)と、
+\[
+\int_{a}^{b}f\left(x\right)\mathrm{d}x=G\left(b\right)-G\left(a\right)
+\]
+となる。これを
+\[
+\left[G\left(x\right)\right]_{a}^{b}
+\]
+と表記する。
+
+
+\paragraph{系(部分積分, integral by substitution)}
+
+$f\left(x\right),g\left(x\right)$: $C^{1}$級とする。
+
+\[
+\int_{a}^{b}f\left(x\right)g'\left(x\right)\mathrm{d}x=\left[f\left(x\right)g\left(x\right)\right]_{a}^{b}-\int_{a}^{b}f'\left(x\right)g\left(x\right)\mathrm{d}x
+\]
+
+
+
+\paragraph{証明}
+
+\[
+\left(f\left(x\right)g\left(x\right)\right)'=f'\left(x\right)g\left(x\right)+f\left(x\right)g'\left(x\right)
+\]
+
+
+\[
+\int_{a}^{b}\left(f\left(x\right)g\left(x\right)\right)'\mathrm{d}x=\int_{a}^{b}f'\left(x\right)g\left(x\right)\mathrm{d}x+\int_{a}^{b}f\left(x\right)g'\left(x\right)\mathrm{d}x
+\]
+
+
+\[
+\left[f\left(x\right)g\left(x\right)\right]_{a}^{b}-\int_{a}^{b}f'\left(x\right)g\left(x\right)\mathrm{d}x=\int_{a}^{b}f\left(x\right)g'\left(x\right)\mathrm{d}x
+\]
+
+
+
+\paragraph{系(置換積分, integral by parts)}
+
+$f\left(x\right)$: $I=\left[a,b\right]$上連続
+
+$\varphi\left(x\right)$: $J=\left[\alpha,\beta\right]\rightarrow\left[a,b\right]$単調増加で微分可能
+
+\[
+\int_{a}^{b}f\left(x\right)\mathrm{d}x=\int_{\alpha}^{\beta}f\left(\varphi\left(s\right)\right)\frac{\mathrm{d}\varphi}{\mathrm{d}s}\mathrm{d}s
+\]
+
+
+$\because$
+
+$x=\varphi\left(s\right)$、$F\left(x\right)=\int_{a}^{x}f\left(x\right)\mathrm{d}x$とおく。
+
+\[
+G\left(\beta\right)=F\left(b\right)=\int_{a}^{b}f\left(x\right)\mathrm{d}x
+\]
+
+
+\[
+F\left(\varphi\left(s\right)\right)=G\left(s\right)
+\]
+
+
+\[
+G'\left(s\right)=\left(F\left(\varphi\left(s\right)\right)\right)'=F'\left(\varphi\left(s\right)\right)\varphi'\left(s\right)
+\]
+
+
+\[
+G\left(\beta\right)=\int_{\alpha}^{\beta}G'\left(s\right)\mathrm{d}s=\int_{\alpha}^{\beta}f\left(\varphi\left(s\right)\right)\frac{\mathrm{d}\varphi}{\mathrm{d}s}\mathrm{d}s
+\]
+
+
+
+\paragraph{例(部分積分)}
+
+\begin{eqnarray*}
+\int_{a}^{b}\log x\mathrm{d}x & = & \int_{a}^{b}x'\log x\mathrm{d}x\\
+ & = & \left[x\log x\right]_{a}^{b}-\int x\left(\log x\right)'\mathrm{d}x\\
+ & = & \left[x\log x\right]_{a}^{b}-\int\mathrm{d}x\\
+ & = & b\log b-a\log a-b+a
+\end{eqnarray*}
+
+
+
+\paragraph{例(置換積分)}
+
+\begin{eqnarray*}
+\int\frac{\mathrm{d}x}{\sqrt{1-x^{2}}} & = & \int\frac{1}{\sqrt{1-x^{2}}}\mathrm{d}x\\
+ & = & \int\frac{1}{\sqrt{1-\sin^{2}s}}\times\frac{\mathrm{d}x}{\mathrm{d}s}\mathrm{d}s\\
+ & = & \int\mathrm{d}s\\
+ & = & \arcsin b-\arcsin a
+\end{eqnarray*}
+
+
+
+\paragraph{系(積分の平均値定理)}
+
+$f\left(x\right)$: $I=\left[a,b\right]$上連続とする。
+
+このときある$a<c<b$があって
+\[
+\int_{a}^{b}f\left(x\right)\mathrm{d}x=f\left(c\right)\left(b-a\right)
+\]
+を満たす。
+
+$\because$
+
+$F\left(x\right)=\int_{a}^{x}f\left(x\right)\mathrm{d}x$とおく。($\left(a,b\right)$上微分可能)
+
+平均値の定理より$F\left(b\right)-F\left(a\right)=\left(b-a\right)F'\left(c\right)$となる$c$が存在
+
+
+\paragraph{積分計算}
+
+$F'\left(x\right)=f\left(x\right)$となる$F\left(x\right)$がわかれば積分は計算できる。
+
+\begin{eqnarray*}
+F\left(x\right) & = & \int_{a}^{x}f\left(x\right)\mathrm{d}x+\text{定数}\\
+ & = & \int^{x}f\left(x\right)\mathrm{d}x+C
+\end{eqnarray*}
+
+
+
+\paragraph{例}
+
+(1)
+
+\[
+\int\sim^{x}x\mathrm{d}x=\begin{cases}
+\frac{1}{1+x}x^{1+\alpha}+C & \alpha\neq-1\\
+\log x+C & \alpha=-1
+\end{cases}
+\]
+
+
+(2)
+
+$a\neq0$において
+
+\[
+\int^{x}\mathrm{e}^{ax}\mathrm{d}x=\frac{\mathrm{e}^{ax}}{a}+C
+\]
+\[
+\int^{x}\log x\mathrm{d}x=x\log x-x+C
+\]
+
+
+(3)
+
+\[
+\int\sin at\mathrm{d}t=-\frac{\cos at}{a}
+\]
+
+
+\[
+\int\cos at\mathrm{d}t=\frac{\sin at}{a}
+\]
+
+
+\begin{eqnarray*}
+\int^{x}\tan x\mathrm{d}x & = & \int^{x}\frac{\sin x}{\cos x}\mathrm{d}x\\
+ & = & \int\left(-\frac{\left(\cos x\right)'}{\cos x}\right)\mathrm{d}x\\
+ & = & -\log\cos x
+\end{eqnarray*}
+
+
+(4)
+
+$x=\sin s$の置換を用いて、
+
+\begin{eqnarray*}
+\int\frac{\mathrm{d}x}{\sqrt{1-x^{2}}} & = & \int\frac{1}{\cos s}\left(\cos s\right)\mathrm{d}s\\
+ & = & s\\
+ & = & \arcsin x
+\end{eqnarray*}
+
+
+また$x=\tan s$の置換を用いて
+
+\begin{eqnarray*}
+\int\frac{\mathrm{d}x}{1+x^{2}} & = & \int\frac{1}{\frac{1}{\cos^{2}s}}\times\frac{1}{\cos^{2}s}\mathrm{d}s\\
+ & = & s\\
+ & = & \arctan x
+\end{eqnarray*}
+
+
+(5)
+
+$a\neq b$とする。
+
+$\frac{x-b}{x-a}=s$の置換を用いて、($x=\frac{sa-b}{s-1}$)
+
+\begin{eqnarray*}
+\int\sqrt{\left(x-a\right)\left(x-b\right)}\mathrm{d}x & = & \int\sqrt{\left(\frac{sa-b}{s-1}-a\right)\left(\frac{sa-b}{s-1}-b\right)}\frac{b-1}{\left(s-1\right)^{2}}\mathrm{d}s\\
+ & = & \int\sqrt{s\left(\frac{b-a}{s-1}\right)^{2}}\frac{b-1}{\left(s-1\right)^{2}}\mathrm{d}s\\
+ & = & \int\pm\sqrt{s}\frac{b-a}{s-1}\frac{b-1}{\left(s-1\right)^{2}}\mathrm{d}s
+\end{eqnarray*}
+
+
+ここから$s=t^{2}$とおくと根号を含まない$t$の分数式となる。
+
+※三角関数の分数式も不定積分が求まる。
+
+
+\paragraph{注意}
+
+$\int\frac{\mathrm{d}x}{\sqrt{1-x^{3}}}$のようなものは既知の関数では表せない。
+
+
+\paragraph{種々の関数の不定積分}
+
+$p\left(x\right)$を$x$の多項式として$\frac{p\left(x\right)}{\sqrt{1-x^{2}}}$の積分を考える。$\left(-1<x<1\right)$
+
+$x=\sin s$とおいて、$\frac{\mathrm{d}x}{\mathrm{d}s}=\cos s$
+
+\begin{eqnarray*}
+\int\frac{p\left(x\right)}{\sqrt{1-x^{2}}}\mathrm{d}x & = & \int\left(\frac{p\left(\sin s\right)}{\cos s}\cos s\right)\mathrm{d}s\\
+ & = & \int p\left(\sin s\right)\mathrm{d}s
+\end{eqnarray*}
+
+
+となり、$\sin s$の多項式の積分となる。$\sin^{m}s$は$\sin ns$の一次結合で表せるので、ここから積分値を求めることができる。
+
+$\frac{p\left(x\right)}{\sqrt{x^{2}\pm1}}$について考える。
+
+ここで双極関数を次のように定義する。
+
+\[
+\begin{cases}
+\sinh x=\frac{\mathrm{e}^{x}-\mathrm{e}^{-x}}{2}\\
+\cosh x=\frac{\mathrm{e}^{x}+\mathrm{e}^{-x}}{2}
+\end{cases}
+\]
+
+
+これを用いて、
+
+$\sqrt{x^{2}+1}$のとき$x=\sinh s$とおくと、
+
+\[
+\frac{\mathrm{d}\sinh s}{\mathrm{d}s}=\cosh s
+\]
+
+
+\[
+\sqrt{\sinh^{2}s+1}=\cosh s
+\]
+
+
+$\sqrt{x^{2}-1}$のとき$x=\cosh s$とおくと、
+
+\[
+\frac{\mathrm{d}\cosh s}{\mathrm{d}s}=\sinh s
+\]
+
+
+\[
+\sqrt{\cosh^{2}s+1}=\sinh s
+\]
+
+
+よって
+\[
+\int\frac{p\left(x\right)}{\sqrt{x^{2}\pm1}}\mathrm{d}x=\int p\left(\begin{array}{c}
+\sinh s\\
+\cosh s
+\end{array}\right)\mathrm{d}s
+\]
+
+
+となり、$\mathrm{e}^{\pm mx}$の一次結合の形で表せる。
+
+$x=\sinh s$の逆関数を考える。$t=\mathrm{e}^{s}\left(>0\right)$とおいて、
+
+\[
+x=\frac{\mathrm{e}^{s}-\mathrm{e}^{-s}}{2}=\frac{t-t^{-1}}{2}
+\]
+
+
+\[
+t^{2}-2xt-1=0
+\]
+
+
+\[
+t=x+\sqrt{x^{2}+1}
+\]
+
+
+\[
+s=\log\left(x+\sqrt{x^{2}+1}\right)
+\]
+
+
+$\frac{1}{x^{2}+1}$の積分を考える。$x=\tan s$とおいて、
+
+\[
+\frac{\mathrm{d}x}{\mathrm{d}s}=\left(1+\tan^{2}s\right)
+\]
+
+
+\[
+x^{2}+1=1+\tan^{2}s
+\]
+
+
+\begin{eqnarray*}
+\int\frac{\mathrm{d}x}{x^{2}+1} & = & \int\mathrm{d}s\\
+ & = & \arctan x
+\end{eqnarray*}
+
+
+$\sqrt{\frac{x-b}{x-a}}\times p\left(x\right)$の積分を考える。$\frac{x-b}{x-a}=s^{2}$とおいて、
+
+\[
+\left(s^{2}-1\right)x=s^{2}a-b
+\]
+
+
+\[
+x=\frac{s^{2}a-b}{s^{2}-1}
+\]
+
+
+\begin{eqnarray*}
+\int\sqrt{\frac{x-b}{x-a}}\times p\left(x\right)\mathrm{d}x & = & \int s\left(\frac{s^{2}a-b}{s^{2}-1}\text{の有理式}\right)\left(s\text{の有理式}\right)\mathrm{d}s\\
+ & = & \left(s\text{の多項式}\right)+\sum_{\alpha,a=0}^{m\left(\alpha\right)}\frac{\text{定数}}{\left(x-\alpha\right)^{a}}+\sum_{r\cdots}\frac{\text{定数}+\text{定数}x}{\left(\left(x-a\right)^{2}+b^{2}\right)^{r}}
+\end{eqnarray*}
+
+
+$p\left(X,Y\right)$を$X,Y$の有理式とする。$f\left(x\right)=p\left(\cos x,\sin x\right)$は不定積分が求まる。
+
+$s=\tan\frac{x}{2}$とおくと、
+\[
+\cos x=X_{0}=\frac{1-s^{2}}{1+s^{2}}
+\]
+
+
+\[
+\sin x=Y_{0}=\frac{2s}{1+s^{2}}
+\]
+
+
+\begin{eqnarray*}
+\frac{\mathrm{d}x}{\mathrm{d}s} & = & \frac{1}{\frac{\mathrm{d}s}{\mathrm{d}x}}\\
+ & = & \frac{1}{\frac{1}{2}\left(1+\tan^{2}\frac{x}{2}\right)}\\
+ & = & \frac{2}{1+s^{2}}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+\int f\left(x\right)\mathrm{d}x & = & \int p\left(\cos x,\sin x\right)\mathrm{d}x\\
+ & = & \int p\left(\frac{1-s^{2}}{1+s^{2}},\frac{2s}{1+s^{2}}\right)\frac{2\mathrm{d}s}{1+s^{2}}
+\end{eqnarray*}
+
+
+となり、$s$の有理式の積分で表せる。
+
+
+\paragraph{部分積分
+\[
+\int_{a}^{b}f'\left(x\right)g\left(x\right)\mathrm{d}x=\left[f\left(x\right)g\left(x\right)\right]_{a}^{b}-\int_{a}^{b}f\left(x\right)g'\left(x\right)\mathrm{d}x
+\]
+}
+
+
+\paragraph{部分積分の応用(Taylorの定理)}
+
+$f\left(x\right)$を$\left[a,b\right]$を含む開集合上の$C^{n+1}$級の関数とし、$\left|f^{\left(n+1\right)}\left(x\right)\right|<M,\: x\in\left[a,b\right]$とする。
+
+\[
+f\left(x\right)=f\left(a\right)+\cdots+\frac{f^{\left(n\right)}\left(a\right)}{n!}\left(x-a\right)^{n}+\text{誤差項}
+\]
+
+
+ここで
+\[
+\left|\text{誤差項}\right|\leq M\frac{\left(x-a\right)^{n+1}}{\left(n+1\right)!}
+\]
+
+
+積分を使うとこれをスマートに証明できる。
+
+
+\paragraph{証明}
+
+\begin{eqnarray*}
+\int_{a}^{x}\frac{\left(x-t\right)^{n}}{n!}f^{\left(n+1\right)}\left(t\right)\mathrm{d}t & = & \left[\frac{\left(x-t\right)^{n+1}}{n!}f^{\left(n\right)}\left(t\right)\right]_{a}^{x}+\int_{a}^{x}\frac{\left(x-t\right)^{n-1}}{\left(n-1\right)!}f^{\left(n\right)}\left(t\right)\mathrm{d}t\\
+ & = & -\frac{\left(x-a\right)^{n}}{n!}f^{\left(n\right)}\left(a\right)+\left[\frac{\left(x-t\right)^{n}}{\left(n-1\right)!}f^{\left(n-1\right)}\left(t\right)\right]_{a}^{x}+\int_{a}^{x}\frac{\left(x-t\right)^{n-1}}{\left(n-1\right)!}f^{\left(n-1\right)}\left(t\right)\mathrm{d}t
+\end{eqnarray*}
+
+
+\[
+f\left(x\right)-f\left(a\right)-\cdots-\frac{\left(x-a\right)^{n}}{n!}f^{\left(n\right)}\left(a\right)=\int_{a}^{x}\frac{\left(x-t\right)^{n}}{n!}f^{\left(n+1\right)}\left(t\right)\mathrm{d}t
+\]
+
+
+\begin{eqnarray*}
+\left|\text{右辺}\right| & \leq & M\int_{a}^{x}\frac{\left|x-t\right|^{n}}{n!}\mathrm{d}t\\
+ & = & M\frac{\left|x-a\right|^{n+1}}{\left(n+1\right)!}
+\end{eqnarray*}
+
+
+
+\paragraph{台形計算}
+
+$f\left(x\right)$を$\left[a,b\right]$を含む開区間の$C^{2}$級関数とする。$f\left(x\right)$に対する積分の近似計算を行う。
+
+$\left[a,b\right]$を$N$等分した値を$a_{0},\cdots,a_{N}$、$h=\frac{b-a}{N}$とする。
+
+\begin{eqnarray*}
+\int f\left(x\right)\mathrm{d}x & \doteqdot & h\left(\frac{1}{2}f\left(a_{0}\right)+f\left(a_{1}\right)+\cdots+f\left(a_{N-1}\right)+\frac{1}{2}f\left(a_{N}\right)\right)\\
+ & = & T_{N}\left(f\right)
+\end{eqnarray*}
+と近似する。
+
+
+\paragraph{定理}
+
+\[
+\left|\int f\left(x\right)\mathrm{d}x-T_{N}\left(f\right)\right|\leq\frac{M}{6}h^{2}\left(b-a\right)
+\]
+
+
+
+\paragraph{証明}
+
+\begin{eqnarray*}
+\int_{a_{i}}^{a_{i+1}}\left[\frac{1}{2}\left(x-a_{i}\right)\left(x-a_{i+1}\right)\right]f''\left(x\right)\mathrm{d}x & = & \left[\frac{1}{2}\left(x-a_{i}\right)\left(x-a_{i+1}\right)f'\left(x\right)\mathrm{d}x\right]_{a_{i}}^{a_{i+1}}-\int_{a_{i}}^{a_{i+1}}\frac{1}{2}\left\{ \left(x-a_{i}\right)+\left(x-a_{i+1}\right)\right\} f'\left(x\right)\mathrm{d}x\\
+ & = & -\left[\frac{1}{2}\left\{ \left(x-a_{i}\right)+\left(x-a_{i+1}\right)\right\} f\left(x\right)\mathrm{d}x\right]_{a_{i}}^{a_{i+1}}+\int_{a_{i}}^{a_{i+1}}f\left(x\right)\mathrm{d}x\\
+ & = & -\frac{1}{2}\left(a_{i+1}-a_{i}\right)f\left(a_{i+1}\right)-\frac{1}{2}\left(a_{i+1}-a_{i}\right)f\left(a\right)+\int_{a_{i}}^{a_{i+1}}f\left(x\right)\mathrm{d}x\\
+ & = & -\left(\frac{1}{2}hf\left(a_{i+1}\right)+\frac{1}{2}hf\left(a\right)\right)+\int_{a_{i}}^{a_{i+1}}f\left(x\right)\mathrm{d}x\\
+ & = & -\frac{h}{2}\left(f\left(a_{i}\right)+f\left(a_{i+1}\right)\right)+\int_{a_{i}}^{a_{i+1}}f\left(x\right)\mathrm{d}x
+\end{eqnarray*}
+
+
+\[
+\therefore\left|\int f\left(x\right)\mathrm{d}x-T_{N}\left(f\right)\right|\leq\int\left|f''\left(x\right)\frac{\left(x-a_{i}\right)\left(x-a_{_{i+1}}\right)}{2}\right|\mathrm{d}x
+\]
+
+
+$\left|f''\left(x\right)\right|\leq M$だったので、
+\begin{eqnarray*}
+\left|\text{誤差}\right| & \leq & M\sum\int_{a_{i}}^{a_{i+1}}\frac{\left(x-a_{i}\right)\left(x-a_{i+1}\right)}{2}\mathrm{d}x\\
+ & = & \frac{M}{12}\sum\left(a_{i+1}-a_{i}\right)^{3}\\
+ & = & \frac{M}{12}\left(Nh\right)h^{2}\\
+ & = & \frac{M}{12}h^{2}\left(b-a\right)\\
+ & = & \frac{M}{12}\left(b-a\right)^{3}\times\frac{1}{N^{2}}
+\end{eqnarray*}
+
+
+これが一般には最善の評価(optimal estimate)となる。
+
+また、$p'\left(x\right)$を$x$の多項式とすると
+\[
+\int p'\left(x\right)\log x\mathrm{d}x=p\left(x\right)\log x-\int p\left(x\right)\frac{\mathrm{d}x}{x}
+\]
+
+
+また、$\int p\left(x\right)\mathrm{e}^{x}\mathrm{d}x$に対しても
+
+\[
+\int p\left(x\right)\mathrm{e}^{x}\mathrm{d}x=\left[p\left(x\right)\mathrm{e}^{x}\right]-\int p'\left(x\right)\mathrm{e}^{x}\mathrm{d}x
+\]
+というように次数を下げていけば、多項式$\times\mathrm{e}^{x}$の形に積分できる。
+
+
+\paragraph{重積分}
+
+$\mathbb{R}^{2}\supset R=\left\{ \left(x,y\right)|a\leqq x\leqq b,c\leqq y\leqq d\right\} $(長方形)として、$R$上の有界関数の積分である。
+
+$f\left(x,y\right)$: $R$上定義された有界関数
+
+$\Delta$: 長方形$R$の小さな長方形への分割
+
+\[
+\Delta=\left\{ R_{ij}|R_{ij}=\left\{ \left(x,y\right)|a_{i-1}\leqq x\leqq a_{i},c_{j-1}\leqq y\leqq c_{j}\right\} \right\} 
+\]
+
+
+\[
+\underline{S}\left(\Delta,f\right)=\sum\inf_{\left(x,y\right)\in R_{ij}}f\left(x,y\right)\mathrm{Area}\left(R_{ij}\right)
+\]
+
+
+ここで$\mathrm{Area}\left(R_{ij}\right)=\left(a_{i}-a_{i-1}\right)\left(c_{j-1}-c_{j}\right)$である。
+
+$\Delta$をより細かく分割したものを$\Delta'$とする。
+
+\[
+\underline{S}\left(\Delta,f\right)\leqq\underline{S}\left(\Delta',f\right)
+\]
+
+
+$\overline{S}\left(\Delta,f\right)$: $\inf$を$\sup$に変えたもの
+
+\[
+\overline{S}\left(\Delta',f\right)\leqq\overline{S}\left(\Delta,f\right)
+\]
+
+
+$\Delta=\Delta_{0},\Delta_{1},\Delta_{2}\cdots$: 分割の細分の列
+
+\[
+\underline{S}\left(\Delta_{0},f\right)\leqq\cdots\leqq\underline{S}\left(\Delta_{n},f\right)\leqq\overline{S}\left(\Delta_{n},f\right)\leqq\cdots\leqq\overline{S}\left(\Delta_{0},f\right)
+\]
+
+
+$\Delta$を細かくした時の極限
+\[
+\overline{\int}_{R}f\left(x,y\right)\mathrm{d}x\mathrm{d}y=\lim_{\Delta}\overline{S}\left(\Delta,f\right)\geqq\lim_{\Delta}\underline{S}\left(\Delta,f\right)=\underline{\int}_{R}f\left(x,y\right)\mathrm{d}x\mathrm{d}y
+\]
+
+
+$\underline{S}=\overline{S}$が成立するとき$f$は\textbf{$R$}上積分可能(integrable)である。
+
+その値を
+\[
+\int_{R}f\left(x,y\right)\mathrm{d}x\mathrm{d}y
+\]
+と表記し、{[}重{]}積分({[}double{]} integral)と呼ぶ。
+
+
+\paragraph{命題}
+
+$f,g$は$R$上積分可能である。
+
+(1) $\alpha,\beta$: 定数
+\[
+\int_{R}\left(\alpha f+\beta g\right)\mathrm{d}x\mathrm{d}y=\alpha\int_{R}f\mathrm{d}x\mathrm{d}y+\beta\int_{R}g\mathrm{d}x\mathrm{d}y
+\]
+
+
+これを積分の線形性(liniauty)と呼ぶ。
+
+(2) $f\geqq0$なら
+\[
+\int_{R}f\mathrm{d}x\mathrm{d}y\geqq0
+\]
+
+
+これを積分の単調性(monotonicity)と呼ぶ。
+
+(3) $R=\sum R_{k}$: より小さい長方形への(重なりのない)分割
+
+⇒$f$は$R_{k}$上でも積分可能で
+\[
+\int_{R}f\mathrm{d}x\mathrm{d}y=\sum_{k}\int_{R_{k}}f\mathrm{d}x\mathrm{d}y
+\]
+
+
+これを積分領域に関する加法性(adidturity)と呼ぶ。
+
+(4) $\left|f\right|$も積分可能である。なぜなら
+\[
+\begin{cases}
+\sup\left|f\right|-\inf\left|f\right|\leqq\sup f-\inf f\\
+\overline{S}\left(\Delta,f\right)-\underline{S}\left(\Delta,f\right)=\sum\left(\sup f-\inf f\right)\mathrm{Area}\left(\sim\right)
+\end{cases}
+\]
+による。
+
+(5) $fg=f\left(x,y\right)g\left(x,y\right)$も積分可能。なぜなら$\left|f\right|,\left|g\right|\leqq M$とすると
+\[
+\sup fg-\inf g\leqq M\left(\sup f-\inf f\right)+M\left(\sup-\inf g\right)
+\]
+による。
+
+
+\paragraph{一般の有界集合$D$における積分}
+
+$D\subset R=\text{長方形}$とする。
+
+$f\left(x,y\right)$: $R$上定義された有界関数
+
+としたときの$\int_{D}f\left(x,y\right)\mathrm{d}x\mathrm{d}y$を定義する。このとき、まず次のような関数を定義する。
+
+$f$:$R$上有界として、$\left(x,y\right)\in R$上で
+\[
+\varphi_{D}\left(x,y\right)=\begin{cases}
+1 & \left(x,y\right)\in D\\
+0 & \left(x,y\right)\notin D
+\end{cases}
+\]
+と定義する。これを特性関数(characteristic function)と呼ぶ。(有界関数)
+
+\begin{eqnarray*}
+\underline{\int}_{R}\varphi_{D}\left(x,y\right)\mathrm{d}x\mathrm{d}y & \leftarrow & \sum\inf_{\left(x,y\right)\in R_{ij}}\varphi_{D}\left(x,y\right)\mathrm{Area}R_{ij}\\
+ & = & \sum_{R_{ij}\in D}\mathrm{Area}R_{ij}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+\overline{\int}_{R}\varphi_{D}\left(x,y\right) & \leftarrow & \sum\sup\varphi_{D}\left(x,y\right)\mathrm{Area}R_{IJ}\\
+ & = & \sum_{R_{IJ}\cap D\neq\phi}\mathrm{Area}R_{ij}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+\sum\left(\sup\varphi_{D}-\inf\varphi_{D}\right)\mathrm{Area}R_{ij} & = & \sum_{\begin{subarray}{c}
+R_{ij}\cap D\neq\phi\\
+R_{ij}\not\subset D
+\end{subarray}}\mathrm{Area}R_{ij}\\
+ & = & \sum_{R_{ij}\text{は}D\text{の境界点を含む}}\mathrm{Area}R_{ij}
+\end{eqnarray*}
+
+
+
+\paragraph{命題}
+
+\[
+\underline{\int}_{R}\varphi_{D}\left(x,y\right)\mathrm{d}x\mathrm{d}y=\overline{\int}_{R}\varphi_{D}\left(x,y\right)\mathrm{d}x\mathrm{d}y
+\]
+
+
+は「分割を細かくしたとき境界を含む小長方形の面積の和→0」と同値である。
+
+このとき$D$は面積確定(D is of definite area)と言い、$\int_{R}\varphi_{D}\left(x,y\right)\mathrm{d}x\mathrm{d}y$を$D$の面積(area)という。
+
+ここで$\underline{\int}_{R}\varphi_{D}\left(x,y\right)\mathrm{d}x\mathrm{d}y$を内面積(inner
+area)、$\overline{\int}_{R}\varphi_{D}\left(x,y\right)\mathrm{d}x\mathrm{d}y$を外面積(outer
+area)と呼ぶ。
+
+
+\paragraph{命題}
+
+$f,g$を連続関数とすると
+\[
+D=\left\{ \left(x,y\right)|a\leqq x\leqq b,f\left(x\right)\leqq y\leqq g\left(x\right)\right\} 
+\]
+は面積確定である。
+
+
+\paragraph{証明}
+
+$f\left(x\right),g\left(x\right)$: $\left[a,b\right]$上の連続関数で一様連続とすると、
+
+$\forall\varepsilon>0$に対してもある$\delta>0$があって
+\[
+\left|x_{1}-x_{2}\right|<\delta\Rightarrow\left|f\left(x_{1}\right)-f\left(x_{2}\right)\right|<\varepsilon
+\]
+
+
+少長方形の水平方向の長さを$\delta$以下、垂直方向の長さを$\varepsilon$以下とすると、
+
+上の境界と交わる長方形の面積の和$\leqq\left(b-a\right)\varepsilon$
+
+下の境界も同様となり、面積確定となる。
+
+
+\paragraph{命題}
+
+$D$: 面積確定
+
+$f$: $R$上連続
+
+\[
+\int_{D}f\mathrm{d}x\mathrm{d}y\left(=\int_{R}f\varphi_{D}\mathrm{d}x\mathrm{d}y\right)
+\]
+が存在し、$f$は$D$上積分可能
+
+$\because$
+
+$\varphi_{D}$: $R$上積分可能
+
+$f$: $R$上積分可能
+
+→$f\varphi_{D}$も積分可能
+
+
+\paragraph{命題}
+
+線形性・単調性・$D$の面積確定な分割に関する加法性も同様に成立する。
+
+
+\paragraph{命題}
+
+$f\left(x,y\right)$は$R$上連続
+
+$D\subset R$で、$g,h$は$x$の連続関数として、
+\[
+D=\left\{ a\leqq x\leqq b,g\left(x\right)\leqq y\leqq h\left(x\right)\right\} 
+\]
+とすると、
+\[
+\int_{D}f\left(x,y\right)\mathrm{d}x\mathrm{d}y=\int_{a}^{b}\left(\int_{g\left(x\right)}^{h\left(x\right)}f\left(x,y\right)\mathrm{d}y\right)\mathrm{d}x
+\]
+
+
+
+\paragraph{証明}
+
+$a\leqq t\leqq b$として
+\[
+D_{t}=\left\{ a\leqq x\leqq t,g\left(x\right)\leqq y\leqq h\left(x\right)\right\} 
+\]
+
+
+\[
+F\left(x\right)=\int_{D_{t}}f\left(x,y\right)\mathrm{d}x\mathrm{d}y
+\]
+とおく。
+
+\[
+F'\left(t\right)=\lim_{h>0}\frac{\int_{D_{t+h}}f\mathrm{d}x\mathrm{d}y-\int_{D_{t}}f\mathrm{d}x\mathrm{d}y}{h}
+\]
+
+
+\[
+\int_{D_{t+h}}f\mathrm{d}x\mathrm{d}y-\int_{D_{t}}f\mathrm{d}x\mathrm{d}y=\int_{D_{t+h}-D_{t}}f\mathrm{d}x\mathrm{d}y
+\]
+
+
+$h$は非常に小さいので、$t\leqq x\leqq t+h$より、
+\[
+\left|f\left(x,y\right)-f\left(t,y\right)\right|<\varepsilon
+\]
+
+
+\[
+\therefore\left|\int_{D_{t+h}-D_{t}}f\left(x,y\right)\mathrm{d}x\mathrm{d}y-\int_{D_{t+h}-D_{t}}f\left(t,y\right)\mathrm{d}x\mathrm{d}y\right|\leqq\varepsilon\left(h\left(t\right)-g\left(t\right)+\varepsilon\right)h
+\]
+
+
+\[
+F\left(x\right)=\int_{a}^{x}\left(\int_{g\left(x\right)}^{h\left(x\right)f\left(x,y\right)\mathrm{d}y}\mathrm{d}y\right)\mathrm{d}x
+\]
+
+
+累次積分(iterated integral)とよぶ。
+
+
+\paragraph{例 半円の面積}
+
+$0\leqq y\leqq\sqrt{r^{2}x^{2}}$
+
+\begin{eqnarray*}
+\int_{-r}^{r}\left(\int_{0}^{\sqrt{r^{2}-x^{2}}}1\mathrm{d}y\right)\mathrm{d}x & = & \int_{-r}^{r}\sqrt{r^{2}-x^{2}}\mathrm{d}x=\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\left(r\cos t\right)\left(r\cos t\right)\mathrm{d}t\\
+ & = & r^{2}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\cos^{2}t\mathrm{d}t\\
+ & = & r^{2}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\frac{\cos2t+1}{2}\mathrm{d}t\\
+ & = & \frac{\pi r^{2}}{2}
+\end{eqnarray*}
+
+
+
+\paragraph{半球の体積}
+
+\[
+\int_{D}\sqrt{1-x^{2}-y^{2}}\mathrm{d}x\mathrm{d}y=\int_{-1}^{1}\left(\int_{-\sqrt{1-x^{2}}}^{\sqrt{1-x^{2}}}\sqrt{1-x^{2}-y^{2}}\mathrm{d}y\right)\mathrm{d}x
+\]
+
+
+
+\paragraph{変数変換}
+
+一変数の場合
+
+$x=\varphi\left(t\right),\varphi\left(\alpha\right)=a,\varphi\left(\beta\right)=b$とする
+
+\[
+\int_{a}^{b}f\left(x\right)\mathrm{d}x=\int_{\alpha}^{\beta}f\left(\varphi\left(t\right)\right)\varphi'\left(t\right)\mathrm{d}t
+\]
+
+
+$a_{0},a_{1},\cdots,a_{N}$: $\left[a,b\right]$の分割
+
+$\alpha_{0},\alpha_{1},\cdots,\alpha_{N}$: $\left[\alpha,\beta\right]$の対応する分割
+
+とすると、
+\[
+\left(a_{k}-a_{k-1}\right)\doteqdot\varphi'\left(\alpha_{k}\right)\left(\alpha_{k}-\alpha_{k-1}\right)
+\]
+
+
+\[
+\sum f\left(a_{k}\right)\left(a_{k}-a_{k-1}\right)\doteqdot\sum f\left(\varphi\left(\alpha_{k}\right)\right)\varphi\left(\alpha_{k}\right)\left(\alpha_{k}-\alpha_{k-1}\right)
+\]
+
+
+\[
+\left(\rightarrow\int f\mathrm{d}t\doteqdot\int f\left(\varphi\left(t\right)\right)\varphi'\left(t\right)\mathrm{d}t\right)
+\]
+
+
+
+\paragraph{二変数の場合}
+
+\[
+\begin{cases}
+x=\varphi\left(s,t\right)\\
+y=\xi\left(s,t\right)
+\end{cases}
+\]
+
+
+$\varphi,\xi$: $C^{1}$級
+
+$\left(s,t\right)$: 小さな長方形$R=\left\{ \alpha\leqq s\leqq\alpha+\delta,\beta\leqq t\leqq\beta+\varepsilon\right\} $上を動くとする。
+
+\begin{eqnarray*}
+x & \doteqdot & \varphi\left(\alpha,\beta\right)+\varphi_{s}\left(\alpha,\beta\right)\left(s-\alpha\right)+\varphi_{t}\left(\alpha,\beta\right)\left(t-\beta\right)\\
+y & \doteqdot & \xi\left(\alpha,\beta\right)+\xi_{s}\left(\alpha,\beta\right)\left(s-\alpha\right)+\xi_{t}\left(\alpha,\beta\right)\left(t-\beta\right)
+\end{eqnarray*}
+
+
+$x,y$はほぼ平行四辺形の内部を動く事がわかる。
+
+その4頂点は$\left(\varphi\left(\alpha,\beta\right),\xi\left(\alpha,\beta\right)\right)$,$\left(\varphi\left(\alpha,\beta\right)+\delta\varphi_{s}\left(\alpha,\beta\right),\xi\left(\alpha,\beta\right)+\delta\xi_{s}\left(\alpha,\beta\right)\right)$,$\left(\varphi\left(\alpha,\beta\right)+\varepsilon\varphi_{t}\left(\alpha,\beta\right),\xi\left(\alpha,\beta\right)+\varepsilon\xi_{t}\left(\alpha,\beta\right)\right)$,$\left(\varphi\left(\alpha,\beta\right)+\delta\varphi_{s}\left(\alpha,\beta\right)+\varepsilon\varphi_{t}\left(\alpha,\beta\right),\xi\left(\alpha,\beta\right)+\delta\xi_{s}\left(\alpha,\beta\right)+\varepsilon\xi_{t}\left(\alpha,\beta\right)\right)$となり、面積は
+\[
+\left|\det\left(\begin{array}{cc}
+\delta\varphi_{s} & \varepsilon\varphi_{t}\\
+\delta\xi_{s} & \varepsilon\xi_{t}
+\end{array}\right)\right|=\delta\varepsilon\left|\det\left(\begin{array}{cc}
+\varphi_{s} & \varphi_{t}\\
+\xi_{s} & \xi_{t}
+\end{array}\right)\right|
+\]
+
+
+同様に$\left(s,t,u\right)$空間の領域$\Gamma$が、
+\[
+x=x\left(s,t,u\right)
+\]
+\[
+y=y\left(s,t,u\right)
+\]
+\[
+z=z\left(s,t,u\right)
+\]
+によって$\left(x,y,z\right)$空間の$D$に一対一で写されるとすると、
+\[
+\int_{D}f\left(x,y,z\right)\mathrm{d}x\mathrm{d}y\mathrm{d}z=\int_{\Gamma}f\left(x\left(s,t,u\right),y\left(s,t,u\right),z\left(s,t,u\right)\right)\left|\det\left(\begin{array}{ccc}
+x_{s} & x_{t} & x_{u}\\
+y_{s} & y_{t} & y_{u}\\
+z_{s} & z_{t} & z_{u}
+\end{array}\right)\right|\mathrm{d}s\mathrm{d}t\mathrm{d}u
+\]
+
+
+と表せる。
+
+
+\paragraph{例}
+
+\[
+\begin{cases}
+x=r\cos\theta\\
+y=r\sin\theta
+\end{cases}
+\]
+
+
+$r,\theta$: 新しい変数
+
+\[
+\begin{cases}
+x_{r}=\cos\theta\\
+x_{\theta}=-r\sin\theta\\
+y_{r}=\sin\theta\\
+y_{\theta}=r\cos\theta
+\end{cases}
+\]
+
+
+\[
+\det\left(\begin{array}{cc}
+x_{r} & x_{\theta}\\
+y_{r} & t_{\theta}
+\end{array}\right)=r
+\]
+
+
+\[
+\int_{D}f\left(x,y\right)\mathrm{d}x\mathrm{d}y=\int_{G}f\left(x\left(s,t\right),y\left(s,t\right)\right)\left|\det\left(\begin{array}{cc}
+x_{s} & x_{t}\\
+y_{s} & y_{t}
+\end{array}\right)\right|\mathrm{d}s\mathrm{d}t
+\]
+
+
+\begin{eqnarray*}
+\int_{D_{R}}\mathrm{e}^{x^{2}+y^{2}}\mathrm{d}x\mathrm{d}y & = & \int_{G}\mathrm{e}^{r^{2}}r\mathrm{d}r\mathrm{d}\theta\\
+ & = & \int_{0}^{2\pi}\left(\int_{0}^{R}\mathrm{e}^{r^{2}}r\mathrm{d}r\right)\mathrm{d}\theta\\
+ & = & 2\pi\int_{0}^{R}\mathrm{e}^{r^{2}}r\mathrm{d}r\\
+ & = & 2\pi\int_{0}^{R^{2}}\mathrm{e}^{s}\frac{\mathrm{d}s}{2}\\
+ & = & \pi\left[\mathrm{e}^{s}\right]_{0}^{R^{2}}\\
+ & = & \pi\left(\mathrm{e}^{R^{2}}-1\right)
+\end{eqnarray*}
+
+
+途中$r^{2}=s$とおいた。
+
+ここで$\Gamma=\left(0\leqq r\leqq R,0\leqq\theta\leqq2\pi\right)$として
+\[
+\left(\int_{-A}^{A}\mathrm{e}^{-x^{2}}\mathrm{d}x\right)\left(\int_{-A}^{A}\mathrm{e}^{-y^{2}}\mathrm{d}y\right)=\int_{D}\mathrm{e}^{-\left(x^{2}+y^{2}\right)}\mathrm{d}x\mathrm{d}y
+\]
+
+
+\begin{eqnarray*}
+\pi\left(1-\mathrm{e}^{-\frac{A^{2}}{2}}\right) & = & \int_{D'}\left(\sim\right)\mathrm{d}x\mathrm{d}y\\
+ & \leqq & \int_{D}\left(\sim\right)\mathrm{d}x\mathrm{d}y\\
+ & \leqq & \int_{D''}\left(\sim\right)\mathrm{d}x\mathrm{d}y\\
+ & = & \pi\left(1-\mathrm{e}^{-A}\right)
+\end{eqnarray*}
+
+
+\[
+\sqrt{\pi}\sqrt{1-\mathrm{e}^{-\frac{A^{2}}{2}}}\leqq\int_{-A}^{A}\mathrm{e}^{-x^{2}}\mathrm{d}x\leqq\sqrt{\pi}\sqrt{1-\mathrm{e}^{-A^{2}}}
+\]
+
+
+\[
+\int_{-\infty}^{\infty}\mathrm{e}^{-x^{2}}\mathrm{d}x=\lim_{A\rightarrow\infty}\int_{-A}^{A}\mathrm{e}^{-x^{2}}\mathrm{d}x=\sqrt{\pi}
+\]
+
+
+$f\left(x\right)=\frac{\mathrm{e}^{-x^{2}}}{\sqrt{\pi}}$のグラフを考える。まず幅を$\sqrt{t}$倍したもののグラフを考えて
+\[
+\frac{1}{\sqrt{\pi}}\mathrm{e}^{-\left(\frac{x}{\sqrt{t}}\right)^{2}}=f\left(t,x\right)
+\]
+とおく。ここで$f\left(x\right)=f\left(1,x\right)$
+
+横を$\sqrt{t}$倍すると
+\[
+f\left(t,\sqrt{t}x\right)=\frac{1}{\sqrt{\pi}}\mathrm{e}^{-x}=f\left(x\right)
+\]
+
+
+$g\left(t,x\right)=\frac{\mathrm{e}^{-\frac{x^{2}}{t}}}{\sqrt{\pi t}}$とおくと、
+\[
+\int_{-\infty}^{\infty}g\left(t,x\right)\mathrm{d}x=1
+\]
+
+
+$g\left(t,x\right)$を正規分布関数という。通常パラメーターを取り替えて、
+\[
+N\left(\sigma,x\right)=\frac{1}{\sqrt{2\pi}\sigma}\mathrm{e}^{-\frac{1}{2}\frac{x^{2}}{\sigma}}
+\]
+と表記する。これは平均値0、標準偏差$\sigma$の正規分布関数である。
+
+また$\sigma=\sqrt{\frac{t}{2}}$とおいて、
+\[
+N\left(\mu,\sigma,x\right)=\frac{1}{\sqrt{2\pi}\sigma}\mathrm{e}^{-\frac{\left(x-\mu\right)^{2}}{2\sigma^{2}}}
+\]
+は平均値$\mu$、標準偏差$\sigma$の正規分布関数である。
+
+また、
+
+\[
+F\left(t,x\right)=\frac{\mathrm{e}^{-\frac{x^{2}}{4t}}}{1\sqrt{\pi}\sqrt{t}}
+\]
+は、$F_{t}=F_{xx}$を満たす。
+
+すなわち
+\[
+\left(\frac{\partial}{\partial t}-\frac{\partial^{2}}{\partial x^{2}}\right)F=0
+\]
+
+
+これは一次元熱方程式という。
+
+$\because$)
+
+\[
+\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{1}{\sqrt{t}}\right)=-\frac{1}{2t}\left(\frac{1}{\sqrt{t}}\right)
+\]
+を用いて、
+\[
+F_{t}=\left(-\frac{1}{2t}+\frac{x^{2}}{4t^{2}}\right)F
+\]
+\[
+F_{x}=-\frac{x}{2t}F
+\]
+\[
+F_{xx}=\left(-\frac{1}{2t}+\left(\frac{x}{2t}\right)^{2}\right)F=F_{t}
+\]
+
+
+
+\paragraph{熱方程式の意味}
+
+時刻$t$での直線上の温度分布を$F\left(t,x\right)$とする。$t$から$t+\Delta t$の間に右から区間に流れこむ熱量は$\text{定数}\times F_{x}\left(t,x+\Delta x\right)\Delta t$、右から流れだす熱量は$\text{定数}\times F_{x}\left(t,x\right)\Delta t$とできて、熱の増加は
+\[
+\text{定数}\times\left(F_{x}\left(t,x+\Delta x\right)-F_{x}\left(t,x\right)\right)\Delta t\doteqdot\text{定数}\times F_{xx}\left(t,x\right)\Delta x\Delta t
+\]
+
+
+温度の増加は
+\[
+\text{定数}\times F_{xx}\left(t,x\right)\Delta t
+\]
+
+
+従って
+\[
+F_{t}\left(x,y\right)=F_{xx}\left(x,y\right)
+\]
+
+
+これは温度分布の時間変化を表す。
+
+
+\paragraph{別の解釈(random walk)}
+
+たくさんの粒子が時間$\Delta t$ごとに左右のどちらかに確立$\frac{1}{2}$で動く(Brownian motion)。
+
+直線を細かい区間$\varepsilon$に分割し、区間に含まれる粒子の個数を$F\left(t,n\right)$とすると、右から流入する粒子数の期待値は
+\[
+\frac{1}{2}F\left(t,n+1\right)
+\]
+左から流入する粒子数の期待値は
+\[
+\frac{1}{2}F\left(t,n-1\right)
+\]
+
+
+出て行く個数の期待値は
+\[
+F\left(t,n\right)
+\]
+
+
+よって、単位時間あたりの増加数は
+\[
+\frac{1}{2}F\left(t,n+1\right)+\frac{1}{2}F\left(t,n-1\right)-F\left(t,n\right)
+\]
+
+
+$F\left(t,n\right)$が$F\left(t,x\right)$(2回微分できる関数)に$x=n$を代入したものだと考えると、
+\[
+\frac{1}{2}F\left(t,n+1\right)+\frac{1}{2}F\left(t,n-1\right)-F\left(t,n\right)\doteqdot F_{xx}\left(t,n\right)
+\]
+
+
+従って
+\[
+F_{t}\left(t,x\right)=F_{xx}\left(t,x\right)
+\]
+
+
+拡散方程式とも言う。
+
+\begin{eqnarray*}
+\sigma^{G} & = & \left(\int_{-\infty}^{\infty}\frac{x^{2}\mathrm{e}^{\frac{x^{2}}{2\sigma^{2}}}}{\sqrt{2\pi\sigma^{2}}}\mathrm{d}x\right)^{2}\\
+ & = & \int_{\mathbb{R^{2}}}\frac{x^{2}y^{2}\mathrm{e}^{-\frac{x^{2}+y^{2}}{2\sigma^{2}}}}{2\pi\sigma^{2}}\mathrm{d}x\mathrm{d}y\\
+ & = & \int_{\Gamma}\frac{r^{4}\cos^{2}\theta\sin^{2}\theta\mathrm{e}^{-\frac{r^{2}}{2\sigma^{2}}}}{2\pi\sigma^{2}}r\mathrm{d}r\mathrm{d}\theta\\
+ & = & \left(\int_{0}^{2\pi}\cos^{2}\theta\sin^{2}\theta\mathrm{d}\theta\right)\left(\int_{0}^{\infty}\frac{r^{4}\mathrm{e}^{-\frac{r^{2}}{2\sigma^{2}}}r}{2\pi\sigma^{2}}\mathrm{d}r\right)\\
+ & = & \sigma^{4}
+\end{eqnarray*}
+
+
+\[
+N_{x}\left(\sigma,x\right)=-\frac{x}{\sigma^{2}}N\left(\sigma,x\right)
+\]
+
+
+\[
+N_{xx}\left(\sigma,x\right)=\left(-\frac{x}{\sigma^{2}}+\frac{x^{2}}{\sigma^{4}}\right)N\left(\sigma,x\right)
+\]
+
+
+\[
+N_{xx}=0\Leftrightarrow x=\pm\sigma
+\]
+
+
+$t\rightarrow\infty$にすると$\rightarrow0$
+
+$t\rightarrow0$にすると熱$\frac{1}{\sqrt{2\pi t}}\mathrm{e}^{-\frac{x^{2}}{t}}$が一点に集中する。
+
+
+\paragraph{広義積分と応用}
+
+一変数における、今までの微分は、
+
+$\left[a,b\right]$ 有限用区間
+
+$f\left(x\right)$ 有界関数
+
+などに限られていた。これを一般化して、$\left(a,b\right)$上の(非)有界関数の積分などを定義したい。
+
+
+\paragraph{例}
+
+$\left(0,1\right]$, $\int_{0}^{1}\frac{\mathrm{d}x}{\sqrt{x}}$
+
+$\varepsilon>0$として、
+\[
+\int_{\varepsilon}^{1}\frac{\mathrm{d}x}{\sqrt{x}}=\left[2\sqrt{x}\right]_{\varepsilon}^{1}=2-2\sqrt{2}\rightarrow2\left(\varepsilon\rightarrow0\right)
+\]
+というようにしたい。
+
+
+\paragraph{定義}
+
+$I=\begin{cases}
+\left(a,b\right]\\
+\left[a,b\right)\\
+\left(a,b\right)
+\end{cases}$上の関数$ $$f\left(x\right)$に対し、()
+\begin{enumerate}
+\item $I$に含まれる任意の有限閉区間$I'$に対し、$f$は$I'$上有界で、積分可能
+\item $h,k>0$に対し、
+\[
+\lim_{h\rightarrow0}\int_{a+h}^{b}f\left(x\right)\mathrm{d}x
+\]
+\[
+\lim_{k\rightarrow0}\int_{a}^{b-k}f\left(x\right)\mathrm{d}x
+\]
+\[
+\lim_{k\rightarrow0,h\rightarrow0}\int_{a+h}^{b-k}f\left(x\right)\mathrm{d}x
+\]
+が存在
+\end{enumerate}
+が成立するとき、極限値を広義積分(inproper integral)といい、
+\[
+\int_{a}^{b}f\left(x\right)\mathrm{d}x
+\]
+
+
+
+\paragraph{例}
+
+\[
+\int_{1}^{b}x^{\alpha}\mathrm{d}x=\begin{cases}
+\left[\frac{x^{1+\alpha}}{1+\alpha}\right]_{1}^{b} & \alpha\neq-1\\
+\left[\log x\right]_{1}^{b} & \alpha=-1
+\end{cases}
+\]
+
+
+$b\rightarrow\infty$の極限がある⇔$\alpha<-1$
+
+このとき、$\int_{1}^{\infty}x^{\alpha}\mathrm{d}x=\frac{-1}{1+\alpha}$
+
+\[
+\int_{0}^{1}\frac{\mathrm{d}x}{\sqrt{1-x^{2}}}
+\]
+
+
+\[
+\int_{h}^{1-k}\frac{\mathrm{d}x}{\sqrt{1-x^{2}}}=\left[\arcsin x\right]_{h}^{1-k}\rightarrow\frac{\pi}{2}-0=\frac{\pi}{2}\left(k\rightarrow0,h\rightarrow0\right)
+\]
+
+
+
+\paragraph{定理(Cauchyの判定条件)}
+
+$\left[a,b\right)$上の関数で先の条件を満たすもの
+
+$\lim_{k\rightarrow0}\int_{a}^{b-k}f\left(x\right)\mathrm{d}x$が存在⇔どんな$\varepsilon>0$に対してもある$\delta>0$があって、$0<k_{1}<k_{2}<\delta$ならば、
+\[
+\left|\int_{a}^{b-k_{2}}f\left(x\right)\mathrm{d}x-\int_{a}^{b-k_{1}}f\left(x\right)\mathrm{d}x\right|=\left|\int_{b-k_{2}}^{b-k_{1}}f\left(x\right)\mathrm{d}x\right|<\varepsilon
+\]
+
+
+
+\paragraph{系}
+
+$f\left(x\right)$は$\left[a,b\right)$上の関数で条件を満たす$\int_{a}^{b}\left|f\left(x\right)\right|\mathrm{d}x$があれば$\int_{a}^{b}f\left(x\right)\mathrm{d}x$もある。
+
+$\because$
+\begin{eqnarray*}
+\int_{a}^{b}\left|f\left(x\right)\right|\mathrm{d}x\text{が存在} & \Leftrightarrow & \int_{b-k_{2}}^{b-k_{1}}\left|f\left(x\right)\right|\mathrm{d}x\rightarrow0\\
+ & \Rightarrow & 0\leqq\left|\int_{b-k_{2}}^{b-k_{1}}f\left(x\right)\mathrm{d}x\right|\leqq\int_{b-k_{2}}^{b-k_{1}}\left|f\left(x\right)\right|\mathrm{d}x\rightarrow0
+\end{eqnarray*}
+
+
+
+\paragraph{例}
+
+$\int_{\pi}^{\infty}\frac{\sin x}{x}\mathrm{d}x$は存在
+
+$\int_{\pi}^{\infty}\frac{\left|\sin x\right|}{x}\mathrm{d}x$は$\infty$に発散
+
+逆は成立しない。
+
+
+\paragraph{系}
+
+$\left[a,b\right)$上の連続関数$f\left(x\right)$に対し、$x$が$b$に近いとき、$\left|f\left(x\right)\right|<\left(b-x\right)^{\alpha}$,
+$\alpha>-1$が成立していれば、$\int_{a}^{b}f\left(x\right)\mathrm{d}x$は存在。$\left(b\neq\infty\right)$
+
+$\because$
+
+\begin{eqnarray*}
+\int_{b-k_{2}}^{b-k_{1}}\left|f\left(x\right)\right|\mathrm{d}x & \leqq & \int_{b-k_{2}}^{b-k_{1}}\left(b-x\right)^{\alpha}\mathrm{d}x\\
+ & = & \left[-\frac{\left(b-x\right)^{1+\alpha}}{1+\alpha}\right]_{b-k_{2}}^{b-k_{1}}\\
+ & = & \frac{k_{2}^{1+\alpha}-k_{1}^{1+\alpha}}{a+\alpha}\rightarrow0
+\end{eqnarray*}
+
+
+$\left[a,+\infty\right)$については、$x$が十分大きいとき、$\left|f\left(x\right)\right|\leqq x^{\alpha}$なら$\int_{a}^{\infty}f\left(x\right)\mathrm{d}x$が存在。
+
+\[
+\int_{N}^{M}f\left(x\right)\mathrm{d}x=\left[\frac{x^{1+\alpha}}{1+\alpha}\right]_{N}^{M}\rightarrow\frac{M^{1+\alpha}+N^{1+\alpha}}{1+\alpha}\rightarrow0
+\]
+
+
+
+\paragraph{例}
+
+$\left(0,\frac{\pi}{4}\right]$上の関数$\int_{0}^{\frac{\pi}{4}}\log\sin x\mathrm{d}x$は存在。
+
+$0<\beta<1$である$x^{-\beta}$に対し、$\left|\log\sin x\right|<x^{-\beta}$($x>0$が十分0に近いとき)
+
+\[
+\sin x=x\frac{\sin x}{x}
+\]
+
+
+\[
+\log\sin x=\log x+\log\frac{\sin x}{x}
+\]
+
+
+\[
+x^{\beta}\log x\rightarrow0
+\]
+
+
+\[
+x^{\beta}\log\frac{\sin x}{x}\rightarrow0
+\]
+
+
+\[
+\therefore x^{\beta}\left|\log x\right|\rightarrow0
+\]
+
+
+
+\paragraph{多変数の場合}
+
+$f\left(x,y\right)$: 面積(体積)$D$上の関数
+
+$D$の中の面積確定の有界閉領域$D'$については$\int_{D'}f\left(x\right)\mathrm{d}x$が存在すると仮定。($f\left(x\right)$が連続ならOK)
+
+\[
+\mathrm{Area}\left(D'\right)<\mathrm{Area}\left(D\right)
+\]
+
+
+\[
+\mathrm{Area}\left(D'_{k}\right)\rightarrow\mathrm{Area}\left(D\right)
+\]
+であるとき、($D_{1}'\subset D_{2}'\subset\cdots\subset D$)
+\[
+\int_{D_{k}'}\left|f\left(x,y\right)\right|\mathrm{d}x\mathrm{d}y
+\]
+の極限があるとき、
+\[
+\lim\int_{D_{k}'}f\left(x,y\right)
+\]
+が存在し、それを$f\left(x,y\right)$の$D$上の広義積分という。
+
+存在することの証明)
+
+$m>n$として、
+\begin{eqnarray*}
+\left|\int_{D_{m}'}f\left(x,y\right)\mathrm{d}x\mathrm{d}y-\int_{D_{n}'}f\left(x,y\right)\mathrm{d}x\mathrm{d}y\right| & = & \left|\int_{D_{m}'\backslash D_{n}'}f\left(x,y\right)\mathrm{d}x\mathrm{d}y\right|\\
+ & \leq & \int_{D_{m}'\backslash D_{n}'}\left|f\left(x,y\right)\right|\mathrm{d}x\mathrm{d}y\\
+ & = & \int_{D_{m}'}\left|f\right|\mathrm{d}x\mathrm{d}y-\int_{D_{n}'}\left|f\right|\mathrm{d}x\mathrm{d}y\\
+ & \rightarrow & 0
+\end{eqnarray*}
+
+
+
+\paragraph{例}
+
+\[
+\int_{\mathbb{R}^{2}}\mathrm{e}^{-x^{2}-y^{2}}\mathrm{d}x\mathrm{d}y=\pi
+\]
+
+
+
+\paragraph{定義}
+
+$x>0$, $\Gamma\left(x\right)=\int_{0}^{\infty}\mathrm{e}^{-t}t^{x-1}\mathrm{d}t$とする。
+
+ここで$\int_{0}^{\infty}\mathrm{e}^{-t}t^{x-1}\mathrm{d}t$は、$t=0$の近くでは$\mathrm{e}^{-t}\approx1$,
+$ $$t^{x-1}$積分できる
+
+$t\rightarrow\infty$のときは、$\mathrm{e}^{-t}t^{x-1}<t^{-2}$となり、広義積できる。
+
+このとき、$\Gamma\left(x\right)$をガンマ関数(Gamma function)と呼ぶ。
+
+
+\paragraph{定義}
+
+$x,y>0$
+
+\[
+B\left(x,y\right)=\int_{0}^{1}t^{x-1}\left(1-t\right)^{y-1}\mathrm{d}t
+\]
+
+
+これをベータ関数(Beta function)と呼ぶ。
+
+
+\paragraph{命題}
+\begin{enumerate}
+\item $\Gamma\left(1\right)=1$, $\Gamma\left(\frac{1}{2}\right)=\sqrt{\pi}$
+\item $\Gamma\left(x\right)>0$
+\item $\Gamma\left(x+1\right)=x\Gamma\left(x\right)$, $\Gamma\left(n+1\right)=n!$($n$は正の整数)
+\item $\Gamma\left(x\right)=2\int_{0}^{\infty}\mathrm{e}^{-r^{2}}r^{2x-1}\mathrm{d}r$
+\end{enumerate}
+
+\paragraph{証明}
+
+2.は被積分関数(integrand)が正であることからいえる。
+
+1.の前半:
+\[
+\Gamma\left(-1\right)=\int_{0}^{\infty}\mathrm{e}^{-t}\mathrm{d}t=\left[-\mathrm{e}^{t}\right]_{0}^{\infty}=1
+\]
+
+
+3:
+\[
+\Gamma\left(x+1\right)=\int_{0}^{\infty}\mathrm{e}^{-t}t^{x}\mathrm{d}t=\left[-\mathrm{e}^{-t}t^{x}\right]_{0}^{\infty}+x\int_{0}^{\infty}\mathrm{e}^{-t}t^{x-1}\mathrm{d}t=x\Gamma\left(x\right)
+\]
+
+
+4: $t=r^{2}$とおく。
+
+\begin{eqnarray*}
+\Gamma\left(x\right) & = & \int_{0}^{\infty}\mathrm{e}^{-t}t^{x-1}\mathrm{d}t\\
+ & = & \int_{0}^{\infty}\mathrm{e}^{-r^{2}}r^{2x-2}2r\mathrm{d}r\\
+ & = & 2\int_{0}^{\infty}\mathrm{e}^{-r}r^{2x-1}\mathrm{d}r
+\end{eqnarray*}
+
+
+1.の後半:
+\begin{eqnarray*}
+\Gamma\left(\frac{1}{2}\right) & = & 2\int_{0}^{\infty}\mathrm{e}^{-r^{2}}\mathrm{d}r\\
+ & = & \int_{-\infty}^{\infty}\mathrm{e}^{-r^{2}}\mathrm{d}r\\
+ & = & \sqrt{\pi}
+\end{eqnarray*}
+
+
+
+\paragraph{定理}
+\begin{enumerate}
+\item $B\left(x,y\right)=2\int_{0}^{\frac{\pi}{2}}\sin^{2x-1}\theta\cos^{2y-1}\theta\mathrm{d}\theta$
+\item $B\left(x,y\right)=\frac{\Gamma\left(x\right)\Gamma\left(y\right)}{\Gamma\left(x+y\right)}$
+\end{enumerate}
+
+\paragraph{証明}
+
+1:
+\[
+B\left(x,y\right)=\int_{0}^{1}t^{x-1}\left(1-t\right)^{y-1}\mathrm{d}t
+\]
+
+
+$t=\sin^{2}\theta$とおく。
+
+\[
+1-t=\cos^{2}\theta
+\]
+
+
+\begin{eqnarray*}
+B\left(x,y\right) & = & \int_{0}^{\frac{\pi}{2}}\sin^{2x-2}\theta\cos^{2y-2}\theta2\sin\theta\cos\theta\mathrm{d}\theta\\
+ & = & 2\int_{0}^{\frac{\pi}{2}}\sin^{2x-1}\theta\cos^{2y-1}\theta\mathrm{d}\theta
+\end{eqnarray*}
+
+
+2: 第一象限の領域を$D$とする。
+\begin{eqnarray*}
+\Gamma\left(x\right)\Gamma\left(y\right) & = & 4\int_{0}^{\infty}\mathrm{e}^{-s^{2}}s^{2x-1}\mathrm{d}s\int_{0}^{\infty}\mathrm{e}^{-t^{2}}t^{2y-1}\mathrm{d}t\\
+ & = & 4\int_{D}\mathrm{e}^{-\left(s^{2}+t^{2}\right)}s^{2x-1}t^{2y-1}\mathrm{d}s\mathrm{d}t
+\end{eqnarray*}
+
+
+極座標を用いて$\begin{cases}
+s=r\cos\theta\\
+t=r\sin\theta
+\end{cases}$とおく。このとき$D$は$\begin{cases}
+0<r<\infty\\
+0<\theta<\frac{\pi}{2}
+\end{cases}$となる。
+
+\begin{eqnarray*}
+\Gamma\left(x\right)\Gamma\left(y\right) & = & 2\int_{r=0}^{\infty}\mathrm{e}^{-r^{2}}r^{2x+2y-2}r\mathrm{d}r\times2\int_{0}^{2\pi}\cos^{2x-1}\theta\sin^{2y-1}\theta\mathrm{d}\theta\\
+ & = & \Gamma\left(x+y\right)B\left(x,y\right)
+\end{eqnarray*}
+
+
+\[
+\therefore B\left(x,y\right)=\frac{\Gamma\left(x\right)\Gamma\left(y\right)}{\Gamma\left(x+y\right)}
+\]
+
+
+
+\paragraph{例}
+\begin{enumerate}
+\item 
+\[
+\int_{0}^{\frac{\pi}{2}}\sin^{2x-1}\theta\cos^{2y-1}\theta\mathrm{d}\theta=\frac{1}{2}B\left(x,y\right)=\frac{\Gamma\left(x\right)\Gamma\left(y\right)}{2\Gamma\left(x+y\right)}
+\]
+\[
+\int_{0}^{\frac{\pi}{2}}\sin^{n}\theta\mathrm{d}\theta=\frac{1}{2}B\left(\frac{n+1}{2},\frac{1}{2}\right)=\frac{\sqrt{\pi}\Gamma\left(\frac{n+1}{2}\right)}{2\Gamma\left(\frac{n}{2}+1\right)}
+\]
+\end{enumerate}
+\begin{itemize}
+\item $\Gamma\left(n\right)=\left(n-1\right)!$
+\item $\Gamma\left(n+\frac{1}{2}\right)=\left(n-\frac{1}{2}\right)\left(n-\frac{3}{2}\right)\cdots\frac{1}{2}\Gamma\left(\frac{1}{2}\right)=\sqrt{\pi}\left(n-\frac{1}{2}\right)\cdots\frac{1}{2}$
+\end{itemize}
+\[
+\int_{0}^{\frac{1}{2}}\sin^{n}\theta\mathrm{d}\theta=\begin{cases}
+\frac{\left(2m-1\right)!!}{\left(2m\right)!!}\frac{\pi}{2} & n=2m\\
+\frac{\left(2m\right)!!}{\left(2m+1\right)!!}
+\end{cases}
+\]
+
+
+ただしここで$\left(2m\right)!!=2m\left(2m-2\right)\left(2m-4\right)\cdots2$,
+$\left(2m+1\right)!!=\left(2m+1\right)\left(2m-1\right)\cdots1$
+
+
+\paragraph{応用}
+
+(1) $n$次元の球の体積
+
+\[
+B_{r}^{n}=\left\{ \left(x_{1},\cdots,x_{n})|x_{1}^{2}+x_{2}^{2}+\cdots+x_{n}^{2}\leqq r^{2}\right)\right\} 
+\]
+を半径$r$の$n$次元球体(n-dimentional ball of radius r)とする。
+
+1次元の球: $-r\leqq x_{1}\leqq r$ 長さ$2r$の線分
+
+2次元の球: 半径$r$の円 面積$\pi r^{2}$
+
+$B_{r}^{n}$の体積を$V_{n,r}$とすると、
+\[
+V_{n,r}=r^{n}V_{n,1}=r^{n}V_{n}
+\]
+
+
+\[
+B_{r}^{n}=\left\{ -r\leqq x_{n}\leqq r,x_{1}^{2}+\cdots+x_{n-1}^{2}\leqq r^{2}-x_{n}^{2}\right\} 
+\]
+
+
+\[
+B_{r}^{n}\cap\left\{ x_{n}=a\right\} =B_{\sqrt{r^{2}-a^{2}}}^{n-1}
+\]
+
+
+よって、$r=1$である$B_{\sqrt{1-a^{2}}}^{n-1}$では、
+\[
+V=\left(1-a^{2}\right)^{n-1}V_{n-1}
+\]
+となる。
+
+\[
+V_{n}=\int_{-1}^{1}\left(\sqrt{1-y^{2}}\right)^{n-1}V_{n-1}\mathrm{d}y
+\]
+
+
+$y=x_{n}=\sin\theta$, $\mathrm{d}y=\cos\theta\mathrm{d}\theta$より、
+\begin{eqnarray*}
+V_{n} & = & V_{n-1}\times2\int_{0}^{\frac{\pi}{2}}\cos^{n-1}\theta\cos\theta\mathrm{d}\theta\\
+ & = & V_{n-1}\times B\left(\frac{n+1}{2},\frac{1}{2}\right)
+\end{eqnarray*}
+
+
+$n\geqq3$とすると、
+\begin{eqnarray*}
+V_{n} & = & V_{n-1}B\left(\frac{n+1}{2},\frac{1}{2}\right)\\
+ & = & V_{n-2}B\left(\frac{n}{2},\frac{1}{2}\right)B\left(\frac{n+1}{2},\frac{1}{2}\right)\\
+ & = & V_{n-2}\frac{\Gamma\left(\frac{n}{2}\right)\Gamma\left(\frac{1}{2}\right)}{\Gamma\left(\frac{n+1}{2}\right)}\frac{\Gamma\left(\frac{n+1}{2}\right)\Gamma\left(\frac{1}{2}\right)}{\Gamma\left(\frac{n}{2}+1\right)}\\
+ & = & \frac{2\pi}{n}V_{n-2}
+\end{eqnarray*}
+
+
+よって、
+\[
+V_{3}=\frac{2\pi}{3}\times V_{1}=\frac{4}{3}\pi,V_{5}=\frac{2\pi}{5}\times\frac{4\pi}{3}=\frac{8\pi^{2}}{15},\cdots
+\]
+\[
+V_{4}=\frac{2\pi}{4}\times V_{2}=\frac{\pi^{2}}{2},V_{6}=\frac{2\pi}{6}\times V_{4}=\frac{\pi^{3}}{6},\cdots
+\]
+
+
+(2) ワリスの公式(Wallis' formula)
+
+\begin{eqnarray*}
+\pi & = & \lim_{n\rightarrow\infty}\frac{2}{\left(1-\frac{1}{2^{2}}\right)\left(1-\frac{1}{4^{2}}\right)\cdots\left(1-\frac{1}{\left(2n\right)^{2}}\right)}\\
+ & = & \frac{2}{\prod_{k=1}^{\infty}\left(1-\frac{1}{\left(2k^{2}\right)}\right)}
+\end{eqnarray*}
+
+
+\[
+\log\left(\frac{\pi}{2}\right)=-\sum_{k=1}^{\infty}\log\left(1-\frac{1}{\left(2k\right)^{2}}\right)
+\]
+
+
+$k$が十分大きいとき、
+\begin{eqnarray*}
+\log\left(\frac{\pi}{2}\right) & \doteqdot & -\log\left(1-\frac{1}{\left(2k\right)^{2}}\right)\\
+ & \doteqdot & \frac{1}{\left(2k\right)^{2}}
+\end{eqnarray*}
+
+
+ただし、
+\[
+\sum_{k=N+1}^{\infty}\frac{1}{\left(2k\right)^{2}}\sim\frac{\text{定数}}{N}
+\]
+となるため、誤差が大きく、実用的な計算には向かない。
+
+$\because$
+
+\begin{eqnarray*}
+B\left(x+1,y\right) & = & \frac{x}{x+y}B\left(x,y\right)\\
+\frac{\Gamma\left(x+1\right)\Gamma\left(y\right)}{\Gamma\left(x+y+1\right)} & = & \frac{x\Gamma\left(x\right)\Gamma\left(y\right)}{\left(x+y\right)\Gamma\left(x+y\right)}
+\end{eqnarray*}
+
+
+$n$を自然数として、
+\begin{eqnarray*}
+B\left(n+1,\frac{1}{2}\right) & = & \frac{n}{n+\frac{1}{2}}B\left(n,\frac{1}{2}\right)\\
+ & = & \vdots\\
+ & = & \frac{n\cdots1}{\left(n+\frac{1}{2}\right)\cdots\frac{3}{2}}B\left(1,\frac{1}{2}\right)\\
+ & = & \frac{n!}{\left(n+\frac{1}{2}\right)\cdots\frac{3}{2}}\frac{\Gamma\left(1\right)\Gamma\left(\frac{1}{2}\right)}{\Gamma\left(\frac{3}{2}\right)}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+B\left(n+\frac{1}{2},\frac{1}{2}\right) & = & \frac{\left(n-\frac{1}{2}\right)\cdots\frac{1}{2}}{n\cdots1}B\left(\frac{1}{2},\frac{1}{2}\right)\\
+ & = & \frac{\left(n-\frac{1}{2}\right)\cdots\frac{1}{2}}{n!}\frac{\Gamma\left(\frac{1}{2}\right)\Gamma\left(\frac{1}{2}\right)}{\Gamma\left(1\right)}\\
+ & = & \frac{\left(n-\frac{1}{2}\right)\cdots\frac{1}{2}}{n!}\pi
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+\frac{B\left(n+\frac{1}{2},\frac{1}{2}\right)}{B\left(n+1,\frac{1}{2}\right)} & = & \frac{\left(n+\frac{1}{2}\right)\left(n-\frac{1}{2}\right)^{2}\cdots\left(\frac{3}{2}\right)^{2}\left(\frac{1}{2}\right)}{\left(n!\right)^{2}}\frac{\pi}{2}\\
+ & = & \frac{\left(n+\frac{1}{2}\right)\left(n-\frac{1}{2}\right)}{n^{2}}\times\frac{\left(n-1+\frac{1}{2}\right)\left(n-1-\frac{1}{2}\right)}{\left(n-1\right)^{2}}\times\cdots\times\frac{\left(k+\frac{1}{2}\right)\left(k-\frac{1}{2}\right)}{k^{2}}\times\cdots\times\frac{\frac{3}{2}\times\frac{1}{2}}{1}\times\frac{\pi}{2}\\
+ & = & \left(\prod_{k=1}^{n}\left(1-\frac{1}{\left(2k\right)^{2}}\right)\right)\times\frac{\pi}{2}
+\end{eqnarray*}
+
+
+これは$\lim\frac{B\left(n+\frac{1}{2},\frac{1}{2}\right)}{B\left(n+1,\frac{1}{2}\right)}\rightarrow1$を示せば十分。
+
+\[
+B\left(x,y\right)=\int_{0}^{1}t^{x-1}\left(1-t\right)^{y}\mathrm{d}t
+\]
+
+
+$t$を固定すると$t^{x-1}$は$x$に関して単調減少。
+
+$\therefore$
+\[
+B\left(x,y\right)\geqq B\left(x+\frac{1}{2},y\right)\geqq B\left(x+1,y\right)=\frac{x}{x+y}B\left(x,y\right)
+\]
+
+
+$B\left(x+1,y\right)=\frac{x}{x+y}B\left(x,y\right)$は以前示した。
+
+$\therefore$
+\[
+1\leqq\frac{B\left(n,\frac{1}{2}\right)}{B\left(n+\frac{1}{2},\frac{1}{2}\right)}\leqq\frac{B\left(n,\frac{1}{2}\right)}{B\left(n+1,\frac{1}{2}\right)}=\frac{n+\frac{3}{2}}{n+1}\rightarrow1
+\]
+
+
+(3) Stirlingの公式
+
+\begin{eqnarray*}
+n! & \doteqdot & \sqrt{2\pi}n^{n+\frac{1}{2}}\mathrm{e}^{-n}\\
+ & = & \sqrt{2\pi}\mathrm{e}^{\left(n+\frac{1}{2}\right)\log n-n}
+\end{eqnarray*}
+
+
+すなわち、
+\[
+\lim_{n\rightarrow\infty}\frac{n!}{n^{n}\mathrm{e}^{-n}\sqrt{n}}=\sqrt{2\pi}
+\]
+
+
+$\because$ Wallis'公式の途中より、
+\[
+\pi=\lim_{n\rightarrow\infty}\frac{\left(n!\right)^{2}}{\left(n+\frac{1}{2}\right)^{2}\cdots\left(\frac{1}{2}\right)^{2}}\left(n+\frac{1}{2}\right)
+\]
+
+
+\begin{eqnarray*}
+\sqrt{\pi} & = & \lim_{n\rightarrow\infty}\frac{n!}{\left(n+\frac{1}{2}\right)\cdots\frac{1}{2}}\sqrt{n+\frac{1}{2}}\\
+ & = & \lim\frac{2^{n}n!}{\left(2n+1\right)\cdots1}\sqrt{n+\frac{1}{2}}\\
+ & = & \lim\frac{2^{2n}\left(n!\right)^{2}}{\left(2n\right)!}\frac{1}{\sqrt{n+\frac{1}{2}}}
+\end{eqnarray*}
+
+
+$\int_{1}^{2}\log x\mathrm{d}x$を台形公式で近似計算する。
+
+\[
+\int_{1}^{2}\log x\mathrm{d}x\doteqdot\frac{1}{n}\left(\frac{1}{2}\log1+\log\left(1+\frac{1}{n}\right)+\log\left(1+\frac{2}{n}\right)+\cdots+\log\left(2-\frac{1}{n}\right)+\frac{1}{2}\log2\right)
+\]
+
+
+誤差は$\frac{1}{n^{2}}$の定数倍以下である。
+
+$\therefore$ 両辺に$n$をかけて引き算すると、
+\[
+0\leftarrow\log\left(1+\frac{1}{n}\right)+\cdots+\log\left(2-\frac{1}{n}\right)+\log2-\frac{1}{2}\log2
+\]
+
+
+\[
+-2n\log2+n\rightarrow0
+\]
+
+
+\[
+\lim_{n\rightarrow\infty}\frac{\left(1+\frac{1}{n}\right)\cdots\left(1+\frac{n-1}{n}\right)\times\left(1+\frac{n}{n}\right)\mathrm{e}^{n}}{2^{2n}}\rightarrow1
+\]
+
+
+\begin{eqnarray*}
+\text{左辺} & = & \frac{\left(n+1\right)\cdots\left(n+n\right)\mathrm{e}^{n}}{2^{2n}n^{n}\sqrt{2}}\\
+ & = & \frac{\left(2n\right)!\mathrm{e}^{n}}{2^{2n}n^{n}n!\sqrt{2}}
+\end{eqnarray*}
+
+
+この2つを合わせるとStirlingの公式が導出できる。($\frac{\left(2n\right)!}{n!}$に代入)
+
+
+\paragraph{関数の内積とFourier展開}
+
+実ベクトル空間$V$
+
+$V$は集合であり、$V$の元$f,g$とスカラー(実数)$\alpha,\beta$に対し$\alpha f+\beta g\in V$が決まる。
+
+\[
+1\cdot f=f
+\]
+
+
+\[
+0\cdot f=\mathbf{O}
+\]
+
+
+\[
+\left(\alpha\beta\right)f=\alpha\left(\beta f\right)
+\]
+
+
+\[
+\gamma\left(\alpha f+\beta g\right)=\gamma\alpha f+\gamma\beta g
+\]
+
+
+\[
+\alpha f+\beta f=\left(\alpha+\beta\right)f
+\]
+
+
+$I\subset\mathbb{R}$区間において、$I$上の実数値関数全体はベクトル空間である。
+
+\[
+\left(\alpha f\right)\left(x\right)=\alpha\left(f\left(x\right)\right)
+\]
+
+
+\[
+\left(f+g\right)\left(x\right)=f\left(x\right)+g\left(x\right)
+\]
+
+
+ただし無限次元。
+
+$I$上連続な関数全体$C^{0}\left(I\right)\supset$$I$上一回連続微分可能関数$C^{1}\left(I\right)\supset C^{2}\left(I\right)$
+
+
+\paragraph{ベクトル空間の内積}
+
+$V\ni f,g$に対し$\left(f,g\right)\in\mathbb{R}$が決まっていて、
+
+(1) $\left(f,g\right)=\left(g,f\right)$
+
+(2) $\left(f,f\right)\geqq0$, $\left(f,f\right)=0\Leftrightarrow g=0$
+
+(3) $\left(\alpha f_{1}+\beta f_{2},g\right)=\alpha\left(f_{1},g\right)+\beta\left(f_{2},g\right)$
+
+\begin{eqnarray*}
+\left(\alpha f_{1}+\beta f_{2},g\right) & = & \int\left(\alpha_{1}+\beta f_{2}\right)g\mathrm{d}x\\
+ & = & \alpha\int f_{1}g\mathrm{d}x+\beta\int f_{2}g\mathrm{d}x\\
+ & = & \alpha\left(f,g\right)+\beta\left(f,g\right)
+\end{eqnarray*}
+
+
+積の積分は内積を定める。
+
+
+\paragraph{例}
+
+$I=\left[-\pi,\pi\right]$
+
+$\cos nx,\sin nx$
+
+$m+n\neq0$なら$\int_{-\pi}^{\pi}\cos\left(m+n\right)x\mathrm{d}x=0$
+
+$m-n\neq0$なら$\int_{-\pi}^{\pi}\cos\left(m-n\right)x\mathrm{d}x=0$
+
+\begin{eqnarray*}
+\left(\cos mx,\cos nx\right) & = & \int_{-\pi}^{\pi}\cos mx\cos nx\mathrm{d}x\\
+ & = & \int_{-\pi}^{\pi}\frac{\cos\left(m+n\right)x+\cos\left(m-n\right)x}{2}\mathrm{d}x\\
+ & = & \begin{cases}
+2\pi & m=n=0\\
+\pi & m=n>0\\
+0 & m\neq n
+\end{cases}
+\end{eqnarray*}
+
+
+$m\geqq0,n>0$では、
+\[
+\left(\cos mx,\cos nx\right)=\int_{-\pi}^{\pi}\cos mx\cos nx\mathrm{d}x=0
+\]
+
+
+$m,n>0$では、
+\begin{eqnarray*}
+\left(\sin mx,\sin nx\right) & = & \int\sin^{m}x\sin^{n}x\mathrm{d}x\\
+ & = & \int_{-\pi}^{\pi}\frac{\cos\left(m-n\right)x-\cos\left(m+n\right)x}{2}\mathrm{d}x\\
+ & = & \begin{cases}
+\pi & m=n>0\\
+0 & m\neq0
+\end{cases}
+\end{eqnarray*}
+
+
+$\mathbf{1}\left(x\right)=1$とすると、
+
+\[
+\left(\mathbf{1},\mathbf{1}\right)=2\pi
+\]
+
+
+\[
+\left(\frac{\mathbf{1}}{\sqrt{2\pi}},\frac{\mathbf{1}}{\sqrt{2\pi}}\right)=1
+\]
+
+
+\[
+\left(\frac{\mathbf{1}}{\sqrt{2\pi}},\frac{\cos nx}{\sqrt{\pi}}\right)=0
+\]
+
+
+\[
+\left(\frac{\cos nx}{\sqrt{\pi}},\frac{\cos mx}{\sqrt{\pi}}\right)=\begin{cases}
+1 & n=m\\
+0 & n\neq m
+\end{cases}
+\]
+
+
+\[
+\left(\frac{\sin mx}{\sqrt{\pi}},\frac{\sin nx}{\sqrt{\pi}}\right)=\begin{cases}
+1 & m=n\\
+0 & m\neq n
+\end{cases}
+\]
+
+
+\[
+\left(\frac{\mathbf{1}}{\sqrt{2\pi}},\frac{\sin mx}{\sqrt{\pi}}\right)=0
+\]
+
+
+\[
+\left(\frac{\cos mx}{\sqrt{\pi}},\frac{\sin nx}{\sqrt{\pi}}\right)=0
+\]
+
+
+\[
+\frac{1}{\sqrt{2\pi}},\frac{\cos x}{\sqrt{\pi}},\frac{\cos2x}{\sqrt{\pi}},\cdots,\frac{\cos mx}{\sqrt{\pi}}
+\]
+\[
+\frac{\sin x}{\sqrt{\pi}},\frac{\sin2x}{\sqrt{\pi}},\cdots
+\]
+は互いに直行し、長さ1のベクトル。これを正規直交(onyhonormal vector)という。
+
+$a_{0},a_{k},b_{k}$を定数として、
+
+\[
+f\left(x\right)=a_{0}+\sum_{k=1}^{N}a_{k}\cos kx+\sum_{k=1}^{N}b_{k}\sin kx
+\]
+は$\left[-\pi,\pi\right]$上の連続関数。
+
+\[
+f\left(x\right)=0\Leftrightarrow a_{0}=\cdots=a_{N}=b_{1}=\cdots=b_{N}=0
+\]
+
+
+$\because$
+
+$\Leftarrow$は自明。$\Rightarrow$は、
+
+\[
+0=\int f\left(x\right)\frac{\sin kx}{\sqrt{\pi}}\mathrm{d}x=b_{k}
+\]
+
+
+$f\left(x\right)=0$と仮定し、
+\[
+0=\int f\left(x\right)\frac{\cos kx}{\sqrt{\pi}}\mathrm{d}x=a_{k}
+\]
+
+
+一般にベクトル空間$V$と$V$上の内積、正規直交ベクトル$\boldsymbol{v}_{1},\boldsymbol{v}_{2},\boldsymbol{v}_{3},\cdots$に対して、$\boldsymbol{a}\in V$に対し、$\alpha_{1}\in\boldsymbol{R},\left(\boldsymbol{a}_{1}\boldsymbol{v}_{1}\right)=\alpha_{1}$を定めると、
+\[
+\left|\boldsymbol{a}\right|^{2}=\left(\boldsymbol{a}.\boldsymbol{a}\right)\geqq\left|\boldsymbol{a}-\alpha_{1}\boldsymbol{v}_{1}\right|^{2}\geqq\left|\boldsymbol{a}-\alpha_{1}\boldsymbol{v}_{1}-\alpha_{2}\boldsymbol{v}_{2}\right|\geqq\left(\boldsymbol{a}-\sum_{i=1}^{N}\alpha_{i}\boldsymbol{v}_{i}v_{k}\right)=0\left(1\leqq k\leqq N\right)
+\]
+\[
+\left(\boldsymbol{a}-\sum_{i=1}^{N}\alpha_{i}\boldsymbol{v}_{i}v_{k}\right)=0\left(k\leqq N\right)
+\]
+
+
+特に$V$が有限次元で、$\left(\boldsymbol{v}_{1},\cdots,\boldsymbol{v}_{N}\right)$が$V$の基底なら
+\[
+\boldsymbol{a}=\sum_{i=1}^{N}\alpha_{i}\boldsymbol{v}_{i}
+\]
+
+
+$\therefore$帰納的議論により、
+\[
+\left|\boldsymbol{a}\right|^{2}\geqq\left|\boldsymbol{a}-\alpha_{1}v_{1}\right|^{2}
+\]
+\[
+\left(\boldsymbol{a}-\alpha_{1}\boldsymbol{v}_{1},\boldsymbol{v}_{1}\right)=0
+\]
+を示せば良い。
+
+\begin{eqnarray*}
+\left(\boldsymbol{a}-\alpha_{1}\boldsymbol{v}_{1},\boldsymbol{a}-\alpha_{1}\boldsymbol{v}_{1}\right) & = & \left(\boldsymbol{a},\boldsymbol{a}\right)-2\alpha_{1}\left(\boldsymbol{a},\boldsymbol{v}_{1}\right)+\alpha_{1}^{2}\left(\boldsymbol{v}_{1},\boldsymbol{v}_{1}\right)\\
+ & = & \left(\boldsymbol{a},\boldsymbol{a}\right)-\alpha_{1}^{2}\leqq\left(\boldsymbol{a},\boldsymbol{a}\right)
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+\text{以上が成立} & \Leftrightarrow & \alpha_{1}=\left(\boldsymbol{a},\boldsymbol{v}_{1}\right)=0\\
+ & \Leftrightarrow & \boldsymbol{a}\text{は}\boldsymbol{v}_{1}\text{と直交}
+\end{eqnarray*}
+
+
+\[
+\left(\boldsymbol{a}-\alpha_{1}\boldsymbol{v}_{1},\boldsymbol{v}_{1}\right)=\left(\boldsymbol{a},\boldsymbol{v}_{1}\right)-\alpha_{1}\left(\boldsymbol{v}_{1},\boldsymbol{v}_{1}\right)=0
+\]
+
+
+有限次元で$\boldsymbol{v}_{1},\cdots,\boldsymbol{v}_{N}$が$V$の基底なら、
+\[
+\boldsymbol{a}=\sum_{i=1}^{N}\alpha_{i}\boldsymbol{v}_{i}
+\]
+と（一意的に）書ける。
+
+\[
+\alpha_{k}=\left(\boldsymbol{a},\boldsymbol{v}_{k}\right)=a_{k}\left(\boldsymbol{v}_{k},\boldsymbol{v}_{k}\right)=a_{k}
+\]
+
+
+\[
+\left\{ \frac{1}{\sqrt{2\pi}}\frac{\cos mx}{\sqrt{\pi}},\frac{\sin nx}{\sqrt{\pi}}\right\} 
+\]
+は一次独立。
+
+
+\paragraph{事実(Fourier)}
+
+\[
+\left\{ \text{周期}2\pi\text{をもつ}\mathbb{R}\text{上の連続関数}\right\} =\left\{ \left[-\pi,\pi\right]\text{上の連続関数}f\text{で}f\left(-\pi\right)=f\left(\pi\right)\right\} 
+\]
+
+
+周期$2\pi$の連続関数$f\left(x\right)$は、
+\[
+\frac{a_{0}}{\sqrt{2\pi}}+\sum_{m=1}^{\infty}\frac{a_{m}\cos mx}{\sqrt{\pi}}+\sum_{m=1}^{\infty}\frac{b_{m}\sin mx}{\sqrt{\pi}}
+\]
+と級数として表すことができる。
+
+\[
+a_{0}=\int_{-\pi}^{\pi}\frac{f\left(x\right)}{\sqrt{2\pi}}\mathrm{d}x=\left(f,\frac{1}{\sqrt{2\pi}}\right)
+\]
+
+
+\[
+a_{m}=\int_{-\pi}^{\pi}f\left(x\right)\frac{\cos mx}{\sqrt{\pi}}\mathrm{d}x=\left(f,\frac{\cos mx}{\sqrt{\pi}}\right)
+\]
+
+
+\[
+b_{m}=\left(f,\frac{\sin mx}{\sqrt{\pi}}\right)
+\]
+
+
+\[
+f_{N}=f-\left(f,\frac{1}{\sqrt{2\pi}}\right)\frac{1}{\sqrt{2\pi}}-\sum_{m=1}^{N}\left(f,\frac{\cos mx}{\sqrt{\pi}}\right)\frac{\cos mx}{\sqrt{\pi}}-\sum_{m=1}^{N}\left(f,\frac{\sin mx}{\sqrt{\pi}}\right)\frac{\sin mx}{\sqrt{\pi}}
+\]
+\[
+\left(f_{N},f_{N}\right)\rightarrow0
+\]
+ 
+\[
+\left(f,f\right)=a_{0}^{2}+\sum_{m=1}^{\infty}a_{m}^{2}+\sum_{m=1}^{\infty}b_{m}^{2}
+\]
+ 
+
+
+\paragraph{応用 一次元の熱方程式の境界値問題}
+
+$x$が$0$から$\pi$までの範囲で温度が$f\left(t,x\right)$で表せるような場合を考える。
+
+\[
+\begin{cases}
+f\left(t,0\right)=0,f\left(t,\pi\right)=a\left(t\right),g\left(x\right)=f\left(t,x\right),g_{t}\left(-x\right)=g_{t}\left(x\right)\\
+\frac{\partial f}{\partial\tau}=\frac{\partial^{2}f}{\partial x^{2}}\\
+f\left(0,x\right)=h\left(x\right)
+\end{cases}
+\]
+
+
+\[
+f\left(t,x\right)=g_{t}\left(x\right)=a_{0}\left(t\right)\frac{1}{\sqrt{2\pi}}+\sum a_{m}\left(t\right)\frac{\cos mx}{\sqrt{\pi}}+\sum b_{m}\left(t\right)\frac{\sin mx}{\sqrt{\pi}}
+\]
+
+
+$x\neq-\pi,0,\pi$なら
+
+\[
+\frac{\partial f}{\partial\tau}=\frac{\partial^{2}f}{\partial x^{2}}
+\]
+
+
+\[
+\text{Left-side}=\frac{a_{0}'\left(t\right)}{\sqrt{2\pi}}+\sum a_{m}'\left(t\right)\frac{\cos mx}{\sqrt{\pi}}+\sum m_{m}'\left(t\right)\frac{\sin mx}{\sqrt{\pi}}
+\]
+
+
+\[
+\text{Right-side}=0-\sum m^{2}a_{m}\left(t\right)\frac{\cos mx}{\sqrt{\pi}}-\sum m^{2}b_{m}\left(t\right)\frac{\sin mx}{\sqrt{\pi}}
+\]
+
+
+$\therefore$
+\begin{align*}
+a_{0}'=0 & a_{0}=\alpha_{0}\text{constant}\\
+a_{m}'=-m^{2}a_{m} & a_{m}=\alpha_{m}\mathrm{e}^{-m^{2}t}\\
+b_{m}'=-m^{2}b_{m} & b_{m}=\beta_{m}\mathrm{e}^{-m^{2}t}
+\end{align*}
+
+
+$t=0$のとき
+\[
+h\left(x\right)=\frac{\alpha_{0}}{\sqrt{2\pi}}+\sum\frac{\alpha_{m}\cos mx}{\sqrt{\pi}}+\sum\frac{\beta_{m}\sin mx}{\sqrt{\pi}}
+\]
+
+
+$\alpha_{k}=\left(h\left(x\right),\frac{\cos mx}{\sqrt{\pi}}\right)$等、と書いた係数が上の係数。
+
+
+\paragraph{波動方程式}
+
+$\left[-\pi,\pi\right]$
+
+\[
+\frac{\partial^{2}f}{\partial t^{2}}=c^{2}\frac{\partial^{2}f}{\partial x^{2}}
+\]
+\[
+f\left(t,0\right)=f\left(t,\pi\right)=0
+\]
+\[
+f\left(t,x\right)=\frac{a_{0}\left(t\right)}{\sqrt{2\pi}}+\sum a_{m}\left(t\right)\frac{\cos mx}{\sqrt{\pi}}+\sum b_{m}\left(t\right)\frac{\sin mx}{\sqrt{\pi}}x
+\]
+\[
+f\left(0,x\right)=h\left(x\right)
+\]
+\[
+a_{0}''\left(t\right)=-m^{2}c^{2}a_{0}\left(t\right)
+\]
+\[
+a_{m}=\alpha_{m}\cos cmt+\beta_{m}\sin cmt
+\]
+\[
+\text{Both-edge}=0\rightarrow\alpha_{m}=0
+\]
+\[
+a_{m}=\beta_{m}\sin cmt
+\]
+
+
+定まった振動数の整数倍の振動数が出てくる。
+
+\[
+\frac{a_{0}}{\sqrt{\pi}}+\sum\frac{a_{m}\cos mx}{\sqrt{\pi}}+\sum\frac{b_{m}\sin mx}{\sqrt{\pi}}
+\]
+の形をFourier級数(Fourier series)と呼ぶ。
+
+
+\paragraph{他の例}
+
+$I=\left[-1,1\right]$
+
+$V_{n}=\left\{ n\text{次以下の多項式}\right\} $
+
+$\left(f,g\right)=\int_{-1}^{1}f\cdot g\mathrm{d}x$
+
+とすると、$V_{n}$の内積が定まる。
+
+\[
+P_{k}\left(x\right)=\frac{1}{2^{k}k!}\frac{\mathrm{d}^{k}}{\mathrm{d}x^{k}}\left(x^{2}-1\right)^{k}
+\]
+
+
+\[
+\left(p_{k},p_{l}\right)=\begin{cases}
+\frac{2}{2n+1} & k=l\\
+0 & k\neq l
+\end{cases}
+\]
+
+
+$p_{k}\left(x\right)$を$k$次Legendre多項式(Legendre porinomial of degree
+$k$)と呼ぶ。
+
+$l\leqq m$とする。
+
+\begin{eqnarray*}
+\left(p_{l},p_{m}\right) & = & \frac{1}{2^{l+m}l!m!}\int_{-1}^{1}\frac{\mathrm{d}^{l}}{\mathrm{d}x^{l}}\left(x^{2}-1\right)^{l}\cdot\frac{\mathrm{d}^{m}}{\mathrm{d}x^{m}}\left(x^{2}-1\right)^{m}\mathrm{d}x\\
+ & = & \text{constant}\left[\frac{\mathrm{d}^{l}}{\mathrm{d}x^{l}}\left(x^{2}-1\right)^{l}\frac{\mathrm{d}^{m-1}}{\mathrm{d}x^{m-1}}\left(x^{2}-1\right)^{m}\right]_{-1}^{1}-\text{constant}\int_{-1}^{1}\frac{\mathrm{d}^{l+1}}{\mathrm{d}x^{l+1}}\left(x^{2}-1\right)^{l}\frac{\mathrm{d}^{m-1}}{\mathrm{d}x^{m-1}}\left(x^{2}-1\right)\mathrm{d}x\\
+ & = & -\text{constant}\left[\frac{\mathrm{d}^{l+1}}{\mathrm{d}x^{l}}\left(x^{2}-1\right)^{l}\frac{\mathrm{d}^{m-2}}{\mathrm{d}x^{m-2}}\left(x^{2}-1\right)\right]+\text{constant}\int_{-1}^{1}\frac{\mathrm{d}^{l+2}}{\mathrm{d}x^{l+2}}\left(x^{2}-1\right)^{l}\frac{\mathrm{d}^{m-2}}{\mathrm{d}x^{m-2}}\left(x^{2}-1\right)\mathrm{d}x\\
+ & = & \vdots\\
+ & = & \pm\text{constant}\left[\sim\times\left(x^{2}-1\right)\right]\pm\text{constant}\int_{-1}^{1}\frac{\mathrm{d}^{l+m}}{\mathrm{d}x^{l+m}}\left(x^{2}-1\right)^{l}\left(x^{2}-1\right)^{m}\mathrm{d}x\\
+ & = & \begin{cases}
+0 & l\neq m\\
+\pm\text{constant}\int_{-1}^{1}\left(2m\right)^{l}\left(x^{2}-1\right)^{m}\mathrm{d}x & l=m
+\end{cases}
+\end{eqnarray*}
+
+
+これは$m$が偶数のとき正、$m$が奇数のとき負となる。
+
+$x=2t-1$とおく。
+
+$x=-1\leftrightarrow t=0,x=1\leftrightarrow t=1$
+
+\[
+\left(x^{2}-1\right)=\left(x+1\right)\left(x-1\right)=-4t\left(t-1\right)
+\]
+
+
+\begin{eqnarray*}
+\int_{-1}^{1}\left(x^{2}-1\right)^{m}\mathrm{d}x & = & \int_{0}^{1}2\cdot4^{m}t^{m}\left(1-t\right)^{m}\mathrm{d}x\\
+ & = & 2\cdot4^{m}B\left(m+1,m+1\right)\\
+ & = & 2\cdot4^{m}\frac{\Gamma\left(m+1\right)\Gamma\left(m+1\right)}{\Gamma\left(2m+2\right)}\\
+ & = & 2\cdot4^{m}\frac{\left(m!\right)^{2}}{\left(2m+1\right)!}
+\end{eqnarray*}
+
+
+\[
+\left(p_{l},p_{l}\right)=\begin{cases}
+0\\
+\frac{1}{2^{2m}\left(m!\right)^{2}}2\cdot4^{m}\frac{\left(m!\right)^{2}\times\left(2m!\right)}{\left(2m+1\right)!}=\frac{2}{2m+1}
+\end{cases}
+\]
+
+
+$\sqrt{\frac{2k+1}{2}}p_{k}$が正規直交基底をなしている。($k=0,1,\cdots,n$)
+
+\begin{eqnarray*}
+p_{0} & = & 1\\
+p_{1} & = & \frac{1}{2}\times\frac{\mathrm{d}}{\mathrm{d}x}\left(x^{2}-1\right)=x\\
+p_{2} & = & \frac{1}{8}\times\frac{\mathrm{d}^{2}}{\mathrm{d}x^{2}}\left(x^{4}-2x^{2}+1\right)=\frac{3}{2}x^{2}-\frac{1}{2}\\
+p_{3} & = & \frac{1}{8\times6}\frac{\mathrm{d}^{3}}{\mathrm{d}x^{3}}\left(x^{6}-3x^{4}+3x^{2}-1\right)=\frac{5}{2}x^{3}-\frac{3}{2}x
+\end{eqnarray*}
+
+
+区間を変えたり、重み関数(weight function)$\varphi\left(x\right)>0=\text{constant}$を変えたりして多項式の異なった内積ができる。
+
+Chebyshev(チェビシェフ)の多項式も一例である。(これは応用上重要)
+
+
+\paragraph{積分と極限}
+
+$\left\{ f_{n}\left(x\right)\right\} _{n=1,2,\cdots}$: 関数の列
+
+$f_{n}\left(x\right)$が$f\left(x\right)$に各点収束(pointwise convergent)するとは、$x$を任意に止めたとき、$f_{n}\left(x\right)$が数列として$f\left(x\right)$に収束することである。
+
+言い換えると、$x$を止めたとき、$n$が十分大きければ($n\geq N\left(\varepsilon,x\right)$なら)、$\left|f_{n}\left(x\right)-f\left(x\right)\right|<\varepsilon$が成り立つことである。
+
+$f_{n}\left(x\right)$が$f\left(x\right)$に一様収束(imiformly convergent)するとは、$n$が十分に大きければ($n\geq N\left(\varepsilon\right)$)、すべての$x$に対し$\left|f_{n}\left(x\right)-f\left(x\right)\right|<\varepsilon$が成り立つことである。
+
+
+\paragraph{定理}
+
+$f_{n}\left(x\right)$が全て連続で、$f_{n}\left(x\right)$が$f\left(x\right)$に一様収束するとき、$f\left(x\right)$は連続である。
+
+
+\paragraph{証明}
+
+$y$が$x$に十分近ければ($\left|y-x\right|<\delta\left(x\right)$)$\left|f\left(y\right)-f\left(x\right)\right|<\varepsilon$を示す。
+
+$n$を十分大とすると、
+\[
+\left|f_{n}\left(x\right)-f\left(x\right)\right|<\frac{\varepsilon}{3}
+\]
+\[
+\left|f_{n}\left(y\right)-f\left(y\right)\right|<\frac{\varepsilon}{3}
+\]
+がすべての$x,y$について成り立つ。
+
+$f_{n}$は$x$で連続$\left|y-x\right|<\delta=\delta\left(x\right)$とすると、
+\[
+\left|f_{n}\left(x\right)-f_{n}\left(y\right)\right|<\frac{\varepsilon}{3}
+\]
+
+
+\begin{eqnarray*}
+\left|f\left(y\right)-f\left(x\right)\right| & \leq & \left|f\left(y\right)-f_{n}\left(y\right)\right|+\left|f_{n}\left(y\right)-f_{n}\left(x\right)\right|+\left|f_{n}\left(x\right)-f\left(x\right)\right|\\
+ & < & \varepsilon
+\end{eqnarray*}
+
+
+
+\paragraph{例}
+
+$I=\left[0,1\right]$, $f_{n}\left(x\right)=\sqrt[n]{x}$とする。
+
+$f_{n}\left(0\right)=0\rightarrow0$, $x>0$のとき$f_{n}\left(x\right)\rightarrow1$となり、
+\[
+f\left(x\right)=\lim_{n\rightarrow\infty}f_{n}\left(x\right)=\begin{cases}
+0 & x=0\\
+1 & x>0
+\end{cases}
+\]
+となり、各点収束だが連続でないことが分かる。
+
+
+\paragraph{定理}
+
+$I=\left[a,b\right]$: 有限閉区間
+
+$f_{n}\left(x\right)$: $I$上連続関数、$f\left(x\right)$に一様収束
+
+とすると、
+\[
+F_{n}\left(x\right)=\int_{a}^{x}f_{n}\left(x\right)\mathrm{d}x
+\]
+は、
+\[
+F\left(x\right)=\int_{a}^{x}f\left(x\right)\mathrm{d}x
+\]
+に一様収束する。
+
+言い換えると、
+\[
+\lim_{n\rightarrow\infty}\int f_{n}\mathrm{d}x=\int\left(\lim f_{n}\right)\mathrm{d}x
+\]
+のように$\lim$と$\int$の順番を入れ替えても良いということである。
+
+
+\paragraph{証明}
+
+\[
+D_{n}=\left|F\left(x\right)-F_{n}\left(x\right)\right|=\left|\int_{a}^{x}f\mathrm{d}x-\int_{a}^{x}f_{n}\mathrm{d}x\right|=\left|\int_{a}^{x}\left(f-f_{n}\right)\mathrm{d}x\right|
+\]
+とおく。一様収束だったので、$n$を十分大きく取ると$\left|f-f_{n}\right|<\varepsilon$
+
+$\therefore$
+\[
+D_{n}\leq\int_{a}^{x}\varepsilon\mathrm{d}x=\varepsilon\left(x-a\right)\leq\varepsilon\left(b-a\right)
+\]
+
+
+これは$x$によらない。
+
+
+\paragraph{系}
+
+$f_{n}\left(x\right)$: $I=\left[a,b\right]$上定義された$C^{1}$級関数の列、$c\in I$とする。
+
+$f_{n}\left(c\right)$が収束、$f_{n}'\left(x\right)$は一様収束すると仮定する。
+
+このとき$f_{n}\left(x\right)$は$f\left(x\right)$に一様収束して、$f$は$C^{1}$級、$f_{n}'\left(x\right)$は$f'\left(x\right)$に一様収束する。
+
+$\because$
+
+$f_{n}'\left(x\right)=g_{n}\left(x\right)\rightarrow g\left(x\right)$とおく。
+
+\[
+G_{n}\left(x\right)=\int_{a}^{x}g_{n}\left(x\right)\mathrm{d}x\rightarrow G\left(x\right)=\int_{a}^{x}g\left(x\right)\mathrm{d}x
+\]
+
+
+$G_{n}'\left(x\right)=f_{n}'\left(x\right)$なので、$G_{n}\left(c\right)-f_{n}\left(c\right)$は定数となり、
+\begin{eqnarray*}
+f_{n}\left(x\right) & = & G_{n}\left(x\right)+\left(f_{n}\left(c\right)-G_{n}\left(c\right)\right)\\
+ & \rightarrow & G\left(x\right)+e-G\left(c\right)
+\end{eqnarray*}
+より、$f\left(x\right)=G\left(x\right)-G\left(c\right)+e$
+
+
+\paragraph{命題}
+
+\[
+f_{n}\left(x\right)=\sum_{k=0}^{n}a_{n}\left(x-c\right)^{n}
+\]
+とする。このとき$\left\{ a_{0},a_{1},\cdots\right\} $を数列として、
+\[
+f_{n}\left(c+r\right)=\sum_{k=0}^{n}a_{n}r^{n}
+\]
+が収束すると仮定する$\left(r\neq0\right)$。
+
+このとき、$0<s<\left|r\right|$となる$s$を一つ固定すると、$x\in\left[c-s,c+s\right]$に対し$f_{n}\left(x\right)$は一様収束する。
+
+
+\paragraph{例}
+
+\[
+\mathrm{e}^{x}\leftarrow\sum\frac{x^{n}}{n!}
+\]
+より、$0\neq r\in\mathbb{R}$に対し、$\sum\frac{r^{n}}{n!}$は収束。すなわち、
+\[
+f_{n}\left(x\right)=\sum_{k=0}^{n}\frac{x^{k}}{k!}
+\]
+は$\left|x\right|\leqq s<\left|r\right|$で$\mathrm{e}^{x}$に一様収束。
+
+
+\paragraph{証明}
+
+\begin{align*}
+ & \sum a_{n}r^{n}\text{が収束}\\
+\Rightarrow & a_{n}r^{n}\rightarrow0\left(n\rightarrow\infty\right)\\
+\Rightarrow & \left|a_{n}\right|\leq\text{constant}\times\left|r\right|^{n}=A\left|r\right|^{-n}
+\end{align*}
+
+
+$\left|x-c\right|\leqq s<\left|r\right|$
+
+\begin{eqnarray*}
+\left|\sum_{n=N+1}^{\infty}a_{n}\left(x-c\right)^{2}\right| & \leq & \sum_{n=N+1}^{\infty}\left|a_{n}\right|\left|x-c\right|^{n}\\
+ & \leq & \sum\left|a_{n}\right|s^{n}\\
+ & \leq & A\sum_{n=N+1}\left(\frac{s}{\left|r\right|}\right)^{n}\\
+ & = & A\left(\frac{s}{\left|r\right|}\right)^{N+1}\times\frac{1}{1-\frac{s}{\left|r\right|}}
+\end{eqnarray*}
+
+
+右辺は$x$によらない。
+
+
+\paragraph{系}
+
+$f\left(x\right)$は$C^{\infty}$級(何回でも微分できる)と仮定する。
+
+$f^{\left(n\right)}\left(c\right)=a_{n}$とおく。このとき$f\left(x\right)$のTaylor展開は
+\[
+\sum_{n=0}^{\infty}a_{n}\left(x-c\right)^{n}
+\]
+\[
+f_{n}\left(x\right)=\sum_{k=0}^{n}a_{k}\left(x-c\right)^{k}
+\]
+
+
+
+\paragraph{仮定}
+
+$f\left(x\right)$に$f_{n}\left(x\right)$が収束(ある$r\neq0$に対し、$f\left(r-c\right)=\sum_{n=0}^{\infty}a_{n}r^{n}$)
+
+このとき、$f_{n}\left(x\right)$は$\left|x-c\right|<s<\left|r\right|$で$f\left(x\right)$に一様収束
+
+
+\paragraph{系}
+
+\[
+f\left(x\right)=\sum a_{n}\left(x-c\right)^{n}
+\]
+なら、
+\[
+F\left(x\right)=\int_{c}^{x}f\left(x\right)\mathrm{d}x=\sum_{n=0}^{\infty}\frac{a_{n}}{\left(n+1\right)}\left(x-c\right)^{n+1}
+\]
+
+
+
+\paragraph{例}
+
+\[
+\frac{1}{1-x}=\sum_{n=0}^{\infty}x^{n}
+\]
+
+
+\[
+-\log\left(1-x\right)=\int_{0}^{x}\frac{\mathrm{d}x}{1-x}=\sum_{n=0}^{\infty}\frac{x^{n+1}}{n+1}
+\]
+
+
+
+\paragraph{例}
+
+\[
+\frac{1}{1+x^{2}}=1-x^{2}+x^{4}-x^{6}+\cdots
+\]
+
+
+\[
+\arctan x=\int_{0}^{x}\frac{\mathrm{d}x}{1+x^{2}}=x-\frac{x^{3}}{3}+\frac{x^{5}}{5}-\frac{x^{7}}{7}+\cdots
+\]
+
+
+
+\paragraph{例}
+
+\[
+\arcsin x=\int_{0}^{x}\frac{\mathrm{d}x}{\sqrt{1-x^{2}}}
+\]
+
+
+\[
+f\left(y\right)=\frac{1}{\sqrt{1-y}}=\left(1-y\right)^{-\frac{1}{2}}
+\]
+
+
+\[
+f^{\left(n\right)}\left(y\right)=\frac{1}{2}\cdot\frac{3}{2}\cdot\frac{\left(2n-1\right)}{2}\left(1-y\right)^{-\frac{1}{2}-n}
+\]
+
+
+\[
+\frac{1}{\sqrt{1-y}}=\sum\frac{\left(2n-1\right)\left(2n-3\right)\cdots1}{2^{n}n!}y^{n}=\sum\frac{\left(2n-1\right)!!}{\left(2n\right)!!}y^{n}
+\]
+
+
+\[
+\frac{1}{\sqrt{1-x^{2}}}=\sum\frac{\left(2n-1\right)!!}{\left(2n\right)!!}x^{2n}
+\]
+
+
+\begin{eqnarray*}
+\arcsin x & = & \int_{0}^{x}\frac{\mathrm{d}x}{\sqrt{1-x^{2}}}\\
+ & = & \sum_{n=0}^{\infty}\frac{\left(2n-1\right)!!}{2n!!}\frac{x^{2n+1}}{2n+1}
+\end{eqnarray*}
+
+
+
+\paragraph{例}
+
+\begin{eqnarray*}
+\frac{1}{2}\arcsin^{2}x & = & \int_{0}^{x}\frac{\arcsin x}{\sqrt{1-x^{2}}}\mathrm{d}x\\
+ & = & \sum\int_{0}^{x}\frac{\left(2n-1\right)!!}{2n!!}\frac{1}{2n+1}\frac{x^{2n+1}}{\sqrt{1-x^{2}}}\mathrm{d}x
+\end{eqnarray*}
+
+
+$x=\sin\theta$とおくと、
+\[
+\int_{0}^{x}\frac{x^{2n+1}}{\sqrt{1-x^{2}}}\mathrm{d}x=\int_{0}^{\theta}\sin^{2n+1}\theta\mathrm{d}\theta
+\]
+
+
+$x=1\left(\theta=\frac{\pi}{2}\right)$とする。
+\begin{eqnarray*}
+\int_{0}^{\frac{\pi}{2}}\sin^{2n+1}\theta\mathrm{d}\theta & = & \frac{1}{2}B\left(\frac{1}{2},n+1\right)\\
+ & = & \frac{1}{2}\frac{\Gamma\left(\frac{1}{2}\right)n!}{\Gamma\left(n+\frac{3}{2}\right)}\\
+ & = & \frac{1}{2}\frac{\Gamma\left(\frac{1}{2}\right)n!}{\left(n+\frac{1}{2}\right)\left(n-\frac{1}{2}\right)\cdots\frac{1}{2}\Gamma\left(\frac{1}{2}\right)}\\
+ & = & \frac{\left(2n\right)!!}{\left(2n+1\right)!!}
+\end{eqnarray*}
+
+
+これを最初の式に代入して、
+\[
+\frac{\pi^{2}}{8}=\frac{1}{2}\arcsin^{2}1=\sum_{n=0}^{\infty}\frac{1}{\left(2n+1\right)^{2}}
+\]
+
+
+\begin{eqnarray*}
+\sum_{n=1}^{\infty}\frac{1}{n^{2}} & = & \sum_{n=1}^{\infty}\frac{1}{\left(2n\right)^{2}}+\sum_{n=1}^{\infty}\frac{1}{\left(2n-1\right)^{2}}\\
+s & = & \frac{s}{4}+\frac{\pi^{2}}{8}
+\end{eqnarray*}
+
+
+\[
+\frac{4}{3}s=\frac{\pi^{2}}{8}
+\]
+
+
+\[
+s=\sum_{n=1}^{\infty}\frac{1}{n^{2}}=\frac{\pi^{2}}{6}
+\]
+
+
+この
+\[
+\sum\frac{1}{n^{s}}=S\left(s\right)
+\]
+をRiemannのzeta関数と呼ぶ。ちなみにこの
+\[
+S\left(2\right)=\sum\frac{1}{n^{2}}=\frac{\pi^{2}}{6}
+\]
+を発見したのはEulerである。
+
+
+\paragraph{定理}
+
+$I,J$: $\mathbb{R}$の有限閉区間
+
+$\left(t,x\right)\in I\times J$, $f\left(t,x\right)$が$I\times J$上連続とする。このとき、
+\[
+F\left(t\right)=\int_{J}f\left(t,x\right)\mathrm{d}x
+\]
+は$I$上連続。
+
+※$I\times J=\left\{ \left.\left(t,x\right)\right|t\in I,x\in J\right\} $
+
+$\because$
+
+$I\times J\subset\mathbb{R}^{2}$: 有界閉集合
+
+$f\left(t,x\right)$は$I\times J$上一様連続。すなわち、任意の$\varepsilon>0$に対してある$\delta>0$があって、$d\left(\left(t_{1},x_{1}\right),\left(t_{2},x_{2}\right)\right)<\delta$なら$\left|f\left(t_{1},x_{1}\right)-f\left(t_{2},x_{2}\right)\right|<\varepsilon$。
+
+\begin{eqnarray*}
+\left|F\left(t_{1}\right)-F\left(t_{2}\right)\right| & \leqq & \int_{J}\left|\left(f\left(t_{1},x\right)-f\left(t_{2},x\right)\right)\right|\mathrm{d}x\\
+ & < & \int_{J}\varepsilon\mathrm{d}x\\
+ & = & \varepsilon\times J\text{の長さ}
+\end{eqnarray*}
+
+
+よって連続。
+
+
+\paragraph{系}
+
+$f\left(t,x\right)$が$I\times J$上$C^{1}$級(特に$\frac{\partial f}{\partial t}$は連続)とする。このとき、
+\[
+g\left(t\right)=\int_{J}\frac{\partial f}{\partial t}\mathrm{d}x
+\]
+は連続で、
+\[
+G\left(t\right)=\int_{J}f\mathrm{d}x
+\]
+は$C^{1}$級。かつ$G'\left(t\right)=g\left(t\right)$
+
+$\because$ $I=\left[a,b\right],J=\left[c,d\right]$とする。
+\begin{eqnarray*}
+H\left(t\right) & = & \int_{a}^{t}g\left(t\right)\mathrm{d}t\\
+ & = & \int_{a}^{t}\left(\int_{c}^{d}\frac{\partial f}{\partial t}\left(t,x\right)\mathrm{d}x\right)\mathrm{d}t\\
+ & = & \int_{\text{長方形}}\frac{\partial f}{\partial t}\left(t,x\right)\mathrm{d}t\\
+ & = & \int_{c}^{d}\left(\int_{a}^{t}\frac{\partial f}{\partial t}\left(t,x\right)\mathrm{d}t\right)\mathrm{d}x\\
+ & = & \int_{c}^{d}f\left(t,x\right)\mathrm{d}x\\
+ & = & G\left(t\right)
+\end{eqnarray*}
+
+
+よって$G\left(t\right)$は一回微分可能で$G'\left(t\right)=g\left(t\right)$
+
+つまり、$C^{1}$級であるとき、積分の微分は微分の積分に等しいということである。
+
+
+\paragraph{曲線(curve)、曲面(surface)とその長さ(length)、面積(area)}
+
+曲線$\subset\mathbb{R}^{3}$のパラメータ表示(parameter representation)
+\[
+\left\{ x\left(t\right),y\left(t\right),z\left(t\right)|t\in\left[\alpha,\beta\right]\right\} 
+\]
+で$x,y,z$は$t$の連続関数
+
+空間内の運動(motion)の軌跡(trajectony)
+
+通常は$x\left(t\right),y\left(t\right),z\left(t\right)$は連続で微分可能と仮定
+
+
+\paragraph{例}
+
+(1) 直線
+
+\[
+\begin{cases}
+x\left(t\right)=at+b\\
+y\left(t\right)=ct+d\\
+z\left(t\right)=et+f
+\end{cases}
+\]
+
+
+(2) 円
+
+\[
+\begin{cases}
+x\left(t\right)=r\cos t\\
+y\left(t\right)=r\sin t\\
+z\left(t\right)=0
+\end{cases}
+\]
+
+
+(3) 平面上のcycloid
+
+\[
+\begin{cases}
+x\left(t\right)=r\left(t+\cos t\right)\\
+y\left(t\right)=r\sin t\\
+z\left(t\right)=0
+\end{cases}
+\]
+
+
+(4) 螺線(helicoid)
+
+\[
+\begin{cases}
+x\left(t\right)=r\cos t\\
+y\left(t\right)=r\sin t\\
+z\left(t\right)=at
+\end{cases}
+\]
+
+
+
+\paragraph{曲線の長さ}
+
+$x,y,z$が$t$について$C^{1}$級、$t$について$\Delta t$経過したとき、
+\[
+x\left(t\right)\rightarrow x\left(t\right)+x'\left(t\right)\Delta t
+\]
+\[
+y\left(t\right)\rightarrow y\left(t\right)+y'\left(t\right)\Delta t
+\]
+\[
+z\left(t\right)\rightarrow z\left(t\right)+z'\left(t\right)\Delta t
+\]
+
+
+\[
+\left(\begin{array}{c}
+x\left(t\right)\\
+y\left(t\right)\\
+z\left(t\right)
+\end{array}\right)\text{の変化量(variatim)}\doteqdot\left(\begin{array}{c}
+x'\left(t\right)\\
+y'\left(t\right)\\
+z'\left(t\right)
+\end{array}\right)\Delta t
+\]
+\[
+\text{長さ}=\sqrt{x'\left(t\right)^{2}+y'\left(t\right)^{2}+z'\left(t\right)^{2}}\Delta t
+\]
+
+
+$t$が$t_{0}$から$t_{1}$まで動くと、曲線の長さは
+\[
+\int_{t_{0}}^{t_{1}}\sqrt{x'^{2}+y'^{2}+z'^{2}}\mathrm{d}t
+\]
+となる。
+
+
+\paragraph{命題}
+
+$C$: $\left\{ \left(x\left(t\right),y\left(t\right),z\left(t\right)\right)|t\in\left[\alpha,\beta\right]\right\} $,
+$x,y,z$は$C^{1}$級
+
+のとき、$C$の長さは
+\[
+\int_{\alpha}^{\beta}\sqrt{x'^{2}+y'^{2}+z'^{2}}\mathrm{d}t
+\]
+
+
+
+\paragraph{例1 cycloidの長さ}
+
+$\alpha\leqq t\leqq\beta,r=1$とする。
+
+\[
+x'=1-\sin t
+\]
+\[
+y'=\cos t
+\]
+\[
+\sqrt{x'^{2}+y'^{2}}=\sqrt{2-2\sin t}
+\]
+
+
+$t\rightarrow t-\frac{\pi}{2}=s$とおいて、
+\begin{eqnarray*}
+\sqrt{x'^{2}+y'^{2}} & = & \sqrt{2+2\cos s}\\
+ & = & 2\cos\frac{s}{2}
+\end{eqnarray*}
+\begin{eqnarray*}
+\text{長さ} & = & \int_{\alpha+\frac{\pi}{2}}^{\beta+\frac{\pi}{2}}2\cos\frac{s}{2}\mathrm{d}s\\
+ & = & 4\left[\sin\frac{s}{2}\right]_{\alpha+\frac{\pi}{2}}^{\beta+\frac{\pi}{2}}
+\end{eqnarray*}
+
+
+
+\paragraph{例2 helicoidの長さ}
+
+$\alpha\leqq t\leqq\beta,r=1$とする。
+\[
+x'=-\sin t
+\]
+\[
+y'=\cos t
+\]
+\[
+z'=a
+\]
+\[
+\sqrt{x'^{2}+y'^{2}+z'^{2}}=\sqrt{1+a^{2}}
+\]
+\[
+\text{長さ}=\left(\beta-\alpha\right)\sqrt{1+a^{2}}
+\]
+
+
+
+\paragraph{点の速度}
+
+点の速度(velocity)を$\boldsymbol{v}\left(t\right)$として
+\[
+\sqrt{x'^{2}+y'^{2}+z'^{2}}=\left|\boldsymbol{v}\left(t\right)\right|=\text{点の速さ(speed)}=v\left(t\right)
+\]
+\[
+\text{長さ}=\int v\left(t\right)\mathrm{d}t=\text{速さの積分}
+\]
+
+
+同じ曲線でパラメータを変更することも可能
+
+$s=f\left(t\right)$が$t$に関して狭義単調増加で$t$について$C^{1}$級とする。$t$が$s$の関数$t=g\left(s\right)$とすると、$g$は$f$の逆関数で、$g$は$s$の$C^{1}$級関数。
+
+\[
+g'\left(s\right)=\frac{\mathrm{d}t}{\mathrm{d}s}=\frac{1}{\frac{\mathrm{d}s}{\mathrm{d}t}}=\frac{1}{f'}
+\]
+
+
+パラメータを$s$に変更して計算し直すと、
+\[
+\frac{\mathrm{d}}{\mathrm{d}s}x\left(t\left(s\right)\right)=\frac{\mathrm{d}x}{\mathrm{d}t}\frac{\mathrm{d}t}{\mathrm{d}s}
+\]
+\[
+\sqrt{\left(\frac{\mathrm{d}}{\mathrm{d}s}x\left(t\left(s\right)\right)\right)^{2}+\left(\frac{\mathrm{d}}{\mathrm{d}s}y\left(t\left(s\right)\right)\right)^{2}+\left(\frac{\mathrm{d}}{\mathrm{d}s}z\left(t\left(s\right)\right)\right)^{2}}=\sqrt{\left(\frac{\mathrm{d}x}{\mathrm{d}t}\right)^{2}+\left(\frac{\mathrm{d}y}{\mathrm{d}t}\right)^{2}+\left(\frac{\mathrm{d}z}{\mathrm{d}t}\right)^{2}}\times\frac{\mathrm{d}t}{\mathrm{d}s}
+\]
+\begin{eqnarray*}
+\int\sqrt{\left(\frac{\mathrm{d}x}{\mathrm{d}s}\right)^{2}+\left(\frac{\mathrm{d}y}{\mathrm{d}s}\right)^{2}+\left(\frac{\mathrm{d}z}{\mathrm{d}s}\right)^{2}}\mathrm{d}s & = & \int\sqrt{\left(\frac{\mathrm{d}x}{\mathrm{d}t}\right)^{2}+\left(\frac{\mathrm{d}y}{\mathrm{d}t}\right)^{2}+\left(\frac{\mathrm{d}z}{\mathrm{d}t}\right)^{2}}\frac{\mathrm{d}t}{\mathrm{d}s}\mathrm{d}s\\
+ & = & \int\sqrt{\left(\frac{\mathrm{d}x}{\mathrm{d}t}\right)^{2}+\left(\frac{\mathrm{d}y}{\mathrm{d}t}\right)^{2}+\left(\frac{\mathrm{d}z}{\mathrm{d}t}\right)^{2}}\mathrm{d}t
+\end{eqnarray*}
+
+
+標準的なパラメータは弧長パラメータ(arc length parameter)である。これは速さが常に1になるようにとる。
+
+$t$を1つのパラメータとすると
+\[
+s\left(t\right)=\int_{a}^{t}\sqrt{x'^{2}+y'^{2}+z'^{2}}\mathrm{d}t
+\]
+\[
+\frac{\mathrm{d}s}{\mathrm{d}t}=\sqrt{\left(\frac{\mathrm{d}x}{\mathrm{d}t}\right)^{2}+\left(\frac{\mathrm{d}y}{\mathrm{d}t}\right)^{2}+\left(\frac{\mathrm{d}z}{\mathrm{d}t}\right)^{2}}=\left|\frac{\mathrm{d}\boldsymbol{x}}{\mathrm{d}t}\right|
+\]
+
+
+$\boldsymbol{x}\left(t\right)=\left(\begin{array}{c}
+x\left(t\right)\\
+y\left(t\right)\\
+z\left(t\right)
+\end{array}\right)$とおく。
+\[
+\frac{\mathrm{d}}{\mathrm{d}s}\boldsymbol{x}\left(t\left(x\right)\right)=\frac{\mathrm{d}\boldsymbol{x}}{\mathrm{d}t}\frac{\mathrm{d}t}{\mathrm{d}s}
+\]
+\begin{eqnarray*}
+\left|\frac{\mathrm{d}\boldsymbol{x}}{\mathrm{d}s}\right| & = & \frac{\mathrm{d}t}{\mathrm{d}s}\left|\frac{\mathrm{d}\boldsymbol{x}}{\mathrm{d}t}\right|\\
+ & = & \frac{\left|\frac{\mathrm{d}\boldsymbol{x}}{\mathrm{d}t}\right|}{\frac{\mathrm{d}s}{\mathrm{d}t}}\\
+ & = & \frac{\left|\frac{\mathrm{d}\boldsymbol{x}}{\mathrm{d}t}\right|}{\left|\frac{\mathrm{d}\boldsymbol{x}}{\mathrm{d}t}\right|}\\
+ & = & 1
+\end{eqnarray*}
+
+
+$s$: 弧長パラメータに取ると、
+\[
+\frac{\mathrm{d}\boldsymbol{x}}{\mathrm{d}s}=\boldsymbol{e}\left(s\right)\text{の長さ}=1
+\]
+
+
+
+\paragraph{命題}
+
+$\frac{\mathrm{d}\boldsymbol{e}}{\mathrm{d}s}\left(s\right)=\boldsymbol{f}\left(s\right)$とおくと、
+\[
+\left(\boldsymbol{e}\left(s\right).\boldsymbol{f}\left(s\right)\right)=0
+\]
+
+
+物理的には、質点が当スピードで動いている。$\boldsymbol{e}\left(s\right)$は速度ベクトル、$s$は時間。
+
+$\frac{\mathrm{d}\boldsymbol{e}}{\mathrm{d}s}=$加速度が速度ベクトルと直交する。
+
+\[
+\left|\boldsymbol{e}\left(s\right)\right|=1
+\]
+\[
+\left(\boldsymbol{e}\left(s\right),\boldsymbol{e}\left(s\right)\right)=1
+\]
+\[
+\frac{\mathrm{d}}{\mathrm{d}s}\left(\boldsymbol{e}\left(s\right),\boldsymbol{e}\left(s\right)\right)=0
+\]
+\[
+\frac{\mathrm{d}}{\mathrm{d}s}\left(\boldsymbol{f},\boldsymbol{g}\right)=\left(\frac{\mathrm{d}\boldsymbol{f}}{\mathrm{d}s}\boldsymbol{g}\right)+\left(\boldsymbol{f}\frac{\mathrm{d}\boldsymbol{g}}{\mathrm{d}s}\right)
+\]
+
+
+$\boldsymbol{f}=\left(\begin{array}{c}
+f_{1}\\
+f_{2}\\
+f_{3}
+\end{array}\right),\boldsymbol{g}=\left(\begin{array}{c}
+g_{1}\\
+g_{2}\\
+g_{3}
+\end{array}\right)$とすると、
+\[
+\left(\boldsymbol{f},\boldsymbol{g}\right)=f_{1}g_{1}+f_{2}g_{2}+f_{3}g_{3}
+\]
+\[
+\frac{\mathrm{d}}{\mathrm{d}s}\left(\boldsymbol{f},\boldsymbol{g}\right)=\frac{\mathrm{d}f_{1}}{\mathrm{d}s}g_{1}+f_{1}\frac{\mathrm{d}g_{1}}{\mathrm{d}s}+\cdots=\left(\frac{\mathrm{d}\boldsymbol{f}}{\mathrm{d}s},\boldsymbol{g}\right)+\left(\boldsymbol{f},\frac{\mathrm{d}\boldsymbol{g}}{\mathrm{d}s}\right)
+\]
+\[
+\left(\frac{\mathrm{d}\boldsymbol{e}}{\mathrm{d}s},\boldsymbol{e}\right)+\left(\boldsymbol{e},\frac{\mathrm{d}\boldsymbol{e}}{\mathrm{d}s}\right)=2\left(\boldsymbol{e},\frac{\mathrm{d}\boldsymbol{e}}{\mathrm{d}s}\right)=0
+\]
+
+
+逆に$\left(\boldsymbol{e},\frac{\mathrm{d}\boldsymbol{e}}{\mathrm{d}s}\right)=0$とする
+
+\[
+\frac{1}{2}\frac{\mathrm{d}}{\mathrm{d}s}\left(\boldsymbol{e},\boldsymbol{e}\right)=0
+\]
+$\left(\boldsymbol{e},\boldsymbol{e}\right)$は定数となり、等スピード。
+\[
+\boldsymbol{x}\left(s_{0}\right)=\left(\begin{array}{c}
+0\\
+0\\
+0
+\end{array}\right)
+\]
+
+
+
+\paragraph{例}
+
+地球が太陽の周りを円形に等速運動しているとする。
+
+$\left|\boldsymbol{f}\left(t\right)\right|$を曲線の曲率(curvature)、加速度の大きさ$s=s_{0}$と考える。
+
+$0\neq\boldsymbol{f}\left(s_{0}\right),\beta=\left|\boldsymbol{f}\left(s_{0}\right)\right|$、座標を変更して$\left(\begin{array}{c}
+1\\
+0\\
+0
+\end{array}\right)$とする。
+
+$\boldsymbol{x}\left(s\right)$が$C^{3}$級と仮定して
+\[
+\begin{cases}
+x\left(s\right)=s+\text{2次以上}\\
+y\left(s\right)=\frac{\beta}{2}s^{2}+\text{3次以上}\\
+z\left(s\right)=\text{3次以上}
+\end{cases}
+\]
+
+
+半径が$\frac{1}{\beta}$の円で、$\left(x,y\right)$平面内で角度$\theta$を用いて表すと$\left(\frac{1}{\beta}\sin\theta,\frac{1}{\beta}\left(1-\cos\theta\right)\right)$。$\frac{1}{\beta}\sin\theta=s$とおいて、
+
+\begin{eqnarray*}
+\theta & = & \beta\arcsin s\\
+ & = & \beta s+\text{2次以上}
+\end{eqnarray*}
+\begin{eqnarray*}
+1-\cos\theta & = & 1-\cos\beta s\\
+ & \doteqdot & \frac{1}{2}\left(\beta s\right)^{2}
+\end{eqnarray*}
+\begin{eqnarray*}
+\kappa & = & \left|\frac{\mathrm{d}\boldsymbol{e}}{\mathrm{d}s}\right|\\
+ & = & \left|\boldsymbol{f\left(s\right)}\right|\\
+ & \doteqdot & \text{曲線を近似する園の半径の逆数}
+\end{eqnarray*}
+
+
+曲がり方のキツさを表現する。$\frac{1}{\left|\frac{\mathrm{d}\boldsymbol{e}}{\mathrm{d}s}\right|}$を曲率半径(curvature
+radius)という。
+
+$\frac{\mathrm{d}\boldsymbol{e}}{\mathrm{d}s}=\kappa\boldsymbol{e}_{2}\left(s\right)$とおく。($\kappa\neq0,\left|\boldsymbol{e}_{2}\left(s\right)\right|=1$)
+
+$\boldsymbol{e}_{1}$と$\boldsymbol{e}_{2}$が直交、$\boldsymbol{e}_{3}$を$\boldsymbol{e}_{1},\boldsymbol{e}_{2}$に直交する長さ1のベクトルとすると、
+
+$\frac{\mathrm{d}\boldsymbol{e}_{2}\left(s\right)}{\mathrm{d}s}$が$\boldsymbol{e}_{2}$と直交するので、
+\[
+\frac{\mathrm{d}\boldsymbol{e}_{2}}{\mathrm{d}s}=\gamma\boldsymbol{e}_{1}+\tau\boldsymbol{e}_{3}
+\]
+と書ける。ここで$\tau$を捩率(torsion)である。
+
+$\gamma$は曲率から分かる。
+\begin{eqnarray*}
+\gamma & = & \left(\frac{\mathrm{d}\boldsymbol{e}_{2}}{\mathrm{d}s},\boldsymbol{e}_{1}\right)\\
+ & = & \frac{\mathrm{d}}{\mathrm{d}s}\left(\boldsymbol{e}_{2},\boldsymbol{e}_{1}\right)-\left(\boldsymbol{e}_{2},\frac{\mathrm{d}\boldsymbol{e}_{1}}{\mathrm{d}s}\right)\\
+ & = & -\kappa
+\end{eqnarray*}
+
+
+\[
+\begin{cases}
+\boldsymbol{e}=\boldsymbol{e}_{1}\left(s\right)\\
+\frac{\mathrm{d}\boldsymbol{e}}{\mathrm{d}s}=\kappa\boldsymbol{e}_{2}\\
+\frac{\mathrm{d}\boldsymbol{e}_{2}}{\mathrm{d}s}=-\kappa\boldsymbol{e}_{1}+\tau\boldsymbol{e}_{3}
+\end{cases}
+\]
+
+
+$\boldsymbol{e}_{3}$と直交
+\[
+\frac{\mathrm{d}\boldsymbol{e}_{3}}{\mathrm{d}s}=\delta\boldsymbol{e}_{1}+\varepsilon\boldsymbol{e}_{2}
+\]
+
+
+$\delta,\varepsilon$は$\kappa,\tau$で書ける。
+\[
+\delta=\left(\frac{\mathrm{d}\boldsymbol{e}_{3}}{\mathrm{d}s},\boldsymbol{e}_{1}\right)=\frac{\mathrm{d}}{\mathrm{d}s}\left(\boldsymbol{e}_{3},\boldsymbol{e}_{1}\right)-\left(\boldsymbol{e}_{3},\frac{\mathrm{d}\boldsymbol{e}_{1}}{\mathrm{d}s}\right)=0
+\]
+\textbf{
+\[
+\varepsilon=\left(\frac{\mathrm{d}\boldsymbol{e}_{3}}{\mathrm{d}s},\boldsymbol{e}_{2}\right)=0-\left(\boldsymbol{e}_{3},\frac{\mathrm{d}\boldsymbol{e}_{2}}{\mathrm{d}s}\right)=-\tau
+\]
+}
+
+すなわち、$\kappa\left(s\right),\tau\left(s\right)$を与えておくと、以下の定理が成り立つ。
+
+
+\paragraph{定理 Frenet-Serret(フレネ-セレ)の定理}
+
+$\kappa\left(s\right),\tau\left(s\right)$を与えておくと、曲線が$\mathbb{R}^{3}$の合同変換(平行移動+回転+反転)を除いて決まる。
+
+\[
+\boldsymbol{x}\left(t_{0}\right)=\left(\begin{array}{c}
+0\\
+0\\
+0
+\end{array}\right)
+\]
+\[
+\boldsymbol{e}\left(t_{0}\right)=\left(\begin{array}{c}
+1\\
+0\\
+0
+\end{array}\right)
+\]
+\[
+\boldsymbol{e}_{2}\left(t_{0}\right)=\left(\begin{array}{c}
+0\\
+1\\
+0
+\end{array}\right)
+\]
+と指定すれば、曲線が(反転を除いて)きまる。
+
+$\boldsymbol{e}\left(s\right)$を未知関数とし$\boldsymbol{e}'\left(s\right)=\sim,\boldsymbol{e}''\left(s\right)=\sim$を満たすことから分かる。
+
+
+\paragraph{曲面とその面積}
+
+例: 平面
+
+\[
+ax+by+cz+d=0
+\]
+\[
+\left\{ \left(x,y,z\right)|ax+by+cz+d=0\right\} 
+\]
+\[
+\left(a,b,c\right)\neq\left(0,0,0\right)
+\]
+
+
+球面
+
+\[
+\left(x-a\right)^{2}+\left(y-b\right)^{2}+\left(z-c\right)^{2}=r^{2}
+\]
+
+
+一般に二次曲面
+\[
+\alpha\left(x-a\right)^{2}+\beta\left(y-b\right)^{2}+\gamma\left(z-c\right)^{2}=r
+\]
+
+
+$\left(\alpha,\beta,\gamma,r\right)$の符号によって形が違う。
+
+関数のグラフ$z=f\left(x,y\right)$
+
+
+\paragraph{曲線のパラメータ表示}
+
+自由に動く2つの変数$s,t$をとり、
+\[
+\begin{cases}
+x=x\left(s,t\right)\\
+y=y\left(s,t\right)\\
+z=z\left(s,t\right)
+\end{cases}
+\]
+
+
+
+\paragraph{例 球面のとき}
+
+\[
+\begin{cases}
+x=r\cos\theta\cos\varphi+a\\
+y=r\cos\theta\sin\varphi+b\\
+z=r\sin\theta+c
+\end{cases}
+\]
+
+
+ただし$-\frac{\pi}{2}\leqq\theta\leqq\frac{\pi}{2},-\pi\leqq\varphi\leqq\pi$
+
+
+\paragraph{曲面の一次近似}
+
+$x,y,z$は$\left(s,t\right)$の関数として$C^{1}$級と仮定する。$s=0,t=0$のとき、
+\[
+\begin{cases}
+x_{0}=x\left(0,0\right)\\
+y_{0}=y\left(0,0\right)\\
+z_{0}=z\left(0,0\right)
+\end{cases}
+\]
+
+
+$\left(\boldsymbol{x}_{s}\left(0\right),\boldsymbol{x}_{t}\left(0\right)\right)$の階数が2と仮定すると、$\left(\begin{array}{c}
+x_{0}\\
+y_{0}\\
+z_{0}
+\end{array}\right)$の近くの曲面上の一点$s,t\neq0$について、
+\[
+\begin{cases}
+x\left(s,t\right)\doteqdot x_{0}+\frac{\partial x}{\partial s}\left(0,0\right)s+\frac{\partial x}{\partial t}\left(0,0\right)t\\
+y\left(s,t\right)\doteqdot y_{0}+\frac{\partial y}{\partial s}\left(0,0\right)s+\frac{\partial y}{\partial t}\left(0,0\right)t\\
+z\left(s,t\right)\doteqdot z_{0}+\frac{\partial z}{\partial s}\left(0,0\right)s+\frac{\partial z}{\partial t}\left(0,0\right)t
+\end{cases}
+\]
+
+
+ベクトル表示
+\[
+\boldsymbol{x}=\left(\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right),\boldsymbol{x}_{0}=\left(\begin{array}{c}
+x_{0}\\
+y_{0}\\
+z_{0}
+\end{array}\right),\boldsymbol{x}_{s}=\left(\begin{array}{c}
+x_{s}\\
+y_{s}\\
+z_{s}
+\end{array}\right),\boldsymbol{x}_{t}=\left(\begin{array}{c}
+x_{t}\\
+y_{t}\\
+z_{t}
+\end{array}\right)
+\]
+を用いて、
+\[
+\boldsymbol{x}-\boldsymbol{x}_{0}\doteqdot\boldsymbol{x}_{s}\left(0\right)s+\boldsymbol{x}_{t}\left(0\right)t
+\]
+となる。これは$\boldsymbol{x}_{0}$を通る平面のパラメータ表示である。
+
+この一時近似の平面を曲面の$\boldsymbol{x}_{0}$における接平面(tangent plane at $\boldsymbol{x}_{0}$)という。また、$\boldsymbol{x}_{0}$から接平面上の点に向かうベクトルを接ベクトル(tangent
+vector)という。
+
+これを用いて、曲面の一次近似式は
+\[
+\text{接ベクトル}=\boldsymbol{x}_{s}\left(0\right)\text{と}\boldsymbol{x}_{t}\left(0\right)\text{の一次結合}
+\]
+と書ける。
+
+一般の点$\boldsymbol{x}\left(s,t\right)$における接ベクトルを$\boldsymbol{x}_{s},\boldsymbol{x}_{t}$の二次結合で表示する。
+
+$\left(s,t\right),\left(s+\delta s,t\right),\left(s+\delta s,t+\delta t\right),\left(s,t+\delta t\right)$による長方形が$\boldsymbol{x}\left(s,t\right),\boldsymbol{x}\left(s+\delta s,t\right),\boldsymbol{x}\left(s+\delta s,t+\delta t\right),\boldsymbol{x}\left(s,t+\delta t\right)$で囲まれる平行四辺形にうつされる。ここで
+\[
+\boldsymbol{x}\left(s+\delta s,t\right)\doteqdot\boldsymbol{x}\left(s,t\right)+\boldsymbol{x}_{s}\left(s,t\right)\delta s
+\]
+\[
+\boldsymbol{x}\left(s,t+\delta t\right)\doteqdot\boldsymbol{x}\left(s,t\right)+\boldsymbol{x}_{t}\left(s,t\right)\delta t
+\]
+を用いて
+\begin{eqnarray*}
+\text{写された平行四辺形の面積} & = & \left|\boldsymbol{x}_{s}\left(s,t\right)\delta s\right|\left|\boldsymbol{x}_{t}\left(s,t\right)\delta t\right|\left|\sin\theta\right|\\
+ & = & \left|\boldsymbol{x}_{s}\left(s,t\right)\right|\left|\boldsymbol{x}_{t}\left(s,t\right)\right|\left|\sin\theta\right|\delta s\delta t
+\end{eqnarray*}
+
+
+ここで三次元ベクトルの外積(exterior product)を
+\[
+\left(\begin{array}{c}
+\alpha\\
+\beta\\
+\gamma
+\end{array}\right)\times\left(\begin{array}{c}
+\delta\\
+\varepsilon\\
+\zeta
+\end{array}\right)=\left(\begin{array}{c}
+\beta\zeta-\gamma\varepsilon\\
+\gamma\delta-\alpha\zeta\\
+\alpha\varepsilon-\beta\delta
+\end{array}\right)
+\]
+と定義する。
+
+
+\paragraph{命題}
+
+$\left(\begin{array}{c}
+\alpha\\
+\beta\\
+\gamma
+\end{array}\right),\left(\begin{array}{c}
+\delta\\
+\varepsilon\\
+\zeta
+\end{array}\right)$の間の角度を$\theta$とすると
+\[
+\left|\left(\begin{array}{c}
+\alpha\\
+\beta\\
+\gamma
+\end{array}\right)\right|\left|\left(\begin{array}{c}
+\delta\\
+\varepsilon\\
+\zeta
+\end{array}\right)\right|\left|\sin\theta\right|=\left|\left(\begin{array}{c}
+\alpha\\
+\beta\\
+\gamma
+\end{array}\right)\times\left(\begin{array}{c}
+\delta\\
+\varepsilon\\
+\zeta
+\end{array}\right)\right|
+\]
+
+
+
+\paragraph{証明}
+
+$\left(\begin{array}{c}
+\alpha\\
+\beta\\
+\gamma
+\end{array}\right)=\boldsymbol{\alpha},\left(\begin{array}{c}
+\delta\\
+\varepsilon\\
+\zeta
+\end{array}\right)=\boldsymbol{\delta},\left(\boldsymbol{\alpha},\boldsymbol{\delta}\right)=\left|\boldsymbol{\alpha}\right|\left|\boldsymbol{\delta}\right|\cos\theta$として、
+\begin{eqnarray*}
+\left|\boldsymbol{\alpha}\right|^{2}\left|\boldsymbol{\delta}\right|^{2}\sin^{2}\theta & = & \left|\boldsymbol{\alpha}\right|^{2}\left|\boldsymbol{\delta}\right|^{2}\left(1-\cos^{2}\theta\right)\\
+ & = & \left(\boldsymbol{\alpha},\boldsymbol{\alpha}\right)\left(\boldsymbol{\delta},\boldsymbol{\delta}\right)-\left(\boldsymbol{\alpha},\boldsymbol{\delta}\right)^{2}\\
+ & = & \left(\alpha^{2}+\beta^{2}+\gamma^{2}\right)\left(\delta^{2}+\varepsilon^{2}+\zeta^{2}\right)-\left(\alpha\delta+\beta\varepsilon+\gamma\zeta\right)\\
+ & = & \left(\beta\zeta-\gamma\varepsilon\right)^{2}+\left(\gamma\delta-\alpha\zeta\right)^{2}+\left(\alpha\varepsilon-\beta\delta\right)^{2}\\
+ & = & \left|\boldsymbol{\alpha}\times\boldsymbol{\delta}\right|^{2}
+\end{eqnarray*}
+
+
+
+\paragraph{系}
+
+パラメータ表示した時の曲面の面積は
+\[
+\int_{\text{パラメータが動く範囲}}\left|\boldsymbol{x}_{s}\times\boldsymbol{x}_{t}\right|\mathrm{d}s\mathrm{d}t
+\]
+
+
+
+\paragraph{例 球面}
+
+$r=1$, 中心$\left(\begin{array}{c}
+0\\
+0\\
+0
+\end{array}\right)$として
+\[
+\boldsymbol{x}=\left(\begin{array}{c}
+\cos s\cos t\\
+\cos s\sin t\\
+\sin s
+\end{array}\right)
+\]
+\[
+\boldsymbol{x}_{s}=\left(\begin{array}{c}
+-\sin s\cos t\\
+-\sin s\sin t\\
+\cos s
+\end{array}\right)
+\]
+\[
+\boldsymbol{x}_{t}=\left(\begin{array}{c}
+-\cos s\sin t\\
+\cos s\cos t\\
+0
+\end{array}\right)
+\]
+
+
+ここで$\boldsymbol{x}_{s},\boldsymbol{x}_{t}$は接ベクトルの基底で$\boldsymbol{x}$と直交。
+
+\begin{eqnarray*}
+\boldsymbol{x}_{s}\times\boldsymbol{x}_{t} & = & \left(\begin{array}{c}
+-\cos^{2}s\cos t\\
+-\cos^{2}s\sin t\\
+-\sin s\cos s\cos^{2}t-\sin s\cos s\sin^{2}t
+\end{array}\right)\\
+ & = & -\cos s\left(\begin{array}{c}
+\cos s\cos t\\
+\cos s\sin t\\
+\sin s
+\end{array}\right)
+\end{eqnarray*}
+
+
+よって長さは$\left|\cos s\right|$。
+
+$-\frac{\pi}{2}\leqq s\leqq\frac{\pi}{2},-\pi\leqq t\leqq\pi$なので、球の面積は
+\begin{eqnarray*}
+2\pi\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\cos s\mathrm{d}s & = & 2\pi\left[\sin s\right]_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\\
+ & = & 4\pi
+\end{eqnarray*}
+
+
+※楕円体
+\[
+\frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}+\frac{z^{2}}{c^{2}}=1
+\]
+のパラメータ表示
+\[
+\begin{cases}
+x=a\cos s\cos t\\
+y=b\cos s\sin t\\
+z=c\sin s
+\end{cases}
+\]
+の積分は初等関数では表示できない。
+
+cf. 楕円の周の長さ
+
+$b>a$として、
+\[
+\begin{cases}
+x=a\cos t\\
+y=b\sin t
+\end{cases}
+\]
+\[
+\begin{cases}
+\dot{x}=-a\sin t\\
+\dot{y}=b\cos t
+\end{cases}
+\]
+\begin{eqnarray*}
+\sqrt{\dot{x}^{2}+\dot{y}^{2}} & = & \sqrt{a^{2}\sin^{2}t+b^{2}\cos^{2}t}\\
+ & = & \sqrt{a^{2}+\left(b^{2}-a^{2}\right)\cos^{2}t}
+\end{eqnarray*}
+
+
+$s=\tan t,\mathrm{d}s=\frac{\mathrm{d}t}{\cos^{2}t}=\left(1+s^{2}\right)\mathrm{d}t$を用いて、
+\[
+\int_{0}^{t}\sqrt{a^{2}+\left(b^{2}-a^{2}\right)\cos^{2}t}\mathrm{d}t=\int_{0}\sqrt{\alpha^{2}+\left(b^{2}-a^{2}\right)\frac{1}{1+s^{2}}}\times\frac{\mathrm{d}s}{1+s^{2}}
+\]
+
+
+このような$\sqrt{\text{有理式}}$の積分を楕円積分といい、一般に初等的関数では表せない。
+
+
+\paragraph{回転体(rotating surface)の表面積}
+
+$f\left(s\right)$を性の値を取る関数とし、
+\[
+\begin{cases}
+x=f\left(s\right)\cos t\\
+y=f\left(s\right)\sin t\\
+z=s
+\end{cases}
+\]
+とすると、
+\[
+2\pi\int_{a}^{b}\sqrt{1+\dot{f}\left(s\right)^{2}}\mathrm{d}s
+\]
+
+
+振り返って、曲線の長さ
+\[
+\int\left|\boldsymbol{x}_{t}\right|\mathrm{d}t
+\]
+は曲線を小さな折れ線に分割して求め、曲面の面積
+\[
+\int\left|\boldsymbol{x}_{s}\times\boldsymbol{x}_{t}\right|\mathrm{d}s\mathrm{d}t
+\]
+は曲面を接平面上の小さな平行四辺形として近似した。ここで、「曲面上に多くの点をとって三角形で近似する」という方法も考えられるかもしれないがこれは正しくない。
+
+
+\paragraph{例}
+
+円柱上に点を取る。$0\leqq s\leqq1,0\leqq k\leqq2m-1,0\leqq k\leqq n$として、
+\[
+\left(\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right)=\left(\begin{array}{c}
+\cos\frac{k\pi}{m}\\
+\sin\frac{k\pi}{m}\\
+\frac{k}{n}
+\end{array}\right)
+\]
+
+
+同時に$m\times n$個の点
+\[
+\left(\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right)=\left(\begin{array}{c}
+\cos\frac{2k+1}{2m}\pi\\
+\sin\frac{2k+1}{2m}\pi\\
+\frac{2k+1}{2n}
+\end{array}\right)
+\]
+をとると小さな三角形がたくさんできる。ここで$m\rightarrow\infty,\frac{n}{m^{2}}\rightarrow\infty$のとき、面積の和は$+\infty$に発散してしまう。これは三角形を夜こっから見た線分がどんどん横に寝ていってしまい、$\frac{1}{n}\ll\frac{1}{m^{2}}$となってしまうためである。
+
+
+\paragraph{(簡単な)常微分方程式}
+
+$t$: 変数、$x_{1}\left(t\right)\cdots x_{m}\left(t\right)$: 未知変数、$x_{k},t,x_{k}',x_{k}''$を含む方程式を、常微分方程式(ordinary
+differential equation)といい、（独立）変数が複数存在し、偏微分を含む方程式を偏微分方程式(partial differential
+equation)という。
+
+
+\paragraph{例}
+\begin{enumerate}
+\item Newtonの運動方程式$x''\left(t\right)=f\left(x,x',t\right)$は常微分方程式である。
+\item 波動方程式$\frac{\partial^{2}f}{\partial t^{2}}=c^{2}\left(\frac{\partial^{2}f}{\partial x^{2}}+\frac{\partial^{2}f}{\partial y^{2}}+\frac{\partial^{2}f}{\partial z^{2}}\right)$は変数$t,x,y,z$を持ち、偏微分方程式である。
+\end{enumerate}
+
+\paragraph{線形常微分方程式(linear (ordinary) differntial equation)}
+
+\[
+\boldsymbol{x}=\boldsymbol{x}\left(t\right)=\left(\begin{array}{c}
+x_{1}\left(t\right)\\
+\vdots\\
+x_{n}\left(t\right)
+\end{array}\right)
+\]
+\[
+\boldsymbol{x}'\left(t\right)=A\left(t\right)\boldsymbol{x}\left(t\right)\cdots\left(*\right)
+\]
+とする。$\boldsymbol{x}\left(t\right)$が$\left(*\right)$を満たすことは$\boldsymbol{x}\left(t\right)$が$\left(*\right)$の解であることと同値である。
+
+線形方程式については重ね合わせの原理(principle of superposition)が成り立つ。すなわち、$\boldsymbol{x}_{1}\left(t\right),\boldsymbol{x}_{2}\left(t\right)$が$\left(*\right)$の解であるとき、$a\boldsymbol{x}_{1}+b\boldsymbol{x}_{2}$も解である。
+
+解の全体は$\boldsymbol{R}$ベクトル空間となる。
+
+\[
+x''+f\left(t\right)x'+g\left(t\right)x=0\cdots\left(**\right)
+\]
+は$\left(*\right)$の形に変形できる。$y=x'$を導入すると、
+\[
+\left(**\right)\Leftrightarrow\begin{cases}
+y'+f\left(t\right)y+g\left(t\right)x=0\\
+x'=y
+\end{cases}
+\]
+\[
+\begin{cases}
+x'=y\\
+y'=-f\left(t\right)y-g\left(t\right)x
+\end{cases}
+\]
+\[
+\left(\begin{array}{c}
+x\\
+y
+\end{array}\right)'=\left(\begin{array}{cc}
+0 & 1\\
+-g\left(t\right) & -f\left(t\right)
+\end{array}\right)\left(\begin{array}{c}
+x\\
+y
+\end{array}\right)
+\]
+
+
+これは$\left(*\right)$の形になっている。
+
+
+\paragraph{線形常微分方程式の初期値問題}
+
+
+\paragraph{定理}
+
+\[
+\begin{cases}
+\boldsymbol{x}'=A\left(t\right)\boldsymbol{x}\\
+\boldsymbol{x}\left(0\right)=\boldsymbol{a}
+\end{cases}
+\]
+の解は
+\[
+\boldsymbol{x}\left(t\right)=\left(\exp B\left(t\right)\right)\boldsymbol{a}
+\]
+となる。ここで、
+\[
+B\left(t\right)'=A\left(t\right)
+\]
+\[
+B\left(0\right)=0
+\]
+\[
+A\left(t\right)=\left(a_{ij}\left(t\right)\right)
+\]
+\[
+B\left(t\right)=\left(\int_{0}^{t}a_{ij}\left(t\right)\mathrm{d}t\right)
+\]
+\[
+\exp B=\sum_{k=0}^{\infty}\frac{B^{k}}{k!}
+\]
+
+
+
+\paragraph{例}
+
+\[
+x''=-\lambda^{2}x
+\]
+\[
+\begin{cases}
+x'=y\\
+y'=-\lambda^{2}x
+\end{cases}
+\]
+\[
+\left(\begin{array}{c}
+x\\
+y
+\end{array}\right)'=\left(\begin{array}{cc}
+0 & 1\\
+-\lambda^{2} & 0
+\end{array}\right)\left(\begin{array}{c}
+x\\
+y
+\end{array}\right)
+\]
+\[
+B=\left(\begin{array}{cc}
+0 & t\\
+-\lambda^{2}t & 0
+\end{array}\right)
+\]
+\[
+B^{2}=\left(\begin{array}{cc}
+-\lambda^{2}t^{2} & 0\\
+0 & -\lambda^{2}t^{2}
+\end{array}\right)=-\lambda^{2}t^{2}\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)
+\]
+\begin{eqnarray*}
+\exp B & = & \sum\frac{B^{k}}{k!}\\
+ & = & \sum_{k=0}^{\infty}\frac{B^{2k}}{\left(2k\right)!}+\left(\sum_{k=0}^{\infty}\frac{B^{2k}}{\left(2k+1\right)!}\right)B
+\end{eqnarray*}
+
+
+$\lambda\neq0$と仮定して、
+\[
+\text{第一項}=\left(\cos\lambda t\right)\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)
+\]
+\[
+\text{第二項}=\left(\sin\lambda t\right)\left(\begin{array}{cc}
+1 & \frac{10}{\lambda}\\
+-\lambda & 1
+\end{array}\right)
+\]
+\[
+\exp B=\left(\begin{array}{cc}
+\cos\lambda t & \frac{1}{\lambda}\sin\lambda t\\
+-\lambda\cos t & \sin\lambda t
+\end{array}\right)
+\]
+\[
+\left(\begin{array}{c}
+\boldsymbol{X}\left(t\right)\\
+\boldsymbol{X}'\left(t\right)
+\end{array}\right)=\left(\begin{array}{cc}
+\cos\lambda t & \frac{1}{\lambda}\sin\lambda t\\
+-\lambda\cos t & \sin\lambda t
+\end{array}\right)\left(\begin{array}{c}
+X\left(0\right)\\
+X'\left(0\right)
+\end{array}\right)
+\]
+\[
+X\left(t\right)=X\left(0\right)\cos\lambda t+\frac{X'\left(0\right)}{\lambda}\sin\lambda t
+\]
+となり、解になっていることが分かる。
+
+また$\lambda=0$のとき、
+\[
+\exp B=\left(\begin{array}{cc}
+1 & t\\
+0 & 1
+\end{array}\right)
+\]
+\[
+\left(\begin{array}{c}
+x\\
+x'
+\end{array}\right)=\left(\begin{array}{cc}
+1 & t\\
+0 & 1
+\end{array}\right)\left(\begin{array}{c}
+x\left(0\right)\\
+x'\left(0\right)
+\end{array}\right)
+\]
+\[
+x=x\left(0\right)+tx'\left(0\right)
+\]
+
+
+
+\paragraph{証明}
+
+\[
+\exp B\left(t\right)=\sum\frac{B^{k}}{k!}
+\]
+\begin{eqnarray*}
+\left(\exp B\left(t\right)\right)' & = & B'\sum\frac{B^{k}}{k!}\\
+ & = & A\left(\exp B\right)
+\end{eqnarray*}
+\[
+\left(\exp B\right)^{-1}\boldsymbol{x}=\boldsymbol{y}
+\]
+\[
+\boldsymbol{x}=\left(\exp B\right)\boldsymbol{y}
+\]
+
+
+$\left(\exp B\right)^{-1}=\exp\left(-B\right)$である。これを$\left(*\right)$に代入して、
+\begin{eqnarray*}
+\boldsymbol{y}' & = & \left(\exp\left(-B\right)\boldsymbol{x}\right)'\\
+ & = & \exp\left(-B\right)'\boldsymbol{x}+\exp\left(-B\right)\boldsymbol{x}'\\
+ & = & -A\exp\left(-B\right)\boldsymbol{x}+A\exp\left(-B\right)\boldsymbol{x}\\
+ & = & 0
+\end{eqnarray*}
+\[
+\boldsymbol{y}'=0
+\]
+\[
+\boldsymbol{y}\left(t\right)=\boldsymbol{y}\left(0\right)=B\left(0\right)
+\]
+\[
+\boldsymbol{x}\left(0\right)=\boldsymbol{x}\left(0\right)=\boldsymbol{a}
+\]
+\[
+\boldsymbol{x}\left(t\right)=\left(\exp B\left(t\right)\right)\boldsymbol{y}=\left(\exp B\left(t\right)\right)\boldsymbol{a}
+\]
+
+
+
+\paragraph{完全美文系方程式(complete differential equation)}
+
+$F\left(x,t\right)$: $C^{1}$級2変数関数としたとき、
+\[
+F_{x}\left(x,t\right)x'+F_{t}\left(x,t\right)=0\cdots\left(\star\right)
+\]
+の形の方程式をいう。
+
+\[
+\frac{\mathrm{d}}{\mathrm{d}t}F\left(x\left(t\right),t\right)=F_{x}\left(x,t\right)x'+F_{t}\left(x,t\right)
+\]
+
+
+$\left(\star\right)\Leftrightarrow F\left(x\left(t\right),t\right)=\text{定数}=C$
+
+$x$と$t$の関係がわかる。
+
+
+\paragraph{例 変数分離系方程式(equation with separable variables)}
+
+\[
+x'=\frac{q\left(t\right)}{p\left(x\right)}
+\]
+\[
+p=\frac{\mathrm{d}P}{\mathrm{d}x},P=\int^{x}p\left(x\right)\mathrm{d}x
+\]
+\[
+q=\frac{\mathrm{d}Q}{\mathrm{d}t},Q=\int^{t}q\left(x\right)\mathrm{d}t
+\]
+\[
+p\left(x\right)x'-q\left(t\right)=0
+\]
+\[
+\frac{\mathrm{d}}{\mathrm{d}t}\left(P-Q\right)=0
+\]
+\[
+P-Q=C
+\]
+
+
+
+\paragraph{例}
+
+\[
+x'=\left(1+x^{2}\right)t
+\]
+\[
+\frac{x'}{1+x^{2}}-t=0
+\]
+\[
+\arctan x-\frac{1}{2}t^{2}=C
+\]
+\[
+\arctan x=C+\frac{1}{2}t^{2}
+\]
+\[
+x=\tan\left(\frac{1}{2}t^{2}+C\right)
+\]
+
+
+
+\paragraph{例}
+
+\[
+mx''+f\left(x\right)=0
+\]
+
+
+両辺に$x'$をかける。
+
+\[
+mx''x'+f\left(x\right)x'=0
+\]
+\[
+\left(\frac{mx'^{2}}{2}\right)'+\left(F\left(x\right)\right)'=0
+\]
+\[
+F\left(x\right)=\int^{x}f\left(x\right)\mathrm{d}x
+\]
+
+
+$m$: 質量である。
+
+\[
+\frac{mx'^{2}}{2}+F\left(x\right)=E=\text{定数}
+\]
+
+
+第一項は運動エネルギー(kinetic energy)、第二項はポテンシャル(potential)とみなすと、エネルギー保存則(conservation
+law for energy)となっていることが分かる。
+
+\[
+x'=\sqrt{\frac{2\left(E-F\left(x\right)\right)}{m}}
+\]
+\[
+\frac{x'}{\sqrt{\frac{2\left(E-F\left(x\right)\right)}{m}}}-1=0
+\]
+\[
+\int\frac{\mathrm{d}x}{\sqrt{\frac{2\left(E-F\left(x\right)\right)}{m}}}-t=C
+\]
+が解となる。
+
+
+\paragraph{例}
+
+ロケットの発射などを考える。
+
+\[
+x''=-\frac{1}{2x^{2}}
+\]
+\[
+\left(\frac{1}{2}x'^{2}\right)'=\frac{1}{2x}+\frac{e}{2}
+\]
+\[
+x'=\sqrt{e+\frac{1}{x}}
+\]
+\[
+\frac{\mathrm{d}x}{\mathrm{d}t}=\sqrt{e+\frac{1}{x}}
+\]
+\[
+\left(\int\frac{\mathrm{d}x}{\sqrt{e+\frac{1}{2}}}=t+C\right)
+\]
+
+
+$y=\sqrt{\frac{ex+1}{x}}$とおくと$\left(y^{2}-e\right)x=1$, $x=\frac{1}{y^{2}-e}$
+\[
+\int^{x}\frac{\mathrm{d}x}{\sqrt{\frac{ex+1}{x}}}=\int^{y}\frac{2\mathrm{d}y}{\left(y^{2}-e\right)^{2}}
+\]
+
+
+$e=a^{2}>0$ならば、分数式より$\log$を用いて書ける。
+
+$e=0$なら、
+\[
+\int^{y}\frac{2\mathrm{d}y}{y^{4}}=-\frac{2}{3y^{3}}
+\]
+\[
+y^{3}=-t+C
+\]
+\[
+x=\text{定数}\times\left(t-c\right)^{\frac{2}{3}}
+\]
+\[
+x''=\text{定数}\times\left(t-c\right)^{-\frac{4}{3}}
+\]
+
+
+
+\paragraph{例 振子}
+
+\[
+\theta\left(t\right)''=-\sin\theta
+\]
+\[
+\frac{\theta'^{2}}{2}=E+\cos\theta
+\]
+\[
+\theta'=\sqrt{2\left(E+\cos\theta\right)}
+\]
+\[
+\int_{0}^{\theta}\frac{\mathrm{d}\theta}{\sqrt{2\left(E+\cos\theta\right)}}=t+C
+\]
+
+
+$E>1$なら$\theta'$は0にならない。$\theta'$は常に正か常に負。$\theta\left(t\right)$は円周上を同じ方向に回転する。
+
+$E<1$なら$\theta\left(t\right)$は振動し周期運動をする（振幅に依存）。$E\rightarrow1$のとき$\text{周期}\rightarrow\infty$
+
+ただし$\theta''\left(t\right)=-\theta$なら周期は振動数によらない。
+
+
+\paragraph{例}
+
+\[
+x'^{2}=4x\cdots\left(**\right)
+\]
+\[
+x'=2\sqrt{x}
+\]
+
+
+$x\neq0$なら
+\[
+\frac{x'}{2\sqrt{x}}=1
+\]
+\[
+\sqrt{x}=t+C
+\]
+\[
+x=\left(t+c\right)^{2}
+\]
+
+
+これは$\left(**\right)$の一般解(general solution)である。
+
+この$c$に特別な値を代入したもの($x=t^{2},\left(t-1\right)^{2}$など)を特殊解(special
+solution)という。
+
+また、$x=0$も解だがこれは一般会からは出てこない。このようなものを特異解(singular solution)という。
+
+偏微分方程式にも線形方程式が存在し、未知関数及び偏導関数について線形である。
+
+例: $\frac{\partial f}{\partial t}=\frac{\partial^{2}f}{\partial x^{2}}$(熱方程式)、$\frac{\partial^{2}f}{\partial t^{2}}=\frac{\partial^{2}f}{\partial x^{2}}$(一次元の波動方程式)
+
+このようなものに対しては、偏微分方程式であっても重ね合わせの原理が成立する。すなわち、解はベクトル空間となる。
+
+
+\paragraph{補足}
+
+線形({*}) $\frac{\mathrm{d}x}{\mathrm{d}t}=A\left(t\right)\boldsymbol{x}$,
+$A\left(t\right)=B\left(t\right)'$ $\boldsymbol{x}\left(t\right)=\left(\exp B\left(t\right)\right)\boldsymbol{x}\left(0\right)$
+
+({*}') $\frac{\mathrm{d}\boldsymbol{x}}{\mathrm{d}t}-A\left(t\right)\boldsymbol{x}=\boldsymbol{f}\left(t\right)$
+これも線形ということがある
+
+({*})の解はベクトル空間$V_{x}$
+
+({*}')の解はベクトル空間ではない。
+
+一つの解$\boldsymbol{x}\left(t\right)$を決めると別の解$\boldsymbol{y}\left(t\right)$と$\boldsymbol{x}\left(t\right)$の差は、({*})の解。改善帯は$\boldsymbol{x}\left(t\right)+V_{x}$の形である。
+
+$\because)$ $\boldsymbol{y}\left(t\right)$を別の解とすると
+\[
+\begin{cases}
+\frac{\mathrm{d}\boldsymbol{y}}{\mathrm{d}t}-A\left(t\right)\boldsymbol{y}=\boldsymbol{f}\left(t\right)\\
+\frac{\mathrm{d}\boldsymbol{x}}{\mathrm{d}t}-A\left(t\right)\boldsymbol{x}=\boldsymbol{f}\left(t\right)
+\end{cases}
+\]
+\[
+\frac{\mathrm{d}\left(\boldsymbol{x}-\boldsymbol{y}\right)}{\mathrm{d}t}-A\left(t\right)\left(\boldsymbol{x}-\boldsymbol{y}\right)=0
+\]
+となり({*})の解。
+
+
+\paragraph{一つの解を求める方法(定数変化法)}
+
+\[
+\boldsymbol{x}\left(t\right)=\left(\exp B\left(t\right)\right)\left(\boldsymbol{a}\left(t\right)\right)
+\]
+(\textbf{$\boldsymbol{a}\left(t\right)$}が一定ベクトルなら({*})の解)
+
+\begin{eqnarray*}
+\boldsymbol{x}' & = & A\left(t\right)\left(\exp B\left(t\right)\boldsymbol{a}\left(t\right)+\left(\exp B\left(t\right)\right)\right)\boldsymbol{a}'\left(t\right)\\
+ & = & A\left(t\right)\boldsymbol{x}\left(t\right)+\left(\exp B\right)\boldsymbol{a}'\left(t\right)
+\end{eqnarray*}
+\begin{align*}
+ & \boldsymbol{x}'-A\left(t\right)\boldsymbol{x}\left(t\right)=\boldsymbol{f}\left(t\right)\\
+\Leftrightarrow & \left(\exp B\right)\boldsymbol{a}'=f\left(t\right)\\
+\Leftrightarrow & \boldsymbol{a}'=\left(\exp\left(-B\right)\right)\boldsymbol{f}\left(t\right)\\
+\Leftrightarrow & \boldsymbol{a}\left(t\right)=\int^{t}\exp\left(-B\right)\boldsymbol{f}\left(t\right)\mathrm{d}t
+\end{align*}
+
+
+一つの解は
+\[
+\boldsymbol{x}\left(t\right)=\left(\exp B\left(t\right)\right)\int^{t}\exp\left(-B\right)\boldsymbol{f}\left(t\right)\mathrm{d}t
+\]
+
+
+
+\paragraph{偏微分方程式}
+
+前にやったのは、熱方程式
+\[
+\frac{\partial f}{\partial t}=k\frac{\partial^{2}f}{\partial x^{2}}
+\]
+一次元波動方程式
+\[
+\frac{\partial^{2}f}{\partial t^{2}}=c^{2}\frac{\partial^{2}f}{\partial x^{2}}
+\]
+\begin{equation}
+\left(\frac{\partial}{\partial t}-c\frac{\partial}{\partial x}\right)\left(\frac{\partial}{\partial t}+c\frac{\partial}{\partial x}\right)f=0\label{eq:star}
+\end{equation}
+であった。重要な点は
+\[
+\frac{\partial f\left(x_{1},\cdots,x_{n}\right)}{\partial x_{k}}=0\Leftrightarrow x\text{は}\left(x_{1},\cdots,x_{k-1},x_{k+1},\cdots,x_{n}\right)\text{の関数}
+\]
+である。
+
+\ref{eq:star}を解く。$y=x+ct,z=x-ct$とおく。
+
+\[
+\begin{cases}
+x=x\left(y,z\right)=\frac{y+z}{z}\\
+t=t\left(y,z\right)=\frac{y-z}{2c}
+\end{cases}
+\]
+
+
+$f\left(t,x\right)=f\left(t\left(y,z\right),x\left(y,z\right)\right)-g\left(y,z\right)$と置く。
+
+\[
+\frac{\partial}{\partial t}y=\frac{\partial}{\partial t}\left(x+ct\right)=c
+\]
+\[
+\frac{\partial z}{\partial t}=-c
+\]
+\[
+\frac{\partial}{\partial x}y=\frac{\partial}{\partial x}\left(x+ct\right)=1
+\]
+\[
+\frac{\partial z}{\partial x}=1
+\]
+\[
+\frac{\partial}{\partial t}=c\left(\frac{\partial}{\partial y}-\frac{\partial}{\partial z}\right)
+\]
+\[
+\frac{\partial}{\partial x}=\left(\frac{\partial}{\partial y}+\frac{\partial}{\partial z}\right)
+\]
+\[
+\left(\frac{\partial}{\partial x}-c\frac{\partial}{\partial t}\right)=-2c\frac{\partial}{\partial z}
+\]
+\[
+\left(\frac{\partial}{\partial x}+c\frac{\partial}{\partial t}\right)=2c\frac{\partial}{\partial y}
+\]
+
+
+\begin{align*}
+ & \ref{eq:star}\\
+\Leftrightarrow & \frac{\partial^{2}g}{\partial y\partial z}=0\\
+\Leftrightarrow & \frac{\partial}{\partial y}\left(\frac{\partial g}{\partial z}\right)=0\\
+\Leftrightarrow & \frac{\partial g}{\partial z}=\left(z\text{だけの関数}\right)=k\left(z\right)=K\left(z\right)'\\
+\Leftrightarrow & \frac{\partial}{\partial z}\left(g-K\left(z\right)\right)=0\\
+\Leftrightarrow & g-K\left(z\right)=g\text{だけの関数}=H\left(g\right)\\
+\Leftrightarrow & g\left(y,z\right)=H\left(y\right)+K\left(z\right)\\
+\Leftrightarrow & f\left(t,x\right)=H\left(x+ct\right)+K\left(x-ct\right)
+\end{align*}
+
+
+
+\paragraph{例}
+
+\ref{eq:star}+境界条件
+
+$f\left(t,\pm\pi\right)=0$とする。
+
+\[
+f\left(t,x\right)=\sum_{n=0}^{\infty}a_{n}\left(t\right)\cos nx+\sum_{n=1}^{\infty}b_{n}\left(t\right)\sin nx
+\]
+\[
+c^{2}\frac{\partial^{2}f}{\partial t^{2}}=\sum a_{n}''\left(t\right)\cos nx+\sum b_{n}''\left(t\right)\sin nx
+\]
+\[
+c^{2}\frac{\partial^{2}f}{\partial x^{2}}=-c^{2}\left(\sum\left(n^{2}a_{n}\left(t\right)\right)\cos nx-\sum n^{2}b_{n}\sin nx\right)
+\]
+\[
+a_{n}''=-n^{2}c^{2}a_{n}
+\]
+\[
+a_{n}=\alpha\cos\left(nct\right)+\beta\sin\left(nct\right)
+\]
+
+
+$\begin{cases}
+\cos\left(nct\right)\cos nx\\
+\cos\left(nct\right)\sin nx\\
+\text{etc}
+\end{cases}$の形の項となる。
+
+加法定理から$\cos\left(n\left(x\pm ct\right)\right),\sin\left(n\left(x\pm ct\right)\right)$と書ける。
+
+
+\paragraph{2次元の波動方程式}
+
+逮捕の振動、電波の伝播、非常に長いアンテナなどがこの例に当てはまる。
+
+\begin{equation}
+\frac{\partial^{2}f}{\partial t^{2}}=c^{2}\left(\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}f\right)\label{eq:starstar}
+\end{equation}
+
+
+この解として、極座標$\left(r,\theta\right)$と$t$を用いて$ $$ $$f=T\left(t\right)R\left(r\right)A\left(\theta\right)$と書ける解を探す。
+
+\ref{eq:starstar}より
+\[
+T''RA=c^{2}\left(TR''A+\frac{1}{r}TR'+\frac{1}{r^{2}}TRA''\right)
+\]
+\[
+\left(\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}=\frac{\partial^{2}}{\partial r^{2}}+\frac{1}{r}\frac{\partial}{\partial x}+\frac{1}{r^{2}}\frac{\partial^{2}}{\partial\theta^{2}}\right)
+\]
+
+
+両辺を$TRA=f$で割る。
+\[
+\frac{T''}{T}\left(t\right)=c^{2}\left(\frac{R''}{R}+\frac{1}{r}\frac{R'}{R}+\frac{1}{r^{2}}\frac{A''}{A}\right)
+\]
+
+
+右辺は$t$だけの関数、左辺は$r,\theta$だけの関数となっている。これを定数$c^{2}k$と置くと、
+\begin{equation}
+\frac{T''}{T}=c^{2}k\Leftrightarrow T''=c^{2}kT\label{eq:kome}
+\end{equation}
+\[
+\frac{R''}{R}+\frac{1}{r}\frac{R'}{R}+\frac{1}{r^{2}}\frac{A''}{A}=k
+\]
+
+
+\ref{eq:kome}の解は
+\[
+\begin{cases}
+T\text{は}t\text{の1次式} & k=0\\
+T=\mathrm{e}^{\pm\frac{c}{\sqrt{k}}t}\text{の一次結合} & k>0\\
+T=\cos\frac{c}{\sqrt{-k}}t\text{と}\sin\frac{c}{\sqrt{-k}}t\text{の一次結合} & k<0
+\end{cases}
+\]
+
+
+振動する解$\Leftrightarrow k<0$である。$k<0$とすると、
+\[
+A\left(\theta\right)=A\left(\theta+2\pi\right)
+\]
+なので、$\sin''\theta,\cos''\theta$と書ける。$A\left(\theta\right)=\cos n\theta$とする。
+
+\ref{eq:kome}
+\begin{equation}
+\frac{R''}{R}+\frac{1}{r}\frac{R'}{R}-\frac{n^{2}}{r^{2}}=k<0\label{eq:komekome}
+\end{equation}
+
+
+$r$の代わりに$\alpha r=s$と取ると、
+\[
+\frac{\partial}{\partial r}=\alpha\frac{\partial}{\partial s}\left(\alpha-\sqrt{-k}\text{とする}\right)
+\]
+
+
+変数を$s$でおきかえると、
+\[
+\left(-k\right)\frac{R''}{R}-\frac{\left(-k\right)}{r}\frac{R'}{R}-\frac{\left(-k\right)n^{2}}{r^{2}}=k
+\]
+\begin{equation}
+R''+\frac{1}{r}R'+\left(1-\frac{n^{2}}{s^{2}}\right)R=0\label{eq:komekomekome}
+\end{equation}
+とできる。この形の微分方程式をBesselの微分方程式と呼ぶ。これは線形方程式である。
+
+$R\left(s\right)=\sum_{n=0}^{\infty}a_{n}s^{n}$の形に書けたとする。\ref{eq:komekomekome}における$s^{2}$の係数を
+\[
+\left(n+2\right)\left(n+1\right)a_{n+2}+\left(n+2\right)a_{n+2}+a_{n}-n^{2}a_{n+2}=0
+\]
+\[
+a_{n+2}=\frac{-1}{\left(n+2\right)^{2}-n^{2}}a_{n}=\frac{a_{n}}{4\left(n+1\right)}
+\]
+
+
+$R\left(r\right)A\left(\theta\right)=g\left(x,y\right)$は$x,y$に関して$C^{\infty}$級とする。$R\left(r\right)\cos n\theta$が$\left(x,y\right)$に関して$C^{\infty}$級なので、$a_{k}=0\left(k\leqq n\right)$,
+$\left(k-n\right)$が奇数なら$a_{k}=0$がいえる。
+
+$a_{n}=a$とすると、
+\[
+R\left(s\right)=a\left(s^{n}+\frac{s^{n+2}}{4\left(n+1\right)}+\frac{s^{n+4}}{16\left(n+1\right)\left(n+3\right)}+\cdots+\frac{s^{n+2k}}{4^{k}\left(n+1\right)\cdots\left(n+2k-1\right)}+\cdots\right)
+\]
+となり収束する。この関数をを$J_{n}\left(s\right)$と書き、n次のBessel関数と呼ばれる。
+
+
+\paragraph{Eularの方程式}
+
+$\boldsymbol{q},\boldsymbol{p}$をn次のベクトル値変数、$L\left(\boldsymbol{q},\boldsymbol{p}\right)$を$\boldsymbol{q}$と$\boldsymbol{p}$の関数、$\boldsymbol{x}\left(t\right)$をn次ベクトル値関数とし、$t_{1}<t_{2}$で固定する。この時、
+\[
+E\left(\boldsymbol{x}\right)=\int_{t_{1}}^{t_{2}}L\left(\boldsymbol{x}\left(t\right),\dot{\boldsymbol{x}}\left(t\right)\right)\mathrm{d}t
+\]
+
+
+$\boldsymbol{x}$をいろいろ動かしたとき$E\left(\boldsymbol{x}\right)$が最小となる。
+
+
+\paragraph{例}
+
+$\boldsymbol{x}\left(t\right)$を曲線とする。
+
+\[
+L\left(\boldsymbol{q},\boldsymbol{p}\right)=\sqrt{p_{1}^{2}+p_{2}^{2}}
+\]
+\[
+\int L\left(\boldsymbol{x},\dot{\boldsymbol{x}}\right)\mathrm{d}t=\left(\boldsymbol{x}\left(t\right)\text{の長さ}\right)
+\]
+
+
+答えは$\boldsymbol{x}\left(t\right)=\text{直線}$の形となる。
+
+最小値問題の解\textbf{$\boldsymbol{x}$}は、
+\[
+L_{q_{i}}\left(\boldsymbol{x}\left(t\right),\dot{\boldsymbol{x}}\left(t\right)\right)=\frac{\mathrm{d}}{\mathrm{d}t}L_{p_{i}}\left(\boldsymbol{x}\left(t\right),\dot{\boldsymbol{x}}\left(t\right)\right)
+\]
+を満たす。これをEularの方程式という。
+
+$\boldsymbol{x}\left(t\right)$を少しだけ変形して$\boldsymbol{a}\left(t\right)$とし、$\boldsymbol{a}\left(t_{1}\right)=0,\boldsymbol{a}\left(t_{2}\right)=0$とする。
+
+\[
+\left.\frac{\mathrm{d}}{\mathrm{d}z}\right|_{\varepsilon=0}\int L\left(\boldsymbol{x}+\varepsilon\boldsymbol{a}\left(t\right),\dot{\boldsymbol{x}}+\varepsilon\dot{\boldsymbol{a}}\left(t\right)\right)\mathrm{d}t=\int\left(L_{q_{i}}\left(\boldsymbol{x},\dot{\boldsymbol{x}}\right)\sum a_{i}\left(t\right)+L_{p_{i}}\left(\boldsymbol{x},\dot{\boldsymbol{x}}\right)\left(\sum\dot{a}_{i}\right)\right)\mathrm{d}t=0
+\]
+
+
+$\varepsilon=0$のとき最小。
+\[
+\int L_{\boldsymbol{q}}\left(\boldsymbol{x},\dot{\boldsymbol{x}}\right)\dot{\boldsymbol{a}}\mathrm{d}t=\left[L_{p}\left(\boldsymbol{x},\dot{\boldsymbol{x}}\right)\boldsymbol{a}\left(t\right)\right]-\int\frac{\mathrm{d}}{\mathrm{d}t}L_{p}\left(\boldsymbol{x},\dot{\boldsymbol{x}}\right)\boldsymbol{a}\mathrm{d}t
+\]
+より、
+\[
+\left.\frac{\mathrm{d}}{\mathrm{d}z}\right|_{\varepsilon=0}\int L\left(\boldsymbol{x}+\varepsilon\boldsymbol{a}\left(t\right),\dot{\boldsymbol{x}}+\varepsilon\dot{\boldsymbol{a}}\left(t\right)\right)\mathrm{d}t=\int\left(L_{q_{i}}\left(\boldsymbol{x},\dot{\boldsymbol{x}}\right)-\frac{\mathrm{d}}{\mathrm{d}t}L_{p_{i}}\left(\boldsymbol{x},\dot{\boldsymbol{x}}\right)\right)\left(\sum a_{i}\right)\mathrm{d}t
+\]
+
+
+ここで$\boldsymbol{a}\left(t\right)$はほとんど任意関数となる。
+
+$a_{i}$の係数は
+\[
+L_{q_{1}}-\frac{\mathrm{d}}{\mathrm{d}t}L_{p_{i}}=0
+\]
+(Eular方程式)
+\end{document}
