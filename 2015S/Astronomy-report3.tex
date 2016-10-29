@@ -1,0 +1,144 @@
+%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{graphicx}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[version=3]{mhchem}
+
+\makeatother
+
+\usepackage{babel}
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Listing}
+
+\begin{document}
+
+\title{宇宙科学実習レポート課題: 銀河の衝突の数値シミュレーション}
+
+
+\author{学籍番号 340728B 高橋光輝}
+
+\maketitle
+
+\section*{課題A}
+
+以下のPythonプログラムを使用して軌道計算を行った。\lstinputlisting[breaklines=true,captionpos=b,frame=tb,language=Python,caption={galaxyA.py}]{C:/Users/hakatashi/OneDrive/Documents/Todai/astro/final/galaxyA.py}
+
+ここで$\mu=0.05,R_{b}\sim0.167,R_{d}=0.5$とした。
+
+これを実行したところ、以下のような結果を得た。
+
+\includegraphics{astro03_A}
+
+銀河は反時計回りに回転しながら円盤状を維持している。
+
+
+\section*{課題B}
+
+以下のPythonプログラムを使用して軌道計算を行った。
+
+\lstinputlisting[breaklines=true,captionpos=b,frame=tb,language=Python,caption={galaxyB.py}]{C:/Users/hakatashi/OneDrive/Documents/Todai/astro/final/galaxyB.py}
+
+ここで$\mu=0.05,R_{b}\sim0.167,R_{d}=0.5$、銀河2の初期値を$\left(x,y\right)=\left(1,1\right),\left(\frac{\mathrm{d}x}{\mathrm{d}t},\frac{\mathrm{d}y}{\mathrm{d}t}\right)=\left(-1,-0.2\right)$とした。
+
+これを実行したところ、以下のような経過を得た。
+
+\includegraphics{astro03_B01}
+
+\includegraphics{astro03_B02}
+
+\includegraphics{astro03_B03}
+
+\includegraphics{astro03_B04}
+
+おおむね渦巻きのような模様が観測された。
+
+
+\section*{課題C}
+
+以下のPythonプログラムを使用して軌道計算を行った。
+
+\lstinputlisting[breaklines=true,captionpos=b,frame=tb,language=Python,caption={galaxyC.py}]{C:/Users/hakatashi/OneDrive/Documents/Todai/astro/final/galaxyC.py}
+
+ここで初期条件及びパラメータは課題Bと同じものとした。
+
+これを実行したところ、以下のような経過を得た。
+
+\includegraphics{astro03_C01}
+
+\includegraphics{astro03_C02}
+
+\includegraphics{astro03_C03}
+
+\includegraphics{astro03_C04}
+
+星団の散らばり方が課題Bよりも大人しいように見えた。
+
+
+\section*{課題D}
+
+上の課題Bおよび課題Cの出力を比較した。いずれも2単位時間後の円盤内およびハロウ内に存在する星の数を計測している。
+
+\inputencoding{latin9}\begin{lstlisting}
+hakatashi@HAKATAPAD C:\Users\hakatashi\OneDrive\Documents\Todai\astro\final
+> python galaxyB.py
+Stars inside disk: 354
+Stars inside halo: 429
+
+hakatashi@HAKATAPAD C:\Users\hakatashi\OneDrive\Documents\Todai\astro\final
+> python galaxyC.py
+Stars inside disk: 395
+Stars inside halo: 464
+\end{lstlisting}
+\inputencoding{utf8}
+
+以上から、ダークマターの影響を考慮した場合、円盤内およびハロウ内にとどまる星の数が増加することがわかった。
+
+原因として、ダークマターによって銀河内の星が受ける重力の大きさが大きくなったため、相対的に銀河2から受ける重力の影響が小さくなったということが考えられる。
+
+
+\section*{発展課題}
+
+参考資料にあったような銀河同士の干渉によって得られる形状変化についてもっと詳しく知りたいと思ったので、銀河2も円盤銀河として2つの銀河の衝突を調査してみた。
+
+\lstinputlisting[breaklines=true,captionpos=b,frame=tb,language=Python,caption={galaxyD.py}]{C:/Users/hakatashi/OneDrive/Documents/Todai/astro/final/galaxyD.py}
+
+ここで$\mu=0.5$とし、銀河2のその他の条件は銀河1と同じにした。これによってほぼ同程度の大きさの銀河どうしの衝突の様子がシミュレートできると考えた。またこのために銀河2のダークマターの影響も考慮するようプログラムを修正している。
+
+これにより、以下のような経過を得た。
+
+\includegraphics{astro03-Ex02}
+
+\includegraphics{astro03-Ex03}
+
+\includegraphics{astro03-Ex04}
+
+\includegraphics{astro03-Ex05}
+
+\includegraphics{astro03-Ex06}
+
+\includegraphics{astro03-Ex07}
+
+\includegraphics{astro03-Ex08}
+
+\includegraphics{astro03-Ex09}
+
+\includegraphics{astro03-Ex01}
+
+銀河どうしが相互作用しきれいな模様を描くようすが観測された。
+
+これと類似する、相互作用する銀河の観測画像を探したところ、ハッブル望遠鏡のとらえたNGC 4038-4039がこの5\textasciitilde{}6枚目と類似するようである。
+
+\includegraphics{hs-2006-46-a-print}
+
+Hubble Site Super Star Clusters in the Antennae Galaxies (http://imgsrc.hubblesite.org/hu/db/images/hs-2006-46-a-print.jpg)
+より引用
+\end{document}

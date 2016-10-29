@@ -1,0 +1,3418 @@
+%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{fancybox}
+\usepackage{calc}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{esint}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[version=3]{mhchem}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2015-S 相対論講義ノート}
+
+
+\author{教員: 大川裕司 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+
+
+\doublebox{\begin{minipage}[t]{1\columnwidth}%
+
+\paragraph{編注}
+\begin{itemize}
+\item この講義ノートはしがない受講者のひとりが入力したものです。
+
+\begin{itemize}
+\item 内容に関して責任は持ちません。
+\end{itemize}
+\item 多くの誤入力を含む可能性があります。
+
+\begin{itemize}
+\item 特にテンソルは保存ミスにより添字の順番が失われてしまいました。可能な限り手動で復元しましたが、まだ誤りがある可能性があります。
+\item 誤りを発見した場合は報告してください。可能な限り修正します。
+\end{itemize}
+\item 入力にあたり、単に板書の丸写しではなく、必要に応じて口頭の説明から補足を加えました。
+\item 図版は省略し、可能な限り文章で説明しましたが、おそらく理解に苦しむものと思われますので、適宜教科書などを参照してください。
+\item 入力者としてはこの資料を自由に利用・再配布して構いません。その場合、利用者は完全に各自の裁量と責任により当資料を利用するものとし、それにより担当教員・東京大学・その他人物団体の権利を侵害したとしても入力者は責任を持たないものとします。
+\end{itemize}
+
+\paragraph{入力者連絡先}
+
+問題報告・苦情は以下のいずれかにお願いします。
+
+Twitter: https://twitter.com/hakatashi
+
+Email: hakatasiloving@gmail.com%
+\end{minipage}}
+
+
+\part*{第1回}
+
+
+\paragraph{担当教員}
+
+大川裕司
+
+専門: 素粒子論(超弦理論)
+
+16号館3階321A号室
+
+お問い合せは http://okawa.c.u-tokyo.ac.jp/ まで
+
+初修でも十分履修可能なように構成する
+
+今年度から担当教員が変わったので過去問は存在しない
+
+評価は学期末試験のみで行う
+
+教科書は『相対論入門講義』を用い、これにそって講義を行うが、具体的にページを参照することはない。なくても理解できるように板書を行う。
+
+休講: 5/12(火) → 補講: 7/17(金) 5限 K011
+
+
+\section{序論}
+
+
+\subsection{特殊相対性理論}
+
+等速直線運動をしている電車を考える。動いているのは電車なのか、窓の外の景色なのか、どっちだろうか。
+
+もちろん動いているのは電車のほうだが、例えば密室にした電車の中で、実験・観測によってこの区別が付けられるだろうか。実は、この方法で電車の速度を求めることはできない。
+\begin{itemize}
+\item 絶対的な速度という概念は存在しない。\\
+電車の速度というのは、地面に対する相対速度である。
+\item 互いに等速直線運動している座標系は、すべて同等で絶対的なものはない。
+\end{itemize}
+この性質を\textbf{特殊相対性}という。(等速直線運動という特殊な運動に対する性質のため)
+
+Newton力学は特殊相対性を持つ。Einsteinの特殊相対性理論との違いはなんだろうか?
+
+例えば、時速100kmで走っている電車は、進行方向と逆向きに時速50kmで走っている観測者からは、時速150kmで運動しているように見える。このように、Newton力学においては、速度に対して上限がない。
+
+ところが、光は互いに等速直線運動しているどの観測者から見ても同じ速度に見える(\textbf{光速度不変})。
+
+特殊相対性+光速度不変→Einsteinの特殊相対性理論 となる。
+
+
+\subsection{一般相対性理論}
+
+先ほどと同様に密室にした電車を考える。この電車の中で、実験・観測によって電車の加速度を知ることはできるだろうか?
+
+電車内のつり革がふれる角度から電車の加速度を求めることが出来る。
+\begin{itemize}
+\item Newton力学では互いに\textbf{加速度運動}している座標系は同等ではない
+\end{itemize}
+ここから、Newton力学には\textbf{一般相対性}はない。(より一般的な運動に適用できないため)
+
+Newtonの運動方程式が成り立つ特殊な座標系を慣性系と呼ぶ。
+
+だが、本当に一般相対性は存在しないのだろうか?
+
+例えば、密室にしたエレベーターで突然無重力状態になった時を考える。このとき、考えられる可能性は、
+\begin{enumerate}
+\item エレベーターが自由落下している
+\item 地球が消えた
+\end{enumerate}
+の2つである。この2つを実験・観測によって区別することは出来るだろうか?
+
+似た例として、一様な電場中で等速加速度運動する電荷を考えると、この2つを区別することが出来る。
+
+大きさ$E$の一様な電場に存在する箱に、質量$m$、電荷$q$の物体が入っている状態を考える。このとき、物体は大きさ$\frac{qE}{m}$の加速度運動をする。
+
+この物体が箱に対して静止したとき、
+\begin{enumerate}
+\item 箱が大きさ$\frac{qE}{m}$の加速度運動をしている
+\item 電場がゼロになった
+\end{enumerate}
+の2つの可能性が存在する。例えば、電荷がゼロの物体を箱のなかに入れれば、1.と2.は区別できる。より一般には、$\frac{q}{m}$の値が異なる物体を箱のなかに置けばよい。
+
+これを応用して重力の場合にも適用できないだろうか。重力の場合には、
+\[
+ma=mg
+\]
+
+
+このとき、
+
+$a$: 物体の加速度
+
+$g$: 重力加速度
+
+だが、$m$は左辺と右辺で扱いが異なる。左辺の$m$は慣性質量で右辺の$m$は重力質量(電場の時の電荷に対応)である。電荷の時に有効だったこの2つの値の比は、実験的にすべての物体に対して同じであるため、この手法では区別はできない。
+
+実は、エレベーターが自由落下していることと地球が消えたことを局所的には区別できない。ここから、一般的な座標系の間の変換である\textbf{一般座標変換}に対する不変性が存在するのではないかと考えられる。ここから生まれた新しい重力理論が\textbf{Einsteinの一般相対性理論}である。
+
+
+\subsection{現在の物理学における位置づけ}
+
+
+\paragraph{力学}
+
+Newton力学(古典力学)は、日常生活におけるほとんどすべての運動、および天文学的なスケールの運動を記述することができる力学である。ところがNewton力学には適用限界があり、
+\begin{itemize}
+\item 光の速度程度に速い運動($3.0\times10^{8}\text{m/s}$) → 特殊相対性理論
+\item 分子や原子程度に小さい世界 → 量子力学
+\item 光などの電磁波 → Maxwell方程式(古典場の理論)
+\end{itemize}
+などには適用することができない。
+
+これらの3つの理論をまとめて\textbf{場の量子論}と呼ぶ。ここから、素粒子の標準モデル(場の量子論)(電磁気力、強い力、弱い力)が構築される。
+
+ここで重力はどのような扱いになるか。Newtonの万有引力の法則から一般相対性理論(古典場の理論)において理論化されたが、これを場の量子論で融合することができない。
+
+これに対する重要な手がかりと目されているのは\textbf{超弦理論}である。
+
+
+\section{相対性}
+
+
+\subsection{Newtonの運動方程式}
+
+重さはあるが大きさはないと考えて物体を取り扱うとき、これを\textbf{質点}という。
+
+このとき、時刻$t$での位置
+\[
+\overrightarrow{r}\left(t\right)=\left(x\left(t\right),y\left(t\right),z\left(t\right)\right)
+\]
+を指定すれば、運動を記述したことになる。このとき、
+
+速度は
+\begin{align*}
+\overrightarrow{v}\left(t\right) & =\lim_{\Delta t\rightarrow0}\frac{\overrightarrow{r}\left(t+\Delta t\right)-\overrightarrow{r}\left(t\right)}{\Delta t}\\
+ & =\frac{\mathrm{d}\overrightarrow{r}\left(t\right)}{\mathrm{d}t}
+\end{align*}
+\[
+\overrightarrow{v}\left(t\right)=\left(\frac{\mathrm{d}x\left(t\right)}{\mathrm{d}t},\frac{\mathrm{d}y\left(t\right)}{\mathrm{d}t},\frac{\mathrm{d}z\left(t\right)}{\mathrm{d}t}\right)
+\]
+
+
+加速度は
+\begin{align*}
+\overrightarrow{a}\left(t\right) & =\lim_{\Delta t\rightarrow0}\frac{\overrightarrow{v}\left(t+\Delta t\right)-\overrightarrow{v}\left(t\right)}{\Delta t}\\
+ & =\frac{\mathrm{d}\overrightarrow{v}\left(t\right)}{\mathrm{d}t}=\frac{\mathrm{d}^{2}\overrightarrow{r}\left(t\right)}{\mathrm{d}t^{2}}
+\end{align*}
+\[
+\overrightarrow{a}\left(t\right)=\left(\frac{\mathrm{d}^{2}x\left(t\right)}{\mathrm{d}t^{2}},\frac{\mathrm{d}^{2}y\left(t\right)}{\mathrm{d}t^{2}},\frac{\mathrm{d}^{2}z\left(t\right)}{\mathrm{d}t^{2}}\right)
+\]
+
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\part*{第2回}
+
+休講: 5/12
+
+補講: 7/17 5限
+
+
+\paragraph{Newtonの運動方程式}
+
+\[
+m\frac{\mathrm{d}^{2}\overrightarrow{r}\left(t\right)}{\mathrm{d}t^{2}}=\overrightarrow{F}\left(\overrightarrow{r}\left(t\right),\frac{\mathrm{d}\overrightarrow{r}\left(t\right)}{\mathrm{d}t},t\right)
+\]
+
+
+Newtonの運動方程式が成り立つ座標系を慣性系と呼ぶ。ここで、\\
+$S$系: 一つの慣性系$\left(x,y,z,t\right)$\\
+$S'$系: $S$系に対して$x$軸の正方向に一定の速度$V$で動いている$\left(x',y',z',t'\right)$\\
+を仮定し、時刻$t=0,t'=0$で$S$系と$S'$系は一致するものとする。
+
+
+\paragraph{Newton力学における$S$系と$S'$系の関係}
+
+Galilei変換を用いて、
+\[
+\begin{cases}
+x'=x-Vt\\
+y'=y\\
+z'=z\\
+t'=t
+\end{cases}
+\]
+
+
+ここで、時刻はすべての慣性系で共通な\textbf{絶対時間}である。以下、$t'$も$t$と書く。
+
+
+\paragraph{例1 一様な重力のもとでの運動}
+
+鉛直上向きを$x$軸の正の方向とし、$x$方向の運動のみを考える。
+
+\[
+m\frac{\mathrm{d}^{2}x\left(t\right)}{\mathrm{d}t^{2}}=-mg
+\]
+
+
+\[
+x'\left(t\right)=x\left(t\right)-Vt
+\]
+
+
+\[
+\frac{\mathrm{d}x'\left(t\right)}{\mathrm{d}t}=\frac{\mathrm{d}x\left(t\right)}{\mathrm{d}t}-V
+\]
+
+
+\[
+\frac{\mathrm{d}^{2}x'\left(t\right)}{\mathrm{d}t^{2}}=\frac{\mathrm{d}^{2}x\left(t\right)}{\mathrm{d}t^{2}}
+\]
+
+
+\[
+m\frac{\mathrm{d}^{2}x'\left(t\right)}{\mathrm{d}t^{2}}=-mg
+\]
+
+
+以上より、運動方程式はGalilei変換のもとで不変である。
+
+もしも$a_{0}$を定数として、
+\[
+x'\left(t\right)=x\left(t\right)-\frac{1}{2}a_{0}t^{2}
+\]
+であったら、
+\[
+m\frac{\mathrm{d}^{2}x'\left(t\right)}{\mathrm{d}t^{2}}=-mg-ma_{0}
+\]
+となり、この変換に対して運動方程式は不変ではない。
+
+
+\paragraph{例2 バネから力を受ける質点}
+
+バネが自然長の状態を$x=0$、$k$をばね定数として、
+\[
+m\frac{\mathrm{d}^{2}x\left(t\right)}{\mathrm{d}t^{2}}=-kx\left(t\right)
+\]
+
+
+これはGalilei変換のもとで不変ではない?→地球も含めて考えれば不変である。
+
+2つの質点$m_{1}$と$m_{2}$を、バネ定数$k$、自然長$x_{0}$のばねでつなぎ、それぞれの座標を$x_{1},x_{2}$とすると、
+\[
+\begin{cases}
+m_{1}\frac{\mathrm{d}^{2}x_{1}\left(t\right)}{\mathrm{d}t^{2}}=k\left(x_{2}\left(t\right)-x_{1}\left(t\right)-x_{0}\right)\\
+m_{2}\frac{\mathrm{d}^{2}x_{2}\left(t\right)}{\mathrm{d}t^{2}}=-k\left(x_{2}\left(t\right)-x_{1}\left(t\right)-x_{0}\right)
+\end{cases}
+\]
+となり、これはGalilei変換に対して不変である。
+
+このように、「変換則」(例:Galilei変換)と「法則の形」(例:運動方程式)を組にして考えることが重要である。
+
+
+\paragraph{速度に依存する力から絶対速度がわかるか?}
+
+例えば空気抵抗を調べても、空気との相対速度しかわからない。
+
+このように、Newton力学のGalilei相対性がいえる。
+
+
+\paragraph{磁場から受ける力は速度に依存する}
+
+磁場中を動く導体棒には、速度に依存した起電力が発生する。これを利用して絶対速度を測定することはできるか?
+
+実際には導体棒を固定し磁場を動かした場合にも電磁誘導により起電力が生じる。やはり絶対速度を測定することはできない。
+
+
+\subsection{波動方程式}
+
+質量$M$の質点を、間隔$a$で$x$軸上に無限に置き、隣り合う質点どうしをそれぞればね定数$k$、自然長$a_{0}\left(a_{0}<a\right)$のばねでつなぐことを考える。$n$番目のおもりの$y$方向の変位を$y_{n}\left(t\right)$とする。変位が小さい時、運動方程式は、
+\[
+M\frac{\mathrm{d}^{2}y_{n}}{\mathrm{d}t^{2}}=-k'\left(y_{n}-y_{n-1}\right)+k'\left(y_{n+1}-y_{n}\right)
+\]
+となる。ただし$k'=\frac{a-a_{0}}{a}k$である。(詳しくは講義「振動・波動」で)
+
+連続体の極限$a\rightarrow0$を考えると、$a_{0}\rightarrow0,k\rightarrow\infty,M\rightarrow0$となるが、
+\[
+\frac{a-a_{0}}{a},k\left(a-a_{0}\right),\frac{M}{a}
+\]
+は有限になるようにする。
+
+$T$を張力、$\sigma$を単位長あたりの質量として、
+\[
+k\left(a-a_{0}\right)\rightarrow T,\frac{M}{a}\rightarrow\sigma
+\]
+とする。連続体の$x$軸からの変位を$u\left(x,t\right)$とすると、$y_{n}\left(t\right)$は$x=na$での$u\left(x,t\right)$となるので、
+\[
+y_{n}\left(t\right)=u\left(na,t\right)
+\]
+となる。
+
+詳しい計算は省くが、$a\rightarrow0$では、
+\[
+\sigma\frac{\partial^{2}u\left(x,t\right)}{\partial t^{2}}=T\frac{\partial^{2}u\left(x,t\right)}{\partial x^{2}}
+\]
+となる。
+
+なお$\partial$は偏微分であり、多変数関数$f\left(x,y\right)$に対して
+\[
+\frac{\partial f\left(x,y\right)}{\partial x}=\lim_{\Delta x\rightarrow0}\frac{f\left(x+\Delta x,y\right)-f\left(x,y\right)}{\Delta x}
+\]
+\[
+\frac{\partial f\left(x,y\right)}{\partial y}=\lim_{\Delta y\rightarrow0}\frac{f\left(x,y+\Delta y\right)-f\left(x,y\right)}{\Delta y}
+\]
+と定義される。
+
+例えば、$f\left(x,y\right)=x^{2}y+xy+4x+5y+6$とすると、
+\[
+\frac{\partial f\left(x,y\right)}{\partial x}=2xy+y+4
+\]
+\[
+\frac{\partial f\left(x,y\right)}{\partial y}=x^{2}+x+5
+\]
+となる。
+
+上式にもどり、$v=\sqrt{\frac{T}{\sigma}}$とすると、
+\[
+\frac{\partial^{2}u\left(x,t\right)}{\partial t^{2}}=v^{2}\frac{\partial^{2}u\left(x,t\right)}{\partial x^{2}}
+\]
+となる。これが\textbf{波動方程式}である。
+
+
+\paragraph{進行波}
+
+$A,k,\omega,\phi$を定数とすると、
+\[
+u\left(x,t\right)=A\cos\left(kx-\omega t-\phi\right)
+\]
+は進行波になる。ここで、$k$を波数、$\lambda=\frac{2\pi}{k}$を波長、$\omega$を角振動数、$T=\frac{2\pi}{\omega}$を周期と呼ぶ。
+
+\[
+\frac{\partial^{2}u\left(x,t\right)}{\partial t^{2}}=-\omega^{2}A\cos\left(kx-\omega t-\phi\right)
+\]
+\[
+\frac{\partial^{2}u\left(x,t\right)}{\partial x^{2}}=-k^{2}A\cos\left(kx-\omega t-\phi\right)
+\]
+から、$\omega^{2}=v^{2}k^{2}$のときに解を持つ。
+
+$k>0,\omega>0$のとき、右向きに進む波を表す。波の速度(位相速度)は、
+\[
+\frac{\lambda}{T}=\frac{\omega}{k}=v
+\]
+となる。
+
+$k<0,\omega>0$のとき、左向きに進む波を表す。速度は同様に$v$である。
+
+$S'$系での波の速度は、
+\begin{align*}
+\text{右向きの波} & v-V\\
+\text{左向きの波} & v+V
+\end{align*}
+となる。よって、波動方程式はGalilei変換のもとで不変ではない。
+
+
+\paragraph{弾性体の簡単なモデル}
+
+加えた力に比例して変形し、力を取り除いたら元に戻る物体を考える。これは、質点を間隔$a$で空間上に無限に置き、隣り合う質点どうしをばねで接続するモデルで$a\rightarrow0$の極限を取ることによって考えることができる。
+
+このモデルにおけるある種の波は、$y$座標、$z$座標には依存せず、先の一次元的なモデルと同様に考えることができる($y$方向の変位$u\left(x,t\right)$に対しては、$yz$平面がそのまま$y$方向に動くイメージ)。これを\textbf{横波}という。
+
+よって波動方程式は、$\rho$を密度、$p$を単位面積当たりの張力とすると、
+\[
+\rho\frac{\partial^{2}u\left(x,t\right)}{\partial t^{2}}=p\frac{\partial^{2}u\left(x,t\right)}{\partial x^{2}}
+\]
+となる。よって横波の速さは$\sqrt{\frac{p}{\rho}}$となる。また、より速い\textbf{縦波}も存在する。
+
+これらの方程式はGalilei変換のもとで不変ではない。(媒質の静止系での運動方程式)
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\part*{第3回}
+
+
+\paragraph{先週の質問}
+
+\[
+\begin{cases}
+x_{1}'\left(t\right)=x_{1}\left(t\right)-Vt\\
+x_{2}'\left(t\right)=x_{2}\left(t\right)-Vt
+\end{cases}
+\]
+で不変
+
+また、波動方程式は$S'$系で不変ではないとしたが、$S'$系で$u'\left(x',t'\right)$とすると、
+\[
+u'\left(x',t'\right)=u\left(x,t\right)
+\]
+であり、
+\[
+\frac{\partial^{2}u'\left(x',t'\right)}{\partial t'^{2}}-\left(v^{2}-V^{2}\right)\frac{\partial^{2}u'\left(x',t'\right)}{\partial x'^{2}}-2V\frac{\partial^{2}u'\left(x',t'\right)}{\partial t'\partial x'}=0
+\]
+を満たす。
+
+そこで
+\[
+u'\left(x',t'\right)=A\cos\left(kx'-\omega t'-\phi\right)
+\]
+とすると、
+\begin{align*}
+ & \omega^{2}-\left(v^{2}-V^{2}\right)k^{2}-2V\omega k=0\\
+\Rightarrow & \omega=\left(v-V\right)k,-\left(v+V\right)k
+\end{align*}
+となり、波の速さが求まる。よって、右向きと左向きの波の速さから$V$が分かる。
+
+
+\subsection{Maxwell方程式}
+
+電荷や電流がない真空中で電場$\overrightarrow{E}=\left(E_{x},E_{y},E_{z}\right)$で、磁場(磁束密度)$\overrightarrow{B}=\left(B_{x,},B_{y},B_{z}\right)$が$y$や$z$に依存しないときを考える。
+
+$\varepsilon_{0}$を真空の誘電率、$\mu_{0}$を真空の透磁率とすると、Maxwell方程式は
+\begin{align*}
+\frac{\partial B_{x}}{\partial t} & =0\\
+-\frac{\partial E_{z}}{\partial x}+\frac{\partial B_{y}}{\partial t} & =0\\
+\frac{\partial E_{y}}{\partial x}+\frac{\partial B_{z}}{\partial t} & =0\cdots\text{①}\\
+\frac{\partial E_{x}}{\partial x} & =0
+\end{align*}
+\begin{align*}
+-\varepsilon_{0}\mu_{0}\frac{\partial E_{x}}{\partial t} & =0\\
+-\frac{\partial B_{z}}{\partial x}-\varepsilon_{0}\mu_{0}\frac{\partial E_{y}}{\partial t} & =0\cdots\text{②}\\
+\frac{\partial B_{y}}{\partial x}-\varepsilon_{0}\mu_{0}\frac{\partial E_{z}}{\partial t} & =0\\
+\frac{\partial B_{x}}{\partial x} & =0
+\end{align*}
+となる。式を変換して
+\begin{align*}
+ & \frac{\partial}{\partial x}\left(\text{①の式}\right)+\frac{\partial}{\partial t}\left(\text{②の式}\right)=0\\
+ & \frac{\partial^{2}E_{y}\left(x,t\right)}{\partial x^{2}}-\varepsilon_{0}\mu_{0}\frac{\partial^{2}E_{y}\left(x,t\right)}{\partial t^{2}}=0
+\end{align*}
+となり、速さ$\frac{1}{\sqrt{\varepsilon_{0}\mu_{0}}}$の波動方程式となる。
+
+ここで$E_{0},B_{0},k,\omega$をすべて正の定数として、
+\[
+\begin{cases}
+E_{y}\left(x,t\right)=E_{0}\cos\left(kx-\omega t\right)\\
+E_{z}\left(x,t\right)=B_{0}\cos\left(kx-\omega t\right)
+\end{cases}
+\]
+を①、②に代入すると、
+\begin{align*}
+ & \left(-kE_{0}+\omega B_{0}\right)\sin\left(kx-\omega t\right)=0\\
+ & \left(kB_{0}+\varepsilon_{0}\mu_{0}\omega E_{0}\right)\sin\left(kx-\omega t\right)=0\\
+ & \Rightarrow\omega=ck,B_{0}=\frac{E_{x}}{c},c=\frac{1}{\sqrt{\varepsilon_{0}\mu_{0}}}
+\end{align*}
+という解が得られ、これは$x$軸の正の方向に進む波を表す。これが\textbf{電磁波}である。
+
+実際に計算してみると、
+\begin{align*}
+\varepsilon_{0} & =8.854\times10^{-12}\mathrm{C^{2}/Nm^{2}}\\
+\mu_{0} & =4\pi\times10^{-7}\mathrm{N/A^{2}}
+\end{align*}
+より、
+\[
+c=\frac{1}{\sqrt{\varepsilon_{0}\mu_{0}}}=2.998\times10^{8}\mathrm{m/s}
+\]
+となり、光の速度に一致する。
+
+$E_{z},B_{y}$を含む式でも電磁波の解が構成できる。すなわち、$\left(E_{y},B_{z}\right),\left(E_{z},B_{y}\right)$の2種類の偏光が存在する。
+
+では、この$c=\frac{1}{\sqrt{\varepsilon_{0}\mu_{0}}}$はどの慣性系の速度なのか。Maxwell方程式はGalilei変換のもとで不変ではない。ここでいくつかの可能性が考えられる。1つは、相対性は存在せず、Maxwell方程式が成り立つ特別な慣性系が存在するというもの。1つは、相対性は存在し、Galilei変換のもとでMaxwell方程式を修正しなければならないというもの。さらに1つは、相対性は存在するが、修正するべきはMaxwell方程式ではなくGalilei変換であるというものである。この場合、Newton力学も修正しなければならない可能性が高い。
+
+これを検証するには、異なる慣性系での光速度の測定が鍵となる。しかし、光の速度は非常に速いため、非常に精密な測定が求められる。そこで、地球の公転を利用する。地球の公転速度は$v\simeq3\times10^{4}\mathrm{m/s}$であり、$\frac{v}{c}\simeq10^{-4}$となり、測定可能なレベルまで落としこむことができる。
+
+
+\section{光速度不変性}
+
+
+\subsection{光の伝播}
+
+
+\paragraph{Maxwell方程式の発見以前の天文観測}
+\begin{enumerate}
+\item Rømerによる光速度の測定
+
+
+木星の衛星イオの触の周期が木星との相対速度によって変化することを利用して、光速度を計算した。これによると、光速度はおよそ$2\times10^{8}\mathrm{m/s}$であった。これにより光速度の有限性が知られた。
+
+\item Bradleyによる星の光行差の測定
+
+
+地球の公転面から、天球上に存在する星になす角度を考える。地球が太陽から見て星の方向に存在するとき、逆の方向に存在するとき、その中間の位置のうち、この角度が最も小さくなるのはいつだろうか?
+
+
+答えは地球が星に対して逆方向から正方向に移動する中間の位置である。
+
+
+光に対して観測者が高速度で動いている場合、光の見える方向が変化する。これを\textbf{光行差}という。観測者の速度を$v$、正しい光の方向を$\theta$、実際に観測できる光の方向を$\theta_{0}$とすると、
+\begin{align*}
+v\Delta t\sin\theta & =c\Delta t\sin\alpha\\
+\sin\alpha & \simeq\sin\theta_{0}\\
+\sin\alpha & \simeq\alpha\left(\mathrm{radian}\right)\\
+\alpha & \simeq\frac{v}{c}\sin\theta_{0}
+\end{align*}
+
+
+
+$\theta_{0}=75^{\circ},\frac{v}{c}=10^{-4}$のとき、$2\alpha\simeq40''$となる。
+
+\end{enumerate}
+
+\paragraph{エーテル}
+
+これらの観測結果を説明するために、Maxwell方程式の解である電磁波を伝える媒質があると仮定された。これを\textbf{エーテル}と呼ぶ。
+
+ところがこれを考えると説明がつかないことがいくつかある。
+\begin{itemize}
+\item エーテルを波を伝える弾性体とすると、光の速度が速いため、異常に復元力が大きい物質となってしまう。
+\item 縦波が存在しない。
+\item 星の光行差の測定結果から、エーテルは地球の運動に全く引きずられていないことになる。
+\end{itemize}
+以上のような点から、エーテルの存在は長らく疑問視されていた。
+
+
+\subsection{Michelson-Morleyの実験}
+
+干渉を利用して光の速度の変化の測定を試みる実験である。地上で観測できるため、様々に方向を変えて光速度を測定することができる。
+
+もしエーテルが存在するならば、地球の公転方向に対して平行方向に測定した時と垂直方向に測定した時でエーテルの風の影響が異なるため、速度に変化が出るはずである。
+
+Michelson-Morleyの装置の光源方向のビームをビーム1、干渉計方向のビームをビーム2とし、2つのビームの所要時間差を$\Delta t=t_{2}-t_{1}$とし、ビーム1に平行方向にエーテルの風が速度$v$で吹いているとする。
+
+ビーム1の所要時間は、
+\[
+t_{1}=\frac{l_{1}}{c-v}+\frac{l_{1}}{c+v}=\frac{2l_{1}}{c}\frac{1}{1-\beta^{2}}
+\]
+となる。ただし$\beta=\frac{v}{c}$である。
+
+ビーム2の所要時間は、エーテルの静止系で考えると、
+\[
+\sqrt{l_{2}^{2}+\left(\frac{vt_{2}}{2}\right)^{2}}=\frac{ct_{2}}{2}
+\]
+\[
+t_{2}=\frac{2l_{2}}{c}\frac{1}{\sqrt{1-\beta^{2}}}
+\]
+\[
+\Delta t=\frac{2}{c}\left(\frac{l_{2}}{\sqrt{1-\beta^{2}}}-\frac{l_{1}}{1-\beta^{2}}\right)
+\]
+となり、干渉縞が観測される。
+
+さらに、装置を90度回転させると、
+\[
+\Delta t'=t_{2}'-t_{1}'=\frac{2}{c}\left(\frac{l_{2}}{1-\beta^{2}}-\frac{l_{1}}{\sqrt{1-\beta^{2}}}\right)
+\]
+となる。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\part*{第4回}
+
+まずは先週の結果より、
+\begin{align*}
+\Delta t & =\frac{2}{c}\left(\frac{l_{2}}{\sqrt{1-\beta^{2}}}-\frac{l_{1}}{1-\beta^{2}}\right)\\
+\Delta t' & =\frac{2}{c}\left(\frac{l_{2}}{1-\beta^{2}}-\frac{l_{1}}{\sqrt{1-\beta^{2}}}\right)
+\end{align*}
+を確認する。
+
+時間差の変化は、
+\begin{align*}
+\Delta t'-\Delta t & =\frac{2\left(l_{1}+l_{2}\right)}{c}\left(\frac{1}{1-\beta^{2}}-\frac{1}{\sqrt{1-\beta^{2}}}\right)\\
+ & \simeq\frac{2\left(l_{1}+l_{2}\right)}{c}\left[\left(1+\beta^{2}\right)-\left(1+\frac{1}{2}\beta^{2}\right)\right]\\
+ & =\frac{l_{1}+l_{2}}{c}\beta^{2}\\
+\Delta\delta & =\frac{\Delta t'-\Delta t}{\text{周期}}=\frac{c\left(\Delta t'-\Delta t\right)}{\lambda}\\
+ & \simeq\frac{l_{1}+l_{2}}{\lambda}\beta^{2}
+\end{align*}
+
+
+実際の実験では、$l_{1}=l_{2}=11\mathrm{m}$、$\lambda=5.5\times10^{-7}\mathrm{m}$、$\beta=\frac{v}{c}=10^{-4}$程度で行われるとすると、$\Delta\delta=0.4$となり、検証可能な値となる。ところが、測定の結果は$\Delta\delta<0.01$とされ、エーテルの風速は地球の公転速度よりはるかに小さくなければならない。
+
+同時に、先週の星の光行差の実験では、エーテルが地球に全く引きずられていないと考えなければ説明がつかなかった。となると、公転する地球が偶然エーテルの静止系に相当するという可能性しか残らないが、これは考えにくい。そこで、\textbf{光速度はどの慣性系でも同じ}なのではないかと考えられた。
+
+ここから、ニュートン力学の相対性と両立するようにGalilei変換を修正することを考えることになる。
+
+
+\section{Lorentz変換}
+
+本章の内容は、おおむね1905年のEinsteinの論文『アインシュタイン相対性理論』(岩波文庫 内山龍雄 訳・解説)の内容である。
+
+
+\subsection{同時性}
+
+光の速度はどの慣性系でも同じであるとする。また、Aさん、Bさん、Cさんは$S'$系で静止しているものとする。ここで、以下のようなイベントを考える。
+
+イベント1: BさんがAさんとCさんに光を発射する
+
+イベント2: Aさんが光を受ける
+
+イベント3: Cさんが光を受ける
+
+これらのイベントを、(i)$y$軸上にA, B, Cがこの順に等間隔に存在する場合、(ii)$x$軸上にA, B, Cがこの順に等間隔に存在する場合の2通りで考える。
+
+(i)と(ii)のそれぞれについてイベント1\textasciitilde{}3は$S'$系と$S$系でどのように記述されるだろうか?
+
+(i)を$S'$系で観測した場合、光はBから上下反対方向に進行し、イベント2とイベント3は同時刻に観測される。また、$S$系で観測した場合、光はBから上下に進行しながら速度$V$で$x$軸方向に運動し、イベント2とイベント3は同時刻に観測される。
+
+(ii)を$S'$系で観測した場合、光はBから左右反対方向に進行し、イベント2とイベント3は同時刻に観測される。ところが、$S$系で観測した場合、Bが発射した場所とAが受け取った場所の距離、Bが発射した場所とCが受け取った場所の距離が異なる。光がどの慣性系でも同じ速度であると仮定したので、イベント2のほうがイベント3よりも先に観測されることになる。
+
+ここから、$S'$系で同時刻のことが$S$系では同時刻ではない。全ての慣性系に共通な時間が存在しないと考えなければいけない。
+
+質点の運動は$\overrightarrow{r}\left(t\right)$と記述されるが、この$t$、すなわち「ある慣性系での時間」をどのように定義すればよいだろうか?
+
+
+\paragraph{Einsteinの定義}
+
+その系で静止しているあらゆる時計の合わせかたを考える。
+
+ある間隔離れた点Aと点Bについて、以下のイベントを考える。
+
+イベント1: AからBに光を発射する
+
+イベント2: Bで光を反射する
+
+イベント3: Aで反射光を受ける
+
+ここで、$t_{A}$をイベント1でのAの時計の読み、$t_{B}$をイベント2でのBの時計の読み、$\tilde{t}_{A}$をイベント3でのAの時計の読みとする。
+
+\[
+t_{B}-t_{A}=\tilde{t}_{A}-t_{B}
+\]
+ならばAとBの時計は合っているものとする。このようにあらゆる時計を合わせて、その慣性系での時間を定義する。
+
+そして、$\overline{AB}$をその系で静止しているものさしで測ったAB間の距離として、その慣性系での光の速度
+\[
+c=\frac{2\overline{AB}}{\tilde{t}_{A}-t_{A}}
+\]
+が一定でなければならない。
+
+
+\subsection{Lorentz変換の導出}
+
+$S$系での$\left(x,y,z,t\right)$と$S'$系での$\left(x',y',z',t'\right)$の変換則を導出する。
+
+$S$系で空間的や時間的に等間隔なイベントは$S'$系でも等間隔でなければならない。すなわち、変換則は1次式でなければならない。
+
+また、便宜上$\left(x,y,z,t\right)=\left(0,0,0,0\right)$が$\left(x',y',z',t'\right)=\left(0,0,0,0\right)$に対応するように選ぶものとする。よって$\Lambda_{ij}\left(i,j=1,2,3,4\right)$を定数として、
+\begin{align*}
+x' & =\Lambda_{11}x+\Lambda_{12}y+\Lambda_{13}z+\Lambda_{14}t\\
+y' & =\Lambda_{21}x+\Lambda_{22}y+\Lambda_{23}z+\Lambda_{24}t\\
+z' & =\Lambda_{31}x+\Lambda_{32}y+\Lambda_{33}z+\Lambda_{34}t\\
+t' & =\Lambda_{41}x+\Lambda_{42}y+\Lambda_{43}z+\Lambda_{44}t
+\end{align*}
+と定義できる。(なお、Galilei変換では$\Lambda_{11}=\Lambda_{22}=\Lambda_{33}=\Lambda_{44}=1,\Lambda_{14}=-V$でその他はゼロである)
+
+ここで、$S$系で$x$の代わりに$\tilde{x}=x-Vt$を用いると便利である。$\tilde{x}$は$S$系の量であるが、$S'$系で静止している点に対しては一定となる。
+
+\begin{align*}
+x' & =L_{11}\tilde{x}+L_{12}y+L_{13}z+L_{14}t\\
+y' & =L_{21}\tilde{x}+L_{22}y+L_{23}z+L_{24}t\\
+z' & =L_{31}\tilde{x}+L_{32}y+L_{33}z+L_{34}t\\
+t' & =L_{41}\tilde{x}+L_{42}y+L_{43}z+L_{44}t
+\end{align*}
+
+
+これら16個の定数$L_{ij}$を決めることが以下の目標となる。
+
+$S'$系の原点を$O'$、$x'$軸上の固定点を$R'$、$y'$軸上の固定点を$\tilde{R}'$とする。ここで以下のイベントを考える。
+
+イベント$X_{0}$: $O'$から$R'$に光を発射
+
+イベント$X_{1}$: $R'$から$O'$に光を反射
+
+イベント$X_{2}$: $O'$から$R'$に光を反射
+
+イベント$X_{3}$: $R'$で反射光を受ける
+
+イベント$Y_{0}$: $O'$から$\tilde{R}'$に光を発射
+
+イベント$Y_{1}$: $\tilde{R}'$から$O'$に光を反射
+
+イベント$Y_{2}$: $O'$が反射光を受ける
+
+また、$S'$系での$O'R'$間の距離を$l_{1}'$、$S'$系での$O'\tilde{R}'$間の距離を$l_{2}'$、$S$系での$O'R'$間の距離を$l_{1}$、$S$系での$O'\tilde{R}'$間の距離を$l_{2}$とする。
+
+
+\paragraph{イベントの座標}
+
+$X_{0},Y_{0}$の時刻を$t'=0$とする。
+
+\begin{tabular}{|c|c|c|}
+\hline 
+ & $S'$系$\left(x',y',z',t'\right)$ & $S$系$\left(\tilde{x},y,z,t\right)$\tabularnewline
+\hline 
+\hline 
+$x_{0}$ & $\left(0,0,0,0\right)$ & $\left(0,0,0,0\right)$\tabularnewline
+\hline 
+$x_{1}$ & $\left(l_{1}',0,0,t_{1}'\right)$ & $\left(l_{1},0,0,t_{1}\right)$\tabularnewline
+\hline 
+$x_{2}$ & $\left(0,0,0,t_{2}'\right)$ & $\left(0,0,0,t_{2}\right)$\tabularnewline
+\hline 
+$x_{3}$ & $\left(l_{1},0,0,t_{3}'\right)$ & $\left(l_{1},0,0,t_{3}\right)$\tabularnewline
+\hline 
+\end{tabular}
+
+\[
+t=t_{1},x=l_{1}+Vt
+\]
+\begin{align*}
+\tilde{x} & =x-Vt\\
+ & =l_{1}+Vt_{1}-Vt_{1}=l_{1}
+\end{align*}
+
+
+\begin{tabular}{|c|c|c|}
+\hline 
+ & $S'$系$\left(x',y',z',t'\right)$ & $S$系$\left(\tilde{x},y,z,t\right)$\tabularnewline
+\hline 
+\hline 
+$y_{1}$ & $\left(0,0,0,0\right)$ & $\left(0,0,0,0\right)$\tabularnewline
+\hline 
+$y_{2}$ & $\left(0,0,0,t_{2}'\right)$ & $\left(0,l_{1},0,\tilde{t}_{1}\right)$\tabularnewline
+\hline 
+$y_{3}$ & $\left(0,0,0,\tilde{t}_{2}'\right)$ & $\left(0,0,0,\tilde{t}_{2}\right)$\tabularnewline
+\hline 
+\end{tabular}
+
+となり、全ての座標は最終的には$l_{1}',l_{2}',V,c$で書ける。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\part*{第5回}
+
+
+\paragraph{前回の補足}
+
+$\left(x',y',z',t'\right)$が$\left(x,y,z,t\right)$の1次式であることの別の説明
+
+$S$系で等速直線運動であるものは$S'$系でも等速直線運動となる。
+
+(i) $t'$の決定(前半)
+
+イベント$Y_{0},Y_{1},Y_{2}$を考える。
+
+\begin{tabular}{|c|c|c|}
+\hline 
+ & $t'$ & $\left(x,y,z,t\right)$\tabularnewline
+\hline 
+\hline 
+$Y_{1}$ & $0$ & $\left(0,0,0,0\right)$\tabularnewline
+\hline 
+$Y_{2}$ & $\tilde{t}_{1}'$ & $\left(0,l,0,\tilde{t}_{1}\right)$\tabularnewline
+\hline 
+$Y_{3}$ & $\tilde{t}_{2}$ & $\left(0,0,0,\tilde{t}_{2}\right)$\tabularnewline
+\hline 
+\end{tabular}
+
+$S$系で光の速度は一定だから
+\[
+\tilde{t_{1}'}=\frac{1}{2}\tilde{t_{2}}
+\]
+
+
+$S$系で光の速度が$c$であることから$\tilde{t_{1}},\tilde{t_{2}}$を求める。
+
+\begin{align*}
+Y_{0} & \Rightarrow Y_{1}\\
+c\tilde{t_{1}} & =\sqrt{l_{2}^{2}+\left(v\tilde{t_{1}}\right)^{2}}\\
+\tilde{t_{1}} & =\frac{l_{2}}{\sqrt{c^{2}-v^{2}}}
+\end{align*}
+
+
+$Y_{1}\Rightarrow Y_{2}$について
+\begin{align*}
+\tilde{t_{2}}-\tilde{t_{1}} & =\tilde{t_{1}}\\
+\tilde{t_{2}} & =\frac{2l_{2}}{\sqrt{c^{2}-v^{2}}}
+\end{align*}
+
+
+よって、
+
+\begin{tabular}{|c|c|c|}
+\hline 
+ & $t'$ & $\left(x,y,z,t\right)$\tabularnewline
+\hline 
+\hline 
+$Y_{1}$ & $0$ & $\left(0,0,0,0\right)$\tabularnewline
+\hline 
+$Y_{2}$ & $\tilde{t}_{1}'$ & $\left(0,l,0,\frac{l_{2}}{\sqrt{c^{2}-v^{2}}}\right)$\tabularnewline
+\hline 
+$Y_{3}$ & $\tilde{t}_{2}$ & $\left(0,0,0,\frac{2l_{2}}{\sqrt{c^{2}-v^{2}}}\right)$\tabularnewline
+\hline 
+\end{tabular}
+
+$t'=L_{41}\tilde{x}+L_{42}y+L_{43}z+L_{44}t$より、
+\[
+\begin{cases}
+\tilde{t_{1}}'=L_{42}l_{2}+L_{44}\frac{l_{2}}{\sqrt{c^{2}-v^{2}}}\\
+\tilde{t_{2}}'=L_{44}\frac{2l_{2}}{\sqrt{c^{2}-v^{2}}}
+\end{cases}
+\]
+
+
+\[
+\tilde{t_{1}}'=\frac{1}{2}\tilde{t_{2}}'\Rightarrow L_{42}=0
+\]
+
+
+$y'$軸→$z'$軸とすると、
+\[
+L_{43}=0
+\]
+
+
+(ii)$t'$の決定(後半)
+
+イベント$X_{0},X_{1},X_{2}$を考える。
+
+\begin{tabular}{|c|c|c|}
+\hline 
+ & $t'$ & $\left(x,y,z,t\right)$\tabularnewline
+\hline 
+\hline 
+$X_{0}$ & $0$ & $\left(0,0,0,0\right)$\tabularnewline
+\hline 
+$X_{1}$ & $t_{1}'$ & $\left(l_{1},0,0,t_{1}\right)$\tabularnewline
+\hline 
+$X_{2}$ & $t_{2}'$ & $\left(0,0,0,t_{2}\right)$\tabularnewline
+\hline 
+\end{tabular}
+
+$S$系で光の速度は一定だから、
+\[
+t_{1}'=\frac{1}{2}t_{2}'
+\]
+
+
+$S$系で光の速度が$c$であることから、$t_{1},t_{2}$を求める。
+
+$X_{0}\Rightarrow X_{1}$について、
+\begin{align*}
+ct_{1} & =l_{1}+Vt_{1}\\
+t_{1} & =\frac{l_{1}}{c-v}
+\end{align*}
+
+
+$X_{1}\Rightarrow X_{2}$について、
+\begin{align*}
+c\left(t_{2}-t_{1}\right) & =l_{1}-V\left(t_{2}-t_{1}\right)\\
+t_{2}-t_{1} & =\frac{l_{1}}{c+V}\\
+t_{2} & =\frac{l_{1}}{c-v}-\frac{l_{1}}{c+V}
+\end{align*}
+
+
+よって、
+
+\begin{tabular}{|c|c|c|}
+\hline 
+ & $t'$ & $\left(x,y,z,t\right)$\tabularnewline
+\hline 
+\hline 
+$X_{0}$ & $0$ & $\left(0,0,0,0\right)$\tabularnewline
+\hline 
+$X_{1}$ & $t_{1}'$ & $\left(l_{1},0,0,\frac{l_{1}}{c-v}\right)$\tabularnewline
+\hline 
+$X_{2}$ & $t_{2}'$ & $\left(0,0,0,\frac{l_{1}}{c-v}-\frac{l_{1}}{c+V}\right)$\tabularnewline
+\hline 
+\end{tabular}
+
+$t'=L_{41}\tilde{x}+L_{42}y+L_{43}z+L_{44}t$より、
+\[
+\begin{cases}
+t_{1}'=L_{41}l_{1}+L_{42}\frac{l_{1}}{c-V}\\
+t_{2}'=L_{44}\left(\frac{l_{1}}{c-V}+\frac{l_{2}}{c+V}\right)
+\end{cases}
+\]
+
+
+$t_{1}'=\frac{1}{2}t_{2}'$より、
+\[
+L_{41}=-\frac{V}{c^{2}-V^{2}}L_{44}
+\]
+
+
+ここまでの式より、
+\begin{align*}
+t' & =L_{44}\left(-\frac{V}{c^{2}-V^{2}}\tilde{x}-t\right)\\
+ & =L_{44}\left(-\frac{V}{t^{2}-V^{2}}x+\frac{c^{2}}{c^{2}-V^{2}}t\right)
+\end{align*}
+となり、$t'$が$x$に依存していることがわかる。
+
+(iii) $x'$の決定
+
+イベント$X_{1},X_{3}$を考える。
+
+\begin{tabular}{|c|c|c|}
+\hline 
+ & $x'$ & $\left(\tilde{x},y,z,t\right)$\tabularnewline
+\hline 
+\hline 
+$X_{1}$ & $l_{1}'$ & $\left(l_{1},0,0,t_{1}\right)$\tabularnewline
+\hline 
+$X_{3}$ & $l_{2}'$ & $\left(l_{1},0,0,t_{3}\right)$\tabularnewline
+\hline 
+\end{tabular}
+
+$x'=L_{11}\tilde{x}+L_{12}y+L_{13}z+L_{14}t$より、
+\[
+\begin{cases}
+l_{1}'=L_{11}l_{1}+L_{14}t_{1}\\
+l_{2}'=L_{11}l_{1}+L_{14}t_{3}
+\end{cases}
+\]
+
+
+$L_{14}\left(t_{3}-t_{1}\right)=0$より、
+\[
+L_{14}=0
+\]
+
+
+次にイベント$Y_{1}$: $x'=0,\left(\tilde{x},y,z,t\right)=\left(0,l_{2},0,\tilde{t_{1}}\right)$を考える。
+
+$x'=L_{11}\tilde{x}+L_{12}y+L_{13}z+L_{14}t$より、$0=L_{12}l_{2}$、すなわち
+\[
+L_{12}=0
+\]
+
+
+さらに$y'$軸→$z'$軸とすると、
+\[
+L_{13}=0
+\]
+となる。以上より
+\[
+x'=L_{11}\tilde{x}
+\]
+
+
+次に、$L_{11}$を$L_{44}$で表す。イベント$X_{0}\rightarrow X_{1}$を考える。
+
+\begin{tabular}{|c|c|c|}
+\hline 
+ & $\left(x',y',z',t'\right)$ & $\left(\tilde{x},y,z,t\right)$\tabularnewline
+\hline 
+\hline 
+$X_{1}$ & $\left(0,0,0,0\right)$ & $\left(0,0,0,0\right)$\tabularnewline
+\hline 
+$X_{3}$ & $\left(l_{1}',0,0,t_{1}'\right)$ & $\left(l_{1},0,0,\frac{l_{1}}{c-V}\right)$\tabularnewline
+\hline 
+\end{tabular}
+
+$x'=L_{11}\tilde{x}$であり、$l_{1}'=L_{11}l_{1}$
+
+$S'$系での光の速度が$c$であることより、
+\[
+l_{1}'=ct_{1}'
+\]
+
+
+$L_{11}l_{1}=L_{44}\frac{c^{2}l_{1}}{c^{2}-V^{2}}$より、
+\[
+L_{11}=\frac{c^{2}}{c^{2}-V^{2}}L_{44}
+\]
+
+
+$x'$は
+\[
+x'=L_{44}\frac{c^{2}}{c^{2}-V^{2}}\tilde{x}=L_{44}\frac{c^{2}}{c^{2}-V^{2}}\left(x-Vt\right)
+\]
+
+
+(iv) $y',z'$の決定
+
+まず$z'$を考える。イベント$X_{1},X_{2}$を考える。
+
+\begin{tabular}{|c|c|c|}
+\hline 
+ & $z'$ & $\left(\tilde{x},y,z,t\right)$\tabularnewline
+\hline 
+\hline 
+$X_{1}$ & $0$ & $\left(l_{1},0,0,t_{1}\right)$\tabularnewline
+\hline 
+$X_{3}$ & $0$ & $\left(l_{1},0,0,t_{3}\right)$\tabularnewline
+\hline 
+\end{tabular}
+
+$z'=L_{31}\tilde{x}+L_{32}y+L_{33}z+L_{34}t$より、
+\[
+\begin{cases}
+0=L_{31}l_{1}+L_{34}t_{1}\\
+0=L_{31}l_{1}+L_{34}t_{3}
+\end{cases}
+\]
+
+
+$L_{34}\left(t_{3}-t_{1}\right)=0$より、
+\[
+L_{34}=0
+\]
+
+
+$L_{31}l_{1}=0$より、
+\[
+L_{31}=0
+\]
+
+
+次にイベント$Y_{2}$:$z'=0,\left(\tilde{x},y,z,t\right)=\left(0,l_{2},0,t_{2}\right)$を考える。
+
+$z'=L_{31}\tilde{x}+L_{32}y+L_{33}z+L_{34}t$より、$0=L_{32}l_{2}$、すなわち
+\[
+L_{32}=0
+\]
+
+
+以上より、
+\[
+z'=L_{33}z
+\]
+となる。
+
+$y'$軸と$z'$軸の役割を交換すると、
+\[
+L_{24}=0,L_{21}=0,L_{23}=0,y'=L_{22}y
+\]
+が得られる。
+
+$L_{22}$を$L_{44}$で表す。イベント$Y_{0}\rightarrow Y_{1}$を考える。
+
+\begin{align*}
+ & \left(x',y',z',t'\right) & \left(\tilde{x},y,z,t\right)\\
+Y_{0} & \left(0,0,0,0\right) & \left(0,0,0,0\right)\\
+Y_{1} & \left(0,l_{2}',0,t_{1}'\right) & \left(0,l_{2},0,\frac{l_{2}}{c-V}\right)
+\end{align*}
+
+
+$t'=L_{44}\left(-\frac{V}{c^{2}-V^{2}}\tilde{x}+t\right)$より、
+\[
+\tilde{t_{1}}'=L_{44}\frac{l_{2}}{\sqrt{c^{2}-V^{2}}}
+\]
+
+
+$y'=L_{22}y$より、
+\[
+l_{2}'=L_{22}l_{2}
+\]
+
+
+$S'$系で光の速度が$c$であることより、
+\[
+l_{2}'=c\tilde{t_{1}}'
+\]
+
+
+$L_{22}l_{2}=L_{44}\frac{cl_{2}}{\sqrt{c^{2}-V^{2}}}$より、
+\[
+L_{22}=\frac{c}{\sqrt{c^{2}-V^{2}}}L_{44}
+\]
+
+
+$y'$軸→$z'$軸とすると、
+\[
+L_{33}=\frac{c}{\sqrt{c^{2}-V^{2}}}L_{44}
+\]
+
+
+以上より、16個の行列成分すべてを$L_{44}$で表すことができた。
+
+(v) $L_{44}$の決定
+
+まとめると、
+\begin{align*}
+t' & =L_{44}\left(-\frac{V}{c^{2}-V^{2}}x+\frac{c^{2}}{c^{2}-V^{2}}t\right)\\
+x' & =L_{44}\left(\frac{c^{2}}{c^{2}-V^{2}}x-\frac{c^{2}V}{c^{2}-V^{2}}t\right)\\
+y' & =L_{44}\frac{c}{\sqrt{c^{2}-V^{2}}}y\\
+z' & =L_{44}\frac{c}{\sqrt{c^{2}-V^{2}}}z
+\end{align*}
+
+
+ここで$L_{44}\frac{c}{\sqrt{c^{2}-V^{2}}}=\varphi\left(V\right)$と書くと、
+\begin{align*}
+ct' & =\varphi\left(V\right)\left(\frac{c}{\sqrt{c^{2}-V^{2}}}ct-\frac{V}{\sqrt{c^{2}-V^{2}}}x\right)\\
+x' & =\varphi\left(V\right)\left(\frac{c}{\sqrt{c^{2}-V^{2}}}x-\frac{V}{\sqrt{c^{2}-V^{2}}}ct\right)\\
+y' & =\varphi\left(V\right)y\\
+z' & =\varphi\left(V\right)z
+\end{align*}
+
+
+ところで逆に$S'$系から$S$系への変換は、
+
+\[
+y=\varphi\left(-V\right)y'
+\]
+によって表現される。よって、
+\[
+y=\varphi\left(-V\right)\varphi\left(V\right)y\Rightarrow\varphi\left(-V\right)\varphi\left(V\right)=1
+\]
+が導かれる。
+
+$\mathrm{O'\tilde{R}'}$間の距離は$S$系では$l_{2}$,$S'$系では$l_{2}'$で、
+\[
+l_{2}'=L_{22}l_{2}
+\]
+であった。
+
+\[
+L_{22}=\frac{c}{\sqrt{c^{2}-V^{2}}}L_{44}=\varphi\left(V\right)
+\]
+より、
+\[
+l_{2}=\frac{l_{2}'}{\varphi\left(V\right)}
+\]
+
+
+$S'$系で長さ$l_{2}'$の棒が$S$系では長さ$\frac{l_{2}'}{\varphi\left(V\right)}$に見える。$V\rightarrow-V$とすると、$\frac{l_{2}'}{\varphi\left(-V\right)}$となるが、$x$軸の正負の向きが同等であれば、
+\[
+\frac{l_{2}'}{\varphi\left(V\right)}=\frac{l_{2}'}{\varphi\left(-V\right)}\Rightarrow\varphi\left(-V\right)=\varphi\left(V\right)
+\]
+
+
+よって、
+\[
+\varphi\left(V\right)^{2}=1\Rightarrow\varphi\left(V\right)=\pm1
+\]
+
+
+$V\rightarrow0$で$S'$系が$S$系になるためには$\varphi\left(V\right)=1$でないといけない。
+
+以上によりLorentz変換が求められた。
+
+\begin{align*}
+ct' & =\frac{c}{\sqrt{c^{2}-V^{2}}}ct-\frac{V}{\sqrt{c^{2}-V^{2}}}x\\
+x' & =\frac{c}{\sqrt{c^{2}-V^{2}}}x-\frac{V}{\sqrt{c^{2}-V^{2}}}ct\\
+y' & =y\\
+z' & =z
+\end{align*}
+
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\part*{第6回}
+
+$V$が$c$に比べてとても小さいとき、
+\begin{align*}
+t' & =\frac{1}{\sqrt{1-\frac{V^{2}}{c^{2}}}}t-\frac{1}{\sqrt{1-\frac{V^{2}}{c^{2}}}}\frac{V^{2}}{c^{2}}\frac{x}{V}\simeq t\\
+x' & =\frac{1}{\sqrt{1-\frac{V^{2}}{c^{2}}}}x-\frac{1}{\sqrt{1-\frac{V^{2}}{c^{2}}}}Vt\simeq x-Vt\\
+y' & =y\\
+z' & =z
+\end{align*}
+
+
+ここからGalilei変換を再現してみる。
+
+$S'$系から$S$系への変換(逆変換)
+
+\begin{align*}
+ct & =\frac{c}{\sqrt{c^{2}-V^{2}}}ct'+\frac{V}{\sqrt{c^{2}-V^{2}}}x'\\
+x & =\frac{c}{\sqrt{c^{2}-V^{2}}}x'+\frac{V}{\sqrt{c^{2}-V^{2}}}ct'\\
+y & =y'\\
+z & =z'
+\end{align*}
+
+
+
+\subsection{速度の変換則}
+
+$S'$系において時刻$t_{0}'$のとき座標$x_{0}'$だったものが、$\Delta t'$時間後に$\Delta x'$だけ移動する運動が、時刻$t_{0}$のとき座標$x_{0}$、$\Delta t$時間後に$\Delta x$だけ移動する運動に見えるものと考える。
+
+すなわち、$S$系において$\left(x_{0}',y_{0}',z_{0}',t_{0}'\right),\left(x_{0}'+\Delta x',y_{0}'+\Delta y',z_{0}'+\Delta z',t_{0}'+\Delta t'\right)$である点が、$S'$系では$\left(x_{0},y_{0},z_{0},t_{0}\right),\left(x_{0}+\Delta x,y_{0}+\Delta y,z_{0}+\Delta z,t_{0}+\Delta t\right)$となるものとする。
+
+\begin{align*}
+ct_{0} & =\frac{c}{\sqrt{c^{2}-V^{2}}}ct_{0}'+\frac{V}{\sqrt{c^{2}-V^{2}}}x_{o}'\\
+x_{0} & =\frac{c}{\sqrt{c^{2}-V^{2}}}x_{0}'+\frac{V}{\sqrt{c^{2}-V^{2}}}ct_{0}'
+\end{align*}
+\begin{align*}
+c\left(t_{0}+\Delta t\right) & =\frac{c}{\sqrt{c^{2}-V^{2}}}c\left(t_{0}'+\Delta t'\right)+\frac{V}{\sqrt{c^{2}-V^{2}}}\left(x_{0}'+\Delta x'\right)\\
+x_{0}+\Delta x & =\frac{c}{\sqrt{c^{2}-V^{2}}}\left(x_{0}'+\Delta x'\right)+\frac{V}{\sqrt{c^{2}-V^{2}}}c\left(t_{0}'+\Delta t'\right)
+\end{align*}
+\begin{align*}
+c\Delta t & =\frac{c}{\sqrt{c^{2}-V^{2}}}c\Delta t'+\frac{V}{\sqrt{c^{2}-V^{2}}}\Delta x'\\
+\Delta x & =\frac{c}{\sqrt{c^{2}-V^{2}}}\Delta x'+\frac{V}{\sqrt{c^{2}-V^{2}}}c\Delta t'\\
+\Delta y & =\Delta y'\\
+\Delta z & =\Delta z'
+\end{align*}
+となり、要は各変数にデルタを付せば良いということである。(逆変換は$V\rightarrow-V$)
+
+$S'$系での速度$\overrightarrow{v'}=\left(v_{x}',v_{y}',v_{z}'\right)$、$S$系での速度$\overrightarrow{v}=\left(v_{x},v_{y},v_{z}\right)$とすると、
+\[
+v_{x}'=\frac{\Delta x'}{\Delta t'},v_{y}'=\frac{\Delta y'}{\Delta t'},v_{z}'=\frac{\Delta z'}{\Delta t'}
+\]
+\[
+v_{x}=\frac{\Delta x}{\Delta t},v_{y}=\frac{\Delta y}{\Delta t},v_{z}=\frac{\Delta z}{\Delta t}
+\]
+\begin{align*}
+\frac{\Delta x}{\Delta t} & =\frac{\frac{c}{\sqrt{c^{2}-V^{2}}}\Delta x'+\frac{V}{\sqrt{c^{2}-V^{2}}}c\Delta t'}{\frac{c}{\sqrt{c^{2}-V^{2}}}\Delta t'+\frac{1}{\sqrt{c^{2}-V^{2}}}\frac{V}{c}\Delta x'}\\
+ & =\frac{c\frac{\Delta x'}{\Delta t'}+Vc}{c+\frac{V}{c}\frac{\Delta x'}{\Delta t'}}\\
+ & =\frac{\frac{\Delta x'}{\Delta t'}+V}{1+\frac{V}{c^{2}}\frac{\Delta x'}{\Delta t'}}\\
+v_{x} & =\frac{v_{x}'+V}{1+\frac{V}{c^{2}}v_{x}'}
+\end{align*}
+
+
+\begin{align*}
+\frac{\Delta y}{\Delta t} & =\frac{\Delta y'}{\frac{c}{\sqrt{c^{2}-V^{2}}}\Delta t'+\frac{1}{\sqrt{c^{2}-V^{2}}}\frac{V}{c}\Delta x'}\\
+ & =\frac{\sqrt{c^{2}-V^{2}}}{c}\frac{\frac{\Delta y'}{\Delta t'}}{1+\frac{V}{c^{2}}\frac{\Delta x'}{\Delta t'}}\\
+v_{y}' & =\frac{\sqrt{c^{2}-V^{2}}}{c}\frac{v_{y}'}{1+\frac{V}{c^{2}}v_{x}'}
+\end{align*}
+
+
+また同様に$v_{z}=\frac{\sqrt{c^{2}-V^{2}}}{c}\frac{v_{x}'}{1+\frac{V}{c^{2}}v_{x}'}$
+
+$V$が$c$に比べてとても小さい時、
+\begin{align*}
+v_{x} & \simeq v_{x}'+V\\
+v_{y} & \simeq v_{y}'\\
+v_{z} & \simeq v_{z}'
+\end{align*}
+となり、Galilei変換を再現できる。
+
+では、Lorentz変換でどのくらい速くできるだろうか?$v_{x}'>0,V>0$のとき、
+\begin{align*}
+v_{x} & =\frac{v_{x}'+V}{1+\frac{V}{c^{2}}v_{x}'}cv_{x}'+V\\
+c-v_{x} & =\frac{c+\frac{V}{c}v_{x}'-v_{x}'-V}{1+\frac{V}{c^{2}}v_{x}'}\\
+ & =\frac{\left(c-V\right)\left(1-\frac{v_{x}'}{c}\right)}{1+\frac{V}{c^{2}}v_{x}'}
+\end{align*}
+
+
+よって$0<v_{x}'<c,0<V<c$のとき、$0<v_{x}<c$となる。$v_{x}$は光の速度を超えることはない。光の速度より遅い速度だけで特殊相対性が実現できるのではないかと考えられる。
+
+
+\subsection{Minkowski時空}
+
+$S$系で速度$c$の運動は、$S'$系でも速度$c$であるはずである。
+
+すなわち、
+\[
+\left(\frac{\Delta x}{\Delta t}\right)^{2}+\left(\frac{\Delta y}{\Delta t}\right)^{2}+\left(\frac{\Delta z}{\Delta t}\right)^{2}=c^{2}
+\]
+ならば、
+\[
+\left(\frac{\Delta x'}{\Delta t'}\right)^{2}+\left(\frac{\Delta y'}{\Delta t'}\right)^{2}+\left(\frac{\Delta z'}{\Delta t'}\right)^{2}=c^{2}
+\]
+のはずである。
+
+ところで確認すると、
+\begin{align*}
+ & \left(\Delta x'\right)^{2}+\left(\Delta y'\right)^{2}+\left(\Delta z'\right)^{2}-\left(c\Delta t'\right)^{2}\\
+= & \left(\frac{c}{\sqrt{c^{2}-V^{2}}}\Delta x-\frac{V}{\sqrt{c^{2}-V^{2}}}c\Delta t\right)^{2}+\left(\Delta y\right)^{2}+\left(\Delta z\right)^{2}\\
+ & -\left(\frac{c}{\sqrt{c^{2}-V^{2}}}c\Delta t-\frac{V}{\sqrt{c^{2}-V^{2}}}\Delta x\right)^{2}\\
+= & \left(\Delta x\right)^{2}+\left(\Delta y\right)^{2}+\left(\Delta z\right)^{2}-\left(c\Delta t\right)^{2}
+\end{align*}
+
+
+これは両辺がゼロでない時も成立する。
+
+比較して、三次元Euclid空間を考える。ある座標系で$\left(x_{0},y_{0},z_{0}\right),\left(x_{0}+\Delta x,y_{0}+\Delta y,z_{0}+\Delta z\right)$という2点が回転した別の座標系でそれぞれ$\left(x_{0}',y_{0}',z_{0}'\right)$と$\left(x_{0}'+\Delta x',y_{0}'+\Delta y',z_{0}'+\Delta z'\right)$であるとき、2点間の距離は2つの座標系で等しい。
+
+2つのイベント(事象)を考える。$\left(x_{0},y_{0},z_{0}\right)$と$\left(x_{0}+\Delta x,y_{0}+\Delta y,z_{0}+\Delta z\right)$に対して、
+\[
+\left(\Delta S\right)^{2}\equiv\left(\Delta x\right)^{2}+\left(\Delta y\right)^{2}+\left(\Delta z\right)^{2}-\left(c\Delta t\right)^{2}
+\]
+という量はLorentz不変量である。すなわち、
+\[
+\left(\Delta S\right)^{2}\equiv\left(\Delta S'\right)^{2}
+\]
+である。(注意: $\left(\Delta S\right)^{2}$は正にもゼロにも負にもなりうる。)
+
+このようにイベント間の距離を導入して空間と時間を一体として考えたものを\textbf{4次元Minkowski時空}という。イベントは時空内の点であり、質点の運動を表す時空内の曲線を\textbf{世界線(world-line)}と呼ぶ。
+
+Minkowski空間において、原点を通る光の世界線の総体を\textbf{光円錐(light-cone)}と呼ぶ。速度が$c$を超えない運動の原点を通る世界線は光円錐の内部を通る。
+
+時空の点と原点との$\left(\Delta S\right)^{2}$を考える。
+
+(i) $\left(\Delta S\right)^{2}<0$のとき、点は光円錐の内部にある。2点は時間的(time-like)に離れているという。
+
+(ii) $\left(\Delta S\right)^{2}=0$のとき、点は光円錐上にある。2点は光的(light-like)に離れているという。
+
+(iii) $\left(\Delta S\right)^{2}>0$のとき、点は光円錐の外部にある。2点は空間的(space-like)に離れているという。
+
+この分類は慣性系に依らない。光の速度よりも速く情報が伝達しなければ空間的に離れた2点間に因果関係はない。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\part*{第7回}
+
+
+\subsection{Lorentz収縮}
+
+$S'$系で$x'$軸上に静止している、長さ$l_{1}'$の棒は$S$系ではどのように見えるか?
+
+$S$系での棒の長さ$l_{1}$=$S$系における同時刻での棒の両端の$x$座標の差
+
+$S'$系での棒の両端の世界線を考える。
+\[
+x'=0,x'=l_{1}'\left(y'=z'=0\right)
+\]
+とすると、Lorentz変換して$S$系では
+\begin{align*}
+\frac{c}{\sqrt{c^{2}-V^{2}}}x-\frac{V}{\sqrt{c^{2}-V^{2}}}ct & =0\\
+\frac{c}{\sqrt{c^{2}-V^{2}}}x-\frac{V}{\sqrt{c^{2}-V^{2}}}ct & =l_{1}'
+\end{align*}
+\[
+\left(y=z=0\right)
+\]
+
+
+同じ$t$での$x$座標の差$\Delta x$は、
+\[
+\frac{c}{\sqrt{c^{2}-V^{2}}}\Delta x=l_{1}'
+\]
+\[
+l_{1}=\Delta x=\frac{\sqrt{c^{2}-V^{2}}}{c}l_{1}'<l_{1}'
+\]
+となり、元の長さより短くなる。これを\textbf{Lorentz収縮}と呼ぶ。
+
+ただし、この両端の座標は$S'$系では同時刻ではない。物体自体が縮んでいるわけではない。また、$y$軸や$z$軸の方向の長さは変わらない。
+
+4.2で
+\[
+l_{1}'=L_{11}l_{1}
+\]
+であった。
+\[
+L_{11}=\frac{c^{2}}{c^{2}-V^{2}}L_{44}=\frac{c^{2}}{c^{2}-V^{2}}\frac{\sqrt{c^{2}-V^{2}}}{c}\varphi\left(V\right)=\frac{c}{\sqrt{c^{2}-V^{2}}}
+\]
+より、
+\[
+l_{1}=\frac{1}{L_{11}}l_{1}'=\frac{\sqrt{c^{2}-V^{2}}}{c}l_{1}'
+\]
+
+
+では、$S$系で$x$軸上に静止している長さ$l$の棒は、$S'$系ではどのように見えるだろうか?
+
+$S$系での棒の両端の世界線を
+\[
+x=0,x=l\left(y=z=0\right)
+\]
+とすると、$S'$系では
+\begin{align*}
+\frac{c}{\sqrt{c^{2}-V^{2}}}x'+\frac{V}{\sqrt{c^{2}-V^{2}}}ct' & =0\\
+\frac{c}{\sqrt{c^{2}-V^{2}}}x'+\frac{V}{\sqrt{c^{2}-V^{2}}}ct' & =l
+\end{align*}
+\[
+\left(y'=z'=0\right)
+\]
+
+
+同じ$t'$での$x'$座標の差$\Delta x'$は
+\[
+\frac{c}{\sqrt{c^{2}-V^{2}}}\Delta x'=l
+\]
+\[
+\Delta x'=\frac{\sqrt{c^{2}-V^{2}}}{c}l<l
+\]
+となり、やはり縮んで見える。
+
+
+\subsection{固有時間}
+
+イベント$Y_{0}\rightarrow Y_{2}$を考える。$S'$系において$Y_{0}$に原点を発射した光は$Y_{2}$で座標$\left(0,l_{2}'\right)$に達し、その後$Y_{2}$で原点に戻るものとする。$Y_{2}$の$S'$系での時刻を$\tilde{t}_{2}'$、$S$系での時刻を$\tilde{t}_{2}$とすると、
+\[
+\tilde{t}_{2}'=\frac{2l_{2}'}{c},\tilde{t}_{2}=\frac{2l_{2}}{\sqrt{c^{2}-V^{2}}}
+\]
+
+
+$l_{2}'=L_{22}l_{2}$であったが、
+\[
+L_{22}=\frac{c}{\sqrt{c^{2}-V^{2}}}L_{44}=\varphi\left(V\right)=1
+\]
+より$l_{2}=l_{2}'$
+
+\[
+\tilde{t}_{2}=\frac{2l_{2}'}{\sqrt{c^{2}-V^{2}}}=\frac{c}{\sqrt{c^{2}-V^{2}}}\tilde{t}_{2}'>\tilde{t}_{2}'
+\]
+
+
+よって、$S'$系の時計は$S$系の時計よりも遅れている。
+
+
+\paragraph{Lorentz変換による導出}
+
+$S'$系の原点に静止している時計で時間$\tau$が経過
+\[
+\left(x',y',z',t'\right):\left(0,0,0,0\right)\rightarrow\left(0,0,0,\tau\right)
+\]
+
+
+$S$系にLorentz変換
+\begin{align*}
+ct & =\frac{c}{\sqrt{c^{2}-V^{2}}}ct'+\frac{V}{\sqrt{c^{2}-V^{2}}}x'\\
+ & =\frac{c}{\sqrt{c^{2}-V^{2}}}ct
+\end{align*}
+
+
+よって$S$系での経過時間$\frac{c}{\sqrt{c^{2}-V^{2}}}\tau>\tau$となる。
+
+この状態を標語的に、「動いている時計は遅れる」と表現する。時計が静止している系での時間を\textbf{固有時間(proper time)}と呼ぶ。
+
+
+\paragraph{任意の運動をしている時計の固有時間間隔}
+
+$S$系: $\left(x_{0},y_{0},z_{0},t_{0}\right)\rightarrow\left(x_{0}+\Delta x,y_{0}+\Delta y,z_{0}+\Delta z,t_{0}+\Delta t\right)$
+
+固有時間間隔$\Delta\tau$は、Lorentz変換をしても求まるが、$\left(\Delta S\right)^{2}$のLorentz普遍性を用いて、
+\begin{align*}
+\left(\Delta S\right)^{2} & =\left(\Delta x\right)^{2}-\left(c\Delta t\right)^{2}\\
+\left(\Delta S\right)^{2} & =-\left(c\Delta\tau\right)^{2}
+\end{align*}
+より
+\[
+\left(c\Delta t\right)^{2}=\left(c\Delta\tau\right)^{2}-\left(\Delta x\right)^{2}
+\]
+よって
+\[
+\Delta\tau=\Delta t\sqrt{1-\left(\frac{1}{c}\frac{\Delta x}{\Delta t}\right)^{2}}
+\]
+
+
+$S$系での速度が$\overrightarrow{v}\left(t\right)$のとき、$S$系での時間が$t_{1}$から$t_{2}$の間の固有時間間隔は
+\[
+\tau=\int_{t_{1}}^{t_{2}}\sqrt{1-\frac{\left|\overrightarrow{v}\left(t\right)\right|^{2}}{c^{2}}}\mathrm{d}t
+\]
+となる。
+
+
+\paragraph{双子のパラドックス}
+
+双子のAとBのうち、Aが宇宙旅行をして地球にとどまったBと再会したとする。
+\begin{description}
+\item [{Bの主張}]~
+
+\begin{description}
+\item [{Aが動いていたのだから、Aの時計が遅れ、Aのほうが若い。}]~
+\end{description}
+\item [{Aの主張}]~
+
+\begin{description}
+\item [{動いていたのはBだ。若いのはBのほうだ。}]~
+\end{description}
+\end{description}
+特殊相対性理論では、慣性系から見た記述しかできない。地球を慣性系として、Bの固有時間を計算すると、Bの固有時間間隔$\tau_{B}$は、
+\[
+\tau_{B}=\int_{t_{1}}^{t_{2}}\mathrm{d}t=t_{2}-t_{1}
+\]
+
+
+ただし、$t_{1}$はAが出発した時刻、$t_{2}$はAが帰還した時刻とする。
+
+Aの固有時間間隔$\tau_{A}$は、Aの速度を$\overrightarrow{v}\left(t\right)$として、
+\[
+\tau_{A}=\int_{t_{1}}^{t_{2}}\sqrt{1-\frac{\left|\overrightarrow{v}\left(t\right)\right|^{2}}{c^{2}}}\mathrm{d}t<\int_{t_{1}}^{t_{2}}\mathrm{d}t=\tau_{B}
+\]
+となり、Aのほうが若いことになる。
+
+
+\subsection{Doppler効果}
+
+音に関するDoppler効果を、光の場合への拡張のため、Galilei変換を用いて導出する。
+
+$S$系の座標を$\left(x,t\right)$、$S'$系の座標を$\left(x',t'\right)$として、
+\[
+\begin{cases}
+x'=x-Vt\\
+t'=t
+\end{cases}
+\]
+\[
+\begin{cases}
+x=x'+Vt'\\
+t=t'
+\end{cases}
+\]
+とする。
+
+$S$系での進行波
+\[
+A\cos\left(kx-\omega t\right)
+\]
+は、$S'$系では、
+\[
+A\cos\left[k\left(c'+Vt'\right)+\omega t'\right]=A\cos\left[kx'-\left(\omega-Vk\right)t'\right]
+\]
+となる。これを
+\[
+A\cos\left(k'x'-\omega't'\right)
+\]
+と書くと、
+\[
+\begin{cases}
+\omega'=\omega-Vk\\
+k'=k
+\end{cases}
+\]
+となる。
+
+$S$系で空気が静止しているとし、$x$軸の正の方向に進む音波を考えると、音速$v_{s}$は、
+\[
+v_{s}=\frac{\omega}{k}\left(\omega>0,k>0\right)
+\]
+\begin{align*}
+\omega' & =\left(1-\frac{k}{\omega}V\right)\omega=\left(1-\frac{V}{v_{s}}\right)\omega\\
+ & =\frac{v_{s}-V}{v_{s}}\omega
+\end{align*}
+
+
+音波の振動数を$f_{0}$、観測する音の振動数を$f$とする。
+\begin{enumerate}
+\item 音源が速度$V$で運動している場合
+
+
+\[
+f_{0}=\frac{\omega'}{2\pi},f=\frac{\omega}{2\pi}
+\]
+\[
+f=\frac{v_{s}}{v_{s}-V}f_{0}
+\]
+
+
+
+よって、$0<V<v_{s}$、すなわち音源が近づいているとき、振動数は高くなり、$V<0$のとき、すなわち音源が遠ざかっている時、振動数は低くなる。
+
+\item 観測者が速度$V$で運動している場合
+
+
+\[
+f_{0}=\frac{\omega}{2\pi},f=\frac{\omega'}{2\pi}
+\]
+\[
+f=\frac{v_{s}-V}{v_{s}}f_{0}
+\]
+
+
+
+よって、$0<V<v_{s}$、すなわち観測者が遠ざかっているとき、振動数は低くなり、$V<0$のとき、すなわち観測者が近づいている時、振動数は高くなる。
+
+\end{enumerate}
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\part*{第8回}
+
+
+\paragraph{光に関するDoppler効果}
+
+前回のGalilei変換をLorentz変換に置き換える。
+
+\[
+\begin{cases}
+ct=\frac{c}{\sqrt{c^{2}-V^{2}}}ct'+\frac{V}{\sqrt{c^{2}-V^{2}}}x'\\
+x=\frac{c}{\sqrt{c^{2}-V^{2}}}x'+\frac{V}{\sqrt{c^{2}-V^{2}}}ct'
+\end{cases}
+\]
+\begin{align*}
+ & A\cos\left(kx-\omega t\right)\\
+= & A\cos\left(k\frac{c}{\sqrt{c^{2}-V^{2}}}x'+k\frac{V}{\sqrt{c^{2}-V^{2}}}ct'-\frac{\omega}{c}\frac{c}{\sqrt{c^{2}-V^{2}}}ct'-\frac{\omega}{c}\frac{V}{\sqrt{c^{2}-V^{2}}}x'\right)\\
+= & A\cos\left(k'x'-\omega't'\right)
+\end{align*}
+\[
+\begin{cases}
+\frac{\omega'}{c}=\frac{c}{\sqrt{c^{2}-V^{2}}}\frac{\omega}{c}-\frac{V}{\sqrt{c^{2}-V^{2}}}k\\
+k'=\frac{c}{\sqrt{c^{2}-V^{2}}}k-\frac{V}{\sqrt{c^{2}-V^{2}}}\frac{\omega}{c}
+\end{cases}
+\]
+
+
+$\left(\frac{\omega}{c},k\right)$は$\left(ct,x\right)$と同じように変換される。
+
+$S$系で$x$軸の正の方向に進む光を考えると、
+\[
+c=\frac{\omega}{k}\left(\omega>0,k>0\right)
+\]
+
+
+$\frac{\omega'}{k}$も$c$であることが確認できる。
+
+\begin{align*}
+\omega' & =\frac{c}{\sqrt{c^{2}-V^{2}}}\omega-\frac{V}{\sqrt{c^{2}-V^{2}}}ck\\
+ & =\frac{c-V}{\sqrt{c^{2}-V^{2}}}\omega\\
+ & =\sqrt{\frac{c-V}{c+V}}\omega
+\end{align*}
+
+
+光波の振動数を$f_{0}$観測する光の振動数を$f$とする。
+\begin{enumerate}
+\item 光源が速度$V$で運動する場合
+
+
+\[
+f_{0}=\frac{\omega'}{2\pi},f=\frac{\omega}{2\pi}
+\]
+\[
+f=\sqrt{\frac{c+V}{c-V}}f_{0}
+\]
+
+
+
+すなわち、$0<V<c$のとき近づき、$V<0$のとき遠ざかっている。
+
+\item 観測者が速度$V$で運動する場合
+
+
+\[
+f_{0}=\frac{\omega}{2\pi},f=\frac{\omega'}{2\pi}
+\]
+\[
+f=\sqrt{\frac{c-V}{c+V}}f_{0}
+\]
+
+
+
+すなわち、$0<V<c$のとき遠ざかり、$V<0$のとき近づいている。
+
+\end{enumerate}
+1.でも2.でも$v>0$として相対速度$v$で近づく場合は、
+\[
+f=\sqrt{\frac{c+v}{c-v}}f_{0}>f_{0}
+\]
+より、振動数が上がり、波長が短くなる。これを\textbf{青方偏移(blue shift)}という。
+
+遠ざかる場合は、
+\[
+f=\sqrt{\frac{c-v}{c+v}}f_{0}<f_{0}
+\]
+より、振動数が下がり、波長が長くなる。これを\textbf{赤方偏移(red shift)}という。
+
+赤方偏移パラメーターを波長が$\lambda_{0}$から$\lambda$に伸びた時、
+\begin{align*}
+z & \equiv\frac{\lambda-\lambda_{0}}{\lambda_{0}}=\frac{\lambda}{\lambda_{0}}-1=\frac{f_{0}}{f}-1\\
+ & =\sqrt{\frac{c+v}{c-v}}-1
+\end{align*}
+
+
+光源と観測者のどちらが動いているかは区別できない(特殊相対性)。
+
+
+\section{Lorentz共変性}
+
+
+\subsection{物理法則の不変性}
+
+物理法則がLorentz変換のもとで不変であるということはどのように表現されるのか?まずは回転不変性について考えてみよう。$m,\lambda,a$を定数として、2次元空間中の質点の運動
+\[
+\begin{cases}
+m\frac{\mathrm{d}^{2}x}{\mathrm{d}t^{2}}=-\frac{\lambda y}{x^{2}+y^{2}+a^{2}}\\
+m\frac{\mathrm{d}^{2}y}{\mathrm{d}t^{2}}=\frac{\lambda x}{x^{2}+y^{2}+a^{2}}
+\end{cases}
+\]
+の運動方程式は回転不変かどうか調べる。$\left(x,y\right)\rightarrow\left(x',y'\right)$へとマッピングする。
+
+\begin{align*}
+\overrightarrow{r} & =x\overrightarrow{e_{x}}+y\overrightarrow{e_{y}}\\
+\overrightarrow{r} & =x'\overrightarrow{e_{x'}}+y'\overrightarrow{e_{y'}}
+\end{align*}
+\begin{align*}
+\overrightarrow{e_{x'}} & =\cos\theta\overrightarrow{e_{x}}+\sin\theta\overrightarrow{e_{y}}\\
+\overrightarrow{e_{y'}} & =-\sin\theta\overrightarrow{e_{x}}+\cos\theta\overrightarrow{e_{y}}
+\end{align*}
+\begin{align*}
+\overrightarrow{r} & =x'\left(\cos\theta\overrightarrow{e_{x}}+\sin\theta\overrightarrow{e_{y}}\right)+y'\left(-\sin\theta\overrightarrow{e_{x}}+\cos\theta\overrightarrow{e_{y}}\right)\\
+ & =\left(x'\cos\theta-y'\sin\theta\right)\overrightarrow{e_{x}}+\left(x'\sin\theta+y'\cos\theta\right)\overrightarrow{e_{y}}
+\end{align*}
+\[
+\begin{cases}
+x=x'\cos\theta-y'\sin\theta\\
+y=x'\sin\theta+y'\cos\theta
+\end{cases}
+\]
+\[
+\begin{cases}
+x'=x\cos\theta+y\sin\theta\\
+y'=-x\sin\theta-y\cos\theta
+\end{cases}
+\]
+
+
+$\left(x',y'\right)$での運動方程式
+\begin{align*}
+m\frac{\mathrm{d}^{2}x'}{\mathrm{d}t^{2}} & =m\frac{\mathrm{d}^{2}x}{\mathrm{d}t^{2}}\cos\theta+m\frac{\mathrm{d}^{2}y}{\mathrm{d}t^{2}}\sin\theta\\
+ & =-\frac{\lambda y}{x^{2}+y^{2}+a^{2}}\cos\theta+\frac{\lambda x}{x^{2}+y^{2}+a^{2}}\sin\theta\\
+ & =-\frac{\lambda\left(x'\sin\theta+y'\cos\theta\right)\cos\theta}{x'^{2}+y'^{2}+a^{2}}\\
+ & =-\frac{\lambda\left(x'\sin\theta+y'\cos\theta\right)\cos\theta}{x'^{2}+y'^{2}+a^{2}}+\frac{\lambda\left(x'\cos\theta-y'\sin\theta\right)\sin\theta}{x'^{2}+y'^{2}+a^{2}}\\
+ & =-\frac{\lambda y'}{x'^{2}+y'^{2}+a^{2}}
+\end{align*}
+
+
+ただし、
+\begin{align*}
+x^{2}+y^{2} & =\left(x'\cos\theta-y'\sin\theta\right)^{2}+\left(x'\sin\theta+y'\cos\theta\right)^{2}\\
+ & =x'^{2}+y'^{2}
+\end{align*}
+を用いた。
+
+同様に
+\[
+m\frac{\mathrm{d}^{2}y'}{\mathrm{d}t^{2}}=\frac{\lambda x'}{x'^{2}+y'^{2}+a^{2}}
+\]
+
+
+よって、運動方程式は回転不変である。
+
+ポイント: $x^{2}+y^{2}=x'^{2}+y'^{2}$で回転不変
+
+\begin{align*}
+\left(\begin{array}{c}
+x\\
+y
+\end{array}\right) & =\left(\begin{array}{cc}
+\cos\theta & -\sin\theta\\
+\sin\theta & \cos\theta
+\end{array}\right)\left(\begin{array}{c}
+x'\\
+y'
+\end{array}\right)\\
+\left(\begin{array}{c}
+-y\\
+x
+\end{array}\right) & =\left(\begin{array}{cc}
+\cos\theta & -\sin\theta\\
+\sin\theta & \cos\theta
+\end{array}\right)\left(\begin{array}{c}
+-y'\\
+x'
+\end{array}\right)
+\end{align*}
+\[
+m\frac{\mathrm{d}^{2}}{\mathrm{d}t^{2}}\left(\begin{array}{c}
+x'\\
+y
+\end{array}\right)=\frac{\lambda}{x^{2}+y^{2}+a^{2}}\left(\begin{array}{c}
+-y\\
+x
+\end{array}\right)
+\]
+
+
+運動方程式の両辺が回転のもとで同じように変換される⇒「運動方程式は回転共変である」という。
+
+Lorentz変換の場合も、運動方程式がLorentz変換であることに寄って物理法則のLorentz不変性を示したい。
+
+回転やLorentz変換のもとでどのような変換が可能であるかは、回転やLorentz変換が群をなすということによって大きく制限される。
+
+
+\paragraph{(参考)群の定義}
+\begin{enumerate}
+\item 群$G$の任意の$g_{1},g_{2}\in G$に対して$g_{1}+g_{2}$が定義され、$g_{1}+g_{2}\in G$
+\item $\left(g_{1}+g_{2}\right)+g_{3}=g_{1}+\left(g_{2}+g_{3}\right)$
+\item 単位元$e$がただひとつ存在し、すべての$g\in G$に対して$g+e=e+g=g$が成り立つ。
+\item 任意の$g\in G$に対して逆元$g^{-1}$が存在し、$g+g^{-1}=g^{-1}+g=e$が成り立つ。
+\end{enumerate}
+
+\subsection{共変性と半変性}
+
+2次元Euclid空間の一般の基底$\left\{ \overrightarrow{f_{1}},\overrightarrow{f_{2}}\right\} $を考える。
+\[
+\overrightarrow{x}=x^{1}\overrightarrow{f_{1}}+x^{2}\overrightarrow{f_{2}}=\sum_{i}x^{i}\overrightarrow{f_{i}}
+\]
+
+
+※$x^{i}$は上付き添字である。
+
+別の基底$\left\{ \overrightarrow{f_{1}'},\overrightarrow{f_{2}'}\right\} $について
+\[
+\begin{cases}
+\overrightarrow{f_{1}'}=a\overrightarrow{f_{1}}+b\overrightarrow{f_{2}}\\
+\overrightarrow{f_{2}'}=c\overrightarrow{f_{1}}+d\overrightarrow{f_{2}}
+\end{cases}
+\]
+とする。
+
+\begin{align*}
+\overrightarrow{x} & =\sum_{i}x'^{i}\overrightarrow{f_{i}'}\\
+ & =x'^{1}\left(a\overrightarrow{f_{1}}+b\overrightarrow{f_{2}}\right)+x'^{2}\left(c\overrightarrow{f_{1}}+d\overrightarrow{f_{2}}\right)\\
+ & =\left(ax'^{1}+cx'^{2}\right)\overrightarrow{f_{1}}+\left(bx'^{1}+dx'^{2}\right)\overrightarrow{f_{2}}
+\end{align*}
+\[
+\begin{cases}
+x'=ax'^{1}+cx'^{2}\\
+y'=bx'^{1}+dx'^{2}
+\end{cases}
+\]
+\[
+\begin{cases}
+x'^{1}=\frac{d}{ad-bc}x^{1}-\frac{c}{ad-bc}x^{2}\\
+x'^{2}=-\frac{b}{ab-bc}x^{1}+\frac{a}{ad-bc}x^{2}
+\end{cases}
+\]
+
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\part*{第9回}
+
+行列$R$を考える。
+
+\[
+R=\left(\begin{array}{cc}
+R_{1}^{1} & R_{2}^{1}\\
+R_{1}^{2} & R_{2}^{2}
+\end{array}\right)
+\]
+\[
+R_{1}^{1}=\frac{d}{ad-bc},R_{2}^{1}=-\frac{c}{ad-bc}
+\]
+\[
+R_{1}^{2}=-\frac{b}{ad-bc},R_{2}^{2}=\frac{a}{ad-bc}
+\]
+\[
+x'^{i}=\sum_{j}R_{j}^{i}x^{j}=R_{j}^{i}x^{j}
+\]
+
+
+※上付きと下付きの同じ添字のペアに対して和を取る。これをEinsteinの縮約規則と呼ぶ。
+
+逆行列$R^{-1}$は、
+\begin{align*}
+R^{-1} & =\left(\begin{array}{cc}
+\left(R^{-1}\right)_{1}^{1} & \left(R^{-1}\right)_{2}^{1}\\
+\left(R^{-1}\right)_{1}^{2} & \left(R^{-1}\right)_{2}^{2}
+\end{array}\right)\\
+ & =\left(\begin{array}{cc}
+a & c\\
+b & d
+\end{array}\right)
+\end{align*}
+
+
+また、逆行列の転置行列$R^{-T}$は、
+\begin{align*}
+R^{-T} & =\left(\begin{array}{cc}
+\left(R^{-T}\right)_{1}^{1} & \left(R^{-T}\right)_{2}^{1}\\
+\left(R^{-T}\right)_{1}^{2} & \left(R^{-T}\right)_{2}^{2}
+\end{array}\right)\\
+ & =\left(\begin{array}{cc}
+a & b\\
+c & d
+\end{array}\right)
+\end{align*}
+
+
+ただし、$\left(R^{-T}\right)_{i}^{j}=\left(R^{-1}\right)_{i}^{j}$である。
+
+\[
+\overrightarrow{f_{i}'}=\left(R^{-T}\right)_{i}^{j}\overrightarrow{f_{j}}
+\]
+
+
+共変量は、下付き添字を持ち、$R^{-T}$で変換し、反変量は、上付き添字を持ち、$R$で変換する。
+
+
+\subsection{計量}
+
+デカルト座標で$\overrightarrow{x}=\left(x^{1},x^{2}\right)$のとき、
+\[
+\left|\overrightarrow{x}\right|=\sqrt{\left(x^{1}\right)^{2}+\left(x^{2}\right)^{2}}
+\]
+
+
+$\overrightarrow{y}=\left(y^{1},y^{2}\right)$のとき、$\overrightarrow{x}$と$\overrightarrow{y}$のなす各を$\theta$とすると、
+\[
+\cos\theta=\frac{x^{1}y^{1}+x^{2}y^{2}}{\sqrt{\left(x^{1}\right)^{2}+\left(x^{2}\right)^{2}}\sqrt{\left(y^{1}\right)^{2}+\left(y^{2}\right)^{2}}}
+\]
+
+
+$\overrightarrow{x}=x^{i}\overrightarrow{f_{i}},\overrightarrow{y}=y^{i}\overrightarrow{f_{i}}$のときは、
+\begin{align*}
+\left|\overrightarrow{x}\right| & =\sqrt{\overrightarrow{x}\cdot\overrightarrow{x}}\\
+\cos\theta & =\frac{\overrightarrow{x}\cdot\overrightarrow{y}}{\left|\overrightarrow{x}\right|\left|\overrightarrow{y}\right|}\\
+\overrightarrow{x}\cdot\overrightarrow{x} & =x^{i}x^{j}\overrightarrow{f_{i}}\cdot\overrightarrow{f_{j}}\\
+\overrightarrow{x}\cdot\overrightarrow{y} & =x^{i}y^{j}\overrightarrow{f_{i}}\cdot\overrightarrow{f_{j}}
+\end{align*}
+より、$g_{ij}\equiv\overrightarrow{f_{i}}\cdot\overrightarrow{f_{j}}$から計算できる。ここで$g_{ij}$を\textbf{計量(metric)}と呼ぶ。
+
+\begin{align*}
+\overrightarrow{x}\cdot\overrightarrow{x} & =x^{i}g_{ij}x^{j}\\
+\overrightarrow{x}\cdot\overrightarrow{y} & =x^{i}g_{ij}y^{j}
+\end{align*}
+
+
+デカルト座標では
+\[
+g_{11}=1,g_{12}=0,g_{21}=0,g_{22}=1
+\]
+であり、しばしば、
+\[
+g_{ij}=\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)
+\]
+と書かれる。
+
+\begin{align*}
+\overrightarrow{x}\cdot\overrightarrow{x} & =x^{1}g_{11}x^{1}+x_{1}g_{12}x^{2}+x^{2}g_{21}x^{1}+x^{2}g_{22}x^{2}\\
+ & =\left(x^{1}\right)^{2}+\left(x^{2}\right)^{2}
+\end{align*}
+
+
+
+\paragraph{計量の変換性}
+
+$\overrightarrow{f_{i}'}=\left(R^{-T}\right)_{i}^{j}\overrightarrow{f_{j}}$より、
+\begin{align*}
+g_{ij}' & =\overrightarrow{f_{i}'}\cdot\overrightarrow{f_{j}'}\\
+ & =\left(R^{-T}\right)_{i}^{m}\left(R^{-T}\right)_{j}^{n}\overrightarrow{f_{m}'}\cdot\overrightarrow{f_{n}'}\\
+ & =\left(R^{-T}\right)_{i}^{-}\left(R^{-T}\right)_{j}^{n}g_{mn}
+\end{align*}
+
+
+変換する上下の添字を持つ量の集まりを一般に\textbf{テンソル(tensor)}と呼び、添字の数をテンソルの\textbf{階数}と呼ぶ。階数が1のテンソルは\textbf{ベクトル}と呼ばれる。
+
+$x^{i}$を反変ベクトル、$g_{ij}$を2階の共変テンソルとして、
+\[
+\overrightarrow{y}\cdot\overrightarrow{x}=y^{i}g_{ij}x^{j}
+\]
+となる。
+
+※今後、$g_{ij}x^{j}$の組み合わせを$x_{i}$と書く。
+
+
+\paragraph{変換性}
+
+\[
+x_{i}'=\left(R^{-T}\right)_{i}^{m}\left(R^{-T}\right)_{j}^{n}g_{mn}R_{k}^{j}x^{k}
+\]
+\[
+\left(R^{-T}\right)_{j}^{n}R_{k}^{j}=\left(R^{-1}\right)_{j}^{n}R_{k}^{j}
+\]
+
+
+一般に$\left(AB\right)_{j}^{i}=A_{k}^{i}B_{j}^{k}$なので、
+\begin{align*}
+\left(R^{-1}\right)_{j}^{n}R_{k}^{j} & =\left(R^{-1}R^{n}\right)_{k}^{n}\\
+ & =\begin{cases}
+1 & n=k\\
+0 & n\neq k
+\end{cases}
+\end{align*}
+
+
+ここで
+\[
+\delta_{j}^{i}=\begin{cases}
+1 & i=j\\
+0 & i\neq j
+\end{cases}
+\]
+を用いて(Kroneckerのdelta)、
+\[
+\left(R^{-1}\right)_{j}^{n}R_{k}^{j}=\delta_{k}^{n}
+\]
+\begin{align*}
+x_{i}' & =\left(R^{-T}\right)_{i}^{m}g_{mn}\delta_{k}^{n}x^{k}\\
+ & =\left(R^{-T}\right)_{i}^{m}g_{mn}x^{n}\\
+ & =\left(R^{-T}\right)_{i}^{m}x_{m}x_{n}
+\end{align*}
+
+
+$x_{i}=g_{ij}x^{j}$共変ベクトル
+
+逆に$x_{j}$を用いて$x^{i}$を
+\[
+x^{i}=g^{ij}x_{j}
+\]
+のように表すことを考える。
+\begin{align*}
+x_{i} & =g_{ij}x^{j}\\
+ & =g_{ij}g^{jk}x_{k}\\
+ & =\delta_{j}^{k}x_{k}
+\end{align*}
+\begin{align*}
+x^{i} & =g^{ij}x_{j}\\
+ & =g^{ij}g_{jk}x^{k}\\
+ & =\delta_{k}^{i}x^{k}
+\end{align*}
+より、
+\begin{align*}
+g_{ij}g^{jk} & =\delta_{i}^{k}\\
+g^{ij}g_{jk} & =\delta_{k}^{i}
+\end{align*}
+
+
+$g^{ij}$は、$g_{kl}$を$kl$成分とする行列の逆行列の$ij$成分である。
+
+$g^{ij}$: 2階の反変ベクトル
+
+デカルト座標では
+\[
+g^{11}=1,g^{12}=0,g^{21}=0,g^{22}=0
+\]
+\[
+g^{ij}=\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)
+\]
+
+
+$x_{j}$が共変ベクトル、$g^{ij}$が2階の反変テンソルとして変換するとき、$g^{ij}x_{j}$が反変ベクトルとして変換することを確認せよ。
+
+\begin{align*}
+g^{ij}x_{j}' & =R_{m}^{i}R_{n}^{j}g^{mn}\left(R^{-T}\right)_{j}^{k}x_{k}\\
+ & =R_{m}^{i}g^{mn}\delta_{n}^{k}x_{k}\\
+ & =R_{m}^{i}g^{mn}x_{n}
+\end{align*}
+
+
+
+\subsection{回転群}
+
+デカルト座標では計量は
+\[
+g_{ij}=\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)
+\]
+
+
+座標系を回転させても内積$\overrightarrow{x}\cdot\overrightarrow{y}$は不変である。よって計量$g_{ij}=\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)$は回転不変。
+
+逆に計量$g_{ij}=\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)$を不変に保つ座標変換を考える。
+
+\[
+\left(R^{-T}\right)_{j}^{m}\left(R^{-T}\right)_{j}^{n}g_{mn}=g_{ij}
+\]
+\begin{align*}
+\left(R^{-T}\right)_{i}^{m}g_{mn}\left(R^{-1}\right)_{j}^{n} & =g_{ij}\\
+\left(\begin{array}{cc}
+a & b\\
+c & d
+\end{array}\right)\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)\left(\begin{array}{cc}
+a & c\\
+b & d
+\end{array}\right) & =\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)\\
+\left(\begin{array}{cc}
+a & b\\
+c & d
+\end{array}\right)\left(\begin{array}{cc}
+a & c\\
+b & d
+\end{array}\right) & =\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)\\
+R^{-T} & =R
+\end{align*}
+\[
+\begin{cases}
+a^{2}+b^{2}=1\Rightarrow a=\cos\theta,b=\sin\theta\\
+c^{2}+d^{2}=1\Rightarrow c=\cos\varphi,d=\sin\varphi\\
+ac+bd=0
+\end{cases}
+\]
+より、
+\[
+\cos\theta\sin\varphi+\sin\theta\sin\varphi=\cos\left(\theta-\varphi\right)=0
+\]
+\[
+\varphi=\theta+\frac{\left(2n+1\right)\pi}{2}
+\]
+
+
+ただし、$n$は整数である。
+
+$n$が偶数のとき、$c=-\sin\theta,d=\cos\theta$、$n$が奇数のとき、$c=\sin\theta,d=-\cos\theta$である。
+\[
+R=R^{-T}=\left(\begin{array}{cc}
+\cos\theta & \sin\theta\\
+-\sin\theta & \cos\theta
+\end{array}\right)\left(\begin{array}{cc}
+\cos\theta & \sin\theta\\
+\sin\theta & -\cos\theta
+\end{array}\right)
+\]
+
+
+$\theta=0$のとき、
+\[
+\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right),\left(\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right)
+\]
+
+
+※恒等変換と$x$軸反転
+
+一般に、
+\[
+\left(\begin{array}{cc}
+\cos\theta & \sin\theta\\
+\sin\theta & -\cos\theta
+\end{array}\right)=\left(\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right)\left(\begin{array}{cc}
+\cos\theta & \sin\theta\\
+-\sin\theta & \cos\theta
+\end{array}\right)
+\]
+
+
+回転は計量$g_{ij}=\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)$を保ち、恒等変換に連続的につながっている変換であり、回転がなす郡は\textbf{回転群}と呼ばれる。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\part*{第10回}
+
+
+\paragraph{前回の 5.4 の冒頭差し替え}
+
+デカルト座標では計量は
+\[
+g_{ij}=\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)
+\]
+
+
+$\overrightarrow{x}=\left(x^{1},x^{2}\right),\overrightarrow{y}=\left(y^{1},y^{2}\right)$のとき、
+\[
+\overrightarrow{x}\cdot\overrightarrow{y}=x^{1}y^{1}+x^{2}y^{2}
+\]
+
+
+回転した座標系で、
+\[
+\overrightarrow{x}=\left(x^{-1},x^{-2}\right),\overrightarrow{y}=\left(y^{-1},y^{-2}\right)
+\]
+のとき、
+\[
+\overrightarrow{x}\cdot\overrightarrow{y}=x^{-1}y^{-1}+x^{-2}y^{-2}
+\]
+
+
+計量$g_{ij}=\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)$は回転不変である。
+
+
+\paragraph{前回の続き}
+
+回転では$R^{-T}=R$なので、共変量と反変量が同じように変換する。
+
+$R^{-1}=R^{T}$を満たす行列は\textbf{直交行列}と呼ばれ、$n\times n$直交行列のなす群は$O\left(n\right)$、そのうち行列式が$1$であるもののなす郡は$SO\left(n\right)$と呼ばれる。
+
+2次元回転は$SO\left(2\right)$、$x$軸反転を含めると$O\left(2\right)$となる。
+
+
+\subsection{Lorentz群}
+
+4次元Minkowski時空の座標を
+\[
+x^{0}=xt,x^{1}=x,x^{2}=y,x^{3}=z
+\]
+と書く。烏賊、$x^{2}$と$x^{3}$は省略
+
+Lorentz変換では、
+\[
+s^{2}=-\left(x^{0}\right)^{2}+\left(x^{1}\right)^{2}
+\]
+が不変であった。
+\[
+s^{2}=x^{\mu\eta}\mu_{v}x^{\nu}
+\]
+
+
+ここで$\mu=0,1$、$\eta_{00}=-1,\eta_{01}=0,\eta_{10}=0,\eta_{11}=1$で、
+\[
+\eta_{\mu\nu}=\left(\begin{array}{cc}
+-1 & 0\\
+0 & 1
+\end{array}\right)
+\]
+と書き、$\eta_{\mu\nu}$を\textbf{Lorentz計量}と呼ぶ。
+
+
+\paragraph{座標変換}
+
+\[
+x'^{\mu}=\wedge_{\nu}^{\;\;\mu}x^{\nu}
+\]
+で、$\eta_{\mu\nu}$を不変に保つものを考える。
+\[
+\left(\wedge^{-T}\right)_{\mu}^{\;\;\rho}\left(\wedge^{-T}\right)_{\nu}^{\;\;\sigma}\eta_{\rho\sigma}=\eta_{\mu\nu}
+\]
+\[
+\left(\wedge^{-T}\right)_{\mu}^{\;\;\rho}\eta_{\rho\sigma}\left(\wedge^{-T}\right)_{\nu}^{\;\;\sigma}=\eta_{\mu\nu}
+\]
+\[
+\left(\begin{array}{cc}
+a & b\\
+c & d
+\end{array}\right)\left(\begin{array}{cc}
+-1 & 0\\
+0 & 1
+\end{array}\right)\left(\begin{array}{cc}
+a & c\\
+b & d
+\end{array}\right)=\left(\begin{array}{cc}
+-1 & 0\\
+0 & 1
+\end{array}\right)
+\]
+\[
+\left(\begin{array}{cc}
+a & b\\
+c & d
+\end{array}\right)\left(\begin{array}{cc}
+-a & -c\\
+b & d
+\end{array}\right)=\left(\begin{array}{cc}
+-1 & 0\\
+0 & 1
+\end{array}\right)
+\]
+\[
+\begin{cases}
+-a^{2}+b^{2}=-1\Rightarrow a=\pm\sqrt{1+b^{2}}\\
+-c^{2}+d^{2}=1\Rightarrow d=\pm\sqrt{1+c^{2}}\\
+-ac+bd=0
+\end{cases}\Rightarrow a^{2}x^{2}=b^{2}d^{2}
+\]
+\begin{align*}
+\left(1+b^{2}\right)c^{2} & =b^{2}\left(1+c^{2}\right)\\
+c & =\pm b
+\end{align*}
+
+
+$-ac+bd=0$より$d$の符号を決める。
+
+\begin{align*}
+a=\sqrt{1+b^{2}},c=b & \Rightarrow d=\sqrt{1+b^{2}}\\
+a=\sqrt{1+b^{2}},c=-b & \Rightarrow d=-\sqrt{1+b^{2}}\\
+a=-\sqrt{1+b^{2}},c=b & \Rightarrow d=-\sqrt{1+b^{2}}\\
+a=-\sqrt{1+b^{2}},c=-b & \Rightarrow d=\sqrt{1+b^{2}}
+\end{align*}
+\begin{align*}
+\wedge^{-T}= & \left(\begin{array}{cc}
+\sqrt{1+b^{2}} & b\\
+b & \sqrt{1+b^{2}}
+\end{array}\right),\left(\begin{array}{cc}
+\sqrt{1+b^{2}} & b\\
+-b & -\sqrt{1+b^{2}}
+\end{array}\right),\\
+ & \left(\begin{array}{cc}
+-\sqrt{1+b^{2}} & b\\
+b & -\sqrt{1+b^{2}}
+\end{array}\right),\left(\begin{array}{cc}
+-\sqrt{1+b^{2}} & b\\
+-b & \sqrt{1+b^{2}}
+\end{array}\right)
+\end{align*}
+
+
+$b=0$のとき、i
+\[
+\wedge^{-T}=\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right),\left(\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right),\left(\begin{array}{cc}
+-1 & 0\\
+0 & -1
+\end{array}\right),\left(\begin{array}{cc}
+-1 & 0\\
+0 & 1
+\end{array}\right)
+\]
+
+
+恒等変換に連続的につながっている
+\[
+\wedge^{-T}=\left(\begin{array}{cc}
+\sqrt{1+b^{2}} & b\\
+b & \sqrt{1+b^{2}}
+\end{array}\right)
+\]
+を考えると、
+\[
+\wedge=\left(\begin{array}{cc}
+\sqrt{1+b^{2}} & -b\\
+-b & \sqrt{1+b^{2}}
+\end{array}\right)
+\]
+\[
+\left(\begin{array}{c}
+x'^{0}\\
+x'^{1}
+\end{array}\right)=\left(\begin{array}{cc}
+\sqrt{1+b^{2}} & -b\\
+-b & \sqrt{1+b^{2}}
+\end{array}\right)\left(\begin{array}{c}
+x^{0}\\
+x^{1}
+\end{array}\right)
+\]
+
+
+$S'$系の原点$x^{-1}=0$、$S$系では$x=Vt\Rightarrow x^{1}=\frac{V}{c}x^{0}$
+
+\begin{align*}
+x'^{1} & =-bx^{0}+\sqrt{1+b^{2}}x^{1}\\
+ & =\left(-b+\frac{V}{c}\sqrt{1+b^{2}}\right)x^{0}
+\end{align*}
+\[
+\frac{V}{c}=\frac{b}{\sqrt{1+b^{2}}}
+\]
+\[
+\Rightarrow b=\frac{V}{\sqrt{c^{2}-V^{2}}},\sqrt{1+b^{2}}=\frac{c}{\sqrt{c^{2}-V^{2}}}
+\]
+\[
+\begin{cases}
+x'^{0}=\frac{c}{\sqrt{c^{2}-V^{2}}}x^{0}-\frac{V}{\sqrt{c^{2}-V^{2}}}x^{1}\\
+x'^{1}=\frac{c}{\sqrt{c^{2}-V^{2}}}x^{1}-\frac{V}{\sqrt{c^{2}-V^{2}}}x^{0}
+\end{cases}
+\]
+
+
+Lorentz変換は計量$\eta_{\mu\nu}=\left(\begin{array}{cc}
+-1 & 0\\
+0 & 1
+\end{array}\right)$を保ち恒等変換に連続的につながっている変換であり、Lorentz変換がなす郡は(特に狭い意味での)\textbf{Lorentz群}と呼ばれる。(proper
+$\mathrm{dot}\wedge=1$ orthochhronous $\wedge_{0}^{0}\geqq1$)
+
+
+\subsection{Lorentz変換におけるテンソル}
+
+テンソルの演算(例で説明)
+\begin{enumerate}
+\item 加法: $A_{\lambda}^{\;\;\mu\nu}+B_{\lambda}^{\;\;\mu\nu}=C_{\lambda}^{\;\;\mu\nu}$
+\item 乗法: $A^{\mu\nu}B_{\lambda}=C_{\lambda}^{\;\;\mu\nu}$
+\item 添字の縮約: $A^{\mu}B_{\mu}=C\left(\text{スカラー}\right),A_{\nu}^{\;\;\mu\nu}=B^{\mu}$
+\item 添字の上げ下げ: $\eta_{\mu\nu}$や$\eta^{\mu\nu}$との乗法+縮約
+
+
+\[
+\eta_{\mu\nu}A^{\nu\rho}=A_{\mu}^{\;\;\rho}
+\]
+のように同じ$A$で添字の位置を変えて表す。
+
+
+同様に$\eta^{\mu\rho}A_{\nu\rho}=A_{\nu}^{\;\;\mu}$
+
+\end{enumerate}
+反変量は$A'^{\mu}=\wedge_{\nu}^{\;\;\mu}A^{\nu}$、共変量は$A'_{\mu}=\left(\wedge^{-T}\right)_{\mu}^{\;\;\nu}A_{\nu}$、というように変換するが、Lorentz変換のときの$\left(\wedge^{-T}\right)_{\mu}^{\;\;\nu}$は、
+\[
+\left(\wedge^{-T}\right)_{\mu}^{\;\;\alpha}\left(\wedge^{-T}\right)_{\rho}^{\;\;\beta}=\eta_{\alpha\beta}
+\]
+を満たす。
+
+\[
+\left(\wedge^{-T}\right)_{\mu}^{\;\;\alpha}\eta_{\alpha\beta}\left(\wedge^{-1}\right)_{\rho}^{\;\;\beta}=\eta_{\mu\rho}
+\]
+\[
+\left(\wedge^{-T}\right)_{\mu}^{\;\;\alpha}\eta_{\alpha\beta}\left(\wedge^{-1}\right)_{\rho}^{\;\;\beta}\wedge_{\sigma}^{\;\;\rho}=\eta_{\mu\rho}\wedge_{\sigma}^{\;\;\rho}
+\]
+\[
+\left(\wedge^{-T}\right)_{\mu}^{\;\;\alpha}\eta_{\alpha\sigma}=\eta_{\mu\rho}\wedge_{\sigma}^{\;\;\rho}
+\]
+\[
+\left(\wedge^{-T}\right)_{\mu}^{\;\;\alpha}\eta_{\alpha\sigma}\eta^{\sigma\nu}=\eta_{\mu\rho}\wedge_{\sigma}^{\;\;\rho}\eta^{\sigma\nu}
+\]
+\[
+\left(\wedge^{-T}\right)_{\mu}^{\;\;\nu}=\eta_{\mu\rho}\wedge_{\sigma}^{\;\;\rho}\eta^{\sigma\nu}
+\]
+$\eta_{\nu\rho}\wedge_{\sigma}^{\;\;\rho}\eta^{\sigma\nu}=\wedge_{\rho}^{\;\;\nu}$と書くと、
+\[
+\left(\wedge^{-T}\right)_{\mu}^{\;\;\nu}=\wedge_{\mu}^{\;\;\nu}
+\]
+\[
+A'_{\mu}=\wedge_{\mu}^{\;\;\nu}A_{\nu}
+\]
+
+
+$\wedge_{\mu}^{\;\;\nu}=\left(\wedge^{-1}\right)_{\mu}^{\;\;\nu}$より、
+\begin{align*}
+A'_{\mu}B'^{\mu} & =\wedge_{\mu}^{\;\;\nu}A_{\nu}\wedge_{\rho}^{\;\;\nu}B^{\rho}\\
+ & =A_{\nu}\left(\wedge^{-1}\right)_{\rho}^{\;\;\nu}\wedge_{\rho}^{\;\;\mu}B^{\rho}\\
+ & =A_{\nu}B^{\nu}
+\end{align*}
+
+
+
+\paragraph{重要なスカラー量・ベクトル量}
+
+※ベクトル量は4元ベクトルとも呼ばれる。
+\begin{itemize}
+\item $x^{\mu}$: 反変ベクトル
+
+\begin{itemize}
+\item 
+\begin{align*}
+x^{\mu} & =\left(ct,x,y,z\right)\\
+x'^{\mu} & =\wedge_{\nu}^{\;\;\mu}x^{\nu}
+\end{align*}
+
+\end{itemize}
+\item $x_{\nu}=\eta_{\mu\nu}x^{\nu}$: 共変ベクトル
+
+\begin{itemize}
+\item 
+\begin{align*}
+x_{0} & =\eta_{00}x^{0}=-x^{0}=-ct\\
+x_{1} & =\eta_{11}x^{1}=x^{1}=x\\
+x_{\mu} & =\left(-ct,x,y,z\right)
+\end{align*}
+
+\end{itemize}
+\end{itemize}
+
+\paragraph{確認問題}
+
+\[
+\begin{cases}
+x'^{0}=\frac{c}{\sqrt{c^{2}-V^{2}}}x^{0}-\frac{V}{\sqrt{c^{2}-V^{2}}}x^{1}\\
+x'^{1}=-\frac{V}{\sqrt{c^{2}-V^{2}}}x^{0}+\frac{c}{\sqrt{c^{2}-V^{2}}}x^{1}
+\end{cases}
+\]
+\begin{align*}
+\wedge_{0}^{0} & =\frac{c}{\sqrt{c^{2}-V^{2}}}\\
+\wedge_{1}^{0} & =-\frac{V}{\sqrt{c^{2}-V^{2}}}\\
+\wedge_{0}^{1} & =-\frac{V}{\sqrt{c^{2}-V^{2}}}\\
+\wedge_{1}^{1} & =\frac{c}{\sqrt{c^{2}-V^{2}}}
+\end{align*}
+
+
+$\wedge_{\mu}^{\;\;\nu}=\eta_{\mu\rho}\wedge_{\sigma}^{\;\;\rho}\eta^{\sigma\nu}$より$\wedge_{0}^{0},\wedge_{0}^{1},\wedge_{1}^{0},\wedge_{1}^{1}$を求め、
+\[
+\begin{cases}
+-ct'=\wedge_{0}^{0}\left(-ct\right)+\wedge_{0}^{1}x\\
+x'=\wedge_{1}^{0}\left(-ct\right)+\wedge_{1}^{1}x
+\end{cases}
+\]
+が満たされていることを確認せよ。
+
+($\eta^{00}=-1,\eta^{01}=0,\eta^{10}=0,\eta^{11}=1,\eta^{\mu\nu}=\left(\begin{array}{cc}
+-1 & 0\\
+0 & 1
+\end{array}\right)$)
+
+\begin{align*}
+\wedge_{0}^{0} & =\eta_{00}\wedge_{0}^{0}\eta^{00}=\wedge_{0}^{0}=\frac{c}{\sqrt{c^{2}-V^{2}}}\\
+\wedge_{0}^{1} & =\eta_{00}\wedge_{1}^{0}\eta^{11}=-\wedge_{1}^{0}=\frac{V}{\sqrt{c^{2}-V^{2}}}\\
+\wedge_{1}^{0} & =\eta_{11}\wedge_{0}^{1}\eta^{00}=-\wedge_{0}^{1}=\frac{V}{\sqrt{c^{2}-V^{2}}}\\
+\wedge_{1}^{1} & =\eta_{11}\wedge_{1}^{1}\eta^{11}=\wedge_{1}^{1}=\frac{c}{\sqrt{c^{2}-V^{2}}}
+\end{align*}
+\[
+\begin{cases}
+-ct'=\frac{c}{\sqrt{c^{2}-V^{2}}}\left(-ct\right)+\frac{V}{\sqrt{c^{2}-V^{2}}}x\\
+x'=\frac{V}{\sqrt{c^{2}-V^{2}}}\left(-ct\right)+\frac{c}{\sqrt{c^{2}-V^{2}}}x
+\end{cases}
+\]
+
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\part*{第11回}
+
+補講: 7/17(金) 5限 K011教室
+
+\[
+s^{2}=x^{\mu}\eta_{\mu\nu}x^{\nu}:\text{スカラー}
+\]
+\[
+s^{2}=x^{\mu}x_{\mu}
+\]
+2つのイベントの座標の差$\Delta x^{\mu}$は反変ベクトルである。
+
+\[
+\left(\Delta S\right)^{2}=\Delta x^{\mu}\eta_{\mu\nu}\Delta x^{\nu}:\text{スカラー}
+\]
+
+
+$\Delta x^{\mu}$がtime-likeのとき、
+\[
+\Delta\tau=\frac{1}{c}\sqrt{-\Delta x^{\mu}\eta_{\mu\nu}\Delta x^{\nu}}:\text{スカラー}
+\]
+
+
+ここで$\Delta\tau$は固有時間間隔である。
+
+速度ベクトル
+\[
+\overrightarrow{v}=\left(\d xt,\d yt,\d zt\right)
+\]
+はLorentz変換のもとでのテンソル量ではない。
+
+\[
+u^{\mu}=\d{x^{\mu}}{\tau}=\lim_{\Delta\tau\rightarrow0}\frac{\Delta x^{\mu}}{\Delta\tau}:\text{反変ベクトル}
+\]
+
+
+\[
+\Delta\tau=\Delta t\sqrt{1-\frac{\left(\Delta x\right)^{2}+\left(\Delta y\right)^{2}+\left(\Delta z\right)^{2}}{c^{2}\left(\Delta t\right)^{2}}}
+\]
+より、
+\begin{align*}
+u^{\mu} & =\gamma\d{x^{\mu}}t\\
+ & =\left(\gamma c,\gamma\overrightarrow{v}\right)
+\end{align*}
+
+
+ただし、
+\[
+\gamma\equiv\frac{1}{\sqrt{1-\frac{\left|\overrightarrow{v}\right|^{2}}{c^{2}}}}
+\]
+である。
+
+\[
+\frac{\Delta x^{\mu}}{\Delta\tau}\eta_{\mu\nu}\frac{\Delta x^{\nu}}{\Delta\tau}=\frac{\left(\Delta S\right)^{2}}{\left(\Delta\tau\right)^{2}}=-c^{2}
+\]
+より、
+\begin{align*}
+u^{\mu}\eta_{\mu\nu}u^{\nu} & =-c^{2}\\
+ & =\mathrm{(constant)}
+\end{align*}
+
+
+$u^{\mu}$の4つの成分は独立ではない。
+
+
+\section{相対論的力学}
+
+
+\subsection{エネルギーと運動量}
+
+
+\paragraph{Newton力学での弾性衝突(1次元運動)}
+
+質量$2m$の物体1に、質量$m$の物体2が速度$3V$で弾性衝突するときを考える。
+
+重心の速度は
+\[
+\frac{3mV}{m+2m}=V
+\]
+
+
+重心系($S'$系)で考えると、1は重心に対して速度$2V$で、2は速度$-V$で衝突し、衝突後は1は速度$-2V$で、2は速度$V$で進行することになる。
+
+これを元の座標系($S$系)にGalilei変換すると、衝突後の1の速度は$-V$、2の速度は$2V$と求められる。
+
+これをLorentz変換に置き換えると、
+\[
+v=\frac{v'+V}{1+\frac{V}{c^{2}}v'}
+\]
+より、衝突前の1の速度は
+\[
+\frac{3V}{1+\frac{2V^{2}}{c^{2}}}
+\]
+
+
+$S'$系から見た1の速度は
+\[
+-\frac{V}{1-\frac{2V^{2}}{c^{2}}}
+\]
+
+
+$S'$系から見た2の速度は
+\[
+\frac{2V}{1+\frac{V^{2}}{c^{2}}}
+\]
+となる。ただし、$S$系での速度を$v$、$S'$系での速度を$v'$とした。
+
+こうして見ると、運動量保存則
+\[
+\sum_{i}m_{i}v_{i}=\sum_{i}m_{i}\tilde{v}_{i}
+\]
+は成り立っていない。ただし$m_{i}$は質量、$v_{i}$は衝突前の速度、$\tilde{v}_{i}$は衝突後の速度である。
+
+Galilei変換は、
+\[
+v_{i}=v_{i}'+V,\tilde{v}_{i}=\tilde{v}_{i}'+V
+\]
+より
+\[
+\sum_{i}m_{i}\left(v_{i}'+V\right)=\sum_{i}m_{i}\left(\tilde{v}_{i}'+V\right)
+\]
+\[
+\Rightarrow\sum_{i}m_{i}v_{i}'=\sum_{i}m_{i}\tilde{v}_{i}'
+\]
+のように不変であるが、両辺がLorentz変換のテンソル量ではない。
+
+\fbox{\begin{minipage}[t]{1\columnwidth}%
+解析力学においては、
+\begin{description}
+\item [{時間の一様性}]~
+
+\begin{description}
+\item [{→エネルギー保存}]~
+\end{description}
+\item [{空間の一様性}]~
+
+\begin{description}
+\item [{→運動量保存}]~
+\end{description}
+\end{description}
+と捉えられる。%
+\end{minipage}}
+
+運動量の定義を
+\[
+m\overrightarrow{v}\rightarrow mu^{\mu}
+\]
+のように変換してみよう。
+
+$x$成分について、
+\[
+mv\rightarrow p=\frac{mv}{\sqrt{1-\frac{v^{2}}{c^{2}}}}
+\]
+とする。
+
+それぞれの物体の速度・運動量を、衝突前の1について$v_{1}',p_{1}'$、2について$v_{2}'=-V,p_{2}'$、衝突後の1について$\tilde{v}_{1}',\tilde{p}_{1}'$、2について$\tilde{v}_{2}'=V,\tilde{p}_{2}'$とすると、
+\[
+v_{2}'=-V
+\]
+\[
+p_{2}'=\frac{2mv_{2}'}{\sqrt{1-\frac{v_{2}'^{2}}{c^{2}}}}=-\frac{2mV}{\sqrt{1-\frac{V^{2}}{c^{2}}}}
+\]
+\[
+p_{1}'=\frac{mv_{1}'}{\sqrt{1-\frac{v_{1}'^{2}}{c^{2}}}}=-p_{2}'=-\frac{2mV}{\sqrt{1-\frac{V^{2}}{c^{2}}}}
+\]
+を満たす$v_{1}'$は、
+\[
+v_{1}'=\frac{2V}{\sqrt{1-\frac{3V^{2}}{c^{2}}}}\simeq2V
+\]
+\[
+\tilde{v}_{1}'=-v_{1}=-\frac{2V}{\sqrt{1+\frac{3V^{2}}{c^{2}}}}
+\]
+\[
+\tilde{p}_{1}'=-\frac{2mV}{\sqrt{1-\frac{V^{2}}{c^{2}}}}
+\]
+\[
+\tilde{v}_{1}'=V
+\]
+\[
+\tilde{p}_{2}'=\frac{2mV}{\sqrt{1-\frac{V^{2}}{c^{2}}}}
+\]
+
+
+また$S$系においてそれぞれの物体の速度・運動量を、衝突前の1について$v_{1},p_{1}$、2について$v_{2}=0,p_{2}=0$、衝突後の1について$\tilde{v}_{1},\tilde{p}_{1}$、2について$\tilde{v}_{2},\tilde{p}_{2}$とすると、速度のLorentz変換より、
+\[
+v_{1}=\frac{2+\sqrt{1+\frac{3V^{2}}{c^{2}}}}{\sqrt{1+\frac{3V^{2}}{c^{2}}}+\frac{2V^{2}}{c^{2}}}V\simeq3V
+\]
+\[
+\tilde{v}_{1}=\frac{-2+\sqrt{1+\frac{3V^{2}}{c^{2}}}}{\sqrt{1+\frac{3V^{2}}{c^{2}}}-\frac{2V^{2}}{c^{2}}}V\simeq-V
+\]
+\[
+\tilde{v}_{2}=\frac{2V}{1+\frac{V^{2}}{c^{2}}}\simeq2V
+\]
+
+
+ここから$p_{1},\tilde{p}_{1},\tilde{p}_{2}$を計算すると、
+\[
+p_{1}=\frac{mv_{1}}{\sqrt{1-\frac{v_{1}^{2}}{c^{2}}}}=\frac{mV}{1-\frac{V^{2}}{c^{2}}}\left(2+\sqrt{1+\frac{3V^{2}}{c^{2}}}\right)\simeq3mV
+\]
+\[
+\tilde{p}_{1}=\frac{m\tilde{v}_{1}}{\sqrt{1-\frac{\tilde{v}_{1}^{2}}{c^{2}}}}=\frac{mV}{1-\frac{V^{2}}{c^{2}}}\left(-2+\sqrt{1+\frac{3V^{2}}{c^{2}}}\right)\simeq-mV
+\]
+\[
+\tilde{p}_{2}=\frac{2m\tilde{v}_{2}}{\sqrt{1-\frac{\tilde{v}_{2}^{2}}{c^{2}}}}=\frac{4mV}{1-\frac{V^{2}}{c^{2}}}\simeq4mV
+\]
+となり、
+\[
+p_{1}=\tilde{p}_{1}+\tilde{p}_{2}
+\]
+が成立する。
+
+もちろん別の運動量の定義も考えうるが、この定義で実験結果が説明できる。
+
+運動量$\overrightarrow{p}$を
+\[
+\overrightarrow{p}=\frac{m\overrightarrow{v}}{\sqrt{1-\frac{v^{2}}{c^{2}}}}=m\left(v\right)\overrightarrow{v}
+\]
+のように書くこともできる。ただし$v=\left|\overrightarrow{v}\right|,m\left(v\right)=\frac{m}{\sqrt{1-\frac{v^{2}}{c^{2}}}}$である。
+
+よって$m=m\left(0\right)$より、質量$m$は\textbf{静止質量}と呼ばれることもある。
+
+
+\paragraph{練習問題}
+
+質量$m$の2物体が、$S'$系において静止しているばねの両端に接続され、物体1に初速$v_{1}'=-V$、物体2に初速$v_{2}'=V$を与えたとき、
+\begin{enumerate}
+\item $v_{2}'$をLorentz変換して$v_{2}$を求めよ。
+\item $v_{2}$から$p_{2}$を求めよ。
+\item 運動量保存より$p_{0}$を求めよ。
+\end{enumerate}
+ただし、$S$系での重心の速度・運動量を$v_{0},p_{0}$とする。
+
+\[
+v_{2}=\frac{2V}{1+\frac{V^{2}}{c^{2}}}
+\]
+\begin{align*}
+1-\frac{v_{2}^{2}}{c^{2}} & =1-\frac{\frac{4V^{2}}{c^{2}}}{\left(1+\frac{V^{2}}{c^{2}}\right)^{2}}\\
+ & =\frac{\left(1-\frac{V^{2}}{c^{2}}\right)^{2}-\frac{4V^{2}}{c^{2}}}{\left(1+\frac{V^{2}}{c^{2}}\right)^{2}}\\
+ & =\frac{\left(1-\frac{V^{2}}{c^{2}}\right)^{2}}{\left(1+\frac{V^{2}}{c^{2}}\right)^{2}}
+\end{align*}
+\[
+p_{2}=\frac{2mV}{1+\frac{V^{2}}{c^{2}}}\frac{1+\frac{V^{2}}{c^{2}}}{1-\frac{V^{2}}{c^{2}}}=\frac{2mV}{1-\frac{V^{2}}{c^{2}}}
+\]
+\[
+p_{0}=p_{1}+p_{2}=\frac{2mV}{1-\frac{V^{2}}{c^{2}}}
+\]
+
+
+質量を$M$とすると、
+\[
+p_{0}=\frac{MV}{\sqrt{1-\frac{V^{2}}{c^{2}}}}=\frac{2mV}{1-\frac{V^{2}}{c^{2}}}
+\]
+より、
+\[
+M=\frac{2m}{\sqrt{1-\frac{V^{2}}{c^{2}}}}
+\]
+となり、矛盾してしまう。
+
+この問題をNewton力学で考えると、はじめのポテンシャルエネルギーを$U$として、エネルギー保存則は、$S'$系で
+\[
+U=\frac{1}{2}mV^{2}+\frac{1}{2}mV^{2}
+\]
+$S$系で
+\[
+U+\frac{1}{2}\left(2m\right)V^{2}=\frac{1}{2}m\left(2V\right)^{2}
+\]
+であり、$U=mV^{2}$でどちらも成立する。
+
+そもそも質量\texttimes 4元速度の時間成分の保存は、
+\[
+u^{\mu}=\left(\gamma c,\gamma\overrightarrow{v}\right)
+\]
+\[
+\overrightarrow{v}=\d{\overrightarrow{r}}t
+\]
+\[
+\gamma=\frac{1}{\sqrt{1-\frac{\left|\overrightarrow{v}\right|^{2}}{c^{2}}}}
+\]
+より、$S'$系で
+\[
+Mc=\frac{mc}{\sqrt{1-\frac{V^{2}}{c^{2}}}}+\frac{mc}{\sqrt{1-\frac{V^{2}}{c^{2}}}}
+\]
+$S$系で
+\[
+\frac{Mc}{\sqrt{1-\frac{V^{2}}{c^{2}}}}=mc+mc\frac{1+\frac{V^{2}}{c^{2}}}{1-\frac{V^{2}}{c^{2}}}
+\]
+となり、$M=\frac{2m}{\sqrt{1-\frac{V^{2}}{c^{2}}}}$でどちらも成立する。
+
+$\left|V\right|\ll c$のとき、
+\[
+\left(1+x\right)^{\alpha}\simeq1+\alpha x\left(\left|x\right|\ll1\right)
+\]
+を用いて、$S'$系で
+\[
+Mc=mc\left(1+\frac{V^{2}}{2c^{2}}\right)+mc\left(1+\frac{V^{2}}{2c^{2}}\right)
+\]
+$S$系で
+\[
+Mc\left(1+\frac{V}{2c^{2}}\right)=mc+mc\left(1+\frac{2V^{2}}{c^{2}}\right)
+\]
+
+
+$M\simeq\left(1+\frac{V^{2}}{2c^{2}}\right)$を$M=2m+\frac{U}{c^{2}}$と考えると、これらの式はNewton力学での
+\[
+\left(\text{質量保存}\right)\times c+\left(\text{エネルギー保存}\right)\times\frac{1}{c}
+\]
+に対応する。
+
+質量$m$、速度$\overrightarrow{v}$の質点でのエネルギー$E$と運動量$\overrightarrow{p}$を
+\[
+E=\frac{mc^{2}}{\sqrt{1-\frac{\left|v\right|^{2}}{c^{2}}}}
+\]
+\[
+\overrightarrow{p}=\frac{m\overrightarrow{v}}{\sqrt{1-\frac{\left|v\right|^{2}}{c^{2}}}}
+\]
+とすると、$\left(\frac{E}{c},\overrightarrow{p}\right)$は反変ベクトルであり、ある系で保存していればLorentz変換した別の系でも保存される。
+
+\[
+p^{\mu}=mu^{\mu}=m\d{x^{\mu}}t=\left(\frac{E}{c},\overrightarrow{p}\right)
+\]
+は4元運動量と呼ばれる。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\part*{第12回}
+
+補講 7/17(金) 5限 K011(この部屋)
+
+\[
+E=\frac{mc^{2}}{\sqrt{1-\frac{\left|\overrightarrow{v}\right|^{2}}{c^{2}}}}\equiv\underbrace{mc^{2}}_{\text{静止エネルギー}}+\underbrace{\frac{1}{2}m\left|\overrightarrow{v}\right|^{2}}_{\text{Newton力学での運動エネルギー}}
+\]
+
+
+ここから、質量もエネルギーの一つの形態として考えることができる。これを\textbf{エネルギーと質量の等価性}という。
+
+\[
+p^{\mu}\eta_{\mu\nu}p^{\nu}=m^{2}u_{\mu\nu}^{\mu\eta}u^{\nu}=-m^{2}c^{2}<0\left(\text{time-like}\right)
+\]
+
+
+\[
+p^{\mu}p_{\mu}=-m^{2}c^{2}
+\]
+このスカラー量から質量を定義することができる。
+
+静止系では$p^{\mu}=\left(mc,0,0,0\right)$となる。前回の練習問題では、ポテンシャルエネルギーがあったので$M>2m$であった。
+
+$E\gg mc^{2}$のときを\textbf{超相対論的}という。このとき、
+\[
+p^{\mu}p_{\mu}=-\frac{E^{2}}{c^{2}}+\left|\overrightarrow{p}\right|^{2}=-m^{2}c^{2}
+\]
+
+
+$p=\left|\overrightarrow{p}\right|$とすると、
+\begin{align*}
+p & =\sqrt{\frac{E^{2}}{c^{2}}-m^{2}c^{2}}\\
+ & =\frac{E}{c}\sqrt{1-\left(\frac{mc^{2}}{E}\right)^{2}}\\
+ & \simeq\frac{E}{c}\gg mc
+\end{align*}
+
+
+速度は
+\[
+E=\frac{mc^{2}}{\sqrt{1-\frac{\left|\overrightarrow{v}\right|^{2}}{c^{2}}}}
+\]
+より、
+\[
+\left|\overrightarrow{v}\right|^{2}=c^{2}\sqrt{1-\left(\frac{mc^{2}}{E}\right)^{2}}
+\]
+
+
+$\frac{mc^{2}}{E}\rightarrow0$の極限で$\left|\overrightarrow{v}\right|\rightarrow c$
+
+$E$や$\overrightarrow{p}$は有限で$m=0$の粒子が存在するならば、常に光速で運動
+
+\[
+p^{\mu}p_{\mu}=-m^{2}c^{2}\rightarrow p^{\mu}p_{\mu}=0\left(\text{light-like}\right)
+\]
+となり、Lorentz変換で$\left|\overrightarrow{p}\right|=0$にできない。
+
+
+\subsection{運動方程式}
+
+Newtonの運動方程式
+\[
+m\dd{\overrightarrow{r}\left(t\right)}t=\overrightarrow{F}
+\]
+の両辺がLorentz変換のテンソル量ではない。Lorentz共変にするひとつの変更方法は、
+\[
+m\dd{x^{\mu}}{\tau}=f^{\mu}
+\]
+
+
+$p^{\mu}=m\d{x^{\mu}}{\tau}$より$\d{p^{\mu}}{\tau}=f^{\mu}$とも書ける。
+
+左辺は反変ベクトル$\frac{\left|\overrightarrow{v}\right|^{2}}{c^{2}}\rightarrow0$の極限で、空間成分は$m\dd{\overrightarrow{r}}t$
+
+$\frac{\left|\overrightarrow{v}\right|^{2}}{c^{2}}\rightarrow0$の極限で空間成分がNewton力学での$\overrightarrow{F}$になるような反変ベクトル$f^{\mu}$が成立するか?
+
+自然界の力のうち「強い力」と「弱い力」は短距離力で量子力学的な取り扱いが必要。(→場の量子論)
+
+電磁気力は、
+\[
+\overrightarrow{F}=q\left(\overrightarrow{E}+\overrightarrow{v}\times\overrightarrow{B}\right)
+\]
+(ただし$\overrightarrow{B}$は磁束密度、$q$は電荷、$\overrightarrow{E}$は電場である。)
+
+あとで示すように
+\[
+f^{\mu}=\left(\frac{\gamma q}{c}\overrightarrow{E}\cdot\overrightarrow{v},\gamma q\left(\overrightarrow{E}+\overrightarrow{v}\times\overrightarrow{B}\right)\right)
+\]
+\[
+\left(\gamma=\frac{1}{\sqrt{1-\frac{\left|\overrightarrow{v}\right|^{2}}{c^{2}}}}\right)
+\]
+は反変ベクトルとして変換
+\[
+\d{p^{\mu}}{\tau}=\gamma\d{p^{\mu}}t=\left(\frac{\gamma}{c}\d Et,\gamma\d{\overrightarrow{p}}t\right)
+\]
+より、
+\begin{align*}
+\d Et & =q\overrightarrow{E}\cdot\overrightarrow{v}\\
+\d{\overrightarrow{p}}t & =q\left(\overrightarrow{E}+\overrightarrow{v}\times\overrightarrow{B}\right)
+\end{align*}
+はLorentz共変である。
+
+重力は、座標に依存する計量$g_{\mu\nu}\left(x\right)$を導入して、
+\[
+m\dd{x^{\mu}}{\tau}=0
+\]
+を一般相対性を持つように拡張すると、
+\[
+g_{00}\simeq-1-\frac{2\phi}{c^{2}},\frac{\left|\overrightarrow{v}\right|^{2}}{c^{2}}\ll1
+\]
+のとき、
+\[
+m\dd{\overrightarrow{r}}t\simeq-m\overrightarrow{\nabla}\phi
+\]
+となり、原点に質量$M$の質点が存在する場合は、$G$をNewtonの重力定数として、
+\[
+\phi\simeq-\frac{GM}{\left|\overrightarrow{r}\right|}
+\]
+より、Newtonの万有引力の法則を再現している。
+
+一様な磁場中の荷電粒子
+\[
+\d{\overrightarrow{p}}t=\d{}t\left(\frac{m\overrightarrow{v}}{\sqrt{1-\frac{\left|\overrightarrow{v}\right|^{2}}{c^{2}}}}\right)=q\overrightarrow{v}\times\overrightarrow{B}
+\]
+\begin{align*}
+\overrightarrow{p}\cdot\d{\overrightarrow{p}}t & =q\overrightarrow{p}\cdot\left(\overrightarrow{v}\times\overrightarrow{B}\right)\\
+ & =q\overrightarrow{B}\cdot\left(\overrightarrow{p}\times\overrightarrow{v}\right)\\
+ & =0
+\end{align*}
+より、
+\[
+\overrightarrow{p}\cdot\d{\overrightarrow{p}}t=\frac{1}{2}\d{}t\left|\overrightarrow{p}\right|^{2}=0
+\]
+から、$\left|\overrightarrow{p}\right|^{2}$は一定である。
+
+また
+\[
+\left|\overrightarrow{p}\right|^{2}=\frac{m\left|\overrightarrow{v}\right|^{2}}{1-\frac{\left|\overrightarrow{v}\right|^{2}}{c^{2}}}
+\]
+より
+\[
+\left|\overrightarrow{v}\right|^{2}=\frac{\left|\overrightarrow{p}\right|^{2}}{m^{2}c^{2}+\left|\overrightarrow{p}\right|^{2}}c^{2}
+\]
+から$\left|\overrightarrow{v}\right|$も一定で$\gamma=\frac{1}{\sqrt{1-\frac{\left|\overrightarrow{v}\right|^{2}}{c^{2}}}}$も一定である。
+
+\[
+m\gamma\d{\overrightarrow{v}}t=q\overrightarrow{v}\times\overrightarrow{B}
+\]
+⇒等速円運動
+\begin{align*}
+\overrightarrow{B} & =\left(0,0,B\right)\\
+\overrightarrow{r} & =\left(r\cos\omega t,r\sin\omega t,0\right)
+\end{align*}
+とする(ただし$B,r,\omega$は定数)と、
+\[
+m\gamma r\omega^{2}=-qr\omega B
+\]
+\[
+\omega=-\frac{qB}{m\gamma}
+\]
+
+
+$q>0,B>0$のとき$\omega<0$で、
+\[
+r=\frac{\left|\overrightarrow{v}\right|^{2}}{\left|\omega\right|}=\frac{m\gamma\left|\overrightarrow{v}\right|}{qB}=\frac{\left|\overrightarrow{p}\right|}{qB}
+\]
+
+
+
+\subsection{Compton散乱}
+
+電磁波のエネルギーや運動量は振幅を変えると連続的に変わるが、量子力学的に取り扱うと最小値の整数倍の値しか取ることができなくなる。⇒光の粒子性・光子(photon)
+
+振動数$\nu$の電磁波のエネルギー$E$の最小値
+\[
+E=h\nu=\hbar\omega
+\]
+ここで$h=6.6\times10^{^{34}}\mathrm{J\cdot s}$でPlanck定数と呼ばれ、$\hbar=\frac{h}{2\pi}$である。
+
+波の進む向きで$\left|\overrightarrow{k}\right|=\text{波数}=\frac{2\pi}{\text{波長}}$である波数ベクトル$\overrightarrow{k}$のときの運動量$\overrightarrow{p}$は、$\hbar\overrightarrow{k}$の整数倍である。
+
+Doppler効果の時の進行波のLorentz変換より、$\left(\frac{\omega}{c},\overrightarrow{k}\right)$は反変ベクトルとして変換するので、$\left(\frac{E}{c},\overrightarrow{p}\right)$も反変ベクトルとなる。
+
+$\omega=c\left|\overrightarrow{k}\right|$より、
+\begin{align*}
+p^{\mu}p_{\mu} & =-\frac{E^{2}}{c^{2}}+\left|\overrightarrow{p}\right|^{2}\\
+ & =-\frac{\hbar^{2}}{c^{2}}c^{2}\left|\overrightarrow{k}\right|^{2}+\hbar^{2}\left|\overrightarrow{k}\right|^{2}\\
+ & =0
+\end{align*}
+となり、光子は質量ゼロの粒子として振る舞う。
+
+
+\paragraph{Compton散乱}
+
+波長$\lambda$の光子が静止している質量$m$の電子を跳ね飛ばす散乱を考える。
+
+このとき跳ね飛ばされた粒子の進行角度を$\varphi$、散乱後の光子の進行角度を$\theta$、散乱後の光子の波長を$\lambda'$、散乱後の電子の運動量の大きさを$p=\left|\overrightarrow{p}\right|$とすると、エネルギー保存則より、
+\[
+\frac{hc}{\lambda}+mc^{2}=\frac{hc}{\lambda'}+\sqrt{m^{2}c^{4}+p^{2}c^{2}}
+\]
+各軸の運動量保存則より、
+\begin{align*}
+\frac{h}{\lambda} & =\frac{h}{\lambda'}\cos\theta+p\cos\varphi\\
+\frac{h}{\lambda'}\sin\theta & =p\sin\varphi
+\end{align*}
+
+
+$p$を消去して、
+\begin{align*}
+p^{2} & =\left(\frac{h}{\lambda}-\frac{h}{\lambda'}\cos\theta\right)^{2}+\frac{h^{2}}{\lambda'^{2}}\sin^{2}\theta\\
+ & =\frac{h^{2}}{\lambda^{2}}+\frac{h^{2}}{\lambda'^{2}}-\frac{2h^{2}\cos\theta}{\lambda\lambda'}
+\end{align*}
+\begin{align*}
+\Rightarrow & \left(\frac{hc}{\lambda}+mc^{2}-\frac{hc}{\lambda'}\right)^{2}\\
+= & m^{2}c^{4}+\frac{h^{2}c^{2}}{\lambda^{2}}+\frac{h^{2}c^{2}}{\lambda'^{2}}-\frac{2h^{2}c^{2}\cos\theta}{\lambda\lambda'}
+\end{align*}
+\[
+\lambda'-\lambda=\lambda_{c}\left(1-\cos\theta\right)
+\]
+\[
+\lambda_{c}=\frac{h}{mc}
+\]
+となり、これを\textbf{電子のCompton波長}と呼ぶ。
+
+そして$\lambda'>\lambda$となり、散乱によって波長が変わったことがわかる。これは電磁波の粒子性を示す重要な結果である。
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+
+\part*{補講}
+
+
+\section{Maxwell方程式の共変性}
+
+
+\subsection{テンソル場}
+
+$S$系の座標を$x^{\mu}$、$S'$系での座標を$x'^{\mu}$とし、とくにこの章では
+\[
+x'^{\mu}=\wedge_{\;\;\nu}^{\mu}x^{\nu}
+\]
+という一般的なLorentz変換を考える。
+
+$x^{0},x^{1},x^{2},x^{3}$の関数$f\left(x^{0},x^{1},x^{2},x^{3}\right)$を$f\left(x\right)$と略記する。$f\left(x'^{0},x'^{1},x'^{2},x'^{3}\right)$も同様に$f\left(x'\right)$と略記する。
+
+$S$系での場$u\left(x\right)$が$S'$系での場$u'\left(x'\right)$に
+\[
+u'\left(x'\right)=u\left(x\right)
+\]
+のように変換する時、$u\left(x\right)$をスカラー場という。
+
+$S$系での場$A^{\mu}\left(x\right),F_{\mu\nu}\left(x\right)$が$S'$系での場$A'^{\mu}\left(x'\right),F'_{\mu\nu}\left(x'\right)$に
+\[
+A'^{\mu}\left(x'\right)=\wedge_{\;\;\nu}^{\mu}A^{\nu}\left(x\right)
+\]
+\[
+F'_{\mu\nu}\left(x'\right)=\wedge_{\mu}^{\;\;\rho}\wedge_{\nu}^{\;\;\sigma}F_{\rho\sigma}\left(x\right)
+\]
+(ただし$\wedge_{\mu}^{\;\;\nu}=\eta_{\mu\rho}\wedge_{\;\;\sigma}^{\rho}\eta^{\sigma\nu}$である)のように変換する時、$A^{\mu}\left(x\right)$を(反変)ベクトル場、$F_{\mu\nu}\left(x\right)$を2階の(共変)ベクトル場であるという。
+
+一般にテンソル場も同様に定義する。
+
+
+\paragraph{合成関数の微分}
+
+$f\left(x,y\right)$を$x$と$y$の関数、$x$も$y$も$x'$と$y'$の関数であるとする。$x'\rightarrow x'+\Delta x'$のとき、
+\[
+\begin{cases}
+x\rightarrow x+\Delta x\\
+y\rightarrow y+\Delta y
+\end{cases}
+\]
+とすると、
+\begin{align*}
+ & \frac{f\left(x+\Delta x,y+\Delta y\right)-f\left(x,y\right)}{\Delta x'}\\
+= & \frac{f\left(x+\Delta x,y+\Delta y\right)-f\left(x,y+\Delta y\right)}{\Delta x}\frac{\Delta x}{\Delta x'}\\
+ & +\frac{f\left(x,y+\Delta y\right)-f\left(x,y\right)}{\Delta y}\frac{\Delta y}{\Delta x'}
+\end{align*}
+
+
+$\Delta x'\rightarrow0$で、
+\begin{align*}
+ & \pd{f\left(x\left(x',y'\right),y\left(x',y'\right)\right)}{x'}\\
+= & \pd{f\left(x,y\right)}x\pd x{x'}+\pd{f\left(x,y\right)}y\pd y{x'}
+\end{align*}
+
+
+同様に考えて$u\left(x\right)$がスカラー場の時、
+\begin{align*}
+\pd{}{x'^{\mu}}u'\left(x'\right) & =\pd{}{x'^{\mu}}u\left(x\left(x'\right)\right)\\
+ & =\pd{x^{\nu}}{x'^{\mu}}\pd{}{x^{\nu}}u\left(x\right)
+\end{align*}
+より$\pd{}{x^{\mu}}u\left(x\right)$は、
+\[
+\pd{}{x'^{\mu}}u'\left(x'\right)=\pd{x^{\nu}}{x'^{\mu}}\pd{}{x^{\nu}}u\left(x\right)
+\]
+のように変換する。
+
+\begin{align*}
+x'^{\mu} & =\wedge_{\;\;\nu}^{\mu}x^{\nu}\\
+x^{\nu} & =\left(\wedge^{-1}\right)_{\;\;\mu}^{\nu}x'^{\mu}\\
+ & =x'^{\mu}\left(\wedge^{-T}\right)_{\mu}^{\;\;\nu}\\
+ & =x'^{\mu}\wedge_{\mu}^{\;\;\nu}
+\end{align*}
+$\pd{x^{\nu}}{x'^{\mu}}=\wedge_{\mu}^{\;\;\nu}$より、
+\[
+\pd{}{x'^{\mu}}u'\left(x'\right)=\wedge_{\mu}^{\;\;\nu}\pd{}{x^{\nu}}u\left(x\right)
+\]
+
+
+共変ベクトル場として変換する。
+
+$\pd{}{x^{\mu}}=\partial_{\mu},\pd{}{x'^{\mu}}=\partial'_{\mu}$と書き、
+\[
+\partial'_{\mu}u'\left(x'\right)=\wedge_{\mu}^{\;\;\nu}\partial_{\nu}u\left(x\right)
+\]
+と書く。
+
+同様に例えば$\partial_{\mu}A_{\nu}\left(x\right)$は2階の共変テンソル場として変換する。
+
+
+\subsection{波動方程式}
+
+$u\left(x\right)$がスカラー場の時、
+\[
+\eta^{\mu\nu}\partial_{\mu}\partial_{\nu}u\left(x\right)=\partial_{\mu}\partial^{\mu}u\left(x\right)
+\]
+はスカラー場として変換
+\[
+\partial_{\mu}\partial^{\mu}u\left(x\right)=0
+\]
+\[
+\rightarrow\partial'_{\mu}\partial'^{\mu}u'\left(x'\right)=0
+\]
+\[
+-\frac{1}{c^{2}}\pdd{}tu\left(\overrightarrow{r},t\right)+\nabla^{2}u\left(\overrightarrow{r},t\right)=0
+\]
+
+
+ただしここで$\nabla^{2}$は
+\[
+\nabla^{2}u=\pdd{}xu+\pdd{}yu+\pdd{}zu
+\]
+という演算子でLaplacianである。
+
+よって
+\[
+-\frac{1}{c^{2}}\pdd{}{t'}u'\left(\overrightarrow{r}',t'\right)+\nabla'^{2}u'\left(\overrightarrow{r}',t'\right)=0
+\]
+
+
+波の速度が$c$の波動方程式はLorentz共変である。
+
+ここで波動方程式はGalilei変換のもとで不変ではなかった。すなわち、媒質の変異を表す方程式という解釈が必要である。
+
+ここから、$\partial_{\mu}\partial^{\mu}u\left(x\right)=0$は、\textbf{媒質の変位を表すものではなく、場自体が物理的実体である}と考えることが可能である。
+
+
+\subsection{Maxwell方程式}
+
+\[
+\begin{cases}
+\overrightarrow{\nabla}\cdot\overrightarrow{E}=\rho\\
+\overrightarrow{\nabla}\times\overrightarrow{E}=-\frac{1}{c}\pd{\overrightarrow{B}}t\\
+\overrightarrow{\nabla}\cdot\overrightarrow{B}=0\\
+\overrightarrow{\nabla}\times\overrightarrow{B}=\frac{1}{c}\overrightarrow{j}+\frac{1}{c}\pd{\overrightarrow{E}}t
+\end{cases}
+\]
+
+
+この式に馴染みがない人は、以下のように読み替えてもらいたい。
+\begin{align*}
+\overrightarrow{E} & \rightarrow\frac{1}{\sqrt{\varepsilon_{0}}}\overrightarrow{E}\\
+\overrightarrow{B} & \rightarrow\sqrt{\mu_{0}}\overrightarrow{B}\\
+\rho & \rightarrow\sqrt{\varepsilon_{0}}\rho\\
+\overrightarrow{j} & \rightarrow\sqrt{\varepsilon_{0}}\overrightarrow{j}\\
+\varepsilon_{0}\mu_{0} & =\frac{1}{c^{2}}
+\end{align*}
+
+
+ここで$\rho$は電荷密度、$\overrightarrow{j}$は電流密度ベクトル、
+\[
+\overrightarrow{\nabla}\cdot\overrightarrow{E}=\pd{E_{x}}x+\pd{E_{y}}y+\pd{E_{z}}z
+\]
+\[
+\overrightarrow{\nabla}\times\overrightarrow{E}=\left(\pd{E_{z}}y-\pd{E_{y}}z,\pd{E_{x}}z-\pd{E_{z}}x,\pd{E_{y}}x-\pd{E_{x}}y\right)
+\]
+である。
+
+ここからこの式の共変性を示していく。まず$\overrightarrow{\nabla}\cdot\left(\overrightarrow{\nabla}\times\overrightarrow{A}\right)=0$より、$\overrightarrow{B}=\overrightarrow{\nabla}\times\overrightarrow{A}$ならば$\overrightarrow{\nabla}\cdot\overrightarrow{B}=0$は満たされる。
+
+\[
+\overrightarrow{\nabla}\times\left(\overrightarrow{E}+\frac{1}{c}\pd{\overrightarrow{A}}t\right)=0
+\]
+\[
+\overrightarrow{\nabla}\times\;\;\overrightarrow{\nabla}\phi=0
+\]
+より、$\overrightarrow{E}=-\overrightarrow{\nabla}\phi-\frac{1}{c}\pd{\overrightarrow{A}}t$ならば、$\overrightarrow{\nabla}\times\overrightarrow{E}=-\frac{1}{c}\pd{\overrightarrow{B}}t$も満たされる。
+
+$A_{\mu}=\left(-\phi,\overrightarrow{A}\right)$が共変ベクトル場として変換すると仮定する。このとき、
+\[
+F_{\mu\nu}=\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu}
+\]
+は2階の共変テンソル場、
+\[
+F_{\mu\nu}=F_{\nu\mu}
+\]
+は反対称テンソル場である。
+
+\begin{align*}
+F_{01} & =\pd{A_{1}}{x^{0}}-\pd{A_{0}}{x^{1}}\\
+ & =\frac{1}{c}\pd{A_{x}}t+\pd{\phi}x\\
+ & =-E_{x}
+\end{align*}
+\begin{align*}
+F_{12} & =\pd{A_{2}}{x^{1}}-\pd{A_{1}}{x^{2}}\\
+ & =\pd{A_{y}}x-\pd{A_{x}}y\\
+ & =B_{z}
+\end{align*}
+
+
+すべて計算すると、
+\[
+F_{\mu\nu}=\left(\begin{array}{cccc}
+0 & -E_{x} & -E_{y} & -E_{z}\\
+E_{x} & 0 & B_{z} & -B_{y}\\
+E_{y} & -B_{z} & 0 & B_{x}\\
+E_{z} & B_{y} & -B_{x} & 0
+\end{array}\right)
+\]
+となり、$\overrightarrow{E},\overrightarrow{B}$は2階の反対称テンソル場の成分となる。
+
+次に、
+\[
+T_{\lambda\mu\nu}=\partial_{\lambda}F_{\mu\nu}+\partial_{\mu}F_{\nu\lambda}+\partial_{\nu}F_{\lambda\mu}=0
+\]
+という式を考える。$T_{\lambda\mu\nu}$を3階の共変ベクトルとして、
+\[
+T_{\lambda\mu\nu}=-T_{\lambda\nu\mu},T_{\lambda\mu\nu}=-T_{\mu\lambda\nu}
+\]
+となり、完全反対称となる。
+
+独立な式は$T_{123}=0,T_{023}=0,T_{013}=0,T_{012}=0$の4つである。
+
+\begin{align*}
+T_{123} & =\pd{B_{x}}x+\pd{B_{y}}y+\pd{B_{z}}z\\
+ & =\overrightarrow{\nabla}\cdot\overrightarrow{B}=0
+\end{align*}
+\begin{align*}
+T_{023} & =\frac{1}{c}\pd{B_{x}}t+\pd{B_{z}}y-\pd{B_{y}}z\\
+ & =0
+\end{align*}
+\[
+T_{\lambda\mu\nu}=0
+\]
+でLorentz共変となる。
+
+\[
+\Rightarrow\overrightarrow{\nabla}\times\overrightarrow{E}=-\frac{1}{c}\pd{\overrightarrow{B}}t
+\]
+\[
+\overrightarrow{\nabla}\cdot\overrightarrow{B}=0
+\]
+
+
+$F_{\mu\nu}=\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu}$のとき、
+\begin{align*}
+T_{\lambda\mu\nu}= & \partial_{\lambda}\left(\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu}\right)\\
+ & +\partial_{\mu}\left(\partial_{\nu}A_{\lambda}-\partial_{\lambda}A_{\nu}\right)\\
+ & +\partial_{\nu}\left(\partial_{\lambda}A_{\mu}-\partial_{\mu}A_{\lambda}\right)\\
+= & 0
+\end{align*}
+より$T_{\lambda\mu\nu}=0$は満たされている。
+
+$j^{\mu}=\left(c\rho,\overrightarrow{j}\right)$が反変ベクトル場として変換すると仮定して、
+\[
+\partial_{\nu}F^{\mu\nu}=\frac{1}{c}j^{\mu}
+\]
+という式を考える。
+
+\[
+F^{\mu\nu}=\eta^{\mu\alpha}\eta^{\nu\beta}F_{\mu\beta}
+\]
+\[
+F^{\mu\nu}=\left(\begin{array}{cccc}
+0 & E_{x} & E_{y} & E_{z}\\
+-E_{x} & 0 & B_{z} & -B_{y}\\
+-E_{y} & -B_{z} & 0 & B_{x}\\
+-E_{y} & B_{y} & -B_{x} & 0
+\end{array}\right)
+\]
+\[
+\partial_{\nu}F^{0\nu}=\pd{E_{x}}x+\pd{E_{y}}y+\pd{E_{z}}x
+\]
+\[
+\partial_{\nu}F^{0\nu}=\frac{1}{c}j^{0}\Rightarrow\overrightarrow{\nabla}\overrightarrow{E}=\rho
+\]
+\[
+\partial_{\nu}F^{1\nu}=-\frac{1}{c}\pd{E_{x}}t+\pd{B_{z}}y-\pd{B_{y}}z
+\]
+\[
+\partial_{\nu}F^{\mu\nu}=\frac{1}{c}j^{\mu}
+\]
+でこれはLorentz共変、ここから
+\begin{align*}
+\overrightarrow{\nabla}\cdot\overrightarrow{E} & =\rho\\
+\overrightarrow{\nabla}\times\overrightarrow{B} & =\frac{1}{c}\overrightarrow{j}+\frac{1}{c}\pd{\overrightarrow{E}}t
+\end{align*}
+が導かれた。
+
+最後に電荷$q$を持つ質点について$qF^{\mu\nu}u_{\nu}$という量を考える。ここで$F^{\mu\nu}$は場ではなくて質点の位置での$F^{\mu\nu}$である。
+
+\[
+qF^{0\nu}u_{\nu}=q\gamma\overrightarrow{E}\cdot\overrightarrow{v}
+\]
+ここで$\gamma=\frac{1}{\sqrt{1-\frac{\left|\overrightarrow{v}\right|^{2}}{c^{2}}}}$である。
+\[
+qF^{1\nu}u_{\nu}=q\gamma\left(\left(-E_{x}\right)\left(-c\right)+B_{z}v_{y}-B_{y}v_{z}\right)
+\]
+\[
+qF^{\mu\nu}u_{\nu}=\left(q\gamma\overrightarrow{E}\cdot\overrightarrow{v},q\gamma\left(c\overrightarrow{E}+\overrightarrow{v}\times\overrightarrow{B}\right)\right)
+\]
+
+
+ここで
+\begin{align*}
+\overrightarrow{E} & \rightarrow\sqrt{\varepsilon_{0}}\overrightarrow{E}\\
+\overrightarrow{B} & \rightarrow\frac{1}{\sqrt{\mu_{0}}}\overrightarrow{B}\\
+q & \rightarrow\frac{1}{\sqrt{\varepsilon_{0}}}q\\
+\frac{1}{\sqrt{\varepsilon_{0}\mu_{0}}} & =c
+\end{align*}
+としてSIでの定義に戻すと、
+\[
+qF^{\mu\nu}u_{\nu}=\left(q\gamma\overrightarrow{E}\cdot\overrightarrow{v},q\gamma c\left(\overrightarrow{E}+\overrightarrow{v}\times\overrightarrow{B}\right)\right)
+\]
+\[
+\d{p^{\mu}}{\tau}=\frac{1}{c}F^{\mu\nu}u_{\nu}
+\]
+でこれはLorentz共変、
+\[
+\d Et=q\overrightarrow{E}\cdot\overrightarrow{v}
+\]
+\[
+\d{\overrightarrow{p}}t=q\left(\overrightarrow{E}+\overrightarrow{v}\times\overrightarrow{B}\right)
+\]
+となる。
+\end{document}
