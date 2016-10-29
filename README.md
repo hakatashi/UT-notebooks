@@ -9,7 +9,7 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 
 ## Index
 
-* 2013年度 夏学期
+* [2013年度 夏学期](2013S)
 	* [数学IA](2013S/mathIA.tex) - [PDF][mathIA-pdf]
 	* [数学II](2013S/mathII.tex) - [PDF][mathII-pdf]
 	* [熱力学](2013S/thermodynamics.tex) - [PDF][thermodynamics-pdf]
