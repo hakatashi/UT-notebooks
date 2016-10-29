@@ -20,8 +20,10 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 	* [数学IA](2013W/MathIA-winter.tex) - [PDF][MathIA-winter-pdf]
 	* [構造科学](2013W/StructualChemistry.tex) - [PDF][StructualChemistry-pdf]
 		* [レポート1](2013W/StructualChemistry-report1.tex) - [PDF][StructualChemistry-report1-pdf]
-* 2014年度 夏学期
-	* 準備中
+* [2014年度 夏学期](2014S)
+	* [物理学汎論](2014S/GeneralPhysics.tex) - [PDF][GeneralPhysics-pdf]
+	* [物性科学](2014S/MaterialsChemistry.tex) - [PDF][MaterialsChemistry-pdf]
+	* [数理科学IV](2014S/MathematicsIV.tex) - [PDF][MathematicsIV-pdf]
 * 2014年度 冬学期
 	* 準備中
 * 2015年度 Sセメスター
@@ -52,6 +54,9 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 [MathIA-winter-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013W/MathIA-winter.pdf
 [StructualChemistry-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013W/StructualChemistry.pdf
 [StructualChemistry-report1-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013W/StructualChemistry-report1.pdf
+[GeneralPhysics-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2014S/GeneralPhysics.pdf
+[MaterialsChemistry-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2014S/MaterialsChemistry.pdf
+[MathematicsIV-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2014S/MathematicsIV.pdf
 [CircuitTheory1-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/CircuitTheory1.pdf
 [CircuitTheory1-part2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/CircuitTheory1-part2.pdf
 [Electromagnetics12-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/Electromagnetics12.pdf
@@ -61,7 +66,6 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 [MathematicalMethodI-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/MathematicalMethodI.pdf
 [MathematicalMethodV-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/MathematicalMethodV.pdf
 [MathematicalMethodV-report1-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/MathematicalMethodV-report1.pdf
-[MathematicsID-lyxformat-474-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/MathematicsID-lyxformat-474.pdf
 [MathematicsID-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/MathematicsID.pdf
 [SignalAnalysys-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/SignalAnalysys.pdf
 
