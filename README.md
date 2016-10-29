@@ -10,11 +10,16 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 ## Index
 
 * [2013年度 夏学期](2013S)
+	* [力学A](2013S/Dynamics.tex) - [PDF][Dynamics-pdf]
 	* [数学IA](2013S/mathIA.tex) - [PDF][mathIA-pdf]
 	* [数学II](2013S/mathII.tex) - [PDF][mathII-pdf]
 	* [熱力学](2013S/thermodynamics.tex) - [PDF][thermodynamics-pdf]
-* 2013年度 冬学期
-	* 準備中
+* [2013年度 冬学期](2013W)
+	* [電磁気学A](2013W/ElectroMagnetics.tex) - [PDF][ElectroMagnetics-pdf]
+	* [基礎倫理学](2013W/Ethics.tex) - [PDF][Ethics-pdf]
+	* [数学IA](2013W/MathIA-winter.tex) - [PDF][MathIA-winter-pdf]
+	* [構造科学](2013W/StructualChemistry.tex) - [PDF][StructualChemistry-pdf]
+		* [レポート1](2013W/StructualChemistry-report1.tex) - [PDF][StructualChemistry-report1-pdf]
 * 2014年度 夏学期
 	* 準備中
 * 2014年度 冬学期
@@ -38,9 +43,15 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 	* [数学1D](2016A/MathematicsID.tex) - [PDF][MathematicsID-pdf]
 	* [信号解析基礎](2016A/SignalAnalysys.tex) - [PDF][SignalAnalysys-pdf]
 
+[Dynamics-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/Dynamics.pdf
 [mathIA-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/mathIA.pdf
 [mathII-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/mathII.pdf
 [thermodynamics-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/thermodynamics.pdf
+[ElectroMagnetics-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013W/ElectroMagnetics.pdf
+[Ethics-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013W/Ethics.pdf
+[MathIA-winter-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013W/MathIA-winter.pdf
+[StructualChemistry-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013W/StructualChemistry.pdf
+[StructualChemistry-report1-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013W/StructualChemistry-report1.pdf
 [CircuitTheory1-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/CircuitTheory1.pdf
 [CircuitTheory1-part2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/CircuitTheory1-part2.pdf
 [Electromagnetics12-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/Electromagnetics12.pdf
