@@ -10,7 +10,9 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 ## Index
 
 * 2013年度 夏学期
-	* 準備中
+	* [数学IA](2013S/mathIA.tex) - [PDF][mathIA-pdf]
+	* [数学II](2013S/mathII.tex) - [PDF][mathII-pdf]
+	* [熱力学](2013S/thermodynamics.tex) - [PDF][thermodynamics-pdf]
 * 2013年度 冬学期
 	* 準備中
 * 2014年度 夏学期
@@ -36,6 +38,9 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 	* [数学1D](2016A/MathematicsID.tex) - [PDF][MathematicsID-pdf]
 	* [信号解析基礎](2016A/SignalAnalysys.tex) - [PDF][SignalAnalysys-pdf]
 
+[mathIA-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/mathIA.pdf
+[mathII-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/mathII.pdf
+[thermodynamics-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/thermodynamics.pdf
 [CircuitTheory1-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/CircuitTheory1.pdf
 [CircuitTheory1-part2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/CircuitTheory1-part2.pdf
 [Electromagnetics12-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/Electromagnetics12.pdf
