@@ -40,6 +40,7 @@
 \global\long\def\rot{\mathrm{rot}}
 \global\long\def\div{\mathrm{div}}
 \global\long\def\diag{\mathrm{diag}}
+\global\long\def\when#1{\left.#1\right|}
 
 
 \section*{第1回}
@@ -375,14 +376,16 @@ I\left(A,B\right) & =H\left(A\right)-H\left(A|B\right)\\
 \paragraph{望ましい性質}
 
 例:
-
-図情3-1
+\begin{center}
+\includegraphics{images/InformationScience/3-1}
+\par\end{center}
 
 平均符号長 $L=\sum p_{i}l_{i}$
 
 $C_{5}$:
-
-図情3-2
+\begin{center}
+\includegraphics{images/InformationScience/3-2}
+\par\end{center}
 \begin{itemize}
 \item 一意復号可能
 \begin{itemize}
@@ -395,15 +398,18 @@ $C_{5}$:
 \end{itemize}
 \item 一意復号不可能 ($C_{5}$)
 \end{itemize}
-図情3-3
+\begin{center}
+\includegraphics{images/InformationScience/3-3}
+\par\end{center}
 
 \paragraph{瞬時符号の条件}
 
 語頭条件 (Prefix rule): ある符号が別の符号の語頭になっていない (必要十分条件)
 
 \paragraph{符号の木}
-
-図情3-4
+\begin{center}
+\includegraphics{images/InformationScience/3-4}
+\par\end{center}
 
 瞬時符号→符号の木の葉にだけ符号がある
 
@@ -431,7 +437,9 @@ $C_{5}$:
 H\left(S\right)\le L\le H\left(S\right)+\varepsilon
 \]
 
-図情3-5
+\begin{center}
+\includegraphics{images/InformationScience/3-5}
+\par\end{center}
 
 \[
 H\left(S\right)=-\sum p_{i}\log p_{i}
@@ -498,6 +506,7 @@ $l_{i}$瞬時符号があれば
 \paragraph{どうやって最短符号を作るか?}
 
 ハフマン府外: 平均符号長を最短化する符号
-
-図情3-6
+\begin{center}
+\includegraphics{images/InformationScience/3-6}
+\par\end{center}
 \end{document}
