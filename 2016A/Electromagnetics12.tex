@@ -2035,4 +2035,86 @@ $R=\frac{\ell}{\sigma S}$より、
 R=\int_{a}^{\infty}\frac{\mathrm{d}r}{\sigma\cdot2\pi r^{2}}=\frac{1}{2\pi\sigma a}
 \]
 
+
+\paragraph{前回課題問1}
+
+図電磁5-17
+
+\begin{align*}
+\varepsilon\left(r\right) & =\frac{\varepsilon_{2}-\varepsilon_{1}}{b-a}\left(r-a\right)+\varepsilon_{1}\\
+ & =C_{1}+C_{2}r
+\end{align*}
+
+ただし
+\[
+C_{1}=\frac{\varepsilon_{1}b-\varepsilon_{2}a}{b-a}
+\]
+\[
+C_{2}=\frac{\varepsilon_{2}-\varepsilon_{1}}{b-a}
+\]
+
+$Q$を与える。
+
+\[
+\oint_{S}E\mathrm{d}S=\frac{q}{\varepsilon}
+\]
+
+\[
+2\pi rE=\frac{Q}{\varepsilon}
+\]
+
+\begin{align*}
+V & =-\int_{b}^{a}E\mathrm{d}r\\
+ & =-\int_{b}^{a}\frac{Q}{2\pi\varepsilon r}\mathrm{d}r\\
+ & =-\frac{Q}{2\pi}\int_{b}^{a}\frac{1}{C_{1}}\left(\frac{1}{r}-\frac{C_{2}}{C_{1}+C_{2}r}\right)\mathrm{d}r\\
+ & =-\frac{Q}{2\pi C_{1}}\left[\ln r-\ln\left(C_{1}+C_{2}r\right)\right]_{b}^{a}\\
+ & =\frac{Q}{2\pi C_{1}}\left[\ln\frac{C_{1}+C_{2}r}{r}\right]_{b}^{a}\\
+ & =\frac{Q}{2\pi C_{1}}\ln\left(\frac{C_{1}+C_{2}a}{C_{1}+C_{2}b}\frac{b}{a}\right)\\
+ & =\frac{Q}{2\pi C_{1}}\ln\frac{\varepsilon_{1}b}{\varepsilon_{2}a}
+\end{align*}
+
+\begin{align*}
+C & =\frac{Q}{V}\\
+ & =\frac{2\pi}{\ln\left(\frac{\varepsilon_{1}b}{\varepsilon_{2}a}\right)}\frac{\varepsilon_{1}b-\varepsilon_{2}a}{b-a}
+\end{align*}
+
+
+\paragraph{前回課題問2}
+
+図電磁5-18
+
+\[
+\begin{cases}
+4\pi r^{2}D_{1}=Q\\
+4\pi r^{2}D_{2}=Q+4\pi\left(2a\right)^{2}\sigma
+\end{cases}
+\]
+
+\[
+\therefore\begin{cases}
+E_{1}=\frac{D_{1}}{\varepsilon_{1}}=\frac{Q}{4\pi\varepsilon_{1}r^{2}}\\
+E_{2}=\frac{D_{2}}{\varepsilon_{2}}=\frac{Q+16\pi a^{2}\sigma}{4\pi\varepsilon_{2}r^{2}}
+\end{cases}
+\]
+
+\begin{align*}
+V_{1} & =\int_{2a}^{a}E_{1}\mathrm{d}r\\
+ & =-\int_{2a}^{a}\frac{Q}{4\pi\varepsilon_{1}r^{2}}\mathrm{d}r\\
+ & =\frac{Q}{8\pi\varepsilon_{1}a}
+\end{align*}
+
+\begin{align*}
+V_{2} & =-\int_{3a}^{2a}\frac{Q+16\pi a^{2}\sigma}{4\pi\varepsilon_{2}r^{2}}\mathrm{d}r\\
+ & =\frac{Q+16\pi a^{2}\sigma}{24\pi\varepsilon_{2}a}
+\end{align*}
+
+$V_{1}=V_{2}$より、
+\[
+3\varepsilon_{2}Q=\varepsilon_{1}\left(Q+16\pi a^{2}\sigma\right)
+\]
+
+\[
+Q=\frac{16\pi\varepsilon_{1}\sigma a^{2}}{3\varepsilon_{2}-\varepsilon_{1}}
+\]
+
 \end{document}
