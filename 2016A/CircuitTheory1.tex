@@ -23,7 +23,7 @@
 \usepackage{babel}
 \begin{document}
 
-\title{2016-A 電気回路理論第一}
+\title{2016-A 電気回路理論第一 前半}
 
 \author{教員: 藤本 入力: 高橋光輝}
 
@@ -39,6 +39,7 @@
 \global\long\def\rot{\mathrm{rot}}
 \global\long\def\div{\mathrm{div}}
 \global\long\def\diag{\mathrm{diag}}
+\global\long\def\when#1{\left.#1\right|}
 
 
 \section*{第1回}
@@ -1342,8 +1343,9 @@ $I_{m}$: 振幅
 $\omega$: 角周波数
 
 $\theta_{i}$: 位相角
-
-図電回4-1
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-1}
+\par\end{center}
 
 電源が単一正弦波で表せるなら、\textbf{線形}回路の全ての電圧、電流成分は各周波数$\omega$の正弦波で表すことができる。
 
@@ -1357,8 +1359,9 @@ $\theta_{i}$: 位相角
 \subsection{微分を表す回路方程式の一般解}
 
 \paragraph{例1}
-
-図電回4-2
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-2}
+\par\end{center}
 
 \[
 v_{s}=V_{m}\cos\left(\omega t+\theta\right)
@@ -1379,8 +1382,9 @@ i\left(t\right)=\underbrace{I_{0}\e^{-\frac{R}{L}t}}_{\text{固有解}}+\underbr
 特解→定常解 $\omega$で振動
 
 ただし、$I_{0}$は$t=0$における回路の初期状態によって与えられる量。
-
-図電回4-3
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-3}
+\par\end{center}
 
 \paragraph{微分方程式の復習}
 \begin{enumerate}
@@ -1465,8 +1469,9 @@ i_{2}\left(t\right) & =\Re\left[i\left(t\right)\right]=\Re\left[\frac{V_{m}}{R+\
 \e^{\j\theta}=\cos\theta+\j\sin\theta
 \]
 より、複素数$x+\j y$を二次元座標に表すと、$x+\j y=r\e^{\j\theta}$: 指数実数表示 ($r=\sqrt{x^{2}+y^{2}}$)
-
-図電回4-4
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-4}
+\par\end{center}
 
 \begin{align*}
 v\left(t\right) & =V_{m}\cos\left(\omega t+\theta_{v}\right)\\
@@ -1481,8 +1486,9 @@ i\left(t\right) & =I_{m}\cos\left(\omega t+\theta_{i}\right)\\
 \end{align*}
 
 振幅、位相を一つの複素数で表記=フェーザー(Phaser)
-
-図電回4-5
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-5}
+\par\end{center}
 
 複素平面上のベクトルを上図のように表記。(フェザーダイアグラム)
 
@@ -1505,8 +1511,9 @@ z_{R}=R
 ←インピーダンスは抵抗の概念を拡張したもの。
 
 \paragraph{インダクタンス}
-
-図電回4-6
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-6}
+\par\end{center}
 
 電流を$i_{L}\left(t\right)=I_{m}\cos\left(\omega t+\theta_{i}\right)$としたときに、
 \begin{align*}
@@ -1519,13 +1526,16 @@ v_{L}\left(t\right) & =L\d{i_{L}\left(t\right)}t=LI_{m}\omega\left\{ -\sin\left(
 z_{i}=\frac{\mathring{V}_{L}}{\mathring{I}_{L}}=\omega L\e^{\j\frac{\pi}{2}}=\j\omega L
 \]
 
-図電回4-7
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-7}
+\par\end{center}
 
 電圧に対して電流の位相が90度遅れる。
 
 \paragraph{キャパシタンス}
-
-図電回4-8
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-8}
+\par\end{center}
 
 電圧を
 \[
@@ -1543,7 +1553,9 @@ i_{C} & =C\d{v_{c}\left(t\right)}t\\
 z_{C}=\frac{1}{\omega C\e^{\j\frac{\pi}{2}}}=\frac{1}{\j\omega C}
 \]
 
-図電回4-9
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-9}
+\par\end{center}
 
 電圧に対して電流の位相が90度進む。
 
@@ -1616,8 +1628,9 @@ v\left(t\right)=\Re\left[\mathring{V}\e^{\j\omega t}\right],i\left(t\right)=\Re\
 \end{minipage}}
 
 \paragraph{例1の定常解を簡単に求める方法(その2)}
-
-図電回4-10
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-10}
+\par\end{center}
 
 回路は上図に書き換える。
 
@@ -1638,14 +1651,16 @@ i\left(t\right) & =\Re\left[\mathring{I}\e^{\j\omega t}\right]\\
 
 
 \paragraph{(例2)}
-
-図電回4-11
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-11}
+\par\end{center}
 
 $e\left(t\right)=\sqrt{2}\cos\omega t$n
 
 (a) 網目解析
-
-図電回4-12
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-12}
+\par\end{center}
 
 \[
 \left(\begin{array}{cc}
@@ -1706,12 +1721,14 @@ V=3J_{2}=\frac{3\sqrt{2}}{1+8\j}=\frac{3\sqrt{2}}{\sqrt{65}}\e^{-\j\phi}
 
 
 \subsection{交流における等価電流変換}
-
-図電回4-13
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-13}
+\par\end{center}
 
 \paragraph{(例)}
-
-図電回4-14
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-14}
+\par\end{center}
 
 \[
 I_{S}=\frac{40}{1+3\j}=\frac{40\left(1-3\j\right)}{\left(1+3\j\right)\left(1-3\j\right)}=\frac{40\left(1-3\j\right)}{10}=4-12\j
@@ -1721,8 +1738,9 @@ I_{S}=\frac{40}{1+3\j}=\frac{40\left(1-3\j\right)}{\left(1+3\j\right)\left(1-3\j
 \subsection{共振}
 
 \paragraph{例1) 直列共振}
-
-図電回4-15
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-15}
+\par\end{center}
 
 \[
 I=\frac{V}{z}=\frac{V}{R+\j\left(\omega L-\frac{1}{\omega C}\right)}
@@ -1748,8 +1766,9 @@ z=R+\j\left(\omega_{r}L-\frac{1}{\omega_{r}C}\right)=R
 と純抵抗となる。
 
 $L$と$C$のインピーダンスが打ち消し合っているため。(\textbf{直列状態})
-
-図電回4-16
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-16}
+\par\end{center}
 
 また共振時の電流$I_{r}$は
 \[
@@ -1783,8 +1802,9 @@ V_{L} & =\j\omega_{r}LI_{r}\\
 \]
 
 これをグラフにすると、
-
-図電回4-17
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-17}
+\par\end{center}
 
 電流の振幅が$\frac{1}{\sqrt{2}}$になる(電力が$\frac{1}{2}$になる)角周波数$\omega_{1},\omega_{2}$を求めると、
 \[
@@ -1826,8 +1846,9 @@ P\left(t\right) & =v\left(t\right)i\left(t\right)=V_{m}I_{m}\cos\left(\omega t+\
 \]
 
 直流のときと異なり$\frac{1}{2}$が出てしまう。
-
-図電回4-18
+\begin{center}
+\includegraphics{images/CircuitTheory1/4-18}
+\par\end{center}
 
 そこで交流信号
 \begin{align*}
