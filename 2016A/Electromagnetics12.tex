@@ -1760,4 +1760,279 @@ $\boldsymbol{p}\cdot\hat{\boldsymbol{r}}=q\ell\cos\theta$より、
 V=\frac{\boldsymbol{p}\cdot\hat{\boldsymbol{r}}}{4\pi\varepsilon_{0}r^{2}}
 \]
 
+
+\section*{第5回}
+
+\section{電界のエネルギー}
+
+電界のエネルギー密度
+
+\[
+w_{t}=\frac{1}{2}\boldsymbol{E}\cdot\boldsymbol{D}\left[\mathrm{J/m^{3}}\right]
+\]
+
+図電磁5-1
+
+図電磁5-2
+
+\[
+W_{e}=\int_{0}^{Q_{F}}V\left(q_{F}\right)\mathrm{d}q_{F}
+\]
+
+\[
+V=-\int_{\ell}E\mathrm{d}\ell
+\]
+
+\[
+q_{F}=\oint_{S}D\mathrm{d}S
+\]
+
+\[
+\Rightarrow q_{F}+\mathrm{d}q_{F}=\oint_{S}\left(D+\mathrm{d}D\right)\mathrm{d}S
+\]
+
+\[
+\Rightarrow\mathrm{d}q_{F}=\oint_{S}\mathrm{d}D\mathrm{d}S
+\]
+
+\begin{align*}
+\therefore W_{e} & =\int\left(\int_{\ell}E\mathrm{d}\ell\right)\left(\oint_{S}\mathrm{d}D\mathrm{d}S\right)\\
+ & =\int_{0}^{D}\oint_{L}\int_{\ell}E\mathrm{d}\ell\mathrm{d}S\mathrm{d}D\\
+ & =\int_{v}\left(\int_{0}^{D}E\mathrm{d}D\right)\mathrm{d}v\\
+ & =\int_{0}^{D}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{D}=\frac{1}{2}\boldsymbol{E}\cdot\boldsymbol{D}
+\end{align*}
+: 電界のエネルギー密度である。
+
+$\boldsymbol{D}=\varepsilon\boldsymbol{E}$のときは、
+\begin{align*}
+W_{e} & =\int_{0}^{D}\frac{D}{\varepsilon}\mathrm{d}D\\
+ & =\frac{v}{2\varepsilon}=\frac{1}{2}ED=\frac{1}{2}\varepsilon E^{2}
+\end{align*}
+
+
+\section{誘電体に働く力}
+
+\paragraph{仮想変位}
+
+図電磁5-3
+
+\[
+F=-\left(\pd{W_{e}}{\ell}\right)_{Q_{F}}
+\]
+
+$C=\frac{S}{\frac{\ell_{0}-\ell}{\ell_{0}}+\frac{\ell}{\varepsilon}}$より、
+\begin{align*}
+F & =-\pd{}{\ell}\left(\frac{Q_{F}^{2}}{2C}\right)\\
+ & =-\pd{}{\ell}\left\{ \frac{Q_{F}^{2}}{2S}\left(\frac{\ell_{0}-\ell}{\varepsilon_{0}}+\frac{\ell}{\varepsilon}\right)\right\} \\
+ & =\frac{\varepsilon-\varepsilon_{0}}{2}\frac{W}{d}\left(\frac{Q_{F}}{C}\right)^{2}\:\left(>0\right)
+\end{align*}
+
+
+\paragraph{Maxwellの応力}
+
+電気力線の圧力$=\frac{1}{2}ED\mathrm{\left[N=m^{2}\right]}$
+
+図電磁5-4
+
+\[
+E=\frac{V}{d}=\frac{Q_{F}}{Cd}
+\]
+
+\[
+D_{0}=\frac{\varepsilon_{0}Q_{F}}{Cd}
+\]
+
+\[
+D_{1}=\frac{\varepsilon Q_{F}}{Cd}
+\]
+
+\begin{align*}
+F & =\frac{1}{2}E\left(D_{1}-D_{0}\right)wd\\
+ & =\frac{1}{2}\left(\frac{Q_{F}}{Cd}\right)^{2}\left(\varepsilon-\varepsilon_{0}\right)wd\\
+ & =\frac{\varepsilon-\varepsilon_{0}}{2}\frac{W}{d}\left(\frac{Q_{F}}{C}\right)^{2}
+\end{align*}
+
+
+\paragraph{例3.4}
+
+図電磁5-5
+
+\[
+F=-\left(\pd{W_{e}}d\right)_{Q_{F}}
+\]
+
+$C=\frac{S}{\frac{d_{0}-d}{\varepsilon_{0}}+\frac{d}{\varepsilon}}$より、
+\[
+F=\frac{1}{2}\left(\frac{1}{\varepsilon_{0}}-\frac{1}{\varepsilon}\right)\frac{Q_{F}^{2}}{S}
+\]
+
+\[
+D=\sigma_{F}=\frac{Q_{F}}{S}
+\]
+
+\[
+E_{0}=\frac{D}{\varepsilon_{0}}=\frac{Q_{F}}{\varepsilon_{0}S}
+\]
+
+\[
+E_{1}=\frac{Q_{F}}{\varepsilon S}
+\]
+
+\begin{align*}
+F & =Sf\\
+ & =S\left(\frac{1}{2}E_{0}D-\frac{1}{2}E_{1}D\right)\\
+ & =\frac{S}{2}\left(\frac{Q_{F}}{S}\right)^{2}\left(\frac{1}{\varepsilon_{0}}-\frac{1}{\varepsilon}\right)
+\end{align*}
+
+
+\paragraph{端効果}
+
+教科書 p.54 Fig 3.14
+
+図電磁5-6
+
+\section*{第5章 電流}
+
+\subsection*{1 電流}
+
+ある麺を1s辺りに通過する電荷量
+
+\[
+I\left[\mathrm{A}\right]=\left[C/s\right]
+\]
+
+図電磁5-7
+
+\paragraph{電流密度 $i$}
+
+図電磁5-8
+
+$i=\frac{I}{S}$ $i\bot S$ $\left[\mathrm{A/m^{2}}\right]$
+
+$\boldsymbol{i}$: 電流密度ベクトル
+
+図電磁5-9
+
+$S$を通過する電流
+
+\[
+I=\int_{S}\boldsymbol{i}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+
+$\Delta S$の電流$\Delta I=\boldsymbol{i}\cdot\boldsymbol{n}\Delta S$
+
+図電磁5-10
+
+\begin{align*}
+\Delta I & =iS\cos\theta\\
+ & =i\cos\theta S\\
+ & =i_{n}S\\
+ & =\boldsymbol{i}\cdot\boldsymbol{n}\Delta S
+\end{align*}
+
+
+\subsection*{2 電荷の保存則}
+
+図電磁5-11
+
+\[
+-\d Qt=I=\oint_{S}\boldsymbol{i}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+
+電荷は不生不成。
+
+\[
+Q=\int\rho\mathrm{d}v
+\]
+(ただし$v$は$S$内の体積)より、
+\[
+-\d Qt=-\d{}t\int\rho\mathrm{d}v=-\int\left(\pd{\rho}t\right)\mathrm{d}v
+\]
+
+ガウスの定理
+
+\[
+\oint_{S}\boldsymbol{X}\cdot\boldsymbol{n}\mathrm{d}S=\int_{v}\div\boldsymbol{X}\mathrm{d}v
+\]
+より、
+\[
+\oint_{S}\boldsymbol{i}\cdot n\mathrm{d}S=\int\div\boldsymbol{i}\mathrm{d}v
+\]
+
+\[
+\therefore-\int\left(\pd{\rho}t\right)\mathrm{d}v=\int\div\boldsymbol{i}\mathrm{d}v
+\]
+
+\[
+\therefore\div\boldsymbol{i}=-\left(\pd{\rho}t\right)
+\]
+
+これが電荷の保存則の微分形である。
+
+\paragraph{ガウスの定理}
+
+図電磁5-12
+
+$\div\boldsymbol{X}$(ベクトル$\boldsymbol{X}$の発散)の和
+
+\[
+\int\div\boldsymbol{X}\mathrm{d}v=\oint_{S}\boldsymbol{i}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+
+図電磁5-13
+
+\subsection*{3 物質と電流}
+
+図電磁5-14
+
+$\boldsymbol{i}=\sigma\boldsymbol{E}$: オームの法則 ($\sigma$: 導電率)
+
+または$\boldsymbol{E}=K\boldsymbol{i}$ ($K$: 抵抗率/比抵抗($=\frac{1}{\sigma}$))
+
+$V=RI$の$R$は?
+
+\[
+V=E\ell,I=iS,i=\sigma E
+\]
+
+\[
+E\ell=R\sigma ES
+\]
+
+\[
+\therefore R=\frac{\ell}{\sigma S}=\frac{\Delta\ell}{S}\left[\mathrm{\Omega}\right]
+\]
+
+\[
+G=\frac{1}{R}=\frac{S}{K\ell}\left[\mathrm{S}\right]
+\]
+
+コンダクタンスである。
+
+\paragraph{表5.1}
+\begin{itemize}
+\item 銅: $1.7\times10^{-8}$
+\item 鉄: $8.7\times10^{-8}$
+\item 水銀: $1\times10^{-6}$
+\item 大地: $100\sim5000$
+\item 塩化ビニル: $\sim10^{12}$
+\item PET: $\sim10^{17}$
+\item 石英ガラス: $10^{16}$
+\end{itemize}
+
+\paragraph{接地抵抗}
+
+図電磁5-15
+
+図電磁5-16
+
+$R=\frac{\ell}{\sigma S}$より、
+\[
+\mathrm{d}R=\frac{\mathrm{d}r}{\sigma\cdot2\pi r^{2}}
+\]
+
+\[
+R=\int_{a}^{\infty}\frac{\mathrm{d}r}{\sigma\cdot2\pi r^{2}}=\frac{1}{2\pi\sigma a}
+\]
+
 \end{document}
