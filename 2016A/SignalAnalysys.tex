@@ -509,8 +509,9 @@ x\left(t\right)=\sum\alpha_{n}\varphi_{n}\left(t\right)\\
 
 
 \section*{第3回}
-
-図信3-1
+\begin{center}
+\includegraphics{images/SignalAnalysys/3-1}
+\par\end{center}
 \begin{itemize}
 \item 周期がある場合
 
@@ -593,8 +594,9 @@ b_{n}=0
 \]
 
 即ち、$\alpha_{n}$は「実数のみの偶関数」
-
-図信3-3
+\begin{center}
+\includegraphics{images/SignalAnalysys/3-3}
+\par\end{center}
 
 $x\left(t\right)$が実数かつ奇関数のとき、
 \[
@@ -695,8 +697,9 @@ x\left(t\right) & =\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}X\left(\omega\rig
 \subsection{非周期波形のフーリエ変換}
 
 \paragraph{例1}
-
-図信3-4
+\begin{center}
+\includegraphics{images/SignalAnalysys/3-4}
+\par\end{center}
 
 単一方形波
 
@@ -710,28 +713,34 @@ X\left(f\right) & =\int_{-\infty}^{\infty}x\left(t\right)\e^{-\j2\pi ft}\mathrm{
 
 
 \paragraph{$\frac{\sin x}{x}$を描く}
-
-図信3-5
+\begin{center}
+\includegraphics{images/SignalAnalysys/3-5}
+\par\end{center}
 
 sinc関数・標本化関数
 
 逆に、
-
-図信3-6
+\begin{center}
+\includegraphics{images/SignalAnalysys/3-6}
+\par\end{center}
 
 方形関数と標本化関数が1対1で対応している。このような対応関係をフーリエ変換対と呼ぶ。
-
-図信3-7
+\begin{center}
+\includegraphics{images/SignalAnalysys/3-7}
+\par\end{center}
 
 \[
 X\left(f\right)=E\tau\frac{\sin\left(\pi\tau f\right)}{\pi\tau f}
 \]
 
-図信3-8
+\begin{center}
+\includegraphics{images/SignalAnalysys/3-8}
+\par\end{center}
 
 \paragraph{例2: インパルス関数のフーリエ変換}
-
-図信3-9
+\begin{center}
+\includegraphics{images/SignalAnalysys/3-9}
+\par\end{center}
 
 幅$\tau$、高さ$\frac{1}{\tau}$の方形波を考える。
 
@@ -742,19 +751,24 @@ $E\cdot\tau=1$のままで、$\tau\rightarrow0$
 X\left(f\right)=\lim_{\tau\rightarrow0}\frac{\sin\left(\pi\tau f\right)}{\pi\tau f}=1
 \]
 
-図信3-10
+\begin{center}
+\includegraphics{images/SignalAnalysys/3-10}
+\par\end{center}
 
 逆に
-
-図信3-11
+\begin{center}
+\includegraphics{images/SignalAnalysys/3-11}
+\par\end{center}
 
 直流のフーリエ変換は周波数0のところのインパルス
-
-図信3-12
+\begin{center}
+\includegraphics{images/SignalAnalysys/3-12}
+\par\end{center}
 
 \paragraph{例3}
-
-図信3-13
+\begin{center}
+\includegraphics{images/SignalAnalysys/3-13}
+\par\end{center}
 
 \section*{第4回}
 
@@ -768,8 +782,9 @@ X\left(f\right)=\lim_{\tau\rightarrow0}\frac{\sin\left(\pi\tau f\right)}{\pi\tau
 \end{itemize}
 
 \paragraph{フーリエ変換対(非周期)とフーリエ変換級数展開(周期)の関係}
-
-図信4-1
+\begin{center}
+\includegraphics{images/SignalAnalysys/4-1}
+\par\end{center}
 
 \paragraph{結論}
 
@@ -778,8 +793,9 @@ X\left(f\right)=\lim_{\tau\rightarrow0}\frac{\sin\left(\pi\tau f\right)}{\pi\tau
 \paragraph{定理}
 
 周期波形$x\left(t\right)$が孤立波形$x^{*}\left(t\right)$を1周期成分とする繰り返し波形のとき、$x\left(t\right)$とフーリエ級数の係数$\alpha_{n}$は、$\frac{X^{*}\left(H\right)}{T}$を包絡線とする間隔$\frac{1}{T}$の離散スペクトルになる。
-
-図信4-2
+\begin{center}
+\includegraphics{images/SignalAnalysys/4-2}
+\par\end{center}
 
 式で書くと、
 \[
@@ -797,32 +813,38 @@ X\left(f\right)=\lim_{\tau\rightarrow0}\frac{\sin\left(\pi\tau f\right)}{\pi\tau
 
 
 \paragraph{パラメータを変えてみよう}
-
-図信4-3
+\begin{center}
+\includegraphics{images/SignalAnalysys/4-3}
+\par\end{center}
 
 高さ$E$、幅$\tau$の方形波が周期$T$で繰り返す波形
-
-図信4-4
+\begin{center}
+\includegraphics{images/SignalAnalysys/4-4}
+\par\end{center}
 
 ここで$\tau$:一定、$T\rightarrow\infty$にすると、
-
-図信4-5
+\begin{center}
+\includegraphics{images/SignalAnalysys/4-5}
+\par\end{center}
 
 サンプリング: 変化あり、包絡線: 変化なし
 
 一方、$E\cdot\tau=1$、$\tau\rightarrow0$($T$は一定)
-
-図信4-6
+\begin{center}
+\includegraphics{images/SignalAnalysys/4-6}
+\par\end{center}
 
 サンプリング: 変化なし、包絡線: 変化
 
 インパルス列$x\left(t\right)=\sum_{t=-\infty}^{\infty}\delta\left(t-kT\right)$
-
-図信4-7
+\begin{center}
+\includegraphics{images/SignalAnalysys/4-7}
+\par\end{center}
 
 \paragraph{非周期波形と周期波形の混在}
-
-図信4-8
+\begin{center}
+\includegraphics{images/SignalAnalysys/4-8}
+\par\end{center}
 
 ・準備
 
@@ -843,18 +865,23 @@ $\delta\left(t\right)\xrightarrow{\mathcal{F}}1$
 X\left(f\right)=\int_{-\infty}^{\infty}\delta\left(t\right)\e^{-\j2\pi ft}\mathrm{d}t=\e^{-\j2\pi f\cdot0}=1
 \]
 
-図信4-9
+\begin{center}
+\includegraphics{images/SignalAnalysys/4-9}
+\par\end{center}
 
 $\delta\left(t-t_{0}\right)\rightarrow\e^{-\j2\pi ft_{0}}$
-
-図信4-10
+\begin{center}
+\includegraphics{images/SignalAnalysys/4-10}
+\par\end{center}
 
 この逆で
 \[
 \e^{\j2\pi f_{0}t}\xrightarrow{\mathcal{F}}\delta\left(f-f_{0}\right)
 \]
 
-図信4-11
+\begin{center}
+\includegraphics{images/SignalAnalysys/4-11}
+\par\end{center}
 
 ということは、
 
@@ -869,7 +896,9 @@ x\left(t\right)=\sum_{n}\alpha_{n}\e^{-j2\pi nf_{0}t}
 X\left(f\right)=\sum_{n}\alpha_{n}\delta\left(f-f_{0}\right)
 \]
 
-図信4-12
+\begin{center}
+\includegraphics{images/SignalAnalysys/4-12}
+\par\end{center}
 
 連続スペクトルでありつつ、同期的に大きな値を持つ成分が現れる。
 
@@ -884,7 +913,9 @@ y\left(t\right)=\int_{-\infty}^{\infty}h\left(t\right)x\left(t-\tau\right)\mathr
 \]
 
 \end{enumerate}
-図信4-13
+\begin{center}
+\includegraphics{images/SignalAnalysys/4-13}
+\par\end{center}
 
 \paragraph{定理}
 
@@ -901,8 +932,9 @@ y\left(t\right)=\int_{-\infty}^{\infty}h\left(\tau\right)x\left(t-\tau\right)\ma
 \subsection{線形システムの応答}
 
 インパルス応答$h\left(t\right)$を持つ線形システムの応答
-
-図信4-14
+\begin{center}
+\includegraphics{images/SignalAnalysys/4-14}
+\par\end{center}
 
 \paragraph{たたみこみ積分 convolution}
 
@@ -922,8 +954,9 @@ $Y\left(f\right)$: 出力
 $H\left(f\right)$: インパルス応答のフーリエ変換→伝達関数: 線形システムの特性を記述するもの
 
 \paragraph{まとめ}
-
-図信5-1
+\begin{center}
+\includegraphics{images/SignalAnalysys/5-1}
+\par\end{center}
 
 ※$x\left(t\right)=\delta\left(t\right)$のとき$X\left(f\right)=1$なので、$Y\left(f\right)=H\left(f\right)$となり、インパルス入力に対する応答が、即ち伝達関数に対応している。
 
@@ -954,12 +987,14 @@ $T_{0}$: 標本周期
 $f_{0}=\frac{1}{T_{0}}$: 標本化周波数
 
 連続波形$x\left(t\right)$の、とびとびの時点$t=nT_{0}$における値(標本値)$x\left(nT_{0}\right)$を取り出す操作。
-
-図信5-2
+\begin{center}
+\includegraphics{images/SignalAnalysys/5-2}
+\par\end{center}
 
 \paragraph{標本化周期列の実現}
-
-図信5-3
+\begin{center}
+\includegraphics{images/SignalAnalysys/5-3}
+\par\end{center}
 
 PAM(Pulse Amplitude Modulation)
 
@@ -970,16 +1005,20 @@ PAM(Pulse Amplitude Modulation)
 \]
 
 回路的には、
-
-図信5-4
+\begin{center}
+\includegraphics{images/SignalAnalysys/5-4}
+\par\end{center}
 
 \subsection{標本化信号$x^{*}\left(t\right)$のスペクトル}
 
 \paragraph{ヒント}
+\begin{center}
+\includegraphics{images/SignalAnalysys/5-5}
+\par\end{center}
 
-図信5-5
-
-図信5-6
+\begin{center}
+\includegraphics{images/SignalAnalysys/5-6}
+\par\end{center}
 
 数式で書くと、インパルスの数式表現
 \begin{align*}
@@ -1018,8 +1057,9 @@ X^{*}\left(f\right) & =\int_{-\infty}^{\infty}x^{*}\left(t\right)\e^{-\j2\pi ft}
 \end{align*}
 
 $X\left(f\right)$を$f_{s}$間隔で無限に並べたものとなる。
-
-図信5-7
+\begin{center}
+\includegraphics{images/SignalAnalysys/5-7}
+\par\end{center}
 
 日本語で書くと、標本化信号$x^{*}\left(t\right)$のスペクトルは、原信号$x\left(t\right)$のスペクトル$X\left(f\right)$の$\frac{1}{T_{0}}$倍を1周期とし、$f_{s}=\frac{1}{T_{0}}$間隔で繰り返す周期スペクトルとなる。
 (※数式のほうが正確)
@@ -1033,22 +1073,26 @@ $X\left(f\right)$を$f_{s}$間隔で無限に並べたものとなる。
 \paragraph{Shaman-染谷の標本化定理}
 
 $x\left(t\right)$の帯域が$\left|f\right|<W$に周波数制限されていれば、標本化周波数$f_{s}>2W$で標本化すれば完全に復元できる。
-
-図信5-9
+\begin{center}
+\includegraphics{images/SignalAnalysys/5-9}
+\par\end{center}
 
 $f_{s}<2W$だと、
-
-図信5-10
+\begin{center}
+\includegraphics{images/SignalAnalysys/5-10}
+\par\end{center}
 
 \paragraph{補間法}
-
-図信5-11
+\begin{center}
+\includegraphics{images/SignalAnalysys/5-11}
+\par\end{center}
 
 $\left|f\right|<W$の成分のみを通す伝達関数を持つシステム(フィルタ)をLPFと呼ぶ。
 
 周波数軸に置けぬLPFの時間軸上での姿
-
-図信5-12
+\begin{center}
+\includegraphics{images/SignalAnalysys/5-12}
+\par\end{center}
 
 伝達関数$H\left(f\right)=\begin{cases}
 1 & \left(\left|f\right|<W\right)\\
@@ -1071,6 +1115,7 @@ x\left(t\right)=\underbrace{\sum_{-\infty}^{\infty}x\left(\frac{n}{2W}\right)}_{
 \]
 
 sinc関数による補間のイメージ
-
-図信5-13
+\begin{center}
+\includegraphics{images/SignalAnalysys/5-13}
+\par\end{center}
 \end{document}
