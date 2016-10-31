@@ -10,6 +10,7 @@
 \usepackage{textcomp}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{graphicx}
 
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
@@ -49,8 +50,9 @@ https://sites.google.com/site/ysozeki/lecture
 \section{過渡現象}
 
 \subsection{過渡現象とは?}
-
-図電回後1-1
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-1}
+\par\end{center}
 
 応用: ディジタル回路・アナログ回路・制御・物理現象
 
@@ -66,12 +68,14 @@ https://sites.google.com/site/ysozeki/lecture
 →複雑な回路へ
 
 \subsection{回路方程式から微分方程式へ}
-
-図電回後1-2
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-2}
+\par\end{center}
 
 \subsubsection{基本: KVL (キルヒホッフの電圧則)}
-
-図電回後1-3
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-3}
+\par\end{center}
 
 \[
 v_{R}+v_{L}+v_{C}=v\left(t\right)
@@ -91,8 +95,9 @@ R\d it+L\dd it+\frac{i}{C}=\d{v\left(t\right)}t
 \subsubsection{複雑な回路}
 
 連立微分方程式
-
-図電回後1-4
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-4}
+\par\end{center}
 
 \[
 \begin{cases}
@@ -105,8 +110,9 @@ Ri_{1}+L\d{}t\left(i_{1}+i_{2}\right)=v\left(t\right)\\
 \subsubsection{相互インダクタンス}
 
 向きに注意
-
-図電回後1-5
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-5}
+\par\end{center}
 
 \[
 \begin{cases}
@@ -119,8 +125,9 @@ L_{2}\d{i_{2}}t-M\d{i_{1}}t+\frac{1}{L}\int i_{2}\mathrm{d}t=0
 \subsection{RC回路}
 
 (あとでRL回路・RLC回路)
-
-図電回後1-6
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-6}
+\par\end{center}
 
 \[
 Ri+\frac{1}{C}\int i\mathrm{d}t=V\left(t\geqq0\right)
@@ -159,7 +166,9 @@ v_{R}\left(t\right)=Ri\left(t\right)=V\e^{-\frac{t}{RC}}
 v_{c}\left(t\right)=V-v_{R}\left(t\right)=V\left(1-\e^{-\frac{t}{RC}}\right)
 \]
 
-図電回後半1-7
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-7}
+\par\end{center}
 
 ・$C$に供給されるパワー
 
@@ -178,8 +187,9 @@ W_{C}\left(t\right) & =\int_{0}^{t}P_{C}\left(t\right)\mathrm{d}t\\
 $t\rightarrow\infty$で$W_{C}\rightarrow\frac{1}{c}CV^{2}$
 
 \paragraph{電源を短絡すると?}
-
-図電回後半1-8
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-8}
+\par\end{center}
 
 \[
 i\left(t\right)=k\e^{-\frac{t}{RC}}
@@ -194,11 +204,14 @@ i\left(0+\right)=-\frac{V}{R}
 i\left(t\right)=-\frac{V}{R}\e^{-\frac{t}{RC}}\left(t\geqq0\right)
 \]
 
-図電回後半1-9
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-9}
+\par\end{center}
 
 \subsection{RL回路}
-
-図電回後半1-10
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-10}
+\par\end{center}
 
 \[
 Ri+L\d it=V\left(t\geqq0\right)
@@ -227,7 +240,9 @@ i-\frac{V}{R}=-\frac{L}{R}\d it
 i\left(t\right)=\frac{V}{R}\left(1-\e^{-\frac{R}{L}t}\right)
 \]
 
-図電回後半1-11
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-11}
+\par\end{center}
 
 ・$L$に供給されるパワー
 
@@ -258,11 +273,14 @@ $i\left(0+\right)=\frac{V}{R}$より、
 i\left(t\right)=\frac{V}{R}\e^{-\frac{R}{L}t}
 \]
 
-図電回後半1-12
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-12}
+\par\end{center}
 
 \subsection{RLC回路}
-
-図電回後半1-13
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-13}
+\par\end{center}
 
 \[
 Ri+\frac{1}{C}\int i\mathrm{d}t+L\d it=V\left(t\geqq0\right)
@@ -306,7 +324,9 @@ f\left(0\right)=1\\
 \end{cases}
 \]
 
-図電回後半1-14
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-14}
+\par\end{center}
 
 ii) 三角関数
 
@@ -314,7 +334,9 @@ ii) 三角関数
 \cos\theta=\frac{\e^{\j\theta}-\e^{-\j\theta}}{2},\sin\theta=\frac{\e^{\j\theta}-\e^{-\j\theta}}{2\j}
 \]
 
-図電回後半1-15
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-15}
+\par\end{center}
 
 iii) 双曲線関数
 
@@ -336,7 +358,7 @@ a & =\frac{R}{2L}\\
 b & =\sqrt{\left(\frac{R}{2L}\right)^{2}-\frac{1}{LC}}
 \end{align*}
 
-として、$i\left(t\right)/k_{1}\e^{s_{1}t}+k_{2}\e^{s_{2}t}$(一般解)とおく。
+として、$i\left(t\right)=k_{1}\e^{s_{1}t}+k_{2}\e^{s_{2}t}$(一般解)とおく。
 
 初期条件から$k_{1},k_{2}$をて決定
 
@@ -361,7 +383,9 @@ v_{L} & =L\d it\\
 v_{C} & =V-v_{R}-v_{L}
 \end{align*}
 
-図電回後半1-16
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-16}
+\par\end{center}
 \item $\left(\frac{R}{2L}\right)^{2}=\frac{1}{LC}$のとき、$s$は重根
 
 $s_{1}=s_{2}=-\frac{R}{2L}=-a$
@@ -401,7 +425,9 @@ $t=0+$における
 i\left(t\right)=\frac{V}{L}t\e^{-at}
 \]
 
-図電回後半1-17
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-17}
+\par\end{center}
 
 \paragraph{別解}
 
@@ -434,7 +460,9 @@ L\when{\d it}_{t=0}=V & \rightarrow L\left(k_{1}s_{1}+k_{2}s_{2}\right)=L\left(-
 i\left(t\right)=\e^{-at}\frac{V}{2\j\beta L}\left(\e^{\j\beta t}-\e^{-\j\beta t}\right)=\frac{V}{\beta L}\e^{-at}\sin\beta t
 \]
 
-図電回後半1-18
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-18}
+\par\end{center}
 
 1. で$b=\j\beta$としても同じ。
 \end{enumerate}
@@ -449,8 +477,9 @@ v_{L}\left(0+\right)=L\when{\d it}_{t=0}=-V
 
 
 \subsection{LC回路}
-
-図電回後半1-19
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-19}
+\par\end{center}
 
 RLC回路で$R\rightarrow0$($a\rightarrow0$)
 
@@ -469,7 +498,9 @@ $\omega_{0}$: 固有角周波数
 i\left(t\right)=\frac{V}{\omega_{0}L}\sin\omega_{0}t
 \]
 
-図電回後半1-20
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-20}
+\par\end{center}
 
 \subsection{まとめ}
 \begin{enumerate}
@@ -482,8 +513,9 @@ i\left(t\right)=\frac{V}{\omega_{0}L}\sin\omega_{0}t
 \text{振動的}
 \end{cases}$
 \item 余談1: RCL回路と工学
-
-図電回後半1-21
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-21}
+\par\end{center}
 
 $Q=\int i\mathrm{d}t$を用いたKVL
 
@@ -506,8 +538,9 @@ $\frac{1}{C}$⇔$k$
 \item 余談2
 
 今日の話はステップ入力に対応する応答
-
-図電回後半1-22
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/1-22}
+\par\end{center}
 
 \begin{align*}
 v\left(t\right) & =\begin{cases}
