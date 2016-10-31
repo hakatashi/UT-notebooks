@@ -900,5 +900,177 @@ y\left(t\right)=\int_{-\infty}^{\infty}h\left(\tau\right)x\left(t-\tau\right)\ma
 
 \subsection{線形システムの応答}
 
-インパルス応答=–n
+インパルス応答$h\left(t\right)$を持つ線形システムの応答
+
+図信4-14
+
+\paragraph{たたみこみ積分 convolution}
+
+\[
+y\left(t\right)=\int_{-\infty}^{\infty}h\left(t\right)x\left(t-\tau\right)\mathrm{d}\tau
+\]
+
+周波数領域では、
+\[
+Y\left(f\right)=H\left(f\right)\cdot X\left(f\right)
+\]
+
+$X\left(f\right)$: 入力
+
+$Y\left(f\right)$: 出力
+
+$H\left(f\right)$: インパルス応答のフーリエ変換→伝達関数: 線形システムの特性を記述するもの
+
+\paragraph{まとめ}
+
+図信5-1
+
+※$x\left(t\right)=\delta\left(t\right)$のとき$X\left(f\right)=1$なので、$Y\left(f\right)=H\left(f\right)$となり、インパルス入力に対する応答が、即ち伝達関数に対応している。
+
+\paragraph{告知}
+
+デジタルコンテンツエキスポ 日本科学未来館
+
+10/27(木)～10/30(日) 11:00-17:00
+
+\section*{第5回}
+
+来週11/7は休講
+
+\section{第4章 信号の標本化}
+
+\paragraph{デジタル信号処理の基本}
+
+デジタル化: 2通りの離散化
+\begin{itemize}
+\item 時間軸: 標本化(sampling)
+\item 振幅軸: 量子化(quantization)
+\end{itemize}
+
+\subsection{標本化とは}
+
+$T_{0}$: 標本周期
+
+$f_{0}=\frac{1}{T_{0}}$: 標本化周波数
+
+連続波形$x\left(t\right)$の、とびとびの時点$t=nT_{0}$における値(標本値)$x\left(nT_{0}\right)$を取り出す操作。
+
+図信5-2
+
+\paragraph{標本化周期列の実現}
+
+図信5-3
+
+PAM(Pulse Amplitude Modulation)
+
+ここから出発して$\tau\rightarrow0$を考える。
+
+\[
+\underbrace{x^{*}\left(t\right)}_{\text{離散}}=\sum_{n=-\infty}^{\infty}\underbrace{x\left(nT_{0}\right)}_{\text{連続}}\delta\left(t-nT_{0}\right)
+\]
+
+回路的には、
+
+図信5-4
+
+\subsection{標本化信号$x^{*}\left(t\right)$のスペクトル}
+
+\paragraph{ヒント}
+
+図信5-5
+
+図信5-6
+
+数式で書くと、インパルスの数式表現
+\begin{align*}
+\delta^{*}\left(t\right) & =\sum_{n=-\infty}^{\infty}\delta\left(t-nT_{0}\right)\\
+ & =\sum_{n=-\infty}^{\infty}\alpha_{m}\e^{\j2\pi mf_{s}t}
+\end{align*}
+\[
+\alpha_{m}=\frac{1}{T_{0}}\int_{-\frac{T_{0}}{2}}^{\frac{T_{0}}{2}}\delta\left(t\right)\e^{-\j2\pi mf_{s}t}
+\]
+
+$\delta\left(t\right)$は積分汎関数なので、
+\[
+\alpha_{m}=\frac{1}{T_{0}}\cdot\e^{-\j2\pi mf_{s}\cdot0}=\frac{1}{T_{0}}
+\]
+
+したがって、
+\[
+\delta^{*}\left(t\right)=\sum_{n=-\infty}^{\infty}\delta\left(t-nT_{0}\right)=\frac{1}{T_{0}}\sum_{m=-\infty}^{\infty}\e^{\j2\pi mf_{s}t}
+\]
+
+ポアソンの和公式という。
+
+標本化信号は?
+
+\[
+x^{*}\left(t\right)=x\left(t\right)\cdot\delta^{*}\left(t\right)
+\]
+(ただの乗算)
+
+フーリエ変換すると、
+\begin{align*}
+X^{*}\left(f\right) & =\int_{-\infty}^{\infty}x^{*}\left(t\right)\e^{-\j2\pi ft}\mathrm{d}t\\
+ & =\int_{-\infty}^{\infty}x\left(t\right)\cdot\left[\frac{1}{T_{0}}\sum_{m=-\infty}^{\infty}\e^{\j2\pi mf_{s}t}\right]\e^{-\j2\pi ft}\mathrm{d}t\\
+ & =\frac{1}{T_{0}}\sum_{m=-\infty}^{\infty}\int_{-\infty}^{\infty}x\left(t\right)\cdot\e^{-\j2\pi\left(f-nf_{0}\right)t}\mathrm{d}t\\
+ & =\frac{1}{T_{0}}\sum_{m=-\infty}^{\infty}X\left(f-nf_{0}\right)
+\end{align*}
+
+$X\left(f\right)$を$f_{s}$間隔で無限に並べたものとなる。
+
+図信5-7
+
+日本語で書くと、標本化信号$x^{*}\left(t\right)$のスペクトルは、原信号$x\left(t\right)$のスペクトル$X\left(f\right)$の$\frac{1}{T_{0}}$倍を1周期とし、$f_{s}=\frac{1}{T_{0}}$間隔で繰り返す周期スペクトルとなる。
+(※数式のほうが正確)
+
+\subsection{標本化定理}
+
+信5-8
+
+保管によって、元の波形$x\left(t\right)$が復元できるのか? 同じになるとならどのような条件で成立するのか?
+
+\paragraph{Shaman-染谷の標本化定理}
+
+$x\left(t\right)$の帯域が$\left|f\right|<W$に周波数制限されていれば、標本化周波数$f_{s}>2W$で標本化すれば完全に復元できる。
+
+図信5-9
+
+$f_{s}<2W$だと、
+
+図信5-10
+
+\paragraph{補間法}
+
+図信5-11
+
+$\left|f\right|<W$の成分のみを通す伝達関数を持つシステム(フィルタ)をLPFと呼ぶ。
+
+周波数軸に置けぬLPFの時間軸上での姿
+
+図信5-12
+
+伝達関数$H\left(f\right)=\begin{cases}
+1 & \left(\left|f\right|<W\right)\\
+0
+\end{cases}$
+
+→インパルス応答 $h\left(t\right)=\frac{\sin2\i Wt}{2\pi Wt}$
+
+$f_{s}=2W$の時の補間を考える→$T_{0}=\frac{1}{f_{0}}=\frac{1}{2W}$
+
+標本値列
+\begin{align*}
+x^{*}\left(t\right) & =\sum_{n=-\infty}^{\infty}x\left(nT_{0}\right)\delta\left(t-nT_{0}\right)\\
+ & =\sum x\left(\frac{n}{2W}\right)\delta\left(t-\frac{n}{2W}\right)
+\end{align*}
+
+復元信号
+\[
+x\left(t\right)=\underbrace{\sum_{-\infty}^{\infty}x\left(\frac{n}{2W}\right)}_{\text{標本値列}}\underbrace{\frac{\sin2\pi W\left(t-\frac{n}{2W}\right)}{2\pi W\left(t-\frac{n}{2W}\right)}}_{\text{LPFのインパルス応答}}
+\]
+
+sinc関数による補間のイメージ
+
+図信5-13
 \end{document}
