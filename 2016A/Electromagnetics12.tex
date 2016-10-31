@@ -2117,4 +2117,147 @@ $V_{1}=V_{2}$より、
 Q=\frac{16\pi\varepsilon_{1}\sigma a^{2}}{3\varepsilon_{2}-\varepsilon_{1}}
 \]
 
+
+\paragraph{演習問題ヒント}
+
+問1(2) $U=\int_{v}\frac{1}{2}\varepsilon E^{2}\mathrm{d}v$
+
+問2(3) (2)の解を用いて⋯⋯
+
+問2 「十分長い時間$V$を印加」=定常状態
+
+\paragraph{演習問題問1(1)}
+
+図電磁5-19
+
+\[
+E=\frac{Q}{4\pi\varepsilon r^{2}}
+\]
+
+\begin{align*}
+V & =-\int_{\infty}^{a}E\mathrm{d}r\\
+ & =-\int_{\infty}^{a}\frac{Q}{2\pi\varepsilon r^{2}}\mathrm{d}r\\
+ & =\frac{Q}{4\pi\varepsilon a}
+\end{align*}
+
+\[
+C=\frac{Q}{V}=4\pi\varepsilon a
+\]
+
+\[
+\mathrm{d}R=\frac{\kappa\mathrm{d}r}{4\pi r^{2}}
+\]
+
+\begin{align*}
+R & =\int\mathrm{d}R\\
+ & =\int_{a}^{\infty}\frac{\kappa\mathrm{d}r}{4\pi r^{2}}\\
+ & =\frac{\kappa}{4\pi a}
+\end{align*}
+
+
+\paragraph{演習問題問1(2)}
+
+\[
+U=\frac{Q^{2}}{2C}=\frac{Q^{2}}{8\pi\varepsilon a}
+\]
+
+\begin{align*}
+U & =\int\frac{1}{2}\varepsilon E^{2}\mathrm{d}v\\
+ & =\int_{a}^{\infty}\frac{\varepsilon}{2}\frac{Q^{2}}{16\pi^{2}\varepsilon^{2}r^{4}}4\pi r^{2}\mathrm{d}r\\
+ & =\frac{Q^{2}}{8\pi\varepsilon a}
+\end{align*}
+
+
+\paragraph{演習問題問1(3)}
+
+\begin{align*}
+\d qt & =-I=-\frac{V}{R}=-\frac{4\pi a}{\kappa}\frac{q}{4\pi\varepsilon a}\\
+ & =-\frac{q}{\varepsilon\kappa}
+\end{align*}
+\[
+\therefore q=Q\e^{-\frac{t}{\varepsilon\kappa}}
+\]
+
+
+\paragraph{演習問題問2(1)}
+
+図電磁5-20
+
+図電磁5-21
+
+$r$と$r+\mathrm{d}r$の間の$\mathrm{d}R$
+
+\[
+\mathrm{d}R=\frac{\kappa\mathrm{d}r}{2\pi Lr}\:\text{or}\:\frac{2\kappa\mathrm{d}r}{2\pi Lr}
+\]
+
+\begin{align*}
+R & =\int_{a}^{2a}\frac{\kappa\mathrm{d}r}{2\pi Lr}+\int_{2a}^{3a}\frac{2\pi\mathrm{d}r}{2\pi Lr}\\
+ & =\frac{\kappa}{2\pi L}\left(\ln2+2\ln\frac{3}{2}\right)\\
+ & =\frac{\kappa}{2\pi L}\ln\frac{9}{2}
+\end{align*}
+
+
+\paragraph{演習問題問2(2)}
+
+定常状態→定常電流
+
+\[
+I=\frac{V}{R}=\frac{2\pi LV}{\kappa\ln\frac{9}{2}}
+\]
+
+\[
+i=\frac{I}{2\pi Lr}=\frac{V}{\kappa r\ln\frac{9}{2}}
+\]
+
+
+\paragraph{演習問題問2(3)}
+
+ガウスの法則を使うと失敗する。
+
+$a<r<2a$で$E_{1}$、$2a<r<3a$で$E_{2}$とすると、
+
+\begin{align*}
+E_{1} & =\kappa i\\
+ & =\frac{V}{r\ln\frac{9}{2}}
+\end{align*}
+
+\begin{align*}
+E_{2} & =2\kappa i\\
+ & =\frac{2V}{r\ln\frac{9}{2}}
+\end{align*}
+
+
+\paragraph{演習問題問2(4)}
+
+図電磁5-22
+
+\[
+\int D\mathrm{d}S=q
+\]
+
+\[
+-D_{1}\Delta S+D_{2}\Delta S=\sigma\Delta S
+\]
+
+\[
+D_{2}-D_{1}=\sigma
+\]
+
+求める$\sigma$は、
+\begin{align*}
+\sigma & =D_{2}\left(2a\right)-D_{1}\left(2a\right)\\
+ & =\varepsilon\left[E_{2}\left(2a\right)-E_{1}\left(2a\right)\right]\\
+ & =\frac{\varepsilon V}{2a\ln\frac{9}{2}}
+\end{align*}
+
+
+\paragraph{演習問題問2(5)}
+
+\begin{align*}
+f & =\frac{1}{2}\varepsilon E_{2}^{2}-\frac{1}{2}\varepsilon E_{1}^{2}\\
+ & =\frac{1}{2}\varepsilon\left(E_{2}^{2}-E_{1}^{2}\right)_{r=2a}\\
+ & =\frac{3\varepsilon V^{2}}{8a^{2}\left(\ln\frac{9}{2}\right)^{2}}
+\end{align*}
+
 \end{document}
