@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+message=$(cat $1)
+
+if [[ "$message" == "Update"* ]]; then
+    exit
+fi
+
+sed -i '1s/$/ [skip ci]/' "$1"
