@@ -509,4 +509,152 @@ $l_{i}$瞬時符号があれば
 \begin{center}
 \includegraphics{images/InformationScience/3-6}
 \par\end{center}
+
+\section*{第4回}
+\begin{itemize}
+\item ハフマン符号
+\item $H\leqq L<H+1$
+\end{itemize}
+
+\paragraph{情報源の拡大}
+
+例:
+
+図情4-1
+
+\[
+L=1
+\]
+
+\begin{align*}
+H & =-0.8\log0.8-0.2\log0.2\\
+ & =0.72
+\end{align*}
+
+2次の拡大情報源 ハフマン符号
+
+図情4-2
+
+平均符号長
+
+\begin{align*}
+L & =0.64\times1+0.16\times2+0.16\times3+0.04\times3\\
+ & =1.56
+\end{align*}
+
+もともとの1シンボルあたり
+
+\[
+\frac{L}{2}=0.78
+\]
+
+$n$次の拡大情報源に対して、
+\[
+H\left(S^{n}\right)\leq L_{n}<H\left(S^{n}\right)+1
+\]
+
+1シンボルあたり、
+\[
+\frac{H\left(S^{n}\right)}{n}\leq\frac{L_{n}}{n}<\frac{H\left(S^{n}\right)}{n}+\frac{1}{n}
+\]
+
+
+\paragraph{無記憶情報源}
+
+\[
+H\left(S^{n}\right)=nH\left(S\right)
+\]
+
+\[
+\rightarrow-\sum_{x0}\cdots\sum_{x_{n-1}}P\left(x_{0}\cdots x_{n-1}\right)\log P\left(x_{0}\cdots x_{n-1}\right)
+\]
+
+\[
+\rightarrow-\sum_{x0}\cdots\sum_{x_{n-1}}P\left(x_{0}\right)P\left(x_{1}\right)\cdots P\left(x_{n-1}\right)\left\{ \log P\left(x_{0}\right)+\log P\left(x_{1}\right)+\cdots+\log P\left(x_{n-1}\right)\right\} 
+\]
+
+\[
+\rightarrow-\sum P\left(x_{0}\right)\log P\left(x_{0}\right)-\sum P\left(x_{1}\right)\log P\left(x_{1}\right)-\cdots-\sum P\left(x_{n-1}\right)\log P\left(x_{n-1}\right)
+\]
+無記憶情報源の場合
+\[
+H\left(S\right)\leq L<H\left(S\right)+\frac{1}{n}
+\]
+
+$n\rightarrow\text{大}$とすると、$L\rightarrow H\left(S\right)$
+
+$H\left(S\right)$の計算:
+\begin{itemize}
+\item $P\left(x\right)$求めて定義
+\item $P\left(x\right)$求めて符号化、拡大した$L$
+\end{itemize}
+
+\paragraph{記憶のある情報源}
+
+$a_{0},a_{0},a_{0},a_{1},a_{1},a_{1}\cdots$
+
+\[
+H\left(S^{n}\right)\leq L<H\left(S^{n}\right)-1
+\]
+
+\[
+\frac{H\left(S^{n}\right)}{n}\leq\frac{L_{n}}{n}<\frac{H\left(S^{n}\right)}{n}+\frac{1}{n}
+\]
+
+記憶のある情報源のエントロピー
+\[
+\frac{H\left(S\right)}{n}
+\]
+は十分大きな$n$次の拡大情報源の平均情報量である。
+
+\[
+\underbrace{a_{0}a_{0}a_{1}\cdots a_{1}}_{A_{i}}\underbrace{a_{1}a_{0}\cdots a_{0}}_{A_{j}}
+\]
+
+$n$が大きければ無記憶に近づく。
+
+→平均情報量
+
+→エントロピー
+
+\paragraph{情報源符号化定理}
+
+情報源$S$は平均符号長$L$が
+\[
+H\left(S\right)\leq L<H\left(S\right)+\varepsilon
+\]
+($\varepsilon$は十分小さくなる)となるように符号化できる。
+
+($L$を$H\left(S\right)$に限りなく近づけることができる。)
+
+\paragraph{例}
+
+アルファベットの例
+
+(0次エントロピー、全て均一) $H\left(S\right)=\log2.7=4.75$
+
+(一次エントロピー、単一文言の生成確率) 4.03
+
+(二次エントロピー$aa,ab,\cdots$の生起確率) 3.32
+
+\paragraph{例 2値画像}
+
+図情4-3
+
+\paragraph{マルコフ情報源}
+
+記憶のある情報源の一例のエントロピー
+
+単一マルコフ情報源: 一つ直前のシンボルの影響を受ける。
+
+無記憶情報源だと思い
+\[
+H_{1}\left(S\right)=-\frac{2}{3}\log\frac{2}{3}-\frac{1}{3}\log\frac{1}{3}=0.918
+\]
+
+しかしながら、記憶のある情報源なので、
+\[
+\frac{H_{1}\left(S^{n}\right)}{n}\rightarrow?
+\]
+
 \end{document}
