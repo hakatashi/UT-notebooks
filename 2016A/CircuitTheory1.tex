@@ -1880,4 +1880,304 @@ $\overline{\mathring{I}}$: 複素共役
 進み力率: 電流が電圧より位相が進む。 ($\theta_{i}>\theta_{v}$)
 
 戻り力率: 電流が電圧より位相が遅れている。 ($\theta_{i}<\theta_{v}$)
+
+\section*{第5回}
+
+\paragraph{中間試験}
+
+11/22 13:45集合
+
+761教室
+
+学生証持参
+
+持込禁止
+
+\begin{align*}
+P & =\Re\left[\mathring{V}\cdot\bar{\mathring{I}}\right]=\Re\left[VI\e^{\j\left(\theta_{v}-\theta_{i}\right)}\right]\\
+ & =VI\cos\left(\theta_{v}-\theta_{i}\right)
+\end{align*}
+
+$VI$: 皮相電力
+
+$\cos\left(\theta_{v}-\theta_{i}\right)$: 力率
+
+実効値を導入することで、ほぼ直流と同じ形式で電力を表すことができる。
+
+\paragraph{例}
+
+コイル、コンデンサは力率=0なので、電力は消費しない。
+
+{[}注{]} ノート4.6のstep1で電源を実効値表示した場合には、step3で実電圧、実電流を求めるときに、
+\[
+v\left(t\right)=\Re\left[\sqrt{2}\mathring{V}\e^{\j\omega t}\right],i\left(t\right)=\Re\left[\sqrt{2}\mathring{I}\e^{\j\omega t}\right]
+\]
+と$\sqrt{2}$を忘れないこと。
+
+実効値をより一般に表現すると、
+\begin{align*}
+V & \equiv\sqrt{\frac{1}{T}\int_{0}^{T}v^{2}\left(t\right)\mathrm{d}t}\\
+I & \equiv\sqrt{\frac{1}{T}\int_{0}^{T}i^{2}\left(t\right)\mathrm{d}t}
+\end{align*}
+
+2乗平均根 (Root mean square-RMS)
+
+\subsection{複素電力}
+
+\begin{align*}
+\mathring{W} & =\mathring{V}\cdot\bar{\mathring{I}}=V\e^{\j\theta_{v}}\cdot I\e^{-\j\theta_{i}}\\
+ & =VI\cos\left(\theta_{v}-\theta_{i}\right)+\j VI\sin\left(\theta_{v}-\theta_{i}\right)
+\end{align*}
+
+$P=VI\cos\left(\theta_{v}-\theta_{i}\right)$: 有効電力 {[}W{]}
+
+$Q=\j VI\sin\left(\theta_{v}-\theta_{i}\right)$: 無効電力 {[}var{]}
+
+$\theta_{v}=0$のしてフェーザー表示すると、
+
+図電回5-1
+
+図電回5-2
+
+\paragraph{例}
+
+図電回5-3
+
+\[
+V=\frac{Z_{L}}{Z_{S}+Z_{L}}E=\frac{\left(R_{L}+\j X_{L}\right)E}{\left(R_{L}+R_{S}\right)+\j\left(X_{S}+X_{L}\right)}
+\]
+
+\[
+I=\frac{E}{Z_{S}+Z_{L}}=\frac{E}{\left(R_{L}+R_{S}\right)+\j\left(X_{S}+X_{L}\right)}
+\]
+
+よって複素電力は
+\[
+W=V\bar{I}=\frac{R_{L}\left|E\right|^{2}}{\left(R_{L}+R_{S}\right)^{2}+\left(X_{L}+X_{S}\right)^{2}}+\j\frac{X_{L}\left|E\right|^{2}}{\left(R_{L}+R_{S}\right)^{2}+\left(X_{L}+X_{S}\right)^{2}}
+\]
+
+実際に負荷で消費されるのは、実部の有効電力。
+
+有効電力を最大にするには、まず$X_{L}=-X_{S}$である必要がある。
+
+また$R_{L}$に関しては、
+\[
+\d{}{R_{L}}\frac{R_{L}\left|E\right|^{2}}{\left(R_{L}+R_{S}\right)^{2}}=\frac{\left(R_{S}-R_{L}\right)}{\left(R_{L}+R_{S}\right)^{3}}\left|E\right|^{2}
+\]
+
+∴$R_{L}=R_{S}$の時最大。
+
+結局負荷のインピーダンスが
+\[
+Z_{L}=\bar{Z_{S}}=R_{S}-\j X_{S}
+\]
+のとき、負荷に最大の電力が供給される。(インピーダンスマッチング)
+
+このときの消費電力は
+\[
+P_{\text{max}}=\frac{\left|E\right|^{2}}{4R_{S}}
+\]
+
+電源の発生電力は
+\[
+P_{S}=E\bar{I}=\frac{\left|E\right|^{2}}{2R_{S}}
+\]
+より半分が電源の内部抵抗$R_{S}$で消費され、電源供給の意味では効率が悪い。(50\%)
+
+\section{変圧器および三相交流}
+
+\subsection{変圧器}
+
+図電回5-4
+
+\paragraph{相互インダクタンス}
+
+他方から伝わってくる磁束(鎖交磁束)により起電力が発生。
+
+\begin{align*}
+v_{1} & =\d{\Psi_{11}}t+\d{\Psi_{12}}t=L_{1}\d{i_{1}}t+M\d{i_{2}}t\\
+v_{2} & =\d{\Psi_{22}}t+\d{\Psi_{21}}t=L_{2}\d{i_{2}}t\underbrace{+M\d{i_{1}}t}_{\text{相互インダクタンスによる起電力}}
+\end{align*}
+
+起電力が$+/-$の向きになるかを・で表現。
+
+\paragraph{インピーダンス表示}
+
+\begin{align*}
+V_{1} & =\j\omega L_{1}I_{1}+\j\omega MI_{2}\\
+V_{2} & =\j\omega L_{2}I_{2}+\j\omega MI_{1}
+\end{align*}
+
+変圧器の電力
+\begin{align*}
+P & =v_{1}i_{1}+v_{2}i_{2}\\
+ & =L_{1}\d{i_{1}}ti_{1}+M\d{i_{2}}ti_{1}+L_{2}\d{i_{2}}ti_{2}+M\d{i_{1}}ti_{2}\\
+ & =\d{}t\left[\frac{1}{2}\left(L_{1}i_{1}^{2}+2Mi_{1}i_{2}+L_{2}i_{2}^{2}\right)\right]
+\end{align*}
+
+よって変圧器に蓄えられるエネルギーは
+\begin{align*}
+W & =\int_{-\infty}^{t}P\mathrm{d}t=\frac{1}{2}\left(L_{1}i_{1}^{2}+2Mi_{1}i_{2}+L_{2}i_{2}^{2}\right)\\
+ & =\frac{1}{2}L_{1}\left[\left(i_{1}+\frac{M}{L_{1}}i_{2}\right)^{2}+\frac{1}{L_{1}^{2}}\left(L_{1}L_{2}-M^{2}\right)i_{2}^{2}\right]
+\end{align*}
+
+ただし$t=-\infty$で$i_{1}=0,i_{2}=0$
+
+$W>0$より、
+\[
+L_{1}>0,L_{2}>0
+\]
+
+\[
+L_{1}L_{2}\geqq M^{2}
+\]
+
+磁束の漏れがないとき、$L_{1}L_{2}=M^{2}$または
+\begin{align*}
+a & =\frac{M}{L_{1}}=\frac{L_{2}}{M}=\text{コイルの巻き数比}\\
+ & =\frac{\text{コイル2の巻き数}}{\text{コイル1の巻き数}}
+\end{align*}
+
+
+\paragraph{密結合変圧器}
+
+図電回5-5
+
+磁束の漏れがない場合、
+\[
+L_{1}L_{2}=M^{2}
+\]
+
+右図の・はコイルを巻いている方向を表す。・の方向から電流が流れ込んだときの磁束の向きが一致する。
+
+電流の向きに注意して回路方程式をたどると、
+\begin{align*}
+\j\omega L_{1}I_{1}-\j\omega MI_{2} & =E\\
+-\j\omega L_{2}I_{2}+\j\omega MI_{1} & =RI_{2}
+\end{align*}
+
+これを解くと、
+\begin{align*}
+I_{1} & =\frac{R+\j\omega L_{2}}{\j\omega L_{1}R-\omega^{2}\left(L_{1}L_{2}-M^{2}\right)}E\\
+I_{2} & =\frac{M}{L_{1}R+\j\omega\left(L_{1}L_{2}-M^{2}\right)}E
+\end{align*}
+
+$L_{1}L_{2}=M^{2}$(密結合)なので、
+\begin{align*}
+I_{1} & =\frac{R+\j\omega L_{2}}{\j\omega L_{1}R}E\\
+I_{2} & =\frac{M}{L_{1}R}E
+\end{align*}
+
+$a=\frac{M}{L_{1}}=\frac{L_{2}}{M}$で書き直すと、
+\begin{itemize}
+\item 入力側: $V_{1}=E,I_{1}=\left(\frac{1}{\j\omega L_{1}}+\frac{a^{2}}{R}\right)E$
+\item 出力側: $V_{2}=RI_{2}=aE,I_{2}=\frac{aE}{R}$
+\end{itemize}
+と表すことができる。これを入力側・出力側を別々に回路図で表すと、
+
+図電回5-6
+
+\paragraph{理想変圧器}
+
+密結合変圧器の$L_{1}\rightarrow\infty$としたもの。
+
+図電回5-7
+
+\paragraph{密結合変圧器}
+
+図電回5-8
+
+\paragraph{密結合でない変圧器 ($L_{1}L_{2}>M$)}
+
+$L_{1}'\left(<L_{1}\right)$で$L_{1}'L_{2}=M^{2}$となる$L_{1}'$を考える。
+
+図電回5-9
+
+理想変圧器で表現すると、
+
+図電回5-10
+
+\[
+a=\frac{M}{L_{1}'}
+\]
+
+
+\paragraph{現実の変圧器}
+
+text p.75 図2.19
+
+\subsection{対称3相交流}
+
+図電回5-11
+
+図電回5-12
+
+$V_{1},V_{2},V_{3}$は振幅・周波数が等しく位相が$\frac{1}{3}$周期ずれているものとする。
+
+\[
+V_{1}=E,V_{2}=E\e^{-\j\frac{2}{3}\pi},V_{3}=E\e^{-\j\frac{4}{3}\pi}
+\]
+
+負荷インピーダンスは等しいものとする。
+
+\[
+z_{1}=z_{2}=z_{3}=z\left(\left|z\right|\e^{\j\theta}\right)
+\]
+
+このとき、
+\begin{align*}
+I_{1} & =\frac{E}{\left|z\right|}\e^{-\j\theta}\\
+I_{2} & =\frac{E}{\left|z\right|}\e^{-\j\left(\theta+\frac{2}{3}\pi\right)}\\
+I_{3} & =\frac{E}{\left|z\right|}\e^{-\j\left(\theta+\frac{4}{3}\pi\right)}
+\end{align*}
+
+$b_{1},b_{2},b_{3}$の配線を一括することを考える。一括した線(破線)の電流は$I_{1}+I_{2}+I_{3}=0$
+
+従って、この線は\textbf{不要}(三相3線式)、導線は\textbf{半分}になる。(つまり銅損も半分)
+
+発電・送電に利用。
+
+3相は線間電圧、線電流で表現する。
+
+\begin{align*}
+V_{\text{line}} & =\left|V_{2}-V_{3}\right|=\sqrt{3}E\\
+I_{\text{line}} & =\left|I_{2}\right|=\frac{E}{\left|z\right|}
+\end{align*}
+
+図電回5-13
+
+\paragraph{3相交流の電力}
+
+図電回5-14
+
+注: 単相交流電力は$2\omega t$で脈動
+
+図電回5-15
+
+\begin{align*}
+v_{1}\left(t\right) & =\sqrt{2}E\cos\omega t\\
+v_{2}\left(t\right) & =\sqrt{2}E\cos\left(\omega t-\frac{2}{3}\pi\right)\\
+v_{3}\left(t\right) & =\sqrt{2}E\cos\left(\omega t-\frac{4}{3}\pi\right)
+\end{align*}
+
+線電流
+\begin{align*}
+i_{1}\left(t\right) & =\sqrt{2}I\cos\left(\omega t-\theta\right)\\
+i_{2}\left(t\right) & =\sqrt{2}I\cos\left(\omega t-\frac{2}{3}\pi-\theta\right)\\
+i_{3}\left(t\right) & =\sqrt{2}I\cos\left(\omega t-\frac{4}{3}\pi-\theta\right)
+\end{align*}
+
+瞬時電力
+\begin{align*}
+P\left(t\right)= & v_{1}\left(t\right)i_{1}\left(t\right)+v_{2}\left(t\right)i_{2}\left(t\right)+v_{3}\left(t\right)i_{3}\left(t\right)\\
+= & EI\left\{ \cos\theta+\cos\left(2\omega t-\theta\right)\right\} \\
+ & +EI\left\{ \cos\theta+\cos\left(2\omega t-\theta-\frac{4}{3}\pi\right)\right\} \\
+ & +EI\left\{ \cos\theta+\cos\left(2\omega t-\theta-\frac{8}{3}\pi\right)\right\} \\
+= & 3EI\cos\theta\\
+= & \sqrt{3}V_{\text{line}}I\cos\theta
+\end{align*}
+
+脈動なく一定である。
+
+注: 上式の力率角$\theta$は相電圧と線電流の位相差。線間電圧ではない。
 \end{document}
