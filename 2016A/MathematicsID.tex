@@ -1770,6 +1770,638 @@ u\left(t\right) & =\e^{at}\left(u_{0}+tv_{0}+\frac{t^{2}}{2}w_{0}\right)\\
 v\left(t\right) & =\e^{at}\left(v_{0}+tw_{0}\right)\\
 w\left(t\right) & =\e^{at}w_{0}
 \end{align*}
+
 \end{enumerate}
 
+\section*{第6回}
+
+11月16日 授業なし
+
+11月23日 授業あり
+
+11月30日 授業なし
+
+\paragraph{定数係数n次元連立常微分方程式}
+
+$A$: 定数の$N\times N$の正方行列
+
+\[
+\dot{\boldsymbol{x}}=A\boldsymbol{x}\Rightarrow\boldsymbol{x}\left(t\right)=\e^{At}\boldsymbol{c}
+\]
+
+($\e^{At}=1+At+\frac{1}{2}\left(At\right)^{2}+\frac{1}{3!}\left(At\right)^{3}+\cdots$)
+
+\paragraph{Jordan標準形}
+
+\[
+\left(\begin{array}{cc}
+\lambda & 1\\
+0 & \lambda
+\end{array}\right),\left(\begin{array}{ccc}
+\lambda & 1 & 0\\
+0 & \lambda & 1\\
+0 & 0 & \lambda
+\end{array}\right),\left(\begin{array}{cccc}
+\lambda & 1 & 0 & 0\\
+0 & \lambda & 1 & 0\\
+0 & 0 & \lambda & 1\\
+0 & 0 & 0 & \lambda
+\end{array}\right)
+\]
+
+Jordan block細胞である。
+
+c.f. $\left(\begin{array}{ccc}
+a & 0 & 0\\
+0 & b & 0\\
+0 & 0 & c
+\end{array}\right)$
+
+図数ID6-1
+
+\[
+P^{-1}AP=J
+\]
+
+\[
+\boldsymbol{x}=P\boldsymbol{u}
+\]
+
+\[
+\dot{\boldsymbol{u}}=P^{-1}\dot{\boldsymbol{x}}=P^{-1}AP\boldsymbol{u}=J\boldsymbol{u}
+\]
+
+\[
+\boldsymbol{u}\left(t\right)=\e^{Jt}\boldsymbol{C}\Rightarrow\boldsymbol{x}\left(t\right)=P\boldsymbol{u}\left(t\right)=P\e^{Jt}\boldsymbol{C}
+\]
+
+\[
+A=\left(\begin{array}{cc}
+\lambda_{1} & 0\\
+0 & \lambda_{2}
+\end{array}\right)\Rightarrow\e^{At}=\left(\begin{array}{cc}
+\e^{\lambda_{1}t} & 0\\
+0 & \e^{\lambda_{2}t}
+\end{array}\right)
+\]
+
+1) 対角Block
+
+固有値 $\lambda_{1},\lambda_{2},\cdots,\lambda_{m}$
+
+固有ベクトル $\boldsymbol{v}_{1},\boldsymbol{v}_{2},\cdots,\boldsymbol{v}_{m}$
+
+単位ベクトル $\boldsymbol{e}_{1},\boldsymbol{e}_{2},\cdots,\boldsymbol{e}_{m}$
+
+\[
+J=\left(\lambda_{1}\boldsymbol{e}_{1},\lambda_{2a}\boldsymbol{e}_{2},\cdots,\lambda_{m}\boldsymbol{e}_{m}\right)
+\]
+
+\[
+P=\left(\boldsymbol{v}_{1},\boldsymbol{v}_{2},\cdots,\boldsymbol{v}_{m}\right)
+\]
+
+\[
+\dot{\boldsymbol{u}}=J\boldsymbol{u}\Rightarrow\boldsymbol{u}_{i}=\e^{\lambda_{i}t}\boldsymbol{e}_{i}
+\]
+
+\begin{align*}
+\boldsymbol{x}_{i}\left(t\right) & =P\boldsymbol{u}_{i}\left(t\right)=P\e^{\lambda_{i}t}\boldsymbol{e}_{i}\\
+ & =\e^{\lambda_{i}t}P\boldsymbol{e}_{i}=\e^{\lambda_{i}t}\boldsymbol{v}_{i}
+\end{align*}
+
+基本行列
+\begin{align*}
+\Phi\left(t\right) & =\left(x_{1},x_{2},\cdots,x_{m}\right)\\
+\Phi\left(0\right) & =P
+\end{align*}
+
+\[
+\boldsymbol{x}\left(t\right)=\sum_{j=1}^{m}C_{j}x_{j}\left(t\right)=\Phi\left(t\right)\boldsymbol{C}
+\]
+
+\[
+\Phi\left(t\right)=\e^{At}\left(\boldsymbol{v}_{1},\boldsymbol{v}_{2},\cdots,\boldsymbol{v}_{m}\right)
+\]
+
+\[
+\e^{At}=\Phi\left(t\right)\Phi\left(0\right)^{-1}
+\]
+
+(i) 対角化できない場合
+
+固有値$\lambda$が$n$重に縮退
+
+Jordan Block $J\left(\lambda,n\right)$
+
+\[
+\left(\begin{array}{cccc}
+\lambda & 1\\
+ & \lambda & 1\\
+ &  & \ddots & 1\\
+ &  &  & \lambda
+\end{array}\right)\leftarrow n\times n
+\]
+
+\[
+J\left(\lambda,n\right)=P^{-1}AP
+\]
+
+\[
+P=\left(\boldsymbol{v}_{1},\boldsymbol{v}_{2},\cdots,\boldsymbol{v}_{m}\right)
+\]
+
+\begin{align*}
+\left(A-\lambda I\right)\boldsymbol{v}_{1} & =0\\
+\left(A-\lambda I\right)\boldsymbol{v}_{2} & =\boldsymbol{v}_{1}\\
+\left(A-\lambda I\right)\boldsymbol{v}_{3} & =\boldsymbol{v}_{2}
+\end{align*}
+
+\[
+\left(A-\lambda I\right)\boldsymbol{v}_{n}=\boldsymbol{v}_{n-1}
+\]
+
+\begin{align*}
+\boldsymbol{x}_{1} & =\e^{\lambda t}\boldsymbol{v}_{1}\\
+\boldsymbol{x}_{2} & =\e^{\lambda t}\left(\boldsymbol{v}_{1}+t\boldsymbol{v}_{1}\right)\\
+\boldsymbol{x}_{3} & =\e^{\lambda t}\left(\boldsymbol{v}_{3}+t\boldsymbol{v}_{2}+\frac{t^{2}}{2!}\boldsymbol{v}_{1}\right)
+\end{align*}
+
+\[
+\boldsymbol{x}_{n}=\e^{\lambda t}\left(\boldsymbol{v}_{n}+t\boldsymbol{v}_{n-1}+\frac{t^{2}}{2!}\boldsymbol{v}_{n-2}+\cdots+\frac{t^{n}}{n!}\boldsymbol{v}_{1}\right)
+\]
+
+$n=4$のとき、
+\[
+J\left(\lambda,4\right)=P^{-1}AP=\left(\begin{array}{cccc}
+\lambda & 1 & 0 & 0\\
+0 & \lambda & 1 & 0\\
+0 & 0 & \lambda & 1\\
+0 & 0 & 0 & \lambda
+\end{array}\right)
+\]
+
+\[
+P=\left(\boldsymbol{v}_{1},\boldsymbol{v}_{2},\boldsymbol{v}_{3},\boldsymbol{v}_{4}\right)
+\]
+
+\[
+P^{-1}\left(A-\lambda\right)P=J-\lambda
+\]
+
+\[
+\left(A-\lambda\right)P=P\left(J-\lambda\right)
+\]
+
+\begin{align*}
+\left(A-\lambda\right)\left(\boldsymbol{v}_{1},\boldsymbol{v}_{2},\boldsymbol{v}_{3},\boldsymbol{v}_{4}\right) & =\left(\boldsymbol{v}_{1},\boldsymbol{v}_{2},\boldsymbol{v}_{3},\boldsymbol{v}_{4}\right)\left(\begin{array}{cccc}
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0
+\end{array}\right)\\
+ & =\left(0,\boldsymbol{v}_{1},\boldsymbol{v}_{2},\boldsymbol{v}_{3}\right)
+\end{align*}
+
+\begin{align*}
+\left(A-\lambda I\right)\boldsymbol{v}_{1} & =0\\
+\left(A-\lambda I\right)\boldsymbol{v}_{2} & =\boldsymbol{v}_{1}\\
+\left(A-\lambda I\right)\boldsymbol{v}_{3} & =\boldsymbol{v}_{2}\\
+\left(A-\lambda I\right)\boldsymbol{v}_{4} & =\boldsymbol{v}_{3}
+\end{align*}
+
+$\boldsymbol{u}=P^{-1}x$とおく。
+
+\[
+\dot{\boldsymbol{u}}=J\boldsymbol{u}
+\]
+
+\begin{align*}
+\dot{u}_{1} & =\lambda u_{1}+u_{2}\\
+\dot{u}_{2} & =\lambda u_{2}+u_{3}\\
+\dot{u}_{3} & =\lambda u_{3}+u_{4}\\
+\dot{u}_{4} & =\lambda u_{4}
+\end{align*}
+
+\begin{align*}
+u_{4} & =C_{4}\e^{\lambda t}\\
+u_{3} & =\left(C_{3}+C_{4}t\right)\e^{\lambda t}\\
+u_{2} & =\left(C_{2}+C_{3}t+\frac{1}{2!}C_{4}t^{2}\right)\e^{\lambda t}\\
+u_{1} & =\left(C_{1}+C_{2}t+\frac{1}{2!}C_{3}t^{2}+\frac{1}{3!}C_{4}t^{3}\right)\e^{\lambda t}
+\end{align*}
+
+$P\boldsymbol{e}_{i}=\boldsymbol{v}_{i}$を用いて、
+\[
+\boldsymbol{u}=\sum u_{i}\boldsymbol{e}_{i}
+\]
+
+\begin{align*}
+\boldsymbol{x} & =\e^{\lambda t}P\left(\begin{array}{c}
+C_{1}+C_{2}t+\frac{1}{2!}C_{3}t^{2}+\frac{1}{3!}C_{4}t^{3}\\
+C_{2}+C_{3}t+\frac{1}{2!}C_{4}t^{2}\\
+C_{3}+C_{4}t\\
+C_{4}
+\end{array}\right)\\
+ & =C_{1}\e^{\lambda t}P\left(\begin{array}{c}
+1\\
+0\\
+0\\
+0
+\end{array}\right)+C_{2}\e^{\lambda t}P\left(\begin{array}{c}
+t\\
+1\\
+0\\
+0
+\end{array}\right)+C_{3}\e^{\lambda t}P\left(\begin{array}{c}
+\frac{1}{2!}t^{2}\\
+t\\
+1\\
+0
+\end{array}\right)+C_{4}\e^{\lambda t}P\left(\begin{array}{c}
+\frac{1}{3!}t^{3}\\
+\frac{1}{2!}t^{2}\\
+t\\
+1
+\end{array}\right)\\
+ & =C_{1}\e^{\lambda t}\boldsymbol{v}_{1}+C_{2}\e^{\lambda t}\left(\boldsymbol{v}_{2}+t\boldsymbol{v}_{1}\right)+C_{3}\e^{\lambda t}\left(\boldsymbol{v}_{3}+t\boldsymbol{v}_{2}+\frac{t^{2}}{2!}\boldsymbol{v}_{1}\right)+C_{4}\e^{\lambda t}\left(\boldsymbol{v}_{4}+t\boldsymbol{v}_{3}+\frac{t^{2}}{2!}\boldsymbol{v}_{2}+\frac{t^{3}}{3!}\boldsymbol{v}_{1}\right)
+\end{align*}
+
+
+\paragraph{例}
+
+\[
+\dot{\boldsymbol{x}}=Ax
+\]
+
+\[
+A=\left(\begin{array}{cc}
+2 & 2\\
+1 & 3
+\end{array}\right)
+\]
+
+\[
+\left|A-\lambda\right|=\left|\begin{array}{cc}
+2-\lambda & 2\\
+1 & 3-\lambda
+\end{array}\right|=\left(\lambda-1\right)\left(\lambda-4\right)=0
+\]
+
+\[
+\left(\begin{array}{cc}
+2 & 2\\
+1 & 3
+\end{array}\right)\left(\begin{array}{c}
+2\\
+-1
+\end{array}\right)=1\left(\begin{array}{c}
+2\\
+-1
+\end{array}\right),\left(\begin{array}{cc}
+2 & 2\\
+1 & 3
+\end{array}\right)\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)=4\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)
+\]
+
+\[
+\boldsymbol{v}_{1}=\left(\begin{array}{c}
+2\\
+-1
+\end{array}\right),\boldsymbol{v}_{2}=\left(\begin{array}{c}
+1\\
+1
+\end{array}\right),P=\left(\begin{array}{cc}
+2 & 1\\
+-1 & 1
+\end{array}\right)
+\]
+
+\[
+P^{-1}AP=\left(\begin{array}{cc}
+1 & 0\\
+0 & 4
+\end{array}\right)
+\]
+
+\[
+\boldsymbol{x}=C_{1}\e^{t}\left(\begin{array}{c}
+2\\
+-1
+\end{array}\right)+C_{2}\e^{4t}\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)
+\]
+
+
+\paragraph{例}
+
+\[
+\dot{\boldsymbol{x}}=Ax,A=\left(\begin{array}{cc}
+1 & 1\\
+-1 & 3
+\end{array}\right)
+\]
+
+\[
+\left|A-\lambda\right|=\left|\begin{array}{cc}
+1-\lambda & 1\\
+-1 & 3-\lambda
+\end{array}\right|=\left(\lambda-2\right)^{2}=0
+\]
+
+\[
+\left(A-2\right)\boldsymbol{v}=\left(\begin{array}{cc}
+-1 & 1\\
+-1 & 1
+\end{array}\right)\boldsymbol{v}_{1}=0
+\]
+
+\[
+\boldsymbol{v}_{1}=\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)
+\]
+
+\[
+\left(A-2\right)\boldsymbol{v}_{2}=\left(\begin{array}{cc}
+-1 & 1\\
+-1 & 1
+\end{array}\right)\boldsymbol{v}_{2}=\boldsymbol{v}_{1}=\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)
+\]
+
+\[
+\boldsymbol{v}_{2}=\left(\begin{array}{c}
+-1\\
+0
+\end{array}\right)
+\]
+
+\[
+P=\left(\boldsymbol{v}_{1},\boldsymbol{v}_{2}\right)=\left(\begin{array}{cc}
+1 & -1\\
+1 & 0
+\end{array}\right)
+\]
+
+\[
+J=P^{-1}AP=\left(\begin{array}{cc}
+2 & 1\\
+0 & 2
+\end{array}\right)
+\]
+
+\[
+\boldsymbol{x}_{1}=\e^{2t}\boldsymbol{v}_{1}=\e^{2-t}\left(\begin{array}{c}
+1\\
+1
+\end{array}\right)
+\]
+
+\[
+\boldsymbol{x}_{2}=\e^{2t}\left(\boldsymbol{v}_{2}+t\boldsymbol{v}_{1}\right)=\e^{2t}\left(\begin{array}{c}
+t-1\\
+t
+\end{array}\right)
+\]
+
+一般解は$\boldsymbol{x}=C_{1}x_{1}+C_{2}x_{2}$なので、
+\begin{align*}
+x & =\e^{2t}C_{1}+\e^{2t}\left(t-1\right)C_{2}\\
+y & \e^{2t}C_{1}+tC_{2}
+\end{align*}
+
+
+\paragraph{例}
+
+\[
+\dot{\boldsymbol{x}}=Ax,A=\left(\begin{array}{ccc}
+2 & 1 & 1\\
+1 & 2 & 1\\
+1 & 1 & 4
+\end{array}\right)
+\]
+
+\[
+\left|A-\lambda\right|=\left|\begin{array}{ccc}
+2-\lambda & 1 & 1\\
+1 & 2-\lambda & 1\\
+1 & 1 & 4-\lambda
+\end{array}\right|=-\left(\lambda-1\right)\left(\lambda-2\right)\left(\lambda-5\right)=0
+\]
+
+\begin{align*}
+A\left(\begin{array}{c}
+-1\\
+1\\
+0
+\end{array}\right) & =1\left(\begin{array}{c}
+-1\\
+1\\
+0
+\end{array}\right)\\
+A\left(\begin{array}{c}
+-1\\
+-1\\
+1
+\end{array}\right) & =2\left(\begin{array}{c}
+-1\\
+-1\\
+1
+\end{array}\right)\\
+A\left(\begin{array}{c}
+1\\
+1\\
+2
+\end{array}\right) & =5\left(\begin{array}{c}
+1\\
+1\\
+2
+\end{array}\right)
+\end{align*}
+
+\[
+\left(\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right)=C_{1}\left(\begin{array}{c}
+1\\
+1\\
+2
+\end{array}\right)\e^{5t}+C_{2}\left(\begin{array}{c}
+-1\\
+-1\\
+1
+\end{array}\right)\e^{2t}+C_{3}\left(\begin{array}{c}
+-1\\
+1\\
+0
+\end{array}\right)\e^{t}
+\]
+
+
+\paragraph{例}
+
+\[
+\dot{\boldsymbol{x}}=A\boldsymbol{x},A=\left(\begin{array}{ccc}
+2 & 1 & 3\\
+0 & 2 & -1\\
+0 & 0 & 2
+\end{array}\right)
+\]
+
+\[
+\left|A-\lambda\right|=\left|\begin{array}{ccc}
+2-\lambda & 1 & -3\\
+0 & 2-\lambda & -1\\
+0 & 0 & 2-\lambda
+\end{array}\right|=-\left(\lambda-2\right)^{3}
+\]
+
+\[
+\left(A-2\right)\boldsymbol{v}_{1}=0
+\]
+
+\[
+\left(\begin{array}{ccc}
+0 & -1 & -3\\
+0 & 0 & -1\\
+0 & 0 & 0
+\end{array}\right)\boldsymbol{v}_{1}=\left(\begin{array}{c}
+0\\
+0\\
+0
+\end{array}\right)\Rightarrow\boldsymbol{v}_{1}=\left(\begin{array}{c}
+1\\
+0\\
+0
+\end{array}\right)
+\]
+
+\[
+\left(A-2\right)\boldsymbol{v}_{2}=\boldsymbol{v}_{1}\Rightarrow\left(\begin{array}{ccc}
+0 & 1 & -3\\
+0 & 0 & -1\\
+0 & 0 & 0
+\end{array}\right)\boldsymbol{v}_{2}=\left(\begin{array}{c}
+1\\
+0\\
+0
+\end{array}\right)
+\]
+
+\[
+\boldsymbol{v}_{2}=\left(\begin{array}{c}
+0\\
+1\\
+0
+\end{array}\right)
+\]
+
+\[
+\left(A-2\right)\boldsymbol{v}_{3}=\boldsymbol{v}_{2}\Rightarrow\left(\begin{array}{ccc}
+0 & 1 & -3\\
+0 & 0 & -1\\
+0 & 0 & 0
+\end{array}\right)\boldsymbol{v}_{3}=\left(\begin{array}{c}
+0\\
+1\\
+0
+\end{array}\right)
+\]
+
+\[
+\boldsymbol{v}_{3}=\left(\begin{array}{c}
+0\\
+-3\\
+-1
+\end{array}\right)
+\]
+
+\[
+P=\left(\begin{array}{ccc}
+1 & 0 & 0\\
+0 & 1 & -3\\
+0 & 0 & -1
+\end{array}\right)
+\]
+
+\[
+J=P^{-1}AP=\left(\begin{array}{ccc}
+2 & 1 & 0\\
+0 & 2 & 1\\
+0 & 0 & 2
+\end{array}\right)
+\]
+
+\[
+x_{1}=\e^{2t}\boldsymbol{v}_{1}=\e^{2t}\left(\begin{array}{c}
+1\\
+0\\
+0
+\end{array}\right)
+\]
+
+\begin{align*}
+x_{2} & =\e^{2t}\left(\boldsymbol{v}_{2}+t\boldsymbol{v}_{1}\right)\\
+ & =\e^{2t}\left[\left(\begin{array}{c}
+0\\
+1\\
+0
+\end{array}\right)+t\left(\begin{array}{c}
+1\\
+0\\
+0
+\end{array}\right)\right]=\e^{2t}\left(\begin{array}{c}
+t\\
+1\\
+0
+\end{array}\right)
+\end{align*}
+
+\begin{align*}
+\boldsymbol{x}_{3} & =\e^{2t}\left(\boldsymbol{v}_{3}+t\boldsymbol{v}_{2}+\frac{t^{2}}{2}\boldsymbol{v}_{1}\right)\\
+ & =\e^{2t}\left(\begin{array}{c}
+\frac{t^{2}}{2}\\
+t-3\\
+-1
+\end{array}\right)
+\end{align*}
+
+一般解は
+\[
+\left(\begin{array}{c}
+x\\
+y\\
+z
+\end{array}\right)=\e^{2t}\left[C_{1}\left(\begin{array}{c}
+1\\
+0\\
+0
+\end{array}\right)+C_{2}\left(\begin{array}{c}
+t\\
+1\\
+0
+\end{array}\right)+C_{3}\left(\begin{array}{c}
+\frac{t^{2}}{2}\\
+t-3\\
+-1
+\end{array}\right)\right]
+\]
+
+
+\paragraph{来週の内容}
+
+冪級数展開
 \end{document}
