@@ -1009,4 +1009,194 @@ P\left(\lim\sup A_{n}^{c}\right)=0
 \]
 \end{enumerate}
 
+\section*{第6回}
+
+\paragraph{証明(第1定理)}
+
+すべての$m$に対して$\lim_{n}\sup A_{n}\subset\bigcup_{k>m}A_{k}$
+
+\[
+0\leqq P\left(\bigcup_{k\geq m}A_{k}\right)\leqq\sum_{k\geqq m}P\left(A_{m}\right)\sum_{k=1}^{\infty}P\left(A_{k}\right)-\sum_{k=1}^{m}P\left(A_{k}\right)
+\]
+
+ここで$m\rightarrow\infty$ とすると$\text{右辺}\rightarrow0$
+
+\[
+\therefore P\left(\lim\sup A_{n}\right)=0
+\]
+となり前半が成立。
+
+\[
+\left(\lim\sup A_{n}\right)^{c}=\lim\inf A_{n}^{c}
+\]
+
+$P\left(\left(\lim\sup A_{n}\right)^{c}\right)=1$であるから、
+\[
+P\left(\lim\inf A_{n}^{c}\right)=1
+\]
+となり後半成立。
+
+\paragraph{証明(第2定理)}
+
+$A_{1},A_{2},\cdots$は独立である
+
+\[
+P\left(\bigcap_{k=m}^{l}A_{k}^{c}\right)=\prod_{k=m}^{l}P\left(A_{k}^{c}\right)=\prod_{k=m}^{/}\left\{ 1-P\left(A_{k}\right)\right\} \leqq\e^{-\sum_{k=m}^{l}P\left(A_{k}\right)}\rightarrow0
+\]
+
+\[
+\therefore P\left(\lim\inf A_{n}^{c}\right)=0
+\]
+
+\begin{align*}
+\therefore P\left(\lim\sup A_{n}^{c}\right) & =1-P\left(\left(\lim\sup A_{n}\right)^{c}\right)\\
+ & =1-P\left(\lim\inf A_{n}^{c}\right)=1
+\end{align*}
+
+
+\subsection{収束}
+
+(1) 概収束
+
+「確率変数$X_{1},X_{2},\cdots$が$X$に概収束する」とは、
+\[
+X_{1},X_{2},\cdots\xrightarrow[n\rightarrow\infty]{}X\left(\text{a.s}\right)
+\]
+
+(a.s): almost sevly
+
+(a.e): almost everywhere
+
+(w.): with probability
+\begin{itemize}
+\item $P\left(\lim\inf\left(\omega\in\Omega;\left|X\left(\omega\right)-X\right|<\varepsilon\right)\right)=1\text{ for all }\varepsilon>0$
+\item ある$m$があって、ほとんどすべての$n\geq m$および$\varepsilon>0$に対して
+\[
+\left|X_{n}\left(\omega\right)-X\right|\leq\varepsilon
+\]
+\item $P\left(\omega:\lim_{n\rightarrow\infty}X_{n}\left(\omega\right)=X\right)=1$
+\end{itemize}
+(2) 確率収束
+
+「$X_{1},X_{2},\cdots,X_{n},\cdots$が$X$に確率収束する」とは、
+\begin{itemize}
+\item 任意の小さな$\varepsilon>0$に対して、
+\[
+P\left(\left|X_{n}-X\right|<\varepsilon\right)\xrightarrow[n\rightarrow\infty]{}0
+\]
+\end{itemize}
+(3)平均収束
+
+「$X_{1},X_{2},\cdots,X_{n}$が$X$に$p$次平均収束する」とは、
+
+\[
+E\left[\left|X_{n}-X\right|^{p}\right]\xrightarrow{n\rightarrow\infty}0
+\]
+
+4) 法則収束 (弱収束)
+\begin{itemize}
+\item すべての連続点$x$で$F\left(x_{1}\right),F\left(x_{2}\right),\cdots$
+\item $\lim_{n\rightarrow\infty}P\left(X_{n}\leq x\right)=P\left(X\leq x\right)$
+\end{itemize}
+
+\paragraph{レポート問題}
+
+概収束と確率収束の例を1つずつ挙げよ。
+
+$X_{n}$が$X$に概収束するなら、確率収束する。
+
+\paragraph{証明}
+
+概収束:
+\[
+\lim_{n\rightarrow\infty}X_{n}\left(\omega\right)=X\left(\omega\right)\text{a.s}
+\]
+
+\[
+P\left(\lim\inf\left\{ \omega\in\Omega;\left|X_{n}\left(\omega\right)-X\right|<\varepsilon\right\} \right)=1\text{ for all }\varepsilon
+\]
+
+すなわち
+\[
+\bigcup_{m=1}^{\infty}\bigcap_{n=m}^{\infty}\left\{ \omega\in\Omega;\left|X_{n}\left(\omega\right)-X\right|<\varepsilon\right\} 
+\]
+の確率
+
+これの余集合について
+\[
+P\left(\bigcap_{m=1}^{\infty}\bigcup_{n=m}^{\infty}\left\{ \omega\in\Omega;\left|X_{n}\left(\omega\right)-X\right|\geq\varepsilon\right\} \right)=0
+\]
+
+事象の列$\bigcup_{n=m}^{\infty}\left\{ \omega\in\Omega;\left|X_{n}\left(\omega\right)-X\right|\geq\varepsilon\right\} $は$n$に関して単調減少
+
+ゆえに
+\[
+\lim_{n\rightarrow\infty}P\left(\left\{ \omega\in\Omega;\left|X_{n}\left(\omega\right)-X\right|\geqq\varepsilon\right\} \right)=0
+\]
+
+これは確率収束1の表現
+
+\subsection{大数の法則(弱法則)}
+\begin{itemize}
+\item 概収束$\leftrightarrows$強法則
+\item 確率収束$\leftrightarrows$弱法則
+\item 平均収束$\leftrightarrows$確率積分の近似
+\item 法則収束$\leftrightarrows$中心極限定理
+\end{itemize}
+
+\paragraph{弱法則}
+
+$X_{1},X_{2},\cdots$が独立な確率変数で、それぞれの平均値と分散が$\mu,\sigma^{2}$であるならば、
+\[
+\bar{X}_{n}=\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}
+\]
+は$\mu$に確率収束する。
+
+∵Chebyshevの不等式
+
+$\varepsilon>0,p>0$
+
+\[
+P\left(\left|X\right|\leq\varepsilon\right)\leqq\frac{1}{\varepsilon^{p}}E\left[\left|X\right|^{p}\right]
+\]
+
+\begin{align*}
+P\left(\left|X\right|\geqq\varepsilon\right) & =\int_{-\infty}^{-\varepsilon}f_{x}\left(x\right)\mathrm{d}+\int_{\varepsilon}^{\infty}f_{x}\left(x\right)\mathrm{d}x\\
+ & =\frac{1}{\varepsilon^{p}}\left[\int_{-\infty}^{-\varepsilon}\varepsilon^{p}f_{x}\left(x\right)\mathrm{d}x+\int_{\varepsilon}^{\infty}\varepsilon^{p}f_{x}\left(x\right)\mathrm{d}x\right]\\
+ & \leqq\frac{1}{\varepsilon^{p}}\left[\int_{-\infty}^{-\varepsilon}\left|x\right|^{p}f_{x}\left(x\right)\mathrm{d}x+\int_{\varepsilon}^{\infty}x^{p}f_{x}\left(x\right)\mathrm{d}x\right]\\
+ & \leqq\frac{1}{\varepsilon^{p}}\int_{-\infty}^{\infty}\left|x\right|^{p}f_{x}\left(x\right)\mathrm{d}x=\frac{1}{\varepsilon^{p}}E\left[\left|X\right|^{p}\right]
+\end{align*}
+
+$p=2$として、
+
+\begin{align*}
+P\left(\left|\bar{X}_{n}-\mu\right|\geqq\varepsilon\right) & \leqq\frac{1}{\varepsilon^{2}}E\left(\left|\bar{X}_{n}-\mu\right|\right)\\
+ & =\frac{1}{\varepsilon^{2}}
+\end{align*}
+
+\[
+\mathrm{Var}\left(\bar{X}_{n}\right)=\frac{1}{\varepsilon^{2}},\frac{n\sigma^{2}}{n^{2}}=\frac{\sigma^{2}}{n\varepsilon^{2}}
+\]
+
+$n\rightarrow\infty$とすれば、右辺$\rightarrow\infty$
+
+証明終
+
+\subsection{大数の強法則}
+
+$X_{1},X_{2},\cdots$が独立、同じ分布に従い、$X\left[X_{k}\right]=\mu$が存在するならば
+\[
+\bar{X}=\frac{1}{n}\left(X_{1}+X_{2}+\cdots+X_{n}\right)
+\]
+は$\mu$に概収束する。
+
+\paragraph{証明}
+
+証明を簡単にするために、4次のモーメントが存在するとする。
+
+\begin{align*}
+E\left[\left\{ \sum_{k=1}^{n})X_{k}-\mu\right\} ^{4}\right] & =\sum_{k=1}^{n}E\left[\left(X_{k}-\mu\right)^{4}\right]+6\sum_{i<j}E\left[\left(X_{i}-\mu\right)^{2}\right]\times E\left[\left(X_{j}-\mu\right)^{2}\right]\\
+ & \leqq_{n\rightarrow\infty}C\sigma^{4}n^{2}
+\end{align*}
+
 \end{document}
