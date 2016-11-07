@@ -2351,4 +2351,280 @@ f & =\frac{1}{2}\varepsilon E_{2}^{2}-\frac{1}{2}\varepsilon E_{1}^{2}\\
  & =\frac{3\varepsilon V^{2}}{8a^{2}\left(\ln\frac{9}{2}\right)^{2}}
 \end{align*}
 
+
+\section*{第6回}
+
+中間試験3限761
+
+\paragraph{定常電流}
+
+\[
+\begin{cases}
+\div\boldsymbol{i}=0\\
+\boldsymbol{i}=\sigma\boldsymbol{E}\\
+\rot\boldsymbol{E}=\boldsymbol{O}
+\end{cases}
+\]
+
+$\rho_{F}=0$中の誘電体内の$\boldsymbol{D}$と$\boldsymbol{F}$
+\[
+\begin{cases}
+\div\boldsymbol{D}=0\\
+\boldsymbol{D}=\varepsilon\boldsymbol{E}\\
+\rot\boldsymbol{E}=\boldsymbol{O}
+\end{cases}
+\]
+と、$q\Leftrightarrow\boldsymbol{D},\varepsilon\Leftrightarrow\sigma$ど対応している。
+
+図電磁6-1
+
+\[
+\therefore R=\frac{V}{I},C=\frac{Q}{V}
+\]
+
+\[
+\Rightarrow RC=\frac{Q}{I}=\frac{\oint_{S}\boldsymbol{D}\cdot\boldsymbol{n}\mathrm{d}S}{\oint_{S}\boldsymbol{i}\cdot\boldsymbol{n}\mathrm{d}S}=\frac{\oint_{S}\varepsilon\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S}{\oint_{S}\sigma\boldsymbol{E}\cdot\boldsymbol{n}\mathrm{d}S}=\frac{\varepsilon}{\sigma}
+\]
+
+図電磁6-2
+
+\[
+R=\frac{1}{2\pi a\sigma}
+\]
+
+図電磁6-3
+
+$C$は?
+
+\[
+\oint_{S}D\cdot\mathrm{d}S=Q
+\]
+
+\[
+2\pi r^{2}D=Q
+\]
+
+\[
+D=\frac{Q}{2\pi r^{2}}
+\]
+
+\[
+E=\frac{Q}{2\pi\varepsilon r^{2}}
+\]
+
+\begin{align*}
+V & =-\int_{\infty}^{a}E\mathrm{d}r\\
+ & =\frac{Q}{2\pi\varepsilon a}
+\end{align*}
+
+\[
+C=\frac{Q}{V}=2\pi\varepsilon a
+\]
+
+\[
+R=\frac{\varepsilon}{\sigma C}=\frac{1}{2\pi\sigma a}
+\]
+
+
+\paragraph{ジュール熱 抵抗の発熱}
+
+\[
+p_{J}=\boldsymbol{E}\cdot\boldsymbol{i}=\frac{i^{2}}{\sigma}=\kappa i^{2}\left(\mathrm{W/m^{2}}\right)
+\]
+
+図電磁6-4
+
+\begin{align*}
+P_{J} & =p_{J}Sl=\frac{i^{2}}{\sigma}Sl\\
+ & =IEl\\
+ & =IV\left[\mathrm{W}\right]
+\end{align*}
+
+
+\subsection*{4 起電力と電気回路}
+
+\paragraph{キルヒホッフの法則}
+
+第1 $\sum I=0\leftrightarrow\underbrace{\div}_{\text{わきだし}}\boldsymbol{i}=0$
+
+図電磁6-5
+
+第2 $\sum V_{S}=\sum RI\leftrightarrow\rot\boldsymbol{E}=\boldsymbol{O}\leftrightarrow\oint_{C}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}=0$
+
+図電磁6-6
+
+\[
+V_{S}=R_{1}I+R_{2}I
+\]
+
+
+\subsection*{5 非定常的な電界}
+
+基本式
+\[
+\begin{cases}
+\div\boldsymbol{D}=\rho_{F}\\
+\rot\boldsymbol{E}=\boldsymbol{O}\\
+\div\boldsymbol{i}_{F}=-\pd{\rho_{F}}t\\
+\boldsymbol{D}=\varepsilon\boldsymbol{E}\\
+\boldsymbol{i}=\sigma\boldsymbol{E}
+\end{cases}
+\]
+
+図電磁6-7
+
+(1)(3)式より、
+\[
+\div\left(\boldsymbol{i}_{F}+\pd{\boldsymbol{D}}t\right)=0
+\]
+
+$\pd{\boldsymbol{D}}t$: 電流とみなす→変位電流
+
+\[
+\pd Dt=\varepsilon\pd Et=\frac{\varepsilon}{d}\pd Vt=\underbrace{\frac{\varepsilon}{dC}}_{\frac{1}{S}}\underbrace{\pd Qt}_{I}=i
+\]
+
+
+\paragraph{電界の緩和}
+
+図電磁6-8
+
+\[
+\frac{Q}{C}=RI=-R\d Qt
+\]
+
+\[
+-\d Qt\Rightarrow Q=Q_{0}\e^{-\frac{t}{\tau}}
+\]
+
+$\tau=RC$
+
+図電磁6-9
+
+何らかの原因で分離→緩和して元に戻る速度
+
+$\tau=\frac{\varepsilon}{\sigma}$: 緩和時間
+
+図電磁6-10
+
+\[
+\begin{cases}
+\sigma_{F}=D=\varepsilon E=\varepsilon\frac{i}{\sigma}\\
+-i=\pd{\sigma_{F}}t
+\end{cases}
+\]
+
+\[
+\pd{\sigma_{F}}t=-\frac{\sigma}{\varepsilon}\sigma_{F}
+\]
+ 
+
+\[
+\therefore\sigma_{F}=\sigma_{F}\circ\e^{-\frac{\sigma}{\varepsilon}t}
+\]
+
+\[
+\tau=\frac{\varepsilon}{\sigma}
+\]
+
+
+\section{第4章 静電界の解法}
+
+\paragraph{基本式}
+
+\[
+\nabla^{2}V=-\frac{\rho}{\varepsilon}+\text{境界条件}
+\]
+
+図電磁6-11
+
+\[
+\rightarrow V\rightarrow\boldsymbol{E}=-\grad V\rightarrow\boldsymbol{E}
+\]
+
+この他、いくつかの解法
+\begin{enumerate}
+\item 影像法
+
+導体球-点電荷
+
+図電磁6-12
+
+\[
+z=\frac{r^{2}}{d},Q'=-\frac{r}{d}Q
+\]
+
+導体球の電位を$V$にしたら?
+
+球の中心に$Q''$
+
+\[
+V=\frac{Q''}{4\pi\varepsilon_{0}r}
+\]
+
+誘電体界面-点電荷
+
+図電磁6-14
+
+I内の$E,V$
+
+図電磁6-15
+
+II内の$E,V$
+
+図電磁6-16
+\item 電荷重畳法
+
+図電磁6-13
+
+$Q_{1}$: $V$が満たされる
+
+$-Q_{1}$: $V-0$が満たされる
+
+$Q_{2}$: $V$が満たされる
+
+$-Q_{2}$: $V-0$が満たされる
+
+$Q_{3}$: $V$が満たされる
+
+⋯⋯を無限に繰り返す。
+
+\paragraph{電荷重畳法(数値計算)}
+
+図電磁6-17
+
+$\pm Q_{1},\pm Q_{2}$とおく。(仮想電荷)
+
+検査点2つ: $p_{1},p_{2}$←$V$になるように$Q_{1},Q_{2}$を計算
+\item 差分法(コンピュータ)
+
+図電磁6-18
+
+$\pdd{\phi}x+\pdd{\phi}y=0$: ラプラス
+
+\[
+\left(\pdd{\phi}x\right)_{\phi=\phi_{0}}\simeq\frac{\left(\phi_{3}-\phi_{0}\right)/h-\left(\phi_{0}-\phi_{1}\right)/h}{h}
+\]
+
+$\pdd{\phi}y$も同様
+
+図電磁6-19
+
+→ラプラスに代入
+
+\[
+\therefore\phi_{1}+\phi_{2}+\phi_{3}+\phi_{4}-4\phi_{0}=0
+\]
+
+\item 有限要素法
+
+図電磁6-20
+
+各要素のエネルギーの和
+
+\[
+\sum\frac{1}{2}\varepsilon E^{2}\Delta v
+\]
+\end{enumerate}
+
 \end{document}
