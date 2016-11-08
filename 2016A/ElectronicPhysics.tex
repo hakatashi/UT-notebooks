@@ -976,7 +976,7 @@ J_{p}=\Re\left[\Psi^{*}\hat{v_{x}}\Psi\right]
 \pd{J_{p}}x=\frac{-\i\hbar}{2m}\left(\Psi^{*}\pdd{\Psi}x-\Psi\pdd{\Psi^{*}}x\right)
 \end{equation}
 
-Sch\textbackslash{}''oredinger方程式を用いて
+Schrödinger方程式を用いて
 \[
 \i\hbar\pd{\Psi}t=-\frac{\hbar^{2}}{2m}\pdd{\Psi}x+V\Psi
 \]
@@ -1182,4 +1182,319 @@ $\varphi\left(x\right)$と$\varphi\left(-x\right)$は同一の$E$についてSch
 C^{2}=1,C\pm1
 \]
 
+
+\section*{第6回}
+
+\paragraph{試験について}
+\begin{itemize}
+\item 9時開始
+\item 持ち込み不可の第1部と持ち込み可の第2部の2部に分かれている。配点は1:1。
+\end{itemize}
+
+\paragraph{定理}
+
+ポテンシャル$V\left(x\right)$が$x=0$について線対称
+\[
+V\left(-x\right)=V\left(x\right)
+\]
+
+⇒波動関数$\varphi\left(x\right)$は$x=0$について線対称/点対称
+\begin{enumerate}
+\item 1次元の問題では「1つのエネルギー$\varepsilon$→1つだけの独立な$\varphi\left(x\right)$」
+\item 
+\[
+\left(\frac{\hat{p}^{2}}{2m}+V\left(x\right)\right)\varphi\left(x\right)=\varepsilon\varphi\left(x\right)
+\]
+
+$x\rightarrow-x$に置換して、
+\[
+\left(\frac{\hat{p}^{2}}{2m}+V\left(-x\right)\right)\varphi\left(-x\right)=\varepsilon\varphi\left(-x\right)
+\]
+
+$\varphi\left(x\right)$と$\varphi\left(-x\right)$は同じエネルギー$\varepsilon$に対応\\
+⇒$\varphi\left(-x\right)=C\varphi\left(x\right)$ ($C$: 複素係数)
+
+∵$\varphi\left(-x\right)$と$\varphi\left(x\right)$は従属
+
+\[
+\varphi\left(x\right)=\varphi\left(-\left(-x\right)\right)=C\varphi\left(-x\right)=C^{2}\varphi\left(x\right)
+\]
+
+$C^{2}=1\Rightarrow C=\pm1$したがって$\varphi\left(-x\right)=\pm\varphi\left(x\right)$
+\end{enumerate}
+
+\paragraph{無限大ポテンシャル障壁による閉じ込め}
+
+図電物6-1
+\begin{enumerate}
+\item $V\left(x\right)=0$ for $-\frac{l}{2}\leq x\leq\frac{l}{2}$
+\item $V\left(x\right)\rightarrow\infty$ for $x<-\frac{l}{2},\frac{l}{2}<x$
+\end{enumerate}
+2. について、
+\[
+\left(\frac{\hat{p}^{2}}{2m}+V\left(x\right)\right)\varphi\left(x\right)=\varepsilon\varphi\left(x\right)\Rightarrow\varphi\left(x\right)=0
+\]
+
+1.について、
+\[
+-\frac{\hbar^{2}}{2m}\dd{\varphi\left(x\right)}x=\varepsilon\varphi\left(x\right)
+\]
+
+一般解
+\[
+\varphi=A\e^{\i kx}+B\e^{-\i kx}
+\]
+
+境界条件
+
+\[
+\varphi\left(-\frac{l}{2}\right)=\varphi\left(\frac{l}{2}\right)=0
+\]
+
+\[
+\frac{\hbar^{2}k^{2}}{2m}=\varepsilon
+\]
+
+$V\left(x\right)$が$x=0$に対称→$\varphi\left(x\right)$は$x=0$について、
+\begin{itemize}
+\item 線対称→$\cos\left(kx\right)$
+\item 点対称→$\sin\left(kx\right)$
+\end{itemize}
+図電物6-2
+
+$\varphi$の波長 $\lambda=2l,l,\frac{2l}{3},\frac{l}{2},\cdots,\frac{2l}{n}$
+($n$: 自然数)
+
+\[
+k=\frac{2\pi}{\lambda}=\frac{\pi}{l},\frac{2\pi}{l},\frac{3\pi}{l},\cdots,\frac{\pi}{l}n
+\]
+
+\[
+\varphi\left(x\right)=\begin{cases}
+C\cos\left(kx\right) & n\text{が奇数}\\
+C\sin\left(kx\right) & n\text{が偶数}
+\end{cases}
+\]
+
+ただし$k=\frac{\pi}{l}n$
+
+規格化条件
+
+\[
+1=\int_{-\frac{l}{2}}^{\frac{l}{2}}\mathrm{d}x\left|\varphi\left(x\right)\right|^{2}=\int_{-\frac{l}{2}}^{\frac{l}{2}}\mathrm{d}xC^{2}\cos^{2}\left(kx\right)=C^{2}\int_{-\frac{l}{2}}^{\frac{l}{2}}\mathrm{d}x\left(\frac{1+\cos\left(2kx\right)}{2}\right)=C^{2}\left[\frac{1}{2}+\frac{\sin\left(2kx\right)}{4}\right]_{-\frac{l}{2}}^{\frac{l}{2}}=\frac{C^{2}}{2}l
+\]
+
+\[
+\therefore C=\pm\sqrt{\frac{2}{l}}
+\]
+
+\[
+\varepsilon=\frac{\hbar^{2}k^{2}}{2m}=\frac{\pi^{2}\hbar^{2}}{2ml^{2}}n^{2}
+\]
+
+\[
+n=1\rightarrow\varepsilon=\varepsilon_{0}=\frac{\pi^{2}\hbar^{2}}{2ml^{2}}>0
+\]
+
+ゼロ点エネルギーである。
+
+c.f. 熱振動のエネルギー
+
+温度$T$→$\left\langle \varepsilon\right\rangle \sim k_{B}T$ (粒子1個あたり)
+
+これをエネルギーの等分配則という。
+
+\[
+T=300\mathrm{K}\Rightarrow\left\langle \varepsilon\right\rangle =k_{B}T=\frac{1}{40}\mathrm{eV}
+\]
+
+$\varepsilon_{0}=\frac{1}{40}\mathrm{eV}$になる$l$の値
+
+\[
+\frac{1}{40}\times\left(1.6\times10^{-19}J\right)=\frac{\left(10\right)\left(1\times10^{-19}\mathrm{J^{2}s^{2}}\right)}{\left(2\right)\left(1\times10^{-30}\mathrm{kg}\right)l^{2}}
+\]
+
+\[
+l^{2}=\frac{5\times10^{-38}\mathrm{m^{2}s^{-2}Js^{2}}}{4\times10^{-21}\mathrm{J}}\doteqdot1\times10^{-17}\mathrm{m^{2}}
+\]
+
+\[
+l\sim3\times10^{-9}\mathrm{m}
+\]
+
+
+\paragraph{3次元の閉じ込め空間 (ポテンシャル障壁無限大)}
+
+$V=0$ for $-\frac{l}{2}\leq x,y,z\leq\frac{l}{2}$
+
+その他の領域 $V\rightarrow\infty\longrightarrow\varphi\left(x,y,z\right)=0$
+
+$V=0$の領域
+\[
+-\frac{\hbar^{2}}{2m}\left(\pdd{}x+\pdd{}y+\pdd{}z\right)\Psi\left(x,y,z\right)=E\Psi\left(x,y,z\right)
+\]
+
+$\Psi\left(x,y,z\right)=\varphi\left(x\right)\varphi\left(y\right)\varphi\left(z\right)$:
+変数分離
+
+\[
+-\left(\pdd{\varphi\left(x\right)}x\varphi\left(y\right)\varphi\left(z\right)+\varphi\left(x\right)\pdd{\varphi\left(y\right)}y\varphi\left(z\right)+\varphi\left(x\right)\varphi\left(y\right)\pdd{\varphi\left(z\right)}z\right)=\frac{2mE}{\hbar^{2}}\varphi\left(x\right)\varphi\left(y\right)\varphi\left(z\right)
+\]
+
+両辺を$\varphi\left(x\right)\varphi\left(y\right)\varphi\left(z\right)$で割る。
+
+\[
+-\left(\frac{1}{\varphi\left(x\right)}\pdd{\varphi\left(x\right)}x+\frac{1}{\varphi\left(y\right)}\pdd{\varphi\left(y\right)}y+\frac{1}{\varphi\left(z\right)}\pdd{\varphi\left(z\right)}z\right)=\frac{2mE}{\hbar^{2}}
+\]
+
+右辺が定数なので、一般で成り立つために左辺各項も定数。
+
+$E=\varepsilon_{x}+\varepsilon_{y}+\varepsilon_{z}$として、
+\[
+-\frac{1}{\varphi\left(x\right)}\pdd{\varphi\left(x\right)}x=\frac{2m\varepsilon_{x}}{\hbar^{2}}
+\]
+
+$y,z$に関しても同様。
+
+\[
+-\pdd{\varphi\left(x\right)}x=\frac{2m\varepsilon_{x}}{\hbar^{2}}\varphi\left(x\right)
+\]
+
+←1次元閉じ込めの場合と同じSchrödinger方程式
+
+すなわち、
+\begin{enumerate}
+\item 1次元の問題を解く→$\varphi\left(x\right),\varphi\left(y\right),\varphi\left(z\right),\varepsilon_{x},\varepsilon_{y},\varepsilon_{z}$
+\item $\Psi\left(x,y,z\right)=\varphi\left(x\right)\varphi\left(y\right)\varphi\left(z\right),E=\varepsilon_{x}+\varepsilon_{y}+\varepsilon_{z}$
+
+\[
+E=\frac{\hbar^{2}}{2m}\left(k_{x}^{2}+k_{y}^{2}+k_{z}^{2}\right)=\frac{\pi^{2}\hbar^{2}}{2ml^{2}}\left(n_{x}^{2}+n_{y}^{2}+n_{z}^{2}\right)
+\]
+
+\end{enumerate}
+1つのエネルギー固有値に複数の量子状態が対応⇒「縮退(degeneration)」
+
+\paragraph{有限高さのポテンシャル}
+
+図電物6-3
+
+$V\left(x\right)=0$ for $-\frac{l}{2}\leq x\leq\frac{l}{2}$
+
+$V\left(x\right)=V_{0}$ for $x<-\frac{l}{2},\frac{l}{2}<x$
+
+Schrödinger方程式
+
+領域A: $-\frac{l}{2}\leq x\leq\frac{l}{2}$ :
+\[
+-\frac{\hbar^{2}}{2m}\dd{\varphi}x=\varepsilon\varphi
+\]
+
+領域B: $x<-\frac{l}{2},\frac{l}{2}<x$:
+\[
+-\frac{\hbar^{2}}{2m}\dd{\varphi}x=\left(\varepsilon-V_{0}\right)\varphi
+\]
+
+※$V_{0}>\varepsilon$とする。
+
+$V\left(x\right)$は$x=0$について線対称⇒$\varphi\left(x\right)$は$x=0$について線対称(偶関数)/点対称(奇関数)
+\begin{enumerate}
+\item $\varphi\left(x\right)$が偶関数
+
+領域Aでは
+\[
+\varphi\left(x\right)=A\cos\left(kx\right)
+\]
+
+ただし、
+\begin{equation}
+\frac{\hbar^{2}k^{2}}{2m}=\varepsilon
+\end{equation}
+
+領域Bでは、$\varphi\left(x\right)\propto\e^{\beta x}$ or $\e^{-\beta x}$
+($\beta$: 実数)
+
+図電物6-4
+
+$x\rightarrow\pm\infty$で$\varphi\left(x\right)$が発散しない(規格化条件)
+
+領域Bで、
+\begin{align*}
+\varphi\left(x\right) & =C\e^{-\beta x}\:\left(x>\frac{l}{2}\right)\\
+\varphi\left(x\right) & =C\e^{\beta}\:\left(x<-\frac{l}{2}\right)
+\end{align*}
+
+ただし、
+\begin{equation}
+\frac{\hbar^{2}\beta^{2}}{2m}=V_{0}-\varepsilon
+\end{equation}
+
+接続条件 $x=\frac{l}{2}$
+\begin{itemize}
+\item $\varphi\left(\frac{l}{2}\right)$が連続
+\begin{equation}
+A\cos\left(\frac{kx}{2}\right)=C\e^{-\frac{\beta l}{2}}
+\end{equation}
+\item $\d{\varphi}x\left(\frac{l}{2}\right)$が連続
+\begin{equation}
+-kA\sin\left(\frac{kx}{2}\right)=-\beta C\e^{-\frac{\beta l}{2}}
+\end{equation}
+\end{itemize}
+(8),(9), (10), (11) より、$k,\beta$の制約式
+
+(8)と(9)より、
+\[
+k^{2}+\beta^{2}=\frac{2mV_{0}}{\hbar^{2}}
+\]
+
+(10), (11) を辺々割る。
+
+\[
+k\tan\left(\frac{kl}{2}\right)=\beta
+\]
+
+これを解くと、$k,\beta$の値が求まる。
+
+変数変換 $\xi=\frac{kl}{2},\eta=\frac{\beta l}{2}$
+
+\begin{align*}
+\xi^{2}+\eta^{2} & =\frac{mV_{0}l^{2}}{2\hbar^{2}}\\
+\eta & =\xi\tan\left(\xi\right)
+\end{align*}
+
+図電物6-5
+
+$k>0,\beta>0$を考える。
+
+図電物6-6
+\item $\varphi\left(x\right)$が奇関数
+\end{enumerate}
+領域Aでは$\varphi=A\sin\left(kx\right)$
+
+領域Bでは$\varphi=C\e^{-\beta x}\left(x>\frac{l}{2}\right),\varphi=-C\e^{\beta x}\left(x<\frac{l}{2}\right)$
+
+図電物6-7
+
+接続条件 $\left(x=\frac{l}{2}\right)$
+\begin{itemize}
+\item $\varphi\left(\frac{l}{2}\right)$が連続
+\begin{equation}
+A\sin\left(\frac{kl}{2}\right)=C\e^{-\frac{\beta l}{2}}
+\end{equation}
+\item $\d{\varphi}x\left(\frac{l}{2}\right)$が連続
+\begin{equation}
+kA\cos\left(\frac{kl}{2}\right)=-\beta C\e^{-\frac{\beta l}{2}}
+\end{equation}
+\end{itemize}
+(12), (13) を辺々割る
+\[
+\beta=-\frac{k}{\tan\left(\frac{kl}{2}\right)}
+\]
+
+変数変換 ($\xi=\frac{kl}{2},\eta=\frac{\beta l}{2}$)
+
+\[
+\eta=-\frac{\xi}{\tan\left(\xi\right)}
+\]
+
+ここから$k,\beta$が求められる。
 \end{document}
