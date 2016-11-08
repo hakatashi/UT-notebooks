@@ -1,0 +1,46 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{数理手法V 第2回レポート}
+
+\author{電気電子工学科2年 340728B 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\mathrm{grad}}
+\global\long\def\rot{\mathrm{rot}}
+\global\long\def\div{\mathrm{div}}
+\global\long\def\diag{\mathrm{diag}}
+
+
+\paragraph{概収束の例}
+
+元素$A$を時間経過に伴い確率的に放射性崩壊する放射性元素とする。時刻0に存在する元素$A$を$N$個とし、時刻$n$における崩壊した元素$A$の数を$X_{n}$とすると、$X_{n}$は$N$に概収束する。
+
+\paragraph{確率収束の例}
+
+元素$A$を時間経過に伴い確率的に放射性崩壊する放射性元素とする。時刻0に1つの元素$A$が存在するものとし、時刻$n$において元素$A$が崩壊せず存在している確率を$X_{n}$とすると、$X_{n}$は0に確率収束する。
+\end{document}
