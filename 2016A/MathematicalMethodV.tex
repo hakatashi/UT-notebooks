@@ -1199,4 +1199,223 @@ E\left[\left\{ \sum_{k=1}^{n})X_{k}-\mu\right\} ^{4}\right] & =\sum_{k=1}^{n}E\l
  & \leqq_{n\rightarrow\infty}C\sigma^{4}n^{2}
 \end{align*}
 
+
+\section*{第7回}
+
+\paragraph{大数の強法則}
+
+$X_{1},X_{2},\cdots$が独立変数で同一分布に従うとする。$\mu=E\left(X_{n}\right)$が存在すれば、即ち、
+\[
+P\left(\left\{ \omega\in\Omega|\lim_{n\rightarrow\infty}\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}=\mu\right\} \right)=1
+\]
+であれば、$\left(X_{1}+X_{2}+\cdots+X_{n}\right)/n$は$\mu$に概収束する。
+
+\paragraph{証)}
+
+4次のモーメントが存在するとすると、
+\begin{align*}
+E\left(\left\{ \sum_{k=1}^{n}\left(X_{k}-\mu\right)\right\} ^{4}\right) & =\sum_{k=1}^{n}E\left(\left(X_{k}-\mu\right)^{4}\right)+6\sum_{i<j}E\left(\left(X_{i}-\mu\right)^{2}\left(X_{j}-\mu\right)\right)\\
+ & \leqq Cn^{2}
+\end{align*}
+
+\[
+P\left(\left|\sum_{k=1}^{n}\left(X_{k}-\mu\right)\right|\geqq\varepsilon n\right)\leqq\frac{E\left(\left|\sum_{k=1}^{n}\left(X_{k}-\mu\right)\right|^{4}\right)}{\left(\varepsilon n\right)^{4}}\leqq\frac{Cn^{4}}{\left(\varepsilon n\right)^{4}}=\frac{C}{\varepsilon^{4}}\frac{1}{n^{2}}
+\]
+
+\[
+\sum_{n=1}^{\infty}P\left(\left|\sum_{k=1}^{n}\left(X_{k}-\mu\right)\right|\geqq\varepsilon n\right)<\infty
+\]
+
+\[
+A_{n}\equiv\left\{ \omega:\left|\sum_{k=1}^{n}\left(X_{k}\left(\omega\right)-\mu\right)\right|\geqq\varepsilon n\right\} 
+\]
+
+任意の正数に対して
+\[
+P\left(\lim_{n\rightarrow\infty}\sup\frac{\left|\sum_{k=1}^{n}\left(X_{k}\left(\omega\right)-\mu\right)\right|}{n}\leqq\varepsilon\right)=1
+\]
+
+$\varepsilon$は任意の数であるから
+\[
+P\left(\lim\sup\frac{\left|\sum_{k=1}^{n}\left(X_{k}-\mu\right)\right|}{n}=0\right)=1
+\]
+
+
+\subsection{中心極限定理 (ド・モアブル‐ラプラスの定理)}
+
+$X_{1},X_{2},\cdots,X_{n},\cdots$は独立で同一分布を持つとする。
+
+\[
+S_{n}=X_{1}+X_{2}+\cdots+X_{n}
+\]
+
+$S_{n}$は$\mathcal{N}\left(n\mu,n\sigma^{2}\right)$に従う。
+
+$\bar{X}=\frac{1}{n}S_{n}$は$\mathcal{N}\left(\mu,\frac{\sigma^{2}}{n}\right)$に従う。
+
+∵ $Y_{i}=\frac{X_{i}-\mu}{\sigma}$とすると、$E\left(Y_{i}\right)=0,V\left(Y_{i}\right)=1$
+
+これの特性関数は$\phi_{Y_{i}}\left(k\right)=1-\frac{t^{2}}{2}+\cdots$
+
+\[
+\bar{Y}=\frac{Y_{1}+Y_{2}+\cdots+Y_{n}}{\sqrt{n}}
+\]
+とすると、$\bar{Y}_{n}$の特性関数$\phi_{\bar{Y}}$は
+\[
+\phi_{\bar{Y}}\left(1-\frac{t^{2}}{2n}+\cdots\right)^{n}\rightarrow\e^{-\frac{t^{2}}{2}}
+\]
+
+すなわち、標準正規分布の特性関数。
+
+\section{確率過程 (Stachastic Process)}
+
+時刻$t$に従って、確率変数$\left\{ X_{t}\right\} $の列が発生
+
+\paragraph{例 Poisson過程}
+
+生起間隔$D_{1},D_{2},\cdots$は独立で、同一の指数分布($f=\alpha\e^{-\alpha t}$)をする。
+\begin{itemize}
+\item $\left\{ N\left(t\right),t\geq0\right\} $を、ポアソン過程と呼ぶ。
+\item 任意に定めた$t$について、$N\left(t\right)$はポアソン分布をする。
+\[
+P\left\{ N\left(t\right)=n\right\} =\e^{-\lambda t}\frac{\left(\lambda t\right)^{n}}{n!}\:\left(n=0,1,\cdots\right)
+\]
+\end{itemize}
+
+\paragraph{証)}
+
+$n=0$: $P\left\{ N\left(t\right)=0\right\} =\e^{-\lambda t}$
+
+$n\geq1$: $N\left(t\right)=n$の事象は$\left\{ T_{n}\leqq t,T_{n+1}>t\right\} $の事象、$\left\{ T_{n}\leqq t,D_{n+1}>t-T_{n}\right\} $の事象
+
+$T_{n}=D_{1}+D_{2}+\cdots+D_{n},\left\{ D_{k}\right\} $は互いに独立で$f=\alpha\e^{-\alpha t}$である分布。
+
+$f_{1}\left(t\right)=f_{2}\left(t\right)=\lambda\e^{-\lambda t}$であれば、
+\[
+f\left(t\right)=\int_{0}^{t}\mathrm{d}t'\lambda\e^{-\lambda\left(t-t'\right)}\lambda\e^{-\lambda t'}=\lambda^{2}t\e^{-\lambda t}
+\]
+
+一般には
+\[
+f_{n}\left(t\right)=\lambda\e^{-\lambda t}\frac{\left(\lambda t\right)^{n-1}}{\left(n-1\right)!}
+\]
+
+ゆえに$P\left\{ N\left(t\right)=n\right\} =\e^{-\lambda t}\frac{\left(\lambda t\right)^{n}}{n!}$
+(証明終)
+
+\paragraph{マルコフ過程(連鎖)}
+
+\[
+P\left(X_{n+1}=j|X_{0},X_{1},\cdots X_{n}\right)=P\left(X_{n+1}=j|X_{n}\right)
+\]
+
+
+\section{ランダム・ウォーク}
+
+確率変数$X_{i}=\begin{cases}
+1 & \text{確率}p\\
+-1 & \text{確率}q=1-p
+\end{cases}$
+
+$X_{1}$は独立
+
+\[
+S_{n}=X_{1}+X_{2}+\cdots+X_{n}
+\]
+
+\begin{align*}
+E\left(X_{i}\right) & =1\cdot p+\left(-1\right)q=p-q=2p-1\\
+V\left(X_{i}\right) & =p\left\{ 1-\left(p-q\right)\right\} ^{2}+q\left\{ -1-\left(p-q\right)\right\} ^{2}=4pq
+\end{align*}
+
+\begin{align*}
+E\left(S_{n}\right) & =n\left(p-q\right)\\
+V\left(S_{n}\right) & =4npq
+\end{align*}
+
+
+\subsection{再帰性}
+
+\paragraph{定理}
+
+1次元ランダムウォークが、原典から出発していつか原点に戻る確率は$1-\left|p-q\right|$である。
+
+したがって再帰的であるためには$p=q=\frac{1}{2}$が必要十分
+
+\paragraph{(証)}
+
+$S_{n}=0$. $n$ステップ目に原点にある。
+
+$A_{n}\left(S_{n}=0\right)$
+
+$B_{n}\left(S_{n}=0;S_{1},S_{2},\cdots,S_{n-1}\neq0\right)$ 初めて原点に戻る
+
+$n\equiv\text{偶数}$
+
+求めたい確率は
+\[
+\bigcup_{n=1}^{\infty}A_{n}=\bigcup_{n=1}^{\infty}B_{n}
+\]
+
+$\left\{ B_{n}\right\} $は互いに排他的
+
+\[
+P\left(A_{n}\right)=\sum_{k=1}^{n}P\left(A_{n}\cap B_{k}\right)=\sum_{k=1}^{n}P\left(A_{n}|B_{k}\right)P\left(B_{k}\right)
+\]
+
+\begin{align*}
+P\left(A_{n}|B_{k}\right) & =P\left(X_{k+1}+X_{k+2}+\cdots+X_{n}=0|B_{k}\right)\\
+ & =P\left(X_{1}+X_{2}+\cdots+X_{n-k}=0\right)
+\end{align*}
+
+\[
+\therefore P\left(A_{n}\right)=\sum_{k=1}^{n}P\left(A_{n-k}\right)P\left(B_{k}\right)
+\]
+
+$f_{n}\equiv P\left(B_{n}\right),u_{n}\equiv P\left(A_{n}\right)$と書くと、
+\begin{align*}
+u_{n} & =\sum_{k=1}^{n}f_{k}u_{n-k}
+\end{align*}
+
+$u_{0}=1,f_{0}=0$: 初期値
+
+\begin{align*}
+U\left(S\right) & =\sum_{n=0}^{\infty}u_{n}S^{n}\\
+F\left(S\right) & =\sum_{n=0}^{\infty}f_{n}S^{n}
+\end{align*}
+と定義して、上の式$S^{n}$をかけて和を取る。
+
+\begin{align*}
+\sum_{n=1}^{\infty}u_{n}S^{n} & =U\left(S\right)-1\\
+ & =\sum_{n=1}^{\infty}\sum_{k=1}^{\infty}f_{k}u_{n-k}S^{k}S^{n-k}\\
+ & =\sum_{k=1}^{\infty}f_{k}S^{k}\sum_{m=0}^{\infty}u_{m}S^{m}=F\left(s\right)U\left(S\right)
+\end{align*}
+
+\begin{align*}
+U\left(S\right)-1 & =F\left(S\right)U\left(S\right)\\
+F\left(S\right) & =1-U\left(S\right)^{-1}
+\end{align*}
+
+$U\left(S\right)$は
+\begin{align*}
+U\left(S\right) & =\sum_{n=0}^{\infty}u_{n}s^{n}=\sum_{m=0}^{\infty}u_{2m}S^{2m}=\sum_{m=0}^{\infty}{}_{2m}C_{m}\left(pqs^{2}\right)^{m}\\
+ & =\left(1-4pqs^{2}\right)^{-\frac{1}{2}}
+\end{align*}
+
+\begin{align*}
+P\left(\bigcup_{n=1}^{\infty}B_{n}\right) & =P\left(B_{1}\right)+P\left(B_{2}\right)+\cdots+P\left(B_{n}\right)\\
+ & =f_{1}+f_{2}\cdots+f_{n}\\
+ & =F\left(1\right)\\
+ & =1-\left|p-q\right|
+\end{align*}
+
+($p=q=\frac{1}{2}$なら$F\left(1\right)=1$)
+
+それでは$p-q=\frac{1}{2}$のとき、どのくらいの時間をかけて戻るか。
+
+\begin{align*}
+E\left[T\right] & =\sum_{n=1}^{\infty}nf_{n}=\left[F'\left(s\right)\right]_{s=1}\\
+ & =\lim_{s\rightarrow1}\left[1-\left(1-s^{2}\right)^{\frac{1}{2}}\right]'=\lim_{s\rightarrow1}\frac{s}{\sqrt{1-s^{2}}}\rightarrow\infty
+\end{align*}
+
 \end{document}
