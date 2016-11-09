@@ -2404,4 +2404,182 @@ t-3\\
 \paragraph{来週の内容}
 
 冪級数展開
+
+\section*{第7回}
+
+\paragraph{レポート}
+
+\[
+\dot{\boldsymbol{x}}=A\boldsymbol{x},A=\left(\begin{array}{cccc}
+2 & 2 & 1 & 1\\
+0 & 1 & 2 & 1\\
+0 & 0 & 1 & 2\\
+0 & 0 & 0 & 2
+\end{array}\right)
+\]
+
+{[}一部紛失{]}
+
+\[
+\rho=\lim_{n\rightarrow\infty}\frac{\left|C_{2n}\right|}{\left|C_{2n+2}\right|}=\lim_{n\rightarrow\infty}\frac{2n+1}{2n-1}=1
+\]
+
+
+\chapter{第2章 ベクトル解析}
+
+\paragraph{デカルト座標形}
+
+\begin{align*}
+\boldsymbol{e}_{x} & =\boldsymbol{e}_{1}=\left(1,0,0\right)\\
+\boldsymbol{e}_{y} & =\boldsymbol{e}_{2}=\left(0,1,0\right)\\
+\boldsymbol{e}_{z} & =\boldsymbol{e}_{3}=\left(0,0,1\right)
+\end{align*}
+
+\[
+\boldsymbol{r}=x\boldsymbol{e}_{x}+y\boldsymbol{e}_{y}+z\boldsymbol{e}_{z}
+\]
+
+
+\paragraph{Kroneckerの$\delta_{ij}$}
+
+\[
+\delta_{11}=\delta_{22}=\delta_{33}=1
+\]
+
+\[
+\delta_{12}=\delta_{21}=\delta_{13}=\delta_{31}=\delta_{23}=\delta_{32}=0
+\]
+
+
+\paragraph{Leri-Civitaの完全反対性テンソル}
+
+\[
+\varepsilon_{123}=\varepsilon_{231}=\varepsilon_{312}=1
+\]
+
+\[
+\varepsilon_{132}=\varepsilon_{213}=\varepsilon_{321}=-1
+\]
+
+それ以外は
+\[
+\varepsilon_{ijk}=0
+\]
+
+\begin{align*}
+\varepsilon_{ijk}\varepsilon_{lmn} & =\det\left[\begin{array}{ccc}
+\delta_{il} & \delta_{im} & \delta_{in}\\
+\delta_{jl} & \delta_{jm} & \delta_{jn}\\
+\delta_{kl} & \delta_{km} & \delta_{kn}
+\end{array}\right]\\
+ & =\delta_{il}\left(\delta_{jm}\delta_{kn}-\delta_{jn}\delta_{km}\right)+\delta_{im}\left(\delta_{jn}\delta_{kl}-\delta_{jl}\delta_{kn}\right)+\delta_{in}\left(\delta_{jl}\delta_{km}-\delta_{jm}\delta_{kl}\right)
+\end{align*}
+
+\begin{align*}
+\varepsilon_{ijk}\varepsilon_{lmk} & =\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl}\\
+ & =\det\left[\begin{array}{cc}
+\delta_{il} & \delta_{im}\\
+\delta_{jl} & \delta_{jm}
+\end{array}\right]
+\end{align*}
+
+\[
+\varepsilon_{ijk}\varepsilon_{ljk}=2\delta_{il}
+\]
+
+\[
+\varepsilon_{ijk}\varepsilon_{ijk}=6-\left(\delta_{ij}+\delta_{jk}+\delta_{ki}\right)
+\]
+
+
+\paragraph{内積}
+
+単位ベクトル$\left(\boldsymbol{e}_{x},\boldsymbol{e}_{y},\boldsymbol{e}_{z}\right)$
+
+\[
+\boldsymbol{e}_{i}\cdot\boldsymbol{e}_{j}=\delta_{ij},\boldsymbol{A}=A_{x}\boldsymbol{e}_{x}+A_{y}\boldsymbol{e}_{y}+A_{z}\boldsymbol{e_{z}}
+\]
+
+\begin{align*}
+\boldsymbol{A}\cdot\boldsymbol{B} & =\left(A_{i}\boldsymbol{e}_{i}\right)\cdot\left(B_{j}\boldsymbol{e}_{j}\right)=A_{i}B_{j}\delta_{ij}=A_{i}B_{j}\\
+ & =A_{x}B_{x}+A_{y}B_{y}+A_{z}B_{z}
+\end{align*}
+
+
+\paragraph{外積}
+
+\[
+\boldsymbol{e}_{i}\times\boldsymbol{e}_{j}=\varepsilon_{ijk}\boldsymbol{e}_{k}
+\]
+
+\[
+\boldsymbol{e}_{x}\times\boldsymbol{e}_{x}=\boldsymbol{e}_{y}\times\boldsymbol{e}_{y}=\boldsymbol{e}_{z}\times\boldsymbol{e}_{z}=0
+\]
+
+\begin{align*}
+\boldsymbol{e}_{x}\times\boldsymbol{e}_{y} & =-\boldsymbol{e}_{y}\times\boldsymbol{e}_{x}=\boldsymbol{e}_{z}\\
+\boldsymbol{e}_{y}\times\boldsymbol{e}_{z} & =-\boldsymbol{e}_{z}\times\boldsymbol{e}_{y}=\boldsymbol{e}_{x}\\
+\boldsymbol{e}_{z}\times\boldsymbol{e}_{x} & =-\boldsymbol{e}_{x}\times\boldsymbol{e}_{z}=\boldsymbol{e}_{y}
+\end{align*}
+
+\begin{align*}
+\boldsymbol{A}\times\boldsymbol{B} & =A_{i}\boldsymbol{e}_{i}\times B_{j}\boldsymbol{e}_{j}\\
+ & =A_{i}B_{j}\varepsilon_{ijk}\boldsymbol{e}_{k}\\
+ & =\left(A_{y}B_{z}-A_{z}B_{y}\right)\boldsymbol{e}_{x}\\
+ & +\left(A_{z}B_{x}-A_{x}B_{z}\right)\boldsymbol{e}_{y}\\
+ & +\left(A_{x}B_{y}-A_{y}B_{x}\right)\boldsymbol{e}_{z}\\
+ & =\left|\begin{array}{ccc}
+\boldsymbol{e}_{x} & \boldsymbol{e}_{y} & \boldsymbol{e}_{z}\\
+A_{x} & A_{y} & A_{z}\\
+B_{x} & B_{y} & B_{z}
+\end{array}\right|\\
+ & =\left(\left|\boldsymbol{A}\right|\left|\boldsymbol{B}\right|\sin\theta\right)^{2}
+\end{align*}
+
+\[
+\boldsymbol{A}\times\boldsymbol{B}=-\boldsymbol{B}\times\boldsymbol{A}
+\]
+
+\[
+\boldsymbol{A}\times\left(\boldsymbol{B}+\boldsymbol{C}\right)=\boldsymbol{A}\times\boldsymbol{B}+\boldsymbol{A}\times\boldsymbol{C}
+\]
+
+スカラー三十石
+\[
+c\boldsymbol{A}\times\boldsymbol{B}=\boldsymbol{A}\times c\boldsymbol{B}=c\left(\boldsymbol{A}\times\boldsymbol{B}\right)
+\]
+
+\begin{align*}
+\left(\boldsymbol{A}\times\boldsymbol{B}\right)\cdot\boldsymbol{C} & =\varepsilon_{ijk}A_{i}B_{j}\boldsymbol{e}_{k}\cdot C_{m}\boldsymbol{e}_{m}\\
+ & =\varepsilon_{ijk}A_{i}B_{j}C_{k}\delta_{km}C_{m}=\varepsilon_{ijk}A_{i}B_{j}C_{k}\\
+ & =\boldsymbol{A}\cdot\left(\boldsymbol{B}\times\boldsymbol{C}\right)=\boldsymbol{B}\cdot\left(\boldsymbol{C}\times\boldsymbol{A}\right)=\boldsymbol{C}\cdot\left(\boldsymbol{A}\times\boldsymbol{B}\right)
+\end{align*}
+
+ベクトル三重積
+
+\begin{align*}
+\boldsymbol{A}\times\left(\boldsymbol{B}\times\boldsymbol{C}\right) & =\left(A_{j}\boldsymbol{e}_{j}\right)\times\left(\varepsilon_{klm}B_{l}C_{m}\boldsymbol{e}_{k}\right)\\
+ & =\varepsilon_{klm}\varepsilon_{jki}A_{j}B_{l}C_{m}\boldsymbol{e}_{i}\\
+ & =\left(\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl}\right)A_{j}B_{l}C_{m}\boldsymbol{e}_{i}
+\end{align*}
+
+\begin{align*}
+\left|\boldsymbol{A}\times\boldsymbol{B}\right|^{2} & =\left(\boldsymbol{A}\times\boldsymbol{B}\right)\cdot\left(\boldsymbol{A}\times\boldsymbol{B}\right)\\
+ & =\varepsilon_{iab}A_{a}B_{b}\varepsilon_{icd}A_{c}B_{d}\\
+ & =\left(\delta_{ac}\delta_{bd}-\delta_{ad}-\delta_{bc}\right)A_{a}B_{b}A_{c}B_{d}\\
+ & =\left|A\right|^{2}\left|B\right|^{2}-\left(\boldsymbol{A}\cdot\boldsymbol{B}\right)^{2}=\left|\boldsymbol{A}\right|^{2}\left|\boldsymbol{B}\right|^{2}\left(1-\cos^{2}\theta\right)\\
+ & =\left(A_{j}B_{i}C_{j}-A_{j}B_{j}C_{i}\right)\boldsymbol{e}_{i}\text{ta}\\
+ & =\left(\boldsymbol{A}\cdot\boldsymbol{C}\right)\boldsymbol{B}-\left(\boldsymbol{A}\cdot\boldsymbol{B}\right)\boldsymbol{C}
+\end{align*}
+
+テンソル積
+
+\[
+\boldsymbol{A}\otimes\boldsymbol{B}=A_{i}B_{j}=\left(\begin{array}{ccc}
+A_{x}B_{x} & A_{x}B_{y} & A_{x}B_{z}\\
+A_{y}B_{x} & A_{y}B_{y} & A_{y}B_{z}\\
+A_{z}B_{x} & A_{z}B_{y} & A_{z}B_{z}
+\end{array}\right)
+\]
+
 \end{document}
