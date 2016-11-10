@@ -1497,4 +1497,252 @@ kA\cos\left(\frac{kl}{2}\right)=-\beta C\e^{-\frac{\beta l}{2}}
 \]
 
 ここから$k,\beta$が求められる。
+
+\paragraph{後半メモ}
+
+$\xi=\frac{kl}{2},\eta=\frac{\beta l}{2}$
+
+漸近線 $\xi=\frac{\pi}{2}n,k=\frac{\pi}{l}n$
+
+無限大ポテンシャルに対する$k$の値である。
+
+c.f. 無限大ポテンシャルによる閉じ込め
+
+$\varphi$の波長 $\frac{2l}{n}$
+
+$k=\frac{2\pi}{\lambda}=\frac{\pi}{l}n$
+
+図電物6-8
+
+$k>\frac{l}{2}$ $\varphi\left(x\right)=C\e^{-\beta x}$
+
+$\frac{1}{\beta}$: 波動関数の侵入長
+
+\[
+\frac{\hbar^{2}\beta^{2}}{2m}=V_{0}-\varepsilon,\frac{1}{\beta}=\frac{\hbar}{\sqrt{2m\left(V_{0}\varepsilon\right)}}
+\]
+
+$V_{0}-\varepsilon$大→侵入長小
+
+\section*{第7回}
+
+\paragraph{Blochの定理}
+
+周期$a$のポテンシャル→
+\begin{equation}
+\varphi\left(x\right)=u\left(x\right)\e^{\i kx}
+\end{equation}
+
+もう一つの表現($x\mapsto x+a$)
+\begin{equation}
+\varphi\left(x+a\right)=\e^{\i ka}\varphi\left(x\right)
+\end{equation}
+
+(15)→(14)の証明:
+
+$u\left(x\right)=\varphi\left(x\right)\e^{-\i kx}$を考える。
+\[
+u\left(x+a\right)=\varphi\left(x+a\right)\e^{-\i k\left(x+a\right)}=\varphi\left(x\right)\e^{\i kx}=u\left(x\right)
+\]
+
+⋯$u\left(x\right)$は周期$a$の関数
+
+\[
+\varphi\left(x\right)=u\left(x\right)\e^{\i kx}
+\]
+
+
+\paragraph{Blochの定理の証明}
+
+Schrödinger方程式
+\begin{equation}
+\left(\frac{\hat{p}^{2}}{2m}+V\left(x\right)\right)\varphi\left(x\right)=E\varphi\left(x\right)
+\end{equation}
+
+$x\mapsto x+a$
+\begin{equation}
+\left(\frac{\hat{p}^{2}}{2m}+V\left(x+a\right)\right)\varphi\left(x+a\right)=E\varphi\left(x+a\right)
+\end{equation}
+
+(16) と (17) は同じSchrödinger方程式である。(1次元問題)
+
+⇒$\varphi\left(x\right),\varphi\left(x+a\right)$は従属
+
+\[
+\varphi\left(x+a\right)=C\varphi\left(x\right)
+\]
+
+($C$: 複素定数)
+
+\[
+\varphi\left(x+Na\right)=C\varphi\left(x+\left(N-a\right)a\right)=C^{2}\varphi\left(x+\left(N-2\right)a\right)=\cdots=C^{N}\varphi\left(x\right)
+\]
+
+同期境界条件を考える。
+\[
+\varphi\left(x+Na\right)=\varphi\left(x\right)\Rightarrow C^{N}=1
+\]
+
+\begin{align*}
+C & =\e^{\i2\pi\frac{m}{N}}\\
+ & =\e^{\i\frac{2\pi m}{Na}a}\\
+ & =\e^{\i k_{m}a}
+\end{align*}
+
+ただし$k_{m}=\frac{2\pi m}{Na}\rightarrow\lambda_{m}=\frac{Na}{m}$
+
+図電物7-1
+
+\[
+\varphi\left(x+a\right)=\e^{\i k_{m}a\varphi\left(x\right)}\Rightarrow\varphi\left(x\right)=u\left(x\right)\e^{\i kx}
+\]
+
+\[
+\varphi\left(x\right)=\e^{\i kx}
+\]
+
+\[
+\Psi\left(x,t\right)=\varphi\left(x\right)\e^{-\i\omega t}=\e^{\i\left(kx-\omega t\right)}=\e^{\i k\left(x-\frac{\omega}{k}t\right)}
+\]
+
+$\frac{\omega}{k}$: 波の進む速度
+
+図電物7-2
+
+意味のある$m$の範囲
+
+\[
+m=0,1,2,\cdots,N-1\left(m=N\text{は}m=0\text{と同}\right)
+\]
+
+→むしろ
+
+\[
+m=-\frac{N}{2},\cdots,0,1,\cdots,\frac{N}{2}-1
+\]
+
+⇒$k$が－も＋もとれる。－方向方向両方に進む波を表せる。
+
+$\left|k_{m}\right|$の最大値($\left|m\right|=\frac{N}{2}$のとき)
+
+\[
+k_{max}=\frac{\pi}{a},\lambda_{min}=2a
+\]
+
+図電物7-3
+
+ポテンシャル一定の空間 $\varphi=A\e^{\i kx}$
+
+\[
+E_{f}=\frac{\hbar^{2}k^{2}}{2m}
+\]
+
+→$k$の値に制限なし。
+
+周期的なポテンシャル $\varphi=u\left(x\right)\e^{\i kx}$
+
+ポテンシャルの1周期分に注目 $-b<x\leq a-b$
+\begin{itemize}
+\item 領域I: $0\leq x\leq a-b,V\left(x\right)=0$
+
+\[
+-\frac{\hbar^{2}}{2m}\dd{\varphi_{I}}x=E\varphi_{I}
+\]
+
+$\frac{\hbar^{2}\alpha^{2}}{2m}=E$より、
+\[
+\varphi_{I}=A\e^{\i\alpha x}+B\e^{-\i\alpha x}
+\]
+
+\item 領域II: $-b<x<0$
+
+\[
+-\frac{\hbar^{2}}{2m}\dd{\varphi_{II}}x=\left(V_{0}-E\right)\varphi_{II}
+\]
+
+ただし$V_{0}>E$とする。
+
+$\frac{\hbar^{2}\beta^{2}}{2m}=V_{0}-E$より、
+\[
+\varphi_{II}=C\e^{\beta x}+D\e^{-\beta x}
+\]
+
+\end{itemize}
+接続条件
+
+$x=0$
+\begin{equation}
+\varphi_{I}\left(x\right)=\varphi_{II}\left(x\right)\Rightarrow A+B=C+D
+\end{equation}
+\begin{equation}
+\d{\varphi_{I}}x\left(x\right)=\d{\varphi_{II}}x\left(x\right)\Rightarrow\i\alpha\left(A-B\right)=\beta\left(C-D\right)
+\end{equation}
+
+$x=a-b$
+
+\begin{equation}
+\varphi_{I}\left(x\right)=\varphi_{III}\left(x\right)\Rightarrow A\e^{\i\alpha\left(a-b\right)}+B\e^{-\i\alpha\left(a-b\right)}=\e^{\i ka}\left(C\e^{\beta\left(a-b\right)}+D\e^{-\beta\left(a-b\right)}\right)
+\end{equation}
+
+$a-b<x\leq a$での$\varphi$
+\[
+\varphi_{III}\left(x\right)=\varphi_{II}\left(x\right)\e^{\i ka}
+\]
+(Blochの定理)
+
+\begin{align}
+\d{\varphi_{I}\left(x\right)}x=\d{\varphi_{III}\left(x\right)}x & =\i\alpha\left(A\e^{\i\alpha\left(a-b\right)}+B\e^{-\i\alpha\left(a-b\right)}\right)\\
+ & =\e^{\i ka}\beta\left(C\e^{\beta\left(a-b\right)}-D\e^{-\beta\left(a-b\right)}\right)
+\end{align}
+
+(18), (19), (20), (22) より、
+\[
+\left(\begin{array}{cccc}
+1 & 1 & -1 & -1\\
+\i\alpha & -\i\alpha & -\beta & \beta\\
+\e^{\i\alpha\left(a-b\right)} & \e^{-\i\alpha\left(a-b\right)} & -\e^{\i ka}\e^{-\beta b} & -\e^{\i ka}\e^{\beta b}\\
+\i\alpha\e^{\i\alpha\left(a-b\right)} & -\i\alpha\e^{-\alpha\left(a-b\right)} & -\e^{\i ka}\beta\e^{-\beta b} & \e^{\i ka}\beta\e^{\beta b}
+\end{array}\right)\left(\begin{array}{c}
+A\\
+B\\
+C\\
+D
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+0\\
+0\\
+0
+\end{array}\right)
+\]
+
+$A,B,C,D$を求めたい⇒行列が逆行列を持たない⇒行列式=0
+
+\[
+\e^{ika}+\e^{-\i ka}=\frac{\beta^{2}-\alpha^{2}}{\alpha\beta}\sin\alpha\left(a-b\right)\sinh\left(\beta b\right)+2\cos\alpha\left(a-b\right)\cosh\left(\beta b\right)
+\]
+
+\begin{align*}
+\cosh\left(x\right) & =\frac{\e^{x}-\e^{-x}}{2}\rightarrow1\left(x\rightarrow0\right)\\
+\sinh\left(x\right) & =\frac{\e^{x}-\e^{-x}}{2}=\frac{\left(1+x\right)-\left(1-x\right)}{2}\rightarrow x\left(x\rightarrow0\right)
+\end{align*}
+
+\[
+2\cos\left(ka\right)=\frac{\beta^{2}-\alpha^{2}}{\alpha\beta}\left(\sin\left(\alpha a\right)\right)\beta b+2\cos\left(\alpha a\right)
+\]
+
+\[
+\beta^{2}-\alpha^{2}=\frac{2m\left(V_{0}-2E\right)}{\hbar^{2}}\doteqdot\frac{2mV_{0}}{\hbar^{2}}\:\because V_{0}\left(\rightarrow\infty\right)\gg E
+\]
+
+\[
+\cos\left(ka\right)=\frac{mV_{0}b}{\hbar^{2}}a\frac{\sin\left(\alpha a\right)}{\alpha a}+\cos\left(\alpha a\right)
+\]
+($a$: ポテンシャルの周期、$k$: $\varphi$に含まれる $\alpha=\frac{\sqrt{2mE}}{\hbar}$
+($E$: 粒子のエネルギー固有値))\\
+←$A,B,C,D$が0にならないための制約式
+
+⇒$\varphi$が存在するための制約式\\
+←これを満たす$\left(k,E\right)$の組
+
+⇒$A,B,C,D$が決まる($\varphi$が求められる)
 \end{document}
