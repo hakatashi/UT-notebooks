@@ -694,4 +694,280 @@ ex. Si (R.T.) $\mu_{e}\sim1600\mathrm{cm^{2}/V\cdot s}$
 \paragraph{ドリフト電流}
 
 電子電流密度 $J_{n}=-qnv_{m}=qn\mu_{n}\vec{\varepsilon}$
+
+\section*{第6回}
+
+\subsection{拡散電流}
+
+図電デ6-1
+
+\begin{align*}
+n\left(-l\right) & \sim n\left(0\right)-l\d nx\\
+n\left(l\right) & \sim n\left(0\right)+\d nx
+\end{align*}
+MF\_1 =
+\begin{align*}
+F_{1} & =\frac{\frac{1}{2}n\left(-l\right)\times l}{\tau}=\frac{1}{2}n\left(-l\right)v_{\text{in}}\\
+F_{2} & =\frac{1}{2}n\left(l\right)v_{\text{in}}
+\end{align*}
+
+\[
+F=F_{1}-F_{2}=\frac{1}{2}v_{\text{in}}\left[n\left(-l\right)-n\left(l\right)\right]=-v_{\text{in}}l\d nx\equiv-D_{n}\d nx
+\]
+
+$D_{n}$: 拡散係数
+
+\[
+J_{n}=-qF=qD_{n}\d nx
+\]
+\[
+J_{p}=-qD_{p}\d px
+\]
+
+
+\paragraph{アインシュタインの関係数}
+
+1次元の
+
+\subsection{直接キャリア結合}
+
+図電デ6-2
+
+\[
+\d{\left(n+\Delta n\right)}t=g-r=g^{2}+g_{0}-r
+\]
+
+定常状態
+\[
+g^{*}=r-g_{0}\equiv U
+\]
+
+$U$: 実効再結合レート
+
+\begin{align*}
+U & =r-g_{0}=Bnp_{0}-Bn_{0}p_{0}\\
+ & =BP_{0}\left(n-n_{0}\right)\\
+ & =\frac{1}{\frac{1}{BP_{0}}}\Delta n\\
+ & =\frac{1}{\tau_{n}}\Delta n
+\end{align*}
+
+$\tau_{n}$: 少数キャリア寿命
+
+\[
+\d{\Delta n}t=g^{*}-U=g^{*}-\frac{\Delta n}{\tau_{n}}
+\]
+
+図電デ6-3
+
+定常状態
+\[
+\Delta n=g^{*}\tau_{n}
+\]
+
+
+\paragraph{間接再結合}
+
+図電デ6-4
+
+\[
+U=\frac{pn-n_{i}^{2}}{p+n+2n_{i}\cosh\left(\frac{E_{t}-E_{i}}{kT}\right)}\times v_{\text{th}}\alpha N_{t}
+\]
+
+$\alpha$: 捕獲断面積
+
+$N_{t}$: 欠陥密度
+
+Shochley-Read-Hall(SRH)の式
+
+\paragraph{表面再結合}
+
+\subsection{連続の式}
+
+図電デ6-4
+
+\[
+\pd ntA\cdot\mathrm{d}x=\left[\frac{J_{n}\left(x\right)A}{-q}-\frac{J_{n}\left(x+\mathrm{d}x\right)A}{-q}\right]+\left(q-r\right)A\mathrm{d}x
+\]
+
+
+\subsection{静電電位とバンド図}
+
+図電づ6-5
+
+$E_{c},E_{i},E_{v}$と$\phi$は対応
+
+\[
+\phi=-\frac{E_{i}}{q}
+\]
+
+\[
+\vec{\varepsilon}=\frac{1}{q}\cdot\pd{E_{i}}x
+\]
+
+\begin{enumerate}
+\item 
+\[
+\pd nt=\frac{1}{q}\pd{J_{n}}x+\left(g-r\right)=\mu_{n}\pd{\left(n\vec{\varepsilon}\right)}x+D_{n}\pdd nx+\left(g-r\right)
+\]
+\item 
+\[
+\pd Pt=-\frac{1}{q}\pd{J_{p}}x+\left(g-r\right)=-\mu_{p}\pd{\left(p\vec{\varepsilon}\right)}x+D_{p}\pdd px+\left(g-r\right)
+\]
+
+$\vec{\varepsilon}=-\pd{}x\phi$: 静電電位
+\item 
+\[
+\pdd{}x\phi=-\frac{\rho}{\varepsilon}
+\]
+: ポアソン方程式
+\end{enumerate}
+
+\section*{第7回}
+
+3.9 熱平衡次のフェルミ準位
+
+\[
+J_{n}=J_{p}=0
+\]
+
+\begin{align*}
+J_{n} & =q\mu_{n}n\vec{\varepsilon}+qD_{n}\d nx\\
+ & =q\mu_{n}n\left(\frac{1}{q}\d{E_{i}}x\right)+kT\mu_{n}\d nx
+\end{align*}
+
+\[
+n=n_{i}\exp\left(\frac{E_{F}-E_{i}}{kT}\right)
+\]
+
+\begin{align*}
+\therefore\d nx & =n_{i}\exp\left(\frac{E_{F}-E_{i}}{kT}\right)\left[\frac{1}{kT}\cdot\d{E_{F}}x-\frac{1}{kT}\d{E_{i}}x\right]\\
+ & =n\frac{1}{kT}\left(\d{E_{f}}x-\d{E_{i}}x\right)
+\end{align*}
+
+\begin{align*}
+J_{n} & =q\mu_{n}n\left(\frac{1}{q}\cdot\d{E_{i}}x\right)+n\mu_{n}\left(\d{E_{F}}x-\d{E_{i}}x\right)\\
+ & =n\mu_{n}\d{E_{F}}x=0
+\end{align*}
+
+\[
+\therefore\d{E_{F}}x=0
+\]
+
+⇒$E_{F}$が一定
+
+3.10 擬フェルミ準位
+
+熱平衡
+\[
+n=n_{i}\exp\left(\frac{E_{F}-E_{i}}{kT}\right),p=n_{i}\exp\left(\frac{E_{i}-E_{F}}{kT}\right)
+\]
+
+非平衡
+\[
+n=n_{i}\exp\left(\frac{E_{F_{n}}-E_{i}}{kT}\right),p=n_{i}\exp\left(\frac{E_{i}-E_{FP}}{kT}\right)
+\]
+
+図電デ7-1
+
+\begin{align*}
+J_{n} & =\mu_{n}n\d{E_{F_{n}}}x\\
+J_{P} & =\mu_{P}p\d{E_{F_{P}}}x
+\end{align*}
+
+
+\section{PN接合(junction)}
+
+図電デ7-2
+
+\subsection{階段結合}
+
+図電デ7-3
+
+図電デ7-4
+
+\[
+\pdd{\phi}x=-\frac{\rho}{\varepsilon_{S}}
+\]
+
+空気層$n=0,p\sim0$ (空乏近似)
+
+境界条件
+\[
+\vec{\varepsilon}\left(x=-l_{n}\right)=0,\vec{\varepsilon}\left(x=l_{p}\right)=0
+\]
+
+\[
+\phi\left(x=0\right)=0
+\]
+
+(i) $-l_{n}\leq x\leq0$
+
+\[
+\pdd{\phi}x=-\frac{qN_{D}}{\varepsilon_{S}}
+\]
+
+\[
+\pd{\phi}x=-\frac{qN_{D}}{\varepsilon_{S}}\left(x+l_{n}\right)
+\]
+
+\[
+\therefore\phi=-\frac{qN_{D}}{2\varepsilon_{S}}\left[\left(x+l_{n}\right)^{2}-l_{n}^{2}\right]
+\]
+
+(ii) $0\leq x\leq l_{P}$
+
+\[
+\pdd{\phi}x=\frac{qN_{A}}{\varepsilon_{S}}
+\]
+
+\[
+\phi=\frac{qN_{A}}{2\varepsilon_{S}}\left[\left(x-l_{P}\right)^{2}-l_{P}^{2}\right]
+\]
+
+図電デ7-5
+
+\begin{align*}
+V_{bi} & =\phi\left(x=l_{n}\right)-\phi\left(x=l_{p}\right)\\
+ & =\frac{q}{2\varepsilon_{S}}\left[N_{D}l_{n}^{2}+N_{A}l_{p}^{2}\right]
+\end{align*}
+
+$l_{n}N_{D}=l_{p}N_{A}$
+
+\[
+\therefore l_{n}=\sqrt{\frac{2\varepsilon_{S}V_{bi}}{qN_{D}\left(1+\frac{N_{D}}{N_{A}}\right)}},l_{p}=\sqrt{\frac{2\varepsilon_{S}V_{bi}}{qN_{A}\left(1+\frac{N_{D}}{N_{A}}\right)}}
+\]
+
+\[
+W=l_{n}+l_{p}=\sqrt{\frac{2\varepsilon_{S}V_{bi}}{q}\left(\frac{1}{N_{D}}+\frac{1}{N_{A}}\right)}
+\]
+
+・$V>0$ (順バイアス)
+
+図電デ7-6
+
+拡散電流↑
+
+少数キャリア注入
+
+図電デ7-7
+
+拡散電流～0
+
+空乏層幅
+
+\[
+V_{bi}\rightarrow V_{bi}-V
+\]
+
+\[
+l_{n}=\sqrt{\frac{2\varepsilon_{S}\left(V_{bi}-V\right)}{qN_{D}\left(1+\frac{N_{D}}{N_{A}}\right)}},l_{p}=\sqrt{\frac{2\varepsilon_{S}\left(V_{bi}-V\right)}{qN_{A}\left(1+\frac{N_{D}}{N_{A}}\right)}}
+\]
+
+\[
+W=l_{n}+l_{p}=\sqrt{\frac{2\varepsilon_{S}\left(V_{bi}-V\right)}{q}\left(\frac{1}{N_{D}}+\frac{1}{N_{A}}\right)}
+\]
+
+$V<0$の時$W$↑
+
+図電デ7-8
 \end{document}
