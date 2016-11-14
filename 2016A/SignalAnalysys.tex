@@ -1118,4 +1118,143 @@ sinc関数による補間のイメージ
 \begin{center}
 \includegraphics{images/SignalAnalysys/5-13}
 \par\end{center}
+
+\section*{第6回}
+
+\paragraph{信号の標本化}
+
+図信6-1
+
+\paragraph{標本化定理}
+
+標本化したときに、スペクトルの重なりが生じなければ、、$x^{*}\left(t\right)$から$x\left(t\right)$が完全に復元可能である。
+
+(音楽20kHz以下→CDは44.1kHzサンプリング)
+
+\paragraph{復元法}
+
+図信6-2
+
+\[
+x^{*}\left(t\right)=\sum_{s=-\infty}^{\infty}x\left(nT_{0}\right)\delta\left(t-nT_{0}\right)\:\left(T_{0}=\frac{1}{2W}\right)
+\]
+
+\[
+\rightarrow x\left(t\right)=\sum_{n=-\infty}^{\infty}x\left(n\frac{1}{2W}\frac{\sin2\pi W\left(t-\frac{n}{2W}\right)}{2\pi W\left(t-\frac{n}{2W}\right)}\right)
+\]
+
+
+\paragraph{図的理解}
+
+図信6-3
+\begin{itemize}
+\item $\left|f\right|<W$に帯域制限された連続信号$x\left(t\right)$ (連続系の情報理論)
+\item $\frac{1}{2W}$ごとの標本値列$x\left(\frac{n}{2W}\right)$ (サンプル値系の情報理論)
+\end{itemize}
+の2つは等価である。
+
+\section{第5章 信号とスペクトルのまとめ}
+
+図信6-4
+
+図信6-5
+
+図信6-6
+
+残るは⋯⋯離散周期信号
+
+既に学んだ3つからわかること
+\begin{itemize}
+\item 連続↔非周期
+\item 離散↔周期
+\end{itemize}
+つまり、
+\begin{itemize}
+\item 連続周期↔離散非周期
+\item 連続非周期↔連続非周期
+\item 離散非周期↔連続周期
+\item 離散周期↔離散周期
+\end{itemize}
+(色分け略)
+
+\paragraph{離散フーリエ級数}
+
+1周期分
+\[
+x\left(t\right)=\sum_{n=0}^{N-1}x\left(nT_{0}\right)\cdot\underbrace{\delta\left(t-nT_{0}\right)}_{\text{離散}}
+\]
+
+$F_{0}=\frac{1}{NT_{0}}$
+
+フーリエ級数展開すると
+\begin{align*}
+\alpha_{k} & =\frac{1}{NT_{0}}\int_{0}^{NT_{0}}x\left(t\right)\e^{-\j2\pi kF_{)}t}\mathrm{d}t\\
+ & =\frac{1}{NT_{0}}\sum_{n=0}^{N-1}x\left(nT_{0}\right)\int\delta\left(t-nT_{0}\right)\e^{-\j2\pi kF_{0}t}\mathrm{d}t\\
+ & =\frac{1}{NT_{0}}\sum_{n=0}^{N-1}x\left(nT_{0}\right)\e^{-\j kF_{0}\left(nT_{0}\right)}\\
+ & =\frac{1}{NT_{0}}\sum_{n=0}^{N-1}x\left(nT_{0}\right)\e^{-\j\frac{2\pi}{N}kn}
+\end{align*}
+
+(離散的)
+
+周期性は?
+
+\begin{align*}
+\alpha_{k+N} & =\frac{1}{NT_{0}}\sum x\left(nT_{0}\right)\e^{-\j\frac{2\pi}{N}\left(k+N\right)n}\\
+ & =\frac{1}{NT_{0}}\sum x\left(nT_{0}\right)\e^{-\j\frac{2\pi}{N}kn}\cdot\e^{-\j\frac{N}{N}2\pi\cdot n}\\
+ & =\alpha_{k}
+\end{align*}
+
+離散フーリエ級数の係数$\alpha_{k}$は周期$N$を持つ。
+
+図信6-7
+
+\paragraph{離散フーリエ変換}
+
+離散フーリエ級数に対して、
+\begin{itemize}
+\item データ $x\left(nT_{0}\right)\rightarrow x\left(n\right)$
+\item 係数 $\alpha_{k}\cdot NT_{0}\rightarrow X\left(k\right)$
+\end{itemize}
+と書き改める。
+
+$W_{N}=\e^{-\j\frac{2\pi}{N}}$とおくと、
+\[
+X\left(k\right)=\sum_{n=0}^{N-1}x\left(n\right)\cdot W_{N}^{k\cdot n}
+\]
+となる。$N$個の離散データを$N$個の係数に変換する。
+
+行列表現すると、
+\[
+\left[\begin{array}{c}
+X\left(0\right)\\
+X\left(1\right)\\
+\vdots\\
+X\left(N-1\right)
+\end{array}\right]=\left[W_{N}^{k\cdot n}\right]\left[\begin{array}{c}
+x\left(0\right)\\
+x\left(1\right)\\
+\vdots\\
+x\left(N-1\right)
+\end{array}\right]
+\]
+
+離散フーリエ変換(Discrete Fourier Transform, DFT)という。
+
+FFT(Fast Fourier Transform)の登場でDFTの高速計算が可能に。
+
+余談: DCT (Discrete Cosine Transform)
+
+画像圧縮のスタンダード (JPEG, MPEG...)
+
+なぜDCTが圧縮に適しているのか?
+
+→ 実数→実数にしたいから。
+
+画像中のブロックを切り出した段階では、周期性はない。
+
+→FFTなどの便利なツールを使いたいから周期化して考えよう
+
+周期性の与え方に工夫の余地あり
+
+図信6-8
 \end{document}
