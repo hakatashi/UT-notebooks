@@ -14,11 +14,8 @@ eps: $(EPS)
 %.pdf: %.dvi
 	cd $(dir $@); dvipdfmx -o $(notdir $@) $(notdir $<) 0<&-
 
-%.bmp: %.jpg
-	convert $< bmp:$@
-
-%.eps: %.bmp
-	potrace $< $@
+%.eps: %.jpg
+	convert $< eps3:$@
 
 .PHONY: clean
 clean:
