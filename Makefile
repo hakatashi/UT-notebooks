@@ -15,7 +15,7 @@ eps: $(EPS)
 	cd $(dir $@); dvipdfmx -o $(notdir $@) $(notdir $<) 0<&-
 
 %.bmp: %.jpg
-	convert $< bmp:$@
+	convert $< bmp2:$@
 
 %.eps: %.bmp
 	potrace $< -r 400 -o $@
