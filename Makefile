@@ -18,7 +18,7 @@ eps: $(EPS)
 	convert $< bmp:$@
 
 %.eps: %.bmp
-	potrace $< -o $@
+	potrace $< $@
 
 .PHONY: clean
 clean:
