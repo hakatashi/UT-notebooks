@@ -2180,4 +2180,242 @@ P\left(t\right)= & v_{1}\left(t\right)i_{1}\left(t\right)+v_{2}\left(t\right)i_{
 脈動なく一定である。
 
 注: 上式の力率角$\theta$は相電圧と線電流の位相差。線間電圧ではない。
+
+\section*{第6回}
+
+\[
+P\left(t\right)=\sqrt{3}V_{\text{line}}I\cos\theta
+\]
+
+単相と同様に三相も有効電力
+\[
+P=\sqrt{3}V_{\text{line}}I\cos\theta\left[\mathrm{W}\right]
+\]
+
+無効電力
+\[
+Q=\sqrt{3}V_{\text{line}}I\sin\theta\left[\mathrm{Var}\right]
+\]
+
+
+\paragraph{結線方法}
+
+図電回6-1
+\begin{itemize}
+\item 電源$\Delta$-負荷$\Delta$
+\item 電源$\Delta$-負荷$Y$
+\item 電源$Y$-負荷$Y$
+\item 電源$Y$-負荷$\Delta$
+\end{itemize}
+$Y$-$Y$結線は先に示した通り。
+
+\paragraph{$\Delta$-$\Delta$結線}
+
+図電回6-2
+
+各負荷を流れる電流は、
+\[
+I_{1}=\frac{V_{1}}{Z},I_{2}=\frac{V_{2}}{Z},I_{3}=\frac{V_{3}}{Z}
+\]
+
+よって線間電圧、線電流は、
+\[
+V_{\text{line}}=\left|V\right|,I_{\text{line}}=\left|I_{2}-I_{1}\right|=\sqrt{3}I
+\]
+
+
+\section{フーリエ級数展開による一般の周期波形の取り扱い法}
+
+正弦波でない波形(ひずみ波)の取り扱い。
+
+\subsection{フーリエ級数展開}
+
+図電回6-3
+
+関数$f\left(t\right)$が周期$T$をもち、区分的に滑らかならば、以下のようにフーリエ級数によって表すことができる。
+
+\[
+f\left(t\right)=a_{0}\sum_{i=1}^{\infty}\left(a_{i}\cos i\omega_{0}t+b_{i}\sin i\omega_{0}t\right)
+\]
+
+電気回路において、直流や制限は信号の扱いは既に学んだ。
+
+任意の周期的の入力⇒フーリエ級数展開⇒各周波数についての出力を求めて足し合わせる。
+
+図電回6-4
+
+\paragraph{「区分的になめらか」な関数}
+
+図電回6-5
+
+\paragraph{フーリエ級数の求め方}
+
+$m\geqq1,n\geqq1$のとき、三角関数の直交性より、
+\begin{align*}
+\int_{0}^{T}\cos m\omega_{0}t\mathrm{d}t & =0\\
+\int_{0}^{T}\sin m\omega_{0}t\mathrm{d}t & =0
+\end{align*}
+
+\[
+\int_{0}^{T}\sin m\omega_{0}t\cos n\omega_{0}t\mathrm{d}t=0
+\]
+
+\[
+\int_{0}^{T}\cos m\omega_{0}t\cos n\omega_{0}t\mathrm{d}t=\begin{cases}
+0 & \left(m\neq n\right)\\
+\frac{T}{2} & \left(m=n\right)
+\end{cases}
+\]
+
+\[
+\int_{0}^{T}\sin m\omega_{0}t\sin n\omega_{0}t\mathrm{d}t=\begin{cases}
+0 & \left(m\neq n\right)\\
+\frac{T}{2} & \left(m=n\right)
+\end{cases}
+\]
+
+{[}証明{]}
+
+\[
+\cos\alpha\cos\beta=\frac{1}{2}\left\{ \cos\left(\alpha+\beta\right)+\cos\left(\alpha-\beta\right)\right\} 
+\]
+より、
+\begin{align*}
+\int_{0}^{T}\cos m\omega_{0}t\cos n\omega_{0}t\mathrm{d}t & =\frac{1}{2}\int_{0}^{T}\left[\cos\left(m+n\right)\omega_{0}t+\cos\left(n-m\right)\omega_{0}t\right]\mathrm{d}t\\
+ & =\frac{1}{2}\int_{0}^{T}\mathrm{d}t\\
+ & =\begin{cases}
+0 & \left(m\neq n\right)\\
+\frac{T}{2} & \left(m=n\right)
+\end{cases}
+\end{align*}
+
+よって、
+\begin{align*}
+\int_{0}^{T}f\left(t\right)\cos n\omega_{0}t\mathrm{d}t & =\int_{0}^{T}\left[a_{0}+\sum_{i=1}^{\infty}\left(a_{i}\cos i\omega_{0}t+b_{i}\sin i\omega_{0}t\right)\right]\cos n\omega_{0}t\mathrm{d}t\\
+ & =\int_{0}^{T}a_{n}\cos n\omega_{0}t\cos n\omega_{0}t\mathrm{d}t\\
+ & =\frac{a_{n}}{2}T
+\end{align*}
+
+よって$n\geqq1$に対しては、
+\[
+a_{n}=\frac{2}{T}\int_{0}^{T}f\left(t\right)\cos n\omega_{0}t\mathrm{d}t,b_{n}=\frac{2}{T}\int_{0}^{T}f\left(t\right)\sin n\omega_{0}t\mathrm{d}t
+\]
+
+ただし直流成分に対しては、
+\[
+a_{0}=\frac{1}{T}\int_{0}^{T}f\left(t\right)\mathrm{d}t
+\]
+
+($m=n=0$のとき$\int_{0}^{T}\cos m\omega_{0}t\cos n\omega_{0}t\mathrm{d}t=T$だから)
+
+\paragraph{メモ}
+
+図電回6-6
+
+$\boldsymbol{v}=x\boldsymbol{i}+y\boldsymbol{j}+z\boldsymbol{k}$の$x$成分を求めるのに、
+\[
+\boldsymbol{v}\cdot\boldsymbol{i}=x\boldsymbol{i}\cdot\boldsymbol{i}+y\boldsymbol{j}\cdot\boldsymbol{i}+z\boldsymbol{k}\cdot\boldsymbol{i}=x
+\]
+と直交ベクトルの性質を利用して内積から成分を求めるのと同じ。
+
+\paragraph{例) 方形波}
+
+図電回6-7
+
+\[
+a_{0}=\frac{1}{T}\int_{0}^{T}f\left(t\right)\mathrm{d}t=0
+\]
+
+\begin{align*}
+a_{n} & =\frac{2}{T}\int_{0}^{T}f\left(t\right)\cos n\omega_{0}t\mathrm{d}t\\
+ & =\frac{2}{T}\left[\int_{0}^{\frac{T}{2}}f\left(t\right)\cos n\omega_{0}t\mathrm{d}t+\int_{\frac{T}{2}}^{T}f\left(t\right)\cos n\omega_{0}t\mathrm{d}t\right]\\
+ & =\frac{2}{T}\left[\int_{0}^{\frac{T}{2}}\cos n\omega_{0}t-\int_{\frac{T}{2}}^{T}\cos n\omega_{0}t\mathrm{d}t\right]\\
+ & =0
+\end{align*}
+
+一般に、
+\begin{itemize}
+\item $f\left(t\right)$: 奇関数→$\cos n\omega_{0}t$の成分が0
+\item $f\left(t\right)$: 偶関数→$\sin n\omega_{0}t$の成分が0
+\end{itemize}
+一方、
+\begin{align*}
+b_{n} & =\frac{2}{T}\int_{0}^{T}f\left(t\right)\sin n\omega_{0}t\mathrm{d}t\\
+ & =\frac{2}{T}\left[\int_{0}^{\frac{T}{2}}\sin n\omega_{0}t\mathrm{d}t-\int_{\frac{T}{2}}^{T}\sin n\omega_{0}t\mathrm{d}t\right]\\
+ & =\frac{2}{T}\times2\int_{0}^{\frac{T}{2}}\sin n\omega_{0}t\mathrm{d}t\\
+ & =\frac{4}{T}\left[-\frac{1}{n\omega_{0}}\cos n\omega_{0}t\right]_{0}^{\frac{T}{2}}\\
+ & =\frac{4}{T}\left[-\frac{1}{n\omega_{0}}\left(\cos n\omega_{0}\frac{T}{2}-\cos\theta\right)\right]\\
+ & =\frac{4}{2\pi n}\left(1-\cos n\pi\right)\:\left(\because\omega_{0}=\frac{2\pi}{T}\right)\\
+ & =\begin{cases}
+\frac{4}{n\pi} & \left(n\text{が奇数}\right)\\
+0 & \left(n\text{が偶数}\right)
+\end{cases}
+\end{align*}
+
+つまり、
+\begin{align*}
+f\left(t\right) & =\frac{4}{\pi}\left(\sin\omega_{0}t+\frac{\sin3\omega_{0}t}{3}+\frac{\sin5\omega_{0}t}{5}+\frac{\sin7\omega_{0}t}{7}+\cdots\right)\\
+ & =\frac{4}{\pi}\sum_{n=1,3,5,7\cdots}^{\infty}\frac{\sin n\omega_{0}t}{n}
+\end{align*}
+
+
+\paragraph{中間試験}
+
+11/22 13:45集合
+
+761教室
+
+学生証持参
+
+持ち込み不可
+
+\subsection{フーリエ級数展開を利用した回路解析}
+
+図電回6-8
+
+\[
+V_{0}=\frac{V_{i}}{i+\j\omega RC}
+\]
+
+\begin{align*}
+v_{i}\left(t\right) & =\frac{4V_{m}}{\pi}\sum_{n=1,3,5\cdots}^{\infty}\frac{\sin n\omega_{0}t}{n}\\
+ & =\frac{4V_{m}}{\pi}\sum_{n=1,3,5\cdots}^{\infty}\frac{\cos\left(n\omega_{0}t-\frac{\pi}{2}\right)}{n}
+\end{align*}
+
+重ね合わせの理より、各周波数成分について計算すればよい。
+
+\paragraph{$n=1$}
+
+$V_{i1}=\frac{4V_{m}}{\pi}\e^{-\j\frac{\pi}{2}}$より、
+\begin{align*}
+V_{01} & =\frac{4V_{m}}{\pi}\e^{-\j\frac{\pi}{2}}\frac{1}{1+\j\omega_{0}RC}\\
+ & =\frac{4V_{m}\angle\left(-\beta_{1}-\frac{\pi}{2}\right)}{\pi\sqrt{1+\omega_{0}^{2}R^{2}C^{2}}}
+\end{align*}
+
+ただし$\beta_{1}\tan^{-1}\left(\omega_{0}RC\right)$
+
+時間波形に戻すと、
+\[
+v_{01}=\frac{4V_{m}}{\pi\sqrt{1+\omega_{0}^{2}R^{2}C^{2}}}\sin\left(\omega_{0}t-\beta_{1}\right)
+\]
+
+
+\paragraph{$n=3$ ($3\omega_{0}$の成分)}
+
+$V_{i3}=\frac{4V_{m}}{3\pi}\e^{-\j\frac{\pi}{2}}$より、
+\begin{align*}
+V_{03} & =\frac{4V_{m}}{3\pi}\e^{-\j\frac{\pi}{2}}\frac{1}{1+3\j\omega_{0}RC}\\
+ & =\frac{4V_{m}\angle\left(-\beta_{3}-\frac{\pi}{2}\right)}{3\pi\sqrt{1+9\omega_{0}^{2}R^{2}C^{2}}}
+\end{align*}
+
+ただし、
+\[
+\beta_{3}=\tan^{-1}3\omega_{0}R
+\]
+
+時間波形に戻すと、
+\[
+v_{03}=\frac{4V_{m}}{3\pi\sqrt{1+0\omega_{0}^{2}R^{2}C^{2}}}\sin\left(3\omega_{0}t-\beta_{3}\right)
+\]
+
 \end{document}
