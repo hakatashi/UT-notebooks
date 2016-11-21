@@ -1,0 +1,239 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{esint}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2016-A 電気磁気学 後半}
+
+\author{教員: 種村 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\mathrm{grad}}
+\global\long\def\rot{\mathrm{rot}}
+\global\long\def\div{\mathrm{div}}
+
+
+\section*{第1回}
+
+\paragraph{成績}
+\begin{itemize}
+\item 出席は取らない
+\item 必修
+\end{itemize}
+
+\section*{0 イントロ}
+
+電磁気学を完全に記述する方程式 Maxwell's Equations
+
+\begin{align*}
+\nabla\cdot\boldsymbol{E} & =\frac{\rho}{\varepsilon_{0}}\:\left(\text{ガウス}\right)\\
+\nabla\times\boldsymbol{E} & =-\pd{\boldsymbol{B}}t\:\left(\text{ファラデー}\right)\\
+\nabla\cdot\boldsymbol{B} & =0\:\left(\text{磁荷の非存在}\right)\\
+\nabla\times\boldsymbol{B} & =\mu_{0}\varepsilon_{0}\pd{\boldsymbol{E}}t+\mu_{0}\boldsymbol{i}\:\left(\text{アンペア}\right)
+\end{align*}
+
+静電磁気学$\left(\pd{}t=0\right)$では、
+
+図電後1-1
+
+つまり時間不変の上等では``電気''と``磁気''は別個の現象(のように見える)。
+
+本当に面白いのは$\pd{\boldsymbol{E}}t,\pd{\boldsymbol{B}}t$の項。これにより、電磁誘導→電磁波(光)が記述される。
+
+\paragraph{後半}
+\begin{enumerate}
+\item $\boldsymbol{B}$って何?
+\item (※)の式 $\left(\pd{}t=0\right)$
+\item 磁性体
+\item $\pd{}t$の項
+\end{enumerate}
+
+\section{磁界}
+
+\subsection{アンペール力}
+
+\paragraph{クーロン力}
+
+\uline{静止した}2つの電荷間に働く力
+
+図電後1-2
+
+\[
+F=\frac{1}{4\pi\varepsilon_{0}}\frac{Q_{1}Q_{2}}{r^{2}}
+\]
+
+電荷が動いているときは、その\uline{速さと向き}に依存した力を発生する。→アンペール力(Ampere)
+
+\paragraph{アンペール力 (アンペール 1820年)}
+
+距離$R$離れた2本の平行な導線に電流$I_{1},I_{2}$が流れているとき、電荷が動いているとき、
+\begin{equation}
+F=\frac{\mu_{0}}{2\pi}\frac{I_{1}I_{2}}{R}
+\end{equation}
+の力が働く。
+
+ただし、$I_{1},I_{2}$が同じ向きなら引力、逆向きなら斥力。
+
+導線が直交してたら力は働かない。
+
+\[
+\mu_{0}=4\pi\times10^{-7}\left[\mathrm{N\cdot m/A^{2}}\right]
+\]
+
+透磁率という。
+
+\paragraph{なぜきれいな値なのか?}
+
+→実は(1)により電流の単位が定義されている。
+
+1Aとは「真空中で1m離れた平衡な直線導体に流れた時に、単位長さあたり$2\times10^{-7}\mathrm{N}$のちからが働くような電流」と定義される(SI単位系)。
+
+→その結果、1Cが定義されて、$\varepsilon_{0}$が求まる。
+
+\paragraph{復習}
+
+帯電下電線管に働くクーロン力は、単位長あたり、
+\begin{equation}
+F=\frac{1}{2\pi\varepsilon_{0}}\frac{\lambda_{1}\lambda_{2}}{R}
+\end{equation}
+
+∵ガウスの定理
+
+図電後1-3
+
+クーロン力(2)と同様に、直線導体間のアンペール力(1)は$R$に反比例する。
+
+→クーロン力(遠隔作用)が電界(近接作用)を用いて言い換えられたように、アンペール力も同様の考え方で説明できるはず。
+
+つまり、
+\begin{enumerate}
+\item 導線1の微小区間$\delta\boldsymbol{s}_{1}$を流れる電流$I_{1}$(電流要素$I\mathrm{d\boldsymbol{s}_{1}}$)が周囲に、なんらかの``場''(これを磁場または磁界と呼ぶ)を作る。
+\item 導線2の微小区間$\mathrm{d}\boldsymbol{s}_{2}$を流れる電流$I_{2}$(電流要素$I_{2}\mathrm{d}\boldsymbol{s}_{2}$)がその場を感じて力を受ける。
+\end{enumerate}
+図電後1-4
+
+「電流要素」→「電荷」に置き換えるとクーロン力
+
+\subsection{ビオ・サバールの法則}
+
+位置$\boldsymbol{r}'$にある電流要素$I'\mathrm{d}\boldsymbol{s}'$が、位置$\boldsymbol{r}$に
+\begin{equation}
+\mathrm{d}\boldsymbol{B}=\frac{\mu_{0}}{4\pi}\frac{I'\mathrm{d}\boldsymbol{s}\times\boldsymbol{u}}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{2}}
+\end{equation}
+で表される微小な``場''を作る。
+
+図電後1-5
+
+\[
+\boldsymbol{u}\equiv\frac{\boldsymbol{r}-\boldsymbol{r}'}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}
+\]
+
+$\boldsymbol{r}-\boldsymbol{r}'$方向の単位ベクトル
+
+($I$は$\mathrm{d}\boldsymbol{s}$の向きを性とした電流)
+
+電線全体が作る場は
+\[
+\boldsymbol{B}=\int\mathrm{d}\boldsymbol{B}
+\]
+
+\begin{equation}
+\therefore\boldsymbol{B}=\frac{\mu_{0}}{4\pi}\oint\frac{I'\mathrm{d}s'\times\left(\boldsymbol{r}-\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r'}\right|^{3}}
+\end{equation}
+
+図電後1-6
+
+そしてこの時、位置$\boldsymbol{r}$にある電流要素$I\mathrm{d}\boldsymbol{s}$は、
+\begin{equation}
+\boldsymbol{F}=I\mathrm{d}\boldsymbol{s}\times\boldsymbol{B}
+\end{equation}
+の力を受ける。
+
+図電後1-7
+
+すべての$I\mathrm{d}\boldsymbol{s}$において積分すれば導線全体が受ける力が求まる。
+
+ここで``場''$\boldsymbol{B}$を磁束密度と呼び、単位T(テスラ)を用いる。(このあとで出てくる$\boldsymbol{H}$を磁界と呼ぶため)
+
+直線電流にとうして(4)、(5)を用いて計算すると(1)が得られる。(演習問題)
+
+\paragraph{ローレンツ力}
+
+もともと電流は電荷の流れ。
+
+\[
+I\mathrm{d}\boldsymbol{s}-qN\boldsymbol{v}
+\]
+
+$q$: でん過疎量
+
+$N$: $\mathrm{d}\boldsymbol{s}$無いの電荷数
+
+$v$: 電荷の速度
+
+を用いると、(5)は
+\[
+\boldsymbol{F}=qN\boldsymbol{v}\times\boldsymbol{B}
+\]
+
+∴電荷1個あたり$\boldsymbol{F}=q\boldsymbol{v}\times\boldsymbol{B}$のアンペール力を受けるとも言える。
+
+クーロン力と合わせて一般に電荷が受ける力
+\begin{equation}
+\boldsymbol{F}=q\left(\boldsymbol{E}+\boldsymbol{v}\times\boldsymbol{B}\right)
+\end{equation}
+をローレンツ力と呼ぶ。
+
+\paragraph{電磁場の相対性}
+
+静止した電荷間の力がクーロン力(電界)\uline{動いている}電荷間の力がアンペール力(磁界)と区別したが、「動いているかどうか?」は相対的なもの。
+
+例えば、電荷と一緒に動いている系絡みたら、(6)の$\boldsymbol{v}=0$になり、アンペール力は発生しない。おかしい?
+
+答え: このとき、相対論的に長さが縮むことに起因して\uline{クーロン力}が余分に発生し、合計の$\boldsymbol{F}$がつじつまが合う。(配布資料)
+
+クーロンの法則+相対論→ビオ・サバールの法則が導出できる。(太田浩一『電磁気学の基礎II』)
+
+\paragraph{TAオフィスアワーのご案内}
+
+数学演習と電磁気学でわからないことを聞きに行ける制度
+\begin{itemize}
+\item 場所: 駒場IIキャンパス 先端研3号館308号室
+\item 日程: 11/24, 12/1, 12/8, 12/15, 12/22 (毎週木曜)
+\item 時間: 18:30～19:30
+\end{itemize}
+
+\paragraph{演習}
+
+1(a)
+
+図電後1-8
+\end{document}
