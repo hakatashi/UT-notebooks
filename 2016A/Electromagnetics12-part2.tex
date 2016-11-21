@@ -231,9 +231,119 @@ $v$: 電荷の速度
 \item 時間: 18:30～19:30
 \end{itemize}
 
-\paragraph{演習}
-
-1(a)
+\paragraph{演習問題1(a)}
 
 図電後1-8
+
+微小区間$\left[x+x+\mathrm{d}x\right]$の電流要素$I\mathrm{d}x$が点$P$に作る磁界密度を考える。
+
+\[
+\left|\boldsymbol{r}-\boldsymbol{r}'\right|\equiv r=\frac{d}{\sin\theta}
+\]
+
+$x=-\frac{d}{\tan\theta}$より$\d x{\theta}=\frac{d}{\sin^{2}\theta}$
+
+\[
+\mathrm{}\boldsymbol{s}\times\left(\boldsymbol{r}-\boldsymbol{r}'\right)=\left(r\mathrm{d}x\sin\theta\right)
+\]
+
+∴(4)より、
+\begin{align*}
+B & =\frac{\mu_{0}}{4\pi}\int_{x_{1}}^{x_{2}}\frac{I\sin x}{r^{2}}\mathrm{d}x\\
+ & =\frac{\mu_{0}I}{4\pi}\int_{\alpha}^{\beta}\frac{\sin^{3}x}{d^{2}}\frac{d}{\sin^{2}\theta}\mathrm{d}\theta\\
+ & =\frac{\mu_{0}I}{4\pi d}\int_{\alpha}^{\beta}\sin\theta\mathrm{d}\theta\\
+ & =\frac{\mu_{0}I}{4\pi d}\left(\cos\alpha-\cos\beta\right)
+\end{align*}
+
+向きは+z方向。
+
+\paragraph{(b)}
+
+$\alpha=0,\beta=\pi$
+
+$I=I_{1},d=R$を代入して、
+\[
+B=\frac{\mu_{0}I_{1}}{2\pi R}
+\]
+
+(5)より単位長さあたり($\left|\mathrm{d}\boldsymbol{s}\right|=1$)
+
+\[
+F=I_{2}B=\frac{\mu_{0}I_{1}I_{2}}{2\pi R}
+\]
+
+
+\paragraph{(c)}
+
+図電後1-9
+
+まず、線分$QR$を流れる電流g点$P$に作る磁束密度成分$\boldsymbol{B}_{1}$を考える。
+
+$\Delta PQR$に(a)の結果を適用
+
+図電後1-10
+
+\[
+\cos\alpha=-\cos\beta=\frac{\overline{O'Q}}{\overline{PR}}=\frac{a}{\sqrt{a^{2}+b^{2}+x^{2}}}
+\]
+
+\[
+d=\overline{PO'}=\sqrt{b^{2}+x^{2}}
+\]
+
+(a)の結果より、
+\[
+B_{1}=\frac{\mu_{0}I}{2\pi\sqrt{b^{2}+x^{2}}}\frac{a}{\sqrt{a^{2}+b^{2}+x^{2}}}
+\]
+
+$ST$が作る磁場を加えると、残るのは$OP$方向のみなので、その成分だけを考えると、
+\[
+B_{1\bot}=B_{1}\frac{b}{\sqrt{b^{2}+x^{2}}}=\frac{\mu_{0}Iab}{2\pi\left(b^{2}+x^{2}\right)\sqrt{a^{2}+b^{2}+x^{2}}}
+\]
+
+同様に、$RS$が作る磁場は、
+\[
+B_{2\bot}=\frac{\mu_{0}Iab}{2\pi\left(a^{2}+x^{2}\right)\sqrt{a^{2}+b^{2}+x^{2}}}
+\]
+
+∴合計
+\[
+B=2B_{1\bot}+2B_{2\bot}=\frac{\mu_{0}Iab}{\pi\sqrt{a^{2}+b^{2}+x^{2}}}\left(\frac{1}{a^{2}+x^{2}}+\frac{1}{b^{2}+x^{2}}\right)
+\]
+
+
+\paragraph{演習問題2}
+
+図電後1-11
+
+まず下の円環が作る磁場を考える。
+
+周方向に角度$\theta$をとる。
+
+微小電流要素$I\mathrm{d}s\left(=Ia\mathrm{d}\theta\right)$が点$P$につくる$\mathrm{d}\boldsymbol{B}$は、
+\[
+\mathrm{d}B=\frac{\mu_{0}}{4\pi}\frac{Ia\mathrm{d}\theta}{a^{2}+h^{2}}
+\]
+
+ただし$h\equiv d+z$
+
+図電後1-12
+
+円環一周がつくる磁場は$z$成分以外は打ち消し合うので$z$成分のみを考える。
+
+\[
+\mathrm{d}B_{z}=\mathrm{d}B\cdot\frac{a}{\sqrt{a^{2}+h^{2}}}=\frac{\mu_{0}}{4\pi}\frac{Ia^{2}}{\left(a^{2}+h^{2}\right)}\mathrm{d}\theta
+\]
+
+∴円環全体で
+\[
+B_{z}=\int_{0}^{2\pi}\frac{\mu_{0}}{4\pi}\frac{Ia^{2}}{\left(a^{2}+b^{2}\right)^{\frac{3}{2}}}\mathrm{d}\theta=\frac{\mu_{0}Ia^{2}}{2\left(a^{2}+b^{2}\right)^{\frac{3}{2}}}
+\]
+
+2つの合計は、
+\[
+B=-\frac{\mu_{0}Ia^{2}}{2}\left[\frac{1}{\left\{ a^{2}+\left(d+z\right)^{2}\right\} ^{\frac{3}{2}}}+\frac{1}{\left\{ a^{2}+\left(d-z\right)^{2}\right\} ^{\frac{3}{2}}}\right]
+\]
+
+図電後1-13
 \end{document}
