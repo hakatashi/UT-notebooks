@@ -13,6 +13,8 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
 
 \makeatletter
 
@@ -47,6 +49,7 @@
 \global\long\def\grad{\mathrm{grad}}
 \global\long\def\rot{\mathrm{rot}}
 \global\long\def\div{\mathrm{div}}
+\global\long\def\prob{\mathrm{Prob}}
 
 
 \section*{第1回}
@@ -1257,4 +1260,223 @@ FFT(Fast Fourier Transform)の登場でDFTの高速計算が可能に。
 周期性の与え方に工夫の余地あり
 
 図信6-8
+
+\section*{第7回}
+
+\paragraph{後半の予定}
+
+11/21 第1回
+
+11/28 駒場祭 休講
+
+12/5 第2回
+
+12/12 第3回
+
+12/19 第4回
+
+12/26 休講
+
+1/7 休講
+
+1/16 期末試験
+
+\chapter{第2部 不規則信号の解析}
+
+\uline{確率的変動}を伴う信号の解析
+
+1つ1つの信号波形そのものではなく、波形の集合と共通の性質を探る。
+
+\paragraph{ここで扱うトピック}
+
+統計量(復習)、定常性とは→集合平均、時間平均→相関関数(自己/相互)→スペクトル密度(電力/相互)
+
+相関関数↔スペクトル密度: フーリエ変換対
+
+\section{第6章 不規則信号の基礎}
+
+\subsection{不規則信号とは?}
+\begin{itemize}
+\item 現象
+\begin{itemize}
+\item 確定現象 (e.g. 月の動き)
+\item 不確定現象
+\begin{itemize}
+\item 完全に規則性のないもの
+\item 統計的な規則性があるもの (e.g. 元旦の気温)
+\end{itemize}
+\end{itemize}
+\end{itemize}
+それぞれの事象は確率的であるが、数多く観察することで共通の性質が見えてくる。
+
+{[}図: 標本点と事象の集合(標本空間){]}
+\begin{description}
+\item [{不規則変数}] random variable (元旦の気温など)事象が数値で表される確率的統計現象
+\item [{不規則信号}] random signal 事象が時間信号である確率的統計現象
+\end{description}
+
+\paragraph{統計量の定義}
+
+記号の定義
+\begin{itemize}
+\item 個々の信号 $x_{i}\left(t\right)$: $i$番目の標本
+\item $x_{i}\left(t\right)$の集合: 確率集合 ensemble
+\end{itemize}
+
+\paragraph{不規則信号の記述法}
+\begin{enumerate}
+\item 標本信号を多数書き出す
+\item 式で与える $x\left(t\right)=A\cos\left(\omega t+\theta\right)$
+\item 確率分布、統計量
+\item 信号の生成方法を示す (音声なら声質のモデルなど⋯⋯)
+\end{enumerate}
+
+\subsection{確率密度関数と統計量}
+
+\paragraph{確率分布}
+
+1変数 $x$
+
+確率分布 $P\left(x\right)=\prob\left\{ X\leq x\right\} $ ($X$: 観測値)
+
+確率密度 $p\left(x\right)=\d{}xP\left(x\right)$
+
+{[}図: $p\left(x\right)$と$P\left(x\right)${]}
+
+統計量: $p\left(x\right)$の特徴を示すパラメータ
+
+\paragraph{$X$の平均値・期待値}
+
+\begin{align*}
+E\left[X\right] & =\frac{1}{N}\sum_{i=1}^{N}x_{i}=\int_{-\infty}^{\infty}x\cdot p\left(x\right)\mathrm{d}x\\
+ & =\boldsymbol{n}\:\left(\mathrm{mean}\right)
+\end{align*}
+
+
+\paragraph{$X$の$n$次モーメント}
+
+\begin{align*}
+E\left[X^{n}\right] & =\int_{-\infty}^{\infty}x^{n}\cdot p\left(x\right)\mathrm{d}x\\
+ & =\boldsymbol{n}_{n}\:\left(\mathrm{moment}\right)
+\end{align*}
+
+
+\paragraph{$X$の$n$次中心モーメント}
+
+\begin{align*}
+E\left[\left(X-m\right)^{n}\right] & =\int_{-\infty}^{\infty}\left(x-m\right)^{n}p\left(x\right)\mathrm{d}x\\
+ & =\mu_{n}
+\end{align*}
+
+\begin{align*}
+\mu_{0} & =\int_{-\infty}^{\infty}1p\left(x\right)\mathrm{d}x=1\\
+\mu_{1} & =\int_{-\infty}^{\infty}xp\left(x\right)\mathrm{d}x-m\int_{-\infty}^{\infty}p\left(x\right)\mathrm{d}x=m-m=0\\
+\mu_{2} & =E\left[\left(x-m\right)^{2}\right]=\delta^{2}
+\end{align*}
+
+$\delta^{2}$: (分散: variance) 分布の広がり
+
+$\delta$: 標準偏差
+
+$\frac{\mu^{3}}{\delta^{3}}$: 分布の非対称性(歪度)
+
+$\frac{\mu^{4}}{\delta^{4}}-3$: 分布の非対称性(尖度)
+
+\paragraph{不規則信号}
+
+時点$t_{1},t_{2},\cdots,t_{n}$における信号値を$x_{1},x_{2}\cdots x_{n}$とする。
+
+→$n$個の変数の確率分布で考える。
+
+密度
+\[
+p_{n}\left(x_{1},t_{1};x_{2},t_{2};\cdots;x_{n},t_{n}\right)=\lim_{\Delta_{1},\Delta_{2},\cdots,\Delta_{n}\rightarrow0}\prob\left\{ x_{1}\leq x\left(t_{1}\right)\leq x_{1}+\Delta_{1},x_{2}\leq x\left(t_{2}\right)\leq x_{2}+\Delta_{2},\cdots,x_{n}\leq x\left(t_{n}\right)\leq x_{n}+\Delta_{n}\right\} 
+\]
+
+不規則信号の$n$次確率密度関数
+
+\paragraph{不規則信号論の公理}
+
+不規則信号は任意の自然数$n$と任意の$n$個の時点$t_{1},t_{2},\cdots,t_{n}$における確率密度関数が与えられれば、完全に記述される。
+
+\paragraph{不規則信号の統計量}
+
+$t=t_{1}$で定義される統計量
+
+集合平均
+\[
+E\left[x_{n}\left(t_{1}\right)\right]=\frac{1}{N}\sum_{i=1}^{N}x_{i}\left(t_{i}\right)
+\]
+
+$t=t_{1}$において、$x\left(t_{1}\right)=x_{1}$となる確率密度関数を$p\left(x_{1},t_{1}\right)$と表記すると、
+\begin{align*}
+E\left[x\left(t_{1}\right)\right] & =\int_{-\infty}^{\infty}x_{1}p\left(x_{1},t_{1}\right)\mathrm{d}x_{1}\:\left(\text{集合平均}\right)\\
+E\left[x^{2}\left(t_{1}\right)\right] & =\int_{-\infty}^{\infty}x_{1}^{2}p\left(x_{1},t_{1}\right)\mathrm{d}x_{1}\;\left(\text{集合二乗平均}\right)
+\end{align*}
+
+$t=t_{1},t=t_{2}$で定義される統計量
+
+集合相関
+\[
+E\left[x\left(t_{1}\right)x\left(t_{2}\right)\right]=\int_{-\infty}^{\infty}\int_{\infty}^{\infty}x_{1}x_{2}.\left(x_{1}t_{1};x_{2}t_{2}\right)\mathrm{d}x_{1}\mathrm{d}x_{2}
+\]
+
+
+\subsection{定常信号}
+
+統計的な性質がどの時点観測しても同じ信号
+
+例: \texttimes 地震波 ◯音声
+
+\paragraph{定常信号の定義}
+
+$\left\{ x\left(t\right),-\infty<t<\infty\right\} $において、任意の$n,\tau\left(-\infty<\tau<\infty\right)$に対して、
+\[
+p_{n}\left(x_{1},t_{1};x_{2},t_{2};\cdots;x_{n},t_{n}\right)=p_{n}\left(x_{1},t_{1}+\tau;x_{2},t_{2}+\tau;\cdots;x_{n},t_{n}+\tau\right)
+\]
+
+
+\paragraph{その意味}
+
+確率集合が時間推移変換に対して不変
+
+→確率密度関数は、時間差$\left(t_{2}-t_{1}\right),\left(t_{3}-t_{1}\right),\cdots,\left(t_{n}-t_{1}\right)$のみによって記述される。
+
+2種類に分けて考えよう。
+\begin{itemize}
+\item 強定常信号 strictly Stationary Signal: すべての確率密度関数$p\left(t\right)$が時間差のみの関数
+\item 弱定常信号 weakly Stationary Signal: 1次と2次の統計量が時間差のみの関数
+\end{itemize}
+
+\paragraph{弱定常信号}
+
+期待値$E\left[x\left(t_{1}\right)\right]=m$が$t_{1}$によらず一定
+
+共分散$E\left[\left(x\left(t_{1}\right)-m\right)\left(x\left(t_{2}\right)-m\right)\right]$が$\frac{t_{1}-t_{2}}{\text{時間差}}$のみの関数になる。
+
+上記も満たす$\left\{ x\left(t\right)\right\} $を弱定常という。
+
+弱定常ならば集合平均が時刻に依存しない。
+
+では時間平均はどうなるの?
+
+集合平均$E\left[x\left(t_{1}\right)\right]=\frac{1}{N}\sum_{i=1}^{N}x_{i}\left(t_{1}\right)$←$t_{1}$に依存しない
+
+時間平均$\left\langle x\left(t\right)\right\rangle =\frac{1}{N}\sum_{i=1}^{N}x\left(t_{i}\right)$
+
+\paragraph{エルゴード定理}
+
+エルゴード信号では、時間平均と集合平均が一致する。
+
+→時間平均を便利に扱える。
+
+\paragraph{エルゴード信号}
+\begin{enumerate}
+\item 強定常であり、
+\item 強定常な真部分確率集合を持たない
+\end{enumerate}
+
+\paragraph{エルゴード仮説}
+
+複雑な定常的物理現象は、エルゴード信号とみなしてよい
 \end{document}
