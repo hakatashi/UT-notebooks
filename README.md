@@ -40,7 +40,8 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 * [2016年度 Aセメスター](2016A)
 	* [電気回路理論第一 前半](2016A/CircuitTheory1.tex) - [PDF][CircuitTheory1-pdf]
 	* [電気回路理論第一 後半](2016A/CircuitTheory1-part2.tex) - [PDF][CircuitTheory1-part2-pdf]
-	* [電気磁気学I・II](2016A/Electromagnetics12.tex) - [PDF][Electromagnetics12-pdf]
+	* [電気磁気学I・II 前半](2016A/Electromagnetics12.tex) - [PDF][Electromagnetics12-pdf]
+	* [電気磁気学I・II 後半](2016A/Electromagnetics12-part2.tex) - [PDF][Electromagnetics12-part2-pdf]
 	* [電子デバイス基礎](2016A/ElectronicDevice.tex) - [PDF][ElectronicDevice-pdf]
 	* [電子基礎物理](2016A/ElectronicPhysics.tex) - [PDF][ElectronicPhysics-pdf]
 	* [情報通信理論](2016A/InformationScience.tex) - [PDF][InformationScience-pdf]
@@ -73,6 +74,7 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 [CircuitTheory1-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/CircuitTheory1.pdf
 [CircuitTheory1-part2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/CircuitTheory1-part2.pdf
 [Electromagnetics12-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/Electromagnetics12.pdf
+[Electromagnetics12-part2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/Electromagnetics12-part2.pdf
 [ElectronicDevice-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/ElectronicDevice.pdf
 [ElectronicPhysics-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/ElectronicPhysics.pdf
 [InformationScience-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/InformationScience.pdf
