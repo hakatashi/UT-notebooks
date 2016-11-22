@@ -13,6 +13,8 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
 
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
@@ -505,7 +507,7 @@ $l_{i}$瞬時符号があれば
 
 \paragraph{どうやって最短符号を作るか?}
 
-ハフマン府外: 平均符号長を最短化する符号
+ハフマン符号: 平均符号長を最短化する符号
 \begin{center}
 \includegraphics{images/InformationScience/3-6}
 \par\end{center}
@@ -656,5 +658,249 @@ H_{1}\left(S\right)=-\frac{2}{3}\log\frac{2}{3}-\frac{1}{3}\log\frac{1}{3}=0.918
 \[
 \frac{H_{1}\left(S^{n}\right)}{n}\rightarrow?
 \]
+
+
+\section*{第5回}
+\begin{itemize}
+\item ハフマン符号
+\item 情報源拡大 (ブロック化)
+\item マルコフ情報源
+\item 情報システム符号化
+\begin{itemize}
+\item 記憶のなし/ある
+\end{itemize}
+\item よりよい符号化法
+\begin{itemize}
+\item ハフマン符号+ブロック化で十分に効率を上げられる
+\item $n=100$ 元々のシンボルが2つだとしても、テーブルの大きさ$2^{100}\simeq10^{30}$
+\end{itemize}
+\end{itemize}
+
+\paragraph{ランレングス符号化}
+
+run/length: 連なり/符号化
+
+図情5-1
+
+図情5-2
+
+\paragraph{ランレングス+ハフマン符号化}
+
+図情5-3
+
+根元を 平均ラン長$L_{R}=\sum p_{i}i$とすると、元々の1シンボルあたりでは、(正確ではないが)
+\[
+\frac{H}{L_{R}}<\frac{B}{L_{R}}<\frac{H}{L_{R}}+\frac{1}{L_{R}}
+\]
+
+\[
+H\leq B<H+1
+\]
+
+\begin{align*}
+H & =\left(\text{ラン長のエントロピー}\right)\\
+ & =-\sum p_{i}\log p_{i}
+\end{align*}
+
+
+\paragraph{ファクシミリ符号化}
+
+ラインスキャンした画像データをファクシミリ符号化により圧縮
+
+標準解像度 3.85ライン/mm
+
+高解像度 7.7ライン/mm
+
+A4 1枚 (210mmx297mm) →2Mビット
+
+\paragraph{MM・MR符号}
+
+MH (Modified Huffman)
+
+MR (Modified Read)
+
+\paragraph{MH符号}
+
+ランレングス$l$
+
+\[
+l=m+64n\:0\leq m\leq63
+\]
+
+\[
+\left\{ \overbrace{0,1,2,\cdots,63}^{\text{terminating符号}},\overbrace{64,128,\cdots,1728}^{\text{makeup符号}},\text{EOL}\right\} 
+\]
+
+→2元シンボルに対して符号の設計
+
+\[
+\text{白の150のラン}=W_{150}=W_{128}W_{22}=\text{10010 0000011}
+\]
+
+EOL: End of Life
+
+\paragraph{MR符号}
+\begin{itemize}
+\item ライン間の相関の利用
+\item 参照ラインに対しての変化で符号化
+\item 同期的にMH符号
+\begin{itemize}
+\item 標準 2ラインごと
+\item 高解像度 4ラインごと
+\end{itemize}
+\end{itemize}
+
+\section*{第6回}
+
+\paragraph{算術符号}
+
+``エリアス符号''
+
+図情6-1
+
+\[
+P\left(0\right)=0.8,P\left(1\right)=0.2
+\]
+
+確率を反映させた``区切り''を用いる
+
+図情6-2
+
+図情6-3
+
+実際に長さ$N$の系列$S$にて、
+
+\[
+P_{0}\cdots0--N_{02}
+\]
+
+\[
+P_{1}\cdots1--N_{12}
+\]
+
+$P_{0}^{N_{0}}\times P_{1}^{N_{1}}$の区間内の点を求めることになる。
+
+$P_{0}^{N_{0}}\times P_{1}^{N_{1}}$の点を表すのに必要な精度(ケタ数)
+\[
+-\log_{2}P_{0}^{N_{0}}\times P_{1}^{N_{1}}=-N_{0}\log_{2}P_{0}-N_{1}\log_{2}P_{1}
+\]
+
+1シンボル当たりを求めると、
+
+\[
+-\frac{N_{0}}{N}\log P_{0}-\frac{N_{1}}{N}\log P_{1}\Rightarrow-P_{0}\log P_{0}-P_{1}\log P_{1}
+\]
+
+
+\paragraph{算術符号}
+\begin{itemize}
+\item 有限語長
+\item 劣性確率
+\end{itemize}
+$a_{2}a_{1}a_{1}$ (長さは3まで)
+
+$\left\{ a_{1},a_{2}\right\} $ $P\left(a_{1}\right)=0.75,P\left(a_{2}\right)=0.25$
+
+図情6-4
+\begin{itemize}
+\item テーブルを使わない
+\item 算術演算で符号を生成
+\end{itemize}
+
+\paragraph{通信路符号化}
+\begin{itemize}
+\item 通信路の誤りを訂正(検出)
+\item 誤り訂正の限界
+\item 通信路モデルについて
+\begin{itemize}
+\item 記憶のない(定常的な)通信路 (ランダムに誤りが起こる通信路)
+\end{itemize}
+\end{itemize}
+図情6-5
+
+\[
+\left[\begin{array}{cccc}
+P\left(b_{1}|a_{1}\right) & \cdots & \cdots & P\left(b_{n}|a_{n}\right)\\
+ & \ddots\\
+ &  & P\left(b_{j}|a_{i}\right)\\
+ &  &  & \ddots
+\end{array}\right]\triangleq\text{通信路行列}
+\]
+
+\[
+P\left(b_{j}|a_{i}\right)=P_{ji}
+\]
+
+
+\paragraph{典型的な通信路}
+\begin{enumerate}
+\item 2元対称通信路
+
+図情6-6
+
+通信路行列
+\[
+\left[\begin{array}{cc}
+1-p & p\\
+p & 1-p
+\end{array}\right]
+\]
+
+\item 2元対称消失通信路
+
+図情6-7
+
+\[
+\left[\begin{array}{ccc}
+1-p-q & p & q\\
+p & 1-p-q & q
+\end{array}\right]
+\]
+
+\end{enumerate}
+
+\paragraph{2元対称通信路}
+
+誤り源を用いて通信路を表すこともできる。
+
+\paragraph{通信路容量 (Channel Capacity)}
+
+通信路で送ることのできる情報量の\uline{最大値}
+
+\[
+C\triangleq\max I\left(A,B\right)
+\]
+
+図情6-8
+
+\begin{align*}
+I\left(A,B\right) & =H\left(A\right)-H\left(A|B\right)\\
+ & =H\left(B\right)-H\left(B|A\right)\\
+ & =H\left(A\right)+H\left(B\right)-H\left(AB\right)
+\end{align*}
+
+\begin{align*}
+I\left(A,B\right) & =\sum P_{C}\left(a_{i},b_{j}\right)\log\frac{P_{C}\left(a_{i},b_{j}\right)}{P_{X}\left(a_{i}\right)P_{Y}\left(b_{j}\right)}\\
+ & =\sum_{i}\sum_{j}P\left(a_{i}\right)P\left(b_{j}|a_{i}\right)\log\frac{P\left(a_{i}\right)P\left(b_{j}|a_{i}\right)}{P\left(a_{i}\right)P\left(b_{j}\right)}\\
+ & =\sum_{i}P\left(a_{i}\right)\sum P\left(b_{j}|a_{i}\right)\log\frac{P\left(b_{j}|a_{i}\right)}{P\left(b_{j}\right)}\\
+ & =H\left(B\right)+p\log P+\left(a-p\right)\log\left(1-P\right)
+\end{align*}
+
+\[
+C=1+p\log P+\left(1-p\right)\log\left(1-P\right)
+\]
+
+図情6-9
+
+\paragraph{加法的通信路}
+
+図情6-10
+
+\begin{align*}
+I\left(X,Y\right) & =H\left(Y\right)-H\left(Y|X\right)\\
+ & =H\left(Y\right)-H\left(X\oplus E|X\right)\\
+ & =H\left(Y\right)-H\left(E\right)\\
+ & =H\left(Y\right)+p\log P+\left(1-p\right)\log\left(1-P\right)
+\end{align*}
 
 \end{document}
