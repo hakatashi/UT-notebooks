@@ -2582,4 +2582,287 @@ A_{z}B_{x} & A_{z}B_{y} & A_{z}B_{z}
 \end{array}\right)
 \]
 
+
+\section*{第8回}
+
+来週休み
+
+\paragraph{レポート}
+
+\[
+\dot{\boldsymbol{x}}=\left(\begin{array}{cc}
+2 & 1\\
+1 & 2
+\end{array}\right)\boldsymbol{x}+\left(\begin{array}{c}
+\mathrm{e}^{t}\\
+t
+\end{array}\right)\text{を解け。}
+\]
+を解け。
+
+\paragraph{ベクトルの微分}
+
+\[
+\partial_{x}f=\pd fx
+\]
+
+ナブラ演算子
+\begin{align*}
+\nabla & =\boldsymbol{e}_{x}\partial_{x}+\boldsymbol{e}_{y}\partial_{y}+\boldsymbol{e}_{z}\partial_{z}\\
+ & \equiv\boldsymbol{e}_{i}\partial_{i}\\
+ & =\left(\begin{array}{c}
+\partial_{x}\\
+\partial_{y}\\
+\partial_{z}
+\end{array}\right)
+\end{align*}
+
+
+\paragraph{傾斜 gradient}
+
+\begin{align*}
+\grad f & =\nabla f\\
+ & =\boldsymbol{e}_{i}\partial_{i}f\\
+ & =\left(\begin{array}{c}
+\partial_{x}f\\
+\partial_{y}f\\
+\partial_{z}f
+\end{array}\right)
+\end{align*}
+
+
+\paragraph{発散 divergence}
+
+\begin{align*}
+\div\boldsymbol{F} & =\nabla\cdot\boldsymbol{F}=\left(\boldsymbol{e}_{i}\partial_{i}\right)\cdot\left(F_{j}\partial_{j}\right)\\
+ & =\left(\boldsymbol{e}_{i}\cdot\boldsymbol{e}_{j}\right)\partial_{i}F_{j}=\delta_{ij}\partial_{i}F_{j}\\
+ & =\partial_{i}F_{i}+\partial_{y}F_{y}+\partial_{z}F_{z}
+\end{align*}
+
+
+\paragraph{回転 rotation}
+
+\begin{align*}
+\rot\boldsymbol{F} & =\nabla\times\boldsymbol{F}=\left(\boldsymbol{e}_{i}\partial_{i}\right)\times\left(F_{j}\boldsymbol{e}_{j}\right)\\
+ & =\left(\boldsymbol{e}_{i}\times\boldsymbol{e}_{j}\right)\partial_{i}F_{j}=\varepsilon_{ijk}\boldsymbol{e}_{k}\partial_{i}F_{j}\\
+ & =\varepsilon_{ijk}\partial_{j}F_{j}\boldsymbol{e}_{k}\\
+ & =\left(\begin{array}{c}
+\partial_{y}F_{z}-\partial_{z}F_{y}\\
+\partial_{z}F_{x}-\partial_{x}F_{z}\\
+\partial_{x}F_{y}-\partial_{y}F_{x}
+\end{array}\right)
+\end{align*}
+
+
+\paragraph{ラプラス演算子 Laplacian}
+
+\begin{align*}
+\Delta f & =\nabla^{2}f\\
+ & =\nabla\cdot\nabla f\\
+ & =\left(\boldsymbol{e}_{i}\partial_{i}\right)\cdot\left(\boldsymbol{e}_{j}\partial_{j}\right)f=\left(\boldsymbol{e}_{i}\cdot\boldsymbol{e}_{j}\right)\partial_{i}\partial_{j}f\\
+ & =\delta_{ij}\partial_{i}\partial_{j}f=\partial_{i}\partial_{i}f=\partial_{x}^{2}f+\partial_{y}^{2}f+\partial_{z}^{2}f
+\end{align*}
+
+\[
+\Delta f=0
+\]
+
+
+\paragraph{公式}
+
+\begin{align*}
+\nabla\left(\phi\psi\right) & =\boldsymbol{e}_{i}\partial_{i}\left(\phi\psi\right)\\
+ & =\boldsymbol{e}_{i}\left(\partial_{i}\phi\right)\psi+\boldsymbol{e}_{i}\phi\left(\partial_{i}\psi\right)\\
+ & =\left(\nabla\phi\right)\psi+\phi\nabla\psi
+\end{align*}
+
+\begin{align*}
+\nabla\cdot\left(\phi\boldsymbol{A}\right) & =\left(\boldsymbol{e}_{i}\partial_{i}\right)\cdot\left(\phi\boldsymbol{A}\right)\\
+ & =\boldsymbol{e}_{i}\cdot\left[\left(\partial_{i}\phi\right)\boldsymbol{A}+\phi\left(\partial_{i}\boldsymbol{A}\right)\right]\\
+ & =\left(\nabla\phi\right)\cdot\boldsymbol{A}+\phi\left(\nabla\cdot\boldsymbol{A}\right)
+\end{align*}
+
+\begin{align*}
+\nabla\times\left(\phi\boldsymbol{A}\right) & =\varepsilon_{ijk}\partial_{i}\left(\phi A_{j}\right)\boldsymbol{e}_{k}\\
+ & =\left[\varepsilon_{ijk}\left(\partial_{i}\phi\right)A_{j}+\varepsilon_{ijk}\phi\left(\partial_{i}A_{j}\right)\right]\boldsymbol{e}_{k}\\
+ & =\left(\nabla\phi\right)\times\boldsymbol{A}+\phi\left(\nabla\times\boldsymbol{A}\right)
+\end{align*}
+
+\begin{align*}
+\nabla\cdot\left(\boldsymbol{A}\times\boldsymbol{B}\right) & =\left(\boldsymbol{e}_{i}\partial_{i}\right)\cdot\left(\varepsilon_{jkl}A_{j}B_{k}\boldsymbol{e}_{l}\right)\\
+ & =\left(\boldsymbol{e}_{i}\cdot\boldsymbol{e}_{l}\right)\varepsilon_{jkl}\partial_{i}A_{j}B_{k}\\
+ & =\varepsilon_{ijk}\partial_{i}\left(A_{j}B_{k}\right)\\
+ & =\varepsilon_{ijk}\left[\left(\partial_{i}A_{j}\right)B_{k}+A_{j}\left(\partial_{i}B_{k}\right)\right]\\
+ & =\boldsymbol{B}\cdot\left(\nabla\times\boldsymbol{A}\right)+\boldsymbol{A}\cdot\left(\nabla\times\boldsymbol{B}\right)
+\end{align*}
+
+\begin{align*}
+\nabla\times\left(\boldsymbol{A}\times\boldsymbol{B}\right) & =\partial_{j}\left(A_{i}B_{j}\right)\boldsymbol{e}_{i}-\partial_{j}\left(A_{j}B_{i}\right)\boldsymbol{e}_{i}\\
+ & =\boldsymbol{e}_{i}B_{j}\partial_{j}A_{i}-\boldsymbol{e}_{i}B_{i}\partial_{j}A_{j}-\boldsymbol{e}_{i}A_{j}\partial_{j}B_{i}+\boldsymbol{e}_{i}A_{j}\partial_{j}B_{i}\\
+ & =\left(\boldsymbol{B}\cdot\nabla\right)\boldsymbol{A}-\boldsymbol{B}\left(\nabla\cdot\boldsymbol{A}\right)-\left(\boldsymbol{A}\cdot\nabla\right)\boldsymbol{B}+\boldsymbol{A}\left(\nabla\cdot\boldsymbol{B}\right)
+\end{align*}
+
+\begin{align*}
+\nabla\left(\boldsymbol{A}\cdot\boldsymbol{B}\right) & =\left(\boldsymbol{B}\cdot\nabla\right)\boldsymbol{A}+\left(\boldsymbol{A}\cdot\nabla\right)\boldsymbol{B}+\boldsymbol{B}\times\left(\nabla\times\boldsymbol{A}\right)+\boldsymbol{A}\times\left(\nabla\times\boldsymbol{B}\right)\\
+ & =B_{j}\partial_{j}A_{i}\boldsymbol{e}_{i}+A_{j}\partial_{j}B_{i}\boldsymbol{e}_{i}+\left(B_{j}\partial_{i}A_{j}-B_{j}\partial_{j}A_{i}\right)\boldsymbol{e}_{i}+\left(A_{j}\partial_{i}B_{j}-A_{j}\partial_{j}B_{i}\right)\boldsymbol{e}_{i}\\
+ & =B_{j}\partial_{i}A_{j}\boldsymbol{e}_{i}+A_{j}\partial_{i}B_{j}\boldsymbol{e}_{i}\\
+ & =\boldsymbol{e}_{i}\partial_{i}\left(A_{i}B_{j}\right)
+\end{align*}
+
+\begin{align*}
+\rot\grad\phi & =\nabla\times\nabla\phi=\boldsymbol{e}_{j}\partial_{j}\times\boldsymbol{e}_{k}\partial_{k}\phi\text{ta}\\
+ & =\boldsymbol{e}_{i}\varepsilon_{ijk}\partial_{j}\partial_{k}\phi & \left(\partial_{j}\partial_{k}=\partial_{k}\partial_{j}\right)\\
+ & =0 & \left(\varepsilon_{ijk}=-\varepsilon_{ikj}\right)
+\end{align*}
+
+\[
+\left(\boldsymbol{e}_{x}\varepsilon_{xyz}\partial_{y}\partial_{z}+\boldsymbol{e}_{x}\varepsilon_{xzy}\partial_{z}\partial_{y}+\cdots=\boldsymbol{e}_{x}\left(\partial_{y}\partial_{z}-\partial_{z}\partial_{y}\right)+\cdots=0\right)
+\]
+
+\begin{align*}
+\div\rot\boldsymbol{A} & =\boldsymbol{e}_{l}\partial_{l}\cdot\boldsymbol{e}_{i}\left(\varepsilon_{ijk}\partial_{j}\partial_{k}\right)\\
+ & =\partial_{i}\left(\varepsilon_{ijk}\partial_{j}A_{k}\right)=\varepsilon_{ijk}\partial_{i}\partial_{j}A_{k}=0
+\end{align*}
+
+
+\paragraph{ヘルツホルムの法則}
+
+\[
+\boldsymbol{F}\left(\boldsymbol{r}\right)=\boldsymbol{F}^{L}\left(\boldsymbol{r}\right)+\boldsymbol{F}^{T}\left(\boldsymbol{r}\right)
+\]
+
+\[
+\nabla\times\boldsymbol{F}^{L}\left(\boldsymbol{r}\right)=0\Rightarrow\boldsymbol{F}^{L}\left(\boldsymbol{r}\right)=-\nabla\phi\left(\boldsymbol{r}\right)
+\]
+
+\[
+\nabla\cdot\boldsymbol{F}^{T}\left(\boldsymbol{r}\right)=0\Rightarrow\boldsymbol{F}^{T}\left(\boldsymbol{r}\right)=\nabla\times\boldsymbol{A}\left(\boldsymbol{r}\right)
+\]
+
+$\phi\left(\boldsymbol{r}\right)$: スカラーポテンシャル
+
+$\boldsymbol{A}\left(\boldsymbol{r}\right)$: ベクトルポテンシャル
+
+\paragraph{証明}
+
+フーリエ表示
+
+\begin{align*}
+\boldsymbol{F}\left(\boldsymbol{r}\right) & =\int\e^{i\boldsymbol{k}\cdot\boldsymbol{r}}\boldsymbol{F}\left[\boldsymbol{K}\right]\mathrm{d}\boldsymbol{K}\\
+\boldsymbol{F}^{L}\left(\boldsymbol{r}\right) & =\int\e^{i\boldsymbol{k}\cdot\boldsymbol{r}}\boldsymbol{F}^{L}\left[\boldsymbol{K}\right]\mathrm{d}\boldsymbol{K}\\
+\boldsymbol{F}^{T}\left(\boldsymbol{r}\right) & =\int\e^{i\boldsymbol{k}\cdot\boldsymbol{r}}\boldsymbol{F}^{T}\left[\boldsymbol{K}\right]\mathrm{d}\boldsymbol{K}
+\end{align*}
+
+まず$\boldsymbol{F}\left[\boldsymbol{k}\right]$から縦成分$\left(\frac{\boldsymbol{k}}{k}\right)$を取り出し、縦成分ベクトル$\boldsymbol{F}^{L}\left[\boldsymbol{K}\right]=\frac{\boldsymbol{K}\cdot\boldsymbol{F}\left[\boldsymbol{K}\right]}{K^{2}}\cdot\boldsymbol{K}$を定義する。
+
+横成分ベクトル$\boldsymbol{F}^{T}\left[\boldsymbol{K}\right]=\boldsymbol{F}\left[\boldsymbol{K}\right]-\boldsymbol{F}^{L}\left[\boldsymbol{K}\right]$
+
+\begin{align*}
+\nabla\times\boldsymbol{F}^{L}\left(\boldsymbol{r}\right) & =\boldsymbol{e}_{i}\varepsilon_{ijm}\pd{F_{m}^{L}\left(\boldsymbol{r}\right)}{r_{j}}\\
+ & =\boldsymbol{e}_{i}\varepsilon_{ijm}\int\pd{\e^{ikr}}{r_{j}}\frac{\boldsymbol{K}\cdot\boldsymbol{F}\left[\boldsymbol{K}\right]}{K^{2}}K_{m}\mathrm{d}K\\
+ & =i\boldsymbol{e}_{i}\int\e^{i\boldsymbol{k}\cdot\boldsymbol{r}}\left(\varepsilon_{ijm}K_{j}K_{m}\right)\frac{\boldsymbol{K}\cdot\boldsymbol{F}\left[\boldsymbol{K}\right]}{K^{2}}\mathrm{d}\boldsymbol{K}=0
+\end{align*}
+
+\begin{align*}
+\nabla\cdot\boldsymbol{F}^{T}\left(\boldsymbol{r}\right) & =\pd{}{r_{j}}\int\e^{i\boldsymbol{k}\cdot\boldsymbol{r}}\left[K_{j}\left[\boldsymbol{K}\right]\cdot\frac{\boldsymbol{K}\cdot\boldsymbol{F}\left[\boldsymbol{K}\right]}{X^{2}}K_{j}\right]\mathrm{d}\boldsymbol{K}\\
+ & =i\int\boldsymbol{e}^{i\boldsymbol{k}\cdot\boldsymbol{r}}K_{j}\left[F_{j}\left[\boldsymbol{K}\right]\cdot\frac{\boldsymbol{K}\cdot\boldsymbol{F}\left[\boldsymbol{K}\right]}{K^{2}}K_{j}\right]\mathrm{d}\boldsymbol{K}\\
+ & =i\int\boldsymbol{e}^{i\boldsymbol{k}\cdot\boldsymbol{r}}\left[\boldsymbol{K}\cdot\boldsymbol{F}\left[\boldsymbol{K}\right]-\boldsymbol{K}\cdot\boldsymbol{F}\left[\boldsymbol{K}\right]\right]\mathrm{d}\boldsymbol{K}\\
+ & =0
+\end{align*}
+
+\begin{align*}
+\phi\left(\boldsymbol{r}\right) & =\int\e^{i\boldsymbol{k}\cdot\boldsymbol{r}}\phi\left[\boldsymbol{K}\right]\mathrm{d}\boldsymbol{K}\\
+-\nabla\phi\left(\boldsymbol{r}\right) & =-i\int\e^{i\boldsymbol{k}\cdot\boldsymbol{r}}\boldsymbol{K}\phi\left[\boldsymbol{K}\right]\mathrm{d}\boldsymbol{K}\\
+\boldsymbol{F}^{L}\left(\boldsymbol{r}\right) & =\int\e^{i\boldsymbol{k}\cdot\boldsymbol{r}}\frac{\boldsymbol{K}\cdot\boldsymbol{F}\left[\boldsymbol{K}\right]}{K^{2}}\boldsymbol{K}\mathrm{d}\boldsymbol{K}\\
+\phi\left[\boldsymbol{K}\right] & =i\frac{\boldsymbol{K}\cdot\boldsymbol{F}\left[\boldsymbol{K}\right]}{K^{2}}\\
+\boldsymbol{A}\left(\boldsymbol{r}\right) & =\int\e^{i\boldsymbol{k}\cdot\boldsymbol{r}}\boldsymbol{A}\left[\boldsymbol{K}\right]\mathrm{d}\boldsymbol{K}\\
+\nabla\times\boldsymbol{A}\left(\boldsymbol{r}\right) & =i\boldsymbol{e}_{i}\varepsilon_{ijm}\int\e^{i\boldsymbol{k}\cdot\boldsymbol{r}}K_{j}A_{m}\left[\boldsymbol{K}\right]\mathrm{d}\boldsymbol{K}\\
+F^{T}\left(\boldsymbol{r}\right) & =\int\e^{i\boldsymbol{k}\cdot\boldsymbol{r}}\boldsymbol{F}^{T}\left[\boldsymbol{K}\right]\mathrm{d}\boldsymbol{K}\\
+i\varepsilon_{ijm}K_{j}A_{m}\left[\boldsymbol{K}\right] & =F_{i}^{T}\left[\boldsymbol{K}\right]
+\end{align*}
+
+$\boldsymbol{F}^{T}$は2つの自由度$\left(A_{x},A_{y},A_{z}\right)$
+
+\[
+\nabla\cdot\boldsymbol{F}^{T}\left(\boldsymbol{r}\right)=k_{x}F_{x}^{T}+k_{y}F_{y}^{T}+k_{z}F_{z}^{T}=0
+\]
+
+\begin{align*}
+k_{x}A_{y}-x_{y}A_{x} & =-iF_{z}^{T}\\
+k_{y}A_{z}-x_{z}A_{y} & =-iF_{x}^{T}\\
+k_{z}A_{x}-x_{x}A_{z} & =-iF_{y}^{T}
+\end{align*}
+
+$C\left[\boldsymbol{K}\right]$を任意関数として、
+\begin{align*}
+A_{x}\left[\boldsymbol{K}\right] & =\frac{1}{K_{y}}\left(K_{x}C\left[\boldsymbol{K}\right]+iF_{z}^{T}\left[\boldsymbol{K}\right]\right)\\
+A_{y}\left[\boldsymbol{K}\right] & =C\left[\boldsymbol{K}\right]\\
+A_{z}\left[\boldsymbol{K}\right] & =\frac{1}{K_{y}}\left(K_{z}C\left[\boldsymbol{K}\right]-iF_{x}^{T}\left[\boldsymbol{K}\right]\right)
+\end{align*}
+
+\begin{align*}
+K_{z}A_{x}-K_{x}A_{z} & =\frac{K_{z}}{K_{y}}\left(K_{x}C+iF_{z}^{T}\right)-\frac{K_{x}}{K_{y}}\left(K_{z}C-iF_{x}^{T}\right)\\
+ & =\frac{i}{K_{y}}\left(K_{z}F_{z}^{T}+K_{x}F_{x}^{T}\right)=-iF_{y}^{T}
+\end{align*}
+
+
+\paragraph{ゲージ変換}
+
+ベクトル場: $\boldsymbol{F}\left(\boldsymbol{r}\right)=\left(F_{x},F_{y}F_{z}\right)$
+
+ポテンシャル $\left(\phi,A_{x},A_{y}A_{z}\right)$
+
+\[
+\boldsymbol{F}\left(\boldsymbol{r}\right)=-\nabla\phi\left(\boldsymbol{r}\right)+\nabla\times\boldsymbol{A}\left(\boldsymbol{r}\right)
+\]
+
+ゲージ変換
+\[
+\boldsymbol{A}\left(\boldsymbol{r}\right)\mapsto\boldsymbol{A}'\left(\boldsymbol{r}\right)=\boldsymbol{A}\left(\boldsymbol{r}\right)+\nabla f\left(\boldsymbol{r}\right)
+\]
+
+\begin{align*}
+\boldsymbol{F}'\left(\boldsymbol{r}\right) & =-\nabla\phi\left(\boldsymbol{r}\right)+\nabla\times\boldsymbol{A}'\left(\boldsymbol{r}\right)\\
+ & =-\nabla\phi\left(\boldsymbol{r}\right)+\nabla\times\boldsymbol{A}\left(\boldsymbol{r}\right)+\nabla\times\nabla f\left(\boldsymbol{r}\right)\\
+ & =\boldsymbol{F}\left(\boldsymbol{r}\right)
+\end{align*}
+
+
+\paragraph{磁場}
+
+\[
+\boldsymbol{B}=\nabla\times\boldsymbol{A}
+\]
+
+1) 対称ゲージ
+
+\[
+\boldsymbol{A}=B\left(-\frac{y}{2},\frac{x}{2},0\right)
+\]
+
+\[
+\nabla\times\boldsymbol{A}=\varepsilon_{ijm}\boldsymbol{e}_{i}\partial_{j}A_{m}=\left(\begin{array}{c}
+\partial_{y}A_{z}-\partial_{z}A_{y}\\
+\partial_{z}A_{x}-\partial_{x}A_{z}\\
+\partial_{x}A_{y}-\partial_{y}A_{x}
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+0\\
+B
+\end{array}\right)=\boldsymbol{e}_{z}B
+\]
+
+2) ランダウゲージ
+
+\[
+\boldsymbol{A}'=B\left(0,x,0\right)
+\]
+
+\begin{align*}
+\nabla\times\boldsymbol{A}' & =\boldsymbol{e}_{z}B\\
+\boldsymbol{A}-\boldsymbol{A}' & =\nabla f\left(\boldsymbol{r}\right)\\
+\boldsymbol{A}-\boldsymbol{A}' & =-B\left(\frac{y}{2},\frac{x}{2},0\right)=-B\left(\partial_{x}f,\partial_{y}f,\partial_{z}f\right)\\
+\Rightarrow f & =-B\frac{xy}{2}
+\end{align*}
+
 \end{document}
