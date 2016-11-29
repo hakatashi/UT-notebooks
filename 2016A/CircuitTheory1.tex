@@ -16,6 +16,7 @@
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
 
 \makeatother
 
@@ -33,11 +34,14 @@
 \global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
 \global\long\def\e{\mathrm{e}}
 \global\long\def\i{\mathrm{i}}
-\global\long\def\j{\jmath}
-\global\long\def\grad{\mathrm{grad}}
-\global\long\def\rot{\mathrm{rot}}
-\global\long\def\div{\mathrm{div}}
-\global\long\def\diag{\mathrm{diag}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
 \global\long\def\when#1{\left.#1\right|}
 
 
@@ -2415,6 +2419,139 @@ V_{03} & =\frac{4V_{m}}{3\pi}\e^{-\j\frac{\pi}{2}}\frac{1}{1+3\j\omega_{0}RC}\\
 時間波形に戻すと、
 \[
 v_{03}=\frac{4V_{m}}{3\pi\sqrt{1+0\omega_{0}^{2}R^{2}C^{2}}}\sin\left(3\omega_{0}t-\beta_{3}\right)
+\]
+
+\[
+v_{0}=\frac{4V_{m}}{\pi}\sum_{n=1,3,5\cdots}^{\infty}\frac{\sin\left(n\omega_{0}t-\beta_{n}\right)}{n\sqrt{1+\left(n\omega_{0}RC\right)^{2}}}
+\]
+
+$\beta_{n}=\tan^{-1}\left(n\omega_{0}RC\right)$
+
+仮に$C$が十分に大きいと、
+\begin{align*}
+v_{0} & \simeq\frac{4V_{m}}{\pi\omega_{0}RC}\sum_{n=1,3,5\cdots}^{\infty}\frac{\sin\left(n\omega_{0}t-\beta_{n}\right)}{n^{2}}\\
+ & =\frac{-4V_{m}}{\pi\omega_{0}RC}\sum_{n=1,3,5\cdots}^{\infty}\frac{\cos\left(n\omega_{0}t\right)}{n^{2}}
+\end{align*}
+
+つまり入力波形よりも$\frac{1}{n}$早く高周波数が減衰→\textbf{ローパスフィルタ}
+
+\subsection{平均電力}
+
+$\cos$関数のみで級数展開することも可能。
+
+\begin{align*}
+f\left(t\right) & =a_{0}+\sum_{n=1}^{\infty}\left(a_{n}\cos n\omega_{0}t+b_{n}\sin n\omega_{0}t\right)\\
+ & =a_{0}+\sum_{n=1}^{\infty}A_{n}\cos\left(n\omega_{0}t-\theta_{1}\right)
+\end{align*}
+
+ただし、
+\[
+a_{n}+\j b_{n}=\sqrt{a_{n}^{2}+b_{n}^{2}}\e^{\j\theta_{n}},A_{n}=\sqrt{a_{n}^{2}+b_{n}^{2}},\theta_{n}=\tan^{-1}\frac{b_{n}}{a_{n}}
+\]
+
+電圧、電流をフーリエ級数展開すると、
+\[
+v=V_{0}+\sum_{n=1}^{\infty}V_{n}\cos\left(n\omega_{0}t-\theta_{vn}\right)
+\]
+
+\[
+i=I_{0}+\sum_{n=1}^{\infty}I_{n}\cos\left(n\omega_{0}t-\theta_{in}\right)
+\]
+
+この時の平均電力は、
+\begin{align*}
+P & =\frac{1}{T}\int_{0}^{T}vi\mathrm{d}t\\
+ & =V_{0}I_{0}+\sum_{n=1}^{\infty}\frac{1}{T}\int_{0}^{T}V_{n}I\cos\left(n\omega_{0}t-\theta_{vn}\right)\times\cos\left(n\omega_{0}t-\theta_{in}\right)\mathrm{d}t\\
+ & =V_{0}I_{0}+\frac{1}{T}\sum_{n/1}^{\infty}\frac{V_{n}I_{n}}{2}\int_{0}^{T}\left[\cos\left(\theta_{vn}-\theta_{in}\right)+\cos\left(2n\omega_{0}t-\theta_{vn}-\theta_{in}\right)\right]\mathrm{d}t\\
+ & =V_{0}I_{0}+\sum_{n=1}^{\infty}\frac{V_{n}I_{n}}{2}\cos\left(\theta_{vn}-\theta_{in}\right)
+\end{align*}
+
+平均電力は、各周波数成分の平均電力の和。
+
+\subsection{実効値}
+
+\begin{align*}
+V_{\text{rms}} & =\sqrt{\frac{1}{T}\int_{0}^{T}v\left(t\right)^{2}\mathrm{d}t}\\
+ & =\sqrt{\frac{1}{T}\int_{0}^{T}\left[V_{0}+\sum_{n=1}^{\infty}V_{n}\cos\left(n\omega_{0}t-\theta_{n}\right)\right]^{2}\mathrm{d}t}\\
+ & =\sqrt{V_{0}^{2}+\sum_{n=1}^{\infty}\left(\frac{V_{n}}{\sqrt{2}}\right)^{2}}
+\end{align*}
+
+←各周波数成分の実効値の2乗平均
+
+\subsection{皮相電力と力率}
+
+皮相電力=$V_{\text{rms}}I_{\text{rms}}$
+
+よって力率
+\[
+pf=\frac{P}{V_{\text{rms}}I_{\text{rms}}}
+\]
+
+
+\subsection{ひずみ率}
+
+正弦波からの変形(ひずみ)を考える。
+
+\paragraph{例 電力系統、音声}
+
+\[
+v\left(t\right)=V_{1}\cos\left(\omega_{0}t-\theta_{1}\right)+V_{2}\cos\left(2\omega_{0}t-\theta_{2}\right)+V_{3}\cos\left(3\omega_{0}t-\theta_{3}\right)
+\]
+
+図電回6-9
+
+\begin{align*}
+\text{ひずみ率} & =\frac{\left(\text{高調波の実効値}\right)}{\left(\text{基本波の実効値}\right)}\\
+ & =\frac{\sqrt{\sum_{n=2}^{\infty}\left(\frac{V_{n}}{\sqrt{2}}\right)^{2}}}{\sqrt{\left(\frac{V_{1}}{\sqrt{2}}\right)^{2}}}
+\end{align*}
+
+
+\paragraph{report4}
+
+節点方程式
+
+\[
+\left(\begin{array}{ccc}
+2\j+1+\frac{1}{2\j} & -2\j & -\frac{1}{2\j}\\
+-2\j & \frac{2}{\j}+1+2\j & -1\\
+-\frac{1}{2\j} & -1 & 3\j+1+\frac{1}{2\j}
+\end{array}\right)\left(\begin{array}{c}
+V_{a}\\
+V_{b}\\
+V_{c}
+\end{array}\right)=\left(\begin{array}{c}
+2\\
+1\\
+3-1
+\end{array}\right)
+\]
+
+\[
+\left(\begin{array}{ccc}
+1+\frac{3}{2}\j & -2\j & \frac{\j}{2}\\
+-2\j & 1 & -1\\
+\frac{\j}{2} & -1 & 1+\frac{5}{2}\j
+\end{array}\right)\left(\begin{array}{c}
+V_{a}\\
+V_{b}\\
+V_{c}
+\end{array}\right)=\left(\begin{array}{c}
+2\\
+1\\
+2
+\end{array}\right)
+\]
+
+
+\paragraph{例}
+
+クラメルより、
+\[
+V_{b}=\frac{1}{\Delta}\left|\begin{array}{ccc}
+1+\frac{3}{2}\j & 2 & \frac{\j}{2}\\
+-2\j & 1 & -1\\
+\frac{\j}{2} & 2 & 1+\frac{5}{2}\j
+\end{array}\right|,\Delta=\left|A\right|
 \]
 
 \end{document}

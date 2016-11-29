@@ -35,16 +35,17 @@
 \global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
 \global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
 \global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
-\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
 \global\long\def\e{\mathrm{e}}
 \global\long\def\i{\mathrm{i}}
 \global\long\def\j{\mathrm{j}}
-\global\long\def\grad{\mathrm{grad}}
-\global\long\def\rot{\mathrm{rot}}
-\global\long\def\div{\mathrm{div}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
 \global\long\def\when#1{\left.#1\right|}
-\global\long\def\diag{\mathrm{diag}}
-\global\long\def\rank{\mathrm{rank}}
 
 
 \section*{第1回}
@@ -1745,4 +1746,49 @@ $A,B,C,D$を求めたい⇒行列が逆行列を持たない⇒行列式=0
 ←これを満たす$\left(k,E\right)$の組
 
 ⇒$A,B,C,D$が決まる($\varphi$が求められる)
+
+\paragraph{後半メモ}
+
+\[
+\Psi=\sum_{k}C_{k}u_{k}\left(x\right)\e^{\i\left(kx-\omega t\right)}
+\]
+: 波束
+
+$V\left(x\right)$が一定($u_{k\left(x\right)}$は$x$に依存しない)
+\[
+v_{g}=\frac{1}{\hbar}\when{\d Ek}_{k=k_{0}}
+\]
+: 群速度
+
+$V\left(x\right)$が周期的→$u_{k}\left(x\right)$の$k$に関する変化が小さければ
+
+\[
+\Psi=u_{k_{0}}\left(x\right)\underbrace{\sum_{k}C_{k}\e^{\i\left(kx-\omega t\right)}}_{\text{ポテンシャル一定の場合の波束}}
+\]
+
+$\Rightarrow v_{g}=\frac{1}{\hbar}\when{\d Ek}_{k=k_{0}}$
+
+図電物7-4
+
+←光の電場(x方向) $E_{0}\cos\left(\omega t\right)$
+
+空間的には電界一定
+
+図電物7-5
+
+⇔光のエネルギー 1eV $\lambda\sim1\mu m$
+
+一様な電界の存在下(x方向に$E$)
+
+図電物7-6
+
+→ポテンシャル$eEx$
+
+\[
+E=E_{0}\cos\left(\omega t\right)
+\]
+
+ポテンシャル$-exE_{0}\cos\left(\omega t\right)$
+
+$\varepsilon_{2}-\varepsilon_{1}=\hbar\omega$: 光を光子として暑かった時のエネルギー
 \end{document}
