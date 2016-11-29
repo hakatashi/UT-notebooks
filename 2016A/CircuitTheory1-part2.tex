@@ -555,4 +555,249 @@ v & \left(t\geqq0\right)\\
 →フーリエ変換、ラプラス変換
 \end{enumerate}
 
+\section*{第2回}
+
+\paragraph{評価について}
+\begin{itemize}
+\item 課題とテストの問題が「そっくり」になるようにしている
+\item 電気系なら必ず身につけていてほしい問題
+\end{itemize}
+
+\paragraph{本日の内容}
+\begin{itemize}
+\item レポートの解説
+\item 2. 交流回路の過渡現象
+\item 2.1. 交流RC回路
+\item 2.2. 交流RL回路
+\item 2.3. 交流RLC回路
+\item 2.4. 交流LC回路
+\item 2.5. まとめ
+\item 3. ラプラス変換
+\item 3.1. 線形時不変系
+\end{itemize}
+
+\paragraph{レポート解説}
+
+(1)
+
+KVLより、
+\[
+Ri+\frac{1}{C}\int i\mathrm{d}t+L\d it=0
+\]
+
+微分して、
+\[
+L\dd it+R\d it+\frac{1}{C}i=0
+\]
+
+(2)
+
+$i\left(t\right)=k\e^{st}$を代入
+\[
+Ls^{2}+Rs+\frac{1}{C}=0
+\]
+
+\begin{align*}
+S=-\frac{R}{2L}\pm\sqrt{\left(\frac{R}{2L}\right)^{2}-\frac{1}{LC}} & =-\frac{R}{2L}\pm\j\sqrt{\frac{1}{LC}-\left(\frac{R}{2L}\right)^{2}}\\
+ & \equiv-a\pm\j\beta
+\end{align*}
+
+基本解: 
+\[
+i\left(t\right)=\e^{-at}\left(k_{1}\e^{\j\beta t}+k\e^{-\j\beta t}\right)
+\]
+
+初期条件$\begin{cases}
+i\left(0_{+}\right)=0\\
+L\when{\d it}_{t=0_{+}}=-V
+\end{cases}$より、$i\left(t\right)=-\frac{V}{\beta L}\e^{-at}\sin\beta t$
+
+(3)
+
+$t=0$で、エネルギーを蓄積しているのはキャパシタのみ。$\frac{1}{2}CV^{2}$。
+
+$t>0$で、エネルギーを蓄積するのは抵抗のみ。$\frac{1}{2}CV^{2}$
+
+\[
+W=\int_{0}^{\infty}Ri^{2}\left(t\right)\mathrm{d}t=\cdots=\frac{1}{2}CV^{2}
+\]
+
+図回後2-1
+
+※
+
+図回後2-2
+
+\section{交流回路の過渡現象}
+
+図回後2-3
+
+$t>0$で、KVL
+\[
+Ri+\frac{1}{C}\int i\mathrm{d}t+L\d it=V\sin\left(\omega t+\varphi\right)
+\]
+
+微分して、
+\[
+L\dd it+R\d it+\frac{1}{C}i=\omega V\cos\left(\omega t+\varphi\right)
+\]
+となり、右辺が0にならない。
+
+交流回路: 非斉次微分方程式を解く必要。
+
+\subsection{交流RC回路}
+
+図回後2-4
+
+KVL 
+\[
+Ri+\frac{1}{C}\int i\mathrm{d}t=V\sin\left(\omega t+\varphi\right)
+\]
+
+\[
+R\d it+\frac{i}{C}=\omega V\cos\left(\omega t+\varphi\right)
+\]
+
+別紙式(9)を使って特解を求める。$F\left(D\right)=RD+\frac{1}{C}$とおく。
+
+\[
+i\left(t\right)=\Re\left[\frac{\omega V}{F\left(\j\omega\right)}\e^{\j\left(\omega t+\varphi\right)}\right]=\Re\left[\frac{\omega V\e^{\j\left(\omega t+\varphi\right)}}{\j\omega R+\frac{1}{C}}\right]=\underbrace{\Re\left[\frac{1}{\j}\frac{V\e^{\j\left(\omega t+\varphi\right)}}{R+\frac{1}{\j\omega C}}\right]}_{\text{三角関数}}
+\]
+
+\[
+R+\frac{1}{\j\omega C}=R-\frac{\j}{\omega C}\equiv Z\e^{-\j\theta}
+\]
+
+図回後2-5
+
+\begin{align*}
+i_{s} & =\Re\left[\frac{1}{\j}\frac{V\e^{\j m(\omega t+\varphi}}{Z\e^{-\j\theta}}\right]\\
+ & =\frac{V}{Z}\sin\left(\omega t+\varphi+\theta\right)\:\left(\text{特解}\right)
+\end{align*}
+
+\begin{itemize}
+\item 基本解: $i_{t}=k\e^{-\frac{t}{RC}}$
+\item 一般解: 
+\begin{align*}
+i\left(t\right) & =i_{s}\left(t\right)+i_{t}\left(t\right)\\
+ & =\frac{V}{Z}\sin\left(\omega t+\varphi+\theta\right)+k\e^{-\frac{t}{RC}}
+\end{align*}
+\item 初期条件: $i\left(0_{+}\right)=\frac{V}{R}\sin\varphi$
+\end{itemize}
+初期条件より、$k=V\left(\frac{\sin\varphi}{R}-\frac{\sin\left(\varphi+\theta\right)}{Z}\right)$
+
+\[
+i\left(t\right)=V\left[\underbrace{\frac{\sin\left(\omega t+\varphi+\theta\right)}{Z}}_{\text{特解(定常解)}}+\underbrace{\left(\frac{\sin\varphi}{R}-\frac{\sin\left(\varphi+\theta\right)}{Z}\right)\e^{-\frac{t}{RC}}}_{\text{過渡応答}}\right]
+\]
+
+
+\subsection{交流RL回路}
+
+図回後2-7
+
+KVL: 
+\[
+L\d it+Ri=V\sin\left(\omega t+\varphi\right)
+\]
+
+別紙式(11)を適用。
+
+$F\left(D\right)=LD+R$とおく。
+\[
+i_{s}\left(t\right)=\Re\left[\frac{V\e^{\j\left(\omega t+\varphi\right)}}{\j F\left(\j\omega\right)}\right]=\Re\left[\frac{1}{\j}\frac{V\e^{\j\left(\omega t+\varphi\right)}}{R+\j\omega L}\right]
+\]
+
+$R+\j\omega L=Z\e^{\j\theta}$とおく。
+
+図回後2-8
+
+\begin{align*}
+i_{s}\left(t\right) & =\Re\left[\frac{V\e^{\j\left(\omega t+\varphi\right)}}{\j Z\e^{\j\theta}}\right]=\Re\left[\frac{V}{\j Z}\e^{\j\left(\omega t+\varphi-\theta\right)}\right]\\
+ & =\frac{V}{Z}\sin\left(\omega+\varphi-\theta\right)\:\left(\text{特解}\right)
+\end{align*}
+
+\begin{itemize}
+\item 基本解: $i_{t}\left(t\right)=k\e^{-\frac{R}{L}t}$
+\item 一般解: $i\left(t\right)=i_{s}\left(t\right)+i_{t}\left(t\right)$
+\item 初期条件: $i\left(0_{+}\right)=0$
+\end{itemize}
+\[
+i\left(t\right)=\frac{V}{Z}\left(\underbrace{\sin\left(\omega t+\varphi-\theta\right)}_{\text{定常解}}-\underbrace{\sin\left(\varphi-\theta\right)\e^{-\frac{R}{L}t}}_{\text{過渡応答}}\right)
+\]
+
+
+\subsection{交流RCL回路 (振動的 $\frac{1}{LC}>\left(\frac{R}{2L}\right)^{2}$)}
+
+KVL+微分: 
+\[
+L\dd it+R\d it+\frac{i}{C}=\omega V\cos\left(\omega t+\varphi\right)
+\]
+
+別紙式(9)。$F\left(D\right)=LD^{2}+RD+\frac{1}{C}$とおき、
+\[
+i_{s}\left(t\right)=\Re\left[\frac{\omega V\e^{\j\left(\omega t+\varphi\right)}}{F\left(\j\omega\right)}\right]=\Re\left[\frac{\omega V\e^{\j\left(\omega t+\varphi\right)}}{-\omega^{2}L+\j\omega R+\frac{1}{C}}\right]=\Re\left[\frac{1}{\j}\frac{V\e^{\j\left(\omega t+\varphi\right)}}{R+\j\left(\omega L-\frac{1}{\omega C}\right)}\right]
+\]
+
+$R+\j\left(\omega L-\frac{1}{\omega C}\right)\equiv Z\equiv^{\j\theta}$とする。
+
+\[
+i_{s}\left(t\right)=\Re\left[\frac{V\e^{\j\left(\omega t+\varphi\right)}}{\j Z\e^{\j\theta}}\right]=\frac{V}{Z}\sin\left(\omega t+\varphi-\theta\right)
+\]
+ 
+
+基本解: 
+\begin{align*}
+i_{t}\left(t\right) & =\e^{-at}\left(k_{1}\e^{\j\beta t}+k_{2}\e^{-\j\beta t}\right)\\
+ & =\e^{-at}\left(\left(k_{1}+k_{2}\right)\cos\beta t+\left(k_{1}-k_{2}\right)\sin\beta t\right)\\
+ & =\e^{-at}\left(K_{1}\cos\beta t+K_{2}\sin\beta t\right)
+\end{align*}
+
+初期条件: 
+\[
+\begin{cases}
+i\left(0_{+}\right)=0\\
+L\when{\d it}_{t+0|+}=V\sin\varphi & t=0\text{における電源電圧}
+\end{cases}
+\]
+
+\begin{align*}
+K_{1} & =-\frac{V}{Z}\sin\left(\varphi-\theta\right)\\
+K_{2} & =\frac{V}{Z}\left(\frac{Z}{\beta L}\sin\varphi-\frac{\omega}{\beta}\cos\left(\varphi-\theta\right)-\frac{a}{\beta}\sin\left(\varphi-\theta\right)\right)
+\end{align*}
+
+以上合わせて、
+\[
+i\left(t\right)=\frac{V}{Z}\left(\underbrace{\sin\left(\omega t+\varphi-\theta\right)}_{\text{定常解}(\text{特解})}+\underbrace{\e^{-at}\left(K_{1}\cos\beta t+K_{2}\sin\beta t\right)}_{\text{減衰振動}}\right)
+\]
+
+$\omega$: 電源周波数
+
+$\beta$: 回路の固有振動数
+
+\subsection{交流LC回路}
+
+RLC回路で$R\rightarrow0$とする。
+
+\begin{align*}
+a & =\frac{R}{2L}\rightarrow0\\
+\beta & =\sqrt{\frac{1}{LC}-\left(\frac{R}{2L}\right)^{2}}\rightarrow\sqrt{\frac{1}{LC}}\equiv\omega_{0}\:\left(\text{共振周波数}\right)\\
+Z & =\sqrt{R^{2}+\left(\omega L-\frac{1}{\omega C}\right)^{2}}\rightarrow\left|\omega L-\frac{1}{\omega C}\right|\\
+\theta & =\begin{cases}
+\frac{\pi}{2} & \omega>\omega_{0}\\
+-\frac{\pi}{2} & \omega<\omega_{0}
+\end{cases}
+\end{align*}
+
+$\omega>\omega_{0}$のとき、$Z=\omega L-\frac{1}{\omega C},\theta=\frac{\pi}{2}$
+
+\begin{align*}
+K_{1} & =-\frac{V}{Z}\sin\left(\varphi-\frac{\pi}{2}\right)=\frac{V}{Z}\cos\varphi\\
+K_{2} & =\frac{V}{Z}\left(\frac{\omega L-\frac{1}{\omega C}}{\omega_{0}L}\sin\varphi-\frac{\omega}{\omega_{0}}\cos\left(\varphi-\frac{\pi}{2}\right)\right)=-\frac{V}{Z}\frac{\sin\varphi}{\omega_{0}\omega LC}\\
+ & =-\frac{V}{Z}\frac{\omega_{0}}{\omega}\sin\varphi
+\end{align*}
+
+\[
+i\left(t\right)=\frac{V}{Z}\left(\underbrace{\sin\left(\omega t+\varphi-\frac{\pi}{2}\right)}_{\text{定常解}}+\underbrace{\cos\varphi\cos\omega_{0}-\frac{\omega_{0}}{\omega}\sin\varphi\sin\omega_{0}t}_{\text{周波数}\omega_{0}\text{(減衰しない)}}\right)
+\]
+
 \end{document}
