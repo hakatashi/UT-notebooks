@@ -800,4 +800,136 @@ K_{2} & =\frac{V}{Z}\left(\frac{\omega L-\frac{1}{\omega C}}{\omega_{0}L}\sin\va
 i\left(t\right)=\frac{V}{Z}\left(\underbrace{\sin\left(\omega t+\varphi-\frac{\pi}{2}\right)}_{\text{定常解}}+\underbrace{\cos\varphi\cos\omega_{0}-\frac{\omega_{0}}{\omega}\sin\varphi\sin\omega_{0}t}_{\text{周波数}\omega_{0}\text{(減衰しない)}}\right)
 \]
 
+$\omega=\omega_{0}$のとき(電源周波数と回路の共振周波数が等しい)、$F\left(\j\omega\right)=0$なので、別紙式(10)を用いる。
+
+$\varphi=0$のとき、$i\left(t\right)=\frac{V}{2L}t\sin\omega_{0}t$
+
+図回後2-9
+\begin{itemize}
+\item 発散する
+\item 徐々に増える
+\item 定常状態解析ではわからない。過渡応答解析で初めて分かる。
+\end{itemize}
+
+\subsection{まとめ}
+
+交流回路の過渡応答: 非斉次微分方程式
+
+直流・交流ともに計算が面倒→ラプラス変換
+
+\section{ラプラス変換(前半)}
+
+\subsection{線形時不変系 (インパルス応答とたたみこみ)}
+
+図回後2-10
+
+RC, RL, RLC, LCはみな線形時不変
+
+\paragraph{インパルス応答$h\left(t\right)$: デルタ関数に対する、$H$の応答。}
+
+図回後2-11
+
+デルタ関数$\delta\left(t\right)$→$H$→インパルス応答$h\left(t\right)$
+
+図回後2-12
+
+\begin{align*}
+f\left(t\right) & =\begin{cases}
+\frac{1}{\varepsilon} & \left(0\leqq t\leqq\varepsilon\right)\\
+0 & \left(t<0,t>\varepsilon\right)
+\end{cases}\\
+\delta\left(t\right) & =\lim_{\varepsilon\rightarrow0}f\left(t\right)
+\end{align*}
+
+図回後2-13
+
+$h\left(t\right)$がわかると、$H$の性質がすべてわかる。
+
+\paragraph{デルタ関数の性質}
+\begin{enumerate}
+\item $\int f\left(t\right)\delta\left(1-\tau\right)\mathrm{d}t=f\left(\tau\right)$
+
+$f$: 上の$f\left(t\right)$とは異なる一般的な関数
+
+図回後2-14
+\item $\int f\left(\tau\right)\delta\left(t-\tau\right)\mathrm{d}t=f\left(t\right)$
+
+1. で$t$と$\tau$を入れ替え、$\delta\left(t\right)=\delta\left(-t\right)$を使う。
+
+図回後2-15
+
+様々な時間$\tau$におけるデルタ関数$\delta\left(t-\tau\right)$に重み付け$f\left(\tau\right)$をかけて足し合わせると、$f\left(t\right)$を表せる。
+\end{enumerate}
+$y\left(t\right)$は$x\left(t\right)$と$h\left(t\right)$のたたみこみ。
+
+図回後2-16
+\begin{itemize}
+\item ラプラス変換
+\item フーリエ変換
+\end{itemize}
+はたたみこみを計算するツール。
+
+注: たたみこみは順序によらない。
+
+\begin{align*}
+x\left(t\right)\star h\left(t\right) & =\int x\left(\tau\right)h\left(t-\tau\right)\mathrm{d}\tau\\
+ & =-\int_{-\infty}^{\infty}x\left(t-t'\right)h\left(t'\right)\mathrm{d}t'\\
+ & =\int_{-\infty}^{\infty}h\left(t'\right)x\left(t-t'\right)\mathrm{d}t'\\
+ & =h\left(t\right)\star x\left(t\right)
+\end{align*}
+
+
+\paragraph{インパルス応答の例}
+
+図回後2-17
+
+KVL
+\[
+L\d it+Ri=v\left(t\right)
+\]
+
+$v\left(t\right)=\delta\left(t\right),i\left(t\right)=h\left(t\right)$とする。
+\begin{itemize}
+\item $t<0\rightarrow h\left(t\right)=0$
+\item $t=0\rightarrow L\when{\d jk}_{t=0}=\delta\left(0\right)=\infty$
+
+\begin{align*}
+h\left(0_{+}\right) & =\lim_{t\rightarrow0}\int_{0}^{\varepsilon}\d ht\mathrm{d}t\\
+ & =\lim_{\varepsilon\rightarrow0}\int_{0}^{\varepsilon}\frac{1}{L}\delta\left(t\right)\mathrm{d}t=\frac{1}{L}
+\end{align*}
+
+\item $t>0$
+
+$h\left(t\right)=k\e^{-\frac{R}{L}t}$
+\end{itemize}
+したがって、
+\[
+h\left(t\right)=\begin{cases}
+0 & \left(t<0\right)\\
+\frac{1}{L}\e^{-\frac{R}{L}t} & \left(t\geqq0\right)
+\end{cases}
+\]
+
+図回後2-18
+
+RL回路のコンダクタンスのインパルス応答
+
+図回後2-19
+
+\begin{align*}
+i\left(t\right) & =v_{0}\cos\omega t\star h\left(t\right)=h\left(t\right)\star v_{0}\cos\omega t\\
+ & =\frac{v_{0}}{L}\int_{0}^{\infty}\e^{-\frac{R}{L}\tau}\cos\omega\left(t-\tau\right)\mathrm{d}\tau\\
+ & =\frac{v_{0}}{L}\int_{0}^{\infty}\e^{-\frac{R}{L}\tau}\frac{1}{2}\left(\e^{j\omega\left(t-\tau\right)}+\e^{-\j\omega\left(t-\tau\right)}\right)\mathrm{d}\tau\\
+ & =\cdots=\frac{v_{0}}{2}\left[\frac{\e^{\j\omega t}}{R+\j\omega L}+\frac{\e^{-\j\omega t}}{R-\j\omega L}\right]=\Re\left[\frac{v_{0}\e^{\j\omega t}}{R+\j\omega L}\right]
+\end{align*}
+
+$R+\j\omega L$の部分が$R$と$L$の直列インピーダンスとなっている。
+
+図回後2-20
+\begin{itemize}
+\item 交流回路さえも、インパルス応答のたたみこみで計算できる。
+\item 回路は周波数ごとに異なる応答をしているわけではない。
+\item 常にインパルス応答で応答しているだけ。
+\end{itemize}
+続きは次回(12/8)
 \end{document}
