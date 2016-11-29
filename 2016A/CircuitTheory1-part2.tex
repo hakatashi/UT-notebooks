@@ -876,10 +876,10 @@ $y\left(t\right)$は$x\left(t\right)$と$h\left(t\right)$のたたみこみ。
 注: たたみこみは順序によらない。
 
 \begin{align*}
-x\left(t\right)\star h\left(t\right) & =\int x\left(\tau\right)h\left(t-\tau\right)\mathrm{d}\tau\\
+x\left(t\right)*h\left(t\right) & =\int x\left(\tau\right)h\left(t-\tau\right)\mathrm{d}\tau\\
  & =-\int_{-\infty}^{\infty}x\left(t-t'\right)h\left(t'\right)\mathrm{d}t'\\
  & =\int_{-\infty}^{\infty}h\left(t'\right)x\left(t-t'\right)\mathrm{d}t'\\
- & =h\left(t\right)\star x\left(t\right)
+ & =h\left(t\right)*x\left(t\right)
 \end{align*}
 
 
@@ -921,7 +921,7 @@ RL回路のコンダクタンスのインパルス応答
 図回後2-19
 
 \begin{align*}
-i\left(t\right) & =v_{0}\cos\omega t\star h\left(t\right)=h\left(t\right)\star v_{0}\cos\omega t\\
+i\left(t\right) & =v_{0}\cos\omega t*h\left(t\right)=h\left(t\right)*v_{0}\cos\omega t\\
  & =\frac{v_{0}}{L}\int_{0}^{\infty}\e^{-\frac{R}{L}\tau}\cos\omega\left(t-\tau\right)\mathrm{d}\tau\\
  & =\frac{v_{0}}{L}\int_{0}^{\infty}\e^{-\frac{R}{L}\tau}\frac{1}{2}\left(\e^{j\omega\left(t-\tau\right)}+\e^{-\j\omega\left(t-\tau\right)}\right)\mathrm{d}\tau\\
  & =\cdots=\frac{v_{0}}{2}\left[\frac{\e^{\j\omega t}}{R+\j\omega L}+\frac{\e^{-\j\omega t}}{R-\j\omega L}\right]=\Re\left[\frac{v_{0}\e^{\j\omega t}}{R+\j\omega L}\right]
