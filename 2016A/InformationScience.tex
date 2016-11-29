@@ -903,4 +903,137 @@ I\left(X,Y\right) & =H\left(Y\right)-H\left(Y|X\right)\\
  & =H\left(Y\right)+p\log P+\left(1-p\right)\log\left(1-P\right)
 \end{align*}
 
+
+\section*{第7回}
+
+一部紛失
+
+\paragraph{通信路符号}
+\begin{itemize}
+\item 通信路の誤りに耐性を持たせる→誤り訂正、誤り検出
+\item ``冗長度''を付け加える
+\end{itemize}
+
+\paragraph{多数決符号}
+\begin{itemize}
+\item $0\rightarrow000$ (符号語)
+\item $1\rightarrow111$ (符号語)
+\end{itemize}
+誤りが1つまでなら誤り訂正可能
+
+\paragraph{受信符号空間}
+
+\[
+\left\{ 000,001,\cdots,111\right\} 
+\]
+
+\begin{itemize}
+\item 符号語 $w_{i}$～符号語数$M$→$\log_{2}M$ (1)→符号にして$n$(3)
+\item 受信符号空間
+\item 復号領域 $\Omega_{i}$
+\item 伝送速度 $R$
+\item 冗長度 $1-R\left(\frac{2}{3}\right)$
+\item 伝送速度・伝送効率 $\frac{\log_{2}M}{n}\frac{1}{3}=R$
+\end{itemize}
+
+\paragraph{通信路が与えられた時、伝承億度の上限は?}
+
+図情7-1
+
+\paragraph{通信路符号化定理}
+
+$R<C$(通信路容量)であれば、限りなく復号誤り率を低くする符号が存在する。$R>C$では、そうできない。
+
+\paragraph{ランダム符号化法による証明}
+\begin{enumerate}
+\item 通信路容量$C$、$C$を実現するときの情報源$S_{0}$
+\item 伝送速度$R$
+\item $S_{0}$から発生する長さ$n$の系列をランダムに$M=2^{nR}$とり符号とする。$C_{0}=\left\{ w_{1},w_{2},\cdots,w_{M}\right\} $
+\end{enumerate}
+図情7-2
+
+図情7-3
+\begin{itemize}
+\item $S_{0}$の長さ$n$の代表的系列$2^{nH\left(X\right)}$
+\item $M\left(=2^{nR}\right)$個の符号語を選ぶ
+\item $S_{0}$の系列が符号になる確率$\frac{2^{nR}}{2^{nH\left(X\right)}}$
+
+\[
+C=H\left(X\right)-H\left(X|Y\right)
+\]
+
+\item 通信路を介した場合の条件付きエントロピー$H\left(X|Y\right)$に対応する代表的系列数
+\item 正しく伝送できるためには、$2^{nH\left(X|Y\right)}$にひとつだけ符号語を選んでいれば良い。
+\item $2^{nH\left(X|Y\right)}$が唯一の符号語を含む確率$P$は、
+\begin{align*}
+P & =\left(1-\frac{2^{nR}}{2^{nH\left(X\right)}}\right)^{2^{nH\left(X|Y\right)-1}}\\
+ & \simeq1-2^{H\left(X|Y\right)}2^{nR-nH\left(X\right)}
+\end{align*}
+
+\begin{align*}
+P & =1-2^{-n\left(H\left(X\right)-H\left(X|Y\right)-R\right)}\\
+ & =1-2^{-n\left(C-R\right)}
+\end{align*}
+
+$C>R$であれば、$n$→十分大きく$P\rightarrow1$
+
+$C<R$であれば、そうはならない。
+\end{itemize}
+
+\paragraph{通信路符号化法}
+
+図情7-4
+
+\paragraph{ハミング距離}
+
+符号間の距離の尺度
+
+\begin{align*}
+d_{H}\left(001,000\right) & =1\\
+d_{H}\left(111,000\right) & =3
+\end{align*}
+
+
+\paragraph{ハミング重み}
+
+\begin{align*}
+w_{H}\left(001\right) & =1\\
+w_{H}\left(111\right) & =3
+\end{align*}
+
+\[
+d_{H}\left(a,b\right)=w_{H}\left(a-b\right)
+\]
+←2元加減算
+
+\paragraph{$t$重誤り訂正}
+
+図情7-5
+\begin{itemize}
+\item すべての符号語間の距離$\geq2t+1$ 
+\item 最小の符号語距離$=2t+1$
+\end{itemize}
+$t$重の誤りに対して、符号語が他の符号語の復号領域に入らない。
+
+復号領域が重ならない。
+
+\paragraph{$t$重誤り検出}
+
+$t$重誤りが起こっても、他の符号語にはならない。
+
+図情7-6
+\begin{itemize}
+\item すべての符号語間距離$\geq t+1$
+\item 最小符号語間距離$=t+1$
+\end{itemize}
+
+\paragraph{符号の構成法}
+\begin{itemize}
+\item 線形符号
+\item 巡回符号
+\item BCH, RS⋯
+\item 畳み込み符号
+\end{itemize}
+
+\paragraph{次回休講}
 \end{document}
