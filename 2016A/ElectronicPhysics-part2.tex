@@ -1,0 +1,201 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english]{book}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2016-A 電子基礎物理 後半}
+
+\author{教員: 山下真司 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+
+
+\section*{第1回}
+\begin{itemize}
+\item 統計力学
+\begin{itemize}
+\item 古典統計
+\item 量子統計
+\end{itemize}
+\end{itemize}
+全微分
+\[
+\mathrm{d}E=\left(\pd ET\right)_{V}\mathrm{d}T+\left(\pd EV\right)_{T}\mathrm{d}V
+\]
+
+\begin{align*}
+\Delta W & =F\cdot\Delta x\\
+ & =P\cdot A\cdot\Delta x\\
+ & =-P\Delta V
+\end{align*}
+
+比熱: 温度を上げるのに必要な熱量
+
+→
+\[
+C_{v}=\left(\pd QT\right)_{V}=\left(\pd ET\right)_{V}
+\]
+
+(∵(0.3)式で$\mathrm{d}V=0,\mathrm{d}'Q=0$)
+
+1mol
+
+\[
+E=\frac{3}{2}RT
+\]
+
+1mol当たり
+\[
+C_{p}=C_{v}+R
+\]
+
+マイアーの関係式
+
+\paragraph{演習(1)}
+
+\[
+\mathrm{d}'Q=C_{v}\mathrm{d}T+\left[P+\left(\pd EV\right)_{T}\right]\mathrm{d}V
+\]
+
+$\mathrm{d}'Q=0,P=\frac{RT}{V},\pd EV=0$より、
+\[
+0=C_{v}\frac{\mathrm{d}T}{T}+\frac{R}{V}\cdot\mathrm{d}V
+\]
+
+積分して、
+\[
+\text{const}=C_{v}\log T+R\log V
+\]
+
+\[
+\log T+\left(\gamma-1\right)\log V=\text{const}
+\]
+
+\[
+\log T\cdot V^{\gamma-1}=\text{const}
+\]
+
+$T\propto PV$より、
+\[
+P\cdot V^{\gamma}=\text{const}
+\]
+
+
+\paragraph{演習(3)}
+
+\[
+F=E-TS
+\]
+
+\begin{align*}
+\mathrm{d}F=\mathrm{d}E-\mathrm{d}\left(TS\right) & =\mathrm{d}E-T\mathrm{d}S-S\mathrm{d}T\\
+ & =-S\mathrm{d}T-P\mathrm{d}V
+\end{align*}
+
+\begin{align*}
+\mathrm{d}\left(\frac{F}{T}\right) & =\mathrm{d}\left(\frac{E}{T}\right)-\mathrm{d}S\\
+ & =\frac{\mathrm{d}E}{T}-\frac{E}{T^{2}}\mathrm{d}T-\mathrm{d}S\\
+ & =-\frac{E}{T^{2}}\mathrm{d}T-\frac{P}{T}\mathrm{d}V
+\end{align*}
+
+熱力学的エントロピー
+\[
+\mathrm{d}S=\frac{\mathrm{d}'Q}{T}
+\]
+
+統計力学的エントロピー
+\[
+S=k\log W_{N}\left(E\right)
+\]
+
+
+\paragraph{演習(6)}
+
+\begin{align*}
+\log G_{N}\left(E\right) & =\log\left(M+N-1\right)!-\log M!-\log\left(N-1\right)!\\
+ & \sim\log\frac{\left(M+N-1\right)^{M+N-1}}{M^{M}\left(N-1\right)^{N-1}}\\
+ & \sim\log\frac{\left(M+N\right)^{M+N}}{M^{M}N^{N}}\\
+ & =\log\frac{\left(2N\right)^{2N}}{N^{2N}}\\
+ & =\log2^{2N}
+\end{align*}
+
+\begin{align*}
+G_{N}\left(E\right) & =2^{2N}\\
+ & \sim10^{0.6N}
+\end{align*}
+
+
+\paragraph{演習(7)}
+
+\begin{align*}
+P_{1}\left(x\right) & =\frac{\left(M+N-x-2\right)!}{\left(M-x\right)!\left(N-2\right)!}\frac{M!\left(N-1\right)!}{\left(M+N-1\right)!}\\
+ & =\frac{M\cdot\left(M-1\right)\cdots\left(M-x+1\right)\left(N-1\right)}{\left(M+N-1\right)\left(M+N-2\right)\cdots\left(M+N-x-1\right)}\\
+ & \sim\frac{M^{x}N}{\left(M+N\right)^{x+1}}=\frac{m^{x}}{\left(1+m\right)^{x}}\cdot\frac{1}{1+m}
+\end{align*}
+
+
+\paragraph{演習(8)}
+
+\begin{align*}
+\sum_{x=0}^{\infty}p_{1}\left(x\right) & =\frac{1}{1+m}\sum_{x=0}^{\infty}\left(\frac{m}{1+m}\right)^{x}\\
+ & =\frac{1}{1+m}\cdot\frac{1}{1-\frac{m}{1+m}}=1
+\end{align*}
+
+\begin{align*}
+\sum_{x=0}^{\infty}xp_{1}\left(x\right) & =\frac{1}{1+m}\sum_{x=0}^{\infty}xa^{x}\\
+ & =\frac{a}{1+m}\sum_{x=0}^{\infty}\d{}a\left(a^{x}\right)\\
+ & =\frac{a}{1+m}\d{}a\left(\sum_{x=0}^{\infty}a^{x}\right)\\
+ & =\frac{a}{1+m}\d{}a\left(\frac{1}{1-a}\right)=m
+\end{align*}
+
+
+\paragraph{演習(9)}
+
+\[
+P_{N_{1}}\left(M_{1}\right)=\frac{W_{N_{1}}\left(M_{1}\right)\cdot W_{N-N_{1}}\left(M-M_{1}\right)}{W_{N}\left(M\right)}
+\]
+
+\begin{align*}
+\frac{W_{N-N_{1}}\left(M-M_{1}\right)}{W_{N}\left(M\right)} & =\frac{\left(M+N-M_{1}-N_{1}-1\right)!}{\left(M-M_{1}\right)!\left(N-N_{1}-1\right)!}\frac{M!\left(N-1\right)!}{\left(M+N-1\right)!}\\
+ & =\frac{M\cdot\cdots\left(M-M_{1}-1\right)\left(N-1\right)\cdots\left(N-N_{1}\right)}{\left(M+N-1\right)\cdots\left(M+N-N_{1}-M_{1}\right)}\\
+ & \sim\frac{M^{M_{1}}N^{N_{1}}}{\left(M+N\right)^{M_{1}+N_{1}}}\\
+ & =\frac{1}{\left(1+m\right)^{N_{1}}}\left(\frac{m}{1+m}\right)^{M_{1}}
+\end{align*}
+
+\end{document}
