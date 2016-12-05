@@ -352,4 +352,434 @@ B=-\frac{\mu_{0}Ia^{2}}{2}\left[\frac{1}{\left\{ a^{2}+\left(d+z\right)^{2}\righ
 \]
 
 図電後1-13
+
+\section*{第2回}
+
+\subsection{ベクトルポテンシャル}
+
+図電後2-1
+
+点電荷→電荷密度と一般化したのと同様に、まず電流→電流密度で考え直す。
+
+図電後2-2
+
+$\boldsymbol{r}'$における電流要素は、
+\[
+I'\mathrm{d}s'=\boldsymbol{i}\left(\boldsymbol{r}'\right)\mathrm{d}A'\mathrm{d}s'=\boldsymbol{i}\left(\boldsymbol{r}'\right)\mathrm{d}v'
+\]
+
+$\mathrm{d}v'\equiv\mathrm{d}A'\mathrm{d}s'$: 体積要素
+
+∴ビオ・サバール
+
+(1.4) →
+\begin{equation}
+\boldsymbol{B}\left(\boldsymbol{r}\right)=\frac{\mu_{0}}{4\pi}\int_{v}\frac{\boldsymbol{i}\left(\boldsymbol{r}'\right)\times\left(\boldsymbol{r}-\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{3}}\mathrm{d}v'
+\end{equation}
+
+ここで、
+\begin{equation}
+\nabla\left(\frac{1}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\right)=-\frac{\boldsymbol{r}-\boldsymbol{r}'}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{3}}
+\end{equation}
+
+ただし、$\nabla$は$\boldsymbol{r}$に対する演算子
+\[
+\nabla=\left(\begin{array}{c}
+\pd{}x\\
+\pd{}y\\
+\pd{}z
+\end{array}\right)
+\]
+
+(1.8)の証明は演習でやる。
+
+(1.7)→
+\begin{align*}
+\boldsymbol{B}\left(\boldsymbol{r}\right) & =\frac{\mu_{0}}{4\pi}\int\boldsymbol{i}\left(\boldsymbol{r}\right)\times\left\{ -\nabla\left(\frac{1}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\right)\right\} \mathrm{d}v'\\
+ & =\frac{\mu_{0}}{4\pi}\int_{V}\left\{ \nabla\left(\frac{1}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\right)\right\} \times\boldsymbol{i}\left(\boldsymbol{r}'\right)\mathrm{d}v'
+\end{align*}
+
+ベクトル公式 ($f$: 任意のスカラー関数)
+\[
+\nabla\times\left(f\boldsymbol{i}\right)=\left(\nabla f\right)\times\boldsymbol{i}+f\left(\nabla\times\boldsymbol{i}\right)
+\]
+より
+\[
+\left(\nabla f\right)\times\boldsymbol{i}=\nabla\times\left(f\boldsymbol{i}\right)-f\left(\nabla\times\boldsymbol{i}\right)
+\]
+を用いると、
+\begin{equation}
+\boldsymbol{B}\left(\boldsymbol{r}\right)=\frac{\mu_{0}}{4\pi}\int_{V}\mathrm{d}v'\left[\nabla\times\frac{\boldsymbol{i}\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}-\frac{1}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\left\{ \nabla\times\boldsymbol{i}\left(\boldsymbol{r}'\right)\right\} \right]
+\end{equation}
+
+ここで、$\nabla$は$\boldsymbol{r}$に対する微分なので、
+\[
+\nabla\times\boldsymbol{i}\left(\boldsymbol{r}'\right)=0
+\]
+
+また、$\nabla$は$\int\mathrm{d}v'$の外に出せる。
+
+(1.7)→
+\begin{equation}
+\boldsymbol{B}\left(\boldsymbol{r}\right)=\nabla\times\frac{\mu_{0}}{4\pi}\int_{V}\frac{\boldsymbol{i}\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}v'
+\end{equation}
+
+そこで、ベクトル
+\begin{equation}
+\boldsymbol{A}\left(\boldsymbol{r}\right)\equiv\frac{\mu_{0}}{4\pi}\int_{V}\frac{\boldsymbol{i}\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}v'
+\end{equation}
+を定義すると、
+\begin{equation}
+\boldsymbol{B}\left(\boldsymbol{r}\right)=\nabla\times\boldsymbol{A}\left(\boldsymbol{r}\right)
+\end{equation}
+と表される。
+
+\paragraph{クーロン力の場合}
+
+\begin{align}
+V\left(\boldsymbol{r}\right) & =\frac{1}{4\pi\varepsilon_{0}}\int\frac{\rho\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}\boldsymbol{r}'\\
+\boldsymbol{E} & =-\nabla V
+\end{align}
+
+\begin{itemize}
+\item (1.13)↔(1.11)
+\item (1.14)↔(1.12)
+\end{itemize}
+に対応している。
+
+そこで、(1.11)の$\boldsymbol{A}$をベクトルポテンシャルと呼ぶ。
+
+(一部紛失)
+
+\begin{equation}
+?
+\end{equation}
+
+\begin{equation}
+\boldsymbol{i}\left(\boldsymbol{r}\right)=\frac{1}{4\pi\varepsilon_{0}}\int_{V}\frac{\rho\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}v'=-\frac{\rho\left(\boldsymbol{r}'\right)}{\varepsilon_{0}}
+\end{equation}
+ 
+
+(1.16')は、任意の電荷分布$\rho\left(\boldsymbol{r}\right)$について成立する。つまり、任意のスカラー関数$\rho\left(\boldsymbol{r}\right)$について成り立つ恒等式である。
+
+∴(1.15)の両辺$\nabla^{2}$して、右辺に(1.16')を適用すると、
+\[
+\nabla^{2}A_{x}\left(\boldsymbol{r}\right)=-\mu_{0}i_{x}\left(\boldsymbol{r}\right)
+\]
+
+\begin{equation}
+\nabla^{2}\boldsymbol{A}=-\mu_{0}\boldsymbol{A}
+\end{equation}
+
+つまり、$\boldsymbol{i}$と$\boldsymbol{A}$のあいだ市、ポアソンの式と同じ形の式が成り立つ。(例えば、$i_{x}$の分布から、これを$\rho$だと思って$V$を求めれば、直ちに$A_{x}$が求まる)
+
+\[
+\nabla^{2}\boldsymbol{A}=\left(\begin{array}{c}
+\pdd{A_{x}}x+\pdd{A_{x}}y+\pdd{A_{x}}z\\
+\pdd{A_{y}}x+\cdots\\
+\pdd{A_{z}}x+\cdots
+\end{array}\right)
+\]
+
+(1.11)の両辺$\div$を取ると、
+\begin{equation}
+\nabla\cdot\boldsymbol{A}=0
+\end{equation}
+
+(クーロンげージ)
+
+導出は、教p.109-110(注)
+
+\paragraph{$\boldsymbol{A}$のゲージ}
+
+電位$V$に定数$V_{0}$(任意のエネルギー基準)を加えても$\boldsymbol{E}$が変わらないのと同様に、$\boldsymbol{A}$の決め方も任意性がある。
+
+(1.11)で定義した$\boldsymbol{A}$に、定ベクトル$\boldsymbol{A}_{0}$を加えても、(1.12)で求まる$\boldsymbol{B}$は変わらない。
+
+それ以上に、任意のスカラー関数$\phi\left(\boldsymbol{r}\right)$を考え、その$\nabla\phi$を$\boldsymbol{A}$に加え、
+\begin{equation}
+\boldsymbol{A}'\equiv\boldsymbol{A}+\nabla\phi
+\end{equation}
+としてみても、
+\[
+\nabla\times\boldsymbol{A}'=\nabla\times\boldsymbol{A}+\nabla\times\left(\nabla\phi\right)
+\]
+
+(ベクトル公式より$\nabla\times\left(\nabla\phi\right)=0$)なので、$\boldsymbol{B}$は変わらない。
+
+そこで、より広義に、(1.19)で変換(ゲージ変換という)できる$\boldsymbol{A}'$をすべてベクトルポテンシャルと呼ぶ。
+
+ただし、このとき、一般に$\nabla\cdot\boldsymbol{A}'\neq0$となる。
+
+$\boldsymbol{A}$の選び方を「ゲージ」と言い、特に、(1.18)を満たすように$\boldsymbol{A}$を選ぶこと(例えば(1.11))を「クーロンゲージ」という。
+
+\subsection{アンペアの法則}
+\begin{itemize}
+\item 電場については$\nabla\times\boldsymbol{E}=0$ 磁界はどうか?
+\end{itemize}
+(1.12)より
+\begin{align*}
+\nabla\times\boldsymbol{B} & =\nabla\times\nabla\times\boldsymbol{A}\\
+ & =\nabla\left(\nabla\cdot\boldsymbol{A}\right)-\nabla^{2}\boldsymbol{A}
+\end{align*}
+
+(1.18)より$\nabla\cdot\boldsymbol{A}=0$
+
+また(1.17)より $\nabla^{2}\boldsymbol{A}=-\mu_{0}\boldsymbol{i}$
+
+\paragraph{アンペアの法則(微分系)}
+
+\begin{equation}
+\nabla\times\boldsymbol{B}=\mu_{0}\boldsymbol{i}
+\end{equation}
+
+つまり、電流$\boldsymbol{i}$があると$\boldsymbol{B}$の``渦''が発生
+
+\paragraph{積分系}
+
+任意の閉曲面$S$について、(1.20)の両辺を面積分する。
+
+図電後2-3
+
+\[
+\int_{S}\nabla\times\boldsymbol{B}\mathrm{d}S=\int_{S}\mu_{0}\boldsymbol{i}\mathrm{d}S
+\]
+
+ストークスの定理より、
+\[
+\text{左辺}=\oint_{C}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}
+\]
+
+一方、
+\[
+\text{右辺}=\mu_{0}I
+\]
+
+$I$: $S$を貫く全電流
+
+∴アンペアの法則 (積分系)
+
+\begin{equation}
+\oint_{C}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}=\mu_{0}I
+\end{equation}
+
+図電後2-4
+
+$C$: 任意の閉曲線
+
+$I$: $C$を鎖交する全電流。$C$に沿って右ねじを回すときネジが進む向きを正とする。
+
+\paragraph{例}
+
+図電後2-5
+
+\begin{align*}
+I & =I_{1}-I_{2}+I_{3}-I_{3}\\
+ & =I_{1}-I_{2}
+\end{align*}
+
+
+\paragraph{例題}
+
+ソレノイドの中の磁界
+
+図電後2-6
+
+うえんような閉経路$C$を考え、(1.21)を適用
+
+\[
+\text{左辺}=\int_{\text{左}}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}+\int_{\text{下}}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}+\int_{\text{上}}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}+\int_{\text{右}}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}
+\]
+
+$\int_{\text{下}}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}+\int_{\text{上}}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}$:
+ソレノイドが無限であれば、対称性より打ち消し合う。 
+
+\paragraph{先週の課題1.}
+
+図電後2-7
+
+当日問題2より、円電流$I$が高さ$h$に作る$B$は
+\[
+B=\frac{\mu_{0}Ia^{2}}{2\left(a^{2}+h^{2}\right)^{\frac{3}{2}}}
+\]
+
+図電後2-8
+
+位置$\left[x,x+\mathrm{d}x\right]$の円電流が点$P$につくる$\mathrm{d}B$を求める。
+
+\[
+r\equiv\sqrt{a^{2}+h^{2}}=\frac{a}{\sin\theta}
+\]
+
+\[
+\therefore\mathrm{d}B=\frac{\mu_{0}a^{2}\left(In\mathrm{d}x\right)}{2\left(\frac{a}{\sin\theta}\right)^{3}}=\frac{\mu_{0}In\sin^{3}\theta}{2a}\mathrm{d}x
+\]
+
+\[
+B=\int_{x_{1}}^{x_{2}}\frac{\mu_{0}In\sin^{3}\theta}{2a}\mathrm{d}x
+\]
+
+ここで$h=x_{p}-x=\frac{a}{\tan\theta}$
+
+\[
+x=x_{p}-\frac{a}{\tan\theta}
+\]
+
+\[
+\d x{\theta}=-a\frac{\left(-\sin^{2}\theta-\cos^{2}\theta\right)}{\sin^{2}\theta}=\frac{a}{\sin^{2}\theta}
+\]
+
+$x\rightarrow\theta$に置換
+
+\begin{align*}
+\therefore B & =\int_{\theta_{1}}^{\pi-\theta_{2}}\frac{\mu_{0}In\sin^{3}\theta}{2a}\frac{a}{\sin^{2}\theta}\mathrm{d}\theta\\
+ & =\frac{\mu_{0}nI}{2}\left(\cos\theta_{1}+\cos\theta_{2}\right)
+\end{align*}
+
+無限の場合は$\theta_{1}=\theta_{2}=0$ $B=\mu_{0}nI$となり、講義(1.26)と一致。
+
+\paragraph{当日問題1(a)①}
+
+(1.11)から計算
+
+$x,y$方向は電流=0なので$A_{x}=A_{y}=0$
+
+図電後2-9
+
+\begin{align*}
+A_{z} & =\frac{\mu_{0}}{4\pi}\int_{-L}^{L}\frac{I}{r}\mathrm{d}z\\
+ & =\frac{\mu_{0}}{4\pi}\int_{-L}^{L}\frac{I}{\sqrt{z^{2}+a^{2}}}\mathrm{d}z\\
+ & =\frac{\mu_{0}I}{4\pi}\left[\log\left(z+\sqrt{z^{2}+a^{2}}\right)\right]_{-L}^{L}\\
+ & =\frac{\mu_{0}I}{4\pi}\log\frac{L+\sqrt{L^{2}+a^{2}}}{-L+\sqrt{L^{2}+a^{2}}}\\
+ & =\frac{\mu_{0}I}{4\pi}\log\frac{\left\{ L+\sqrt{L^{2}+a^{2}}\right\} ^{2}}{a^{2}}\\
+ & =\frac{\mu_{0}I}{2\pi}\log\frac{L+\sqrt{L^{2}+a^{2}}}{a}\\
+ & =\frac{\mu_{0}I}{2\pi}\left[\log\frac{1+\sqrt{1+\left(\frac{a}{L}\right)^{2}}}{a}-\log L\right]
+\end{align*}
+
+$\log L$の項は定数なので無視する。($A$の原点を$\frac{\mu_{0}I}{2\pi}\log L$だけずらすと考える)
+
+$L\rightarrow\infty$の極限を考えると、
+\begin{align*}
+A_{z} & =\frac{\mu_{0}I}{2\pi}\log\frac{2}{a}=\frac{\mu_{0}I}{2\pi}\left[\log2-\log a\right]\\
+ & =-\frac{\mu_{0}I}{2\pi}\log a+\left(\nabla\phi\right)
+\end{align*}
+
+
+\paragraph{当日問題1(a)②}
+
+教p.111 例題6.5
+
+$z$軸上に線密度$I$の一様な電荷がある時の$V$を計算する。
+
+ガウスの法則より$z$軸から距離$r$の位置の電界は$E\left(r\right)=\frac{I}{2\pi\varepsilon_{0}r}$
+
+\begin{align*}
+V\left(a\right) & =-\int_{r_{0}}^{a}E\left(r\right)\mathrm{d}r\\
+ & =-\frac{I}{2\pi\varepsilon_{0}}\left(\log-\log r_{0}\right)
+\end{align*}
+
+$\log r_{0}$は無視。$\varepsilon_{0}\rightarrow\frac{1}{\mu_{0}}$とすると、
+\[
+A_{z}=-\frac{\mu I}{2\pi}\log a
+\]
+
+
+\paragraph{当日問題1(b)}
+
+\begin{align*}
+A_{z} & =-\frac{\mu_{0}I}{2\pi}\log\sqrt{x^{2}+y^{2}}\\
+ & =-\frac{\mu_{0}I}{4\pi}\log\left(x^{2}+y^{2}\right)
+\end{align*}
+
+$\therefore\boldsymbol{B}=\nabla\times\boldsymbol{A}$より、
+\[
+B_{x}=\pd{A_{z}}y=-\frac{\mu_{0}I}{2\pi}\frac{y}{x^{2}+y^{2}}
+\]
+
+\[
+B_{y}=-\pd{A_{z}}x=\frac{\mu_{0}I}{2\pi}\frac{x}{x^{2}+y^{2}}
+\]
+
+\[
+B_{z}=0
+\]
+
+図電後2-10
+
+先週の演習問題1(b)$B=\frac{\mu_{0}I}{2\pi a}$に一致
+
+\paragraph{当日問題1(c)}
+
+\begin{align*}
+\pd{B_{x}}x & =\frac{\mu_{0}I}{\pi}\frac{xy}{\left(x^{2}+y^{2}\right)^{2}}\\
+\pd{B_{y}}y & =-\frac{\mu_{0}I}{\pi}\frac{xy}{\left(x^{2}+y^{2}\right)^{2}}\\
+\pd{B_{z}}z & =0
+\end{align*}
+
+\[
+\therefore\nabla\cdot\boldsymbol{B}=0
+\]
+
+
+\paragraph{当日問題2}
+
+図電後2-11
+
+円柱の軸を中心に半径$r$の円経路$C$を考える。
+
+(i) $r<a$のとき
+
+図電後2-12
+
+$C$を貫く電流は
+\[
+I=\pi r^{2}J
+\]
+
+一方
+\[
+\oint\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}=2\pi rB
+\]
+
+対称性より$C$上で$B$一定
+
+∴アンペアの法則
+
+\begin{align*}
+2\pi rB & =\pi\mu_{0}r^{2}J\\
+B & =\frac{\mu_{0}rJ}{2}
+\end{align*}
+
+(ii) $r>a$のとき
+
+図電後2-13
+
+\[
+I=\pi a^{2}J
+\]
+
+\begin{align*}
+\therefore2\pi rB & =\pi\mu_{0}a^{2}J\\
+B & =\frac{\mu_{0}a^{2}J}{2r}
+\end{align*}
+
+図電後2-14
+
+\paragraph{当日問題3}
+
+\[
+\left|\boldsymbol{r}-\boldsymbol{r}'\right|=\sqrt{\left(x-x'\right)^{2}+\left(y-y'\right)^{2}+\left(z-z'\right)^{2}}
+\]
+
+\begin{align*}
+\pd{}x\left(\frac{1}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\right) & =-\frac{1}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{2}}\pd{}x\left(\left|\boldsymbol{r}-\boldsymbol{r}'\right|\right)\\
+ & =-\frac{1}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{2}}\frac{2\left(x-x'\right)}{2\sqrt{\left(x-x'\right)^{2}+\left(y-y'\right)^{2}+\left(z-z'\right)^{2}}}=-\frac{\left(x-x'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{3}}
+\end{align*}
+
+$y,z$成分も同様
+
+\[
+\therefore\nabla\left(\frac{1}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\right)=-\frac{\boldsymbol{r}-\boldsymbol{r}'}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{3}}
+\]
+
 \end{document}
