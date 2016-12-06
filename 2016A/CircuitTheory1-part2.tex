@@ -627,15 +627,19 @@ $t>0$で、エネルギーを蓄積するのは抵抗のみ。$\frac{1}{2}CV^{2}
 W=\int_{0}^{\infty}Ri^{2}\left(t\right)\mathrm{d}t=\cdots=\frac{1}{2}CV^{2}
 \]
 
-図回後2-1
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-1}
+\par\end{center}
 
 ※
-
-図回後2-2
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-2}
+\par\end{center}
 
 \section{交流回路の過渡現象}
-
-図回後2-3
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-3}
+\par\end{center}
 
 $t>0$で、KVL
 \[
@@ -651,8 +655,9 @@ L\dd it+R\d it+\frac{1}{C}i=\omega V\cos\left(\omega t+\varphi\right)
 交流回路: 非斉次微分方程式を解く必要。
 
 \subsection{交流RC回路}
-
-図回後2-4
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-4}
+\par\end{center}
 
 KVL 
 \[
@@ -673,7 +678,9 @@ i\left(t\right)=\Re\left[\frac{\omega V}{F\left(\j\omega\right)}\e^{\j\left(\ome
 R+\frac{1}{\j\omega C}=R-\frac{\j}{\omega C}\equiv Z\e^{-\j\theta}
 \]
 
-図回後2-5
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-5}
+\par\end{center}
 
 \begin{align*}
 i_{s} & =\Re\left[\frac{1}{\j}\frac{V\e^{\j m(\omega t+\varphi}}{Z\e^{-\j\theta}}\right]\\
@@ -697,8 +704,9 @@ i\left(t\right)=V\left[\underbrace{\frac{\sin\left(\omega t+\varphi+\theta\right
 
 
 \subsection{交流RL回路}
-
-図回後2-7
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-7}
+\par\end{center}
 
 KVL: 
 \[
@@ -713,8 +721,9 @@ i_{s}\left(t\right)=\Re\left[\frac{V\e^{\j\left(\omega t+\varphi\right)}}{\j F\l
 \]
 
 $R+\j\omega L=Z\e^{\j\theta}$とおく。
-
-図回後2-8
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-8}
+\par\end{center}
 
 \begin{align*}
 i_{s}\left(t\right) & =\Re\left[\frac{V\e^{\j\left(\omega t+\varphi\right)}}{\j Z\e^{\j\theta}}\right]=\Re\left[\frac{V}{\j Z}\e^{\j\left(\omega t+\varphi-\theta\right)}\right]\\
@@ -808,8 +817,9 @@ i\left(t\right)=\frac{V}{Z}\left(\underbrace{\sin\left(\omega t+\varphi-\frac{\p
 $\omega=\omega_{0}$のとき(電源周波数と回路の共振周波数が等しい)、$F\left(\j\omega\right)=0$なので、別紙式(10)を用いる。
 
 $\varphi=0$のとき、$i\left(t\right)=\frac{V}{2L}t\sin\omega_{0}t$
-
-図回後2-9
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-9}
+\par\end{center}
 \begin{itemize}
 \item 発散する
 \item 徐々に増える
@@ -825,18 +835,21 @@ $\varphi=0$のとき、$i\left(t\right)=\frac{V}{2L}t\sin\omega_{0}t$
 \section{ラプラス変換(前半)}
 
 \subsection{線形時不変系 (インパルス応答とたたみこみ)}
-
-図回後2-10
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-10}
+\par\end{center}
 
 RC, RL, RLC, LCはみな線形時不変
 
 \paragraph{インパルス応答$h\left(t\right)$: デルタ関数に対する、$H$の応答。}
-
-図回後2-11
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-11}
+\par\end{center}
 
 デルタ関数$\delta\left(t\right)$→$H$→インパルス応答$h\left(t\right)$
-
-図回後2-12
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-12}
+\par\end{center}
 
 \begin{align*}
 f\left(t\right) & =\begin{cases}
@@ -846,7 +859,9 @@ f\left(t\right) & =\begin{cases}
 \delta\left(t\right) & =\lim_{\varepsilon\rightarrow0}f\left(t\right)
 \end{align*}
 
-図回後2-13
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-13}
+\par\end{center}
 
 $h\left(t\right)$がわかると、$H$の性質がすべてわかる。
 
@@ -855,19 +870,22 @@ $h\left(t\right)$がわかると、$H$の性質がすべてわかる。
 \item $\int f\left(t\right)\delta\left(1-\tau\right)\mathrm{d}t=f\left(\tau\right)$
 
 $f$: 上の$f\left(t\right)$とは異なる一般的な関数
-
-図回後2-14
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-14}
+\par\end{center}
 \item $\int f\left(\tau\right)\delta\left(t-\tau\right)\mathrm{d}t=f\left(t\right)$
 
 1. で$t$と$\tau$を入れ替え、$\delta\left(t\right)=\delta\left(-t\right)$を使う。
-
-図回後2-15
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-15}
+\par\end{center}
 
 様々な時間$\tau$におけるデルタ関数$\delta\left(t-\tau\right)$に重み付け$f\left(\tau\right)$をかけて足し合わせると、$f\left(t\right)$を表せる。
 \end{enumerate}
 $y\left(t\right)$は$x\left(t\right)$と$h\left(t\right)$のたたみこみ。
-
-図回後2-16
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-16}
+\par\end{center}
 \begin{itemize}
 \item ラプラス変換
 \item フーリエ変換
@@ -885,8 +903,9 @@ x\left(t\right)*h\left(t\right) & =\int x\left(\tau\right)h\left(t-\tau\right)\m
 
 
 \paragraph{インパルス応答の例}
-
-図回後2-17
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-17}
+\par\end{center}
 
 KVL
 \[
@@ -915,11 +934,14 @@ h\left(t\right)=\begin{cases}
 \end{cases}
 \]
 
-図回後2-18
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-18}
+\par\end{center}
 
 RL回路のコンダクタンスのインパルス応答
-
-図回後2-19
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-19}
+\par\end{center}
 
 \begin{align*}
 i\left(t\right) & =v_{0}\cos\omega t*h\left(t\right)=h\left(t\right)*v_{0}\cos\omega t\\
@@ -929,8 +951,9 @@ i\left(t\right) & =v_{0}\cos\omega t*h\left(t\right)=h\left(t\right)*v_{0}\cos\o
 \end{align*}
 
 $R+\j\omega L$の部分が$R$と$L$の直列インピーダンスとなっている。
-
-図回後2-20
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/2-20}
+\par\end{center}
 \begin{itemize}
 \item 交流回路さえも、インパルス応答のたたみこみで計算できる。
 \item 回路は周波数ごとに異なる応答をしているわけではない。
@@ -964,8 +987,9 @@ i\left(t\right)=\frac{V}{2\omega_{0}L}\sin\varphi\sin\omega_{0}t+\frac{Vt}{2L}\s
 \subsection{線形代数のおさらい}
 
 (1) $n$次元の空間を$n$個のベクトルの線形結合で表す。\textbf{基底}
-
-図回後3-2
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-2}
+\par\end{center}
 
 (2) ベクトルの内積
 
@@ -1010,17 +1034,21 @@ $a_{n},b_{n}$: 複素数
 \int f\left(t\right)g^{*}\left(t\right)\mathrm{d}t
 \]
 
-図回後3-4
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-4}
+\par\end{center}
 
 (5) 正規直交基底
 
 基底のとり方のうち、長さが1で互いに直交しているもの。
-
-図回後3-5
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-5}
+\par\end{center}
 
 (6) 正規直交基底入っする基底変換
-
-図回後3-6
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-6}
+\par\end{center}
 
 適当なベクトル$\vec{r}$を正規直交基底の線形結合で表す。
 
@@ -1058,8 +1086,9 @@ f\left(t\right)=\int_{-\infty}^{\infty}f\left(\tau\right)\delta\left(t-\tau\righ
 $f\left(\tau\right)$: 重み付け
 
 $\delta\left(t-\tau\right)$: 基底
-
-図回後3-5
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-5}
+\par\end{center}
 
 \paragraph{$F\left(\omega\right)$を求めるには?: 基底変換}
 
@@ -1138,15 +1167,18 @@ y\left(t\right) & =\frac{1}{2\pi}\int X\left(\omega\right)\left(\e^{\j\omega t}*
 Y\left(\omega\right)=X\left(\omega\right)H\left(\omega\right)
 \]
 
-図回後3-8
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-8}
+\par\end{center}
 
 \paragraph{フーリエ変換}
 
 たたみこみのための基底変換
 
 注1: $t<0$で$h\left(t\right)=0$ (因果律)
-
-図回後3-9
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-9}
+\par\end{center}
 
 注2: $\delta\left(t\right)$のフーリエ変換=1
 
@@ -1189,10 +1221,13 @@ f\left(t\right)=\frac{1}{2\pi}\int_{-\j\infty}^{\j\infty}F\left(s\right)\e^{st}\
 ラプラス変換を、時間領域のたたみこみを$s$領域の積にできる。
 
 $t<0$で$f\left(t\right)=0$となる関数のフーリエ変換は、ラプラス変換で$s=\j\omega$と置いたものに等しい。(積分が収束すれば)
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-10}
+\par\end{center}
 
-図回後3-10
-
-図回後3-11
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-11}
+\par\end{center}
 
 \[
 \int_{-\infty}^{\infty}\delta\left(t\right)\e^{-\j\omega t}\mathrm{d}t=\e^{0}=1\stackrel{\text{等しい}}{\Leftrightarrow}\int_{0}^{\infty}\delta\left(t\right)\e^{-st}\mathrm{d}t=\e^{0}=1
@@ -1202,7 +1237,9 @@ $t<0$で$f\left(t\right)=0$となる関数のフーリエ変換は、ラプラ�
 \int_{-\infty}^{\infty}f\left(t\right)\e^{-\j\omega t}\mathrm{d}t=\int_{0}^{\infty}\e^{at}\e^{-\j\omega t}\mathrm{d}t=\frac{1}{\j\omega-a}\stackrel{\text{等しい}}{\Leftrightarrow}\int_{0}^{\infty}f\left(t\right)\e^{-st}\mathrm{d}t=\int_{0}^{\infty}\e^{at}\e^{-st}\mathrm{d}t=\frac{1}{s-a}
 \]
 
-図回後3-12
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-12}
+\par\end{center}
 
 フーリエ変換
 
@@ -1219,8 +1256,9 @@ $t<0$で$f\left(t\right)=0$となる関数のフーリエ変換は、ラプラ�
 \end{align*}
 
 となり、異なる。
-
-図回後3-13
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-13}
+\par\end{center}
 
 フーリエ変換
 
@@ -1257,11 +1295,14 @@ $f\left(t\right)\e^{-\sigma t}\left(t>0\right)$のフーリエ変換
  & =f\left(t\right)
 \end{align*}
 
-図回後3-13
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-13}
+\par\end{center}
 
 $F\left(s\right)$の形(極や零点)を見るだけで、いろいろな事がわかる。(回路理論第二)
-
-図回後3-14
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-14}
+\par\end{center}
 
 ラプラス変換
 \begin{itemize}
@@ -1279,8 +1320,9 @@ f\left(t\right)=\frac{1}{2\pi\j}\int_{\sigma-\j\infty}^{\sigma+\j\infty}F\left(s
 \]
 
 $\e^{st}$: 様々な$s$に対する基底$\e^{st}$の線形結合 $\e^{st}=\e^{\sigma t}\e^{\j\omega t}$
-
-図回後3-20
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-20}
+\par\end{center}
 
 微分・積分は線形なので、
 \begin{align*}
@@ -1303,7 +1345,9 @@ f\left(t\right)=\begin{cases}
 \end{cases}
 \]
 
-図回後3-17
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-17}
+\par\end{center}
 
 \[
 \laplace{f\left(t\right)}=\int_{0}^{\infty}\e^{t}\e^{-st}\mathrm{d}t=\frac{1}{s+1}
@@ -1318,7 +1362,9 @@ f\left(t\right)=\begin{cases}
 \end{cases}
 \]
 
-図回後3-18
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-18}
+\par\end{center}
 
 \begin{align*}
 \laplace{\d{}tf\left(t\right)} & =1-\frac{1}{s+1}\\
@@ -1336,7 +1382,9 @@ $s$倍されている。
 \end{cases}
 \]
 
-図回後3-19
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-19}
+\par\end{center}
 
 \[
 \laplace{\int_{-\infty}^{t}f\left(\tau\right)\mathrm{d}\tau}=\frac{1}{s}-\frac{1}{s+1}=\frac{1}{s\left(s+1\right)}
@@ -1347,8 +1395,9 @@ $\frac{1}{s}$倍されている。
 \paragraph{注意}
 
 $t<0$で$f\left(t\right)-0$とならない関数の場合
-
-図回後3-21
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/3-21}
+\par\end{center}
 
 微分
 
