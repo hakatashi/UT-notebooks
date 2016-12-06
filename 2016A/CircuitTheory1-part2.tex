@@ -43,6 +43,7 @@
 \global\long\def\prob{\operatorname{Prob}}
 \global\long\def\cov{\operatorname{Cov}}
 \global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
 
 
 \section*{第1回}
@@ -1184,5 +1185,207 @@ F\left(s\right)=\int_{0}^{\infty}f\left(t\right)\e^{-st}\mathrm{d}t
 \[
 f\left(t\right)=\frac{1}{2\pi}\int_{-\j\infty}^{\j\infty}F\left(s\right)\e^{st}\frac{\mathrm{d}s}{\j}
 \]
+
+ラプラス変換を、時間領域のたたみこみを$s$領域の積にできる。
+
+$t<0$で$f\left(t\right)=0$となる関数のフーリエ変換は、ラプラス変換で$s=\j\omega$と置いたものに等しい。(積分が収束すれば)
+
+図回後3-10
+
+図回後3-11
+
+\[
+\int_{-\infty}^{\infty}\delta\left(t\right)\e^{-\j\omega t}\mathrm{d}t=\e^{0}=1\stackrel{\text{等しい}}{\Leftrightarrow}\int_{0}^{\infty}\delta\left(t\right)\e^{-st}\mathrm{d}t=\e^{0}=1
+\]
+
+\[
+\int_{-\infty}^{\infty}f\left(t\right)\e^{-\j\omega t}\mathrm{d}t=\int_{0}^{\infty}\e^{at}\e^{-\j\omega t}\mathrm{d}t=\frac{1}{\j\omega-a}\stackrel{\text{等しい}}{\Leftrightarrow}\int_{0}^{\infty}f\left(t\right)\e^{-st}\mathrm{d}t=\int_{0}^{\infty}\e^{at}\e^{-st}\mathrm{d}t=\frac{1}{s-a}
+\]
+
+図回後3-12
+
+フーリエ変換
+
+\begin{align*}
+\int_{-\infty}^{\infty}f\left(t\right)\e^{\j\omega t}\mathrm{d}t & =\int_{0}^{\infty}\e^{at}\e^{\j\omega t}\mathrm{d}t\\
+ & =\left[\frac{\e^{\left(a-\j\omega\right)t}}{a-\j\omega}\right]_{0}^{\infty}\rightarrow\infty
+\end{align*}
+
+ラプラス変換
+
+\begin{align*}
+\int_{0}^{\infty}f\left(t\right)\e^{-st}\mathrm{d}t & =\int_{0}^{\infty}\e^{-st}\mathrm{d}t\\
+ & =\left[\frac{\e^{\left(a-s\right)t}}{a-s}\right]_{0}^{\infty}=\frac{1}{s-a}\left(\Re\left[s-a\right]>0\right)
+\end{align*}
+
+となり、異なる。
+
+図回後3-13
+
+フーリエ変換
+
+\begin{align*}
+\int_{-\infty}^{\infty}f\left(t\right)\e^{-\j\omega t}\mathrm{d}t & =\int_{0}^{\infty}\e^{-\j\omega t}\mathrm{d}t\\
+ & =\cdots=\frac{1}{\j\omega}+\pi\delta\left(\omega\right)
+\end{align*}
+
+ラプラス変換
+
+\begin{align*}
+\int_{0}^{\infty}f\left(t\right)\e^{-st}\mathrm{d}t & =\int_{0}^{\infty}\e^{-st}\mathrm{d}t\\
+ & =\frac{1}{s}\left(\Re s>0\right)
+\end{align*}
+
+となり、異なる。
+
+ラプラス変換: 周波数$s$を複素数に拡張。$s=\sigma+\j\omega$
+
+このため$f\left(t\right)$が$t\rightarrow\infty$で発散 or 0に収束しないときでも、ラプラス変換が可能。フーリエ変換は不可能
+or 難しい。回路にはラプラス。
+
+\paragraph{$s=\sigma+\protect\j\omega$ってどういうこと?}
+
+\[
+F\left(\sigma+\j\omega\right)=\int_{0}^{\infty}f\left(t\right)\e^{-\sigma t}\e^{-\j\omega t}\mathrm{d}t
+\]
+
+$f\left(t\right)\e^{-\sigma t}\left(t>0\right)$のフーリエ変換
+
+\begin{align*}
+\frac{1}{2\pi\j}\int_{\sigma-\j\omega}^{\sigma+\j\omega}F\left(s\right)\e^{st}\mathrm{d}s & =\frac{1}{2\pi\j}\int_{-\infty}^{\infty}F\left(\sigma+\j\omega\right)\e^{\sigma t}\e^{\j\omega t}\j\mathrm{d}\omega\\
+ & =\e^{\sigma t}\underbrace{\frac{1}{2\pi}\int F\left(\sigma+\j\omega\right)\e^{\j\omega t}\mathrm{d}\omega}_{f\left(t\right)\e^{-\sigma t}}\\
+ & =f\left(t\right)
+\end{align*}
+
+図回後3-13
+
+$F\left(s\right)$の形(極や零点)を見るだけで、いろいろな事がわかる。(回路理論第二)
+
+図回後3-14
+
+ラプラス変換
+\begin{itemize}
+\item $t\geqq0$のみを問題にする
+\item フーリエ変換を計算できない関数も扱える
+\item たたみこみを積にできる
+\end{itemize}
+
+\subsection{微分・積分のラプラス変換}
+
+$t<0$で$f\left(t\right)=0$となる関数の場合
+
+\[
+f\left(t\right)=\frac{1}{2\pi\j}\int_{\sigma-\j\infty}^{\sigma+\j\infty}F\left(s\right)\e^{st}\mathrm{d}s
+\]
+
+$\e^{st}$: 様々な$s$に対する基底$\e^{st}$の線形結合 $\e^{st}=\e^{\sigma t}\e^{\j\omega t}$
+
+図回後3-20
+
+微分・積分は線形なので、
+\begin{align*}
+\d{}tf\left(t\right) & =\frac{1}{2\pi\j}\int_{\sigma-\j\infty}^{\sigma+\j\infty}F\left(s\right)s\e^{st}\mathrm{d}s\Rightarrow\laplace{\d{}tf\left(t\right)}=sF\left(s\right)\\
+\int f\left(t\right)\mathrm{d}t & =\frac{1}{2\pi\j}\int_{\sigma-\j\infty}^{\sigma+\j\infty}F\left(s\right)\frac{1}{s}\e^{st}\mathrm{d}s\Rightarrow\laplace{\int f\left(t\right)\mathrm{d}t}=\frac{1}{s}F\left(s\right)
+\end{align*}
+
+$\mathcal{L}$: ラブラス変換
+
+微分の伝達関数→$s$
+
+積分の伝達関数→$\frac{1}{s}$
+
+\paragraph{例 指数減衰関数}
+
+\[
+f\left(t\right)=\begin{cases}
+\e^{-t} & \left(t\geqq0\right)\\
+0 & \left(t<0\right)
+\end{cases}
+\]
+
+図回後3-17
+
+\[
+\laplace{f\left(t\right)}=\int_{0}^{\infty}\e^{t}\e^{-st}\mathrm{d}t=\frac{1}{s+1}
+\]
+
+微分
+
+\[
+\d{}tf\left(t\right)=\begin{cases}
+\delta\left(t\right)-\e^{-t}\\
+0 & \left(t<0\right)
+\end{cases}
+\]
+
+図回後3-18
+
+\begin{align*}
+\laplace{\d{}tf\left(t\right)} & =1-\frac{1}{s+1}\\
+ & =\frac{s}{s+1}
+\end{align*}
+
+$s$倍されている。
+
+積分
+
+\[
+\int_{-\infty}^{t}f\left(\tau\right)\mathrm{d}\tau=\begin{cases}
+1-\e^{-t} & \left(t\geqq0\right)\\
+0 & \left(t<0\right)
+\end{cases}
+\]
+
+図回後3-19
+
+\[
+\laplace{\int_{-\infty}^{t}f\left(\tau\right)\mathrm{d}\tau}=\frac{1}{s}-\frac{1}{s+1}=\frac{1}{s\left(s+1\right)}
+\]
+
+$\frac{1}{s}$倍されている。
+
+\paragraph{注意}
+
+$t<0$で$f\left(t\right)-0$とならない関数の場合
+
+図回後3-21
+
+微分
+
+\begin{align*}
+\laplace{\d{}tf\left(t\right)} & =\int_{0}^{\infty}\d ft\e^{-st}\mathrm{d}t\\
+ & =\left[f\left(t\right)\e^{-st}\right]_{0}^{\infty}\int_{0}^{\infty}f\left(t\right)\left(-s\e^{-st}\right)\mathrm{d}t\\
+ & =sF\left(s\right)-f\left(0+\right)
+\end{align*}
+
+\[
+F\left(s\right)=\frac{1}{s+1}-1=-\frac{1}{s+1}
+\]
+
+積分
+
+\[
+f^{\left(-1\right)}\left(t\right)=\int_{-\infty}^{t}f\left(\tau\right)\mathrm{d}\tau
+\]
+
+\begin{align*}
+\laplace{f^{\left(-1\right)}\left(t\right)} & =\laplace{\int_{-\infty}^{0}f\left(\tau\right)\mathrm{d}\tau+\int_{0}^{\infty}f\left(\tau\right)\mathrm{d}\tau}\\
+ & =\frac{f^{\left(-1\right)}\left(0\right)}{s}+\frac{F\left(s\right)}{s}
+\end{align*}
+
+
+\subsection{まとめ}
+\begin{itemize}
+\item 線形時不変系: $x\left(t\right)\rightarrow H\rightarrow y\left(t\right)=x\left(t\right)*h\left(t\right)$
+($h\left(t\right)$: インパルス応答)
+\item 線形代数: 基底変換で計算を容易に
+\item フーリエ変換: 複素正弦波$\e^{\j\omega t}$への基底変換→たたみこみが掛け算
+\item ラプラス変換: $t\geqq0$、周波数を複素数に拡張→たたみこみが掛け算
+\begin{itemize}
+\item $h\left(t\right)$のフーリエ変換: 周波数応答(複素数)←$s=\j\omega$
+\item $h\left(t\right)$のラプラス変換
+\end{itemize}
+\item 微分積分の伝達関数: $s,\frac{1}{s}$
+\end{itemize}
 
 \end{document}
