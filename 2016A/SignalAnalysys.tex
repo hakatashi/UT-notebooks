@@ -1130,8 +1130,9 @@ sinc関数による補間のイメージ
 \section*{第6回}
 
 \paragraph{信号の標本化}
-
-図信6-1
+\begin{center}
+\includegraphics{images/SignalAnalysys/6-1}
+\par\end{center}
 
 \paragraph{標本化定理}
 
@@ -1140,8 +1141,9 @@ sinc関数による補間のイメージ
 (音楽20kHz以下→CDは44.1kHzサンプリング)
 
 \paragraph{復元法}
-
-図信6-2
+\begin{center}
+\includegraphics{images/SignalAnalysys/6-2}
+\par\end{center}
 
 \[
 x^{*}\left(t\right)=\sum_{s=-\infty}^{\infty}x\left(nT_{0}\right)\delta\left(t-nT_{0}\right)\:\left(T_{0}=\frac{1}{2W}\right)
@@ -1153,8 +1155,9 @@ x^{*}\left(t\right)=\sum_{s=-\infty}^{\infty}x\left(nT_{0}\right)\delta\left(t-n
 
 
 \paragraph{図的理解}
-
-図信6-3
+\begin{center}
+\includegraphics{images/SignalAnalysys/6-3}
+\par\end{center}
 \begin{itemize}
 \item $\left|f\right|<W$に帯域制限された連続信号$x\left(t\right)$ (連続系の情報理論)
 \item $\frac{1}{2W}$ごとの標本値列$x\left(\frac{n}{2W}\right)$ (サンプル値系の情報理論)
@@ -1162,12 +1165,17 @@ x^{*}\left(t\right)=\sum_{s=-\infty}^{\infty}x\left(nT_{0}\right)\delta\left(t-n
 の2つは等価である。
 
 \section{第5章 信号とスペクトルのまとめ}
+\begin{center}
+\includegraphics{images/SignalAnalysys/6-4}
+\par\end{center}
 
-図信6-4
+\begin{center}
+\includegraphics{images/SignalAnalysys/6-5}
+\par\end{center}
 
-図信6-5
-
-図信6-6
+\begin{center}
+\includegraphics{images/SignalAnalysys/6-6}
+\par\end{center}
 
 残るは⋯⋯離散周期信号
 
@@ -1213,8 +1221,9 @@ $F_{0}=\frac{1}{NT_{0}}$
 \end{align*}
 
 離散フーリエ級数の係数$\alpha_{k}$は周期$N$を持つ。
-
-図信6-7
+\begin{center}
+\includegraphics{images/SignalAnalysys/6-7}
+\par\end{center}
 
 \paragraph{離散フーリエ変換}
 
@@ -1263,8 +1272,9 @@ FFT(Fast Fourier Transform)の登場でDFTの高速計算が可能に。
 →FFTなどの便利なツールを使いたいから周期化して考えよう
 
 周期性の与え方に工夫の余地あり
-
-図信6-8
+\begin{center}
+\includegraphics{images/SignalAnalysys/6-8}
+\par\end{center}
 
 \section*{第7回}
 
@@ -1484,4 +1494,214 @@ p_{n}\left(x_{1},t_{1};x_{2},t_{2};\cdots;x_{n},t_{n}\right)=p_{n}\left(x_{1},t_
 \paragraph{エルゴード仮説}
 
 複雑な定常的物理現象は、エルゴード信号とみなしてよい
+
+\section*{第8回}
+
+\paragraph{前回}
+
+不規則信号→1つ1つの信号波形ではなく、集合に共通する確率的な性質を扱う。
+
+集合を扱う→集合平均
+
+定常性: 統計的な性質がどの時点ド観測しても同じ→時間平均をとっても変化しない。
+
+エルゴード性: 強定常かつ強定常(1次・2次だけでない)な真部分集合を含まない。→集合平均は時間平均に一致する。
+\begin{center}
+\includegraphics{images/SignalAnalysys/8-1}
+\par\end{center}
+
+\paragraph{エルゴード仮説}
+
+複雑な定常物理現象は、エルゴード信号とみなしてよい。
+
+この仮設を信じて前進する!
+
+\section{第7章 相関関数とスペクトル}
+
+不規則信号(エルゴード仮説)の2次統計量による解析
+
+\paragraph{相関とは?}
+
+2変数の場合
+\begin{center}
+\includegraphics{images/SignalAnalysys/8-2}
+\par\end{center}
+
+\begin{center}
+\includegraphics{images/SignalAnalysys/8-3}
+\par\end{center}
+
+\paragraph{相関}
+
+\[
+\sigma_{XY}=\frac{1}{N}\sum_{i=1}^{N}\left(x_{i}-\bar{x}\right)\left(y_{i}-\bar{y}\right)
+\]
+
+\[
+\begin{cases}
+\bar{x}=\frac{1}{N}\sum_{i=1}^{N}x_{i}\\
+\bar{y}=\frac{1}{N}\sum_{i=1}^{N}y_{i}
+\end{cases}
+\]
+
+
+\paragraph{2つの信号の相関}
+\begin{center}
+\includegraphics{images/SignalAnalysys/8-4}
+\par\end{center}
+
+\[
+\sigma_{XY}=\frac{1}{N}\sum\left(x_{i}-\bar{x}\right)\left(y_{i}-\bar{y}\right)
+\]
+
+$N\cdot\Delta t=T,\Delta t\rightarrow0$
+
+\[
+\sigma_{XY}=\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}\left(x\left(t\right)-\bar{x}\right)\left(y\left(t\right)-\bar{y}\right)\mathrm{d}t
+\]
+
+
+\paragraph{自己相関関数}
+
+$x\left(t\right)$と$x\left(t+\tau\right)$の相関
+
+\[
+\varphi_{X}\left(\tau\right)=\lim_{T\rightarrow\infty}\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}x\left(t\right)x\left(t+\tau\right)\mathrm{d}t
+\]
+
+$\tau$: 時間差
+
+\textbf{※ただし、$\bar{x}=0$と仮定して略記する。}
+
+\begin{align*}
+\varphi_{X}\left(\tau\right) & =\left\langle x\left(t\right)x\left(t+\tau\right)\right\rangle \:\text{時間平均}\\
+ & \text{エルゴード信号の場合、}\\
+ & =E\left[x\left(t\right)x\left(t+\tau\right)\right]\:\text{集合平均}
+\end{align*}
+
+
+\paragraph{自己相関関数の性質}
+\begin{enumerate}
+\item 
+\begin{align*}
+\left\langle x\left(t\right)x\left(t+\tau\right)\right\rangle \\
+\left\langle x\left(t\right)x\left(t-\tau\right)\right\rangle  & =\left\langle x\left(t-\tau\right)x\left(t\right)\right\rangle 
+\end{align*}
+
+$\varphi_{X}\left(\tau\right)=\varphi_{X}\left(-\tau\right)$: 偶関数
+\item $\varphi_{X}\left(0\right)=\left\langle x\left(t\right)^{2}\right\rangle $
+信号の平均電力
+\item $\varphi_{X}\left(0\right)\geq\left|\varphi_{X}\left(\tau\right)\right|$
+\begin{center}
+\includegraphics{images/SignalAnalysys/8-5}
+\par\end{center}
+\end{enumerate}
+
+\paragraph{例1}
+
+\[
+x\left(t\right)=A\cos\left(\omega t+\theta\right)
+\]
+
+※$\bar{x}=0$
+
+\begin{align*}
+\varphi_{X}\left(\tau\right) & =\left\langle x\left(t\right)x\left(t+\tau\right)\right\rangle \\
+ & =A^{2}\left\langle \cos\left(\omega t+\theta\right)\cos\left(\omega\left(t+\tau\right)+\theta\right)\right\rangle \\
+ & =\frac{A^{2}}{2}\left\langle \cos\left(2\omega t+2\theta+\omega\tau\right)+\cos\omega\tau\right\rangle \\
+ & =\frac{A^{2}}{2}\cos\omega\tau
+\end{align*}
+
+←自己相関
+\begin{center}
+\includegraphics{images/SignalAnalysys/8-6}
+\par\end{center}
+
+\paragraph{例2}
+
+白色雑音 (完全にランダム)
+\begin{center}
+\includegraphics{images/SignalAnalysys/8-7}
+\par\end{center}
+
+\[
+\varphi_{X}\left(\tau\right)=\delta\left(\tau\right)
+\]
+
+一般的には…
+\begin{center}
+\includegraphics{images/SignalAnalysys/8-8}
+\par\end{center}
+
+\paragraph{相互相関関数}
+
+$x\left(t\right)$と$y\left(t+\tau\right)$の相関
+
+\[
+\varphi_{X}\left(\tau\right)=\lim_{T\rightarrow\infty}\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}x\left(t\right)y\left(t+\tau\right)\mathrm{d}t
+\]
+
+$\tau$: 時間差
+
+\textbf{※ただし、$\bar{x}=0,\bar{y}=0$と仮定して略記する。}
+
+自己相関関数は、
+\[
+y\left(t\right)=x
+\]
+と置いた時の相互相関関数であるとみなされる。
+
+\paragraph{相互相関関数の性質}
+\begin{enumerate}
+\item 必ずしも偶関数とは限らない。
+
+\begin{align*}
+\varphi_{XY}\left(\tau\right) & =\left\langle x\left(t\right)y\left(t+\tau\right)\right\rangle \\
+\varphi_{XY}\left(-\tau\right) & =\left\langle x\left(t\right)y\left(t-\tau\right)\right\rangle \\
+ & =\left\langle y\left(t-\tau\right)x\left(t\right)\right\rangle =\varphi_{YX}\left(\tau\right)
+\end{align*}
+
+$\varphi_{XY}\left(-\tau\right)=\varphi_{YX}\left(\tau\right)$が成立する。
+\item $\left|\varphi_{XY}\left(\tau\right)\right|\leq\sqrt{\varphi_{X}\left(0\right)\varphi_{Y}\left(0\right)}$
+\end{enumerate}
+
+\paragraph{使い方の例}
+\begin{center}
+\includegraphics{images/SignalAnalysys/8-9}
+\par\end{center}
+
+\paragraph{雑音$n\left(t\right)$}
+
+どんなに大きくても構わないが、入力$x\left(t\right)$と無相関である。
+
+\begin{align*}
+\varphi_{XY}\left(\tau\right) & =\left\langle x\left(t\right)y\left(t+\tau\right)\right\rangle \:\left(\text{展開}\right)\\
+ & =\left\langle x\left(t\right)\left\{ x\left(t-t_{0}+\tau\right)+n\left(t+\tau\right)\right\} \right\rangle \\
+ & =\left\langle x\left(t\right)x\left(t-t_{0}+\tau\right)\right\rangle +\left\langle x\left(t\right)n\left(t+\tau\right)\right\rangle \\
+ & =\left\langle x\left(t\right)x\left(t+\left(\tau-t_{0}\right)\right)\right\rangle =\varphi_{X}\left(\tau-t_{0}\right)
+\end{align*}
+
+\begin{center}
+\includegraphics{images/SignalAnalysys/8-10}
+\par\end{center}
+
+$\varphi_{XY}\left(\tau\right)$を$t_{0}$だけ平均移動したもの
+
+→$t_{0}$に最大値を持つので、$\varphi_{XY}\left(\tau\right)$が最大になる$\tau$が遅延$t_{0}$を表す。
+
+\paragraph{このような使い方をする時の注意点}
+
+$\varphi_{X}\left(\tau\right)$が、インパルス関数のような形であることが望ましい。
+
+→白色雑音が最も効果的
+
+ちゃんと正規化したいときは、
+\[
+\rho_{X}\left(\tau\right)=\frac{\varphi_{X}\left(\tau\right)}{\varphi_{X}\left(0\right)}
+\]
+
+\[
+\rho_{XY}\left(\tau\right)=\frac{\varphi_{XY}\left(\tau\right)}{\sqrt{\varphi_{X}\left(0\right)\varphi_{Y}\left(0\right)}}
+\]
+
 \end{document}
