@@ -525,8 +525,9 @@ $l_{i}$瞬時符号があれば
 \paragraph{情報源の拡大}
 
 例:
-
-図情4-1
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/InformationScience/4-1.jpg}
+\par\end{center}
 
 \[
 L=1
@@ -538,8 +539,9 @@ H & =-0.8\log0.8-0.2\log0.2\\
 \end{align*}
 
 2次の拡大情報源 ハフマン符号
-
-図情4-2
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/InformationScience/4-2.jpg}
+\par\end{center}
 
 平均符号長
 
@@ -644,8 +646,9 @@ H\left(S\right)\leq L<H\left(S\right)+\varepsilon
 (二次エントロピー$aa,ab,\cdots$の生起確率) 3.32
 
 \paragraph{例 2値画像}
-
-図情4-3
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/InformationScience/4-3.jpg}
+\par\end{center}
 
 \paragraph{マルコフ情報源}
 
@@ -683,14 +686,18 @@ H_{1}\left(S\right)=-\frac{2}{3}\log\frac{2}{3}-\frac{1}{3}\log\frac{1}{3}=0.918
 \paragraph{ランレングス符号化}
 
 run/length: 連なり/符号化
+\begin{center}
+\includegraphics{images/InformationScience/5-1}
+\par\end{center}
 
-図情5-1
-
-図情5-2
+\begin{center}
+\includegraphics{images/InformationScience/5-2}
+\par\end{center}
 
 \paragraph{ランレングス+ハフマン符号化}
-
-図情5-3
+\begin{center}
+\includegraphics{images/InformationScience/5-3}
+\par\end{center}
 
 根元を 平均ラン長$L_{R}=\sum p_{i}i$とすると、元々の1シンボルあたりでは、(正確ではないが)
 \[
@@ -759,18 +766,22 @@ EOL: End of Life
 \paragraph{算術符号}
 
 ``エリアス符号''
-
-図情6-1
+\begin{center}
+\includegraphics{images/InformationScience/6-1}
+\par\end{center}
 
 \[
 P\left(0\right)=0.8,P\left(1\right)=0.2
 \]
 
 確率を反映させた``区切り''を用いる
+\begin{center}
+\includegraphics{images/InformationScience/6-2}
+\par\end{center}
 
-図情6-2
-
-図情6-3
+\begin{center}
+\includegraphics{images/InformationScience/6-3}
+\par\end{center}
 
 実際に長さ$N$の系列$S$にて、
 
@@ -804,8 +815,9 @@ $P_{0}^{N_{0}}\times P_{1}^{N_{1}}$の点を表すのに必要な精度(ケタ�
 $a_{2}a_{1}a_{1}$ (長さは3まで)
 
 $\left\{ a_{1},a_{2}\right\} $ $P\left(a_{1}\right)=0.75,P\left(a_{2}\right)=0.25$
-
-図情6-4
+\begin{center}
+\includegraphics{images/InformationScience/6-4}
+\par\end{center}
 \begin{itemize}
 \item テーブルを使わない
 \item 算術演算で符号を生成
@@ -820,7 +832,9 @@ $\left\{ a_{1},a_{2}\right\} $ $P\left(a_{1}\right)=0.75,P\left(a_{2}\right)=0.2
 \item 記憶のない(定常的な)通信路 (ランダムに誤りが起こる通信路)
 \end{itemize}
 \end{itemize}
-図情6-5
+\begin{center}
+\includegraphics{images/InformationScience/6-5}
+\par\end{center}
 
 \[
 \left[\begin{array}{cccc}
@@ -839,8 +853,9 @@ P\left(b_{j}|a_{i}\right)=P_{ji}
 \paragraph{典型的な通信路}
 \begin{enumerate}
 \item 2元対称通信路
-
-図情6-6
+\begin{center}
+\includegraphics{images/InformationScience/6-6}
+\par\end{center}
 
 通信路行列
 \[
@@ -851,8 +866,9 @@ p & 1-p
 \]
 
 \item 2元対称消失通信路
-
-図情6-7
+\begin{center}
+\includegraphics{images/InformationScience/6-7}
+\par\end{center}
 
 \[
 \left[\begin{array}{ccc}
@@ -875,7 +891,9 @@ p & 1-p-q & q
 C\triangleq\max I\left(A,B\right)
 \]
 
-図情6-8
+\begin{center}
+\includegraphics{images/InformationScience/6-8}
+\par\end{center}
 
 \begin{align*}
 I\left(A,B\right) & =H\left(A\right)-H\left(A|B\right)\\
@@ -894,11 +912,14 @@ I\left(A,B\right) & =\sum P_{C}\left(a_{i},b_{j}\right)\log\frac{P_{C}\left(a_{i
 C=1+p\log P+\left(1-p\right)\log\left(1-P\right)
 \]
 
-図情6-9
+\begin{center}
+\includegraphics{images/InformationScience/6-9}
+\par\end{center}
 
 \paragraph{加法的通信路}
-
-図情6-10
+\begin{center}
+\includegraphics{images/InformationScience/6-10}
+\par\end{center}
 
 \begin{align*}
 I\left(X,Y\right) & =H\left(Y\right)-H\left(Y|X\right)\\
@@ -941,8 +962,9 @@ I\left(X,Y\right) & =H\left(Y\right)-H\left(Y|X\right)\\
 \end{itemize}
 
 \paragraph{通信路が与えられた時、伝承億度の上限は?}
-
-図情7-1
+\begin{center}
+\includegraphics{images/InformationScience/7-1}
+\par\end{center}
 
 \paragraph{通信路符号化定理}
 
@@ -954,9 +976,13 @@ $R<C$(通信路容量)であれば、限りなく復号誤り率を低くする�
 \item 伝送速度$R$
 \item $S_{0}$から発生する長さ$n$の系列をランダムに$M=2^{nR}$とり符号とする。$C_{0}=\left\{ w_{1},w_{2},\cdots,w_{M}\right\} $
 \end{enumerate}
-図情7-2
+\begin{center}
+\includegraphics{images/InformationScience/7-2}
+\par\end{center}
 
-図情7-3
+\begin{center}
+\includegraphics{images/InformationScience/7-3}
+\par\end{center}
 \begin{itemize}
 \item $S_{0}$の長さ$n$の代表的系列$2^{nH\left(X\right)}$
 \item $M\left(=2^{nR}\right)$個の符号語を選ぶ
@@ -985,8 +1011,9 @@ $C<R$であれば、そうはならない。
 \end{itemize}
 
 \paragraph{通信路符号化法}
-
-図情7-4
+\begin{center}
+\includegraphics{images/InformationScience/7-4}
+\par\end{center}
 
 \paragraph{ハミング距離}
 
@@ -1011,8 +1038,9 @@ d_{H}\left(a,b\right)=w_{H}\left(a-b\right)
 ←2元加減算
 
 \paragraph{$t$重誤り訂正}
-
-図情7-5
+\begin{center}
+\includegraphics{images/InformationScience/7-5}
+\par\end{center}
 \begin{itemize}
 \item すべての符号語間の距離$\geq2t+1$ 
 \item 最小の符号語距離$=2t+1$
@@ -1024,8 +1052,9 @@ $t$重の誤りに対して、符号語が他の符号語の復号領域に入�
 \paragraph{$t$重誤り検出}
 
 $t$重誤りが起こっても、他の符号語にはならない。
-
-図情7-6
+\begin{center}
+\includegraphics{images/InformationScience/7-6}
+\par\end{center}
 \begin{itemize}
 \item すべての符号語間距離$\geq t+1$
 \item 最小符号語間距離$=t+1$
