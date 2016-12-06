@@ -936,4 +936,253 @@ $R+\j\omega L$の部分が$R$と$L$の直列インピーダンスとなってい
 \item 常にインパルス応答で応答しているだけ。
 \end{itemize}
 続きは次回(12/8)
+
+\section*{第3回}
+
+\paragraph{レポート解}
+
+\[
+i\left(t\right)=\frac{V}{2\omega_{0}L}\sin\varphi\sin\omega_{0}t+\frac{Vt}{2L}\sin\left(\omega_{0}t+\varphi\right)
+\]
+
+
+\paragraph{本日の内容}
+\begin{itemize}
+\item 3 ラプラス変換
+\begin{itemize}
+\item 3.1 線形時不変系(復習)
+\item 3.2 線形代数のおさらい
+\item 3.3 フーリエ変換
+\item 3.4 ラプラス変換
+\item 3.5 微分積分のラプラス変換
+\item 3.6 まとめ
+\end{itemize}
+\end{itemize}
+たたみこみをいかに計算するか→線形代数を活用
+
+\subsection{線形代数のおさらい}
+
+(1) $n$次元の空間を$n$個のベクトルの線形結合で表す。\textbf{基底}
+
+図回後3-2
+
+(2) ベクトルの内積
+
+\[
+\vec{r}_{1}\cdot\vec{r}_{2}=\left|\vec{r}_{1}\right|\left|\vec{r}_{2}\right|\cos\theta
+\]
+
+実数成分の時、
+\begin{align*}
+\vec{r}_{1} & =\left(x_{1},y_{1},z_{1},\cdots\right)\\
+\vec{r}_{2} & =\left(x_{2},y_{2},z_{2},\cdots\right)
+\end{align*}
+とすると、
+\[
+\vec{r}_{1}\cdot\vec{r}_{2}=x_{1}x_{2}+y_{1}y_{2}+z_{1}z_{2}+\cdots
+\]
+
+(3) 複素数の内積
+
+\begin{align*}
+\vec{a} & =\left(a_{1},a_{2},a_{3},\cdots\right)\\
+\vec{b} & =\left(b_{1},b_{2},b_{3},\cdots\right)
+\end{align*}
+
+$a_{n},b_{n}$: 複素数
+
+\[
+\vec{a}\cdot\vec{b}=a_{1}b_{1}^{*}+a_{2}b_{2}^{*}+a_{3}b_{3}^{*}+\cdots
+\]
+
+この定義によって、
+\begin{align*}
+\vec{a}\cdot\vec{a} & =a_{1}a_{1}^{*}+a_{2}a_{2}^{*}+a_{3}a_{3}^{*}+\cdots\\
+ & =\left|a_{1}\right|^{2}+\left|a_{2}\right|^{2}+\left|a_{3}\right|^{2}+\cdots\geqq0
+\end{align*}
+
+長さの2乗となる。
+
+(4) 連続関数の内積
+
+\[
+\int f\left(t\right)g^{*}\left(t\right)\mathrm{d}t
+\]
+
+図回後3-4
+
+(5) 正規直交基底
+
+基底のとり方のうち、長さが1で互いに直交しているもの。
+
+図回後3-5
+
+(6) 正規直交基底入っする基底変換
+
+図回後3-6
+
+適当なベクトル$\vec{r}$を正規直交基底の線形結合で表す。
+
+\[
+\vec{r}=c_{1}\vec{e}_{1}+c_{2}\vec{e}_{2}
+\]
+
+重み付けの係数は、上式と$\vec{e}_{1},\vec{e}_{2}$の内積で求まる。
+
+\begin{align*}
+\vec{r}\cdot\vec{e}_{1} & =c_{1}\vec{e}_{1}\cdot\vec{e}_{1}+c_{2}\vec{e}_{2}\cdot\vec{e}_{1}=c_{1}\\
+\vec{r}\cdot\vec{e}_{2} & =c_{1}\vec{e}_{1}\cdot\vec{e}_{2}+c_{2}\vec{e}_{2}\cdot\vec{e}_{2}=c_{2}
+\end{align*}
+
+(7) 固有ベクトル
+
+\[
+A\vec{r}=\lambda\vec{r}
+\]
+
+$A$: 線形変換(行列)
+
+$\lambda$: 固有値
+
+線形変換の結果が、自身の定数倍
+
+\subsection{フーリエ変換}
+
+$f\left(t\right)$を無限次元のベクトル空間と捉える。
+
+\[
+f\left(t\right)=\int_{-\infty}^{\infty}f\left(\tau\right)\delta\left(t-\tau\right)\mathrm{d}\tau
+\]
+
+$f\left(\tau\right)$: 重み付け
+
+$\delta\left(t-\tau\right)$: 基底
+
+図回後3-5
+
+\paragraph{$F\left(\omega\right)$を求めるには?: 基底変換}
+
+$\frac{1}{\sqrt{2\pi}}\e^{\j\omega t}$が正規直交基底であることを利用。
+
+\[
+\int_{-\infty}^{\infty}\frac{\e^{\j\omega t}}{\sqrt{2\pi}}\left(\frac{\e^{\j\omega t}}{\sqrt{2\pi}}\right)^{*}\mathrm{d}t=\cdots=\delta\left(\omega_{1}-\omega_{2}\right)
+\]
+
+$\omega_{1}\neq\omega_{2}$のとき、内積が0
+
+$\omega_{1}=\omega_{2}$のとき、平行。
+
+\paragraph{証明したい人へ}
+
+$\omega=\omega_{1}-\omega_{2}$とおく。
+
+\begin{align*}
+\left(\text{左辺}\right) & =\frac{1}{2\pi}\int_{-\infty}^{\infty}\e^{\j\omega t}\mathrm{d}t\\
+ & =\lim_{T\rightarrow\infty}\frac{1}{2\pi}\int_{-\infty}^{\infty}\e^{-\frac{t^{2}}{2T^{2}}}\e^{\j\omega t}\mathrm{d}t\\
+ & =\cdots=\lim_{T\rightarrow\infty}\frac{T}{\sqrt{2\pi}}\e^{-\frac{T^{2}\omega^{2}}{2}}\\
+ & =\delta\left(\omega\right)
+\end{align*}
+
+
+\paragraph{ある関数$g\left(t\right)$を基底変換}
+
+\[
+\int g\left(t\right)\left(\frac{1}{\sqrt{2\pi}}\e^{\j\omega t}\right)^{*}\equiv G\left(\omega\right)
+\]
+とすると、$\frac{1}{\sqrt{2\pi}}\e^{\j\omega t}$の線形結合で$g\left(t\right)$を表せる。
+
+\[
+g\left(t\right)=\int G\left(\omega\right)\frac{1}{\sqrt{2\pi}}\e^{\j\omega t}\mathrm{d}\omega
+\]
+
+正規直交基底を使ったフーリエ変換(対称性を大事にする場合)
+
+\paragraph{電気系の流儀}
+
+$f\left(t\right)=g\left(t\right),F\left(\omega\right)=\sqrt{2\pi}G\left(\omega\right)$
+
+\[
+\begin{cases}
+F\left(\omega\right)=\int_{-\infty}^{\infty}f\left(t\right)\e^{-\j\omega t}\mathrm{d}t & \text{フーリエ変換は基底との内積}\\
+f\left(t\right)=\frac{1}{2\pi}\int_{-\infty}^{\infty}F\left(\omega\right)\e^{\j\omega t}\mathrm{d}\omega & \text{フーリエ逆変換は基底との線形結合}
+\end{cases}
+\]
+
+
+\paragraph{なぜ$\protect\e^{\protect\j\omega t}$を基底に使うの?}
+
+$\e^{\j\omega t}$は、畳込みに対する固有ベクトル
+
+\begin{align*}
+y\left(t\right) & =x\left(t\right)*h\left(t\right)=h\left(t\right)*x\left(t\right)\\
+ & =\int h\left(\tau\right)x\left(t-\tau\right)\mathrm{d}\tau
+\end{align*}
+
+$x\left(t\right)=\e^{\j\omega t}$とする。
+
+\begin{align*}
+y\left(t\right) & =\int h\left(t\right)\e^{\j\omega\left(t-\tau\right)}\mathrm{d}t\\
+ & =\e^{\j\omega t}\int h\left(\tau\right)\e^{-\j\omega\tau}\mathrm{d}\tau\\
+ & =\e^{\j\omega t}h\left(\omega\right)
+\end{align*}
+
+$x\left(t\right)=\frac{1}{2\pi}\int X\left(\omega\right)\e^{\j\omega t}\mathrm{d}\omega$とすると、様々な$\omega$の正弦波
+
+\begin{align*}
+y\left(t\right) & =\frac{1}{2\pi}\int X\left(\omega\right)\left(\e^{\j\omega t}*h\left(t\right)\right)\mathrm{d}\omega\\
+ & =\frac{1}{2\pi}\int\underbrace{X\left(\omega\right)H\left(\omega\right)}_{y\left(t\right)\text{のフーリエ変換}}\e^{\j\omega t}\mathrm{d}\omega
+\end{align*}
+
+\[
+Y\left(\omega\right)=X\left(\omega\right)H\left(\omega\right)
+\]
+
+図回後3-8
+
+\paragraph{フーリエ変換}
+
+たたみこみのための基底変換
+
+注1: $t<0$で$h\left(t\right)=0$ (因果律)
+
+図回後3-9
+
+注2: $\delta\left(t\right)$のフーリエ変換=1
+
+\[
+h\left(t\right)=\delta\left(t\right)\Rightarrow H\left(\omega\right)=1
+\]
+
+$H\left(\omega\right)$が$\omega$に対して一定でない→$h\left(t\right)\neq\delta\left(t\right)$
+
+$x\left(t\right)$に$h\left(t\right)$が畳み込まれ、過渡応答が生じる。
+
+\subsection{ラプラス変換}
+
+フーリエ変換の拡張(歴史的には逆)
+
+フーリエ変換
+
+\[
+F\left(\omega\right)=\int_{-\infty}^{\infty}f\left(t\right)\e^{-\j\omega t}\mathrm{d}t
+\]
+
+\[
+f\left(t\right)=\frac{1}{2\pi}\int_{-\infty}^{\infty}F\left(\omega\right)\e^{\j\omega t}\mathrm{d}\omega
+\]
+
+\begin{itemize}
+\item $t<0$で$f\left(t\right)=0$
+\item $S=\j\omega$
+\end{itemize}
+ラプラス変換
+
+\[
+F\left(s\right)=\int_{0}^{\infty}f\left(t\right)\e^{-st}\mathrm{d}t
+\]
+
+\[
+f\left(t\right)=\frac{1}{2\pi}\int_{-\j\infty}^{\j\infty}F\left(s\right)\e^{st}\frac{\mathrm{d}s}{\j}
+\]
+
 \end{document}
