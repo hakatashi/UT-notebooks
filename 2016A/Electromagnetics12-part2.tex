@@ -10,6 +10,7 @@
 \usepackage{textcomp}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{graphicx}
 \usepackage{esint}
 \PassOptionsToPackage{normalem}{ulem}
 \usepackage{ulem}
@@ -67,8 +68,9 @@
 \end{align*}
 
 静電磁気学$\left(\pd{}t=0\right)$では、
-
-図電後1-1
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/1-1}
+\par\end{center}
 
 つまり時間不変の上等では``電気''と``磁気''は別個の現象(のように見える)。
 
@@ -89,8 +91,9 @@
 \paragraph{クーロン力}
 
 \uline{静止した}2つの電荷間に働く力
-
-図電後1-2
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/1-2}
+\par\end{center}
 
 \[
 F=\frac{1}{4\pi\varepsilon_{0}}\frac{Q_{1}Q_{2}}{r^{2}}
@@ -132,8 +135,9 @@ F=\frac{1}{2\pi\varepsilon_{0}}\frac{\lambda_{1}\lambda_{2}}{R}
 \end{equation}
 
 ∵ガウスの定理
-
-図電後1-3
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/1-3}
+\par\end{center}
 
 クーロン力(2)と同様に、直線導体間のアンペール力(1)は$R$に反比例する。
 
@@ -144,7 +148,9 @@ F=\frac{1}{2\pi\varepsilon_{0}}\frac{\lambda_{1}\lambda_{2}}{R}
 \item 導線1の微小区間$\delta\boldsymbol{s}_{1}$を流れる電流$I_{1}$(電流要素$I\mathrm{d\boldsymbol{s}_{1}}$)が周囲に、なんらかの``場''(これを磁場または磁界と呼ぶ)を作る。
 \item 導線2の微小区間$\mathrm{d}\boldsymbol{s}_{2}$を流れる電流$I_{2}$(電流要素$I_{2}\mathrm{d}\boldsymbol{s}_{2}$)がその場を感じて力を受ける。
 \end{enumerate}
-図電後1-4
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/1-4}
+\par\end{center}
 
 「電流要素」→「電荷」に置き換えるとクーロン力
 
@@ -155,8 +161,9 @@ F=\frac{1}{2\pi\varepsilon_{0}}\frac{\lambda_{1}\lambda_{2}}{R}
 \mathrm{d}\boldsymbol{B}=\frac{\mu_{0}}{4\pi}\frac{I'\mathrm{d}\boldsymbol{s}\times\boldsymbol{u}}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{2}}
 \end{equation}
 で表される微小な``場''を作る。
-
-図電後1-5
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/1-5}
+\par\end{center}
 
 \[
 \boldsymbol{u}\equiv\frac{\boldsymbol{r}-\boldsymbol{r}'}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}
@@ -175,15 +182,18 @@ $\boldsymbol{r}-\boldsymbol{r}'$方向の単位ベクトル
 \therefore\boldsymbol{B}=\frac{\mu_{0}}{4\pi}\oint\frac{I'\mathrm{d}s'\times\left(\boldsymbol{r}-\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r'}\right|^{3}}
 \end{equation}
 
-図電後1-6
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/1-6}
+\par\end{center}
 
 そしてこの時、位置$\boldsymbol{r}$にある電流要素$I\mathrm{d}\boldsymbol{s}$は、
 \begin{equation}
 \boldsymbol{F}=I\mathrm{d}\boldsymbol{s}\times\boldsymbol{B}
 \end{equation}
 の力を受ける。
-
-図電後1-7
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/1-7}
+\par\end{center}
 
 すべての$I\mathrm{d}\boldsymbol{s}$において積分すれば導線全体が受ける力が求まる。
 
@@ -238,8 +248,9 @@ $v$: 電荷の速度
 \end{itemize}
 
 \paragraph{演習問題1(a)}
-
-図電後1-8
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/1-8}
+\par\end{center}
 
 微小区間$\left[x+x+\mathrm{d}x\right]$の電流要素$I\mathrm{d}x$が点$P$に作る磁界密度を考える。
 
@@ -280,14 +291,16 @@ F=I_{2}B=\frac{\mu_{0}I_{1}I_{2}}{2\pi R}
 
 
 \paragraph{(c)}
-
-図電後1-9
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/1-9}
+\par\end{center}
 
 まず、線分$QR$を流れる電流g点$P$に作る磁束密度成分$\boldsymbol{B}_{1}$を考える。
 
 $\Delta PQR$に(a)の結果を適用
-
-図電後1-10
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/1-10}
+\par\end{center}
 
 \[
 \cos\alpha=-\cos\beta=\frac{\overline{O'Q}}{\overline{PR}}=\frac{a}{\sqrt{a^{2}+b^{2}+x^{2}}}
@@ -319,8 +332,9 @@ B=2B_{1\bot}+2B_{2\bot}=\frac{\mu_{0}Iab}{\pi\sqrt{a^{2}+b^{2}+x^{2}}}\left(\fra
 
 
 \paragraph{演習問題2}
-
-図電後1-11
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/1-11}
+\par\end{center}
 
 まず下の円環が作る磁場を考える。
 
@@ -332,8 +346,9 @@ B=2B_{1\bot}+2B_{2\bot}=\frac{\mu_{0}Iab}{\pi\sqrt{a^{2}+b^{2}+x^{2}}}\left(\fra
 \]
 
 ただし$h\equiv d+z$
-
-図電後1-12
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/1-12}
+\par\end{center}
 
 円環一周がつくる磁場は$z$成分以外は打ち消し合うので$z$成分のみを考える。
 
@@ -351,17 +366,21 @@ B_{z}=\int_{0}^{2\pi}\frac{\mu_{0}}{4\pi}\frac{Ia^{2}}{\left(a^{2}+b^{2}\right)^
 B=-\frac{\mu_{0}Ia^{2}}{2}\left[\frac{1}{\left\{ a^{2}+\left(d+z\right)^{2}\right\} ^{\frac{3}{2}}}+\frac{1}{\left\{ a^{2}+\left(d-z\right)^{2}\right\} ^{\frac{3}{2}}}\right]
 \]
 
-図電後1-13
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/1-13}
+\par\end{center}
 
 \section*{第2回}
 
 \subsection{ベクトルポテンシャル}
-
-図電後2-1
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/2-1}
+\par\end{center}
 
 点電荷→電荷密度と一般化したのと同様に、まず電流→電流密度で考え直す。
-
-図電後2-2
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/2-2}
+\par\end{center}
 
 $\boldsymbol{r}'$における電流要素は、
 \[
@@ -538,8 +557,9 @@ $\boldsymbol{A}$の選び方を「ゲージ」と言い、特に、(1.18)を満�
 \paragraph{積分系}
 
 任意の閉曲面$S$について、(1.20)の両辺を面積分する。
-
-図電後2-3
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/2-3}
+\par\end{center}
 
 \[
 \int_{S}\nabla\times\boldsymbol{B}\mathrm{d}S=\int_{S}\mu_{0}\boldsymbol{i}\mathrm{d}S
@@ -563,15 +583,18 @@ $I$: $S$を貫く全電流
 \oint_{C}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}=\mu_{0}I
 \end{equation}
 
-図電後2-4
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/2-4}
+\par\end{center}
 
 $C$: 任意の閉曲線
 
 $I$: $C$を鎖交する全電流。$C$に沿って右ねじを回すときネジが進む向きを正とする。
 
 \paragraph{例}
-
-図電後2-5
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/2-5}
+\par\end{center}
 
 \begin{align*}
 I & =I_{1}-I_{2}+I_{3}-I_{3}\\
@@ -582,8 +605,9 @@ I & =I_{1}-I_{2}+I_{3}-I_{3}\\
 \paragraph{例題}
 
 ソレノイドの中の磁界
-
-図電後2-6
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/2-6}
+\par\end{center}
 
 うえんような閉経路$C$を考え、(1.21)を適用
 
@@ -595,15 +619,18 @@ $\int_{\text{下}}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}+\int_{\text{上}}\
 ソレノイドが無限であれば、対称性より打ち消し合う。 
 
 \paragraph{先週の課題1.}
-
-図電後2-7
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/2-7}
+\par\end{center}
 
 当日問題2より、円電流$I$が高さ$h$に作る$B$は
 \[
 B=\frac{\mu_{0}Ia^{2}}{2\left(a^{2}+h^{2}\right)^{\frac{3}{2}}}
 \]
 
-図電後2-8
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/2-8}
+\par\end{center}
 
 位置$\left[x,x+\mathrm{d}x\right]$の円電流が点$P$につくる$\mathrm{d}B$を求める。
 
@@ -643,8 +670,9 @@ $x\rightarrow\theta$に置換
 (1.11)から計算
 
 $x,y$方向は電流=0なので$A_{x}=A_{y}=0$
-
-図電後2-9
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/2-9}
+\par\end{center}
 
 \begin{align*}
 A_{z} & =\frac{\mu_{0}}{4\pi}\int_{-L}^{L}\frac{I}{r}\mathrm{d}z\\
@@ -704,7 +732,9 @@ B_{y}=-\pd{A_{z}}x=\frac{\mu_{0}I}{2\pi}\frac{x}{x^{2}+y^{2}}
 B_{z}=0
 \]
 
-図電後2-10
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/2-10}
+\par\end{center}
 
 先週の演習問題1(b)$B=\frac{\mu_{0}I}{2\pi a}$に一致
 
@@ -722,14 +752,16 @@ B_{z}=0
 
 
 \paragraph{当日問題2}
-
-図電後2-11
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/2-11}
+\par\end{center}
 
 円柱の軸を中心に半径$r$の円経路$C$を考える。
 
 (i) $r<a$のとき
-
-図電後2-12
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/2-12}
+\par\end{center}
 
 $C$を貫く電流は
 \[
@@ -751,8 +783,9 @@ B & =\frac{\mu_{0}rJ}{2}
 \end{align*}
 
 (ii) $r>a$のとき
-
-図電後2-13
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/2-13}
+\par\end{center}
 
 \[
 I=\pi a^{2}J
@@ -763,7 +796,9 @@ I=\pi a^{2}J
 B & =\frac{\mu_{0}a^{2}J}{2r}
 \end{align*}
 
-図電後2-14
+\begin{center}
+\includegraphics{images/Electromagnetics12-part2/2-14}
+\par\end{center}
 
 \paragraph{当日問題3}
 
