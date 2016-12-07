@@ -2870,4 +2870,290 @@ B
 \Rightarrow f & =-B\frac{xy}{2}
 \end{align*}
 
+
+\section*{第9回}
+
+ベクトル場$\boldsymbol{F}\left(\boldsymbol{r}\right)$が、$\nabla\times\boldsymbol{F}\left(\boldsymbol{r}\right)=\boldsymbol{0}$を満たせば、スカラーポテンシャル$\phi\left(\boldsymbol{r}\right)$が存在し、$\boldsymbol{F}\left(\boldsymbol{r}\right)=-\nabla\phi\left(\boldsymbol{r}\right)$となる。
+
+\begin{align*}
+\phi\left(x,y,z\right)= & \int_{x}^{x_{0}}F_{x}\left(x,y,z\right)\mathrm{d}x\\
+ & +\int_{y}^{y_{0}}F_{y}\left(x_{0},y,z\right)\mathrm{d}y\\
+ & +\int_{z}^{z_{0}}F_{z}\left(x_{0},y,z\right)\mathrm{d}z
+\end{align*}
+
+
+\paragraph{証明}
+
+\[
+\nabla\times\boldsymbol{F}\left(\boldsymbol{r}\right)=\boldsymbol{0}
+\]
+
+\begin{align*}
+\Rightarrow\partial_{x}F_{y}-\partial_{y}F_{x} & =0\\
+\partial_{y}F_{z}-\partial_{z}F_{y} & =0\\
+\partial_{z}F_{x}-\partial_{x}F_{z} & =0
+\end{align*}
+
+\begin{align*}
+-\partial_{x}\phi & =F_{x}\left(x,y,z\right)\\
+-\partial_{y}\phi & =-\int_{x}^{x_{0}}\left[\partial_{y}F_{x}\left(x,y,z\right)\right]\mathrm{d}x+F_{y}\left(x_{0},y,z\right)\\
+ & =-\int_{x}^{x_{0}}\left[\partial_{x}F_{y}\left(x,y,z\right)\right]\mathrm{d}x+F_{y}\left(x_{0},y,z\right)\\
+ & =-F_{y}\left(x_{0},y,z\right)+F_{y}\left(x,y,z\right)+F_{y}\left(x_{0},y,z\right)\\
+ & =F_{y}\left(x,y,z\right)\\
+-\partial_{z}\phi & =-\int_{x}^{x_{0}}\left[\partial_{z}F_{x}\left(x,y,z\right)\right]\mathrm{d}x-\int_{y}^{y_{0}}\left[\partial_{z}F_{y}\left(x_{0},y,z\right)\right]\mathrm{d}y+F_{z}\left(x_{0},y_{0},z\right)\\
+ & =-\int_{x}^{x_{0}}\left[\partial_{x}F_{z}\left(x,y,z\right)\right]\mathrm{d}x-\int_{y}^{y_{0}}\left[\partial_{y}F_{z}\left(x_{0},y,z\right)\right]\mathrm{d}y+F_{z}\left(x_{0},y_{0},z\right)\\
+ & =-F_{z}\left(x_{0},y,z\right)+F_{z}\left(x,y,z\right)-F_{z}\left(x_{0},y_{0},z\right)+F_{z}\left(x_{0},y,z\right)+F_{z}\left(x_{0},y_{0},z\right)\\
+ & =F_{z}\left(x,y,z\right)
+\end{align*}
+
+\[
+\therefore-\partial_{i}\phi=F_{i}\left(x,y,z\right)
+\]
+
+\[
+\boldsymbol{F}\left(\boldsymbol{r}\right)=-\nabla\phi\left(\boldsymbol{r}\right)
+\]
+
+
+\paragraph{例}
+
+\[
+\boldsymbol{F}=\left(y+\sin z\right)\boldsymbol{e}_{x}+x\boldsymbol{e}_{y}+x\cos\boldsymbol{e}_{z}
+\]
+
+\begin{align*}
+\nabla\times\boldsymbol{F}= & \boldsymbol{e}_{x}\left(\partial_{y}F_{z}-\partial_{z}F_{y}\right)\\
+ & +\boldsymbol{e}_{y}\left(\partial_{z}F_{x}-\partial_{x}F_{z}\right)\\
+ & +\boldsymbol{e}_{z}\left(\partial_{x}F_{y}-\partial_{y}F_{x}\right)\\
+= & \boldsymbol{e}_{y}\left(\cos z-\cos z\right)+\boldsymbol{e}_{z}\left(1-1\right)=0
+\end{align*}
+
+\begin{align*}
+\phi\left(x,y,z\right)= & \int_{x}^{0}F_{x}\left(x,y,z\right)\mathrm{d}x\\
+ & +\int_{y}^{0}F_{y}\left(x,y,z\right)\mathrm{d}y\\
+ & +\int_{z}^{0}F_{z}\left(x,y,z\right)\mathrm{d}z\\
+= & -\int_{0}^{x}\left(y+\sin z\right)\mathrm{d}x=-x\left(y+\sin z\right)
+\end{align*}
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+ベクトル場$\boldsymbol{F}\left(\boldsymbol{r}\right)$が$\nabla\cdot\boldsymbol{F}\left(\boldsymbol{r}\right)=0$を満たせば、ベクトルポテンシャル$\boldsymbol{A}$が存在し、$\boldsymbol{F}\left(\boldsymbol{r}\right)=\nabla\times\boldsymbol{A}\left(\boldsymbol{r}\right)$
+
+一例として、
+\begin{align*}
+A_{x}\left(x,y,z\right) & =0\\
+A_{y}\left(x,y,z\right) & =\int_{x_{0}}^{x}F_{z}\left(x,y,z\right)\mathrm{d}x\\
+A_{z}\left(x,y,z\right) & =-\int_{x_{0}}^{x}F_{y}\left(x,y,z\right)\mathrm{d}x+\int+\int_{y_{0}}^{y}F_{x}\left(x_{0},y,z\right)\mathrm{d}y
+\end{align*}
+
+\[
+\nabla\cdot\boldsymbol{F}\left(\boldsymbol{r}\right)=\boldsymbol{0}\Rightarrow\partial_{x}F_{x}+\partial_{y}F_{y}+\partial_{z}F_{z}=0
+\]
+
+\begin{align*}
+\partial_{y}A_{z}-\partial_{z}A_{y}= & -\int_{x_{0}}^{x}\left[\partial_{y}F_{y}\left(x,y,z\right)\right]\mathrm{d}x\\
+ & +F_{x}\left(x_{0},y,z\right)-\int_{x_{0}}^{x}\left[\partial_{z}F_{z}\left(x,y,z\right)\right]\mathrm{d}x\\
+= & \int_{x_{0}}^{x}\left[\partial_{x}F_{x}\left(x,y,z\right)\right]\mathrm{d}x+F_{x}\left(x_{0},y,z\right)\\
+= & F_{x}\left(x,y,z\right)
+\end{align*}
+
+\begin{align*}
+\partial_{z}A_{x}-\partial_{x}A_{z} & =F_{y}\left(x,y,z\right)\\
+\partial_{x}A_{y}-\partial_{y}A_{x} & =F_{z}\left(x,y,z\right)
+\end{align*}
+
+\[
+\boldsymbol{F}\left(\boldsymbol{r}\right)=\nabla\times\boldsymbol{A}\left(\boldsymbol{r}\right)
+\]
+
+
+\paragraph{例}
+
+\begin{align*}
+\boldsymbol{F} & =2x^{2}y\boldsymbol{e}_{x}+\left(3yz^{2}-2xy^{2}\right)\boldsymbol{e}_{y}-z^{3}\boldsymbol{e}_{z}
+\end{align*}
+
+\begin{align*}
+\nabla\times\boldsymbol{F} & =\partial_{x}\left(2x^{2}y\right)+\partial_{y}\left(3yz^{2}-2xy^{2}\right)+\partial_{x}\left(-z^{3}\right)\\
+ & =4xy+3z^{2}-4xy-3z^{2}=0
+\end{align*}
+
+\begin{align*}
+A_{x} & =0\\
+A_{y} & =\int_{0}^{x}F_{z}\left(x,y,z\right)=-xz^{3}\\
+A_{z} & =-\int_{0}^{x}F_{y}\left(x,y,z\right)+\int_{0}^{y}F_{x}\left(0,y,z\right)\mathrm{d}y\\
+ & =\int_{0}^{x}\left(3yz^{2}-2xy^{2}\right)\mathrm{d}x=x^{2}y-3xyz^{2}\\
+\boldsymbol{A} & =-xz^{3}\boldsymbol{e}_{y}+\left(x^{2}y^{2}-3xyz^{2}\right)\boldsymbol{e}_{z}
+\end{align*}
+
+
+\paragraph{線素}
+
+\[
+\boldsymbol{r}=\left(x\left(t\right),y\left(t\right),z\left(t\right)\right)
+\]
+
+\begin{align*}
+\mathrm{d}\boldsymbol{r} & =\left(\mathrm{d}x,\mathrm{d}y,\mathrm{d}z\right)\\
+ & =\boldsymbol{e}_{x}\mathrm{d}x+\boldsymbol{e}_{y}\mathrm{d}y+\boldsymbol{e}_{z}\mathrm{d}z
+\end{align*}
+
+\[
+\mathrm{d}r=\left|\mathrm{d}\boldsymbol{r}\right|=\sqrt{\left(\mathrm{d}x\right)^{2}+\left(\mathrm{d}y\right)^{2}+\left(\mathrm{d}z\right)^{2}}
+\]
+
+\[
+\mathrm{d}\boldsymbol{r}=\d{\boldsymbol{r}}t\mathrm{d}t
+\]
+
+
+\paragraph{長さ}
+
+\[
+s\left(t\right)=\int^{t}\mathrm{d}r=\int^{t}\sqrt{\left(\d xt\right)^{2}+\left(\d yt\right)^{2}+\left(\d zt\right)^{2}}\mathrm{d}t
+\]
+
+
+\paragraph{線積分}
+
+\begin{align*}
+\int_{C}^{t}\boldsymbol{F}\cdot\mathrm{d}\boldsymbol{r} & =\int_{C}^{t}\left(F_{x}\mathrm{d}x+F_{y}\mathrm{d}y+F_{z}\mathrm{d}z\right)\\
+ & =\int_{C}^{t}\left(F_{x}\d xt+F_{y}\d yt+F_{z}\d zt\right)\mathrm{d}t
+\end{align*}
+
+ベクトル場$\boldsymbol{F}$がスカラーポテンシャル$\boldsymbol{f}$をもち、$\boldsymbol{F}=-\nabla f$なら、点$A$と$B$を結ぶ任意の曲線に沿っての線積分の値は等しく、
+\begin{align*}
+\int_{A}^{B}\boldsymbol{F}\cdot\mathrm{d}\boldsymbol{r} & =-\int_{A}^{B}\nabla f\cdot\mathrm{d}\boldsymbol{r}=-\int_{A}^{B}\mathrm{d}f\\
+ & =f\left(A\right)-f\left(B\right)
+\end{align*}
+
+
+\paragraph{例}
+
+原点から点$\left(1,2,2\right)$に向かう積分路$C$をとり、
+\[
+\boldsymbol{F}=x\boldsymbol{e}_{x}+2\left(x+z\right)\boldsymbol{e}_{y}+y\boldsymbol{e}_{z}
+\]
+
+\[
+\boldsymbol{r}=\left(t,2t,2t\right)\text{ for }0\leqq t\leqq1
+\]
+
+\[
+\boldsymbol{F}=\left(t,2\left(t+2t\right),2t\right)=\left(t,6t,2t\right)
+\]
+
+\[
+\mathrm{d}\boldsymbol{r}=\left(1,2,2\right)\mathrm{d}t,\mathrm{d}r=\sqrt{1+2^{2}+2^{2}}\mathrm{d}t=3\mathrm{d}t
+\]
+
+\begin{align*}
+\int_{C}\boldsymbol{F}\cdot\mathrm{d}\boldsymbol{r} & =\int_{0}^{1}\left(t,6t,2t\right)=\left(1,2,2\right)\mathrm{d}t\\
+ & =\int_{0}^{1}\left(t+12t+4t\right)\mathrm{d}t=\frac{17}{2}
+\end{align*}
+
+
+\paragraph{例}
+
+\[
+\boldsymbol{F}=\left(3x^{2}y-y^{2}+yz\right)\boldsymbol{e}_{x}+\left(x^{3}-2xy+xz\right)\boldsymbol{e}_{y}+\left(xy-1\right)\boldsymbol{e}_{z}
+\]
+の線積が経路$C$に依存しないことを示す。
+
+$A=\left(0,0,0\right),B=\left(2,2,2\right)$として積分値を求めよ
+
+答え: $\nabla\times\boldsymbol{F}=\boldsymbol{0}$を言えば良い。
+
+\begin{align*}
+\partial_{y}F_{z}-\partial_{z}F_{y} & =x-x=0\\
+\partial_{z}F_{x}-\partial_{x}F_{z} & =y-y=0\\
+\partial_{x}F_{y}-\partial_{y}F_{x} & =3x^{2}-2y+z-\left(3y^{2}-2y+z\right)=0
+\end{align*}
+
+\begin{align*}
+f\left(x,y,z\right)= & \int_{x}^{0}F_{x}\left(x,y,z\right)\mathrm{d}x\\
+ & +\int_{y}^{0}F_{y}\left(0,y,z\right)\mathrm{d}y\\
+ & +\int_{z}^{0}F_{z}\left(0,0,z\right)\mathrm{d}z\\
+= & \left[x^{3}y,xy^{2}+xyz\right]_{x}^{0}-\left[z\right]_{z}^{0}\\
+= & -x^{3}y+xy^{2}-xyz+z
+\end{align*}
+
+\begin{align*}
+\int_{A}^{B}\boldsymbol{F}\cdot\mathrm{d}\boldsymbol{r} & =f\left(A\right)-f\left(B\right)\\
+ & =\left[x^{3}y-xy^{2}+xyz-z\right]_{A}^{B}\\
+ & =2^{4}-2^{3}+2^{3}-2=14
+\end{align*}
+
+
+\paragraph{面素}
+
+局面は2つのパラメータ$\left(s,t\right)$表示できる。
+
+\[
+\boldsymbol{r}=\left(x\left(s,t\right),y\left(s,t\right),z\left(s,t\right)\right)
+\]
+
+
+\paragraph{接戦ベクトル(線素)}
+
+パラメータの増分$\delta s,\delta t$に対して、$\delta_{s}\boldsymbol{r}=\pd{\boldsymbol{r}}s\mathrm{d}s,\delta_{t}\boldsymbol{r}=\pd{\boldsymbol{r}}t\mathrm{d}t$この2つの接戦ベクトルを含む平面を接平面と呼ぶ。
+
+面素$\mathrm{d}\boldsymbol{s}=\delta_{s}\boldsymbol{r}\times\delta_{t}\boldsymbol{r}$
+
+第1基本量 $E,F,G$
+
+\[
+E\left(s,t\right)=\pd{\boldsymbol{r}}s\cdot\pd{\boldsymbol{r}}s,F\left(s,t\right)=\pd{\boldsymbol{r}}s\cdot\pd{\boldsymbol{r}}t,G\left(s,t\right)=\pd{\boldsymbol{r}}t\cdot\pd{\boldsymbol{r}}t
+\]
+
+面素$\mathrm{d}\boldsymbol{s}$は大きさが面積$\mathrm{d}s=\left|\mathrm{d}\boldsymbol{s}\right|$で、方向が接平面の法線$\boldsymbol{n}$とするベクトルである。
+
+\[
+\boldsymbol{n}=\frac{\pd{\boldsymbol{r}}s\times\pd{\boldsymbol{r}}t}{\left|\pd{\boldsymbol{r}}s\times\pd{\boldsymbol{r}}t\right|},\mathrm{d}\boldsymbol{s}=\boldsymbol{r}\mathrm{d}s
+\]
+
+\[
+\mathrm{d}s=\left|\pd{\boldsymbol{r}}s\times\pd{\boldsymbol{r}}t\right|\mathrm{d}s\mathrm{d}t
+\]
+
+\[
+\left|\boldsymbol{A}\times\boldsymbol{B}\right|^{2}=\left|\boldsymbol{A}\right|^{2}\left|\boldsymbol{B}\right|^{2}-\left(\boldsymbol{A}\cdot\boldsymbol{B}\right)^{2}
+\]
+
+\begin{align*}
+\mathrm{d}s & =\sqrt{\left|\pd{\boldsymbol{r}}s\right|^{2}\left|\pd{\boldsymbol{r}}t\right|^{2}-\left(\pd{\boldsymbol{r}}s\cdot\pd{\boldsymbol{r}}t\right)^{2}}\\
+ & =\sqrt{EG-F^{2}}\mathrm{d}s\mathrm{d}t
+\end{align*}
+
+曲面の面積
+
+\[
+S=\iint_{D}\mathrm{d}s=\iint\sqrt{EG-F^{2}}\mathrm{d}s\mathrm{d}t
+\]
+
+
+\paragraph{例}
+
+単位球の表面積
+
+単位球面上の点は天頂面$\theta$と方位角$\phi$を用いて$\boldsymbol{r}=\left(x,y,z\right)=\left(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta\right)$とパラメータ表示できる。
+
+$s=\theta,t=\phi$とおくと、
+\begin{align*}
+E\left(\theta,\phi\right)= & \pd{\boldsymbol{r}}{\theta}\cdot\pd{\boldsymbol{r}}{\theta}\\
+= & \left|\left(\cos\theta\cos\phi,\cos\theta\sin\phi,-\sin\theta\right)\right|^{2}\\
+= & 1\\
+F\left(\theta,\phi\right)= & \pd{\boldsymbol{r}}{\theta}\cdot\pd{\boldsymbol{r}}{\phi}\\
+= & \left(\cos\theta\cos\phi,\cos\theta\sin\phi,-\sin\theta\right)\cdot\\
+ & \left(-\sin\theta\sin\phi,\sin\theta\cos\phi,0\right)\\
+= & 0\\
+G\left(\theta,\phi\right)= & \left|\left(-\sin\theta\sin\phi,\sin\theta\cos\phi,0\right)\right|^{2}\\
+= & \sin\theta
+\end{align*}
+
+\begin{align*}
+S & =\iint\sqrt{EG-F^{2}}\mathrm{d}\theta\mathrm{d}\phi\\
+ & =\int_{0}^{2\pi}\mathrm{d}\phi\int_{0}^{\pi}\sin\theta\mathrm{d}\theta=4\pi
+\end{align*}
+
 \end{document}
