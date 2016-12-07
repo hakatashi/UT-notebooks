@@ -1421,4 +1421,318 @@ E\left[T\right] & =\sum_{n=1}^{\infty}nf_{n}=\left[F'\left(s\right)\right]_{s=1}
  & =\lim_{s\rightarrow1}\left[1-\left(1-s^{2}\right)^{\frac{1}{2}}\right]'=\lim_{s\rightarrow1}\frac{s}{\sqrt{1-s^{2}}}\rightarrow\infty
 \end{align*}
 
+
+\section*{第8回}
+
+\subsection{?}
+
+\subsection{再帰性}
+
+原点から出発したランダムウォークがn-step目に原点に戻る事象 $A_{n}=\left\{ S_{n}=0\right\} $
+
+初めてn-step目に原点に戻る事象 $B_{n}=\left\{ S_{n}=0|1\leq k\leq n-1,S_{n}\neq0\right\} $
+
+\[
+P\left(A_{n}\right)=\sum_{k=1}^{n}P\left(A_{n}|B_{k}\right)P\left(B_{k}\right)=\sum_{k=1}^{n}P\left(A_{n-k}\right)P\left(B_{k}\right)
+\]
+
+$f_{n}=P\left(B_{k}\right),u_{n}=P\left(A_{n}\right)$
+
+\[
+U\left(s\right)=\sum_{n=0}^{\infty}u_{n}s^{n},F\left(s\right)=\sum_{n=0}^{\infty}f_{n}s^{n}
+\]
+
+$u_{0}\equiv1,f_{0}\equiv0$
+
+$F\left(s\right)=1-U\left(s\right)^{-1}$
+
+再帰性の判定: 
+\begin{align*}
+F\left(1\right) & =\lim_{s\rightarrow1-0}F\left(s\right)=f_{1}+f_{2}+\cdots+f_{n}+\cdots\\
+ & =P\left(B_{1}\right)+P\left(B_{2}\right)+\cdots+P\left(B_{n}\right)+\cdots
+\end{align*}
+
+
+\paragraph{2次元ランダムウォークの再帰性}
+
+$\left(1,0\right),\left(-1,0\right),\left(0,1\right),\left(0,-1\right)$
+
+$P=\frac{1}{4}$
+
+$u_{zn}$を計算。
+
+$2n$のうち$2k$stepは左右。$k$step右。$2n-2k$stepは前後。$n-k$step前。
+
+\begin{align*}
+u_{2n} & =\sum_{k=0}^{n}{}_{2n}C_{2k}{}_{2n}C_{k}{}_{2n-2k}C_{n-k}\left(\frac{1}{4}\right)^{2n}\\
+ & =\sum_{k=0}^{n}\frac{\left(2n\right)!}{\left(2k\right)!\left(2n-2k\right)!}\frac{\left(2k\right)!}{k!k!}\frac{\left(2n-2k\right)!}{\left(n-k\right)!\left(n-k\right)!}\left(\frac{1}{4}\right)^{2n}\\
+ & =\frac{1}{4^{2n}}\sum_{x=0}^{\infty}\frac{\left(2n\right)!}{k!k!\left(n-k\right)!\left(n-k\right)!}\\
+ & =\frac{1}{4^{2n}}{}_{2n}C_{2n}\sum_{k=0}^{n}\left(_{n}C_{k}\right)^{2}\\
+ & =\frac{1}{4^{2n}}\left(_{2n}C_{n}\right)^{2}\\
+ & =\frac{1}{4^{2n}}\left(\frac{\left(2n\right)!}{n!n!}\right)^{2}
+\end{align*}
+
+$n\rightarrow\infty$での振る舞いを考える。
+
+\[
+\sim\frac{1}{4^{2n}}\left(\frac{\sqrt{4n\pi}\left(2n\right)^{2n}\e^{-2n}}{\left(\sqrt{2n\pi}n^{n}\e^{-n}\right)^{2}}\right)^{2}\sim\frac{1}{\pi n}
+\]
+
+Stanllingの公式
+
+確率1で再帰する。
+
+\[
+F\left(1\right)=1
+\]
+
+
+\paragraph{3次元ランダムウォーク}
+
+$\left(\pm1,0,0\right),\left(0,\pm1,0\right),\left(0,0,\pm1\right)$
+
+\begin{align*}
+u_{2n} & =\sum_{k+l+m=n}\left(\frac{1}{6}\right)^{2n}\frac{\left(2n\right)!}{\left(k!l!m!\right)^{2}}\\
+ & =\frac{1}{2^{2n}}{}_{2n}C_{n}\sum_{0\leq k+l\leq n}\left(\frac{n!}{3^{n}k!l!\left(n-k-l\right)!}\right)^{2}
+\end{align*}
+
+\begin{align*}
+M_{n} & \equiv\max_{0\leq x+l\leq n}\left(\frac{n!}{3^{n}k!l!\left(n-k-l\right)!}\right)\\
+ & \thickapprox\frac{n!}{3^{n}\left(\frac{n}{3}\right)!\left(\frac{n}{3}\right)!\left(\frac{n}{3}\right)!}\sim\frac{3^{\frac{3}{2}}}{2\pi n}
+\end{align*}
+
+\begin{align*}
+u_{2n} & \thickapprox\frac{1}{2^{2n}}{}_{2n}C_{n}M_{n}\sum_{0\leq k+l\leq n}\frac{n!}{3^{n}k!l!\left(n-k-l\right)!}\\
+ & =\frac{1}{2^{2n}}{}_{2n}C_{n}M_{n}\leq\frac{1}{2}\left(\frac{3}{\pi n}\right)^{\frac{3}{2}}\\
+ & \thickapprox\frac{1}{\sqrt{\pi n}}\left(n\gg1\right)
+\end{align*}
+
+→$U\left(1\right)$は収束→$F\left(1\right)<1$
+
+\section{ブラウン運動}
+
+ランダムな力
+
+\begin{align*}
+\left\langle \left(x-x_{0}\right)\right\rangle  & =0\\
+\left\langle \left(x-x_{0}\right)^{2}\right\rangle  & =\frac{2RT}{Nf}t
+\end{align*}
+
+
+\subsection{?}
+
+\subsection{ラプラス演算子と拡散方程式}
+
+\[
+\pd{\rho}t=D\pdd{\rho}x
+\]
+
+拡散方程式
+
+\[
+P\left(l\Delta x,n\Delta t\right)=\frac{1}{2}P\left(\left(l+1\right)\Delta x,\left(n-1\right)\Delta t\right)+\frac{1}{2}P\left(\left(l-1\right)\Delta x,\left(n-1\right)\Delta t\right)
+\]
+
+\begin{align*}
+P\left(l\Delta x,\left(n+1\right)\Delta t\right)-P\left(l\Delta x,n\Delta t\right) & =\frac{1}{2}\left\{ P\left(\left(l+1\right)\Delta x,n\Delta t\right)-2P\left(l\Delta x,n\Delta t\right)+P\left(\left(l-1\right)\Delta x,n\Delta t\right)\right\} \\
+ & =\frac{1}{2}\left\{ P\left(\left(l+1\right)\Delta x,n\Delta t\right)-P\left(l\Delta x,n\Delta t\right)\right\} -\frac{1}{2}\left\{ P\left(l\Delta x,n\Delta t\right)-P\left(\left(l-1\right)\Delta x,n\Delta t\right)\right\} 
+\end{align*}
+
+\[
+\therefore\pd Pt\Delta t=\frac{1}{2}\pdd Px\left(\Delta x\right)^{2}
+\]
+
+Newton方程式 質点の変位～$\Delta t$
+
+\[
+\Delta t\sim\left(\Delta x\right)^{2}
+\]
+
+\[
+\frac{1}{2}\left(\Delta x\right)^{2}=D\Delta t
+\]
+
+\[
+\pd Pt=D\pdd Px
+\]
+
+
+\subsection{ブラウン運動 (統計力学の立場から)}
+
+溶媒中の粒子の運動方程式
+
+\begin{align*}
+m\d{\boldsymbol{u}}t & =\boldsymbol{E}\\
+ & =m\boldsymbol{F}_{1}-m\gamma\boldsymbol{u}+\boldsymbol{R}\left(t\right)
+\end{align*}
+
+$\boldsymbol{u}\left(t\right)$と$\boldsymbol{R}\left(t'\right)$は独立
+
+$\boldsymbol{R}\left(t\right),\boldsymbol{R}'\left(t\right)$は独立
+
+\section*{第9回}
+
+ブラウン運動 (統計力学 不可逆過程としての扱い)
+
+\[
+m\d{\boldsymbol{v}}t=\boldsymbol{F}_{1}-m\gamma\boldsymbol{u}+\boldsymbol{R}\left(t\right)
+\]
+
+\[
+\left\langle \boldsymbol{R}\left(t\right)\right\rangle =0
+\]
+
+\[
+\left\langle R_{\alpha}\left(t\right)R_{\beta}\left(t'\right)\right\rangle =2D_{u}\delta_{\alpha\beta}\delta\left(t-t'\right),\int_{0}^{\infty}\left\langle R_{\alpha}\left(t\right)R_{\beta}\left(0\right)\right\rangle \mathrm{d}t=\delta_{\alpha\beta}D_{u}
+\]
+
+(デルタ関数の定義略)
+
+\[
+\int_{-\infty}^{\infty}f\left(x\right)\delta\left(x\right)\mathrm{d}x=f\left(0\right)
+\]
+
+外力$\boldsymbol{F}_{1}\equiv0$
+
+Langevin方程式
+
+\[
+m\d{\boldsymbol{u}}t=-m\gamma\boldsymbol{u}+\boldsymbol{R}\left(t\right)\rightarrow\boldsymbol{u}\left(t\right)=\e^{-\gamma t}\boldsymbol{u}\left(0\right)+\int_{0}^{t}\mathrm{d}t'\e^{-\gamma\left(t-t'\right)}\times\frac{1}{m}\boldsymbol{R}\left(t'\right)
+\]
+
+※$\d{}tu=cu\rightarrow u=\e^{+ct}u\left(0\right)$
+
+\begin{align*}
+\rightarrow & \left\langle \left|\boldsymbol{u}\left(t\right)\right|^{2}\right\rangle \\
+ & \left\langle \left|\boldsymbol{x}\left(t\right)\right|^{2}\right\rangle \sim
+\end{align*}
+
+\begin{align*}
+\left\langle \left|\boldsymbol{u}\left(t\right)\right|^{2}\right\rangle  & =\e^{-2\gamma t}\left\langle \left|\boldsymbol{u}\left(0\right)\right|^{2}\right\rangle +\left\langle \left|\int_{0}^{t}\mathrm{d}t'\e^{-\gamma\left(t-t'\right)}\frac{\boldsymbol{R}\left(t'\right)}{m}\right|^{2}\right\rangle +2\e^{-\gamma t}\int_{0}^{t}\e^{-\gamma\left(t-t'\right)}\left\langle \frac{1}{m}\boldsymbol{R}\left(t'\right)\cdot\boldsymbol{u}\left(0\right)\right\rangle \\
+ & =\e^{-2\gamma t}\left\langle \left|\boldsymbol{u}\left(0\right)\right|^{2}\right\rangle +\left\langle \left|\int_{0}^{t}\mathrm{d}t'\e^{-\gamma\left(t-t'\right)}\frac{\boldsymbol{R}\left(t'\right)}{m}\right|^{2}\right\rangle 
+\end{align*}
+
+\[
+\left\langle \left|\boldsymbol{u}\left(0\right)\right|^{2}\right\rangle =\frac{3k_{B}T}{m}
+\]
+
+(エネルギー等分配則)
+
+\begin{align*}
+\left\langle \left|\int_{0}^{t}\mathrm{d}t'\e^{-\gamma\left(t-t'\right)}\frac{\boldsymbol{R}\left(t'\right)}{m}\right|^{2}\right\rangle  & =\int_{0}^{t}\mathrm{d}t_{'}\int_{0}^{t}\mathrm{d}t_{2}\e^{-\gamma\left(t-t_{1}\right)-\gamma\left(t-t_{2}\right)}\times\left\langle \boldsymbol{R}\left(t_{1}\right)\cdot\boldsymbol{R}\left(t_{2}\right)\right\rangle \\
+ & =\frac{2D_{u}}{\gamma}\left(-\e^{-2\gamma t}\right)
+\end{align*}
+
+$\frac{D_{u}}{m\gamma}=x_{B}T$
+
+ランダム力の自己相関(～$D_{u}$)～$k_{B}T$
+
+ランダム力: 系(媒質)の温度‐粒子に働く媒質からの力
+
+\paragraph{拡散}
+
+\[
+\left\langle \left|\boldsymbol{x}\left(t\right)\right|^{2}\right\rangle \sim t
+\]
+
+\begin{align*}
+\boldsymbol{x}\left(t\right) & =\int_{0}^{t}\boldsymbol{u}\left(t'\right)\mathrm{d}t'=\frac{1-\e^{-\gamma t}}{\gamma}\boldsymbol{u}\left(0\right)+\int_{0}^{t}\mathrm{d}t_{1}\int_{0}^{t_{1}}\mathrm{d}t_{2}\frac{\e^{-\gamma\left(t_{1}-t_{2}\right)}}{m}\times\boldsymbol{R}\left(t_{2}\right)\\
+ & =\frac{1-\e^{-\gamma t}}{\gamma}\boldsymbol{u}\left(0\right)+\frac{1}{m\gamma}\int_{0}^{t}\mathrm{d}\tau\left(1-\e^{-\gamma\tau}\right)\boldsymbol{R}\left(t-\tau\right)
+\end{align*}
+
+\begin{align*}
+\left\langle \left|\boldsymbol{x}\left(t\right)\right|^{2}\right\rangle  & =\left(\frac{1-\e^{-\gamma t}}{\gamma}\right)^{2}\left\langle \left|\boldsymbol{u}\left(0\right)\right|^{2}\right\rangle +\left(\frac{1}{m\gamma}\right)^{2}\left\langle \left|\int_{0}^{t}\mathrm{d}\tau\left(1-\e^{-\gamma\tau}\right)\boldsymbol{R}\left(t-\tau\right)\right|^{2}\right\rangle \\
+ & =\frac{6k_{B}T}{m\gamma^{2}}\left(\gamma t+\e^{-\gamma t}-1\right)\\
+ & \rightarrow6D_{u}\left(\frac{1}{m\gamma}\right)^{2}t\quad\left(t\rightarrow\infty\right)
+\end{align*}
+
+
+\paragraph{拡散方程式}
+
+\[
+\pd{\rho}t=D\pdd{\rho}x
+\]
+
+$D$: 拡散係数
+
+\[
+\rightarrow\left\langle \left|\boldsymbol{x}\left(t\right)\right|^{2}\right\rangle =6Dt
+\]
+
+\[
+\therefore D=\lim_{t\rightarrow\infty}\frac{\left\langle \left|\boldsymbol{x}\left(t\right)\right|^{2}\right\rangle }{6t}=D_{u}\left(\frac{1}{\gamma m}\right)^{2}=\frac{k_{B}T}{m\gamma}
+\]
+
+
+\paragraph{1次元の拡散方程式}
+
+\begin{equation}
+\pd{\rho}t=D\pdd{\rho}x
+\end{equation}
+
+\[
+\left(\pd{}t-D\pdd{}x\right)\rho=\delta\left(x\right)\delta\left(t\right)
+\]
+
+\[
+\rightarrow\rho\left(x,t\right)=\frac{1}{2\sqrt{\pi Dt}}\e^{-\frac{x^{2}}{4Dt}}
+\]
+は(1)を満たし、$t=0$では幅→0、高さ→∞
+
+\[
+\left\langle x^{2}\right\rangle =\int_{-\infty}^{\infty}x^{2}\rho\left(x,t\right)\mathrm{d}x=2Dt
+\]
+
+3次元
+\[
+\left\langle \left|\boldsymbol{x}\left(t\right)\right|^{2}\right\rangle =6Dt
+\]
+
+\[
+\int_{-\infty}^{\infty}\e^{-y^{2}}y^{2}\mathrm{d}y
+\]
+
+\begin{enumerate}
+\item Langevin方程式の重要性
+\item Langevin eq ↔ Fokken-Planck 方程式
+
+$X\left(t\right)$と$R\left(t'\right)$が独立
+
+確率変数
+\end{enumerate}
+\begin{itemize}
+\item $f\left(X\left(t\right)\right)$がなめらかな関数
+
+\[
+f\left(X\left(t+\Delta t\right)\right)=f\left(X\left(t\right)\right)+\d fX\cdot\d Xt\Delta t+O\left(\Delta t^{2}\right)
+\]
+
+\item $f\left(X\right)$の$X$がLangevin eqに従う場合
+
+線形Langevin方程式 $\dot{X}\left(t\right)=-\gamma X\left(t\right)+R\left(t\right)$
+
+非線形Langevin方程式 $\dot{X}\left(t\right)=F\left(X\left(t\right)\right)+R\left(t\right)$
+
+\[
+\Delta X\left(t\right)=F\left(X\left(t\right)\right)\Delta t+\Delta W
+\]
+
+\end{itemize}
+\[
+\Delta W=\int_{t}^{t+\Delta t}R\left(t_{1}\right)\mathrm{d}t_{1}
+\]
+
+\[
+\left\langle R\left(t\right)R\left(t'\right)\right\rangle =D\delta\left(t-t'\right)
+\]
+
+\begin{align*}
+\left\langle \left(\Delta W\right)^{2}\right\rangle  & =\int_{t}^{t+\Delta t}\mathrm{d}t_{1}\int_{t}^{t+\Delta t}\mathrm{d}t_{2}\left\langle R\left(t_{1}\right)R\left(t_{2}\right)\right\rangle \\
+ & =D\int_{t}^{t+\Delta t}\mathrm{d}t_{1}\int_{t}^{t+\Delta t}\mathrm{d}t_{2}\delta\left(t_{1}-t_{2}\right)=D\cdot\Delta t
+\end{align*}
+
+\[
+f\left(X\left(t+\Delta t\right)\right)=f\left(X\left(t\right)\right)+\when{\d fX}_{X=X\left(t\right)}\Delta X\left(t\right)+\frac{1}{2}\when{\dd fX}_{X\left(t\right)}\left(\Delta X\left(t\right)\right)^{2}+\cdots
+\]
+
 \end{document}
