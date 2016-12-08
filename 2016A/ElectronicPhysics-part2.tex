@@ -198,4 +198,147 @@ P_{N_{1}}\left(M_{1}\right)=\frac{W_{N_{1}}\left(M_{1}\right)\cdot W_{N-N_{1}}\l
  & =\frac{1}{\left(1+m\right)^{N_{1}}}\left(\frac{m}{1+m}\right)^{M_{1}}
 \end{align*}
 
+
+\section*{第2回}
+
+ミクロカノニカル分布/集団 N: 粒子数, M: 量子数 一定
+
+カノニカル分布/集団 N: 一定, M: 一定でない
+
+外界のエネルギー/熱のやり取りのある物理系
+
+グランドカノニカル分布 N: 一定でない, M: 一定でない
+
+パラメータ((1.23)→(1.25)) $\theta=kT$
+
+\[
+p\left(E_{1}\right)=\e^{-\frac{E_{i}}{\theta}}
+\]
+
+$\e^{-\frac{E_{i}}{\theta}}$: すべての状態の和→$Z\left(\theta\right)$ 分配関数・状態和
+
+\paragraph{演習(1)}
+
+\[
+\pd{}{\theta}\log Z\left(\theta\right)=\frac{1}{Z\left(\theta\right)}\pd{Z\left(\theta\right)}{\theta}
+\]
+
+\[
+\pd{}{\theta}Z\left(\theta\right)=\pd{}{\theta}\sum\e^{-\frac{E_{i}}{\theta}}=\frac{1}{\theta^{2}}\sum E_{i}\e^{-\frac{E_{i}}{\theta}}
+\]
+
+\[
+\bar{E}=\frac{\sum E_{i}\e^{-\frac{E_{i}}{\theta}}}{Z\left(\theta\right)}=\theta^{2}\frac{1}{Z\left(\theta\right)}\pd{Z\left(\theta\right)}{\theta}
+\]
+
+
+\paragraph{演習(2)}
+
+\begin{align*}
+\sum_{n=1}^{\infty}\e^{-a^{2}n^{2}}\cdot\Delta n & =\sum_{n=1}^{\infty}\e^{-x^{2}}\frac{\Delta x}{a}\\
+ & \rightarrow\frac{1}{a}\int_{0}^{\infty}\e^{-x^{2}}\mathrm{d}x=\frac{\sqrt{\pi}}{2a}
+\end{align*}
+
+
+\paragraph{演習(3)}
+
+\begin{align*}
+S & =xek\log W_{N}\left(M\right)\\
+ & =k\log\left(M+N-1\right)!-k\log M!-k\log\left(N-1\right)!\\
+ & \sim k\left(M+N\right)\log\left(M+N\right)-kM\log M-kN\log N
+\end{align*}
+
+$E=\varepsilon_{0}M$なので、
+\begin{align*}
+\pd SE & =\frac{1}{\varepsilon_{0}}\pd SM=\frac{k}{\varepsilon_{0}}+\frac{k}{\varepsilon_{0}}\log\left(M+N\right)-\frac{k}{\varepsilon_{0}}-\frac{k}{\varepsilon_{0}}\log M\\
+ & =\frac{k}{\varepsilon_{0}}\log\left(\frac{M+N}{M}\right)=\frac{k}{\varepsilon_{0}}\log\left(1+\frac{1}{M}\right)
+\end{align*}
+
+これが$\frac{1}{T}$に等しいので、
+
+\[
+kT=\frac{\varepsilon_{0}}{\log\left(1+\frac{1}{M}\right)}\equiv\theta
+\]
+
+
+\paragraph{演習(4)}
+
+\[
+Z_{A}=\sum_{i}\e^{-\frac{E_{A_{i}}}{kT}},Z_{B}=\sum_{i}\e^{-\frac{E_{B_{i}}}{kT}},\cdots
+\]
+
+$A,B,C$は独立なので、
+\begin{align*}
+E_{\left(A+B+C\cdots\right)_{n}} & =E_{A_{i}}+E_{B_{j}}+E_{C_{k}}+\cdots\\
+Z_{A+B+\cdots} & =\sum_{n}\e^{-\frac{E_{\left(A+B+\cdots\right)_{n}}}{kT}}\\
+ & =\sum_{i}\sum_{j}\cdots\sum\e^{-\frac{E_{A_{i}}}{kT}}\cdot\e^{-\frac{E_{B_{j}}}{kT}}\cdot\cdots\\
+ & =\left(\sum_{i}\e^{-\frac{E_{A_{i}}}{kT}}\right)\left(\sum\cdots\right)\cdots=Z_{A}Z_{B}\cdots
+\end{align*}
+
+
+\paragraph{演習(5)}
+
+(5-1)
+
+\[
+Z_{1}=\e^{-\frac{0}{kT}}+\e^{-\frac{\varepsilon_{0}}{kT}}=1+\e^{-\frac{\varepsilon_{0}}{kT}}
+\]
+
+(5-2)
+
+\begin{align*}
+Z_{N} & =Z_{1}^{N}=\left(1+\e^{-\frac{\varepsilon_{0}}{kT}}\right)^{N}\\
+ & =\e^{-\frac{0}{kT}}+N\e^{-\frac{\varepsilon_{0}}{kT}}+{}_{n}C_{2}\e^{-\frac{2\varepsilon_{0}}{kT}}+\cdots+\e^{-\frac{N\varepsilon_{0}}{kT}}
+\end{align*}
+
+(5-3)
+
+\[
+\bar{E}=kT^{2}\pd{}T\log Z_{N}=kT^{2}\frac{-\e^{\frac{\varepsilon_{0}}{kT}}}{1+\e^{\frac{\varepsilon_{0}}{kT}}}\frac{\varepsilon_{0}}{kT^{2}}=\frac{\varepsilon_{0}N}{\e^{\frac{\varepsilon_{0}}{kT}}+1}
+\]
+
+
+\paragraph{演習(6)}
+
+$\lambda\rightarrow\text{大}$で$\frac{hc}{\lambda kT}\rightarrow0$、$x$が小さい時$\e^{x}\sim1+x$
+
+(2.32)の分母$\sim\frac{hc}{\lambda kT}$
+
+\[
+\therefore\bar{E_{\lambda}}\mathrm{d}\lambda=\frac{8\pi hc}{\lambda^{5}}\cdot\frac{\mathrm{d}\lambda}{\frac{hc}{\lambda kT}}=\frac{8\pi kT}{\lambda^{4}}\mathrm{d}\lambda
+\]
+
+
+\paragraph{演習(7)}
+
+$\nu=\frac{c}{\lambda}$より、$\mathrm{d}\nu=-\frac{c}{\lambda}\mathrm{d}\lambda$
+
+\begin{align*}
+\bar{E_{\nu}}\mathrm{d}\nu & =\frac{8\pi}{c^{3}}\cdot\frac{h\nu^{3}}{\e^{\frac{h\nu}{kT}}-1}\mathrm{d}\nu=-\frac{8\pi}{c^{3}}\cdot\frac{\frac{hc^{3}}{\lambda^{3}}}{\e^{\frac{hc}{\lambda kT}}-1}\cdot\frac{c}{\lambda}\mathrm{d}\lambda\\
+ & =-\frac{8\pi hc}{\lambda^{5}}\cdot\frac{\mathrm{d}\lambda}{\e^{\frac{hc}{\lambda kT}}-1}=-\bar{E_{\lambda}}\mathrm{d}\lambda
+\end{align*}
+
+
+\paragraph{演習(8)}
+
+$\lambda_{m}T=0.2918\mathrm{cmK}$
+
+\begin{align*}
+\lambda_{m} & =2.918\mathrm{\mu m}\quad\mathrm{\left(i\right)}\\
+\lambda_{m} & =486.3\mathrm{nm}\quad\mathrm{\left(ii\right)}\\
+\lambda_{m} & =29.18\mathrm{nm}\quad\mathrm{\left(iii\right)}
+\end{align*}
+
+$1\mathrm{eV}=1.60\times10^{-19}\mathrm{C}\times1\mathrm{J/C}=1.60\times10^{-19}\mathrm{J}$
+
+\begin{align*}
+h\nu & =\frac{hc}{\lambda}\\
+ & =6.63\times10^{-32}\times3\times10^{8}/10^{-6}=1.989\times10^{-19}\mathrm{J}
+\end{align*}
+
+(i) 0.425eV
+
+(ii) 2.55eV
+
+(iii) 42.5eV
 \end{document}
