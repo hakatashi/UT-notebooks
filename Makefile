@@ -12,6 +12,9 @@ eps: $(EPS)
 	cd $(dir $@); uplatex -no-guess-input-enc -kanji=utf8 -synctex=1 $(notdir $<) 0<&-
 
 %.pdf: %.dvi
+	# Compile twice to properly compile \label-\ref
+	# http://tex.stackexchange.com/a/111281/116656
+	cd $(dir $@); dvipdfmx -o $(notdir $@) $(notdir $<) 0<&-
 	cd $(dir $@); dvipdfmx -o $(notdir $@) $(notdir $<) 0<&-
 
 %.bmp: %.jpg
