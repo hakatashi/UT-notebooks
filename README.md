@@ -43,7 +43,8 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 	* [電気磁気学I・II 前半](2016A/Electromagnetics12.tex) - [PDF][Electromagnetics12-pdf]
 	* [電気磁気学I・II 後半](2016A/Electromagnetics12-part2.tex) - [PDF][Electromagnetics12-part2-pdf]
 	* [電子デバイス基礎](2016A/ElectronicDevice.tex) - [PDF][ElectronicDevice-pdf]
-	* [電子基礎物理](2016A/ElectronicPhysics.tex) - [PDF][ElectronicPhysics-pdf]
+	* [電子基礎物理 前半](2016A/ElectronicPhysics.tex) - [PDF][ElectronicPhysics-pdf]
+	* [電子基礎物理 後半](2016A/ElectronicPhysics-part2.tex) - [PDF][ElectronicPhysics-part2-pdf]
 	* [情報通信理論](2016A/InformationScience.tex) - [PDF][InformationScience-pdf]
 	* [数理手法I](2016A/MathematicalMethodI.tex) - [PDF][MathematicalMethodI-pdf]
 	* [数理手法V](2016A/MathematicalMethodV.tex) - [PDF][MathematicalMethodV-pdf]
@@ -77,6 +78,7 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 [Electromagnetics12-part2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/Electromagnetics12-part2.pdf
 [ElectronicDevice-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/ElectronicDevice.pdf
 [ElectronicPhysics-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/ElectronicPhysics.pdf
+[ElectronicPhysics-part2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/ElectronicPhysics-part2.pdf
 [InformationScience-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/InformationScience.pdf
 [MathematicalMethodI-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/MathematicalMethodI.pdf
 [MathematicalMethodV-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/MathematicalMethodV.pdf
