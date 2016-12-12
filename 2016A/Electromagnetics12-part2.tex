@@ -17,6 +17,9 @@
 \usepackage{ulem}
 
 \makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\numberwithin{equation}{section}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage[dvipdfmx]{hyperref}
 \usepackage[dvipdfmx]{pxjahyper}
@@ -106,7 +109,7 @@ F=\frac{1}{4\pi\varepsilon_{0}}\frac{Q_{1}Q_{2}}{r^{2}}
 
 距離$R$離れた2本の平行な導線に電流$I_{1},I_{2}$が流れているとき、電荷が動いているとき、
 \begin{equation}
-F=\frac{\mu_{0}}{2\pi}\frac{I_{1}I_{2}}{R}
+F=\frac{\mu_{0}}{2\pi}\frac{I_{1}I_{2}}{R}\label{1.1}
 \end{equation}
 の力が働く。
 
@@ -122,7 +125,7 @@ F=\frac{\mu_{0}}{2\pi}\frac{I_{1}I_{2}}{R}
 
 \paragraph{なぜきれいな値なのか?}
 
-→実は(1)により電流の単位が定義されている。
+→実は\ref{1.1}により電流の単位が定義されている。
 
 1Aとは「真空中で1m離れた平衡な直線導体に流れた時に、単位長さあたり$2\times10^{-7}\mathrm{N}$のちからが働くような電流」と定義される(SI単位系)。
 
@@ -132,7 +135,7 @@ F=\frac{\mu_{0}}{2\pi}\frac{I_{1}I_{2}}{R}
 
 帯電下電線管に働くクーロン力は、単位長あたり、
 \begin{equation}
-F=\frac{1}{2\pi\varepsilon_{0}}\frac{\lambda_{1}\lambda_{2}}{R}
+F=\frac{1}{2\pi\varepsilon_{0}}\frac{\lambda_{1}\lambda_{2}}{R}\label{1.2}
 \end{equation}
 
 ∵ガウスの定理
@@ -140,7 +143,7 @@ F=\frac{1}{2\pi\varepsilon_{0}}\frac{\lambda_{1}\lambda_{2}}{R}
 \includegraphics{images/Electromagnetics12-part2/1-3}
 \par\end{center}
 
-クーロン力(2)と同様に、直線導体間のアンペール力(1)は$R$に反比例する。
+クーロン力\ref{1.2}と同様に、直線導体間のアンペール力\ref{1.1}は$R$に反比例する。
 
 →クーロン力(遠隔作用)が電界(近接作用)を用いて言い換えられたように、アンペール力も同様の考え方で説明できるはず。
 
@@ -159,7 +162,7 @@ F=\frac{1}{2\pi\varepsilon_{0}}\frac{\lambda_{1}\lambda_{2}}{R}
 
 位置$\boldsymbol{r}'$にある電流要素$I'\mathrm{d}\boldsymbol{s}'$が、位置$\boldsymbol{r}$に
 \begin{equation}
-\mathrm{d}\boldsymbol{B}=\frac{\mu_{0}}{4\pi}\frac{I'\mathrm{d}\boldsymbol{s}\times\boldsymbol{u}}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{2}}
+\mathrm{d}\boldsymbol{B}=\frac{\mu_{0}}{4\pi}\frac{I'\mathrm{d}\boldsymbol{s}\times\boldsymbol{u}}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{2}}\label{1.3}
 \end{equation}
 で表される微小な``場''を作る。
 \begin{center}
@@ -180,7 +183,7 @@ $\boldsymbol{r}-\boldsymbol{r}'$方向の単位ベクトル
 \]
 
 \begin{equation}
-\therefore\boldsymbol{B}=\frac{\mu_{0}}{4\pi}\oint\frac{I'\mathrm{d}s'\times\left(\boldsymbol{r}-\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r'}\right|^{3}}
+\therefore\boldsymbol{B}=\frac{\mu_{0}}{4\pi}\oint\frac{I'\mathrm{d}s'\times\left(\boldsymbol{r}-\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r'}\right|^{3}}\label{1.4}
 \end{equation}
 
 \begin{center}
@@ -189,7 +192,7 @@ $\boldsymbol{r}-\boldsymbol{r}'$方向の単位ベクトル
 
 そしてこの時、位置$\boldsymbol{r}$にある電流要素$I\mathrm{d}\boldsymbol{s}$は、
 \begin{equation}
-\boldsymbol{F}=I\mathrm{d}\boldsymbol{s}\times\boldsymbol{B}
+\boldsymbol{F}=I\mathrm{d}\boldsymbol{s}\times\boldsymbol{B}\label{1.5}
 \end{equation}
 の力を受ける。
 \begin{center}
@@ -200,7 +203,7 @@ $\boldsymbol{r}-\boldsymbol{r}'$方向の単位ベクトル
 
 ここで``場''$\boldsymbol{B}$を磁束密度と呼び、単位T(テスラ)を用いる。(このあとで出てくる$\boldsymbol{H}$を磁界と呼ぶため)
 
-直線電流にとうして(4)、(5)を用いて計算すると(1)が得られる。(演習問題)
+直線電流に対して\ref{1.4}、\ref{1.5}を用いて計算すると\ref{1.1}が得られる。(演習問題)
 
 \paragraph{ローレンツ力}
 
@@ -210,7 +213,7 @@ $\boldsymbol{r}-\boldsymbol{r}'$方向の単位ベクトル
 I\mathrm{d}\boldsymbol{s}-qN\boldsymbol{v}
 \]
 
-$q$: でん過疎量
+$q$: 電荷疎量
 
 $N$: $\mathrm{d}\boldsymbol{s}$無いの電荷数
 
@@ -225,7 +228,7 @@ $v$: 電荷の速度
 
 クーロン力と合わせて一般に電荷が受ける力
 \begin{equation}
-\boldsymbol{F}=q\left(\boldsymbol{E}+\boldsymbol{v}\times\boldsymbol{B}\right)
+\boldsymbol{F}=q\left(\boldsymbol{E}+\boldsymbol{v}\times\boldsymbol{B}\right)\label{1.6}
 \end{equation}
 をローレンツ力と呼ぶ。
 
@@ -233,7 +236,7 @@ $v$: 電荷の速度
 
 静止した電荷間の力がクーロン力(電界)\uline{動いている}電荷間の力がアンペール力(磁界)と区別したが、「動いているかどうか?」は相対的なもの。
 
-例えば、電荷と一緒に動いている系絡みたら、(6)の$\boldsymbol{v}=0$になり、アンペール力は発生しない。おかしい?
+例えば、電荷と一緒に動いている系絡みたら、\ref{1.6}の$\boldsymbol{v}=0$になり、アンペール力は発生しない。おかしい?
 
 答え: このとき、相対論的に長さが縮むことに起因して\uline{クーロン力}が余分に発生し、合計の$\boldsymbol{F}$がつじつまが合う。(配布資料)
 
@@ -392,14 +395,14 @@ $\mathrm{d}v'\equiv\mathrm{d}A'\mathrm{d}s'$: 体積要素
 
 ∴ビオ・サバール
 
-(1.4) →
+\ref{1.4}→
 \begin{equation}
-\boldsymbol{B}\left(\boldsymbol{r}\right)=\frac{\mu_{0}}{4\pi}\int_{v}\frac{\boldsymbol{i}\left(\boldsymbol{r}'\right)\times\left(\boldsymbol{r}-\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{3}}\mathrm{d}v'
+\boldsymbol{B}\left(\boldsymbol{r}\right)=\frac{\mu_{0}}{4\pi}\int_{v}\frac{\boldsymbol{i}\left(\boldsymbol{r}'\right)\times\left(\boldsymbol{r}-\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{3}}\mathrm{d}v'\label{1.7}
 \end{equation}
 
 ここで、
 \begin{equation}
-\nabla\left(\frac{1}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\right)=-\frac{\boldsymbol{r}-\boldsymbol{r}'}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{3}}
+\nabla\left(\frac{1}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\right)=-\frac{\boldsymbol{r}-\boldsymbol{r}'}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|^{3}}\label{1.8}
 \end{equation}
 
 ただし、$\nabla$は$\boldsymbol{r}$に対する演算子
@@ -411,9 +414,9 @@ $\mathrm{d}v'\equiv\mathrm{d}A'\mathrm{d}s'$: 体積要素
 \end{array}\right)
 \]
 
-(1.8)の証明は演習でやる。
+\ref{1.8}の証明は演習でやる。
 
-(1.7)→
+\ref{1.7}→
 \begin{align*}
 \boldsymbol{B}\left(\boldsymbol{r}\right) & =\frac{\mu_{0}}{4\pi}\int\boldsymbol{i}\left(\boldsymbol{r}\right)\times\left\{ -\nabla\left(\frac{1}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\right)\right\} \mathrm{d}v'\\
  & =\frac{\mu_{0}}{4\pi}\int_{V}\left\{ \nabla\left(\frac{1}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\right)\right\} \times\boldsymbol{i}\left(\boldsymbol{r}'\right)\mathrm{d}v'
@@ -429,7 +432,7 @@ $\mathrm{d}v'\equiv\mathrm{d}A'\mathrm{d}s'$: 体積要素
 \]
 を用いると、
 \begin{equation}
-\boldsymbol{B}\left(\boldsymbol{r}\right)=\frac{\mu_{0}}{4\pi}\int_{V}\mathrm{d}v'\left[\nabla\times\frac{\boldsymbol{i}\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}-\frac{1}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\left\{ \nabla\times\boldsymbol{i}\left(\boldsymbol{r}'\right)\right\} \right]
+\boldsymbol{B}\left(\boldsymbol{r}\right)=\frac{\mu_{0}}{4\pi}\int_{V}\mathrm{d}v'\left[\nabla\times\frac{\boldsymbol{i}\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}-\frac{1}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\left\{ \nabla\times\boldsymbol{i}\left(\boldsymbol{r}'\right)\right\} \right]\label{1.9}
 \end{equation}
 
 ここで、$\nabla$は$\boldsymbol{r}$に対する微分なので、
@@ -439,35 +442,35 @@ $\mathrm{d}v'\equiv\mathrm{d}A'\mathrm{d}s'$: 体積要素
 
 また、$\nabla$は$\int\mathrm{d}v'$の外に出せる。
 
-(1.7)→
+\ref{1.7}→
 \begin{equation}
-\boldsymbol{B}\left(\boldsymbol{r}\right)=\nabla\times\frac{\mu_{0}}{4\pi}\int_{V}\frac{\boldsymbol{i}\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}v'
+\boldsymbol{B}\left(\boldsymbol{r}\right)=\nabla\times\frac{\mu_{0}}{4\pi}\int_{V}\frac{\boldsymbol{i}\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}v'\label{1.10}
 \end{equation}
 
 そこで、ベクトル
 \begin{equation}
-\boldsymbol{A}\left(\boldsymbol{r}\right)\equiv\frac{\mu_{0}}{4\pi}\int_{V}\frac{\boldsymbol{i}\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}v'
+\boldsymbol{A}\left(\boldsymbol{r}\right)\equiv\frac{\mu_{0}}{4\pi}\int_{V}\frac{\boldsymbol{i}\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}v'\label{1.11}
 \end{equation}
 を定義すると、
 \begin{equation}
-\boldsymbol{B}\left(\boldsymbol{r}\right)=\nabla\times\boldsymbol{A}\left(\boldsymbol{r}\right)
+\boldsymbol{B}\left(\boldsymbol{r}\right)=\nabla\times\boldsymbol{A}\left(\boldsymbol{r}\right)\label{1.12}
 \end{equation}
 と表される。
 
 \paragraph{クーロン力の場合}
 
 \begin{align}
-V\left(\boldsymbol{r}\right) & =\frac{1}{4\pi\varepsilon_{0}}\int\frac{\rho\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}\boldsymbol{r}'\\
-\boldsymbol{E} & =-\nabla V
+V\left(\boldsymbol{r}\right) & =\frac{1}{4\pi\varepsilon_{0}}\int\frac{\rho\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}\boldsymbol{r}'\label{1.13}\\
+\boldsymbol{E} & =-\nabla V\label{1.14}
 \end{align}
 
 \begin{itemize}
-\item (1.13)↔(1.11)
-\item (1.14)↔(1.12)
+\item \ref{1.13}↔\ref{1.11}
+\item \ref{1.14}↔\ref{1.12}
 \end{itemize}
 に対応している。
 
-そこで、(1.11)の$\boldsymbol{A}$をベクトルポテンシャルと呼ぶ。
+そこで、\ref{1.11}の$\boldsymbol{A}$をベクトルポテンシャルと呼ぶ。
 
 (一部紛失)
 
@@ -476,19 +479,19 @@ V\left(\boldsymbol{r}\right) & =\frac{1}{4\pi\varepsilon_{0}}\int\frac{\rho\left
 \end{equation}
 
 \begin{equation}
-\boldsymbol{i}\left(\boldsymbol{r}\right)=\frac{1}{4\pi\varepsilon_{0}}\int_{V}\frac{\rho\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}v'=-\frac{\rho\left(\boldsymbol{r}'\right)}{\varepsilon_{0}}
+\boldsymbol{i}\left(\boldsymbol{r}\right)=\frac{1}{4\pi\varepsilon_{0}}\int_{V}\frac{\rho\left(\boldsymbol{r}'\right)}{\left|\boldsymbol{r}-\boldsymbol{r}'\right|}\mathrm{d}v'=-\frac{\rho\left(\boldsymbol{r}'\right)}{\varepsilon_{0}}\label{1.16}
 \end{equation}
  
 
-(1.16')は、任意の電荷分布$\rho\left(\boldsymbol{r}\right)$について成立する。つまり、任意のスカラー関数$\rho\left(\boldsymbol{r}\right)$について成り立つ恒等式である。
+\ref{1.16}は、任意の電荷分布$\rho\left(\boldsymbol{r}\right)$について成立する。つまり、任意のスカラー関数$\rho\left(\boldsymbol{r}\right)$について成り立つ恒等式である。
 
-∴(1.15)の両辺$\nabla^{2}$して、右辺に(1.16')を適用すると、
+∴(1.15)の両辺$\nabla^{2}$して、右辺に\ref{1.16}を適用すると、
 \[
 \nabla^{2}A_{x}\left(\boldsymbol{r}\right)=-\mu_{0}i_{x}\left(\boldsymbol{r}\right)
 \]
 
 \begin{equation}
-\nabla^{2}\boldsymbol{A}=-\mu_{0}\boldsymbol{A}
+\nabla^{2}\boldsymbol{A}=-\mu_{0}\boldsymbol{A}\label{1.17}
 \end{equation}
 
 つまり、$\boldsymbol{i}$と$\boldsymbol{A}$のあいだ市、ポアソンの式と同じ形の式が成り立つ。(例えば、$i_{x}$の分布から、これを$\rho$だと思って$V$を求めれば、直ちに$A_{x}$が求まる)
@@ -501,9 +504,9 @@ V\left(\boldsymbol{r}\right) & =\frac{1}{4\pi\varepsilon_{0}}\int\frac{\rho\left
 \end{array}\right)
 \]
 
-(1.11)の両辺$\div$を取ると、
+\ref{1.11}の両辺$\div$を取ると、
 \begin{equation}
-\nabla\cdot\boldsymbol{A}=0
+\nabla\cdot\boldsymbol{A}=0\label{1.18}
 \end{equation}
 
 (クーロンげージ)
@@ -514,11 +517,11 @@ V\left(\boldsymbol{r}\right) & =\frac{1}{4\pi\varepsilon_{0}}\int\frac{\rho\left
 
 電位$V$に定数$V_{0}$(任意のエネルギー基準)を加えても$\boldsymbol{E}$が変わらないのと同様に、$\boldsymbol{A}$の決め方も任意性がある。
 
-(1.11)で定義した$\boldsymbol{A}$に、定ベクトル$\boldsymbol{A}_{0}$を加えても、(1.12)で求まる$\boldsymbol{B}$は変わらない。
+\ref{1.11}で定義した$\boldsymbol{A}$に、定ベクトル$\boldsymbol{A}_{0}$を加えても、\ref{1.12}で求まる$\boldsymbol{B}$は変わらない。
 
 それ以上に、任意のスカラー関数$\phi\left(\boldsymbol{r}\right)$を考え、その$\nabla\phi$を$\boldsymbol{A}$に加え、
 \begin{equation}
-\boldsymbol{A}'\equiv\boldsymbol{A}+\nabla\phi
+\boldsymbol{A}'\equiv\boldsymbol{A}+\nabla\phi\label{1.19}
 \end{equation}
 としてみても、
 \[
@@ -527,37 +530,37 @@ V\left(\boldsymbol{r}\right) & =\frac{1}{4\pi\varepsilon_{0}}\int\frac{\rho\left
 
 (ベクトル公式より$\nabla\times\left(\nabla\phi\right)=0$)なので、$\boldsymbol{B}$は変わらない。
 
-そこで、より広義に、(1.19)で変換(ゲージ変換という)できる$\boldsymbol{A}'$をすべてベクトルポテンシャルと呼ぶ。
+そこで、より広義に、\ref{1.19}で変換(ゲージ変換という)できる$\boldsymbol{A}'$をすべてベクトルポテンシャルと呼ぶ。
 
 ただし、このとき、一般に$\nabla\cdot\boldsymbol{A}'\neq0$となる。
 
-$\boldsymbol{A}$の選び方を「ゲージ」と言い、特に、(1.18)を満たすように$\boldsymbol{A}$を選ぶこと(例えば(1.11))を「クーロンゲージ」という。
+$\boldsymbol{A}$の選び方を「ゲージ」と言い、特に、\ref{1.18}を満たすように$\boldsymbol{A}$を選ぶこと(例えば\ref{1.11})を「クーロンゲージ」という。
 
 \subsection{アンペアの法則}
 \begin{itemize}
 \item 電場については$\nabla\times\boldsymbol{E}=0$ 磁界はどうか?
 \end{itemize}
-(1.12)より
+\ref{1.12}より
 \begin{align*}
 \nabla\times\boldsymbol{B} & =\nabla\times\nabla\times\boldsymbol{A}\\
  & =\nabla\left(\nabla\cdot\boldsymbol{A}\right)-\nabla^{2}\boldsymbol{A}
 \end{align*}
 
-(1.18)より$\nabla\cdot\boldsymbol{A}=0$
+\ref{1.18}より$\nabla\cdot\boldsymbol{A}=0$
 
-また(1.17)より $\nabla^{2}\boldsymbol{A}=-\mu_{0}\boldsymbol{i}$
+また\ref{1.17}より $\nabla^{2}\boldsymbol{A}=-\mu_{0}\boldsymbol{i}$
 
 \paragraph{アンペアの法則(微分系)}
 
 \begin{equation}
-\nabla\times\boldsymbol{B}=\mu_{0}\boldsymbol{i}
+\nabla\times\boldsymbol{B}=\mu_{0}\boldsymbol{i}\label{1.20}
 \end{equation}
 
 つまり、電流$\boldsymbol{i}$があると$\boldsymbol{B}$の``渦''が発生
 
 \paragraph{積分系}
 
-任意の閉曲面$S$について、(1.20)の両辺を面積分する。
+任意の閉曲面$S$について、\ref{1.20}の両辺を面積分する。
 \begin{center}
 \includegraphics{images/Electromagnetics12-part2/2-3}
 \par\end{center}
@@ -581,7 +584,7 @@ $I$: $S$を貫く全電流
 ∴アンペアの法則 (積分系)
 
 \begin{equation}
-\oint_{C}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}=\mu_{0}I
+\oint_{C}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}=\mu_{0}I\label{1.21}
 \end{equation}
 
 \begin{center}
@@ -610,7 +613,7 @@ I & =I_{1}-I_{2}+I_{3}-I_{3}\\
 \includegraphics{images/Electromagnetics12-part2/2-6}
 \par\end{center}
 
-うえんような閉経路$C$を考え、(1.21)を適用
+うえんような閉経路$C$を考え、\ref{1.21}を適用
 
 \[
 \text{左辺}=\int_{\text{左}}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}+\int_{\text{下}}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}+\int_{\text{上}}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}+\int_{\text{右}}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}
@@ -668,7 +671,7 @@ $x\rightarrow\theta$に置換
 
 \paragraph{当日問題1(a)①}
 
-(1.11)から計算
+\ref{1.11}から計算
 
 $x,y$方向は電流=0なので$A_{x}=A_{y}=0$
 \begin{center}
@@ -835,7 +838,7 @@ $y,z$成分も同様
 
 $\boldsymbol{B}$についても同様にdivを考える。
 
-(1.12)より、
+\ref{1.12}より、
 \[
 \nabla\cdot\boldsymbol{B}=\nabla\cdot\left(\nabla\times\boldsymbol{A}\right)=0
 \]
@@ -845,14 +848,14 @@ $\boldsymbol{B}$についても同様にdivを考える。
 \end{equation}
 
 \begin{equation}
-\nabla\cdot\boldsymbol{B}=0
+\nabla\cdot\boldsymbol{B}=0\label{1.23}
 \end{equation}
 
 つもり``磁荷''は存在しない。
 
-ガウスの定理より(1.23)の積分形は、
+ガウスの定理より\ref{1.23}の積分形は、
 \begin{equation}
-\int_{S}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S=0
+\int_{S}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S=0\label{1.24}
 \end{equation}
 
 $S$: 任意の閉曲面
@@ -861,13 +864,13 @@ $S$: 任意の閉曲面
 
 一般に、ある面$S$を通過する$\boldsymbol{B}$の合計
 \begin{equation}
-\Phi\equiv\int_{S}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S
+\Phi\equiv\int_{S}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S\label{1.25}
 \end{equation}
 を磁束と呼び、単位をWb(ウェーバー)で表す。つまり$\mathrm{T=\frac{Wb}{m^{2}}}$。
 
 図電後3-2
 
-(1.25)に(1.12)を代入し、ストークスの定理を用いると、
+\ref{1.25}に\ref{1.12}を代入し、ストークスの定理を用いると、
 \begin{align*}
 \int\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S & =\int_{S}\left(\nabla\times\boldsymbol{A}\right)\cdot\boldsymbol{n}\mathrm{d}S\\
  & =\oint_{C}\boldsymbol{A}\cdot\mathrm{d}\boldsymbol{s}
@@ -876,13 +879,13 @@ $S$: 任意の閉曲面
 $C$: $S$の境界
 
 \begin{equation}
-\therefore(1.25)\Leftrightarrow\Phi=\int_{C}\boldsymbol{A}\cdot\mathrm{d}\boldsymbol{s}
+\therefore\ref{1.25}\Leftrightarrow\Phi=\int_{C}\boldsymbol{A}\cdot\mathrm{d}\boldsymbol{s}\label{1.26}
 \end{equation}
 とも書ける。
 
 \textbf{境界上の$\boldsymbol{A}$を一階積分すると、その中の磁束が求まる。}
 
-$S$が閉曲面のとき、$C$はないので$\Phi=0$⇔(1.24)
+$S$が閉曲面のとき、$C$はないので$\Phi=0$⇔\ref{1.24}
 
 \paragraph{まとめ}
 
@@ -914,7 +917,7 @@ $S$が閉曲面のとき、$C$はないので$\Phi=0$⇔(1.24)
 
 「微小な電流ループ」の大きさを表すために、磁気モーメント
 \begin{equation}
-\boldsymbol{m}\equiv IA\boldsymbol{n}
+\boldsymbol{m}\equiv IA\boldsymbol{n}\label{2.1}
 \end{equation}
 を定義する。
 
@@ -935,9 +938,9 @@ $\boldsymbol{n}$: 電流に対して右ねじが進む向きの単位ベクト�
 
 図電後3-8
 \end{enumerate}
-単位体積あたり$N$この磁気モーメント$\boldsymbol{m}_{i}\left(i=1,2,\cdots,N\right)$があるとき、単位体積あたりの巨視的な磁気モーメントは、
+単位体積あたり$N$個の磁気モーメント$\boldsymbol{m}_{i}\left(i=1,2,\cdots,N\right)$があるとき、単位体積あたりの巨視的な磁気モーメントは、
 \begin{equation}
-\boldsymbol{M}=\sum_{i=1}^{N}\boldsymbol{m}_{1}=N\left\langle \boldsymbol{m}_{i}\right\rangle 
+\boldsymbol{M}=\sum_{i=1}^{N}\boldsymbol{m}_{1}=N\left\langle \boldsymbol{m}_{i}\right\rangle \label{2.2}
 \end{equation}
 
 これを磁化ベクトルと呼ぶ。
@@ -960,13 +963,13 @@ $\boldsymbol{B}$に対して\uline{反対の向き}に$\boldsymbol{m}$がそろ�
 
 図電後3-9
 
-今、磁性体の中を通る経路$C$について(1.21)を考える。
+今、磁性体の中を通る経路$C$について\ref{1.21}を考える。
 
 $C$に鎖交する電流$I$として、通常の電流$I_{F}$(自由電流と呼ぶ)肉を得て、磁性体内の微小電流ループの総和(磁化電流)$I_{M}$も考える必要がある。
 
-つまり(1.21)は
+つまり\ref{1.21}は
 \begin{equation}
-\oint_{C}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}=\mu_{0}I=\mu_{0}\left(I_{E}+I_{M}\right)
+\oint_{C}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}=\mu_{0}I=\mu_{0}\left(I_{E}+I_{M}\right)\label{2.3}
 \end{equation}
 
 と分割して書ける。
@@ -983,39 +986,39 @@ $C$に鎖交する電流$I$として、通常の電流$I_{F}$(自由電流と呼
 
 全$I_{M}$はこれを$C$全体で積分したもの
 \begin{equation}
-\therefore I_{M}=\oint_{C}\boldsymbol{M}\cdot\mathrm{d}\boldsymbol{s}
+\therefore I_{M}=\oint_{C}\boldsymbol{M}\cdot\mathrm{d}\boldsymbol{s}\label{2.4}
 \end{equation}
 
-ストークスの定理より(2.4)の微分系は
+ストークスの定理より\ref{2.4}の微分系は
 \begin{equation}
-\boldsymbol{i}_{M}=\nabla\times\boldsymbol{M}
+\boldsymbol{i}_{M}=\nabla\times\boldsymbol{M}\label{2.5}
 \end{equation}
 
 $\boldsymbol{i}_{M}$: 磁化電流密度
 
-(2.4)を(2.3)に代入して、
+\ref{2.4}を\ref{2.3}に代入して、
 \begin{equation}
-\oint_{C}\left(\frac{1}{\mu_{0}}\boldsymbol{B}-\boldsymbol{M}\right)\cdot\mathrm{d}\boldsymbol{s}=I_{F}
+\oint_{C}\left(\frac{1}{\mu_{0}}\boldsymbol{B}-\boldsymbol{M}\right)\cdot\mathrm{d}\boldsymbol{s}=I_{F}\label{2.6}
 \end{equation}
 
-そして、新しい馬
+そして、新しい場
 \begin{equation}
-\boldsymbol{H}\equiv\frac{1}{\mu}\boldsymbol{B}-\boldsymbol{M}
+\boldsymbol{H}\equiv\frac{1}{\mu}\boldsymbol{B}-\boldsymbol{M}\label{2.7}
 \end{equation}
-を定義すると、(2.6)は、
+を定義すると、\ref{2.6}は、
 \begin{equation}
-\oint_{C}\boldsymbol{H}\cdot\mathrm{d}\boldsymbol{s}=I_{F}
+\oint_{C}\boldsymbol{H}\cdot\mathrm{d}\boldsymbol{s}=I_{F}\label{2.8}
 \end{equation}
 →微分系
 \begin{equation}
-\boldsymbol{i}_{F}=\nabla\times\boldsymbol{H}
+\boldsymbol{i}_{F}=\nabla\times\boldsymbol{H}\label{2.9}
 \end{equation}
 
 $\boldsymbol{i}_{F}$自由電流密度
 
 $\boldsymbol{H}$は全磁束密度$\boldsymbol{B}$のうち、z祐電流$I_{F}$と直接関連付けられる成分を表すため、「磁界」と呼ばれる。
 
-一方、(1.23)、(1.24)
+一方、\ref{1.23}、\ref{1.24}
 \[
 \int\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S=0
 \]
@@ -1029,7 +1032,7 @@ $\boldsymbol{H}$は全磁束密度$\boldsymbol{B}$のうち、z祐電流$I_{F}$�
 
 図電後3-10
 
-上図の$C$で(2.8)を考えると、
+上図の$C$で\ref{2.8}を考えると、
 \[
 H_{1\sslash}=H_{2\sslash}
 \]
@@ -1040,7 +1043,7 @@ H_{1\sslash}=H_{2\sslash}
 
 図電後3-11
 
-上図の$S$で(1.24)を考える。
+上図の$S$で\ref{1.24}を考える。
 
 \[
 B_{1\bot}=B_{2\bot}
@@ -1070,28 +1073,28 @@ B_{1\bot}=B_{2\bot}
 
 一般にM-H特性は複雑。しかし、常磁性体、反磁性体で$H$が十分小さい領域(線形領域)では、
 \begin{equation}
-\boldsymbol{M}=\chi\boldsymbol{H}
+\boldsymbol{M}=\chi\boldsymbol{H}\label{2.10}
 \end{equation}
 と近似できる。
 
-・強磁性体でも、ヒステリシスが小さい場合や、最小に磁化する領域で(2.10)を用いる。
+・強磁性体でも、ヒステリシスが小さい場合や、最小に磁化する領域で\ref{2.10}を用いる。
 
-・磁石($H=0$で$M\neq0$)は、(2.10)は使えない。$M$=一定 とするか、M-H特性を厳密に考える。
+・磁石($H=0$で$M\neq0$)は、は使えない。$M$=一定 とするか、M-H特性を厳密に考える。
 
 $\chi$を磁化率と呼ぶ。(常磁性体: $\chi>0$、反磁性体: $-1<\chi<0$)
 
-(2.10)を(2.7)に代入し、
+\ref{2.10}を\ref{2.7}に代入し、
 \[
 \boldsymbol{B}=\mu_{0}\left(\boldsymbol{H}+\boldsymbol{M}\right)=\left(1+\chi\right)\mu_{0}\boldsymbol{H}
 \]
 
 \begin{equation}
-\therefore\boldsymbol{B}=\mu\boldsymbol{H}
+\therefore\boldsymbol{B}=\mu\boldsymbol{H}\label{2.11}
 \end{equation}
 
 ただし
 \begin{equation}
-\mu\equiv\left(1+\chi\right)\mu_{0}
+\mu\equiv\left(1+\chi\right)\mu_{0}\label{2.12}
 \end{equation}
 
 $\mu$を透磁率と呼ぶ。
