@@ -1098,4 +1098,186 @@ $\chi$を磁化率と呼ぶ。(常磁性体: $\chi>0$、反磁性体: $-1<\chi<0
 \end{equation}
 
 $\mu$を透磁率と呼ぶ。
+
+\paragraph{先週の宿題1}
+
+(a)
+
+\[
+\boldsymbol{B}=\nabla\times\boldsymbol{A}=\left(\begin{array}{c}
+0\\
+0\\
+B_{0}
+\end{array}\right)
+\]
+
+(b)
+
+図電後3-15
+
+$A$は電流を流すべき方向と同じ方向になる。
+
+\paragraph{先週の宿題2}
+
+図電後3-16
+
+$z$字句を中心都市、半径$r$の炎上でアンペアの法則(積分系)を適用する。
+
+(i) $r<a$
+
+$C_{1}$に鎖交する電流はない。
+
+\[
+\oint\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}=2\pi rB=0
+\]
+
+\[
+B=0
+\]
+
+(ii) $b<r<a$
+
+\[
+2\pi rB=-\mu I
+\]
+
+\[
+\therefore B=-\frac{\mu_{0}I}{2\pi r}
+\]
+
+(iii) $a<r$
+
+\[
+2\pi rB=\mu\left(-I+I\right)=0
+\]
+
+\[
+B=0
+\]
+
+図電後3-17
+
+\paragraph{前回の宿題3}
+
+(a)
+
+\[
+\nabla\times\left(f\boldsymbol{u}\right)=\nabla f\times\boldsymbol{u}+f\left(\nabla\times\boldsymbol{u}\right)
+\]
+
+$x$成分は
+\[
+\pd{\left(fu_{z}\right)}y-\pd{\left(fu_{y}\right)}z=\left(\pd fyu_{z}-\pd fzu_{y}\right)+f\left(\pd{u_{z}}y-\pd{u_{y}}z\right)
+\]
+
+$y,z$成分も同様
+
+(b)
+
+\[
+\nabla\times\left(\nabla f\right)=0
+\]
+
+$x$成分は
+\[
+\pd{}y\left(\pd fz\right)-\pd{}z\left(\pd fy\right)=0
+\]
+
+$y,z$も同様
+
+(c)
+
+\[
+\nabla\cdot\left(\nabla\times\boldsymbol{u}\right)=0
+\]
+
+\[
+\text{左辺}=\pd{}x\left(\pd{u_{z}}y-\pd{u_{y}}z\right)+\pd{}y\left(\pd{u_{x}}z-\pd{u_{z}}x\right)+\pd{}z\left(\pd{u_{y}}x-\pd{u_{x}}y\right)=0
+\]
+
+
+\paragraph{当日問題1}
+
+点電荷は時間$\frac{2\pi}{\omega}$の間にいっしゅうするので、電流$I=\frac{q\omega}{2\pi}$
+
+\[
+\therefore\left|\boldsymbol{m}\right|=IS=\frac{q\omega}{2\pi}\cdot a^{2}\pi=\frac{qL}{2m}\quad\left(\because L=ma^{2}\omega\right)
+\]
+
+$L$→量子化することで$m$が説明される。
+
+\paragraph{当日問題2}
+
+教科書p.152参照
+
+図電後3-18
+\begin{itemize}
+\item $M$は磁石の中だけ。外では$M=0$
+\item $H$は、磁石の外では$H=\frac{1}{\mu_{0}}B$
+\item $I_{F}=0$なので
+\[
+\int H\cdot\mathrm{d}s=0
+\]
+\item $\nabla\cdot\boldsymbol{B}=0$なので$B$は連続
+
+図電後3-19
+
+図電後3-20
+
+一般に磁石の内部で$H$と$B$は逆ムキになる。このような$H$を減磁力や反磁界と呼ぶ。
+\end{itemize}
+
+\paragraph{当日問題3}
+
+(a)
+
+図電後3-21
+
+\[
+H_{\text{外}}=H_{\text{中}}
+\]
+\[
+H_{\text{外}}=\frac{B_{\text{外}}}{\mu_{0}},H_{\text{中}}=\frac{B_{\text{中}}}{\mu_{0}}
+\]
+
+磁気回路(教.131)
+\begin{itemize}
+\item $B$→電流$I$
+\item $H$→電界$E$
+\item $\frac{1}{\mu}$→抵抗
+\end{itemize}
+とみなして、電気回路の問題と同様に解くことができる。
+
+(b)
+
+図電後3-22
+
+考え方
+\begin{enumerate}
+\item $\nabla\cdot B=0$より経路上で(断面積が一定)なら$B$は一定
+\item 磁性体(磁石ではない)の中で$H=\frac{1}{\mu}B$
+\item アンペアの法則 $\oint H\cdot\mathrm{d}\boldsymbol{s}=I_{F}$
+\end{enumerate}
+\[
+H_{m}=\frac{B}{\mu},H_{g}=\frac{B}{\mu_{0}}
+\]
+
+\[
+\oint H\cdot\mathrm{d}\boldsymbol{s}=\frac{B}{\mu}\left(l-g\right)+\frac{B}{\mu_{0}}g=NI
+\]
+
+\[
+B=\frac{NI}{\frac{l}{\mu}+\frac{g}{\mu_{0}}}
+\]
+
+(鉄心中もギャップも同じ)
+
+(c)
+
+\begin{align*}
+H_{m} & =\frac{B}{\mu}=\frac{NI}{l+\frac{\mu}{\mu_{0}}g}\quad\left(\text{鉄心}\right)\\
+H_{g} & =\frac{B}{\mu_{0}}=\frac{NI}{\frac{\mu_{0}}{\mu}l+g}\quad\left(\text{ギャップ}\right)
+\end{align*}
+
+$g\ll l,\mu\gg\mu_{0}$ならギャップの中心のほうが強い。
 \end{document}
