@@ -1,7 +1,7 @@
 %% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[english]{article}
-\usepackage[T1]{fontenc}
+\usepackage[LGR,T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[a5paper]{geometry}
 \geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
@@ -13,6 +13,14 @@
 \usepackage{graphicx}
 
 \makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\DeclareRobustCommand{\greektext}{%
+  \fontencoding{LGR}\selectfont\def\encodingdefault{LGR}}
+\DeclareRobustCommand{\textgreek}[1]{\leavevmode{\greektext #1}}
+\ProvideTextCommand{\~}{LGR}[1]{\char126#1}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage[dvipdfmx]{hyperref}
 \usepackage[dvipdfmx]{pxjahyper}
@@ -1436,5 +1444,363 @@ f^{\left(-1\right)}\left(t\right)=\int_{-\infty}^{t}f\left(\tau\right)\mathrm{d}
 \end{itemize}
 \item 微分積分の伝達関数: $s,\frac{1}{s}$
 \end{itemize}
+
+\section*{第4回}
+
+\paragraph{レポート+α}
+
+(1)(a)
+
+\begin{align*}
+\laplace{\e^{at}} & =\int_{0}^{\infty}\e^{at}\e^{-st}\mathrm{d}t\\
+ & =\frac{1}{s-a}\quad\left(\Re\left(s-a\right)>0\right)\\
+f\left(t\right) & =\begin{cases}
+\e^{at} & \left(t>0\right)\\
+0 & \left(t<0\right)
+\end{cases}
+\end{align*}
+
+図回後4-1
+
+ローパスフィルタのインパルス応答
+
+(b)
+
+\[
+\laplace{t\e^{at}}=\cdots=\frac{1}{\left(s-a\right)^{2}}\quad\Re\left(s-a\right)>0
+\]
+
+図回後4-2
+
+ローパスフィルタを2回通った時のインパルス応答
+
+参考:
+
+\begin{align*}
+\laplace{t^{n}\e^{at}} & =\int_{0}^{\infty}t^{n}\e^{at}\e^{-st}\mathrm{d}t\\
+ & =\left[t^{n}\frac{\e^{\left(a-s\right)t}}{a-s}\right]_{0}^{\infty}+\frac{n}{s-a}\int t^{\left(n-1\right)}\e^{\left(a-s\right)t}\mathrm{d}t\\
+ & =\frac{n\left(n-1\right)\cdots1}{\left(s-a\right)^{n}}\int_{0}^{\infty}\e^{\left(a-s\right)t}\mathrm{d}t=\frac{n!}{\left(s-a\right)^{n+1}}
+\end{align*}
+
+図回後4-3
+
+$a=0$のとき
+\[
+\laplace{t^{n}}=\frac{n!}{s^{n+1}}
+\]
+
+(c)
+
+\[
+\laplace{\e^{at}\sin\omega t}=\cdots=\frac{\omega}{\left(s-a\right)^{2}+\omega^{2}}
+\]
+
+同様に$\laplace{\e^{at}\cos\omega t}=\frac{s-a}{\left(s-a\right)^{2}+\omega^{2}}$
+
+\[
+\e^{at}\sin\omega t\quad\left(t>0\right)
+\]
+
+図回後4-4
+
+(2)(a)
+
+\[
+f\left(t\right)=\begin{cases}
+0 & t<0\\
+\e^{at} & t\geqq0
+\end{cases}\quad\left(a>0\right)
+\]
+
+\[
+\int_{-\infty}^{\infty}f\left(t\right)\e^{-\j\omega t}\mathrm{d}t=\frac{1}{\j\omega-a}
+\]
+
+図回後4-5
+
+(b)
+
+\[
+f\left(t\right)=\begin{cases}
+-\e^{at} & t\leqq0\\
+0 & t>0
+\end{cases}\quad a>0
+\]
+
+\[
+\int_{-\infty}^{\infty}f\left(t\right)\e^{-\j\omega t}\mathrm{d}t=\frac{1}{\j\omega-a}
+\]
+
+図回後4-6
+
+注) ラプラス変換
+
+\[
+F\left(s\right)=\frac{1}{s-a}\Leftrightarrow f\left(t\right)=\e^{at}\left(t\geqq0\right)
+\]
+
+図回後4-7
+
+図回後4-8
+
+図回後4-9
+
+\paragraph{本日の内容}
+\begin{itemize}
+\item 4 ラプラス変換(後半)
+\begin{itemize}
+\item 4.1 ラプラス変換による回路の過渡応答解析
+\item S領域のインピーダンス
+\item 4.3 部分分数展開
+\item 4.4 ラプラス変換の性質
+\item 4.5 周波数応答と極・零点の関係
+\item 4.6 周波数応答の実部と虚部の関係
+\item 4.7 まとめ
+\end{itemize}
+\end{itemize}
+
+\section{ラプラス変換(後半)}
+
+\subsection{ラプラス変換による回路の過渡応答解析}
+\begin{enumerate}
+\item 直流RC回路
+
+図回後4-10
+
+\[
+q\left(0+\right)=\int_{-\infty}^{\infty}i\left(t\right)\mathrm{d}t=0
+\]
+
+\[
+\frac{1}{C}\int i\left(t\right)\mathrm{d}t+Ri\left(t\right)=Vu\left(t\right)
+\]
+
+\[
+\xrightarrow{\mathcal{L}}\frac{1}{C}\left[\frac{I\left(s\right)}{s}+\frac{q\left(0+\right)}{s}\right]+RI\left(s\right)=V\frac{1}{s}
+\]
+
+$I\left(s\right)$について解く。
+
+\begin{align*}
+I\left(s\right) & =\frac{V}{s\left(\frac{1}{sC}+R\right)}\\
+ & =\frac{V}{R}\frac{1}{s+\frac{1}{RC}}
+\end{align*}
+
+\[
+i\left(t\right)=\frac{V}{R}\e^{-\frac{1}{RC}}\quad\left(t\geqq0\right)
+\]
+
+\item 交流RL回路
+
+図回後4-11
+
+\[
+L\d it+Ri=\frac{V}{\j}\e^{\j\omega t}\quad\left(t\geqq0\right)
+\]
+
+\[
+\xrightarrow{\mathcal{L}}L\left(SI\left(s\right)-i\left(0+\right)\right)+RI\left(s\right)=\frac{V}{\j}\frac{1}{s-j}\omega
+\]
+
+\begin{align*}
+I\left(s\right) & =\frac{V}{\j}\frac{1}{s-\j\omega}\frac{1}{LS+R}=\frac{V}{\j L}\left(\frac{1}{s-\j\omega}-\frac{1}{s+\frac{R}{L}}\right)\\
+ & =\frac{V}{\j}\frac{1}{R+\j\omega L}\left(\frac{1}{s-\j\omega}-\frac{1}{s+\frac{R}{L}}\right)
+\end{align*}
+
+\[
+i\left(t\right)=\mathcal{L}^{-1}\left[I\left(s\right)\right]=\frac{V}{\j}\frac{1}{R+\j\omega L}\left(\e^{\j\omega t}-\e^{-\frac{R}{L}t}\right)
+\]
+
+ここで$R+\j\omega L=Z\e^{\j\theta}$とする。
+
+\[
+i\left(t\right)=\frac{V}{\j Z}\left(\e^{\j\left(\omega t-\theta\right)}-\e^{-\j\theta}\e^{-\frac{R}{L}t}\right)
+\]
+
+\[
+\Re i\left(t\right)=\frac{V}{Z}\left(\sin\left(\omega t-\theta\right)+\sin\theta\e^{-\frac{R}{L}t}\right)
+\]
+
+\end{enumerate}
+
+\subsection{S領域のインピーダンス}
+
+微分方程式を使わず解析が行える。
+
+図回後4-12
+
+\[
+e\left(t\right)=L\d it
+\]
+
+\[
+\xrightarrow{\mathcal{L}}E\left(s\right)=L\left(SI\left(s\right)-i\left(0+\right)\right)
+\]
+
+\[
+E\left(s\right)=SLI\left(s\right)
+\]
+
+$SL$: $L$のS領域のインピーダンス
+
+\[
+i\left(t\right)=\frac{1}{L}\int e\left(t\right)\mathrm{d}t
+\]
+
+\[
+\xrightarrow{\mathcal{L}}I\left(s\right)=\frac{E\left(s\right)}{LS}+\frac{i\left(0+\right)}{s}
+\]
+
+$i\left(0+\right)=0$の場合
+
+図回後4-13
+
+$t=0$におけるインダクタの電流は、電流源として考える。
+
+図回後4-14
+
+$e\left(0+\right)=\frac{q\left(0+\right)}{c}=0$のとき、
+\[
+E\left(s\right)=\frac{1}{sC}I\left(s\right)
+\]
+
+$\frac{1}{sC}$: $C$のS領域のインピーダンス
+
+\[
+e\left(t\right)=\frac{1}{C}\int i\left(t\right)\mathrm{d}t
+\]
+
+\[
+\xrightarrow{\mathcal{L}}\frac{I\left(s\right)}{sC}+\frac{e\left(0+\right)}{s}
+\]
+
+\[
+i\left(t\right)=C\d{e\left(t\right)}t
+\]
+
+\[
+\xrightarrow{\mathcal{L}}I\left(s\right)=C\left(sE\left(s\right)-e\left(0+\right)\right)
+\]
+
+図回後4-15
+
+\subsection{部分分数展開}
+
+ラプラス逆変換のコツ
+
+求める応答(s領域)
+
+\[
+E\left(s\right)=\frac{P\left(s\right)}{Q\left(s\right)}
+\]
+
+$P\left(s\right)$: 次数$m$
+
+$Q\left(s\right)$: 次数$n$
+
+$E\left(s\right)$が過渡応答のとき$m<n$
+
+$E\left(s\right)$が伝達応答のときは$m\geqq n$であってよい。
+
+※$m\geqq n$と考えると、$E\left(s\right)=b_{0}+b_{1}s=\cdots+\frac{P\left(s\right)}{Q\left(s\right)}\xrightarrow{\mathcal{L}^{-1}}e\left(t\right)=b_{0}\delta\left(t\right)+b_{1}\d{}t\delta\left(t\right)+\cdots$
+
+まず、分母$Q\left(s\right)$を因数分解 $Q\left(s\right)=a_{0}\left(s-s_{1}\right)\left(s-s_{2}\right)\cdots\left(s-s_{n}\right)$
+
+i) 重根がないとき
+
+$\frac{P\left(s\right)}{Q\left(s\right)}=\frac{k_{1}}{s-s_{1}}+\frac{k_{2}}{s-s_{2}}+\cdots+\frac{k_{n}}{s-s_{n}}$とおき$k_{1},k_{n}$を求める。
+
+\[
+\xrightarrow{\mathcal{L}^{-1}}k_{1}\e^{s_{1}t}+k_{2}\e^{s_{2}t}+\cdots+k_{n}\e^{s_{n}t}
+\]
+
+ii) 重根があるとき
+
+\[
+\frac{P\left(s\right)}{\left(s-s_{1}\right)r}=\frac{k_{11}}{s-s_{1}}+\frac{k_{12}}{\left(s-s_{1}\right)^{2}}+\cdots+\frac{k_{1r}}{\left(s-s_{1}\right)^{r}}
+\]
+
+\[
+\xrightarrow{\mathcal{L}^{-1}}k_{11}\e^{s_{1}t}+k_{12}t\e^{s_{1}t}+\cdots+\frac{k_{1r}}{\left(r-1\right)!}t^{r-1}\e^{s_{1}t}
+\]
+
+iii) 2根が複素共役のとき
+
+\[
+\frac{P\left(s\right)}{Q_{1}\left(s\right)\left(\left(s-\alpha\right)^{2}+\omega^{2}\right)}=k_{1}\frac{s-\alpha}{\left(s-\alpha\right)^{2}+\omega^{2}}+k_{2}\frac{\omega}{\left(s-\alpha\right)^{2}+\omega^{2}}+\cdots
+\]
+
+\[
+\xrightarrow{\mathcal{L}^{-1}}k_{1}\e^{\alpha t}\cos\omega t+k_{2}\e^{\alpha t}\sin\omega t+\cdots
+\]
+
+
+\paragraph{部分分数展開の例}
+
+\begin{align}
+E\left(s\right) & =\frac{4}{s^{4}+4s^{3}+8s^{2}+8s}=\frac{4}{s\left(s+2\right)\left(s^{2}+2s+4\right)}\nonumber \\
+ & =\frac{k_{1}}{s}+\frac{k_{2}}{s+2}+\frac{sk_{3}+k_{4}}{s^{2}+2s+4}\label{4-1}
+\end{align}
+
+両辺に$s$を掛ける
+\[
+k_{1}+\frac{sk_{2}}{s+2}+\frac{s\left(sk_{3}+k_{4}\right)}{s^{2}+2s+4}=\frac{4}{\left(s+2\right)\left(s^{2}+2s+4\right)}
+\]
+
+$s=0$を代入 $k_{1}=\frac{1}{2}$
+
+$s+2$を両辺に掛ける
+\[
+\frac{\left(s+2\right)}{s}k_{1}+k_{2}+\frac{\left(s+2\right)\left(sk_{3}+k_{4}\right)}{s^{2}+2s+4}=\frac{4}{s\left(s^{2}+2s+4\right)}
+\]
+
+$s=-2$を代入 $k_{2}=-\frac{1}{2}$
+
+$s^{2}+2s+4$を両辺に掛け、$s^{2}+2s+4=0\:\left(s=-1\pm\sqrt{3}\right)$とおく→$k_{3}=0,k_{4}=-1$
+
+\[
+E\left(s\right)=\frac{1}{2}\left(\frac{1}{s}-\frac{1}{s+2}\right)-\frac{1}{s^{2}+2s+4}
+\]
+
+\[
+\xrightarrow{\mathcal{L}}e\left(t\right)=\frac{1}{2}\left(1-\e^{-2t}\right)-\frac{1}{\sqrt{3}}\e^{-t}\sin\sqrt{3}t
+\]
+
+図回後4-16
+
+\subsection{ラプラス変換の性質}
+
+4つ
+\begin{enumerate}
+\item 初期値定理
+
+\[
+f\left(0+\right)=\lim_{s\rightarrow\infty}sF\left(s\right)
+\]
+
+\item 最終値定理
+
+\[
+f\left(\infty\right)=\lim_{s\rightarrow0}sF\left(s\right)
+\]
+
+\end{enumerate}
+
+\paragraph{証明}
+
+\begin{align*}
+\int_{0+}^{\infty}\d ft\e^{-st}\mathrm{d}t & =\left[f\left(t\right)\e^{-st}\right]_{0+}^{\infty}-\int f\left(t\right)\left(-s\right)\e^{-st}\mathrm{d}t\\
+ & =-f\left(0+\right)+sF\left(s\right)
+\end{align*}
+
+$s\rightarrow0$
+\[
+f\left(0+\right)+\int_{0+}^{\infty}\d ft\mathrm{d}t=f\left(\infty\right)=\lim_{s\rightarrow0}sF\left(s\right)
+\]
+
+$s\rightarrow\infty$
+\[
+f\left(0+\right)=\lim_{s\rightarrow\infty}sF\left(s\right)
+\]
 
 \end{document}
