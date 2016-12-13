@@ -1784,6 +1784,7 @@ f\left(0+\right)=\lim_{s\rightarrow\infty}sF\left(s\right)
 f\left(\infty\right)=\lim_{s\rightarrow0}sF\left(s\right)
 \]
 
+←発散しないとき
 \end{enumerate}
 
 \paragraph{証明}
@@ -1802,5 +1803,133 @@ $s\rightarrow\infty$
 \[
 f\left(0+\right)=\lim_{s\rightarrow\infty}sF\left(s\right)
 \]
+
+3. 相似定理
+
+\[
+\laplace{f\left(\frac{t}{a}\right)}=aF\left(as\right)
+\]
+
+\begin{align*}
+\laplace{f\left(\frac{t}{a}\right)} & =\int_{0}^{\infty}f\left(\frac{t}{a}\right)\e^{-st}\mathrm{d}t\quad\leftarrow t'=\frac{t}{a}\\
+ & =\int_{0}^{\infty}f\left(t'\right)\e^{-sat''}a\mathrm{d}t'=aF\left(as\right)
+\end{align*}
+
+図回後4-17
+
+面積$a$倍、周波数$\frac{1}{a}$倍
+
+4. 推移定理
+
+\[
+\laplace{f\left(t-T\right)}=\e^{-Ts}F\left(s\right)
+\]
+
+\[
+\because f\left(t-T\right)=f\left(t\right)*\delta\left(t-T\right)
+\]
+
+\begin{align*}
+\laplace{\delta\left(t-T\right)} & =\int_{0}^{\infty}\delta\left(t-T\right)\e^{-st}\mathrm{d}t\\
+ & =\e^{-sT}
+\end{align*}
+
+←遅延$T$の伝達関数
+
+図回後4-18
+
+\paragraph{推移定理の応用}
+
+方形波
+
+図回後4-19
+
+\[
+f\left(t\right)=u\left(t\right)-u\left(t-\tau\right)
+\]
+
+\begin{align*}
+F\left(s\right) & =\frac{1}{s}-\frac{\e^{-s\tau}}{s}\\
+ & =\frac{1}{s}\left(1-\e^{-s\tau}\right)
+\end{align*}
+
+同期的な方形波
+
+図回後4-20
+
+\begin{align*}
+F\left(s\right) & =\frac{1}{s}\left(1-\e^{-s\tau}\right)\underbrace{\left(1+\e^{-sT}+\e^{-2sT}+\cdots\right)}_{\text{無限級数}}\\
+ & =\frac{1}{s}\frac{1-\e^{-s\tau}}{1-\e^{-sT}}
+\end{align*}
+
+
+\subsection{伝達関数の極・零点と周波数特性の関係}
+
+\begin{align*}
+H\left(s\right) & =\frac{1}{s+a}\quad\left(a>0\right)\\
+h\left(s\right) & =\e^{-at}\quad\left(t\geqq0\right)
+\end{align*}
+
+図回後4-21
+
+図回後4-22
+
+図回後4-23
+
+\begin{align*}
+H\left(s\right) & =s+a\quad\left(a>0\right)\\
+h\left(t\right) & =\d{}t\delta\left(t\right)+a\delta\left(t\right)
+\end{align*}
+
+図回後4-24
+
+図回後4-25
+
+図回後4-26
+
+\subsection{周波数特性の実部と虚部の関係}
+
+$f\left(t\right)$が実数、$t<0$で$f\left(t\right)=0$を満たすとする。$f\left(t\right)$のフーリエ変換を$F\left(\omega\right)=\int_{-\infty}^{\infty}f\left(t\right)\e^{-\j\omega t}\mathrm{d}t$とすると、$\Re F\left(\omega\right)$がわかれば、$\Im F\left(\omega\right)$もわかる。
+
+言い換え: $f\left(t\right)$が因果律を満たすインパルス応答であるとき、周波数応答の実部・虚部に関係がある
+
+\paragraph{証明}
+
+\begin{align*}
+f_{S}\left(t\right) & =\frac{1}{2}\left(f\left(t\right)+f\left(-t\right)\right)\\
+f_{AS}\left(t\right) & =\frac{1}{2}\left(f\left(t\right)-f\left(-t\right)\right)
+\end{align*}
+
+※S→symmetric、AS→anti-symmetric
+
+\[
+f\left(t\right)=f_{S}\left(t\right)+f_{AS}\left(t\right)
+\]
+
+\begin{align*}
+\mathcal{F}\left[f_{S}\left(t\right)\right] & =\int_{-\infty}^{\infty}f_{S}\left(t\right)\e^{-\j\omega t}\mathrm{d}t=\frac{1}{2}\left[\int_{-\infty}^{\infty}f\left(t\right)\e^{-\j\omega t}\mathrm{d}t+\int_{-\infty}^{\infty}f\left(-t\right)\e^{-\j\omega t}\mathrm{d}t\right]\\
+ & =\frac{1}{2}\left[\int_{-\infty}^{\infty}f\left(t\right)\left(\e^{-j\omega t}+\e^{\j\omega t}\right)\right]=\int_{-\infty}^{\infty}\underbrace{f\left(t\right)}_{\text{実数}}\cos\omega t\mathrm{d}t=\Re\left[F\left(\omega\right)\right]\\
+\mathcal{F}\left[f_{AS}\left(t\right)\right] & =\int_{-\infty}^{\infty}f_{AS}\left(t\right)\e^{-\j\omega t}\mathrm{d}t=\frac{1}{2}\left[\int_{-\infty}^{\infty}f\left(t\right)\e^{-\j\omega t}\mathrm{d}t-\int_{-\infty}^{\infty}f\left(-t\right)\e^{-\j\omega t}\mathrm{d}t\right]\\
+ & =\frac{1}{2}\int_{-\infty}^{\infty}f\left(t\right)\left(\e^{-\j\omega t}-\e^{\j\omega t}\right)\mathrm{d}t=\j\int_{-\infty}^{\infty}f\left(t\right)\sin\left(-\omega t\right)\mathrm{d}t=\j\Im F\left(\omega\right)
+\end{align*}
+
+$\Re F\left(\omega\right)$がわかる→$f_{S}\left(t\right)$がわかる→$f\left(t\right)$も$f_{AS}\left(t\right)$もわかる→$\Im F\left(\omega\right)$もわかる
+
+周波数応答が実数のみ→インパルス応答が$t=0$に対して対称
+
+因果律を満たさない(例外: $\delta\left(t\right)$)
+
+虚部があって初めて因果律を満たせる。
+
+\subsection{ラプラス変換(後半) まとめ}
+\begin{itemize}
+\item 微積分方程式が、s領域で多項式になる。
+\begin{itemize}
+\item 代数計算計算で伝達関数が得られる。
+\end{itemize}
+\item s領域のインピーダンス: $sL,\frac{1}{sC},R$
+\item ラプラス逆変換のコツ: 部分分数展開
+\item 色々な性質: 時間波形と絡めながら、理解してほしい
+\end{itemize}
 
 \end{document}
