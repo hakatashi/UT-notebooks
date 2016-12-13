@@ -26,7 +26,7 @@
 \usepackage{babel}
 \begin{document}
 
-\title{2016-A 情報通信理論}
+\title{情報通信理論}
 
 \author{教員: 相澤 入力: 高橋光輝}
 
@@ -1069,4 +1069,215 @@ $t$重誤りが起こっても、他の符号語にはならない。
 \end{itemize}
 
 \paragraph{次回休講}
+
+\section*{第8回}
+
+\paragraph{試験}
+
+1/17
+\begin{itemize}
+\item A4用紙1枚 自筆のみ持ち込み可
+\end{itemize}
+
+\paragraph{線形符号}
+
+例) 単一パリティチェック
+\begin{itemize}
+\item 情報ビット $x_{1},x_{2},\cdots,x_{k}\left(\Rightarrow\boldsymbol{x}\right)$
+\item 検査ビット(パリティビット) $c=x_{1}+x_{2}+\cdots+x_{k}$
+\end{itemize}
+→2元
+
+$\left(x_{1},x_{2},\cdots,x_{k},c\right)$←単一パリティ検査符号
+
+$(1,1,1,0)\rightarrow\left(1,1,1,0,1\right)$: 情報ビット→パリティ(検査)ビット
+
+検査式
+\[
+x_{1}+x_{2}+\cdots+x_{k}+c=0
+\]
+
+受信側 $x_{i}\rightarrow y_{i}\cdots c\rightarrow y_{k+1}$
+
+\[
+y_{1}+y_{2}\cdots+y_{k}+y_{k+1}=0
+\]
+
+\[
+y_{i}=x_{1}+e_{i}
+\]
+
+$e_{i}$: 誤り
+
+\begin{align*}
+S & =\left(x_{1}+e_{1}\right)+\left(x_{2}+e_{2}\right)+\cdots+\left(c+e_{k+1}\right)\\
+ & =\left(x_{1}+x_{2}+\cdots+c\right)+\left(e_{1}+e_{2}+\cdots+e_{k+1}\right)
+\end{align*}
+
+\begin{itemize}
+\item 誤りが1つでも$e_{1}\sim e_{k+1}$の中にあれば、$S\neq0$となる。
+\item 誤りが偶数だと$S=0$、奇数だと$S=1$→1つの誤りまで検出可能と考える
+\end{itemize}
+
+\paragraph{符号関西章距離}
+
+図情8-1
+
+1つの誤り検出が可能の例
+
+より一般的な線形符号
+
+\[
+\left(\underbrace{x_{1},x_{2},\cdots,x_{k}}_{\text{情報ビット}},\underbrace{c_{1},c_{2},\cdots,c_{n-k}}_{\text{検査ビット}}\right)
+\]
+(情報ビット,検査ビット)←組織符号
+
+符号語$n$ビット、情報ビット$k$ビット→$\left(n,k\right)$符号
+
+符号語 $\left(w_{1},w_{2},\cdots,w_{m}\right)\left(=\boldsymbol{w}\right)$
+
+線形符号では、$\boldsymbol{w}_{i},\boldsymbol{w}_{j}$が符号語であれば、$\boldsymbol{w}_{i}+\boldsymbol{w}_{j}$も符号語になる。
+
+単一パリティの例をとると、
+
+\begin{align*}
+\boldsymbol{w}_{i} & =\left(x_{1}^{i},x_{2}^{i},\cdots,c^{i}\right)\\
+\boldsymbol{w}_{j} & =\left(x_{1}^{j},x_{2}^{j},\cdots,c^{j}\right)\\
+\boldsymbol{w}_{i}+\boldsymbol{w}_{j} & =\left(x_{1}^{i}+x_{1}^{j},x_{2}^{i}+x_{2}^{j},\cdots,c^{i}+c^{j}\right)
+\end{align*}
+
+検査方程式
+
+\begin{align*}
+\left(x_{1}^{i}+x_{1}^{j}\right)+\cdots+\left(c^{i}+c^{j}\right) & =\left(x_{1}^{i}+\cdots+c^{i}\right)+\left(x_{1}^{j}+\cdots+c^{j}\right)\\
+ & =0
+\end{align*}
+
+
+\paragraph{符号間最小距離}
+
+\begin{align*}
+d_{\mathrm{min}} & =\min_{\boldsymbol{a},\boldsymbol{b}\in C,\boldsymbol{a}\neq\boldsymbol{b}}d_{H}\left(\boldsymbol{a},\boldsymbol{b}\right)\\
+ & =\min w_{H}\left(\boldsymbol{a}-\boldsymbol{b}\right)
+\end{align*}
+
+線形符号であれば、$\boldsymbol{a}-\boldsymbol{b}$もまた$\boldsymbol{c}\in c$
+
+\[
+d_{\mathrm{min}}=\min_{\boldsymbol{c}\neq0,\boldsymbol{c}\in c}w_{H}\left(\boldsymbol{c}\right)
+\]
+
+
+\paragraph{ハミング符号(7,4)符号}
+
+単一訂正符号
+
+情報ビット $x_{1},x_{2},x_{3},x_{4}$
+
+パリティビット $c_{1},c_{2},c_{3}$
+
+\begin{align*}
+c_{1} & =x_{1}+x_{2}+x_{3}\\
+c_{2} & =x_{2}+x_{3}+x_{4}\\
+c_{3} & =x_{1}+x_{2}+x_{4}
+\end{align*}
+
+符号語 $w=\left(x_{1},x_{2},x_{3},x_{4},c_{1},c_{2}c_{3}\right)\rightarrow\left(w_{1},w_{2},w_{3},w_{4},w_{5},w_{6},w_{7}\right)$
+
+\paragraph{検査方程式}
+
+\[
+\begin{cases}
+w_{1}+w_{2}+w_{3}+w_{5}=0\\
+w_{2}+w_{3}+w_{4}+w_{6}=0\\
+w_{1}+w_{2}+w_{4}+w_{7}=0
+\end{cases}
+\]
+
+$w\Rightarrow y=\left(y_{1},y_{2},y_{3},\cdots,y_{7}\right)$ 受信語
+
+\[
+\begin{cases}
+S_{1}=y_{1}+y_{2}+y_{3}+y_{5}\\
+S_{2}=y_{2}+y_{3}+y_{4}+y_{6}\\
+S_{3}=y_{1}+y_{2}+y_{4}+y_{7}
+\end{cases}
+\]
+
+誤り$\left(e_{1},e_{2},\cdots,e_{7}\right)$とすると、
+\[
+\begin{cases}
+S_{1}=e_{1}+e_{2}+e_{3}+e_{5}\\
+S_{2}=e_{2}+e_{3}+e_{4}+e_{6}\\
+S_{3}=e_{1}+e_{2}+e_{4}+e_{7}
+\end{cases}
+\]
+
+図情8-2
+
+\paragraph{符号語間最小距離}
+
+$d_{\mathrm{min}}=d_{\mathrm{min}}w_{H}\left(\boldsymbol{w}\right)$
+
+ハミング(7,4) 符号の符号間最小距離→3
+
+図情8-3
+
+\[
+d_{\mathrm{min}}=3
+\]
+
+→単一誤り訂正可能
+
+検査行列
+\[
+\boldsymbol{s}=\boldsymbol{y}H^{T}
+\]
+
+$\boldsymbol{s}$: シンドローム
+
+\[
+\boldsymbol{w}H^{T}=0
+\]
+
+\[
+H=\left[\begin{array}{ccccccc}
+1 & 1 & 1 & 0 & 1 & 0 & 0\\
+0 & 1 & 1 & 1 & 0 & 1 & 0\\
+1 & 1 & 0 & 1 & 0 & 0 & 1
+\end{array}\right]
+\]
+
+\[
+\left(y_{1},\cdots,y_{7}\right)\left[\begin{array}{ccc}
+1 & 0 & 1\\
+1 & 0 & 1\\
+1 & 1 & 0\\
+0 & 1 & 1\\
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{array}\right]=\left(s_{1},s_{2}s_{3}\right)
+\]
+
+\begin{align*}
+y & =\boldsymbol{w}+\boldsymbol{e}\\
+\boldsymbol{s} & =\left(\boldsymbol{w}+\boldsymbol{e}\right)H^{T}\\
+ & =\boldsymbol{w}H+\boldsymbol{e}H^{T}\\
+ & =\boldsymbol{e}H^{T}
+\end{align*}
+
+\[
+\boldsymbol{e}_{1}H^{T}\neq\boldsymbol{e}_{2}H^{T}
+\]
+
+\[
+\left(\boldsymbol{e}_{1}+\boldsymbol{e}_{2}\right)H^{T}\neq0
+\]
+
+$\boldsymbol{e}_{i}$が1ゑ1つしか含まないならば、$\boldsymbol{e}_{i}+\boldsymbol{e}_{j}\left(i\neq j\right)$に対してシンドロームは0となる
+
+1重誤りに対して$H^{T}$のいかなる2列の和も非0となる→単一誤り訂正
+
+性質: $t$重誤りに対しては、いかなる$2t$列の和も非0となる
 \end{document}
