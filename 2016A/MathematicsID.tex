@@ -13,6 +13,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{esint}
 
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
@@ -3154,6 +3155,251 @@ G\left(\theta,\phi\right)= & \left|\left(-\sin\theta\sin\phi,\sin\theta\cos\phi,
 \begin{align*}
 S & =\iint\sqrt{EG-F^{2}}\mathrm{d}\theta\mathrm{d}\phi\\
  & =\int_{0}^{2\pi}\mathrm{d}\phi\int_{0}^{\pi}\sin\theta\mathrm{d}\theta=4\pi
+\end{align*}
+
+
+\section*{第10回}
+
+{[}一部紛失{]}
+
+\begin{align*}
+\pd{\boldsymbol{r}}x\times\pd{\boldsymbol{r}}y & =\left(\boldsymbol{e}_{x}+\left(\partial_{x}f\right)\boldsymbol{e}_{z}\right)\times\left(\boldsymbol{e}_{y}+\left(\partial_{y}f\right)\boldsymbol{e}_{z}\right)\\
+ & =-\partial_{x}f\boldsymbol{e}_{x}-\partial_{y}f\boldsymbol{e}_{y}-\boldsymbol{e}_{z}
+\end{align*}
+
+{[}一部紛失{]}
+
+\[
+\mathrm{d}s=\sqrt{\left(\partial_{x}f\right)^{2}+\left(\partial_{y}f\right)^{2}+1}\mathrm{d}x\mathrm{d}y
+\]
+
+\[
+\mathrm{d}\boldsymbol{s}=\boldsymbol{n}\mathrm{d}s
+\]
+
+
+\paragraph{例}
+
+曲面$F\left(x,y,z\right)$の法線ベウトル$\boldsymbol{n}$
+
+$F\left(x,y,z\right)=0\Rightarrow z=f\left(x,y\right)$と解く。
+
+\[
+\mathrm{d}F=\partial_{x}F\mathrm{d}x+\partial_{y}F\mathrm{d}y+\partial_{z}F\mathrm{d}z
+\]
+\[
+\Rightarrow\mathrm{d}z-\frac{\partial_{x}F}{\partial_{z}F}\mathrm{d}x-\frac{\partial_{y}F}{\partial_{z}F}\mathrm{d}y
+\]
+
+一方$\mathrm{d}z=\partial_{x}f\mathrm{d}x+\partial_{y}f\mathrm{d}y$なので、
+\[
+\partial_{x}f=-\frac{\partial_{x}F}{\partial_{z}F},\partial_{y}f=-\frac{\partial_{y}F}{\partial_{z}F}
+\]
+となる。
+
+\begin{align*}
+\boldsymbol{n} & =\frac{-\partial_{x}f\boldsymbol{e}_{x}-\partial_{y}f\boldsymbol{e}_{y}+\boldsymbol{e}_{z}}{\sqrt{\left(\partial_{x}f\right)^{2}+\left(\partial_{y}f\right)^{2}+1}}\\
+ & =\frac{\partial_{x}F\boldsymbol{e}_{x}+\partial_{y}F\boldsymbol{e}_{y}+\partial_{z}F\boldsymbol{e}_{z}}{\sqrt{\left(\partial_{x}F\right)^{2}+\left(\partial_{y}F\right)^{2}+\left(\partial_{z}F\right)^{2}}}
+\end{align*}
+
+
+\paragraph{例}
+
+曲面$x^{2}y+y^{2}x+z^{2}y=3$上の点$\boldsymbol{P}=\left(0,3,1\right)$における単位法線ベクトルと接平面を求めよ
+
+\[
+f\left(x,y,z\right)=x^{2}y+y^{2}x+z^{2}y=3
+\]
+
+\[
+\nabla f=\left(2xy+y^{2}\right)\boldsymbol{e}_{x}+\left(x^{2}+2xy+z^{2}\right)\boldsymbol{e}_{y}+2yz\boldsymbol{e}_{z}
+\]
+
+\[
+\when{\nabla f}_{P=\left(0,3,1\right)}=9\boldsymbol{e}_{x}+\boldsymbol{e}_{y}+6\boldsymbol{e}_{z}
+\]
+
+規格化して
+\[
+\boldsymbol{n}=\frac{9\boldsymbol{e}_{x}+\boldsymbol{e}_{y}+6\boldsymbol{e}_{z}}{\sqrt{118}}
+\]
+
+接平面は法線ベクトルに垂直なので、接平面上の点を$\boldsymbol{r}$とすると、
+\[
+\boldsymbol{n}\cdot\left(\boldsymbol{r}-\boldsymbol{P}\right)=0\Rightarrow\left(9\boldsymbol{e}_{x}+\boldsymbol{e}_{y}+6\boldsymbol{e}_{z}\right)\cdot\left(x\boldsymbol{e}_{x}+\left(y-3\right)\boldsymbol{e}_{y}+\left(z-1\right)\boldsymbol{e}_{z}\right)
+\]
+
+\[
+9x+\left(y-3\right)+6\left(z-1\right)=0
+\]
+
+\[
+9x+y+6z=9
+\]
+
+
+\paragraph{例}
+
+半径$a$の球面上でのベクトル場$\nabla\left(\frac{1}{r}\right)$の面積分
+
+\[
+\nabla\frac{1}{r}=\boldsymbol{e}_{x}\partial_{x}\frac{1}{r}+\boldsymbol{e}_{y}\partial_{y}\frac{1}{r}+\boldsymbol{e}_{z}\partial_{z}\frac{1}{r}
+\]
+
+\[
+\left(\partial_{x}\frac{1}{r}=\partial_{x}\frac{1}{\sqrt{x^{2}+y^{2}+z^{2}}}=\frac{-\frac{1}{2}2x}{\left(x^{2}+y^{2}+z^{2}\right)^{\frac{3}{2}}}\right)
+\]
+
+\[
+\nabla\frac{1}{r}=-\frac{x}{r^{3}}\boldsymbol{e}_{x}-\frac{y}{r^{3}}\boldsymbol{e}_{y}-\frac{z}{r^{3}}\boldsymbol{e}_{z}=-\frac{\boldsymbol{r}}{r^{3}}
+\]
+
+\[
+\boldsymbol{n}=\frac{\boldsymbol{r}}{r}
+\]
+
+\begin{align*}
+\int_{S}\mathrm{d}\boldsymbol{s}\cdot\nabla\frac{1}{r} & =-\int_{s}\frac{\boldsymbol{r}}{r^{3}}\mathrm{d}\boldsymbol{s}=-\int_{s}\frac{1}{r^{2}}\mathrm{d}s=-\frac{1}{a^{2}}\int_{s}\mathrm{d}s\\
+ & =-\frac{1}{a^{2}}4\pi a^{2}=-4\pi
+\end{align*}
+
+
+\paragraph{例}
+
+曲面$\left(s\cos t,s\sin t,t\right)$の単位法線ベクトル
+
+\begin{align*}
+\partial_{s}\boldsymbol{r} & =\boldsymbol{e}_{x}\cos t+\boldsymbol{e}_{y}\sin t\\
+\partial_{t}\boldsymbol{r} & =-\boldsymbol{e}_{x}s\sin t+\boldsymbol{e}_{y}s\cos t+\boldsymbol{e}_{z}
+\end{align*}
+
+\begin{align*}
+\pd{\boldsymbol{r}}s\times\pd{\boldsymbol{r}}t & =\left|\begin{array}{ccc}
+\boldsymbol{e}_{x} & \boldsymbol{e}_{y} & \boldsymbol{e}_{z}\\
+\cos t & \sin t & 0\\
+-s\sin t & s\cos t & 1
+\end{array}\right|\\
+ & =\boldsymbol{e}_{x}\sin t-\boldsymbol{e}_{y}s\cos t+s\boldsymbol{e}_{z}
+\end{align*}
+
+\[
+\boldsymbol{n}=\frac{\pd{\boldsymbol{r}}s\times\pd{\boldsymbol{r}}t}{\left|\pd{\boldsymbol{r}}s\times\pd{\boldsymbol{r}}t\right|}=\frac{\boldsymbol{e}_{x}\sin t-\boldsymbol{e}_{y}s\cos t+s\boldsymbol{e}_{z}}{\sqrt{1+s^{2}}}
+\]
+
+
+\paragraph{Greenの定理}
+
+\begin{align*}
+\iint_{s}\partial_{x}f\mathrm{d}x\mathrm{d}y & =\int_{\partial s}\mathrm{d}y\left[f\left(x_{\text{右}}\left(y\right),y\right)-f\left(x_{\text{左}}\left(y\right),y\right)\right]\\
+ & =\oint_{\partial s}f\left(x,y\right)\mathrm{d}y
+\end{align*}
+
+\begin{align*}
+\iint_{s}\partial_{y}f\mathrm{d}x\mathrm{d}y & =\int_{\partial s}\left[f\left(x,y_{\text{上}}\left(x\right)\right)-f\left(x,y_{\text{下}}\left(x\right)\right)\right]\\
+ & =-\oint_{\partial s}f\left(x,y\right)\mathrm{d}x
+\end{align*}
+
+
+\paragraph{Stokesの定理}
+
+\begin{align*}
+\int_{s}\left(\nabla\times\boldsymbol{F}\right)\cdot\mathrm{d}\boldsymbol{s} & =\sum\int_{-\Delta s}\left(\nabla\times\boldsymbol{F}\right)\cdot\mathrm{d}\boldsymbol{s}\\
+ & =\sum\int_{\Delta s}\left(\partial_{x}F_{y}-\partial_{y}F_{x}\right)\mathrm{d}x\mathrm{d}y\\
+ & =\sum\oint_{\partial\left(\Delta s\right)}\left(F_{x}\mathrm{d}x+F_{y}\mathrm{d}y\right)\quad\left(\because\text{Greenの定理}\right)\\
+ & =\sum\oint_{\partial\left(\Delta s\right)}\boldsymbol{F}\cdot\mathrm{d}r=\oint_{\partial s}\boldsymbol{F}\cdot\mathrm{d}\boldsymbol{r}
+\end{align*}
+
+
+\paragraph{アンペールの法則}
+
+電流密度$I\left(\boldsymbol{x}\right)$があると磁場$\boldsymbol{B}\left(\boldsymbol{x}\right)$が発生する。
+
+\[
+\mu=\int_{s}\boldsymbol{I}\cdot\mathrm{d}\boldsymbol{s}=\oint_{\partial s}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{r}=\int_{s}\nabla\times\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{s}
+\]
+
+\[
+\Rightarrow\nabla\times\boldsymbol{B}=\mu_{0}\boldsymbol{I}
+\]
+
+(Maxwellの方程式)
+
+\paragraph{例}
+
+円周$x^{2}+y^{2}=4$に沿って
+\[
+\boldsymbol{F}=\left(x^{2}+y\right)\boldsymbol{e}_{x}+\left(x^{2}+2z\right)\boldsymbol{e}_{y}+2y\boldsymbol{e}_{z}
+\]
+の線積分を求めよ。
+
+\[
+\nabla\times\boldsymbol{F}=\left(2x-1\right)\boldsymbol{e}_{z}
+\]
+
+$\mathrm{d}\boldsymbol{s}=\boldsymbol{e}_{z}\mathrm{d}x\mathrm{d}y$なので、
+\begin{align*}
+\oint_{\partial s}\boldsymbol{F}\mathrm{d}\boldsymbol{s} & =\int_{s}\nabla\times\boldsymbol{F}\cdot\mathrm{d}\boldsymbol{s}=\int_{s}\left(2x+1\right)\mathrm{d}x\mathrm{d}y\\
+ & =\int_{0}^{2\pi}\mathrm{d}\theta\int_{0}^{2}r\mathrm{d}r\left(2r\cos\theta-1\right)\\
+ & =-2\pi\int_{0}^{2}r\mathrm{d}r=-4\pi
+\end{align*}
+
+
+\paragraph{Gaussの定理}
+
+3次元の閉曲面$\partial V$に囲まれた領域$V$に対して
+\begin{align*}
+\int_{V}\nabla\cdot\boldsymbol{E}\mathrm{d}^{3}r & =\int_{V}\left(\partial_{x}E_{x}+\partial_{y}E_{y}+\partial_{z}E_{z}\right)\mathrm{d}x\mathrm{d}y\mathrm{d}z\\
+ & =\int_{\partial V_{\text{左}}}E_{x}\mathrm{d}y\mathrm{d}z-\int_{\partial V_{\text{右}}}E_{x}\mathrm{d}y\mathrm{d}z+\cdots\\
+ & =\oint_{\partial V}E_{x}\mathrm{d}s_{x}+E_{y}\mathrm{d}s_{y}+E_{z}\mathrm{d}s_{z}\\
+ & =\oint_{\partial V}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}
+\end{align*}
+
+
+\paragraph{クーロンの法則}
+
+電荷$Q_{i}$があると電場$\boldsymbol{E}\left(\boldsymbol{r}\right)$が発生する。
+
+\[
+\varepsilon_{0}\boldsymbol{E}\left(\boldsymbol{r}\right)=\frac{1}{4\pi}\sum_{i}\frac{Q_{i}}{\left|\boldsymbol{r}-x_{i}\right|^{2}}\frac{\boldsymbol{r}-x_{i}}{\left|\boldsymbol{r}-x_{i}\right|}
+\]
+
+領域$V$ の中の総電荷を$Q_{V}=\sum_{i\left(x_{i}\in V\right)}Q_{i}$とする。
+
+Gaussの閉塞
+
+\begin{align*}
+\varepsilon_{0}\int_{V}\nabla\cdot\boldsymbol{E}\mathrm{d}^{3}\boldsymbol{r} & =\varepsilon_{0}\oint_{\partial r}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}/\frac{1}{4\pi}\sum_{i=1}^{n}Q_{i}\oint_{\partial r}\frac{\boldsymbol{r}-x_{i}}{\left|\boldsymbol{r}-x_{i}\right|^{3}}\mathrm{d}\boldsymbol{s}\\
+ & =Q_{r}
+\end{align*}
+
+電荷密度$\rho\left(\boldsymbol{r}\right),Q_{V}=\int_{V}\rho\left(\boldsymbol{r}\right)\mathrm{d}^{3}\boldsymbol{r}$
+
+\[
+\varepsilon_{0}\int_{V}\nabla\cdot\boldsymbol{E}\mathrm{d}^{3}\boldsymbol{r}=Q_{V}=\int_{V}\rho\left(\boldsymbol{r}\right)\mathrm{d}^{3}\boldsymbol{r}
+\]
+
+\[
+\Rightarrow\varepsilon_{0}\nabla\cdot\boldsymbol{E}\left(\boldsymbol{r}\right)=\rho\left(\boldsymbol{r}\right)
+\]
+
+(Maxwellの方程式)
+
+\paragraph{例}
+
+半径$a$の球面上で
+\[
+\boldsymbol{F}=x^{3}\boldsymbol{e}_{x}+y^{3}\boldsymbol{e}_{y}+z^{3}\boldsymbol{e}_{z}
+\]
+の面積分
+
+\[
+\nabla\cdot\boldsymbol{F}=3\left(x^{2}+y^{2}+z^{2}\right)
+\]
+
+\begin{align*}
+\int_{S}\boldsymbol{F}\cdot\mathrm{d}\boldsymbol{s} & =\int_{V}\nabla\cdot\boldsymbol{F}\mathrm{d}x\mathrm{d}y\mathrm{d}z\\
+ & =\int_{V}3\left(x_{2}+y^{2}+z^{2}\right)\mathrm{d}x\mathrm{d}y\mathrm{d}z\\
+ & =4\pi\times3\int_{0}^{a}r^{2}\cdot r^{2}\mathrm{d}r=\frac{12}{5}\pi a^{5}
 \end{align*}
 
 \end{document}
