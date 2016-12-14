@@ -3162,12 +3162,22 @@ S & =\iint\sqrt{EG-F^{2}}\mathrm{d}\theta\mathrm{d}\phi\\
 
 {[}一部紛失{]}
 
+\paragraph{例}
+
+曲面$z=f\left(x,y\right)$の面素ベクトル($z$が1価に解けてる)
+
+\[
+\boldsymbol{r}=x\boldsymbol{e}_{x}+y\boldsymbol{e}_{y}+f\left(x,y\right)\boldsymbol{e}_{z}
+\]
+
 \begin{align*}
 \pd{\boldsymbol{r}}x\times\pd{\boldsymbol{r}}y & =\left(\boldsymbol{e}_{x}+\left(\partial_{x}f\right)\boldsymbol{e}_{z}\right)\times\left(\boldsymbol{e}_{y}+\left(\partial_{y}f\right)\boldsymbol{e}_{z}\right)\\
- & =-\partial_{x}f\boldsymbol{e}_{x}-\partial_{y}f\boldsymbol{e}_{y}-\boldsymbol{e}_{z}
+ & =-\partial_{x}f\boldsymbol{e}_{x}-\partial_{y}f\boldsymbol{e}_{y}+\boldsymbol{e}_{z}
 \end{align*}
 
-{[}一部紛失{]}
+\[
+\frac{\pd{\boldsymbol{r}}x\times\pd{\boldsymbol{r}}y}{\left|\pd{\boldsymbol{r}}x\times\pd{\boldsymbol{r}}y\right|}=\frac{-\partial_{x}f\boldsymbol{e}_{x}-\partial_{y}f\boldsymbol{e}_{y}+\boldsymbol{e}_{z}}{\sqrt{\left(\partial_{x}f\right)^{2}+\left(\partial_{y}f\right)^{2}+1}}
+\]
 
 \[
 \mathrm{d}s=\sqrt{\left(\partial_{x}f\right)^{2}+\left(\partial_{y}f\right)^{2}+1}\mathrm{d}x\mathrm{d}y
@@ -3180,7 +3190,7 @@ S & =\iint\sqrt{EG-F^{2}}\mathrm{d}\theta\mathrm{d}\phi\\
 
 \paragraph{例}
 
-曲面$F\left(x,y,z\right)$の法線ベウトル$\boldsymbol{n}$
+曲面$F\left(x,y,z\right)$の法線ベクトル$\boldsymbol{n}$
 
 $F\left(x,y,z\right)=0\Rightarrow z=f\left(x,y\right)$と解く。
 
