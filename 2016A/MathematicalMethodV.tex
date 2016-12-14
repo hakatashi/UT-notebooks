@@ -1735,4 +1735,153 @@ f\left(X\left(t+\Delta t\right)\right)=f\left(X\left(t\right)\right)+\d fX\cdot\
 f\left(X\left(t+\Delta t\right)\right)=f\left(X\left(t\right)\right)+\when{\d fX}_{X=X\left(t\right)}\Delta X\left(t\right)+\frac{1}{2}\when{\dd fX}_{X\left(t\right)}\left(\Delta X\left(t\right)\right)^{2}+\cdots
 \]
 
+
+\section*{第10回}
+
+\paragraph{レポート}
+
+乱数を可能な方法で発生させ、一次元のランダムウォークのグラフを提出。
+
+Langevin eq.
+
+$f\left(x\right)$: $x$の変化に関して滑らか。
+
+\begin{align*}
+\Delta X\left(t\right) & =F\left(X\left(t\right)\right)\Delta t+\Delta W\\
+\Delta W & =\int_{t}^{t+\Delta t}R\left(t_{1}\right)\mathrm{d}t_{1}
+\end{align*}
+
+$\Delta W$: 振動力による項
+
+\[
+\left\langle R\left(t\right)R\left(t'\right)\right\rangle =D\delta\left(t-t'\right)\rightarrow\left\langle \Delta W\right\rangle =0,\left\langle \left(\Delta W\right)^{2}\right\rangle =D\Delta t
+\]
+
+$\left\langle \quad\right\rangle $平均は粒子集団についての平均
+
+\begin{align*}
+\left\langle f\left(X\left(t+\Delta t\right)\right)\right\rangle = & \left\langle f\left(X\left(t\right)\right)\right\rangle +\left\langle \when{\d fx}_{x=X\left(t\right)}\left\{ F\left(X\left(t\right)\right)\Delta t+\Delta W\right\} \right\rangle \\
+ & +\frac{1}{2}\left\langle \when{\dd fx}_{x=X\left(t\right)}\left\{ F\left(X\left(t\right)\right)\Delta x+\Delta W\right\} ^{2}\right\rangle +\cdots
+\end{align*}
+
+$\left\langle X\cdot\Delta W\right\rangle =0$
+
+\[
+\left\langle \when{\d fx}_{x=X}\left\{ F\Delta t+\Delta W\right\} \right\rangle =\left\langle \when{\d fx}_{x=X}F\left(X\right)\right\rangle \Delta t
+\]
+
+\[
+\left\langle \when{\dd fx}_{x=X}\left\{ F\Delta t+\Delta W\right\} ^{2}\right\rangle =\left\langle \when{\dd fx}_{x=X}F\left(X^{2}\right)\right\rangle \left(\Delta t\right)^{2}+\left\langle \when{\dd fx}_{x=X}\right\rangle D\Delta t
+\]
+
+\begin{align*}
+\left\langle f\left(X\left(t+\Delta t\right)\right)\right\rangle = & \left\langle f\left(X\left(t\right)\right)\right\rangle +\left\langle \when{\d fx}_{x=X\left(t\right)}F\left(X\left(T\right)\right)\right\rangle \Delta t\\
+ & +\frac{1}{2}\left\langle \when{\dd fx}_{x=X}\right\rangle D\Delta t+O\left(\left(\Delta t\right)^{2}\right)
+\end{align*}
+
+Newton eqとLangevin eqのそれぞれを差分化した時の違い
+
+\[
+\d{}t\left\langle f\left(X\left(t\right)\right)\right\rangle =\left\langle \when{\d fx}_{x=X\left(t\right)}F\left(X\left(t\right)\right)\right\rangle +\frac{D}{2}\left\langle \when{\dd fx}_{x=X}\right\rangle 
+\]
+
+\[
+\left\langle f\left(X\right)\right\rangle =\int_{-\infty}^{\infty}f\left(x\right)P\left(x,t\right)\mathrm{d}x
+\]
+
+\begin{align*}
+\left\langle \when{\d fx}_{x=X}F\right\rangle  & =\int_{-\infty}^{\infty}\mathrm{d}x\d FxP\left(x,t\right)\\
+ & =-\int_{-\infty}^{\infty}\mathrm{d}xF\left(x\right)\d{}xP\left(x,t\right)
+\end{align*}
+
+\[
+\left\langle \when{\dd fx}_{x=X}\right\rangle =\int_{-\infty}^{\infty}\dd fxP\left(x,t\right)\mathrm{d}x=\int_{-\infty}^{\infty}f\left(x\right)\dd{}xP\left(x,t\right)\mathrm{d}x
+\]
+
+\[
+\d{}t\left\langle f\left(X\left(t\right)\right)\right\rangle =\left\langle \when{\d fx}_{x=X\left(t\right)}F\left(X\left(t\right)\right)\right\rangle +\frac{D}{2}\left\langle \when{\dd fx}_{x=X}\right\rangle 
+\]
+
+\[
+\left\langle f\left(X\right)\right\rangle =\int_{-\infty}^{\infty}f\left(x\right)P\left(x,f\right)\mathrm{d}x
+\]
+
+
+\subsection{ブラウン運動の性質}
+
+単純ブラウン運動(1次元)
+
+$p=q=\frac{1}{2},X_{i}=\pm1$
+
+\[
+S_{n}=X_{1}+X_{2}+\cdots+X_{n}
+\]
+
+$E\left(S_{n}\right)=0,V\left(S_{n}\right)=n$
+
+$Z_{i}=\pm\Delta r$ 
+
+$\Delta i=1\rightarrow\Delta t$
+
+$n=\frac{t}{\Delta t}$
+
+時刻$t$での位置
+
+\[
+D\left(t\right)=S_{\left[\frac{t}{\Delta t}\right]}\cdot\Delta r
+\]
+
+\[
+E\left(D\left(t\right)\right)=0
+\]
+
+\[
+V\left(D\left(t\right)\right)=\left(\Delta r\right)^{2}\cdot\frac{t}{\Delta t}=t\frac{\left(\Delta r\right)^{2}}{\Delta t}
+\]
+
+極限操作としては、$\Delta r=\sqrt{\Delta t}$としたまま$\Delta r\rightarrow0,\Delta t\rightarrow0$
+
+$\Delta t=\frac{1}{N},\Delta r=\frac{1}{\sqrt{N}}$
+
+$n=\frac{t}{\Delta t}=Nt$
+
+\[
+\frac{X_{1}+X_{2}+\cdots+X_{Nt}}{\sqrt{N}}=\sqrt{t}\left(\frac{X_{1}+X_{2}+\cdots+X_{Nt}}{\sqrt{Nt}}\right)
+\]
+
+確率変数として$\frac{X_{1}+X_{2}+\cdots+X_{Nt}}{\sqrt{Nt}}$をとると、これは平均$\mu=1$と分散$\delta=1$に収束。$\mathcal{N}\left(0,1\right)$(正規分布)
+
+\[
+\sigma\cdot\sqrt{t}\left(\frac{X_{1}+X_{2}+\cdots+X_{Nt}}{\sqrt{Nt}}\right)+\mu t
+\]
+を変数として選べば、$\mathcal{N}\left(\mu t,\sigma^{2}t\right)$
+
+\paragraph{ブラウン運動の定義}
+
+急雨率仮定$X\left(t\right),t>0$
+\begin{enumerate}
+\item $X\left(0\right)=0$ (出発点)
+\item $X\left(t_{1}\right)=X\left(t_{0}\right),X\left(t_{2}\right)-X\left(t_{1}\right)\cdots,X\left(t_{n}\right)-X\left(t_{n-1}\right)$が独立
+\item それぞれの平均が$\mu\left(t_{k}-t_{k-1}\right)$、分散が$\sigma^{2}\left(t_{k}-t_{k-1}\right)$である正規分布$\mathcal{N}\left(\mu\left(t_{k}-t_{k-1}\right),\sigma^{2}\left(t_{k}-t_{k-1}\right)\right)$となる。
+\item 時間$t_{k}-t_{k-1}$は一定でなくてもよい。$\mu=0,\sigma^{2}=1$ の場合を標準ブラウン運動という。
+\end{enumerate}
+
+\paragraph{性質}
+\begin{enumerate}
+\item 各時点での変数$X\left(t\right),X\left(s\right)\;\left(t>s\right)$の値は独立ではない。
+
+\begin{align*}
+\cov\left(X\left(t\right),X\left(s\right)\right) & =\cov\left(X\left(t\right)-X\left(s\right)+X\left(s\right),X\left(s\right)\right)\\
+ & =\cov\left(X\left(t\right)-X\left(s\right),X\left(s\right)\right)+\cov\left(X\left(s\right),X\left(s\right)\right)\\
+ & =0+s\sigma^{2}
+\end{align*}
+
+一般に$\cov\left(X\left(t\right),X\left(s\right)\right)=\min\left(t,s\right)\cdot\sigma^{2}$
+\item ブラウン運動の経路は確率1で連続である=ブラウン運動は、確率収束の意味で連続。
+
+i.e. $P\left(\left|X\left(t+h\right)-X\left(t\right)\right|>\varepsilon\right)\rightarrow0\quad\left(h\rightarrow0\right)$
+\end{enumerate}
+∵$X\left(t+h\right)-X\left(t\right)$は$\mathcal{N}\left(\mu h,\sigma^{2}h\right)$で分布している。
+
+$P\left(\left|X\left(t+h\right)-X\left(t\right)\right|\right)$は、標準正規分布の$\left[\frac{-\varepsilon-\mu h}{\sigma\sqrt{h}},\frac{\varepsilon-\mu h}{\sigma\sqrt{h}}\right]$の外側の確率であり、$\frac{\varepsilon}{\sqrt{h}}\rightarrow0$とすると、これは0となる。
 \end{document}
