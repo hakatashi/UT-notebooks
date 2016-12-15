@@ -341,4 +341,100 @@ h\nu & =\frac{hc}{\lambda}\\
 (ii) 2.55eV
 
 (iii) 42.5eV
+
+\section*{第3回}
+
+\paragraph{演習(2)}
+
+\begin{align*}
+S & =\pd FT=k\pd{}T\left(T\log Z\right)=k\log Z+\frac{kT}{Z}\pd ZT\\
+\frac{kT}{Z}\pd ZT & =\frac{kT}{Z}\sum_{i}\pd{}T\e^{-\frac{E_{i}}{kT}}=\frac{kT}{Z}\sum\frac{E_{i}}{kT^{2}}\e^{-\frac{E_{i}}{kT}}=\frac{1}{T}\sum E\frac{\e^{-\frac{E_{i}}{kt}}}{Z}\\
+\therefore S & =k\log Z+\frac{1}{T}\sum E_{_{i}}p\left(E_{i}\right)
+\end{align*}
+
+逆算して、
+\begin{align*}
+-k\overline{\log p\left(E_{i}\right)} & =-k\sum p\left(E_{i}\right)\log p\left(E_{i}\right)\\
+ & =\frac{1}{T}\sum E_{i}p\left(E_{i}\right)+k\log Z\sum p\left(E_{i}\right)\quad\left(\because p\left(E_{i}\right)=\frac{\e^{-\frac{E_{i}}{kt}}}{Z}\right)\\
+ & =S
+\end{align*}
+
+
+\paragraph{演習(4)}
+
+フェルミ
+
+\[
+\pd{}{\mu}\log\left(1+\e^{-\frac{\varepsilon_{i}-\mu}{kT}}\right)=\frac{\frac{1}{kT}\e^{-\frac{\varepsilon_{i}-\mu}{kT}}}{1+\e^{-\frac{\varepsilon_{i}-\mu}{kT}}}=\frac{1}{kT}\frac{1}{\e^{\frac{\varepsilon_{i}-\mu}{kT}}+1}=\overline{N_{1}}
+\]
+
+ボーズ
+
+\[
+\pd{}{\mu}\log\frac{1}{1-\e^{-\frac{\varepsilon_{i}-\mu}{kT}}}=-\frac{-\frac{1}{kT}\e^{-\frac{\varepsilon_{i}-\mu}{kT}}}{1-\e^{-\frac{\varepsilon_{i}-\mu}{kT}}}=\frac{1}{kT}\frac{1}{\e^{\frac{\varepsilon_{i}-\mu}{kT}}-1}=\overline{N_{2}}
+\]
+
+
+\paragraph{演習(1-1)}
+
+$\frac{\lambda}{2}\cdot n=L$より$\nu=\frac{c}{2L}n$ 状態数$\frac{2L\Delta\nu}{c}$
+
+\paragraph{演習(1-2)}
+
+$\int_{0}^{v_{D}}\frac{2L}{c}\cdot\mathrm{d}\nu=N$より$v_{D}=\frac{cN}{2L}$
+
+\paragraph{演習(1-3)}
+
+\begin{align*}
+\bar{E} & =\int_{0}^{v_{D}}\frac{h\nu}{\e^{\frac{h\nu}{kT}}-1}\cdot\frac{2L}{c}\mathrm{d}v=\int_{0}^{\frac{\Theta}{T}}\frac{xkT}{\e^{x}-1}\cdot\frac{2L}{c}\cdot\frac{kT}{h}\mathrm{d}x\\
+ & =Nk\frac{T^{2}}{\Theta}\int_{0}^{\frac{\Theta}{T}}\frac{x}{\e^{x}-1}\mathrm{d}x
+\end{align*}
+
+
+\paragraph{演習(1-4)}
+
+$T\rightarrow\infty$で$\e^{x}-1\rightarrow x$
+
+$\bar{E}=NkT$
+
+$\therefore C_{v}=Nk$
+
+\paragraph{演習(1-5)}
+
+$T\rightarrow0$で$\Theta/T\rightarrow\infty$
+
+\[
+\bar{E}=Nk\frac{T^{2}}{\Theta}\int_{0}^{\infty}\frac{x}{\e^{x}-1}\mathrm{d}x=\frac{\pi^{2}}{6}Nk\frac{T^{2}}{\Theta}
+\]
+
+\[
+C_{v}=\frac{\pi^{2}}{3}Nk\frac{T}{\Theta}
+\]
+
+
+\paragraph{演習(6)}
+
+$v_{D}=10^{13}\mathrm{Hz}$
+
+\begin{align*}
+\Theta & =\frac{hv_{D}}{k}=\frac{6.63\times10^{-34}\times10^{13}\mathrm{\left[J\right]}}{1.38\times10^{-23}\mathrm{\left[J/K\right]}}\\
+ & =4.80\times10^{2}\mathrm{\left[K\right]}
+\end{align*}
+
+
+\paragraph{演習(3)}
+
+状態量 示量性(F.S.V)↔示強性(P.T)
+
+\begin{align*}
+F & =-kT\log\frac{\left(2\pi mkT\right)^{\frac{3}{2}N}\cdot V^{N}}{h^{3N}\cdot N!}=-NkT\log\frac{\left(2\pi mxT\right)^{\frac{3}{2}}}{h^{3}}-NkT\left(\log\frac{V}{N}+1\right)\\
+S & =-\left(\pd FT\right)=Nk\log\frac{\left(\qquad\right)^{\frac{3}{2}}}{h^{3}}+Nk\left(\log\frac{V}{N}+1\right)+NkT\d{}T\left(\frac{3}{2}\log T\right)\\
+ & =Nk\log\frac{\left(\qquad\right)^{\frac{3}{2}}}{h^{3}}+Nk\left(\log\frac{V}{N}+\frac{5}{2}\right)
+\end{align*}
+
+\begin{itemize}
+\item 等温: $T$が同じ
+\item 等圧: $\frac{V}{N}$が同じ
+\end{itemize}
+
 \end{document}
