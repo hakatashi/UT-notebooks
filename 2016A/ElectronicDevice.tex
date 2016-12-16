@@ -11,6 +11,8 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
 
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
@@ -992,4 +994,165 @@ $V<0$の時$W$↑
 \begin{center}
 \includegraphics{images/ElectronicDevice/7-8}
 \par\end{center}
+
+\section*{第8回}
+
+自主休講
+
+\section*{第9回}
+
+\section{MOSトランジスタ(MOS-FET)}
+
+Metal-Oxide-Semiconductor: 金属-SiO2(絶縁体)-半導体(Si)
+
+Field-Effect-Transistor: 電界効果トランジスタ
+
+\subsection{どのような構造をしているか}
+
+図電デ9-1
+
+図電デ9-2
+
+\subsection{動作原理のポイント}
+\begin{enumerate}
+\item 水(電子)の流れをどう作るのか?
+
+→ドレイン(排水口)の推移を下げれば良い。
+
+外部から電界を印加する。
+\item 水門(ゲート)をどうつくるのか?
+
+NPN構造を使う。(PNP構造でも良い)
+\item 水門(ゲート)をどう動かすのか?
+
+MON構造を使い電界効果で動かす。
+\end{enumerate}
+
+\paragraph{水門の作り方}
+
+図電デ9-3
+
+図電デ9-4
+
+\paragraph{MOSFETの2つのタイプ}
+\begin{itemize}
+\item NPN構造
+\begin{itemize}
+\item NチャネルMOSFET(NMoS)
+\item キャリアは電子
+\end{itemize}
+\item PNP構造
+\begin{itemize}
+\item PチャネルMOSFET(PMOS)
+\item キャリアは正孔
+\end{itemize}
+\end{itemize}
+
+\subsection{MOS構造}
+
+図電デ9-5
+
+反転層の電荷量$Q_{I}$
+
+\[
+Q_{I}=qN_{I}=\mathrm{Cox}\left(V-V_{TH}\right)
+\]
+
+$I$: Inversion
+
+$N_{I}$: キャリア濃度
+
+$\mathrm{Cox}$: 酸化膜反応
+
+$V$: 外部印加電圧
+
+$V_{TH}$ しきい(電圧)
+
+\section*{第10回}
+
+\paragraph{MOSのバンド図}
+
+電子エネルギーを表す
+
+電位は下向きが正
+
+図電デ10-1
+
+図電デ10-2
+
+図電デ10-3
+
+熱平衡状態においては
+\[
+\psi_{S}-\psi_{M}=V_{\mathrm{OX}}+\phi_{S}
+\]
+
+$V_{\mathrm{OX}}$: 酸化膜($\mathrm{SiO_{2}}$)にかかる電圧
+
+$\phi_{S}$: 半導体の空乏層にかかる電圧→「バンド曲がり」
+
+図電デ10-4
+
+\[
+V_{\mathrm{FB}}=-\left(\psi_{S}-\psi_{M}\right)=\psi_{M}-\psi_{S}=\psi_{MS}
+\]
+
+$\psi_{M}-\psi_{S}$: 金属と半導体の仕事関数の差
+
+図電デ10-5
+
+深さ$x$のキャリア密度は?
+
+電子濃度 
+\[
+n\left(x\right)=n_{i}\exp\frac{q\left[\phi_{i}\left(x\right)-\phi_{F}\right]}{kT}
+\]
+
+正孔濃度
+\[
+p\left(x\right)=n_{i}\exp\frac{q\left[\phi_{F}-\phi_{i}\left(x\right)\right]}{kT}
+\]
+
+$\phi_{F}$は$x>W$のP型Siのフェルミ準位
+
+$\phi_{i}\left(x\right)$は$x$の位置の$\phi_{i}$
+
+半導体表面($x=0$)の電子濃度$n_{n}$
+\[
+n_{s}=n\left(0\right)=n_{i}\exp\frac{q\left[\phi_{i}\left(x=0\right)-\phi_{F}\right]}{kT}
+\]
+
+P型半導体の基盤の正孔濃度$P_{\mathrm{PO}}$
+\[
+P_{\mathrm{PO}}=P\left(x>W\right)=n_{i}\exp\frac{q\left[\phi_{F}-\phi_{i}\left(x=0\right)\right]}{kT}
+\]
+となる。
+
+ここで、
+\[
+\phi_{F}-\phi_{i}\left(x>W\right)=\phi\left(x=0\right)-\phi_{F}=\phi_{FP}
+\]
+のとき、
+\begin{align*}
+n_{s} & =n_{i}\exp\frac{q\phi_{FP}}{kT}\\
+p_{P0} & =n_{i}\exp\frac{q\phi_{FP}}{kT}
+\end{align*}
+となり両者が等しくなる。
+
+\textbf{もともとP型半導体の表面(界面)がN型半導体のようになった瞬間!! →反転}
+
+\[
+2\phi_{F}=\phi_{i}\left(x=0\right)-\phi_{i}\left(x>W\right)=\phi_{S}
+\]
+
+$2\phi_{F}=\phi_{S}$のときに反転する。
+\begin{itemize}
+\item 電子がたまり始めてから$2\phi_{F}$まで: 弱反転
+\item それ以上: 強反転
+\end{itemize}
+ひとたび\uline{反転すると}、$n_{S}$は指数関数的に増加。
+
+→\uline{それ以上、空乏層は広がらない。}
+
+→$Q=C_{\mathrm{OX}}\left(V_{G}-V_{TH}\right)$ ($V_{TH}$: しきい値電圧)
 \end{document}
