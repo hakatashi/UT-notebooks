@@ -50,7 +50,7 @@
 \global\long\def\prob{\operatorname{Prob}}
 \global\long\def\cov{\operatorname{Cov}}
 \global\long\def\when#1{\left.#1\right|}
-
+gi
 
 \section*{第1回}
 
@@ -1280,4 +1280,481 @@ H_{g} & =\frac{B}{\mu_{0}}=\frac{NI}{\frac{\mu_{0}}{\mu}l+g}\quad\left(\text{ギ
 \end{align*}
 
 $g\ll l,\mu\gg\mu_{0}$ならギャップの中心のほうが強い。
+
+\section*{第4回}
+
+\paragraph{試験}
+
+2/2 10-12
+
+\section*{第5回}
+
+\section{電磁誘導の法則}
+
+\subsection{ファラデーの法則 (1831年)}
+
+電流により磁界が発生 (エルスレッド 1820)
+
+→逆に磁界が
+
+(一部紛失)
+
+\subsection{???}
+
+$+y$方向に動かすことを考える。導体中の自由電荷$q\left(>0\right)$は、
+
+(一部紛失)
+
+つまり、一般に磁束密度$\boldsymbol{B}$の磁界の中を速度$\boldsymbol{v}$で移動すると、単位長さあたり、
+\begin{equation}
+\varepsilon=\boldsymbol{v}\times\boldsymbol{B}\label{3.1}
+\end{equation}
+の起電力が発生する。
+
+\paragraph{(復習)}
+
+起電力は、非保存的な力(ここではローレンツ力)によって、単位電荷に与えられる仕事。(教科書 第5章 p.87)
+
+例: 電池
+
+つまり、
+
+図電後10-1
+
+と同じ。
+
+今、$z$方向の一様な磁界$B_{z}$の中で、回路のの一部である棒ABを速度$v_{y}$で動かす。
+
+図電後10-2
+
+Ab間には、\ref{3.1}より、A→Bの向きに
+\begin{equation}
+\varepsilon=lv_{y}B_{z}\label{3.2}
+\end{equation}
+の起電力が発生し、電流が流れる。
+
+その結果、正電荷がAB間を$+x$方向に流れるため、今度は棒ABに$-y$方向のローレンツ力が加わる。
+
+つまり導体棒の運動を阻止しようとする方向に起電力は発生する。
+
+\subsection{ファラデーの法則 (磁束の変化)}
+
+上の例を別の見方で見る。
+
+図電後10-3
+
+棒ABが位置$y$から$\Delta t$病後リハ$v_{y}\Delta t$移動するとする。
+
+閉回路ABCDを貫く磁束$\Phi$は、
+\[
+\Phi=l_{y}B_{y}
+\]
+
+時間$\Delta t$の間に
+\[
+\Delta\Phi=lB_{z}v_{y}\Delta t
+\]
+だけ増える。
+
+つまり\ref{3.2}の速度起電力の大きさは、
+\[
+\left|\d{\Phi}t\right|=\left|lB_{y}v_{y}\right|
+\]
+に一致する。
+
+$\Phi$を増やす方向に電流を流す起電力の向きを性と定めると、\ref{3.2}の$\varepsilon$は、
+\begin{equation}
+\varepsilon=-\d{\Phi}t\label{3.3}
+\end{equation}
+(ファラデーの法則)と表すことができる。
+
+つまり、\uline{$\Phi$の変化を抑えようとする方向}に$\varepsilon$は発生する。(レンツの法則)
+
+図電後10-4
+
+次に、$B$が空間的に一様でなく、$y$の関数のとき、閉回路全体が速度$v_{y}$で動いている場合を考える。
+
+回路一周の起電力を図中の$\varepsilon$飲む気($+z$方向の磁束を強める向き)を性として求めてみる。
+
+辺ABと辺CDに働く速度起電力の和として考えると、
+\[
+\varepsilon=lv_{y}B_{DC}-lv_{y}B_{AB}
+\]
+
+$B_{DC}$: DCにおける$B$
+
+$B_{AB}$: ABにおける$B$
+
+一方、ファラデーの法則で考えると、
+\[
+\d{\Phi}t=lv_{y}B_{AB}-lv_{y}B_{CD}
+\]
+
+$lv_{y}B_{AB}$: 増えたぶん
+
+$lv_{y}B_{CD}$: 減ったぶん
+
+$\varepsilon=-\d{\Phi}t$となり、\ref{3.3}が満たされる。
+
+任意の形の閉回路、および、$\boldsymbol{B}$と$\boldsymbol{v}$の向きについて(回路の変形があるときも)
+
+$\boldsymbol{B}$が時間的に一定のときは、\ref{3.1}と\ref{3.3}が一致することが示すことができる。
+
+図電後10-5
+
+(参考 教科書p.150 図8.15～)
+
+$\left(\pd{\Phi}t\right)$($B$内での面$S$の移動)の項。
+
+その結果、
+
+(一部紛失)
+
+つまり、
+\begin{itemize}
+\item $\varepsilon$は$\boldsymbol{v}\times\boldsymbol{B}$もしくは、$\pd{\boldsymbol{B}}t$により生じる。
+\item 本質的なのは\ref{3.3}えあり、これはどの完成形デマ変わらない。
+\item どの慣性経過によ宛て、$\boldsymbol{v}\times\boldsymbol{B}$と$\pd{\boldsymbol{B}}t$の内訳が変わる。
+\end{itemize}
+
+\subsection{ファラデーの法則 (微分系)}
+
+速度起電力$\varepsilon=\boldsymbol{v}\times\boldsymbol{B}$は、ローレンツ力$\boldsymbol{F}=q\left(v\times\boldsymbol{B}\right)$から導出できた。
+
+では、
+\begin{equation}
+\varepsilon=\int_{S}\left(-\pd{\boldsymbol{B}}t\right)\cdot\boldsymbol{n}\mathrm{d}\mathrm{S}\label{3.4}
+\end{equation}
+の成分は何に対応するのか?
+
+→答え、ローレンツ力は、\ref{1.6}より、
+\[
+F=q\left(\boldsymbol{E}+\boldsymbol{v}\times\boldsymbol{B}\right)
+\]
+
+$\boldsymbol{v}\times\boldsymbol{B}$: 速度起電力を生む。
+
+$\boldsymbol{E}$: クーロン力(保存力)に加えて$\pd{\boldsymbol{B}}t$に対応する成分(非保存力)があるはず。
+
+\[
+\boldsymbol{E}_{\text{クーロン}}=-\nabla V,\nabla\times\boldsymbol{E}_{\text{クーロン}}=0
+\]
+
+$\boldsymbol{E}$(非保存力成分)と$\pd{\boldsymbol{B}}t$の関係を求める。
+
+簡単のため$v=0$($\pd{\boldsymbol{B}}t$のみ)の場合を考える。(一般的な$v\neq0$の場合については教p.151)
+
+$v=0$なので$\boldsymbol{F}=q\boldsymbol{E}$
+
+回路一周分の起電力は
+\begin{equation}
+\varepsilon=\underbrace{\oint_{C}\frac{\boldsymbol{F}}{q}\cdot\mathrm{d}\boldsymbol{s}}_{\text{単位電荷が受ける仕事}}=\oint_{C}\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}=\int_{S}\left(\nabla\times\boldsymbol{E}\right)\cdot\boldsymbol{n}\mathrm{d}S\label{3.5}
+\end{equation}
+
+\ref{3.4}より\ref{3.5}の左辺は、
+\[
+\varepsilon=\int_{S}\left(-\pd{\boldsymbol{B}}t\right)\cdot\boldsymbol{n}\mathrm{d}S=\int_{S}\left(\nabla\times\boldsymbol{E}\right)\cdot\boldsymbol{n}\mathrm{d}S
+\]
+
+常識が任意の$S$について成り立つには、
+\begin{equation}
+\nabla\times\boldsymbol{E}=-\pd{\boldsymbol{B}}t\label{3.6}
+\end{equation}
+(ファラデーの法則(微分系))
+
+\paragraph{まとめ}
+
+積分系 $\varepsilon=-\d{\Phi}t$
+
+⇔微分系 $\boldsymbol{F}=q\left(\boldsymbol{E}+\boldsymbol{v}\times\boldsymbol{B}\right)$
+かつ $\nabla\times\boldsymbol{E}=-\d{\boldsymbol{B}}t$
+
+\paragraph{\ref{3.3}の$\Phi$について注意}
+
+$\Phi$は$\d{\boldsymbol{B}}t$と$\boldsymbol{v}\times\boldsymbol{B}$の両方の成分を表していないといけない。
+
+$\Phi$は任意の閉経路で定義されているものでは\uline{ない}。
+
+図電後10-6
+
+経路$C$を貫く$\Phi$は変化しない。しかし、円盤沿いに沿ったループ$C'$を貫く$\Phi$は変化するので、$\varepsilon$が発生する。
+
+導体ループが移動(あるいは変形)しているときは、\uline{ループを作る物質と一緒に動く}(変形する)用に閉経路を定義しないといけない。
+
+\subsection{インダクタンス}
+
+\paragraph{自己インダクタンス}
+
+図電後10-7
+\begin{enumerate}
+\item コイルに流す電流$I$を増やす
+\item $I$によって作られる磁界$B$が増大
+\item コイルを貫く磁束$\Phi$が増大
+\item ファラデーの法則より、
+\[
+\varepsilon=-\d{\Phi}t
+\]
+($I$の増加を抑える向き)の起電力が発生する。
+\end{enumerate}
+この減少を自己誘導と呼ぶ。
+
+この時、$B\propto I,\Phi\propto B$なので、
+\begin{equation}
+\Phi=LI\label{3.7}
+\end{equation}
+と表せられる。
+
+比例係数$L$を自己インダクタンスと予備、単位H(ヘンリー)を用いる。$L$はコイルの形状などにより決まり、常に正である。
+
+\ref{3.7}、\ref{3.3}より、コイルの両端には、
+\begin{equation}
+V=L\d It\label{3.8}
+\end{equation}
+の電位が現れる。
+
+図電後10-8
+
+$V$は正電荷が集まる側を性と定義されており、$\varepsilon$の向きとは逆である。
+
+\paragraph{相互インダクタンス}
+
+図電後10-9
+
+コイルが2つ近くにあるとき、それぞれに流れる電流を$I_{1},I_{2}$、鎖交磁束を$\Phi_{1},\Phi_{2}$とすると、
+\begin{equation}
+\begin{cases}
+\Phi_{1}=L_{11}I_{1}+L_{12}I_{2}\\
+\Phi_{2}=L_{21}I_{1}+L_{22}I_{2}
+\end{cases}\label{3.10}
+\end{equation}
+と線形和で表される。
+
+$L_{11},L_{22}$はコイル1,2の自己インダクタンス
+
+相互性より、
+\[
+L_{12}=L_{21}=M
+\]
+が必ず成立する。(今週の宿題)
+
+$M$を相互インダクタンスと呼ぶ。$M$は一般に正負どちらにもなる。
+
+$I_{1}$が作る全磁束$\Phi_{11}=L_{11}I_{1}$のうち、\uline{一部}がコイル2と鎖交する。
+
+∴この磁束$\Phi_{21}\left(=MI_{1}\right)$は
+\[
+\Phi_{21}=k_{21}\Phi_{11}=k_{21}L_{11}I_{1}\quad\left(\left|k_{21}\right|<1\right)
+\]
+
+同様に
+\[
+\Phi_{12}\equiv MI_{2}=k_{12}L_{22}=k_{12}L_{22}I_{2}
+\]
+
+\[
+\therefore\Phi_{12}\Phi_{21}=M^{2}I_{1}I_{2}=k_{12}k_{21}L_{11}L_{22}I_{1}I_{2}
+\]
+
+\begin{equation}
+\frac{M}{\sqrt{L_{12}L_{21}}}=\sqrt{k_{12}k_{21}}\equiv k\quad\left(\left|k\right|<1\right)\label{3.12}
+\end{equation}
+
+$k$を結合係数という。$\left|k\right|=1$のとき、磁束の漏れがない。
+
+\paragraph{先週からの宿題1(a)}
+
+図電後1010
+
+境界面で$H$の接線成分が連続
+
+\[
+H_{m}=H
+\]
+
+\[
+B=\frac{H}{\mu_{0}},B_{m}=\frac{H_{m}}{\mu}=\frac{H}{\mu}
+\]
+
+$M=\chi H_{m}$なので、$H=\frac{1}{\chi}M$
+
+\paragraph{宿題1(b)}
+
+図電後10-11
+
+境界面で$B$のほうせんせいぶんが連続
+
+\[
+H_{m}=\frac{B}{\mu_{0}\left(1+\chi\right)},H=\frac{B}{\mu_{0}}
+\]
+
+\[
+M=\chi H_{m}=\frac{\chi B}{\mu_{0}\left(1+\chi\right)}=\frac{\chi}{1+\chi}H
+\]
+
+
+\paragraph{宿題2}
+
+図電後10-12
+
+断面積一定で、$\nabla\cdot\boldsymbol{B}=0$より、$C$上で$B$一定。
+
+$C$上で$H$に対するアンペアの法則を考える。
+
+磁石内 $H_{PM}$
+
+磁性体内 $H_{M}=\frac{B}{\mu}$
+
+ギャップ内 $H_{g}=\frac{B}{\mu_{0}}$
+
+\[
+\oint_{C}\boldsymbol{H}\cdot\mathrm{d}\boldsymbol{s}=H_{PM}L+\frac{B}{\mu}l+\frac{B}{\mu_{0}}2s=0\quad\left(\because\text{自由電流がないので}\right)
+\]
+
+
+\paragraph{(a)}
+
+$B_{PM}=B$なので、
+\[
+H_{PM}L+\frac{B_{PM}}{\mu}l+\frac{B_{M}}{\mu_{0}}2S=0
+\]
+
+(b)
+
+\[
+M_{PM}=\frac{\mu_{0}L}{2\delta}H_{PM}
+\]
+⋯1
+
+\paragraph{(c)}
+
+M-H特性は
+\[
+B_{PM}=B_{r}\left(1+\frac{H_{LM}}{H_{C}}\right)
+\]
+⋯2
+
+2つの線の交点が会となる。1,2より$H_{PM}$を消去して、
+\[
+B=B_{PM}=\frac{1}{1+\frac{28B_{r}}{\mu_{0}H_{C}L}}B_{r}
+\]
+
+$H_{PM}<0$なので、$B_{PM}$および$M$と同じ逆向きになる。
+
+\paragraph{1(a)}
+
+図電後10-13
+
+コイルの左右両辺は速度$v=\frac{b\omega}{2}$で回転している。
+
+左側の変に発生する起電力は、
+\[
+\varepsilon_{L}=-a\left|\boldsymbol{v}\times\boldsymbol{B}\right|=-\frac{ab\omega}{2}\cos\omega t
+\]
+
+ただし、回転を加速させる$\varepsilon$の向きを正とした。
+
+同様に右側も$\varepsilon_{R}=\varepsilon_{L}$の起電力が発生。
+
+∴コイル一周分の起電力は
+\[
+\varepsilon=\varepsilon_{L}+\varepsilon_{R}=-abB\omega\cos\omega t
+\]
+
+
+\paragraph{(b)}
+
+コイルを貫く磁束は、
+\[
+\Phi=abB\sin\omega t
+\]
+
+\[
+\varepsilon=-\d{\Phi}t=-abB\omega\cos\omega t
+\]
+
+
+\paragraph{2}
+
+図電後10-14
+
+対称性より、発生する電界$E$は、中心軸に対して軸対象となる。
+
+半径$r$の演習$C$に沿ってファラデーの法則を適用する。
+
+\[
+\nabla\times\boldsymbol{E}=-\d{\boldsymbol{B}}t
+\]
+より、
+\[
+\oint\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{s}=-\d{}t\int_{S}\boldsymbol{B}\cdot\boldsymbol{n}\mathrm{d}S
+\]
+
+\begin{align*}
+\text{左辺} & =2\pi rE\\
+\text{右辺} & =-\d{\Phi}t
+\end{align*}
+
+\[
+\therefore E\left(r\right)=-\frac{1}{2\pi r}\d{\Phi}t
+\]
+
+
+\paragraph{3}
+
+図電後10-15
+
+\paragraph{(a)}
+
+アンペアより、コイル1への電流$I_{1}$が鉄心内に作る磁界$H_{1}$は、
+\[
+H_{1}l=N_{1}I
+\]
+
+\[
+B_{1}=\mu H_{1}=\frac{\mu N_{1}I_{1}}{l}
+\]
+
+これがコイル1(自分)を貫く磁束は、
+\[
+\Phi_{N}=N_{1}SB_{1}=\frac{\mu N_{1}^{2}S}{l}I_{1}
+\]
+
+\[
+\therefore L_{1}=\frac{\mu N_{1}^{2}S}{l}
+\]
+
+同様に、
+\[
+L_{2}=\frac{\mu N_{2}^{2}S}{l}
+\]
+
+
+\paragraph{(b)}
+
+$B_{1}=\frac{\mu_{1}N_{1}I_{1}}{l}$がコイル2を貫く磁束は、
+\[
+\Phi_{21}=N_{2}SB_{1}=\frac{\mu N_{1}N_{2}S}{l}I_{1}
+\]
+
+\[
+\therefore M=\frac{\mu N_{1}N_{2}S}{l}
+\]
+
+\[
+k=\frac{M}{\sqrt{L_{1}L_{2}}}=1
+\]
+(磁束の漏れがない)
+
+\paragraph{(c)}
+
+\begin{align*}
+V_{1}\left(t\right) & =-L_{1}\d{I_{1}\left(t\right)}{}\\
+V_{2}\left(t\right) & =-M\d{I_{1}\left(t\right)}t=\frac{M}{L_{1}}V_{1}\left(t\right)=\frac{N_{2}}{N_{1}}V_{1}\left(t\right)
+\end{align*}
+
+∴
+\[
+\text{電圧比}=\frac{N_{2}}{N_{1}}
+\]
+
 \end{document}
