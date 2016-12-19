@@ -1704,4 +1704,329 @@ $\varphi_{X}\left(\tau\right)$が、インパルス関数のような形であ�
 \rho_{XY}\left(\tau\right)=\frac{\varphi_{XY}\left(\tau\right)}{\sqrt{\varphi_{X}\left(0\right)\varphi_{Y}\left(0\right)}}
 \]
 
+
+\section*{第9回}
+
+\paragraph{前回}
+
+相関関数: 不規則信号の2次統計量による解析
+
+自己相関関数 $\varphi_{X}\left(\tau\right)$ (時間差$\tau$だけの関数)
+
+相互相関関数 $\varphi_{XY}\left(\tau\right)$
+
+\paragraph{{[}2{]} 電力スペクトル密度}
+
+目的: 不規則信号の周波数分布を調べたい→位相はここの標本信号ドバラバラなので無視。振幅に着目する
+
+\paragraph{定義}
+
+\[
+\Phi_{X}\left(f\right)=\lim_{T\rightarrow\infty}\frac{1}{T}E\left[\left|X\left(f\right)\right|^{2}\right]
+\]
+
+$E\left[\left|X\left(f\right)\right|^{2}\right]$: 2乗の集合平均「電力」
+
+\paragraph{性質}
+\begin{enumerate}
+\item $\Phi_{X}\left(f\right)\geq0$
+\item $x\left(t\right)$: real のとき、
+\[
+\Phi_{X}\left(f\right)=\Phi_{X}\left(-f\right)
+\]
+
+→偶関数になる
+
+\[
+\left|X\left(f\right)\right|^{2}=\left|X\left(-f\right)\right|^{2}\Leftarrow X\left(-f\right)=X^{*}\left(f\right)
+\]
+
+\end{enumerate}
+波形全体の電力
+\begin{align*}
+P & =E\left[\frac{1}{T}\int_{T}\left|x\left(t\right)\right|^{2}\mathrm{d}t\right]\\
+ & =E\left[\frac{1}{T}\int_{-\infty}^{\infty}\left|X\left(f\right)\right|^{2}\mathrm{d}f\right]\quad\left(\because\text{パーセバルの等式}\right)\\
+ & =\int_{-\infty}^{\infty}\frac{1}{T}E\left[\left|X\left(f\right)\right|^{2}\right]\mathrm{d}f\\
+ & =\int_{-\infty}^{\infty}\Phi_{X}\left(f\right)\mathrm{d}f
+\end{align*}
+
+$\Phi_{X}\left(f\right)$: 平均電力を周波数分解したもの
+
+図信9-1
+
+$x\left(t\right)$: real で、$\Phi_{X}\left(f\right)$が偶関数のときは⋯
+\begin{align*}
+P & =\int_{-\infty}^{\infty}\Phi_{X}\left(f\right)\mathrm{d}f\\
+ & =\int_{0}^{\infty}\Phi'_{X}\left(f\right)\mathrm{d}f
+\end{align*}
+
+$\Phi_{X}\left(f\right)$: 両側電力スペクトル密度
+
+$\Phi'_{X}\left(f\right)=2\Phi_{X}\left(f\right)$: 片側電力スペクトル密度
+
+図信9-2
+
+\paragraph{相互スペクトル密度}
+
+\[
+\Phi_{XY}\left(f\right)=\lim_{T\rightarrow\infty}\frac{1}{T}E\left[X^{*}\left(f\right)Y\left(f\right)\right]
+\]
+
+($y\left(t\right)=x\left(t\right),Y\left(f\right)=X\left(f\right)$のときは、電力スペクトル密度になる)
+
+図信9-3
+
+性質
+\begin{enumerate}
+\item $\Phi_{XY}\left(f\right)=\Phi_{YX}^{*}\left(f\right)$
+\item $\left|\Phi_{XY}\left(f\right)\right|\leq\sqrt{\Phi_{X}\left(f\right)\Phi_{Y}\left(f\right)}$
+
+→正規化・コヒーレンシー$\gamma_{XY}\left(f\right)=\frac{\Phi_{XY}\left(f\right)}{\sqrt{\Phi_{X}\left(f\right)\Phi_{Y}\left(f\right)}}$
+\item Wiener-Khinchinの定理
+
+図信9-4
+\end{enumerate}
+
+\paragraph{略証}
+
+\begin{align*}
+\frac{1}{T}E\left[\left|X\left(f\right)\right|^{2}\right] & =\frac{1}{T}E\left[X^{*}\left(f\right)X\left(f\right)\right]\\
+ & =\frac{1}{T}E\left[\int_{T}x\left(t\right)\e^{\j2\pi ft}\mathrm{d}t\int_{T}x\left(t'\right)\e^{-\j2\pi ft'}\mathrm{d}t'\right]\\
+ & =\frac{1}{T}\int_{T}\int_{T}E\left[x\left(t\right)x\left(t'\right)\right]\e^{-\j2\pi\left(t'-t\right)}\mathrm{d}t\mathrm{d}t'\\
+ & =\frac{1}{T}\iint E\left[x\left(t\right)x\left(t+\tau\right)\right]\e^{-\j2\pi ft}\mathrm{d}t\mathrm{d}\tau\\
+ & =\frac{1}{T}\int_{T}\mathrm{d}t\int\varphi_{X}\left(\tau\right)\e^{-\j2\pi f\tau}\mathrm{d}\tau
+\end{align*}
+
+→電力スペクトル密度は$\varphi_{X}\left(\tau\right)$のフーリエ変換になる
+
+図信9-5
+
+図信9-6
+
+図信9-7
+
+図信9-8
+
+\section*{第10回}
+
+\paragraph{期末試験}
+
+1/16(月) 8:30～
+
+※レポート返却は今日まで
+
+\section{第8章 信号ベクトルの表現}
+
+\paragraph{目的}
+
+$\boldsymbol{x}=\left[\begin{array}{c}
+x_{1}\\
+x_{2}\\
+\vdots\\
+x_{N}
+\end{array}\right]$と表記されるような信号を扱う。
+
+どのような場合に$\boldsymbol{x}$を扱うのか?
+
+図信10-1
+
+図信10-2
+
+\paragraph{確率密度関数}
+
+\[
+p\left(x_{1},x_{2},\cdots x_{N}\right)=p\left(\boldsymbol{x}\right)
+\]
+
+$p$: スカラー値出力
+
+$\boldsymbol{x}$: ベクトル入力
+
+図信10-3
+
+\paragraph{統計量}
+\begin{enumerate}
+\item 期待値ベクトル
+
+\[
+\boldsymbol{n}=E\left[x\right]=\left[\begin{array}{c}
+E\left[x_{1}\right]\\
+E\left[x_{2}\right]\\
+\vdots\\
+E\left[x_{N}\right]
+\end{array}\right]
+\]
+
+\item 共分散行列
+
+$N\times N$行列
+\[
+\left(ij\text{要素}\right)=E\left[\underbrace{\left(x_{i}-\bar{x}_{i}\right)}_{x'_{i}\text{と表記}}\left(x_{j}-\bar{x}_{j}\right)\right]
+\]
+
+\[
+\Lambda=\left[\begin{array}{cccc}
+E\left[x'_{1}x'_{1}\right] & E\left[x'_{1}x'_{2}\right] & \cdots & E\left[x'_{1}x'_{N}\right]\\
+E\left[x'_{2}x'_{1}\right] & \ddots\\
+\vdots &  & \ddots\\
+E\left[x'_{N}x'_{1}\right] & \cdots & \cdots & E\left[x'_{N}x'_{N}\right]
+\end{array}\right]
+\]
+
+対角成分は各成分の分散
+
+非対角成分は成分間の相関
+
+すなわち、
+\begin{align*}
+\Lambda & =E\left[\underbrace{\left[\begin{array}{c}
+x'_{1}\\
+x'_{2}\\
+\vdots\\
+x'_{N}
+\end{array}\right]}_{N\times1}\underbrace{\left[\begin{array}{cccc}
+x'_{1} & x'_{2} & \cdots & x'_{N}\end{array}\right]}_{1\times N}\right]\\
+ & =E\left[\left(\boldsymbol{x}-\boldsymbol{m}\right)\left(\boldsymbol{x}-\boldsymbol{m}\right)^{t}\right]
+\end{align*}
+
+\end{enumerate}
+
+\paragraph{共分散行列の性質}
+\begin{enumerate}
+\item $x$: real ならば、$\Lambda$は実対称行列
+\item $\Lambda$の固有値は非負の実数
+\item $\boldsymbol{x}$の成分が互いに無双間のときは、対角行列
+\end{enumerate}
+
+\paragraph{多次元ガウス信号}
+
+$p\left(x\right)$が多次元ガウス分布になっている信号
+
+1次元の復習
+\[
+p\left(x\right)=\frac{1}{\sqrt{2\pi\sigma^{2}}}\e^{-\frac{\left(x-m\right)^{2}}{2a^{2}}}
+\]
+
+\[
+\begin{cases}
+m=E\left[x\right]\\
+\sigma^{2}=E\left[\left(x-m\right)^{2}\right]
+\end{cases}
+\]
+
+多次元の場合
+\[
+p\left(\boldsymbol{x}\right)=\frac{1}{\sqrt{\left(2\pi\right)^{N}\left|\Lambda\right|}}\exp\left\{ -\frac{1}{2}\underbrace{\underbrace{\left(\boldsymbol{x}-\boldsymbol{m}\right)^{t}}_{1\times N}\underbrace{\Lambda^{-1}}_{N\times N}\underbrace{\left(\boldsymbol{x}-\boldsymbol{m}\right)}_{N\times1}}_{\text{スカラー}}\right\} 
+\]
+
+$\boldsymbol{x}$: ベクトル
+
+$\left|\Lambda\right|$: 共分散行列の行列式 (スカラー)
+
+$\Lambda^{-1}$: 共分散の逆行列
+
+図信10-4
+
+等高線とは?
+\[
+p\left(\boldsymbol{x}\right)=\mathrm{const}
+\]
+
+→$\left(\boldsymbol{x}-\boldsymbol{m}^{t}\right)\Lambda^{-1}\left(\boldsymbol{x}-\boldsymbol{m}\right)=\mathrm{const}$
+
+→等高線は楕円(ガウスの場合)
+
+図信10-5
+
+多次元が薄信号の特別な場合
+\begin{enumerate}
+\item $x_{1},x_{2},\cdots,x_{N}$が無相関
+
+$\Lambda$は対角行列
+
+\[
+p\left(\boldsymbol{x}\right)=p\left(x_{1}\right)p\left(x_{2}\right)\cdots p\left(x_{N}\right)
+\]
+
+積の形に分解できる
+
+図信10-6
+\item さらに$\sigma_{1}^{2}=\sigma_{2}^{2}=\cdots=\sigma_{N}^{2}$のとき
+
+\[
+\Lambda=\sigma_{1}^{2}\left[\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right]
+\]
+
+図信10-7
+\end{enumerate}
+
+\paragraph{ベクトルの線形変換}
+
+\[
+\boldsymbol{y}=A\boldsymbol{x}
+\]
+
+$\boldsymbol{y}$: 出力ベクトル
+
+$A$: システム行列
+
+$\boldsymbol{x}$: 入力ベクトル
+
+図信10-8
+
+\paragraph{期待値ベクトル}
+
+\[
+E\left[\boldsymbol{y}\right]=E\left[A\boldsymbol{x}\right]=AE\left[\boldsymbol{x}\right]=A\boldsymbol{m}
+\]
+
+
+\paragraph{共分散行列}
+
+$\boldsymbol{m}=\boldsymbol{0}$として表記
+
+\begin{align*}
+\Lambda_{y} & =E\left[\boldsymbol{y}\boldsymbol{y}^{t}\right]=E\left[A\boldsymbol{x}\cdot\boldsymbol{x}^{t}A^{t}\right]\\
+ & =AE\left[\boldsymbol{x}\boldsymbol{x}^{t}\right]A^{t}\\
+ & =A\Lambda_{X}A^{t}
+\end{align*}
+
+\[
+\Lambda_{y}=A\Lambda_{x}A^{t}
+\]
+
+$\Lambda_{y}$ 出力の共分散
+
+$\Lambda_{x}$ 入力の共分散
+
+\paragraph{無相関化}
+
+図信10-9
+
+図信10-10
+
+\paragraph{KL変換 (カルーネン・レーベ変換)}
+
+\[
+\Lambda_{y}=A\Lambda_{x}A^{t}
+\]
+
+$\Lambda_{y}$を対角行列にしたい (無相関化のためには)
+
+$A$: $\Lambda_{x}$の固有値$\lambda_{1},\lambda_{2},\cdots,\lambda_{N}$に、それぞれに対応する固有ベウトルを行ベクトルとする行列
+
+$\Lambda_{y}$: $\lambda_{1},\lambda_{2},\cdots,\lambda_{N}$を対角要素とする対角行列
+
+情報圧縮の分野では⋯⋯
+
+\[
+\underset{\text{入力}}{\boldsymbol{x}}\xrightarrow{A}\underset{\text{圧縮・送信}}{\boldsymbol{y}}\xrightarrow{\text{伝送}}\underset{\text{受信}}{\boldsymbol{y}}\xrightarrow{A^{-1}}\underset{\text{復号}}{\boldsymbol{x}}
+\]
+
+符号化暗号化などのシステムでは、$A$が入力$\boldsymbol{x}$に依存しないことが望ましい。
+
+画像圧縮の場合は、KLを理論限界とみなして固定的な$A$で最も効果的な物を探した→DCT (Discrete Cosine Transform)
 \end{document}
