@@ -25,6 +25,10 @@
 \usepackage[dvipdfmx]{hyperref}
 \usepackage[dvipdfmx]{pxjahyper}
 
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}}
+
 \makeatother
 
 \usepackage{babel}
@@ -2396,5 +2400,249 @@ Y_{c} & =\frac{Z_{a}}{Z_{0}^{2}}
 \[
 Z_{0}^{2}=Z_{a}Z_{b}+Z_{b}Z_{c}+Z_{c}Z_{a}
 \]
+
+
+\paragraph{対称$\pi$型回路↔対称格子回路}
+
+Z行列で考える。
+
+図回後5-15
+
+左
+
+\begin{align*}
+Z_{11} & =Z_{22}=Z_{a}+Z_{b}\\
+Z_{21} & =Z_{12}=Z_{b}
+\end{align*}
+
+右
+
+\begin{align*}
+Z_{11} & =Z_{22}=\frac{1}{2}\left(Z_{\alpha}+Z_{\beta}\right)\\
+Z_{12} & =Z_{21}=\frac{1}{2}\left(Z_{\beta}-Z_{\alpha}\right)
+\end{align*}
+
+\[
+\begin{cases}
+Z_{a}=Z_{\alpha}\\
+Z_{b}=\frac{1}{2}\left(Z_{\beta}-Z_{\alpha}\right)
+\end{cases}
+\]
+
+図回後5-16
+
+左
+
+\begin{align*}
+Y_{11} & =Y_{22}=Y_{1}+Y_{2}\\
+Y_{12} & =Y_{21}=\when{\frac{-I_{2}}{V_{1}}}_{V_{2}=0}=-Y_{2}
+\end{align*}
+
+右
+
+\begin{align*}
+Y_{11} & =Y_{22}=\frac{1}{2}\left(Y_{\alpha}+Y_{\beta}\right)\\
+Y_{12} & =Y_{21}=\when{\frac{-I_{2}}{V_{1}}}_{V_{2}=0}=\frac{1}{2}\left(Y_{\beta}-Y_{\alpha}\right)
+\end{align*}
+
+\[
+\begin{cases}
+Y_{1}=Y_{\beta}\\
+Y_{2}=\frac{1}{2}\left(Y_{\alpha}-Y_{\beta}\right)
+\end{cases}
+\]
+
+
+\subsection{4端子網の応用}
+
+\paragraph{インピーダンス変換}
+
+図回後5-17
+
+\[
+Z_{1}=\frac{V_{1}}{I_{1}}=\frac{AV_{2}+B_{2}}{CV_{2}+DI_{2}}=\frac{AZ_{L}+B}{CZ_{L}+D}
+\]
+
+$Z_{L}$が$F$によって$Z_{1}$に変換される。
+
+図回後5-18
+
+最大の電力を取り出す条件
+
+\[
+Z_{1}=\frac{V_{1}}{I_{1}}=Z_{0}^{*}
+\]
+
+
+\paragraph{フィルタ}
+
+周波数に応じて信号を通過・阻止する。
+
+\paragraph{low-pass filter (LPF)}
+
+図回後5-19
+
+\[
+\frac{V_{2}}{V_{1}}=\frac{1}{1+sRC}
+\]
+
+$s\rightarrow0$
+\[
+\frac{V_{2}}{V_{1}}=1
+\]
+
+$s\rightarrow\infty$
+\[
+\frac{V_{2}}{V_{1}}=0
+\]
+
+
+\paragraph{high-pass filter (HPF)}
+
+図回後5-20
+
+\[
+\frac{V_{2}}{V_{1}}=\frac{sRC}{1+sRC}
+\]
+
+$s\rightarrow0$
+\[
+\frac{V_{2}}{V_{1}}=0
+\]
+
+$s\rightarrow\infty$
+\[
+\frac{V_{2}}{V_{1}}=1
+\]
+
+
+\paragraph{band pass filter}
+
+図回後5-21
+
+\[
+\frac{V_{2}}{V_{1}}=\frac{RS}{Ls^{2}+Rs+\frac{1}{C}}
+\]
+
+特定周波数だけ抽出
+
+F行列を使って計算
+
+\subsection{影像パラメータ}
+
+縦続接続した回路の計算方法
+
+図回後5-22
+
+インピーダンス整合した回路のみ表現
+
+図回後5-23
+
+$\theta_{1},\theta_{2},\theta_{3}$: 影像パラメータ(複素数)
+
+$\theta=\theta_{1}+\theta_{2}+\theta_{3}$: 複素数の足し算
+
+「インピーダンスが整合する」←「影像インピーダンス」を合わせる
+
+影像インピーダンス: 各4端子網に固有の値
+
+\paragraph{影像インピーダンスの求め方}
+
+図回後5-24
+
+\[
+Z_{1}=\frac{V_{1}}{I_{1}},Z_{2}=\frac{V_{2}}{I_{2}}
+\]
+
+図回後5-25
+
+\[
+Z_{1}=\frac{V_{1}'}{-I_{1}'},Z_{2}=\frac{V_{2}'}{-I_{2}'}
+\]
+
+この4条件を満たす$Z_{1},Z_{2}$: 影像インピーダンス
+
+\paragraph{$Z_{1},Z_{2}$とF行列の関係}
+
+\[
+\left(\begin{array}{c}
+V_{1}\\
+I_{1}
+\end{array}\right)=\left(\begin{array}{cc}
+A & B\\
+C & D
+\end{array}\right)\left(\begin{array}{c}
+V_{2}\\
+I_{2}
+\end{array}\right)
+\]
+
+\begin{align*}
+V_{1} & =Z_{1}I_{1}\\
+V_{2} & =Z_{2}I_{2}
+\end{align*}
+
+\[
+\left(\begin{array}{c}
+V_{2}'\\
+I_{2}'
+\end{array}\right)=\frac{1}{AD-BC}\left(\begin{array}{cc}
+D & -B\\
+-C & A
+\end{array}\right)\left(\begin{array}{c}
+V_{1}'\\
+I_{1}'
+\end{array}\right)
+\]
+
+\begin{align*}
+V_{1}' & =-Z_{1}I_{1}'\\
+V_{2}' & =-Z_{2}I_{2}'
+\end{align*}
+
+\begin{equation}
+\frac{Z_{1}I_{1}}{I_{1}}=\frac{AZ_{2}+B}{CZ_{2}+D}\label{5.6-1}
+\end{equation}
+
+\begin{equation}
+\frac{-Z_{2}I_{2}'}{I_{2}'}=\frac{-DZ_{1}-B}{CZ_{1}+D}\label{5.6-2}
+\end{equation}
+
+(\ref{5.6-1})、(\ref{5.6-2})より、
+\[
+Z_{1}=\sqrt{\frac{AB}{CD}}=\sqrt{\when{\frac{V_{1}}{I_{1}}}_{I_{2}=0}\when{\frac{V_{1}}{I_{1}}}_{V_{2}=0}},Z_{2}=\sqrt{\frac{BD}{AC}}=\sqrt{\when{\frac{V_{2}}{-I_{2}}}_{I_{1}=0}\when{\frac{V_{2}}{-I_{2}}}_{V_{1}=0}}
+\]
+
+→開放駆動点インピーダンスと短絡駆動点インピーダンスの相乗平均
+
+\paragraph{影像パラメータ$\theta$}
+
+\[
+\e^{\theta}=\sqrt{\frac{V_{1}I_{1}}{V_{2}I_{2}}}=\sqrt{\frac{\text{入力パワー}}{\text{出力パワー}}}=\frac{\text{入力振幅}}{\text{出力振幅}}
+\]
+
+\[
+\theta=\log\sqrt{\frac{V_{1}I_{1}}{V_{2}I_{2}}}=\alpha+\j\beta
+\]
+
+$\alpha$: 減衰定数
+
+$\beta$: 位相定数
+
+\[
+\e^{\theta}=\sqrt{\frac{V_{1}I_{1}}{V_{2}I_{2}}}=\cdots=\sqrt{AD}+\sqrt{BC}
+\]
+
+
+\subsection{まとめ}
+\begin{itemize}
+\item 4端子網: 回路をブロックに分けて考える単位
+\item 表現方法4つ
+\begin{itemize}
+\item F行列、Z行列、Y行列 ←自由度4 (相反性があるので3)
+\item 影像パラメータ ($Z_{1},Z_{2},\theta$) ←自由度3
+\end{itemize}
+\item 回路形式の変換、インピーダンス変換、フィルタ設計で活用
+\end{itemize}
 
 \end{document}
