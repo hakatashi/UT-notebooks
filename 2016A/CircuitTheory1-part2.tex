@@ -1932,4 +1932,469 @@ $\Re F\left(\omega\right)$がわかる→$f_{S}\left(t\right)$がわかる→$f\
 \item 色々な性質: 時間波形と絡めながら、理解してほしい
 \end{itemize}
 
+\section*{第5回}
+
+\paragraph{レポート解説}
+
+図回後5-1
+
+(1)
+\[
+Ri+L\d it+\frac{1}{C}\int i\mathrm{d}t=Vu\left(t\right)
+\]
+
+$u\left(t\right)$: ステップ関数
+
+(2)
+\[
+RI\left(s\right)+LsI\left(s\right)+\frac{1}{C}\frac{I\left(s\right)}{s}=V\frac{1}{s}
+\]
+
+\[
+I\left(s\right)=\frac{V}{s}\frac{1}{R+sL+\frac{1}{sC}}=\frac{V}{Ls^{2}+Rs+\frac{1}{C}}
+\]
+
+ここで、$\frac{V}{s}$が電圧波形、$\frac{1}{R+sL+\frac{1}{sC}}$が伝達関数、$R+sL+\frac{1}{sC}$がRLC直列インピーダンスに対応していることに注目。
+
+(3) $Ls^{2}+Rs+\frac{1}{C}=0$の解: 
+\begin{align*}
+s_{1},s_{2} & =-\frac{R}{2L}\pm\sqrt{\left(\frac{R}{2L}\right)^{2}-\frac{1}{LC}}\\
+ & =-a\pm b=-a\pm\j\beta
+\end{align*}
+
+(a) $\left(\frac{R}{2L}\right)^{2}>\frac{1}{LC}$
+
+\[
+I\left(s\right)=\frac{V}{L}\frac{1}{\left(s-s_{1}\right)\left(s-s_{2}\right)}=\frac{V}{L}\left(\frac{1}{s-s_{1}}-\frac{1}{s-s_{2}}\right)\frac{1}{s_{1}-s_{2}}=\frac{V}{2bL}\left(\frac{1}{s-s_{1}}-\frac{1}{s-s_{2}}\right)
+\]
+
+\[
+i\left(s\right)=\frac{V}{2bL}\left(\e^{s_{1}t}-\e^{s_{2}t}\right)=\frac{V}{bL}\e^{-at}\left(\frac{\e^{bt}-\e^{-bt}}{2}\right)=\frac{V}{bL}\e^{-at}\sinh bt
+\]
+
+(b) $\left(\frac{R}{2L}\right)^{2}=\frac{1}{LC}$のとき
+
+\[
+I\left(s\right)=\frac{V}{L\left(s+a\right)^{2}}\rightarrow i\left(t\right)=\frac{V}{L}t\e^{-at}
+\]
+
+(c) $\left(\frac{R}{2L}\right)^{2}<\frac{1}{LC}$のとき
+
+\[
+I\left(s\right)=\frac{V}{2\j\beta L}\left(\frac{1}{s-s_{1}}-\frac{1}{s-s_{2}}\right)
+\]
+
+\[
+i\left(t\right)=\frac{V}{2\j\beta L}\left(\e^{s_{1}t}-\e^{s_{2}t}\right)=\frac{V}{\beta L}\e^{-at}\frac{\e^{\j\beta t}-\e^{-\j\beta t}}{2}=\frac{V}{\beta L}\e^{-at}\sin\beta t
+\]
+
+(4)
+\[
+\when{\d it}_{i=0+}=\lim_{s\rightarrow\infty}ssI\left(s\right)=\frac{V}{L}
+\]
+
+図回後5-2
+
+\[
+\int_{0}^{\infty}i\left(t\right)\mathrm{d}t=\lim_{s\rightarrow0}s\frac{I\left(s\right)}{s}=C
+\]
+
+$I\left(s\right)$から色んな情報が引き出せる。
+
+\paragraph{本日の内容}
+\begin{itemize}
+\item 5. 4端子網
+\item 5.1. 4端子網と基本行列(F行列)
+\item 5.2. Z行列, Y行列
+\item 5.3. F, Z, Yの間c
+\item 5.4. 等価変換
+\item 5.5. 4端子網の応用
+\item 5.6. 影像パラメータ
+\item 5.7. まとめ
+\end{itemize}
+
+\section{4端子網}
+
+\subsection{4端子網と基本行列}
+
+図回後5-3
+\begin{itemize}
+\item 大きな回路を小さな回路の組み合わせで考えるときの標準的な回路の単位。
+\item 入力→出力(作用)だけでなく、出力→入力(反作用)も表せる。(伝達関数は1方向しか表せない)
+\item 行列で表す
+\end{itemize}
+
+\paragraph{基本行列}
+
+\[
+\left(\begin{array}{c}
+V_{1}\\
+I_{1}
+\end{array}\right)=\left(\begin{array}{cc}
+A & B\\
+C & D
+\end{array}\right)\left(\begin{array}{c}
+V_{2}\\
+I_{2}
+\end{array}\right)
+\]
+
+図回後5-4
+
+\[
+\left(\begin{array}{c}
+V_{1}\\
+I_{1}
+\end{array}\right)=\boldsymbol{F}_{1}\left(\begin{array}{c}
+V_{2}\\
+I_{2}
+\end{array}\right)=\boldsymbol{F}_{1}\boldsymbol{F}_{2}\left(\begin{array}{c}
+V_{3}\\
+I_{3}
+\end{array}\right)
+\]
+
+縦続接続の計算に便利な表現
+
+\paragraph{F行列の計算}
+
+2つ覚える。
+
+図回後5-5
+
+\begin{align*}
+V_{1} & =V_{2}\\
+I_{1} & =\frac{V_{2}}{Z}+I_{2}
+\end{align*}
+
+\[
+\left(\begin{array}{c}
+V_{1}\\
+I_{1}
+\end{array}\right)=\left(\begin{array}{cc}
+1 & 0\\
+\frac{1}{Z} & 1
+\end{array}\right)\left(\begin{array}{c}
+V_{2}\\
+I_{2}
+\end{array}\right)
+\]
+
+図回後5-6
+
+\begin{align*}
+V_{1} & =V_{2}+ZI_{2}\\
+I_{1} & =I_{2}
+\end{align*}
+
+\[
+\left(\begin{array}{c}
+V_{1}\\
+I_{1}
+\end{array}\right)=\left(\begin{array}{cc}
+1 & Z\\
+0 & 1
+\end{array}\right)\left(\begin{array}{c}
+V_{2}\\
+I_{2}
+\end{array}\right)
+\]
+
+
+\paragraph{例}
+
+図回後5-7
+
+\[
+\left(\begin{array}{c}
+V_{1}\\
+I_{1}
+\end{array}\right)=\left(\begin{array}{cc}
+1 & 0\\
+\frac{1}{R} & 1
+\end{array}\right)\left(\begin{array}{cc}
+1 & sL\\
+0 & 1
+\end{array}\right)\left(\begin{array}{cc}
+1 & 0\\
+sC & 1
+\end{array}\right)\left(\begin{array}{cc}
+1 & sL\\
+0 & 1
+\end{array}\right)\left(\begin{array}{cc}
+1 & 0\\
+\frac{1}{R} & 1
+\end{array}\right)\left(\begin{array}{c}
+V_{2}\\
+I_{2}
+\end{array}\right)
+\]
+
+
+\subsection{Z行列とY行列}
+
+Z行列
+
+\[
+\left(\begin{array}{c}
+V_{1}\\
+V_{2}
+\end{array}\right)=\left(\begin{array}{cc}
+Z_{11} & Z_{12}\\
+Z_{21} & Z_{22}
+\end{array}\right)\left(\begin{array}{c}
+I_{1}\\
+-I_{2}
+\end{array}\right)=\boldsymbol{Z}\left(\begin{array}{c}
+I_{1}\\
+-I_{2}
+\end{array}\right)
+\]
+
+\begin{align*}
+V_{1} & =Z_{11}I_{1}-Z_{12}I_{2}\\
+V_{2} & =Z_{21}I_{1}-Z_{22}I_{2}
+\end{align*}
+
+図回後5-8
+
+\begin{align*}
+\left(\begin{array}{c}
+V_{1}\\
+V_{2}
+\end{array}\right) & =Z_{1}\left(\begin{array}{c}
+I_{1}\\
+-I_{2}
+\end{array}\right)\\
+\left(\begin{array}{c}
+V_{3}\\
+V_{4}
+\end{array}\right) & =Z_{2}\left(\begin{array}{c}
+I_{1}\\
+-I_{2}
+\end{array}\right)
+\end{align*}
+
+\[
+\left(\begin{array}{c}
+V_{1}+V_{3}\\
+V_{2}+V_{4}
+\end{array}\right)=\left(Z_{1}+Z_{2}\right)\left(\begin{array}{c}
+I_{1}\\
+-I_{2}
+\end{array}\right)
+\]
+
+
+\paragraph{Z行列を回路から読み解く}
+
+\begin{align*}
+Z_{11} & =\when{\frac{V_{1}}{I_{1}}}_{I_{2}=0}\\
+Z_{21} & =\when{\frac{V_{2}}{I_{1}}}_{I_{2}=0}
+\end{align*}
+
+(参考) $Z_{11}$: 開放駆動点インピーダンス、$Z_{21}$: 開放伝達インピーダンス と呼ぶ。
+
+図回後5-9
+
+\begin{align*}
+Z_{12} & =\when{\frac{V_{1}}{-I_{2}}}_{I_{1}=0}\\
+Z_{22} & =\when{\frac{V_{2}}{-I_{2}}}_{I_{1}=0}
+\end{align*}
+
+
+\paragraph{例}
+
+図回後5-10
+
+\begin{align*}
+V_{11} & =\when{\frac{V_{1}}{I_{1}}}_{I_{2}=0}=Z_{a}+Z_{b}\\
+V_{21} & =\when{\frac{V_{2}}{I_{1}}}_{I_{2}=0}=Z_{b}
+\end{align*}
+
+同様に、$Z_{12}=Z_{b},Z_{22}=Z_{b}+Z_{c}$
+
+\paragraph{Y行列}
+
+\[
+\left(\begin{array}{c}
+I_{1}\\
+-I_{2}
+\end{array}\right)=\left(\begin{array}{cc}
+Y_{11} & Y_{12}\\
+Y_{21} & Y_{22}
+\end{array}\right)\left(\begin{array}{c}
+V_{1}\\
+V_{2}
+\end{array}\right)=Y\left(\begin{array}{c}
+V_{1}\\
+V_{2}
+\end{array}\right)
+\]
+
+\begin{align*}
+I_{1} & =Y_{11}V_{1}+Y_{12}V_{2}\\
+-I_{2} & =Y_{21}V_{1}+Y_{22}V_{2}
+\end{align*}
+
+図回後5-11
+
+\begin{align*}
+\left(\begin{array}{c}
+I_{1}\\
+-I_{2}
+\end{array}\right) & =Y_{1}\left(\begin{array}{c}
+V_{1}\\
+V_{2}
+\end{array}\right)\\
+\left(\begin{array}{c}
+I_{3}\\
+-I_{4}
+\end{array}\right) & =Y_{2}\left(\begin{array}{c}
+V_{1}\\
+V_{2}
+\end{array}\right)
+\end{align*}
+
+\[
+\left(\begin{array}{c}
+I_{1}+I_{3}\\
+-\left(I_{2}+I_{4}\right)
+\end{array}\right)=\left(Y_{1}+Y_{2}\right)\left(\begin{array}{c}
+V_{1}\\
+V_{2}
+\end{array}\right)
+\]
+
+並列接続された回路の計算に便利。
+
+\paragraph{Y行列を回路から読み解く}
+
+\begin{align*}
+Y_{11} & =\when{\frac{I_{1}}{V_{1}}}_{V_{2}=0}\\
+Y_{21} & =\when{\frac{-I_{2}}{V_{1}}}_{V_{2}=0}
+\end{align*}
+
+図回後5-12
+
+(参考) $Y_{11}$: 短絡駆動点アドミッタンス、$Y_{21}$: 短絡伝達アドミッタンス と呼ぶ。
+
+\begin{align*}
+Y_{12} & =\when{\frac{I_{1}}{V_{2}}}_{V_{1}=0}\\
+Y_{22} & =\when{\frac{-I_{2}}{V_{2}}}_{V_{1}=0}
+\end{align*}
+
+
+\paragraph{例}
+
+図回後5-13
+
+\begin{align*}
+Y_{11} & =\when{\frac{I_{1}}{V_{1}}}_{V_{2}=0}=Y_{1}+Y_{2}\\
+Y_{21} & =\when{\frac{-I_{2}}{V_{1}}}_{V_{2}=0}=-Y_{2}
+\end{align*}
+
+同様に$Y_{12}=-Y_{2},Y_{22}=Y_{2}+Y_{3}$
+
+\subsection{F, Z, Y行列の関係}
+
+←総ゴリ変換しながら、縦続、直列、並列を計算
+
+\[
+Y=Z^{-1}=\frac{1}{\left|Z\right|}\left(\begin{array}{cc}
+Z_{22} & -Z_{12}\\
+-Z_{21} & Z_{11}
+\end{array}\right)\quad\left(\left|Z\right|=Z_{11}Z_{22}-Z_{12}Z_{21}\right)
+\]
+
+F行列について、
+\begin{align*}
+V_{1} & =AV_{2}+BI_{2}\\
+I_{1} & =CV_{2}+DI_{2}
+\end{align*}
+をよく見る。
+
+\begin{align}
+A & =\when{\frac{V_{1}}{V_{2}}}_{I_{2}=0}=\frac{Z_{11}}{Z_{21}}=-\frac{Y_{22}}{Y_{21}}\label{5.3-1}\\
+B & =\when{\frac{V_{1}}{I_{2}}}_{V_{2}=0}=-\frac{1}{Y_{21}}=\frac{\left|Z\right|}{Z_{21}}\label{5.3-3}\\
+C & =\when{\frac{I_{1}}{V_{2}}}_{I_{2}=0}=\frac{1}{Z_{21}}=-\frac{\left|Y\right|}{Y_{21}}\label{5.3-2}\\
+D & =\when{\frac{I_{1}}{I_{2}}}_{V_{2}=0}=-\frac{Y_{11}}{Y_{21}}=\frac{Z_{22}}{Z_{21}}\label{5.3-4}
+\end{align}
+
+逆に解くと、ZとFの関係が得られる。
+
+\ref{5.3-1}\textdiv \ref{5.3-2}より、
+\[
+Z_{11}=\frac{A}{C}
+\]
+
+\ref{5.3-2}より、
+\[
+Z_{21}=\frac{1}{C}
+\]
+
+\ref{5.3-1}\ref{5.3-2}\ref{5.3-4}を\ref{5.3-3}に代入して、
+
+\[
+Z_{12}=\frac{AD-BC}{C}
+\]
+
+\ref{5.3-4}\textdiv \ref{5.3-2}より、
+\[
+Z_{22}=\frac{D}{C}
+\]
+
+\[
+Z=\frac{1}{C}\left(\begin{array}{cc}
+A & AD-BC\\
+1 & D
+\end{array}\right)
+\]
+
+注1) 回路が相反性を有する→$Z_{12}=Z_{21},Y_{12}=Y_{21},AD-BC=1$
+
+行列計算のチェックに役立つ。
+
+注2) 回路が対称→$Z_{11}=Z_{22},Y_{11}=Y_{22},A=D$
+
+\subsection{等価変換}
+
+異なる回路構成で同じ特性を実現
+
+図回後5-14
+
+\begin{align*}
+F_{T} & =\left(\begin{array}{cc}
+1 & Z_{a}\\
+0 & 1
+\end{array}\right)\left(\begin{array}{cc}
+1 & 0\\
+\frac{1}{Z_{b}} & 1
+\end{array}\right)\left(\begin{array}{cc}
+1 & Z_{C}\\
+0 & 1
+\end{array}\right)\\
+F_{\pi} & =\left(\begin{array}{cc}
+1 & 0\\
+Y_{a} & 1
+\end{array}\right)\left(\begin{array}{cc}
+1 & \frac{1}{Y_{b}}\\
+0 & 1
+\end{array}\right)\left(\begin{array}{cc}
+1 & 0\\
+Y_{C} & 1
+\end{array}\right)
+\end{align*}
+
+$F_{T}=F_{\pi}$とおくと、
+\begin{align*}
+Y_{a} & =\frac{Z_{c}}{Z_{0}^{2}}\\
+Y_{b} & =\frac{Z_{b}}{Z_{0}^{2}}\\
+Y_{c} & =\frac{Z_{a}}{Z_{0}^{2}}
+\end{align*}
+
+\[
+Z_{0}^{2}=Z_{a}Z_{b}+Z_{b}Z_{c}+Z_{c}Z_{a}
+\]
+
 \end{document}
