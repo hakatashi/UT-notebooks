@@ -1280,4 +1280,148 @@ $\boldsymbol{e}_{i}$が1ゑ1つしか含まないならば、$\boldsymbol{e}_{i}
 1重誤りに対して$H^{T}$のいかなる2列の和も非0となる→単一誤り訂正
 
 性質: $t$重誤りに対しては、いかなる$2t$列の和も非0となる
+
+\section*{第9回}
+
+\paragraph{ハミング符号}
+
+単一誤り訂正可能な線形符号
+
+一般ハミング$\left(n,k\right)$符号
+
+\[
+\left[\begin{array}{ccccccc}
+1 & 1 & 1 & 0 & 1 & 0 & 0\\
+0 & 1 & 1 & 1 & 0 & 1 & 0\\
+1 & 1 & 0 & 1 & 0 & 0 & 1
+\end{array}\right]
+\]
+
+図情9-1
+
+\paragraph{巡回符号}
+\begin{itemize}
+\item 線形符号の仲間
+\item シフトレジスタの符号化・復号化が容易
+\item 符号の巡回置換も符号
+
+\begin{align*}
+m & =\left(u_{0},u_{1},\cdots,u_{n-1}\right)\\
+m' & =\left(u_{n-1},u_{0},\cdots,u_{n-2}\right)
+\end{align*}
+
+符号の多項式表現
+\[
+u\left(t\right)=u_{0}+u_{1}x+\cdots+u_{n-1}x^{n-1}
+\]
+
+符号多項式と呼ぶ。
+
+\begin{align*}
+xu\left(t\right) & =u_{0}x+u_{1}x^{2}+\cdots+u_{n-2}x^{n-1}+u_{n-1}x^{n}\\
+ & \Rightarrow\underbrace{u_{n-1}+u_{0}x+\cdots+u_{n-2}x^{n-1}}_{u'\left(x\right)}+u_{n-1}\left(x^{n}-1\right)
+\end{align*}
+
+\[
+u'\left(x\right)=xu\left(x\right)\mod\left(x^{n}-1\right)
+\]
+
+巡回置換と呼ぶ。
+\end{itemize}
+
+\paragraph{巡回符号の生成}
+
+\[
+u\left(x\right)=q\left(x\right)g\left(x\right)
+\]
+
+$q\left(x\right)$: 情報多項式
+
+$g\left(x\right)$: 生成多項式
+
+→後述するように、実際には\uline{割り算}でつくる。
+
+\[
+u'\left(x\right)=xu\left(x\right)+u_{n-1}\left(x^{n}-1\right)
+\]
+
+$g\left(x\right)$は$x^{n}-1$を割り切ることのできる多項式
+
+\paragraph{例 単一パリティ検査符号}
+
+$g\left(x\right)=x-1$ 生成多項式
+
+$x^{n}-1$ 任意の$n$に大衆絵割り切る
+
+\begin{align*}
+u\left(x\right) & =\left(x-1\right)\left(q_{0}+q_{1}x+\cdots\right)\\
+ & =u_{0}+u_{1}x+\cdots+u_{n-1}x^{n-1}
+\end{align*}
+
+\begin{align*}
+u\left(1\right) & =0\\
+u\left(1\right) & =u_{0}+u_{1}+\cdots+u_{n-1}=0
+\end{align*}
+
+→線形単一パリティ検査符号の検査方程式
+
+\paragraph{例 巡回ハミング$\left(7,4\right)$符号}
+
+図情9-2
+
+図情9-3
+
+\paragraph{シンドローム}
+
+\[
+y\left(x\right)=u\left(x\right)+e\left(x\right)
+\]
+
+$y\left(x\right)$: 受信語
+
+$u\left(x\right)$: 符号語
+
+$e\left(x\right)$: 誤り
+
+\begin{align*}
+y\left(x\right)\mod g\left(x\right) & =u\left(x\right)+e\left(x\right)\mod g\left(x\right)\\
+ & =e\left(x\right)\mod g\left(x\right)
+\end{align*}
+
+
+\paragraph{巡回ハミング$\left(7,4\right)$符号について}
+
+\[
+e\left(x\right)\mod\left(x^{2}+x+1\right)
+\]
+
+\[
+x^{n-k}p\left(x\right)+r\left(x\right)
+\]
+
+$g\left(x\right)$で割り切れる符号多項式
+
+\[
+\underbrace{c_{0}+c_{1}x+\cdots+c_{n-k-1}x^{n-k-1}+}_{\text{パリティビット}}\underbrace{p_{0}x^{n-k}+\cdots+p_{k}^{n-1}}_{\text{情報ビット}}
+\]
+
+図情9-4
+
+\paragraph{割り算回路}
+
+図情9-5
+
+\[
+x^{4}\Rightarrow\left(1,0,0,0,0\right)
+\]
+
+図情9-6
+
+\paragraph{巡回ハミング符号$\left(7,4\right)$符号化回路}
+
+\[
+g\left(x\right)=x^{2}+x+1
+\]
+
+図情9-7
 \end{document}
