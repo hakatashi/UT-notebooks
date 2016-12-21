@@ -3412,4 +3412,370 @@ Gaussの閉塞
  & =4\pi\times3\int_{0}^{a}r^{2}\cdot r^{2}\mathrm{d}r=\frac{12}{5}\pi a^{5}
 \end{align*}
 
+
+\section*{第11回}
+
+\paragraph{レポート}
+
+$\frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}-\frac{z^{2}}{c^{2}}=1$上の点$P=\left(a,b,c\right)$における単位法線ベクトルと接平面を求めよ。形も図示せよ。
+
+\paragraph{直交曲線座標}
+
+デカルト座 $x_{i}=\left(x,y,z\right)$
+
+極座標 $\left(r,\theta,\phi\right)$
+
+円柱座標 $\left(r,\theta,z\right)$
+
+一般の座標系 $u_{\alpha}=\left(u,v,w\right)$
+
+$\boldsymbol{r}\left(u,v,w\right)$
+
+$v$と$w$をとめて$u$の関数とすると、一本の曲線となる。
+
+\paragraph{接戦ベクトル}
+
+$\pd{\boldsymbol{r}}u,\pd{\boldsymbol{r}}v,\pd{\boldsymbol{r}}w$
+($\pd{\boldsymbol{r}}{u_{\alpha}}$)
+
+\paragraph{規格化定数}
+
+\[
+h_{\alpha}=\left|\pd{\boldsymbol{r}}{u_{\alpha}}\right|=\sqrt{\left(\pd x{u_{\alpha}}\right)^{2}+\left(\pd y{u_{\alpha}}\right)^{2}+\left(\pd z{u_{\alpha}}\right)^{2}}
+\]
+
+
+\paragraph{規格化した接戦ベクトル}
+
+\[
+\boldsymbol{E}_{\alpha}=\frac{1}{h_{\alpha}}\pd{\boldsymbol{r}}{u_{\alpha}}
+\]
+
+$\left(\boldsymbol{E}_{u},\boldsymbol{E}_{v},\boldsymbol{E}_{w}\right)$が正規直交基底を張るとき、$\left(u,v,w\right)$を直交曲線座標と呼ぶ。
+
+\begin{align*}
+\mathrm{d}\boldsymbol{r} & =h_{\alpha}\mathrm{d}u_{\alpha}\boldsymbol{E}_{\alpha}=h_{u}\mathrm{d}_{u}\boldsymbol{E}_{u}+h_{v}\mathrm{d}_{v}\boldsymbol{E}_{v}+h_{w}\mathrm{d}_{w}\boldsymbol{E}_{w}\\
+ & \equiv\mathrm{d}s_{\alpha}\boldsymbol{E}_{\alpha}
+\end{align*}
+
+
+\paragraph{線素}
+
+\[
+\mathrm{d}\boldsymbol{r}\equiv\left(\mathrm{d}s_{1},\mathrm{d}s_{2},\mathrm{d}s_{3}\right)=\left(h_{u}\mathrm{d}u,h_{v}\mathrm{d}v,h_{w}\mathrm{d}w\right)
+\]
+
+
+\paragraph{面素}
+
+\begin{align*}
+\mathrm{d}\boldsymbol{s} & \equiv\left(\mathrm{d}s_{2}\mathrm{d}s_{3},\mathrm{d}s_{3}\mathrm{d}s_{1},\mathrm{d}s_{1}\mathrm{d}s_{2}\right)\\
+ & =\left(h_{v}h_{w}\mathrm{d}v\mathrm{d}w,h_{w}h_{u}\mathrm{d}w\mathrm{d}u,h_{u}h_{v}\mathrm{d}u\mathrm{d}v\right)
+\end{align*}
+
+
+\paragraph{体積要素}
+
+\begin{align*}
+\mathrm{d}V & \equiv\mathrm{d}s_{1}\mathrm{d}s_{2}\mathrm{d}s_{3}\\
+ & =h_{u}h_{v}h_{w}\mathrm{d}u\mathrm{d}v\mathrm{d}w
+\end{align*}
+
+
+\paragraph{線積分}
+
+\begin{align*}
+\int_{C}A\cdot\mathrm{d}\boldsymbol{r} & =\int_{C}A_{\alpha}\mathrm{d}r_{\alpha}\\
+ & =\int_{C}\left[A_{u}h_{u}\mathrm{d}u+A_{v}h_{v}\mathrm{d}v+A_{w}h_{w}\mathrm{d}w\right]
+\end{align*}
+
+
+\paragraph{面積分}
+
+\begin{align*}
+\int_{S}\boldsymbol{A}\cdot\mathrm{d}\boldsymbol{s} & =\int_{S}A_{\alpha}\mathrm{d}s_{\alpha}\\
+ & =\int_{S}\left[A_{u}h_{v}h_{w}\mathrm{d}v\mathrm{d}w+A_{v}h_{w}h_{u}\mathrm{d}w\mathrm{d}u+A_{w}h_{u}h_{v}\mathrm{d}u\mathrm{d}v\right]
+\end{align*}
+
+
+\paragraph{デカルト座標との関係}
+
+\[
+\boldsymbol{E}_{\alpha}=\frac{1}{h_{\alpha}}\pd{\boldsymbol{r}}{u_{\alpha}}=\frac{1}{h_{\alpha}}\pd{x_{i}}{u_{\alpha}}\boldsymbol{e}_{i}
+\]
+
+$\boldsymbol{E}_{\alpha}$: 曲線
+
+$\boldsymbol{e}_{i}$: デカルト
+
+\[
+\left(\begin{array}{c}
+\boldsymbol{E}_{1}\\
+\boldsymbol{E}_{2}\\
+\boldsymbol{E}_{3}
+\end{array}\right)=\boldsymbol{O}\left(\begin{array}{c}
+\boldsymbol{e}_{1}\\
+\boldsymbol{e}_{2}\\
+\boldsymbol{e}_{3}
+\end{array}\right),\boldsymbol{O}_{\alpha i}=\left[\boldsymbol{O}^{-1}\right]_{i\alpha}=\left[\boldsymbol{O}^{T}\right]_{i\alpha}\cdot\frac{1}{h_{\alpha}}\pd{x_{i}}{u_{\alpha}}
+\]
+
+
+\paragraph{gradient}
+
+\begin{align*}
+\nabla & =\boldsymbol{e}_{i}\pd{}{x_{i}}=\left[\boldsymbol{O}^{-1}\right]_{i\alpha}\boldsymbol{E}_{\alpha}\pd{}{x_{i}}\\
+ & =E_{\alpha}\frac{1}{h_{\alpha}}\pd{x_{i}}{u_{\alpha}}\pd{}{x_{i}}=\boldsymbol{E}_{\alpha}\frac{1}{h_{\alpha}}\pd{}{u_{\alpha}}
+\end{align*}
+
+両辺に$\boldsymbol{e}_{i}\cdot$をかけると、
+\[
+\pd{}{x_{i}}=\boldsymbol{e}_{i}\cdot\boldsymbol{E}_{\alpha}\frac{1}{h_{\alpha}}\pd{}{u_{\alpha}}
+\]
+
+\[
+\nabla\Phi=E_{\alpha}\frac{1}{h_{\alpha}}\pd{\Phi}{u_{\alpha}}
+\]
+
+$\Phi=u_{\alpha}$とおくと$\boldsymbol{E}_{\alpha}=h_{\alpha}\nabla u_{\alpha}$
+
+\[
+h_{\alpha}=\frac{1}{\left|\nabla u_{\alpha}\right|}
+\]
+
+
+\paragraph{divergence}
+
+\begin{align*}
+\nabla\cdot\left(V_{1}\boldsymbol{E}_{1}\right) & =\nabla\cdot\left(V_{1}\boldsymbol{E}_{2}\times\boldsymbol{E}_{3}\right)\\
+ & =\nabla\cdot\left(V_{1}h_{2}h_{3}\nabla v\times\nabla w\right)\\
+ & =\nabla\left(V_{1}h_{2}h_{3}\right)\cdot\left(\nabla v\times\nabla w\right)+V_{1}h_{2}h_{3}\nabla\cdot\left(\nabla v\times\nabla w\right)
+\end{align*}
+
+ここで
+\begin{align*}
+\nabla\cdot\left(\nabla v\times\nabla w\right) & =\partial_{i}\varepsilon_{ijk}\left(\partial_{j}v\partial_{k}v\right)\\
+ & =\varepsilon_{ijk}\partial_{i}\partial_{j}v\partial_{k}w+\varepsilon_{ijk}\partial_{j}u\partial_{i}\partial_{k}u\\
+ & =\left(\nabla\times\nabla u\right)\cdot\nabla w-\left(\nabla\times\nabla u\right)\cdot\nabla v=0
+\end{align*}
+
+つづき
+\begin{align*}
+ & =\nabla\left(V_{1}h_{2}h_{3}\right)\cdot\left(\frac{\boldsymbol{E}_{2}}{h_{2}}\times\frac{\boldsymbol{E}_{3}}{h_{3}}\right)\\
+ & =\nabla\left(V_{1}h_{2}h_{3}\right)\cdot\frac{\boldsymbol{E}_{1}}{h_{2}h_{3}}=\boldsymbol{E}_{\alpha}\frac{1}{h_{\alpha}}\pd{}{u_{\alpha}}\left(V_{1}h_{2}h_{3}\right)\cdot\frac{\boldsymbol{E}_{1}}{h_{2}h_{3}}\\
+ & =\frac{1}{h_{1}}\pd{}{u_{1}}\left(V_{1}h_{2}h_{3}\right)\cdot\frac{1}{h_{2}h_{3}}
+\end{align*}
+
+\begin{align*}
+\nabla\cdot V & =\nabla\cdot\left(V_{1}\boldsymbol{E}_{1}+V_{2}\boldsymbol{E}_{2}+V_{3}\boldsymbol{E}_{3}\right)\\
+ & =\frac{1}{h_{1}h_{2}h_{3}}\left[\pd{\left(h_{2}h_{3}V_{1}\right)}{u_{1}}+\pd{\left(h_{3}h_{1}V_{2}\right)}{u_{2}}+\pd{\left(h_{1}h_{2}V_{3}\right)}{u_{3}}\right]
+\end{align*}
+
+
+\paragraph{rotation}
+
+\begin{align*}
+\nabla\times\left(V_{1}\boldsymbol{E}_{1}\right) & =\nabla\times\left(V_{1}h_{1}\nabla u_{1}\right)\\
+ & =\nabla\left(V_{1}h_{1}\right)\times\nabla u_{1}+V_{1}h_{1}\underbrace{\nabla\times\nabla u_{1}}_{=0}\\
+ & =\nabla\left(V_{1}h_{1}\right)\times\frac{\boldsymbol{E}_{1}}{h_{1}}=\boldsymbol{E}_{\alpha}\frac{1}{h_{\alpha}}\pd{}{u_{\alpha}}\left(V_{1}h_{1}\right)\times\frac{\boldsymbol{E}_{1}}{h_{1}}\\
+ & =\frac{\boldsymbol{E}_{2}}{h_{3}h_{1}}\pd{}{u_{3}}\left(V_{1}h_{1}\right)-\frac{\boldsymbol{E}_{3}}{h_{1}h_{2}}\pd{}{u_{2}}\left(V_{1}h_{1}\right)
+\end{align*}
+
+\[
+\nabla\times V=\varepsilon_{\alpha\beta\gamma}\frac{E_{\beta}}{h_{\gamma}h_{\alpha}}\pd{\left(h_{\alpha}V_{\alpha}\right)}{u_{\gamma}}=\left|\begin{array}{ccc}
+\frac{E_{1}}{h_{2}h_{3}} & \frac{E_{2}}{h_{3}h_{1}} & \frac{E_{3}}{h_{1}h_{2}}\\
+\pd{}{u_{1}} & \pd{}{u_{2}} & \pd{}{u_{3}}\\
+h_{1}V_{1} & h_{2}V_{2} & h_{3}V_{3}
+\end{array}\right|
+\]
+
+
+\paragraph{Laplacian}
+
+\[
+\Delta\Phi=\nabla\cdot\nabla\Phi
+\]
+
+$V=\nabla\Phi=\boldsymbol{E}_{\alpha}\frac{1}{h_{\alpha}}\pd{\Phi}{u_{\alpha}}$とおくと、
+\[
+\Delta\Phi=\frac{1}{h_{1}h_{2}h_{3}}\left[\pd{}{u_{1}}\left(\frac{h_{2}h_{3}}{h_{1}}\pd{\Phi}{u_{1}}\right)+\pd{}{u_{2}}\left(\frac{h_{3}h_{1}}{h_{2}}\pd{\Phi}{u_{2}}\right)+\pd{}{u_{3}}\left(\frac{h_{1}h_{2}}{h_{3}}\pd{\Phi}{u_{3}}\right)\right]
+\]
+
+
+\paragraph{極座標}
+
+\begin{align*}
+\boldsymbol{r} & =\left(x,y,z\right)\\
+ & =\left(r\sin\theta\cos\phi,r\sin\theta\sin\phi,r\cos\theta\right)
+\end{align*}
+
+\begin{align*}
+\pd{\boldsymbol{r}}r & =\left(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta\right)\\
+\pd{\boldsymbol{r}}{\theta} & =\left(r\cos\theta\cos\phi,r\cos\theta\sin\phi,-r\sin\theta\right)\\
+\pd{\boldsymbol{r}}{\phi} & =\left(-r\sin\theta\sin\phi,r\sin\theta\cos\phi,0\right)
+\end{align*}
+
+\begin{align*}
+h_{r} & =\left|\pd{\boldsymbol{r}}r\right|=1\\
+h_{\theta} & =\left|\pd{\boldsymbol{r}}{\theta}\right|=r\\
+h_{\phi} & =\left|\pd{\boldsymbol{r}}{\phi}\right|=r\sin\theta
+\end{align*}
+
+\[
+h_{r}\boldsymbol{E}_{r}=\partial_{r}\boldsymbol{r},h_{\theta}\boldsymbol{E}_{\theta}=\partial_{\theta}\boldsymbol{r},h_{\phi}\boldsymbol{E}_{\phi}=\partial_{\phi}\boldsymbol{r}
+\]
+
+\begin{align*}
+\boldsymbol{E}_{r} & =\left(\begin{array}{c}
+\sin\theta\cos\phi\\
+\sin\theta\sin\phi\\
+\cos\theta
+\end{array}\right)\\
+\boldsymbol{E}_{\theta} & =\left(\begin{array}{c}
+\cos\theta\cos\phi\\
+\cos\theta\sin\phi\\
+-\sin\theta
+\end{array}\right)\\
+\boldsymbol{E}_{r} & =\left(\begin{array}{c}
+-\sin\phi\\
+\cos\phi\\
+0
+\end{array}\right)
+\end{align*}
+
+$\boldsymbol{r}=r\boldsymbol{E}_{r}$なので
+\begin{align*}
+\mathrm{d}\boldsymbol{r} & =\mathrm{d}r\boldsymbol{E}_{r}+r\mathrm{d}E_{r}\\
+ & =\mathrm{d}r\boldsymbol{E}_{r}+r\mathrm{d}\theta\boldsymbol{E}_{\theta}+r\sin\theta\mathrm{d}\phi\boldsymbol{E}_{\phi}
+\end{align*}
+
+線素
+\[
+\mathrm{d}s=\left(\mathrm{d}r,r\mathrm{d}\theta,r\sin\theta\mathrm{d}\phi\right)
+\]
+
+面素
+\[
+\mathrm{d}\boldsymbol{s}=\left(r^{2}\sin\theta\mathrm{d}\theta\mathrm{d}\phi,r\sin\theta\mathrm{d}\phi\mathrm{d}r,r\mathrm{d}r\mathrm{d}\theta\right)
+\]
+
+体積要素
+\[
+dV=r^{2}\sin\theta\mathrm{d}r\mathrm{d}\theta\mathrm{d}\phi
+\]
+
+\begin{align*}
+\pd{}x & =\boldsymbol{e}_{x}\boldsymbol{E}_{\alpha}\frac{1}{h_{\alpha}}\pd{}{u_{\alpha}}\\
+ & =\sin\theta\cos\phi\pd{}r+\frac{\cos\theta\cos\phi}{r}\pd{}{\theta}-\frac{\sin\phi}{r\sin\theta}\pd{}{\phi}\\
+\pd{}y & =\boldsymbol{e}_{y}\boldsymbol{E}_{\alpha}\frac{1}{h_{\alpha}}\pd{}{u_{\alpha}}\\
+ & =\sin\theta\sin\phi\pd{}r+\frac{\cos\theta\sin\phi}{r}\pd{}{\theta}+\frac{\cos\phi}{r\sin\theta}\pd{}{\phi}\\
+\pd{}z & =\boldsymbol{e}_{z}\boldsymbol{E}_{\alpha}\frac{1}{h_{\alpha}}\d{}{u_{\alpha}}\\
+ & =\cos\theta\pd{}r-\frac{\sin\theta}{r}\pd{}{\theta}
+\end{align*}
+
+\[
+\nabla\Phi=\pd{\Phi}r\boldsymbol{e}_{r}+\frac{1}{r}\pd{\Phi}{\theta}E_{\theta}+\frac{1}{r\sin\theta}\pd{\Phi}{\phi}\boldsymbol{E}_{\phi}
+\]
+
+\[
+\nabla\cdot\boldsymbol{V}=\frac{1}{r^{2}\sin\theta}\left(\sin\theta\pd{\left(rV_{r}\right)}r+r\pd{\left(\sin\theta V_{\theta}\right)}{\theta}+r\pd{V_{\phi}}{\phi}\right)
+\]
+
+\begin{align*}
+\nabla\times\boldsymbol{V} & =\left|\begin{array}{ccc}
+\frac{E_{r}}{r\sin\theta} & \frac{E_{\theta}}{r\sin\theta} & \frac{E_{\phi}}{r}\\
+\pd{}r & \pd{}{\theta} & \pd{}{\phi}\\
+V_{r} & rV_{\theta} & r\sin\theta V_{\phi}
+\end{array}\right|\\
+ & =\frac{1}{r^{2}\sin\theta}\left(\pd{\left(\sin\theta V_{\phi}\right)}{\theta}-\pd{V_{\theta}}{\phi}\right)\boldsymbol{E}_{r}+\frac{1}{r}\left(\frac{1}{\sin\theta}\pd{V_{r}}{\phi}-\pd{\left(rV_{\phi}\right)}r\right)\boldsymbol{E}_{\theta}+\frac{1}{r}\left(\pd{\left(rV_{\theta}\right)}r-\pd{V_{r}}{\theta}\right)\boldsymbol{E}_{\phi}
+\end{align*}
+
+\[
+\Delta\Phi=\frac{1}{r^{2}\sin\theta}\left(\sin\theta\pd{}r\left(r^{2}\pd{\Phi}r\right)+\pd{}{\theta}\left(\sin\theta\pd{\Phi}{\theta}\right)+\frac{1}{\sin\theta}\pdd{\Phi}{\phi}\right)
+\]
+
+
+\paragraph{例}
+
+距離$r$のみの関数$\rho\left(r\right)$に対して、ポアソン方程式
+\[
+\Delta\Phi=-4\pi\rho\left(r\right)
+\]
+の解$\Phi\left(r\right)$
+
+\[
+\Delta\Phi\left(r\right)=\frac{1}{r^{2}}\pd{}r\left(r^{2}\pd{\Phi}r\right)=-4\pi\rho\left(r\right)
+\]
+
+\[
+\d rr\left(r^{2}\d{\Phi}r\right)=-4\pi r^{2}\rho\left(r\right)
+\]
+
+\[
+r^{2}\d{\Phi}r=-4\pi\int^{r}s^{2}\rho\left(s\right)\mathrm{d}s+C_{1}
+\]
+
+\[
+\d{\Phi}r=-\frac{4\pi}{r^{2}}\int^{r}s^{2}\rho\left(s\right)\mathrm{d}s+\frac{C_{1}}{r^{2}}
+\]
+
+\[
+\Phi\left(r\right)=-4\pi\int^{r}\frac{1}{t^{2}}\left(\int^{t}s^{2}\rho\left(s\right)\mathrm{d}s\right)\mathrm{d}t-\frac{C_{1}}{r}
+\]
+
+
+\paragraph{例}
+
+$\Phi\left(\theta\right)$で$\Delta\Phi=0$
+
+\[
+\Delta\Phi\left(\theta\right)=\frac{1}{r^{2}\sin\theta}\d{}{\theta}\left(\sin\theta\d{\Phi}{\theta}\right)=0
+\]
+
+\[
+\sin\theta\d{\Phi}{\theta}=C_{1}\Rightarrow\d{\Phi}r=\frac{C_{1}}{\sin\theta}
+\]
+
+\[
+\Phi\left(\theta\right)=C_{1}\log\left(\tan\frac{\theta}{2}\right)+C_{2}
+\]
+
+
+\paragraph{例}
+
+\[
+\Delta\Phi\left(\phi\right)=0
+\]
+
+\[
+\Delta\Phi\left(\theta\right)=\frac{1}{r^{2}\sin\theta}\dd{\Phi}{\phi}=0
+\]
+
+\[
+\d{\Phi}{\phi}=C_{1}\Rightarrow\Phi\left(\phi\right)=C_{1}\phi+C_{2}
+\]
+
+$\Phi\left(2\pi\right)=0$なので、$C_{1}=0,\Phi\left(\phi\right)=C_{2}$
+
+\paragraph{例}
+
+極座標$\left(r,\theta,\phi\right)$において$\nabla r,\nabla\theta,\nabla\phi$をデカルト座標で表わせ。
+
+\[
+\nabla r=E_{r}=\sin\theta\cos\phi\boldsymbol{e}_{x}+\sin\theta\sin\phi\boldsymbol{e}_{y}+\cos\theta\boldsymbol{e}_{z}
+\]
+
+\[
+\nabla\theta=\frac{1}{r}\boldsymbol{E}_{\theta}=\frac{1}{r}\cos\theta\cos\phi\boldsymbol{e}_{x}+\frac{1}{r}\cos\theta\sin\phi\boldsymbol{e}_{y}-\frac{1}{r}\sin\theta\boldsymbol{e}_{z}
+\]
+
+\[
+\nabla\phi=\frac{1}{r\sin\theta}\boldsymbol{e}_{\phi}=-\frac{\sin\phi}{r\sin\theta}\boldsymbol{e}_{x}+\frac{\cos\phi}{r\sin\theta}\boldsymbol{e}_{y}
+\]
+
+変分法
+
+Euler lagrange方程式
+
+Lagrangeの未定乗数法
 \end{document}
