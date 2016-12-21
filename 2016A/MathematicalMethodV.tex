@@ -10,6 +10,9 @@
 \usepackage{textcomp}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{wasysym}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
 
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
@@ -1884,4 +1887,150 @@ i.e. $P\left(\left|X\left(t+h\right)-X\left(t\right)\right|>\varepsilon\right)\r
 ∵$X\left(t+h\right)-X\left(t\right)$は$\mathcal{N}\left(\mu h,\sigma^{2}h\right)$で分布している。
 
 $P\left(\left|X\left(t+h\right)-X\left(t\right)\right|\right)$は、標準正規分布の$\left[\frac{-\varepsilon-\mu h}{\sigma\sqrt{h}},\frac{\varepsilon-\mu h}{\sigma\sqrt{h}}\right]$の外側の確率であり、$\frac{\varepsilon}{\sqrt{h}}\rightarrow0$とすると、これは0となる。
+
+\section*{第11回}
+
+ブラウン運動の経路は確率1で連続である。
+
+≡ブラウン運動$X\left(t\right)$は確率収束の意味で連続である。
+
+\[
+P\left(\left|X\left(t+h\right)-X\left(t\right)\right|>\varepsilon\right)\rightarrow0\quad\left(h\rightarrow0\right)
+\]
+
+∵$X\left(t+h\right)-X\left(t\right)$は$\mathcal{N}\left(\mu h,\sigma^{2}h\right)$
+
+\[
+\int_{\frac{\varepsilon-\mu h}{\sigma\sqrt{h}}}^{\infty}\mathrm{d}x\frac{1}{\sqrt{2\pi}}\e^{-\frac{x^{2}}{2}}\leq\int_{\frac{\varepsilon-\mu h}{\lightning\sqrt{h}}}^{\infty}\mathrm{d}xx\e^{-\frac{x^{2}}{2}}=\frac{1}{\sqrt{2\pi}}\e^{-\frac{\left(\varepsilon-\mu h\right)^{2}}{2\sigma^{2}-h}}\rightarrow0\quad\left(h\rightarrow0\right)
+\]
+
+ブラウン運動の経路は確率1で至る所微分不可能である。
+
+∵
+\[
+V\left(\frac{X\left(t\right)-X\left(s\right)}{t-s}\right)=\frac{\sigma^{2}\left(t-s\right)}{\left(t-s\right)^{2}}=\frac{\sigma^{2}}{t-s}\rightarrow\infty\quad\left(t\rightarrow s\right)
+\]
+
+ブラウン運動の経路は確率1で\uline{有界変動}ではない。
+
+説明) $\mu=0,\sigma=1,0=t_{0}<t_{1}<t_{2}<\cdots<t_{n}=t$
+
+1次変分
+\[
+V_{\#}=\left|X\left(t_{1}\right)=X\left(t_{0}\right)\right|+\left|X\left(t_{2}\right)-X\left(t_{1}\right)\right|+\cdots+\left|X\left(t_{n}\right)-X\left(t_{n-1}\right)\right|
+\]
+
+$n$個分点をいくら細かくとっても、$X\left(t\right)$は激しく変動する。$V_{\#}$は$n\rightarrow\infty$に対して収束しない。
+
+ブラウン運動($\mu=0,\sigma=1$)の経路についての2次変分は、2次の平均収束を刷る。
+
+\[
+Q_{\#}=\left|X\left(t_{1}\right)=X\left(t_{0}\right)\right|^{2}+\left|X\left(t_{2}\right)-X\left(t_{1}\right)\right|^{2}+\cdots+\left|X\left(t_{n}\right)-X\left(t_{n-1}\right)\right|^{2}
+\]
+
+\[
+E\left(\left(Q_{\#}-t\right)^{2}\right)\rightarrow0
+\]
+
+($\left\Vert \#\right\Vert \rightarrow0$. $\left\Vert \#\right\Vert $は$\left|t_{k}-t_{k-1}\right|$のmax)
+
+\[
+t=\sum_{k=1}^{n}\left(t_{k}-t_{k-1}\right)
+\]
+
+\[
+t_{k}-t_{k-1}=V\left(X\left(t_{k}\right)-X\left(t_{k-1}\right)\right)
+\]
+
+\[
+Q_{\#}-t=\sum_{k=1}^{n}\left[\left\{ X\left(t_{k}\right)-X\left(t_{k-1}\right)\right\} ^{2}-\left(t_{k}-t_{k-1}\right)\right]
+\]
+
+\[
+E\left(\left(Q_{\#}-t\right)^{2}\right)=\sum_{n=1}^{n}E\left[\left[\left\{ X\left(t_{k}\right)-X\left(t_{k-1}\right)\right\} ^{2}-\left(t_{k}-t_{k-1}\right)\right]^{2}\right]
+\]
+
+ここで、
+\[
+Z_{k}^{2}\equiv\frac{\left\{ X\left(t_{k}\right)-X\left(t_{k-1}\right)\right\} ^{2}}{t_{k}-t_{k-1}}
+\]
+を導入して、
+\[
+E\left(\left(Q_{\#}-t\right)^{2}\right)=E\left[\left(Z^{2}-1\right)\right]\cdot\sum_{k=1}^{n}\left(t_{k}-t_{k-1}\right)^{2}\leqq E\left[\left(Z^{2}-1\right)\right]\cdot\left\Vert \#\right\Vert t\rightarrow0\quad\left(\Delta t\rightarrow0\right)
+\]
+
+$Q_{\#}\rightarrow t$ (2次の平均収束)
+
+\section{確率積分と確率}
+
+\subsection{確率積分}
+
+Langevin
+
+\[
+X_{t+\Delta t}-X_{t}=\mu\left(t,X_{t}\right)\Delta t+\sigma\left(t,X_{t}\right)\Delta B_{t}
+\]
+
+\[
+\Delta B_{t}=B_{t+\Delta t}-B_{t}
+\]
+
+$B$は標準Brown運動
+
+$X_{t+\Delta t}-X_{t}$は$\mathcal{N}\left(\mu\left(t,X_{t}\right)\Delta t,s^{2}\left(t,X_{t}\right)\Delta t\right)$である分布
+
+通常なら
+\[
+\d{X_{t}}t=\mu\left(t,X_{t}\right)+\sigma\left(t,X_{t}\right)\d{B_{t}}t
+\]
+
+ここでは$B_{t}$は微分可能ではない→この取扱はできない。
+
+\[
+X_{t}=X_{0}+\int_{0}^{t}\mu\left(s,X_{s}\right)\mathrm{d}s+\int_{0}^{t}\sigma\left(s,X_{s}\right)\mathrm{d}B_{s}
+\]
+
+$\int_{0}^{t}\sigma\left(s,X_{s}\right)\mathrm{d}B_{s}$: Rieman積分の意味では定義できない→定義をゆるく
+
+このような関数$g_{n}\left(t\right)$に対して
+\[
+\int_{0}^{T}g_{n}\left(t\right)\mathrm{d}B_{t}\equiv\sum_{k=1}^{n}g_{n}\left(t_{k-1}\right)\left(B_{t_{k}}-B_{t_{k-1}}\right)
+\]
+
+この右辺が2次の平均収束の意味で収束すれば定まる。
+
+\[
+g_{n}\left(t\right)=\sum_{k=1}^{n}g\left(t_{k-1}\right)1_{\left[t_{k},t_{k-1}\right]}\left(t\right)
+\]
+
+ただし、$1_{\left[t_{k},t_{k-1}\right]}$は$t_{k-1}<t<t_{k}$で1、それ以外で0であるような関数。
+
+$\int_{\alpha}^{\beta}b\left(t,W\left(t\right)\right)\mathrm{d}W\left(t\right)$を伊藤積分という。
+
+\[
+\sum_{k=0}^{n-1}W\left(t_{k}\right)\Delta W\left(t_{k}\right)
+\]
+: $\Delta W\left(t_{k}\right)\equiv W\left(t_{k+1}\right)-W\left(t_{k}\right)$
+
+\begin{align*}
+W\left(t_{k+1}\right)^{2}-W\left(t_{k}\right)^{2} & =\left\{ \Delta W\left(t_{k}\right)\right\} ^{2}+2W\left(t_{k}\right)\Delta W\left(t_{k}\right)\\
+W\left(t_{k+2}\right)^{2}-W\left(t_{k+1}\right)^{2} & =\left\{ \Delta W\left(t_{k+1}\right)\right\} ^{2}+2W\left(t_{k+1}\right)\Delta W\left(t_{k+1}\right)
+\end{align*}
+
+\[
+W\left(s\right)^{2}=s+2\int_{0}^{s}W\left(t\right)\mathrm{d}W\left(t\right)
+\]
+
+\[
+W\left(t_{k+1}\right)^{3}-W\left(t_{k}\right)^{3}=\left\{ \Delta W\left(t_{k}\right)\right\} ^{3}+3\left\{ \Delta W\left(t_{k}\right)\right\} ^{2}W\left(t_{k}\right)+3W\left(t_{k}\right)^{2}\Delta W\left(t_{k}\right)
+\]
+
+\[
+W\left(s\right)^{3}=3\int_{0}^{s}W\left(t\right)\mathrm{d}t+3\int_{0}^{s}W\left(t\right)^{2}\mathrm{d}W\left(t\right)
+\]
+
+\[
+sW\left(s\right)=\int_{0}^{s}t\mathrm{d}W\left(t\right)+\int_{0}^{s}W\left(t\right)\mathrm{d}t
+\]
+
 \end{document}
