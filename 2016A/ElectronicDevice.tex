@@ -1155,4 +1155,115 @@ $2\phi_{F}=\phi_{S}$のときに反転する。
 →\uline{それ以上、空乏層は広がらない。}
 
 →$Q=C_{\mathrm{OX}}\left(V_{G}-V_{TH}\right)$ ($V_{TH}$: しきい値電圧)
+
+\section*{第11回}
+
+\paragraph{反転(復習と訂正)}
+
+図電デ11-1
+
+\paragraph{深さ方向のキャリア密度}
+
+電子密度 $n\left(x\right)=n_{i}\exp\frac{q\left[\phi_{i}\left(x\right)-\phi_{F}\right]}{kT}$
+
+正孔密度 $p\left(x\right)=n_{i}\exp\frac{q\left[\phi_{F}-\phi_{i}\left(x\right)\right]}{kT}$
+
+表面の電子密度 $n\left(x=0\right)=n_{i}\exp\frac{q\left[\phi_{i}\left(x=0\right)-\phi_{F}\right]}{kT}$
+
+P型半導体の電子密度 $p\left(x>W\right)=n_{i}\exp\frac{q\left[\phi_{F}-\phi_{i}\left(x>W\right)\right]}{kT}$ 
+
+\[
+\phi_{S}=\phi_{i}\left(x=0\right)-\phi_{i}\left(x>W\right)=2\phi_{FP}
+\]
+
+図電デ11-2
+
+図電デ11-3
+
+図電デ11-4
+
+\paragraph{MOSFETのIV特性を求めてみよう}
+
+図電デ11-5
+
+MOS構造はすべて反転しており、電荷からの電気力線は全てゲートで終端している。その後でドレインソース間の電圧を考慮する。これをグラ樹あるチャネル近似という。
+
+(1) チャネルの位置$x$における(単位長さあたりの)電荷密度$Q\left(x\right)$は?
+
+(答) 
+\[
+Q\left(x\right)=C_{OX}W\left(V_{GS}-\phi\left(x\right)-V_{TH}\right)
+\]
+
+ただし、$C_{OX}$はゲート酸化膜容量、$V_{TH}$はしきい値電圧(チャネルを形成するまでに必要な電圧)
+
+(2) (ソース)ドレイン電流$I_{d}$を$\phi\left(x\right)$で表わせ。
+
+(答) 
+\[
+I_{D}=-vSnq=-\mu\mu EQ\left(x\right)=\mu Q\left(x\right)\d{\phi\left(x\right)}x
+\]
+
+$\mu$: 移動度
+
+\[
+I_{D}=-\mu C_{OX}W\left(V_{GS}-V_{TH}-\phi\left(x\right)\right)\d{\phi\left(x\right)}x
+\]
+
+(3) (2)の式を0から$L$まで積分して$I_{D}$を求めてみよう。
+
+$x:0\rightarrow L,\phi\left(x\right):0\rightarrow V_{DS}$にth木。さらに、$I_{D}$は一定。
+
+\[
+\int_{0}^{L}I_{D}\mathrm{d}x=\int_{0}^{V_{DS}}\mu C_{OX}\left(V_{GS}-V_{TH}-\phi\left(x\right)\right)\mathrm{d}\phi
+\]
+
+\[
+I_{D}\cdot L=\mu C_{OX}\left\{ \left(V_{GS}-V_{TH}\right)V_{DS}-\frac{1}{2}V_{DS}^{2}\right\} 
+\]
+
+\[
+I_{D}=\mu C_{OX}\frac{W}{L}\left\{ \left(V_{GS}-V_{TH}\right)V_{DS}-\frac{1}{2}V_{DS}^{2}\right\} 
+\]
+
+ここで$\left|V_{DS}\right|\ll\left|V_{GS}-V_{TH}\right|$の場合、
+\[
+I_{D}=\mu C_{OX}\frac{W}{L}\left(V_{GS}-V_{TH}\right)V_{DS}
+\]
+
+図電デ11-6
+
+\[
+I_{D}=\mu C_{OX}\frac{W}{L}\left\{ \left(V_{GS}-V_{TH}\right)V_{DS}-\frac{1}{2}V_{DS}^{2}\right\} 
+\]
+
+←放物線
+
+この式が$V_{DS}=V_{GS}-V_{TH}$で最大になる。
+
+図電デ11-7
+
+$V_{DS}>V_{GS}-V_{TH}$で$I_{D}$は一定
+
+\[
+I_{D}=\frac{1}{2}C_{OX}\mu\frac{W}{L}\left(V_{GS}-V_{TH}\right)^{2}
+\]
+
+ピンチオフ点ではなにが起こっているのか?
+
+\[
+Q\left(x\right)=C_{OX}W\left(V_{GS}-V_{TH}-\phi\left(x\right)\right)
+\]
+
+$x=L\rightarrow\phi\left(x=L\right)=V_{DS}=V_{GS}-V_{TH}$←ドレイン端
+
+\[
+Q\left(x=L\right)=C_{OX}W\left(V_{HS}-V_{TH}-\left(V_{HS}-V_{TH}\right)\right)=0
+\]
+
+$x=L$で反転電子がなくなる
+
+→ドレイン端でチャネルが消失!!
+
+図電デ11-8
 \end{document}
