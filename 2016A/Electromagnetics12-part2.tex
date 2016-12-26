@@ -1757,4 +1757,243 @@ V_{2}\left(t\right) & =-M\d{I_{1}\left(t\right)}t=\frac{M}{L_{1}}V_{1}\left(t\ri
 \text{電圧比}=\frac{N_{2}}{N_{1}}
 \]
 
+
+\section*{第5回}
+
+\subsection{コイルに蓄えられるエネルギー}
+
+コンデンサに電荷を帯電すると静電エネルギー$\frac{1}{2}CV^{2}$が蓄えられる。
+
+→同様に、コイルに電流を供給するには、電磁誘導による起電力$V=\d Et$に打ち勝って仕事をする必要がある。
+
+→\uline{磁気エネルギー}が貯まるはず。
+
+図電後5-1
+
+コイルを流れる電流を$i$
+
+そのとき、コイルを鎖交する磁束を$\Phi$とする。微小時間$\mathrm{d}x$の間に、$i$を$\mathrm{d}i$だけ増やした時、$\Phi$が$\mathrm{d}\Phi$だけ増えたとする。
+
+この間、\ref{3.3}より$V=\d{\Phi}t$の電圧が端子間に発生するので、$\mathrm{d}t$の間にした仕事量は、
+\begin{equation}
+\mathrm{d}W_{m}=iV\mathrm{d}t=i\mathrm{d}\Phi\label{3.13}
+\end{equation}
+
+($m$→magnetic)
+
+今、コイルが1つで、\ref{3.7}のように、$\Phi=Li$と表されるとき、\ref{3.13}は、
+\[
+\mathrm{d}W_{m}=Li\mathrm{d}i
+\]
+
+図電後5-2
+
+∴$i$を0から$I$まで増大させるには、
+\[
+W_{m}=\int\mathrm{d}W_{m}=L\int_{0}^{I}i\mathrm{d}i=\frac{1}{2}LI^{2}
+\]
+の仕事が必要(上図の三角の面積)
+
+つまりコイル蓄えられたエネルギーは、
+\begin{equation}
+W_{m}=\frac{1}{2}LI^{2}\label{3.14}
+\end{equation}
+
+図電後5-3
+
+コイルが2個ある時、\ref{3.13}
+
+\begin{equation}
+\mathrm{d}W_{j}=i_{j}\mathrm{d}\Phi_{j}\label{3.15}
+\end{equation}
+が\uline{コイルごとに}成り立つ。
+
+コイル1,2に$i_{1},i_{2}$が流れている状態で、$i_{1}$を$\mathrm{d}i_{1}$だけ変化させると、
+\[
+\begin{cases}
+\mathrm{d}\Phi_{1}=L_{1}\mathrm{d}i_{1}\\
+\mathrm{d}\Phi_{2}=M\mathrm{d}i_{1}
+\end{cases}
+\]
+変わるので、\ref{3.15}の合計は、
+\begin{align*}
+\mathrm{d}W_{1} & =\mathrm{d}w_{1}+\mathrm{d}w_{2}\\
+ & =L_{1}i_{1}\mathrm{d}i_{1}+Mi_{1}\mathrm{d}i_{1}
+\end{align*}
+
+同様に、$i_{2}$を$\mathrm{d}i_{2}$だけ変化させたときの仕事量は、
+\[
+\mathrm{d}W_{2}=Mi_{1}\mathrm{d}i_{2}+L_{2}i_{2}\mathrm{d}i_{2}
+\]
+
+∴$\mathrm{d}t$の間に$\left[\mathrm{d}i_{1},\mathrm{d}_{2}\right]$だけ変化させたときの合計の仕事率は、
+\begin{align*}
+\d Wt & =\d{W_{1}}t+\d{W_{2}}t\\
+ & =L_{1}i_{1}\d{i_{1}}t+L_{2}i_{2}\d{i_{2}}t+M\left(i_{1}\d{i_{2}}t+\d{i_{1}}ti_{2}\right)\\
+ & =L_{1}i_{1}\d{i_{1}}t+L_{2}i_{2}\d{i_{2}}t+M\d{\left(i_{1}i_{2}\right)}t
+\end{align*}
+
+∴$i_{1},i_{2}$を$I_{1},I_{2}$まで増加させるのに要する仕事量は、
+\begin{align*}
+W_{m} & =\int\d Wt\mathrm{d}t=\int_{0}^{I_{1}}L_{1}i_{1}\mathrm{d}i_{1}+\int_{0}^{I_{2}}L_{2}i_{2}\mathrm{d}i_{2}+\int_{0}^{I_{1}I_{2}}M\mathrm{d}\left(i_{1}i_{2}\right)\\
+ & =\frac{1}{2}L_{1}I_{1}^{2}+\frac{1}{2}L_{2}I_{2}^{2}+MI_{1}I_{2}\\
+ & =\frac{1}{2}\sum_{i=1}^{2}\sum_{j=1}^{2}M_{ij}I_{i}I_{j}
+\end{align*}
+
+ただし、$L_{1}=M_{11},L_{2}=M_{22},M=M_{12}=M_{21}$
+
+一般に、$n$個のコイル(ループ)があるとき、合計の磁気エネルギーは
+\begin{equation}
+W_{m}=\frac{1}{2}\sum_{i=1}^{n}\sum_{j=1}^{n}M_{ij}I_{i}I_{j}\label{3.15-1}
+\end{equation}
+
+ただし、$M_{ij}$は、
+\begin{itemize}
+\item $i=j$のとき、自己インダクタンス$L_{i}$ 
+\item $i\neq j$のとき、相互インダクタンス
+\end{itemize}
+このとき、各ループの鎖交磁束は、
+\begin{equation}
+\Phi_{i}=\sum_{j=1}^{N}M_{ij}I_{j}\label{3.16}
+\end{equation}
+なので、\ref{3.15-1}は、
+\begin{equation}
+W_{m}=\frac{1}{2}\sum_{i=1}^{n}I_{i}\Phi_{i}\label{3.17}
+\end{equation}
+とも書ける。
+
+\subsection{磁界のエネルギー密度}
+
+\ref{3.17}は電流が流れる``コイル''それぞれにエネルギーが溜まるという解釈
+
+→電流により周囲に発生した``磁界''にエネルギーが蓄えられていると考えることができる。(参: 静電エネルギー$\frac{1}{2}\boldsymbol{E}\cdot\boldsymbol{D}$と同じ考え方)
+
+図電後5-4
+
+自由電流ループ$i_{F}$があるとき、全空間を$\boldsymbol{B}$に沿ってパイプ感情の領域に分割し、角パイプを長さ方向に長さ$\Delta l_{i}\left(i=1,2,3\cdots\right)$に分割する。
+
+今、微小時間$\mathrm{d}t$の間に、$i_{p}$を$\mathrm{d}i_{p}$だけ増やし、微小断面$\Delta S$
+を貫く磁束を$\mathrm{d}\phi$だけ増加させる。この時した仕事は\ref{3.13}より、
+\begin{equation}
+\mathrm{d}W_{m}=i_{F}\mathrm{d}\phi=i_{p}\mathrm{d}B\Delta S\label{3.18}
+\end{equation}
+
+($\mathrm{d}\phi=\mathrm{d}B\Delta S$)
+
+アンペアの法則\ref{2.8}より、
+\[
+i_{F}=\sum_{i=1}^{\text{一周}}\boldsymbol{H}\cdot\Delta\boldsymbol{l}_{i}
+\]
+
+∴\ref{3.18}は、
+\[
+\mathrm{d}W_{m}=\sum_{i}\boldsymbol{H}\cdot\Delta\boldsymbol{l}_{i}\mathrm{d}B\Delta S=\sum_{i}\boldsymbol{H}\cdot\mathrm{d}\boldsymbol{B}\Delta v_{i}
+\]
+
+(∵$\mathrm{d}\boldsymbol{B}\sslash\Delta\boldsymbol{l}_{i},\Delta v_{i}\equiv\left|\Delta\boldsymbol{l}_{i}\right|\Delta S$)
+
+∴磁束密度を$0\rightarrow\boldsymbol{B}$にするには、
+\begin{equation}
+W_{m}=\int_{\text{全空間}}\left(\int_{0}^{B}\boldsymbol{H}\cdot\mathrm{d}\boldsymbol{B}\right)\mathrm{d}v\label{3.19}
+\end{equation}
+の仕事が必要。
+
+つまり、各店において単位体積あたり
+\begin{equation}
+w_{m}=\int_{0}^{\boldsymbol{B}}\boldsymbol{H}\cdot\boldsymbol{B}\label{3.20}
+\end{equation}
+のエネルギーが蓄えられていると解釈できる。
+
+線形な磁性体では、$\boldsymbol{H}=\frac{1}{\mu}\boldsymbol{B}$(比例)なので、
+\[
+w_{m}=\frac{1}{\mu}\int_{0}^{\boldsymbol{B}}\boldsymbol{B}\cdot\mathrm{d}\boldsymbol{B}
+\]
+
+\begin{equation}
+w_{m}=\frac{1}{2\mu}B^{2}=\frac{1}{2}\mu H^{2}=\frac{1}{2}\boldsymbol{H}\cdot\boldsymbol{B}\label{3.21}
+\end{equation}
+
+特に真空中では
+\begin{equation}
+w_{m}=\frac{1}{2\mu_{0}}B^{2}\label{3.22}
+\end{equation}
+
+強磁性体を磁化する際に必要な仕事は、B-H特性曲線で$\int\boldsymbol{H}\cdot\mathrm{d}\boldsymbol{B}$を計算することで求まる。
+
+図電後5-5
+
+上図のように、ヒステリシスがあるときは、$\int\boldsymbol{H}\cdot\mathrm{d}\boldsymbol{B}$を1サイクル積分してもゼロにならない。
+
+つまり、ヒストリシス内の面積分のエネルギーが失われて\uline{発熱}する。(ヒステリシス損失)
+
+∵そもそもヒステリシスが散財するのは、磁区間の摩擦→発熱
+
+\subsection{磁性体に働く力}
+
+誘電体と同様に、仮想変位の考え方で力を求めることができる。
+
+図電後5-6
+
+$x$郷校の力は
+\begin{equation}
+F_{x}=-\left(\pd{W_{m}}x\right)_{\Phi\text{一定}}\label{3.23}
+\end{equation}
+
+$F_{x}$は、$x$を増やす向きが正。
+
+($\Phi$が一定であれば、起電力$V=\d{\Phi}t=0$なので、外部から仕事をする必要がない)
+
+\paragraph{電流$I$=一定だとどうなるか?}
+
+$I$一定で動かすと、一般に$\Phi$が変化し、$V=\d{\Phi}t$が発生するので、$I$を一定に保つために、\ref{3.13}より、$\mathrm{d}W=I\mathrm{d}\Phi$の仕事を外部回路がする必要がある。
+
+$F_{x}$(+x方向)に対抗して、$-F_{x}$の力を借りながら$+\Delta x$動かす時、
+\[
+-F_{x}\Delta x+I\Delta\Phi=\Delta W_{m}
+\]
+
+\[
+F_{x}=-\when{\pd{\left(W_{m}-I\Phi\right)}x}_{I=\text{一定}}
+\]
+
+\ref{3.17}より$W_{m}=\frac{1}{2}I\Phi$より$I\Phi=2W_{m}$なので、
+\begin{equation}
+F_{x}=-\left(\pd{W_{m}}x\right)_{I=\text{一定}}\label{3.23'}
+\end{equation}
+
+
+\subsection{インダクタンスの計算}
+
+有限の太さの電線等の自己インダクタンスを計算するには、断面内の電流分布を知っておく必要がある。
+
+通常は次のどちらかを仮定する。
+\begin{enumerate}
+\item 断面内で一様の密度で流れる。
+\item 導体の\uline{表面のみ}一様に流れる。(表皮効果)
+\end{enumerate}
+直流や低周波では1.になるが、高周波では2.の仮定が妥当になる。
+
+\paragraph{表皮効果 (skin effect)}
+
+図電後5-7
+
+導体内の電流密度$J_{e}\left(t\right)$が増加
+
+→周囲の$B\left(t\right)$も増加
+
+→$B$の増加を妨げる向きに起電力が生じ、誘導電流$J_{i}\left(t\right)$が流れる。
+
+→導体の中央では$J$が弱められ、外側に押しやられる。
+
+この起電力$\d Bt$は周波数が高いほど大きいので、高周波で顕著。
+
+電流が流れる厚み(表皮厚)は、
+\begin{equation}
+\delta=\sqrt{\frac{2}{\omega\sigma\mu}}\label{3.24}
+\end{equation}
+となる。(導出は教p.158)
+
+$\omega$: 角周波数
+
+$\sigma$: 導電率
 \end{document}
