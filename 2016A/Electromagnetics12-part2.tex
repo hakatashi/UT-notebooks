@@ -2014,4 +2014,219 @@ $\sigma$: 導電率
 \paragraph{同軸ケーブル (来週の宿題)}
 
 図電後5-9
+
+\paragraph{先週の宿題}
+
+解1
+
+図電後5-10
+
+速度起電力で考える。
+
+中心から$r$の点では、$v=r\omega$で動いているので、\ref{3.1}より径方向に単位長さあたり
+\[
+\varepsilon\left(r\right)=v\times B=r\omega B
+\]
+の起電力を受ける。
+
+\[
+V=\int_{0}^{a}\varepsilon\left(r\right)\mathrm{d}r=\frac{1}{2}a^{2}\omega B
+\]
+
+解2
+
+$\d{\Phi}t$で考える。
+
+図電後5-11
+
+経路を鎖交する磁束は、$\Delta\phi=\frac{1}{2}a^{2}\omega B\Delta t$だけ増える。
+
+\[
+\therefore V=\frac{\Delta\Phi}{\Delta t}=\frac{1}{2}a^{2}\omega B
+\]
+
+
+\paragraph{先週の宿題2}
+
+図電後5-12
+
+(a) 断面積が一定なので経路内で$B$は一定($\nabla\cdot B=0$)
+
+$H$は、
+
+\[
+\begin{cases}
+H_{m}=\frac{B}{\mu} & \left(\text{磁性体内}\right)\\
+H_{g}=\frac{M}{\mu_{0}} & \left(\text{ギャップ}\right)
+\end{cases}
+\]
+
+∴$\Phi_{11}=L_{1}I$より、
+
+\[
+L_{1}=\frac{N_{1}^{2}S}{\frac{2\pi R-S}{\mu}+\frac{\delta}{\mu_{0}}}
+\]
+
+(b) $B$により、コイル2を鎖交する磁束は$\Phi_{12}=N_{2}BS$
+
+\[
+\therefore M=\frac{\Phi_{12}}{I}=\frac{N_{1}N_{2}S}{\frac{2\pi R-S}{\mu}+\frac{\delta}{\mu_{0}}}
+\]
+
+アンペアの法則より
+\[
+H_{m}\left(2\pi R-\delta\right)+H_{g}\delta=N_{1}I
+\]
+
+\[
+B=\frac{N_{1}I}{\frac{2\pi R-S}{\mu}+\frac{\delta}{\mu_{0}}}
+\]
+
+これによりコイル1を鎖交する磁束は
+\[
+\Phi_{11}=N_{1}BS=\frac{N_{1}^{2}SI}{\frac{2\pi R-S}{\mu}+\frac{\delta}{\mu_{0}}}
+\]
+
+
+\paragraph{先週の宿題3}
+
+図電後5-13
+
+$C_{2}$に電流$I_{2}$が流れているとき、これが、$C_{1}$上につくるベクトルポテンシャル$\boldsymbol{A}_{2}$は、\ref{1.11}より、
+\[
+\boldsymbol{A}=\frac{\mu_{0}I_{2}}{4\pi}\oint_{C_{2}}\frac{\mathrm{d}\boldsymbol{s}_{2}}{r}
+\]
+
+一方、$C_{1}$を貫く磁束は、\ref{1.11}より、
+\[
+\Phi_{11}=\oint_{C_{1}}A\cdot\mathrm{d}\boldsymbol{s}_{1}=\frac{\mu_{0}I_{2}}{4\pi}\oint_{C_{1}}\oint_{C_{2}}\frac{\mathrm{d}\boldsymbol{s}_{1}\cdot\mathrm{d}\boldsymbol{s}_{2}}{r}
+\]
+
+\[
+\therefore M=\frac{\Phi_{12}}{I_{2}}=\frac{\mu_{0}}{4\pi}\oint_{C_{1}}\oint_{C_{2}}\frac{\mathrm{d}\boldsymbol{s}_{1}\cdot\mathrm{d}\boldsymbol{s}_{2}}{r}
+\]
+
+$C_{1}$と$C_{2}$に対して対称なので、$M_{12}=M_{21}$
+
+\paragraph{1}
+
+図電後5-14
+
+(a)
+
+(i) $r<a$のとき
+
+アンペアの法則
+\[
+H\cdot2\pi r=\frac{r^{2}}{a^{2}}I
+\]
+
+\[
+\therefore H=\frac{rI}{2\pi a^{2}},B=\mu H=\frac{\mu rI}{2\pi a^{2}}
+\]
+
+(ii) $r>a$のとき
+
+\[
+H\cdot2\pi r=I
+\]
+
+\[
+H=\frac{I}{2\pi r},B=\frac{\mu_{0}I}{2\pi r}
+\]
+
+(b)
+
+$\mathrm{d}r$を横切る磁束は
+\[
+\mathrm{d}\phi=B\mathrm{d}r=\frac{\mu rI}{2\pi a^{2}}\mathrm{d}r
+\]
+
+$\mathrm{d}\phi$が鎖交するのは、$I$ではなく$\frac{r^{2}}{a^{2}}I$
+
+∴等価的に巻き数$N=\frac{r^{2}}{a^{2}}\left(<1\right)$
+
+\[
+\therefore\mathrm{d}\Phi=N\mathrm{d}\phi=\frac{\mu r^{3}I}{2\pi a^{4}}\mathrm{d}r
+\]
+
+(c) 全鎖交磁束は$\Phi=\int\mathrm{d}\Phi=\int_{0}^{a}\frac{\mu r^{3}I}{2\pi a^{4}}\mathrm{d}r=\frac{\mu}{8\pi}I$
+
+(d) $\Phi=l_{i}I$より、
+\[
+l_{i}=\frac{\mu}{8\pi}
+\]
+
+($a$によらない)
+
+(e) 導体内部の磁気エネルギーは、
+\[
+W_{m}=\int_{0}^{a}\frac{1}{2}HB\cdot2\pi r\mathrm{d}r=\frac{\mu I^{2}}{4\pi a^{4}}\int_{0}^{a}r^{3}\mathrm{d}r=\frac{\mu I^{2}}{16\pi}
+\]
+
+($\frac{1}{2}l_{i}I^{2}$と一致する)
+
+\paragraph{2}
+
+(a) 断面積$S$が一定なので$B$が一定。
+
+鉄芯内で$H_{m}=\frac{B}{\mu}\simeq0$ ($\mu\rightarrow\infty$)
+
+ギャップでは$H_{g}=\frac{B}{\mu_{0}}$
+
+アンペアより$2gH_{g}=NI$
+
+\[
+\therefore H_{g}=\frac{NI}{2g}
+\]
+
+\[
+B=\frac{\mu_{0}NI}{2g}
+\]
+
+(b) 鎖交磁束は、
+\[
+\Phi=NSB=\frac{\mu_{0}N^{2}SI}{2g}
+\]
+
+\[
+\therefore L=\frac{\Phi}{I}=\frac{\mu_{0}N^{2}S}{2g}
+\]
+
+(c)
+\[
+W=\frac{1}{2}LI^{2}=\frac{\mu_{0}N^{2}SI^{2}}{4g}
+\]
+
+(d) $I=\text{一定}$の式を使うと、
+\[
+F=+\left(\pd Wg\right)_{I=\text{一定}}=-\frac{\mu_{0}N^{2}SI^{2}}{4g^{2}}
+\]
+
+$g$を増やす向きが正なので、引き合う向きに力が働く。
+
+別解、$\Phi$一定で解く
+
+\[
+I=\frac{\Phi}{L}=\frac{2g}{\mu_{0}N^{2}S}\Phi
+\]
+を(c)の結果に代入して
+\[
+W=\frac{g\Phi^{2}}{\mu_{0}N^{2}S}
+\]
+
+\[
+F=-\left(\pd Wg\right)_{\Phi\text{一定}}=-\frac{\Phi^{2}}{\mu_{0}N^{2}S}=-\frac{\mu_{0}N^{2}SI^{2}}{4g^{2}}
+\]
+
+(e)
+
+図電後5-15
+
+単位面積あたり$f=\frac{1}{2}\mu_{0}H^{2}$
+
+\[
+F=-f2S=\mu_{0}H_{g}^{2}S=\frac{\mu_{0}N^{2}SI^{2}}{4g^{2}}
+\]
+
 \end{document}
