@@ -1,6 +1,6 @@
-TEX=$(shell find . -name '*.tex')
+TEX=$(shell find . -type f -name '*.tex' -printf '%P\n')
 DVI=$(TEX:.tex=.dvi)
-PDF=$(TEX:.tex=.pdf)
+PDF=$(addprefix dist/,$(TEX:.tex=.pdf))
 JPG=$(shell find . -name '*.jpg')
 EPS=$(JPG:.jpg=.eps)
 
@@ -14,8 +14,10 @@ eps: $(EPS)
 	cd $(dir $@); uplatex -no-guess-input-enc -kanji=utf8 -synctex=1 $(notdir $<) 0<&-
 	cd $(dir $@); uplatex -no-guess-input-enc -kanji=utf8 -synctex=1 $(notdir $<) 0<&-
 
-%.pdf: %.dvi
-	cd $(dir $@); dvipdfmx -o $(notdir $@) $(notdir $<) 0<&-
+dist/%.pdf: %.dvi
+	cd $(dir $<); dvipdfmx -o $(notdir $@) $(notdir $<) 0<&-
+	mkdir -p $(dir $@)
+	mv $(dir $<)/$(notdir $@) $(dir $@)
 
 %.bmp: %.jpg
 	convert $< bmp2:$@

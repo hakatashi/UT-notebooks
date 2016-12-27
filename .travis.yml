@@ -17,13 +17,13 @@ before_install:
 cache:
   directories:
     - lfs
+    - dist
 before_script: git lfs pull
 script:
   - make
-before_deploy:
-  - make clean
 deploy:
   provider: s3
+  local_dir: dist
   access_key_id: AKIAIUVOWRPPIGFZXQVA
   secret_access_key:
     secure: sVJ/TuTZJxM9lR2PZJtxHf0XnNR21I9ywcEh+7+hqmedQpbgI1tgfqgs5sHypC8trGuPNO0AkrvRa9qg55iSfNo30ClKJqQ6gZjhd6rxYa1WrFooFNHtiW4Pzacw9byWlfs1Uod/hgdCaOOL2vRIGUp6gAoGu+uEPpQ5OmUJRgG8QyDeAGcm9EEAYWgZtA5zvbfSGuKvGMYUM7NqJ2upQNvjkxdRIUvCISZ8R91IDzZVQlNn6OVAESLTHLvm6ug2wBURxNR8WIV8G28EC50oe+SWjR1CEXxFWKydaxThQ4LMRimST4IM9qgqarFs057u5dOp8Wf8h+9sQhRv4hK4U68WbxmSJ4RBY7YbkwYQK/vdTA+y6KMcMVi/Yi7HHmo5V4+fXmVaBwFpX+RqXzvR1F3E4lDm74nRoiK1RzxGszPiX+W3TAR/U4Mu3H4ZyJoJPj4ySZ5hF+M5gX39wpWUkcT9z5frDGacFTkjytOYRt6KhdBEeK6+IbpQaFLv5K6dyd0vA42maidIofanIsBEwWtFL/HEXq/8pSJGtjNZZYhpLquCZsuMN4fst5Zed58Le1KpYpOpIPaDzzLqgXcVofORejwCvtSgc3hPXp2DEMnQzK2EJtmRYdAWUVCQEBvmWQ5Wsr4y5no8RY1kMasWgper56wWrGV1FHhdJXjYbh0=
