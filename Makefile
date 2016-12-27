@@ -1,14 +1,13 @@
 TEX=$(shell find . -type f -name '*.tex' -printf '%P\n')
 DVI=$(TEX:.tex=.dvi)
 PDF=$(addprefix dist/,$(TEX:.tex=.pdf))
-JPG=$(shell find . -name '*.jpg')
+JPG=$(shell find . -type f -name '*.jpg' -printf '%P\n')
 EPS=$(JPG:.jpg=.eps)
 
-all: $(PDF)
+all: $(EPS) $(PDF)
 
-eps: $(EPS)
-
-%.dvi: %.tex eps
+.INTERMEDIATE: $(DVI)
+%.dvi: %.tex
 	# Compile twice to properly compile \label-\ref
 	# http://tex.stackexchange.com/a/111281/116656
 	cd $(dir $@); uplatex -no-guess-input-enc -kanji=utf8 -synctex=1 $(notdir $<) 0<&-
