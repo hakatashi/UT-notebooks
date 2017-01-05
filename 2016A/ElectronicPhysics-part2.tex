@@ -437,4 +437,118 @@ S & =-\left(\pd FT\right)=Nk\log\frac{\left(\qquad\right)^{\frac{3}{2}}}{h^{3}}+
 \item 等圧: $\frac{V}{N}$が同じ
 \end{itemize}
 
+\section*{第4回}
+
+自主休講(歯医者)
+
+\section*{第5回}
+
+\paragraph{第4回演習 (4-6)}
+
+\begin{align*}
+\bar{\varepsilon} & =\frac{\int_{0}^{\infty}\varepsilon Z_{0}f\left(\varepsilon\right)\mathrm{d}\varepsilon}{\int_{0}^{\infty}Z_{0}f\left(\varepsilon\right)\mathrm{d}\varepsilon}\sim\frac{Z_{0}\int_{0}^{\infty}\varepsilon\mathrm{d}\varepsilon+Z_{0}\frac{\pi^{2}\left(kT\right)^{2}}{6}}{Z_{0}\mu}=\frac{\mu}{2}+\frac{\pi^{2}\left(kT\right)^{2}}{6\mu}\\
+ & =\frac{n}{2Z_{0}}+\frac{\pi^{2}\left(kT^{2}\right)}{6n}Z_{0}\;\left(\because\mu=\frac{n}{Z_{0}}\right)
+\end{align*}
+
+
+\paragraph{(4-7)}
+
+\[
+f\left(\varepsilon\right)=\frac{\e^{-\frac{\varepsilon-\mu}{kT}}}{1+\e^{-\frac{\varepsilon-\mu}{kT}}}=-kT\frac{\left(\hfill\right)'}{\left(1+\e^{-\frac{\varepsilon-\mu}{kT}}\right)}
+\]
+
+\[
+n=-Z_{0}kT\left[\log\left(\hfill\right)\right]_{0}^{\infty}=Z_{0}kT\log\left(1+\e^{\frac{\mu}{kT}}\right)
+\]
+
+\[
+\mu=kT\log\left(\e^{-\frac{n}{Z_{0}kT}}-1\right)
+\]
+
+
+\paragraph{演習問題 (1-1)}
+
+\[
+n=\int_{0}^{\infty}Z_{0}f\left(\varepsilon\right)\mathrm{d}\varepsilon=Z_{0}\varepsilon_{a}
+\]
+
+
+\paragraph{(1-2)}
+
+\[
+\bar{\varepsilon_{c0}}=\frac{\int_{0}^{\infty}\varepsilon Z_{0}f\left(\varepsilon\right)\mathrm{d}\varepsilon}{\int_{0}^{\infty}Z_{0}f\left(\varepsilon\right)\mathrm{d}\varepsilon}=\frac{\int_{0}^{\varepsilon_{a}}\varepsilon\mathrm{d}\varepsilon}{\int_{0}^{\varepsilon_{a}}\mathrm{d}\varepsilon}=\frac{\varepsilon_{a}}{2}
+\]
+
+
+\paragraph{(1-3)}
+
+\begin{align*}
+n & =Z_{0}\int_{0}^{\varepsilon_{a}}f\left(\varepsilon\right)\mathrm{d}\varepsilon+Z_{0}\int_{\varepsilon_{b}}^{\infty}f\left(\varepsilon\right)\mathrm{d}\varepsilon\\
+ & =-Z_{0}kT\left[\log\left(1+\e^{-\frac{\varepsilon-\mu}{kT}}\right)\right]_{0}^{\varepsilon_{0}}-Z_{0}kT\left[\log\left(1+\e^{-\frac{\varepsilon-\mu}{kT}}\right)\right]_{\varepsilon_{b}}^{\infty}\\
+ & =Z_{0}kT\log\frac{\left(1+\e^{\frac{\mu}{kT}}\right)\left(1+\e^{-\frac{\varepsilon_{b}-\mu}{kT}}\right)}{\left(1+\e^{-\frac{\varepsilon_{a}-\mu}{kT}}\right)}=Z_{0}\varepsilon_{a}
+\end{align*}
+
+\[
+\rightarrow\frac{\varepsilon_{a}+\varepsilon_{b}}{2}
+\]
+
+
+\paragraph{(1-4)}
+
+\begin{align*}
+n_{c}=Z_{0}\int_{\varepsilon_{b}}^{\infty}f\left(\varepsilon\right)\mathrm{d}\varepsilon & =Z_{0}kT\log\left(1+\e^{-\frac{\varepsilon_{b}-\varepsilon_{a}}{2}}\right)\\
+ & \sim Z_{0}kT\e^{-\frac{\varepsilon_{a}-\varepsilon_{b}}{2kT}}
+\end{align*}
+
+
+\paragraph{(1-5)}
+
+\begin{align*}
+\bar{\varepsilon_{c}} & =\frac{Z_{0}}{n_{c}}\int\varepsilon f\left(\varepsilon\right)\mathrm{d}\varepsilon=\frac{\e^{\frac{\varepsilon_{b}-\varepsilon_{a}}{2kT}}}{kT}\int_{\varepsilon_{b}}^{\infty}\varepsilon\e^{-\frac{\varepsilon-\mu}{kT}}\mathrm{d}\varepsilon\\
+ & =\varepsilon_{b}+kT
+\end{align*}
+
+
+\paragraph{(2)}
+
+\[
+n=\frac{2\times10^{19}}{6.7\times10^{-29}}=1.18\times10^{44}\mathrm{\text{個}/m^{2}}
+\]
+
+\begin{align*}
+T_{F} & =\frac{h^{2}}{2mk}\left(\frac{2n}{8\pi}\right)^{\frac{2}{3}}\\
+ & =\left(9.34\times10^{-18}\right)\left(1.41\times10^{43}\right)^{\frac{2}{3}}\\
+ & =9.34\times\left(1.41\right)^{\frac{2}{3}}\times10^{10}\mathrm{K}
+\end{align*}
+
+
+\paragraph{(4)}
+
+\[
+n=6.12\times10^{23}\times\frac{0.917}{23.0}=2.4\times10^{22}\mathrm{/m^{2}}
+\]
+
+\[
+\frac{3n}{8\pi}=2.86\times10^{27}\mathrm{/m^{2}}
+\]
+
+\[
+T_{F}=3.53\times10^{4}\mathrm{K}
+\]
+
+(A.2)式で$Z\left(\varepsilon\right)=Z_{0}$とおくと、
+\[
+Z_{0}\int_{0}^{\infty}\frac{1}{\e^{\frac{\varepsilon-\mu}{kT}}-1}\mathrm{d}\varepsilon=N
+\]
+
+$f\left(\varepsilon\right)=kT\frac{\left(\hfill\right)'}{\left(1-\e^{-\frac{\varepsilon-\mu}{kT}}\right)}$より$kTZ_{0}\left[\log\left(\hfill\right)\right]_{0}^{\infty}=N$
+
+\[
+\therefore-kTZ_{0}\log\left(1-\e^{-\frac{\varepsilon-\mu}{kT}}\right)=N
+\]
+
+\[
+\mu=kT\log\left(1-\e^{-\frac{N}{kTZ_{0}}}\right)\xrightarrow[T\rightarrow\infty]{}-kT\e^{-\frac{N}{kTZ_{0}}}
+\]
+
 \end{document}
