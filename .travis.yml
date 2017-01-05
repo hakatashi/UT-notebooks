@@ -15,7 +15,9 @@ before_install:
 cache:
   directories:
     - dist
-before_script: git lfs pull
+before_script:
+  - git lfs pull
+  - bash reset_timestamps.sh
 script:
   - make
 deploy:
