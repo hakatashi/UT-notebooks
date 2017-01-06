@@ -1,7 +1,7 @@
 %% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[english]{article}
-\usepackage[T1]{fontenc}
+\usepackage[LGR,T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[a5paper]{geometry}
 \geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
@@ -15,6 +15,14 @@
 \usepackage{ulem}
 
 \makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\DeclareRobustCommand{\greektext}{%
+  \fontencoding{LGR}\selectfont\def\encodingdefault{LGR}}
+\DeclareRobustCommand{\textgreek}[1]{\leavevmode{\greektext #1}}
+\ProvideTextCommand{\~}{LGR}[1]{\char126#1}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage[dvipdfmx]{hyperref}
 \usepackage[dvipdfmx]{pxjahyper}
@@ -1266,4 +1274,92 @@ $x=L$で反転電子がなくなる
 →ドレイン端でチャネルが消失!!
 
 図電デ11-8
+
+\section*{第12回}
+
+\paragraph{ピンチオフ点では何が起きているか? (復習)}
+
+\[
+Q\left(x\right)=C_{OX}W\left(V_{GS}-V_{TH}-\phi\left(x\right)\right)
+\]
+
+$x=0$ (ソース端)
+
+\[
+\phi\left(x=0\right)=0
+\]
+
+$x=L$ ドレイン端
+
+\[
+\phi\left(x=L\right)=V_{DS}=V_{GS}-V_{TH}\quad\left(\text{ピンチオフ点}\right)
+\]
+
+\[
+\rightarrow Q\left(x=L\right)=C_{OX}W\left\{ V_{GS}-V_{TH}-\left(V_{GS}-V_{TH}\right)\right\} =0
+\]
+
+ピンチオフ点に於いては、ドレイン端で反転層がなくなる。→チャネルが消失する
+
+図電デ12-1
+
+図電デ12-2
+
+図電デ12-3
+
+\section{バイポーラトランジスタ}
+
+(参考: MOSトランジスタ = ユニポーラトランジスタ)
+
+①基本構造と記号
+
+図電デ12-4
+
+図電デ12-5
+
+②動作原理
+
+図電デ12-6
+
+③構造的な特徴
+
+ただのnp結合+pn結合ではない。
+
+図電デ12-7
+\begin{itemize}
+\item エミッタのドーピング濃度はベースの濃度よりも桁違いに大きい。
+\item ベースの厚みが非常に薄い (0.4μm以下)
+\end{itemize}
+④キャリアの流れ
+
+図電デ12-8
+
+図電デ12-9
+
+⑤増幅回路
+
+図電デ12-10
+
+ベース接地の増幅回路
+
+\[
+\alpha=\frac{I_{C}}{I_{E}}=\frac{J_{n2}}{J_{n1}+J_{p_{1}}}\approx1
+\]
+
+$\alpha$→ベース接地の電流増幅率
+
+図電デ12-11
+
+エミッタ接地の増幅回路
+
+\begin{align*}
+I_{E} & =I_{C}+I_{B}\\
+I_{B} & =I_{E}-I_{c}=I_{E}-\alpha I_{E}=\left(1-\alpha\right)I_{E}
+\end{align*}
+
+\[
+\beta=\frac{I_{C}}{I_{B}}=\frac{\alpha I_{B}}{\left(1-\alpha\right)I_{E}}=\frac{\alpha}{1-\alpha}
+\]
+
+$\beta=\frac{\alpha}{1-\alpha}$: エミッタ接地の電流増幅率
 \end{document}
