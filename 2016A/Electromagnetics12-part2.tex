@@ -2542,4 +2542,242 @@ W_{em}\equiv\int_{V}\left(\frac{1}{2}\boldsymbol{H}\cdot\boldsymbol{B}+\frac{1}{
 上式がエネルギー保存則を表しているはず。
 
 つまり、\ref{4.26}で定義した$\boldsymbol{S}$は、単位断面を通過する電磁界エネルギー(電力密度)を表していると解釈できる。
+
+\paragraph{先週の宿題1}
+
+図電後6-8
+
+\paragraph{(a)}
+
+図電後6-9
+
+導体内($a<r<b$)では
+\[
+2\pi rH=I
+\]
+より
+\[
+H=\frac{I}{2\pi r}
+\]
+
+\[
+B=\frac{\mu_{2}I}{2\pi r}
+\]
+
+導体内($0<r<a$)では、
+\begin{align*}
+2\pi rH & =\frac{r^{2}}{a^{2}}I\\
+H & =\frac{rI}{2\pi a^{2}}\\
+B & =\frac{\mu_{1}rI}{2\pi a^{2}}
+\end{align*}
+
+導体内の磁束によるインダクタンス(内部インダクタンス)は、先週の当日問題より、単位長さあたり$l_{i}=\frac{\mu_{1}}{8\pi}$
+
+導体外の磁束によるインダクタンス(外部インダクタンス)は、$a<r<b$で鎖交する磁束が\uline{単位長さあたり}
+\[
+\Phi=\int_{a}^{b}B\left(r\right)\mathrm{d}r=\frac{\mu_{2}I}{2\pi}\log\frac{b}{a}
+\]
+
+∴外部インダクタンス$l_{0}=\frac{\Phi}{I}=\frac{\mu_{2}}{2\pi}\log\frac{b}{a}$
+
+∴全インダクタンス$L=l_{i}+l_{0}=\frac{\mu_{1}}{8\pi}+\frac{\mu_{2}}{2\pi}\log\frac{b}{a}$
+
+\paragraph{(b)}
+
+表面しか流れないので、内部の磁束=0 $\therefore l_{i}=0$
+
+$l_{0}$は(a)と同じ。
+\[
+\therefore L=l_{0}=\frac{\mu_{2}}{2\pi}\log\frac{b}{a}
+\]
+
+
+\paragraph{2}
+
+図電後6-11
+
+\paragraph{(a)}
+
+ギャップでは断面積が$\left(w-x\right)l$になっている。
+
+\[
+\therefore\left(w-x\right)lB_{y}=wlB_{m}
+\]
+より
+\[
+B_{y}=\frac{w}{w-x}B_{m}
+\]
+
+一方、$\mu=\infty$なので、$H_{m}=\frac{1}{\mu}B_{m}=0$
+
+\[
+H_{y}=\frac{1}{\mu_{0}}B_{y}
+\]
+
+アンペアより
+\[
+2gH_{g}=NI
+\]
+
+\[
+B_{y}=\mu_{0}H_{g}=\frac{\mu_{0}NI}{2g}
+\]
+
+コイルを貫く磁束は
+\[
+\Phi=NB_{m}wl=NB_{y}\left(w-x\right)l=\frac{\mu_{0}N^{2}\left(w-x\right)l}{2g}I
+\]
+
+\[
+\therefore L=\frac{\Phi}{I}=\frac{\mu_{0}N^{2}\left(w-x\right)l}{2g}
+\]
+
+エネルギー
+\[
+W=\frac{1}{2}LI^{2}=\frac{\mu_{0}N^{2}I^{2}l}{4g}\left(w-x\right)
+\]
+
+(別解: 磁束一定なので、コイルでの磁束/Nはギャップでの磁束と同じ。先週の当日問題より$L=\frac{\mu_{0}N^{2}S}{2g}$に$S=\left(w-x\right)l$を代入すれば良い。)
+
+\paragraph{(b)}
+
+仮想変位より、
+\[
+F_{x}=+\left(\pd Wx\right)_{I=\text{一定}}=-\frac{\mu_{0}N^{2}I^{2}l}{4g}<0
+\]
+
+$x$を減らす向き、つまり復元力
+
+\[
+F_{y}=\left(\pd Wy\right)_{I=\text{一定}}=-\frac{\mu_{0}N^{2}I^{2}l\left(w-x\right)}{4g^{2}}<0
+\]
+
+$y$が小さくなる方向、吸引力
+
+\paragraph{当日問題1(1)}
+
+マクスウェルより
+
+\begin{align}
+\nabla\times\boldsymbol{E} & =-\pd{\boldsymbol{B}}t\label{6-1}\\
+\nabla\times\boldsymbol{H} & =\boldsymbol{i}_{F}+\pd{\boldsymbol{D}}t\label{6-2}\\
+\nabla\cdot\boldsymbol{D} & =\rho_{F}\label{6-3}\\
+\nabla\cdot\boldsymbol{B} & =0\label{6-4}
+\end{align}
+
+物質中の関係式より、
+\begin{align}
+\boldsymbol{B} & =\mu\boldsymbol{H}\label{6-5}\\
+\boldsymbol{D} & =\varepsilon\boldsymbol{E}\label{6-6}\\
+\boldsymbol{i}_{F} & =\sigma\boldsymbol{E}\label{6-7}
+\end{align}
+
+\ref{6-3}\ref{6-6}より、
+\begin{align*}
+\nabla\cdot\boldsymbol{E} & =\nabla\cdot\left(\frac{1}{\varepsilon}\boldsymbol{D}\right)\quad\left(\because\ref{6-6}\right)\\
+ & =\frac{1}{\varepsilon}\left(\nabla\cdot\boldsymbol{D}\right)\quad\left(\varepsilon\text{が一定だから}\right)\\
+ & =\frac{\rho_{F}}{\varepsilon}\quad\left(\because\ref{6-3}\right)\\
+ & =0\quad\left(\because\rho_{F}=0\right)
+\end{align*}
+
+\ref{6-1}の両辺$\nabla\times$
+\begin{align*}
+\nabla\times\left(\nabla\times\boldsymbol{E}\right) & =\nabla\left(\nabla\cdot\boldsymbol{E}\right)-\nabla^{2}\boldsymbol{E}\\
+ & =\pd{}t\left(\nabla\times\boldsymbol{B}\right)\\
+ & =\mu\pd{}t\left(\nabla\times\boldsymbol{H}\right)\quad\left(\because\ref{6-3},\mu\text{が一定だから}\right)\\
+ & =\mu\varepsilon\pdd{\boldsymbol{E}}x+\mu\sigma\pd{\boldsymbol{E}}t\quad\left(\because\ref{6-2},\ref{6-6},\ref{6-7}\right)
+\end{align*}
+
+\[
+\therefore\nabla^{2}\boldsymbol{E}-\mu\varepsilon\pdd{\boldsymbol{E}}t-\mu\sigma\pd{\boldsymbol{E}}t==0
+\]
+
+
+\paragraph{(2)}
+
+$\boldsymbol{E}\left(z,t\right)=\Re\left\{ \boldsymbol{E}_{0}\e^{\j\left(\omega t-kz\right)}\right\} $を上式に代入。
+
+\[
+\nabla^{2}\boldsymbol{E}=\pdd{}z\boldsymbol{E}=-k^{2}\boldsymbol{E}
+\]
+
+\[
+\pd{}t\boldsymbol{E}=\j\omega\boldsymbol{E},\pdd{}t\boldsymbol{E}=-\omega^{2}\boldsymbol{E}
+\]
+
+\[
+\left(-k^{2}+\mu\varepsilon\omega^{2}-\j\omega\mu\sigma\right)\boldsymbol{E}=0
+\]
+
+\[
+k=\sqrt{\mu\varepsilon\omega^{2}-\j\mu\sigma\omega}
+\]
+
+
+\paragraph{(3)}
+
+$\sigma\gg\omega\varepsilon$のとき、$\left|\mu\varepsilon\omega^{2}\right|\ll\left|\mu\sigma\omega\right|$
+
+\[
+\therefore k\approx\sqrt{-\j\mu\sigma\omega}=\frac{\sqrt{\mu\sigma\omega}}{2}\left(1-\j\right)
+\]
+
+\begin{align*}
+\therefore\boldsymbol{E}\left(z,t\right) & =\Re\left[\boldsymbol{E}_{0}\e^{\j\left\{ \omega t-\sqrt{\frac{\mu\sigma\omega}{2}}z\right\} }\right]\e^{-\sqrt{\frac{\mu\sigma\omega}{2}}z}\\
+ & =\boldsymbol{E}_{0}\cos\left[\omega t-\sqrt{\frac{\mu\sigma\omega}{2}}z\right]\e^{-\sqrt{\frac{\mu\sigma\omega}{2}}z}
+\end{align*}
+
+\[
+\delta=\sqrt{\frac{z}{\mu\sigma\omega}}
+\]
+
+図電後6-12
+
+\paragraph{2}
+
+\[
+\nabla\times\boldsymbol{H}=\pd{\boldsymbol{D}}t=\varepsilon\pd{\boldsymbol{E}}t
+\]
+に
+\[
+\boldsymbol{E}\left(z,t\right)=\left[\boldsymbol{E}_{0}\sin\left\{ \omega\left(t-\frac{z}{v}\right),0,0\right\} ,0,0\right]
+\]
+を代入して、
+\[
+\pd{H_{z}}y-\pd{H_{y}}z=\varepsilon\omega E_{0}\cos\left\{ \omega\left(t-\frac{z}{v}\right)\right\} 
+\]
+
+$x,y$方向に一様なので$\pd{H_{z}}y=0$
+
+\[
+H_{y}\left(z\right)=-\varepsilon\omega E_{0}\left(-\frac{v}{\omega}\right)\sin\left\{ \omega\left(t-\frac{z}{v}\right)\right\} 
+\]
+
+$v=\frac{1}{\sqrt{\varepsilon\mu}}$より、
+\[
+H_{y}\left(z\right)=\sqrt{\frac{\varepsilon}{\mu}}E_{0}\sin\left\{ \omega\left(t-\frac{z}{v}\right)\right\} 
+\]
+
+\[
+H_{x}=H_{z}=0
+\]
+
+特性インピーダンス
+\[
+\frac{E_{x}}{H_{y}}=\sqrt{\frac{\mu}{\varepsilon}}
+\]
+
+
+\paragraph{(2)}
+
+\[
+\boldsymbol{S}=\boldsymbol{E}\times\boldsymbol{H}=\left[0,0,\sqrt{\frac{\varepsilon}{\mu}}E_{0}^{2}\sin^{2}\left\{ \omega\left(t-\frac{z}{v}\right)\right\} \right]
+\]
+
+平均
+\[
+\left\langle \boldsymbol{S}\right\rangle =\frac{1}{2}\sqrt{\frac{\varepsilon}{\mu}}E_{0}^{2}
+\]
+
+注: $\boldsymbol{S}$が意味を持つのは\ref{4.29}のように、ある閉曲面$S$全体で積分した結果のみ。例えば、静電界$\boldsymbol{E}$と静磁場$\boldsymbol{H}$が存在すると、$\boldsymbol{S}\neq0$だが、$\int_{C}\boldsymbol{S}\cdot\boldsymbol{n}\mathrm{d}S=0$となりエネルギーの流れはない。
 \end{document}
