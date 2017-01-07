@@ -2229,4 +2229,317 @@ F=-\left(\pd Wg\right)_{\Phi\text{一定}}=-\frac{\Phi^{2}}{\mu_{0}N^{2}S}=-\fra
 F=-f2S=\mu_{0}H_{g}^{2}S=\frac{\mu_{0}N^{2}SI^{2}}{4g^{2}}
 \]
 
+
+\section*{第6回}
+
+\paragraph{期末試験}
+
+1/16(月) 13:10～16:35 (1331教室)
+
+持ち込み不可
+
+教科書6～10章の範囲
+
+\section{マクスウェルの方程式}
+
+\subsection{変位電流}
+
+図電後6-1
+
+コンデンサに電流を流してでんcを貯める間に、コンデンサの周囲にどのような次回が発生するか?
+
+図電後6-2
+
+アンペアの法則\ref{2.8}\ref{2.9}より、
+\begin{equation}
+\oint\boldsymbol{H}\cdot\mathrm{d}\boldsymbol{s}=I_{F}\label{4.1}
+\end{equation}
+を上図の閉経路$C$に適用すれば$\boldsymbol{H}$が求まるハず。
+
+ここで$I_{F}$は「$C$と鎖交する電流」=「$S$を貫く電流」
+
+\begin{equation}
+\therefore\oint\boldsymbol{H}\left(t\right)\cdot\mathrm{d}\boldsymbol{s}=I\left(t\right)\label{4.2}
+\end{equation}
+
+一方、「閉曲面$S$」のとり方は教会が$C$でありさえすれば任意のはず。(∵ストークスの定理)
+
+図電後6-3
+
+例えば、上の$S'$で考えるとどうなるか?
+
+$S'$を貫く電流$I_{F}=0$なので、\ref{4.1}より、
+\[
+\oint_{C}\boldsymbol{H}\cdot\mathrm{d}\boldsymbol{s}
+\]
+になってしまう。
+
+$S$のとり方で$\boldsymbol{H}$が変わってしまいのはおかしい。
+
+→コンデンサの電極間には、自由電流は流れていないが、代わりに自由電荷が蓄えられ、\uline{$\boldsymbol{D}$が増加している。}
+
+図電後6-4
+
+つまり、\uline{$\pd{\boldsymbol{D}}t$が電流と同じ作用をする。}
+
+そこで、アンペアの法則\ref{2.9}を一般化して、
+\begin{equation}
+\nabla\times\boldsymbol{H}=\boldsymbol{i}_{F}+\pd{\boldsymbol{D}}t\label{4.3}
+\end{equation}
+(アンペア・マクスウェルの法則)とすることで矛盾を解決する。(マクスウェル 1864年)
+
+$\pd{\boldsymbol{D}}t$を変位電流と呼ぶ。
+
+\ref{4.3}の積分系は、
+\begin{equation}
+\oint_{C}\boldsymbol{H}\cdot\mathrm{d}\boldsymbol{s}=I_{F}+\int_{S}\pd{\boldsymbol{D}}t\cdot\boldsymbol{n}\mathrm{d}S\label{4.4}
+\end{equation}
+
+前礼に適用すると、$S'$において$I_{F}=0$
+
+一方、ガウスの法則より$\boldsymbol{D}=\sigma_{F}=\frac{Q_{F}}{A}$
+
+\[
+\therefore\int{}_{S}\boldsymbol{D}\cdot\boldsymbol{n}\mathrm{d}S=Q_{F}
+\]
+
+∴\ref{4.4}は、
+\begin{equation}
+\oint_{C}\boldsymbol{H}\cdot\mathrm{d}\boldsymbol{s}=\pd{}t\int_{S'}\boldsymbol{D}\cdot\boldsymbol{n}\mathrm{d}S=\d{}tQ_{F}\label{4.5}
+\end{equation}
+
+\ref{4.2}と\ref{4.5}より、$I\left(t\right)=\d{}tQ_{F}\left(t\right)$
+
+電荷保存則が導かれ、つじつまが合う。
+
+より一般的に、\ref{4.3}の両辺divして、
+\begin{align*}
+\text{左辺} & =\nabla\cdot\left(\nabla\times\boldsymbol{H}\right)=0\\
+\text{右辺} & =\nabla\cdot\boldsymbol{i}_{F}+\pd{}t\left(\nabla\cdot\boldsymbol{D}\right)
+\end{align*}
+
+∴電荷保存則
+\[
+\nabla\cdot\boldsymbol{i}_{F}=-\pd{}t\rho_{F}
+\]
+が導かれる。
+
+\subsection{マクスウェルの方程式}
+
+以上、電界の次回を規定する法則は、以下の4つの式にまとめられる。
+
+\begin{align}
+\nabla\times\boldsymbol{E} & =-\pd{\boldsymbol{B}}t\hfill\left(\text{ファラデーの電磁誘導}\right)\label{4.6}\\
+\nabla\times\boldsymbol{H} & =\pd{\boldsymbol{D}}t+\boldsymbol{i}_{F}\hfill\left(\text{アンペア・マクスウェル}\right)\label{4.7}\\
+\nabla\cdot\boldsymbol{D} & =\rho_{F}\hfill\left(\text{ガウス}\right)\label{4.8}\\
+\nabla\cdot\boldsymbol{B} & =0\hfill\left(\text{磁荷の非存在}\right)\label{4.9}
+\end{align}
+
+このとき、電荷$q$は、
+\begin{equation}
+\boldsymbol{F}=q\left(\boldsymbol{E}+\boldsymbol{v}\times\boldsymbol{B}\right)\label{4.10}
+\end{equation}
+のローレンツ力を受ける。
+
+既にならったように、物質中で$\boldsymbol{E}$と$\boldsymbol{D}$、$\boldsymbol{B}$と$\boldsymbol{H}$、$i_{F}$と$\boldsymbol{E}$は独立ではなく、
+\begin{align}
+\boldsymbol{D} & =\varepsilon\boldsymbol{E}\label{4.11}\\
+\boldsymbol{B} & =\mu\boldsymbol{H}\label{4.12}\\
+\boldsymbol{i}_{F} & =\sigma\boldsymbol{E}\label{4.13}
+\end{align}
+と表すことができる。
+
+一般に$\varepsilon,\mu,\sigma$は$\boldsymbol{E}$や$\boldsymbol{H}$の関数になるが、$\boldsymbol{E}$と$\boldsymbol{H}$の反意を限定すれば、多くの物質(線形な物質と呼ぶ。例外は磁石)で、定数と\uline{近似}できる。
+
+\subsection{電磁波}
+
+マクスウェルが導入した変位電流の項($\pd{\boldsymbol{D}}t$)により、\uline{電界と磁界が}
+
+互いに誘導しながら空間を伝わっていく伝承が、初めて説明できる。
+
+簡単のため真空中の電磁波の伝搬を考える。
+
+真空中なので、
+\[
+\varepsilon=\varepsilon_{0},\mu=\mu_{0},\rho_{F}=0,i_{F}=0
+\]
+
+マクスウェルの方程式\ref{4.6}～\ref{4.9}は、
+\begin{align}
+\nabla\times\boldsymbol{E} & =-\pd{\boldsymbol{B}}t\label{4.14}\\
+\nabla\times\boldsymbol{B} & =\varepsilon_{0}\mu_{0}\pd{\boldsymbol{E}}t\label{4.15}\\
+\nabla\cdot\boldsymbol{E} & =0\label{4.16}\\
+\nabla\cdot\boldsymbol{B} & =0\label{4.17}
+\end{align}
+
+今、$\boldsymbol{B}$が時間的に変化すると、\ref{4.14}より、左ねじの向きに$\boldsymbol{E}$の渦が発生。
+
+→\ref{4.15}より$\pd{\boldsymbol{E}}t$から右ねじの向きに$\boldsymbol{B}$の渦が発生。
+
+これを繰り返すことで、$\boldsymbol{E}$と$\boldsymbol{B}$の時間変化が伝搬する。\ref{4.14}の両辺rotを取り、\ref{4.15}を用いると、
+\[
+\nabla\times\nabla\times\boldsymbol{E}=-\nabla\times\pd{\boldsymbol{B}}t=-\pd{}t\left(\nabla\times\boldsymbol{B}\right)=-\varepsilon_{0}\mu_{0}\pdd{\boldsymbol{E}}t\left(\leftarrow\ref{4.15}\right)
+\]
+
+ベクトル公式よr、左辺は
+\[
+\nabla\times\nabla\times\boldsymbol{E}=\nabla\left(\nabla\cdot\boldsymbol{E}\right)-\nabla^{2}\boldsymbol{E}
+\]
+
+\begin{equation}
+\therefore\nabla^{2}\boldsymbol{E}=\varepsilon_{0}\mu_{0}\pdd{\boldsymbol{E}}t\label{4.18}
+\end{equation}
+
+同様に、\ref{4.15}の両辺rotとり、\ref{4.14}、\ref{4.17}を用いれば、
+\begin{equation}
+\nabla^{2}\boldsymbol{B}=\varepsilon_{0}\mu_{0}\pdd{\boldsymbol{B}}t\label{4.19}
+\end{equation}
+
+\ref{4.18}、\ref{4.19}の形の微分方程式は、一般的に波動方程式と呼ばれ、波の伝搬を表す。
+
+簡単のため、$\boldsymbol{E},\boldsymbol{B}$は$x,y$方向に一様とする。(平面は)
+
+また、$\boldsymbol{E}$は$x$成分のみを持ち、角周波数$\omega$で時間的に振動させる。
+
+つまり、
+\[
+\boldsymbol{E}=\left(E_{x},0,0\right)
+\]
+
+\begin{equation}
+E_{x}\left(z,t\right)=\Re\left[\hat{E}_{x}\left(z\right)\e^{\j\omega t}\right]\label{4.20}
+\end{equation}
+とする。
+
+\ref{4.20}を\ref{4.18}に代入して、
+\[
+\dd{}z\hat{E}_{x}=-\varepsilon_{0}\mu_{0}\omega^{2}\hat{E}_{x}
+\]
+
+\begin{equation}
+\hat{E}_{x}\left(z\right)\equiv\hat{E}_{x0}\e^{ikz}\label{4.21}
+\end{equation}
+とおくと、
+\[
+-k^{2}\hat{E}_{x0}=-\varepsilon_{0}\mu_{0}\omega^{2}\hat{E}_{x0}
+\]
+
+\begin{equation}
+\therefore k=\pm\frac{\omega}{c}\label{4.22}
+\end{equation}
+
+ただし、
+\begin{equation}
+C\equiv\frac{1}{\sqrt{\varepsilon_{0}\mu_{0}}}\label{423}
+\end{equation}
+
+\ref{4.20}～\ref{4.22}より、
+\begin{align}
+E_{x}\left(z,x\right) & =\Re\left[\hat{E}_{x0}\e^{\j\left(\omega t+kz\right)}\right]\nonumber \\
+ & =\Re\left[\hat{E}_{x0}\e^{\j\left\{ \omega\left(t\pm\frac{z}{c}\right)\right\} }\right]\label{4.24}
+\end{align}
+
+$\hat{E}_{x0}$が実数のとき、
+\begin{equation}
+E_{x}=\hat{E}_{x0}\cos\left\{ \omega\left(t\pm\frac{z}{c}\right)\right\} \label{4.25}
+\end{equation}
+
+図電後6-6
+
+$\pm$は、それぞれ$\mp z$方向に伝搬する波を表す。
+
+このときの伝搬速度は、
+\[
+c=\frac{1}{\sqrt{\varepsilon_{0}\mu_{0}}}\doteqdot2.9979\times10^{8}\mathrm{m/s}
+\]
+
+一方、\ref{4.15}(アンペア・マクスウェル)より、
+\[
+\pd{B_{z}}y-\pd{B_{y}}z=\frac{1}{c^{2}}\pd{E_{x}}t
+\]
+
+\ref{4.24}を代入して、
+\[
+\pd{B_{y}}z=-\frac{1}{c^{2}}\Re\left[\j\omega\hat{E}_{x0}\e^{\j\left\{ \omega\left(t-\frac{z}{c}\right)\right\} }\right]
+\]
+
+\[
+\therefore B_{y}\left(z,y\right)=-\frac{1}{c^{2}}\Re\left[\j\omega\frac{-c}{\j\omega}\hat{E}_{x0}\e^{\j\left\{ \omega\left(t-\frac{z}{c}\right)\right\} }\right]
+\]
+
+\[
+B_{y}=\frac{1}{c}\Re\left[\hat{E}_{x0}\e^{\j\left\{ \omega\left(t-\frac{z}{c}\right)\right\} }\right]
+\]
+
+(図省略(3次元中における電磁波の伝搬))
+
+$\boldsymbol{E}$と$\boldsymbol{B}$は直交し、\uline{$\boldsymbol{E}\times\boldsymbol{B}$の向き}に進行する。
+
+このとき、$E_{x}$と$H_{y}$の比
+\begin{align*}
+\frac{E_{x}}{H_{y}}=\frac{\mu_{0}E_{x}}{B_{y}}=\mu_{0}C=\sqrt{\frac{\mu_{0}}{\varepsilon_{0}}} & =120\pi\left(\mathrm{\Omega}\right)\\
+ & \approx377\Omega
+\end{align*}
+を特性インピーダンスと呼ぶ。
+
+一様な$\varepsilon,\mu$を持つ媒質中では、速度
+\[
+v=\frac{1}{\sqrt{\varepsilon\mu}}\equiv\frac{c}{n}
+\]
+
+($n$: 屈折率)
+
+特性インピーダンス
+\[
+\frac{E_{x}}{H_{y}}=\sqrt{\frac{\mu}{\varepsilon}}
+\]
+となる。(演習問題)
+
+\subsection{エネルギー保存則とポインティングベクトル}
+
+\begin{equation}
+\boldsymbol{S}\equiv\boldsymbol{E}\times\boldsymbol{H}\label{4.26}
+\end{equation}
+をポインティングベクトル(Poynting vector)と定義する。
+
+\ref{4.26}の両辺divをとり、ベクトル公式を用いると、
+\begin{align}
+\nabla\cdot\boldsymbol{S} & =\nabla\cdot\left(\boldsymbol{E}\times\boldsymbol{H}\right)\nonumber \\
+ & =\boldsymbol{H}\cdot\left(\nabla\times\boldsymbol{E}\right)-\boldsymbol{E}\cdot\left(\nabla\times\boldsymbol{H}\right)\label{4.27}
+\end{align}
+
+\ref{4.6}、\ref{4.7}を代入して、
+\begin{align}
+\nabla\cdot\boldsymbol{S} & =-\boldsymbol{H}\cdot\pd{\boldsymbol{B}}t-\boldsymbol{E}\cdot\pd{\boldsymbol{D}}t-\boldsymbol{E}\cdot\boldsymbol{i}_{F}\nonumber \\
+ & =-\pd{}t\left[\frac{1}{2}\boldsymbol{H}\cdot\boldsymbol{B}+\frac{1}{2}\boldsymbol{E}\cdot\boldsymbol{D}\right]-\boldsymbol{E}\cdot\boldsymbol{i}_{F}\label{4.28}
+\end{align}
+
+ただし、
+\[
+\boldsymbol{H}\cdot\pd{\boldsymbol{B}}t=\mu\boldsymbol{H}\cdot\pd{\boldsymbol{H}}t=\mu\pd{}t\left(\frac{1}{2}\boldsymbol{H}\cdot\boldsymbol{H}\right)=\pd{}t\left(\frac{1}{2}\boldsymbol{H}\cdot\boldsymbol{B}\right)
+\]
+
+$\boldsymbol{E}\cdot\pd{\boldsymbol{D}}t=\cdots=\pd{}t\left(\frac{1}{2}\boldsymbol{E}\cdot\boldsymbol{D}\right)$を用いた。
+
+図電後6-7
+
+ある閉領域$V$内で\ref{4.28}を積分し、ガウスの定理を用いると、
+\begin{align*}
+\text{左辺} & =\int_{V}\nabla\cdot\boldsymbol{S}\mathrm{d}v=\int_{S}\boldsymbol{S}\cdot\boldsymbol{n}\mathrm{d}S\\
+\text{右辺} & =-\d{}tW_{em}-\int_{V}\boldsymbol{E}\cdot\boldsymbol{i}_{F}\mathrm{d}v
+\end{align*}
+
+ここで、
+\[
+W_{em}\equiv\int_{V}\left(\frac{1}{2}\boldsymbol{H}\cdot\boldsymbol{B}+\frac{1}{2}\boldsymbol{E}\cdot\boldsymbol{D}\right)\mathrm{d}v
+\]
+は$V$ないの電磁界エネルギー
+
+\begin{equation}
+\therefore\underbrace{-\d{W_{em}}t}_{V\text{内のエネルギーの減衰率}}=\underbrace{\int_{V}\boldsymbol{E}\cdot\boldsymbol{i}_{F}\mathrm{d}v}_{\text{ジュール熱}}+\underbrace{\int_{S}\boldsymbol{S}\cdot\boldsymbol{n}\mathrm{d}S}_{\text{表面}S\text{を通って外に流出する}\boldsymbol{S}\text{の和}}\label{4.29}
+\end{equation}
+
+上式がエネルギー保存則を表しているはず。
+
+つまり、\ref{4.26}で定義した$\boldsymbol{S}$は、単位断面を通過する電磁界エネルギー(電力密度)を表していると解釈できる。
 \end{document}
