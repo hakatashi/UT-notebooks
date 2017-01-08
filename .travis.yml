@@ -1,29 +1,25 @@
 language: generic
 sudo: required
 dist: trusty
-services:
-  - docker
 before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y texlive-lang-cjk texlive-fonts-recommended texlive-latex-extra
+    texlive-fonts-extra texlive-lang-greek texlive-generic-recommended texlive-math-extra
+    texlive-science potrace --no-install-recommends
   # Install git-lfs
   - mkdir -p $HOME/bin
   - wget https://github.com/github/git-lfs/releases/download/v1.5.4/git-lfs-linux-amd64-1.5.4.tar.gz
   - tar xvfz git-lfs-linux-amd64-1.5.4.tar.gz
   - mv git-lfs-1.5.4/git-lfs $HOME/bin/git-lfs
   - export PATH=$PATH:$HOME/bin/
-  # Restore docker image cache
-  - if [[ -f docker/ut-notebooks.tar ]]; then docker load < docker/ut-notebooks.tar; fi
+cache:
+  directories:
+    - dist
 before_script:
   - git lfs pull
   - bash reset_timestamps.sh
 script:
-  - docker-compose run latex make
-before_cache:
-  # Save docker image as a cache
-  - if [[ ! -f docker/ut-notebooks.tar ]]; then mkdir -p docker && docker save hakatashi/ut-notebooks > docker/ut-notebooks.tar; fi
-cache:
-  directories:
-    - dist
-    - docker
+  - make
 deploy:
   provider: s3
   local_dir: dist
