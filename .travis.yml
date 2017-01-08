@@ -12,10 +12,6 @@ before_install:
   - export PATH=$PATH:$HOME/bin/
   # Restore docker image cache
   - if [[ -f docker/ut-notebooks.tar ]]; then docker load < docker/ut-notebooks.tar; fi
-cache:
-  directories:
-    - dist
-    - docker
 before_script:
   - git lfs pull
   - bash reset_timestamps.sh
@@ -24,6 +20,10 @@ script:
 before_cache:
   # Save docker image as a cache
   - if [[ ! -f docker/ut-notebooks.tar ]]; then mkdir -p docker && docker save hakatashi/ut-notebooks > docker/ut-notebooks.tar; fi
+cache:
+  directories:
+    - dist
+    - docker
 deploy:
   provider: s3
   local_dir: dist
