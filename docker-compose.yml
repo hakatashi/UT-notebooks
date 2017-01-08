@@ -1,8 +1,8 @@
 version: '2'
 services:
   latex:
-    image: ut-notebooks
+    image: hakatashi/ut-notebooks
     container_name: ut-notebooks
     volumes:
-      - .:/code
-    working_dir: /code
+      - .:/ut-notebooks
+    working_dir: /ut-notebooks
