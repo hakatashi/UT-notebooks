@@ -17,6 +17,11 @@
 \usepackage{ulem}
 
 \makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage[dvipdfmx]{hyperref}
 \usepackage[dvipdfmx]{pxjahyper}
@@ -1424,4 +1429,99 @@ g\left(x\right)=x^{2}+x+1
 \]
 
 図情9-7
+
+\section*{第10回}
+
+\paragraph{巡回符号}
+\begin{itemize}
+\item 生成多項式$g\left(x\right)$で割り切れるように符号多項式
+\item 符号化
+\begin{itemize}
+\item $q\left(x\right)=q_{0}+q_{1}x+q_{2}x^{2}+\cdots+q_{k-1}x^{k-1}$
+\item ⇒$x^{n-k}$
+\item ⇒$g\left(x\right)$で割り
+\item ⇒余り$\gamma\left(x\right)$
+\begin{align*}
+g\left(x\right) & =g_{0}+g_{1}x+\cdots+g_{n-k}x^{n-k}\\
+x^{n-k}q\left(x\right) & =q_{0}x^{n-k}+q_{1}x^{n-k+1}+\cdots+q_{k-1}x^{n-k}\\
+\gamma\left(x\right) & =\gamma_{0}+\gamma_{1}x+\cdots+\gamma_{n-k-1}x^{n-k-1}
+\end{align*}
+\item ⇒
+\[
+u\left(x\right)=u_{0}+u_{1}x+\cdots+u_{n-1}x^{n-1}
+\]
+\[
+\left(\underbrace{\gamma_{0},\gamma_{1},\cdots,\gamma_{n-k-1},q_{0},q_{1},\cdots,q_{k-1}}_{n\text{個}}\right)
+\]
+\end{itemize}
+\end{itemize}
+
+\paragraph{例}
+
+$q\left(x\right)=x^{3}+x+1$
+
+(図略)
+
+\[
+x^{6}\rightarrow\left(1\quad0\quad0\right)
+\]
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline 
+ &  & $D_{)}$  & $D_{2}$ & $D_{3}$\tabularnewline
+\hline 
+\hline 
+1 & 1 & 1 & 0 & 0\tabularnewline
+\hline 
+2 & 0 & 0 & 1 & 0\tabularnewline
+\hline 
+3 & 0 & 0 & 0 & 1\tabularnewline
+\hline 
+4 & 0 & 1 & 1 & 0\tabularnewline
+\hline 
+5 & 0 & 0 & 1 & 1\tabularnewline
+\hline 
+6 & 0 & 1 & 1 & 1\tabularnewline
+\hline 
+7 & 0 & 1 & 0 & 1\tabularnewline
+\hline 
+\end{tabular}
+
+\paragraph{CDにおける誤り訂正}
+
+音声
+
+→44.1kHz 16ビット/サンプル\texttimes 2(ステレオ)
+
+→6サンプル分\texttimes 2チャンネル (24byte)
+
+→24byte→{[}CIRS符号{]}→32byte$\xrightarrow{\text{1byte補助符号(曲番号等)}}$33byte
+
+$\xrightarrow{\text{254bit}}${[}EFM変換{]}(8to14 Moderation, 3セットのマージン)
+
+$\xrightarrow[\text{24bit同期符号}]{\text{564bit}}${[}媒体へ記録{]}(568bit)
+
+CD上では、約1700bit/mm
+
+CIRS→C Iterleve RS
+
+\paragraph{CIRS符号}
+
+24byte→{[}IL{]}→24byte
+
+→(最小符号間距離5byte, 符号誤り訂正(2byte誤り訂正))→(28, 24)RS
+
+→(28byte)→{[}IL{]}→22byte
+
+→RS符号(最小符号間距離5byte)(誤り検出 3byte, (+誤り訂正 1byte))
+
+→32byte→{[}IL{]}
+
+\paragraph{試験}
+\begin{itemize}
+\item 1/17 1限
+\item A4一枚のメモ持ち込み可 自筆に限る
+\item 対数表的なものは用意するので計算機(電卓)は利用しない
+\end{itemize}
+
 \end{document}
