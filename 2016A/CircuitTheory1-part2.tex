@@ -2645,4 +2645,209 @@ $\beta$: 位相定数
 \item 回路形式の変換、インピーダンス変換、フィルタ設計で活用
 \end{itemize}
 
+\section*{第6回}
+
+\paragraph{本日の内容}
+\begin{itemize}
+\item 6 分布定数回路 (長いケーブル)
+\begin{itemize}
+\item 6.1 無損失回路
+\item 6.2 損失のある回路
+\item 6.3 反射と定在波
+\item 6.4 有限長線路
+\item 6.5 まとめ
+\end{itemize}
+\item 試験情報
+\item 課題
+\end{itemize}
+
+\section{分布定数回路}
+
+図回後6-1
+
+\subsection{無損失線路}
+
+図回後6-2
+\begin{itemize}
+\item $L\mathrm{\left[H/m\right]}$: 1mあたりのインダクタンス
+\item $C\mathrm{\left[F/m\right]}$: 1mあたりのキャパシタンス
+\end{itemize}
+回路方程式
+
+\[
+\begin{cases}
+v\left(x,t\right)=v\left(x+\Delta x,t\right)+L\Delta x\d{i\left(x,t\right)}t\\
+i\left(x,t\right)=i\left(x+\Delta x,t\right)+C\Delta x\d{v\left(x,t\right)}t
+\end{cases}
+\]
+
+$\Delta x\rightarrow0$とする
+
+\[
+\begin{cases}
+\pd{}xv\left(x,t\right)=-L\d{i\left(x,t\right)}t\\
+\pd{}xi\left(x,t\right)=-C\d{v\left(x+\Delta x,t\right)}t
+\end{cases}
+\]
+
+波動方程式である。
+
+ここで、
+\[
+\begin{cases}
+v\left(x,t\right)=f\left(x-v_{p}t\right)\\
+i\left(x,t\right)=\frac{1}{Z_{0}}f\left(x-v_{p}t\right)
+\end{cases}
+\]
+を仮定。
+
+\[
+\begin{cases}
+v_{p}=\pm\frac{1}{\sqrt{LC}}\\
+Z_{0}=\pm\sqrt{\frac{L}{C}}
+\end{cases}
+\]
+
+\begin{itemize}
+\item 任意の波形が線路を伝搬
+\item 速度 $\frac{1}{\sqrt{LC}}$
+\item 電圧と電流の比 $\sqrt{\frac{L}{C}}$: 特性インピーダンス
+\end{itemize}
+
+\subsection{損失のある回路}
+
+伝播の様子が周波数に依存。
+
+周波数$\omega$の正弦波、複素電圧$V\left(x\right)$、複素電流$I\left(x\right)$を考える。
+
+図回後6-3
+
+\[
+\begin{cases}
+V\left(x\right)=V\left(x+\Delta x\right)+Z\Delta xI\left(x\right)\\
+I\left(x\right)=I\left(x+\Delta x\right)+Y\Delta xV\left(x\right)
+\end{cases}
+\]
+
+\[
+\begin{cases}
+Z=R+\j\omega L\\
+Y=G+\j\omega C
+\end{cases}
+\]
+
+\[
+\begin{cases}
+\d{V\left(x\right)}x=-ZI\left(x\right)\\
+\d{I\left(x\right)}x=-YV\left(x\right)
+\end{cases}\Rightarrow\begin{cases}
+V\left(x\right)=A\e^{-\gamma x}+B\e^{\gamma x}\\
+I\left(x\right)=\frac{A}{Z_{0}}\e^{-\gamma x}-\frac{B}{Z_{0}}\e^{\gamma x}
+\end{cases}
+\]
+
+(レポート課題)
+
+解の第1項は$+x$方向に伝搬する電流、第2項は$-x$方向に伝搬する電流を表している。
+
+$x=0$における複素電圧を$A,B$とする。
+
+$\gamma$: 伝搬定数
+
+\[
+\gamma=\sqrt{YZ}=\alpha+\j\beta
+\]
+
+\[
+\e^{-\gamma x}=\e^{-\alpha x}\e^{-\j\beta x}
+\]
+
+$\e^{-\alpha x}$: 伝播に伴う振幅
+
+$\e^{-\j\beta x}$: 位相変化
+
+$Z_{0}=\sqrt{\frac{Z}{Y}}$: 特性インピーダンス(電圧と電流の比)
+
+$R=G=0$のとき、
+\begin{itemize}
+\item $\gamma=\j\omega\sqrt{LC}$: 純虚数: 振幅一定
+\item $Z_{0}=\sqrt{\frac{L}{C}}$: 実数: 電圧と電流の位相差なし
+\end{itemize}
+図回後6-4
+
+\subsection{反射と定在波}
+
+図回後6-5
+
+\[
+\begin{cases}
+V\left(x\right)=A\e^{-\gamma x}+B\e^{\gamma x}\\
+I\left(x\right)=\frac{A}{Z_{0}}\e^{-\gamma x}-\frac{B}{Z_{0}}\e^{\gamma x}
+\end{cases}
+\]
+
+$x=0$では
+\[
+\begin{cases}
+V\left(0\right)=A+B\\
+I\left(0\right)=\frac{A-B}{Z_{0}}
+\end{cases}
+\]
+
+\[
+Z_{L}=\frac{V\left(0\right)}{I\left(0\right)}=Z_{0}\frac{A+B}{A-B}=Z_{0}\frac{1+r}{1-r}
+\]
+
+$r=\frac{B}{A}$: 電圧反射率
+
+\[
+r=\frac{Z_{L}-Z_{0}}{Z_{L}+Z_{0}}
+\]
+
+\[
+\begin{cases}
+Z_{L}=\infty\rightarrow r=1 & \text{開放端反射}\\
+Z_{L}=Z_{0}\rightarrow r=0 & \text{無反射(インピーダンスマッチング)}\\
+Z_{L}=0\rightarrow r=-1 & \text{固定端反射}
+\end{cases}
+\]
+
+反射→$A,B$共に存在→\textbf{定在波}
+
+\paragraph{例1}
+
+$r=1\left(Z_{L}=\infty\right)\Rightarrow A=B$
+
+\begin{align*}
+V\left(x\right) & =A\left(\e^{-\gamma x}+\e^{\gamma x}\right)\\
+ & =2A\cos\beta x\\
+I\left(x\right) & =\frac{A}{Z_{0}}\left(\e^{-\gamma x}-\e^{\gamma x}\right)\\
+ & =\frac{A}{\j Z_{0}}\sin\beta x
+\end{align*}
+
+図回後6-6
+
+\paragraph{例2}
+
+任意の$r$について、($\alpha=0$)
+\begin{align*}
+V\left(x\right) & =A\e^{-\gamma x}+rA\e^{\gamma x}\\
+ & =A\e^{-\gamma x}\left(1+r\e^{2\gamma x}\right)
+\end{align*}
+
+\[
+\left|V\left(x\right)\right|=\left|A\right|\left|1+r\e^{2\gamma x}\right|
+\]
+
+\begin{align*}
+V_{\mathrm{max}} & =\left|A\right|\left(1+\left|r\right|\right)\\
+V_{\mathrm{min}} & =\left|A\right|\left(1-\left|r\right|\right)
+\end{align*}
+
+$\mathrm{VSWR}=\frac{V_{\mathrm{max}}}{V_{\mathrm{min}}}=\frac{1+\left|r\right|}{1-\left|r\right|}$
+(Voltage Standing Wave Ratio): 1に近いほど反射が小さい(インピーダンスが整合しているから)
+
+図回後6-7
+
+図回後6-8
 \end{document}
