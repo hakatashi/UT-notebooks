@@ -2850,4 +2850,137 @@ $\mathrm{VSWR}=\frac{V_{\mathrm{max}}}{V_{\mathrm{min}}}=\frac{1+\left|r\right|}
 図回後6-7
 
 図回後6-8
+
+\subsection{有限長線路}
+
+図回後6-9
+
+\[
+\begin{cases}
+V_{1}=V\left(-l\right)\\
+V_{2}=I\left(-l\right)
+\end{cases}
+\]
+
+\[
+\begin{cases}
+V_{2}=V\left(0\right)\\
+I_{2}=I\left(0\right)
+\end{cases}
+\]
+
+$\binom{V_{1}}{I_{1}}=\boldsymbol{F}\binom{V_{2}}{I_{2}}$と表したい。
+
+\begin{align*}
+V\left(x\right) & =A\e^{-\gamma x}+B\e^{\gamma x}\\
+I\left(x\right) & =\frac{A}{Z_{0}}\e^{-\gamma x}-\frac{B}{Z_{0}}\e^{\gamma x}
+\end{align*}
+
+\[
+\boldsymbol{F}=\left(\begin{array}{cc}
+\cosh\gamma l & Z_{0}\sinh\gamma l\\
+\frac{1}{Z_{0}}\sinh\gamma l & \cosh\gamma l
+\end{array}\right)
+\]
+
+有限長線路の先にインピーダンス$Z_{L}$があるとき
+
+図回後6-10
+
+$\gamma l\ll1$のとき、$Z_{1}\sim Z_{L}$($Z_{0}$によらない)(集中定数回路)
+
+$Z_{0}=Z_{L}$のとき、$Z_{1}=Z_{0}$(インピーダンス整合)
+
+インピーダンスが$Z_{1}$に変換される。
+\begin{align*}
+Z_{1} & =\frac{V_{1}}{I_{1}}\\
+ & =\frac{Z_{L}I_{2}\cosh\gamma l+Z_{0}I_{2}\sinh\gamma l}{\frac{Z_{L}}{Z_{0}}I_{2}\sinh\gamma l+I_{2}\cosh\gamma l}\\
+ & =Z_{0}\frac{Z_{L}+Z_{0}\tanh\gamma l}{Z_{0}+Z_{L}\tanh\gamma l}
+\end{align*}
+
+・無損失線路の先を短絡 or 開放する⇒$Z_{1}$は虚数になる
+
+無損失線路→$R=G=0,\gamma=\j\beta\left(\text{純虚数}\right),Z_{L}=0\mathop{\text{or}}\infty$
+\begin{itemize}
+\item $Z_{L}=0$(短絡)のとき
+
+\begin{align*}
+Z_{1} & =Z_{0}\tanh\gamma l\\
+ & =\j Z_{0}\tan\beta l=Z_{s}
+\end{align*}
+
+インダクタ的
+\item $Z_{L}=\infty$(開放)のとき
+
+\begin{align*}
+Z_{1} & =\frac{Z_{0}}{\tanh\gamma l}\\
+ & =-\j Z_{0}\cot\beta l=Z_{f}
+\end{align*}
+
+キャパシタンス的
+\end{itemize}
+図回後6-11
+
+高周波回路で応用する。
+
+・未知の線路の計測にも使える
+
+図回後6-12
+
+\[
+\Rightarrow Z_{0}=\sqrt{Z_{s}Z_{f}},\tanh\gamma l=\sqrt{\frac{Z_{s}}{Z_{f}}}
+\]
+
+影像パラメータとの関係
+
+図回後6-13
+
+\begin{align*}
+Z_{1} & =\sqrt{\frac{AB}{CD}}=\sqrt{\when{\frac{V_{1}}{I_{1}}}_{I_{2}=0}\when{\frac{V_{2}}{I_{2}}}_{V_{2}=0}}\\
+Z_{2} & =\sqrt{\frac{BD}{CA}}
+\end{align*}
+
+\[
+\e^{\theta}=\sqrt{AD}+\sqrt{BC}
+\]
+
+・短絡した有限超線路で何が起きているのか? (時間領域)
+
+図回後6-14
+
+伝達関数
+
+\begin{align*}
+V\left(s\right) & =1-\e^{-2\tau s}\\
+I\left(s\right) & =\frac{1}{Z_{0}}\left(1+\e^{-2\tau s}\right)\\
+Z\left(s\right) & =Z_{0}\frac{1-\e^{-2\tau s}}{1+\e^{-2\tau s}}\\
+ & =Z_{0}\frac{\e^{\tau s}-\e^{-\tau s}}{\e^{\tau s}+\e^{-\tau s}}\\
+ & =Z_{0}\tanh\tau s\\
+Z\left(\j\omega\right) & =\j Z_{0}\tan\omega t
+\end{align*}
+
+
+\subsection{まとめ}
+\begin{itemize}
+\item 分布定数回路: 電圧と電流の比$Z_{0}$(特性インピーダンス)として伝搬
+\item 伝搬定数: $\gamma=\alpha+\j\beta$($+x$方向: $\e^{-\gamma x}$、$-x$方向:
+$\e^{\gamma x}$)
+\item 四端子網として扱うと便利
+\item 反射係数 $r=\frac{Z_{L}-Z_{0}}{Z_{L}+Z_{0}}$。$Z_{L}=Z_{0}$なら無反射
+\item 有限超線路+反射→周波数依存の複素インピーダンス
+\end{itemize}
+
+\paragraph{テスト}
+
+1/24(火) 1106教室, 13:00-15:30
+\begin{itemize}
+\item 問1 ラプラス変換
+\item 問2 直流回路の過渡応答
+\item 問3 交流回路の過渡応答
+\item 問4 四端子網
+\item 問5 分布定数回路
+\end{itemize}
+\textbf{レポート問題を解けるように!!!}
+
+第6回のレポート回答は1/17にWebにアップする。
 \end{document}
