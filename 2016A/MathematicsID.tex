@@ -3778,4 +3778,364 @@ $\Phi\left(2\pi\right)=0$なので、$C_{1}=0,\Phi\left(\phi\right)=C_{2}$
 Euler lagrange方程式
 
 Lagrangeの未定乗数法
+
+\section*{第12回}
+
+\paragraph{変分法}
+
+関数の最小を求める。
+
+汎関数: 関数の関数
+
+\[
+I\left[y\left(x\right)\right]=\int_{a}^{b}F\left(x,\left(x\right),y'\left(x\right)\right)\mathrm{d}x
+\]
+($I$: 汎関数、$y\left(x\right)$: 関数)
+
+を最小にする$y\left(x\right)$を求めたい。
+
+両端$a,b$を固定して関数$y\left(x\right)$を変化させる。
+
+$y_{0}\left(x\right)$が最小値を取る関数とする。
+
+\[
+y\left(x\right)=y_{0}\left(x\right)+\varepsilon\eta\left(x\right)
+\]
+
+境界条件より$\eta\left(a\right)=\eta\left(b\right)=0$
+
+$y$が停留値を与える条件は、
+\begin{align*}
+\d{I\left[y\left(x\right)\right]}{\varepsilon} & =\d{}{\varepsilon}\int_{a}^{b}F\left(x,y\left(x\right),y'\left(x\right)\right)\mathrm{d}x\\
+ & =\int_{a}^{b}\left(\pd Fy\pd y{\varepsilon}+\pd F{y'}\pd{y'}{\varepsilon}\right)\mathrm{d}x
+\end{align*}
+
+$\pd{y_{0}}{\varepsilon}=0$なので、
+\[
+\d I{\varepsilon}=\int_{a}^{b}\left(\pd Fy\eta\left(x\right)+\pd F{y'}\eta'\left(x\right)\right)\mathrm{d}x
+\]
+
+に項目を部分積分して、
+\[
+\d I{\varepsilon}=\left[\pd F{y'}\eta\left(x\right)\right]_{a}^{b}+\int_{a}^{b}\left(\pd Fy-\d{}x\pd F{y'}\right)\eta\left(x\right)\mathrm{d}x
+\]
+
+境界条件より一項目は0。
+
+$\d I{\varepsilon}=0$、ここで$\eta\left(x\right)$は任意なので、
+\[
+\pd Fy-\d{}x\pd F{y'}=0
+\]
+
+(Eular方程式)
+
+\paragraph{例題}
+
+二点間を最短で結ぶ線
+
+距離感の微小要素(線素)は
+
+\[
+\mathrm{d}s=\sqrt{\mathrm{d}x^{2}+\mathrm{d}y^{2}}=\sqrt{1+\left(\d yx\right)^{2}}\mathrm{dx}
+\]
+
+距離は
+\[
+I\left[y\left(x\right)\right]=\int_{0}^{P}\mathrm{d}s=\int_{x_{1}}^{x_{2}}\sqrt{1+\left(\d yx\right)^{2}}\mathrm{d}x
+\]
+
+\[
+F=\sqrt{1+\left(\d yx\right)^{2}}=\sqrt{1+y'^{2}}
+\]
+
+\[
+\pd Fy=0
+\]
+
+Eular方程式は、
+\[
+-\d{}x\pd F{y'}=-\d{}x\left(\frac{1}{\sqrt{1+y'^{2}}}\right)=0
+\]
+
+\[
+\frac{1}{\sqrt{1+y'^{2}}}=C_{1}\Rightarrow y'=C_{2}\Rightarrow y=C_{3}x+C_{4}\quad\left(\text{直線}\right)
+\]
+
+
+\paragraph{最急降下線}
+
+エネルギー保存則
+
+\[
+\underbrace{\frac{m}{2}\left[\left(\d xt\right)^{2}+\left(\d yt\right)^{2}\right]}_{\text{運動エネルギー}}-\underbrace{mgy}_{\text{ポテンシャルエネルギー}}=0
+\]
+
+\[
+\mathrm{d}t=\sqrt{\frac{\mathrm{d}x^{2}+\mathrm{d}y^{2}}{2gy}}=\sqrt{\frac{1+x'^{2}}{2gy}}\mathrm{d}y
+\]
+
+降下時間は、
+\[
+I\left[x\right]=\int_{0}^{P}\mathrm{d}t=\frac{1}{\sqrt{2g}}\int\frac{\sqrt{1+x'^{2}}}{y}\mathrm{d}y
+\]
+
+\[
+F=\sqrt{\frac{1+x'^{2}}{y}}
+\]
+
+\[
+\pd Fx=0,\pd F{x'}=\frac{x'}{\sqrt{y\left(1+x'^{2}\right)}}
+\]
+
+Eular方程式
+\[
+-\d{}y\left(\frac{x'}{\sqrt{y\left('+x'^{2}\right)}}\right)=0
+\]
+
+$\frac{x'}{\sqrt{y\left(1+x'^{2}\right)}}=C_{1},C_{1}=0$とすると、$x'=0,x\left(y\right)=0$
+
+\[
+x'=\d xy=\pm C_{1}\sqrt{\frac{y}{1-C_{1}^{2}y}}=\sqrt{\frac{y}{2a-y}}
+\]
+
+ここで$a=\frac{1}{2C_{1}^{2}}$
+
+ここで$z=\sqrt{\frac{y}{2a-y}}$とおくと、
+\[
+y=\frac{1az^{2}}{1+z^{2}},\mathrm{d}y=\frac{4az}{\left(1+z^{2}\right)^{2}}\mathrm{d}z
+\]
+
+\begin{align*}
+x & =\int z\frac{4az}{\left(1+z^{2}\right)^{2}}\mathrm{d}z=4a\int\frac{z^{2}}{\left(1+z^{2}\right)^{2}}\mathrm{d}z\\
+ & =-2a\int z\left(\frac{1}{1+z^{2}}\right)'\mathrm{d}z=-2a\left(\frac{z}{1+z^{2}}-\int\frac{\mathrm{d}z}{1+z^{2}}\right)\\
+ & =-2a\left(\frac{z}{1+z^{2}}-\arctan z\right)+C
+\end{align*}
+
+ここで$z=\tan\theta$とおくと、
+\[
+y=\frac{2a\tan\theta}{1+\tan^{2}\theta}=2a\sin^{2}\theta
+\]
+
+$\cos^{2}\theta=1-2\sin^{2}\theta=\frac{a-y}{a}$を使って、
+\[
+x=-\sqrt{2ay-y^{2}}+a\arccos\frac{a-y}{a}+C_{2}
+\]
+
+$a-y=a\cos\theta$とおくと、
+\begin{align*}
+x\left(\theta\right) & =a\left(\theta-\sin\theta\right)\\
+y\left(\theta\right) & =a\left(1-\cos\theta\right)
+\end{align*}
+
+cycloid(サイクロイド)
+
+\paragraph{懸垂線}
+
+二点を固定したときの紐の形。
+
+位置エネルギーを最小化する。
+
+\[
+mgy\mathrm{d}s=mgy\sqrt{1+\left(\d yx\right)^{2}}\mathrm{d}x
+\]
+
+\[
+I=mg\int_{0}^{x}y\sqrt{1+y^{2}}\mathrm{d}x
+\]
+
+Eular方程式は
+\begin{align*}
+F-y'\pd F{y'} & =y\sqrt{1+y'^{2}}-y'\frac{yy'}{\sqrt{1+y'^{2}}}\\
+ & =\frac{y}{\sqrt{1+y'^{2}}}=C\\
+\Rightarrow1+y'^{2} & =\left(\frac{y}{C}\right)^{2}\\
+\Rightarrow y' & =\pm\sqrt{\left(\frac{y}{C}\right)^{2}-1}\\
+\Rightarrow\int\frac{\mathrm{d}y}{\sqrt{\left(\frac{y}{C}\right)^{2}-1}} & =\pm\int\mathrm{d}x
+\end{align*}
+
+\[
+\log\left(y+\sqrt{y^{2}-C^{2}}\right)=x
+\]
+
+\begin{align*}
+y & =\frac{C}{2}\left(\frac{1}{C}\e^{\frac{x}{t}}+C\e^{-\frac{x}{C}}\right)\\
+ & =\frac{C}{2}\left(\e^{\frac{x}{C}-\log C}+\e^{-\frac{x}{C}-\log C}\right)\\
+ & =C\cosh\left(\frac{x}{C}-\log C\right)
+\end{align*}
+
+
+\paragraph{Lagrangeの未定乗数法}
+
+$N$個の変数$x_{1},x_{2},\cdots,x_{N}$に$k$個の束縛条件$g_{i}\left(x_{1},\cdots,x_{N}\right)=0$があるときの関数$f\left(x_{1},\cdots,x_{N}\right)$の極地問題は、$k$個のLagrangeの未定乗数$\lambda_{1},\cdots\lambda_{x}$を用いて$f+\sum_{i=1}^{k}\lambda_{i}g_{i}\left(=F\left(x_{i},\lambda_{i}\right)\right)$を束縛条件無しで求めれば良い。
+
+\[
+\left(\pd F{\lambda_{i}}=g_{i}=0,\pd F{x_{i}}=0\right)
+\]
+
+
+\paragraph{例}
+
+$x^{2}+y^{2}=1$の条件のもとで
+\[
+f\left(x,y\right)=x^{3}+y^{3}-3x-3y
+\]
+の極値
+
+\[
+F\left(x,y,\lambda\right)=f\left(x,y\right)-\lambda\left(x^{2}+y^{2}-1\right)
+\]
+
+\begin{align*}
+\pd Fx & =3x^{2}-3-2\lambda x=0\\
+\pd Fy & =3y^{2}-3-2\lambda y=0\\
+\pd F{\lambda} & =-x^{2}-y^{2}+1=0
+\end{align*}
+
+2次方程式の解と係数の関係より$x\neq y$とすると、
+\[
+x^{2}+y^{2}=\left(x+y\right)^{2}-2xy=\frac{4\lambda^{2}}{9}+1=1
+\]
+
+これを満たす$\lambda\neq0$は存在しないので$x=y$
+
+$x=y=-\frac{1}{\sqrt{2}}$のとき最大値$\frac{5}{\sqrt{2}}$
+
+$x=y=\frac{1}{\sqrt{2}}$のとき最小値$\bar{-\frac{5}{\sqrt{2}}}$
+
+\paragraph{例}
+
+$n$次元ルークリッド空間において原点と超平面$H$: $a_{1}x_{1}+\cdots+a_{n}x_{n}=b$と最小距離$a_{1}x_{1}+\cdots a_{n}x_{n}=b$という拘束条件で$\sqrt{x_{1}^{2}+\cdots+x_{n}^{2}}$の最小値を求めれば良い。
+
+かわりに$x_{1}^{2}+\cdots+x_{n}^{2}$の最小を求める。
+
+\[
+F\left(x_{1}\cdots,x_{n},\lambda\right)=x_{1}^{2}+\cdots+x_{n}^{2}-\lambda\left(ax_{1}+\cdots+a_{n}x_{n}-b\right)
+\]
+
+\begin{align*}
+\pd F{x_{i}} & =2x_{i}-\lambda a_{i}=0\\
+\pd F{\lambda} & =a_{1}x_{1}+\cdots+a_{n}x_{n}=b\quad\left(\sum_{i+1}^{k}\frac{\lambda a_{i}^{2}}{2}=b\right)
+\end{align*}
+
+よって
+\[
+x_{i}=\frac{\lambda a_{i}}{2}\Rightarrow\lambda\frac{2b}{a_{1}^{2}+\cdots+a_{n}^{2}}\Rightarrow x_{i}=\frac{ba_{i}}{a_{i}^{2}+\cdots+a_{n}^{2}}
+\]
+
+\[
+\sqrt{x_{1}^{2}+\cdots+x_{n}^{2}}=\frac{\left|b\right|}{\sqrt{a_{1}^{2}+\cdots+a_{n}^{2}}}
+\]
+と求まる。
+
+\paragraph{例}
+
+情報理論的エントロピー
+
+\[
+f\left(p_{1},p_{2},\cdots,p_{n}\right)=-\sum_{j=1}^{n}p_{j}\log_{2}p_{j}
+\]
+
+$p_{j}$ 確率
+
+\[
+g\left(p_{1}\cdots p_{n}\right)=\sum_{j=1}^{n}p_{j}-1=0
+\]
+
+\[
+F\left(p_{1},\cdots p_{n},\lambda\right)=-\sum_{j=1}^{n}p_{j}\log_{2}p_{j}+\lambda\left(\sum_{j=1}^{n}p_{j}-1\right)
+\]
+
+\begin{align*}
+\pd F{p_{j}} & =-\left(\frac{1}{\ln2}+\log_{2}p_{j}\right)+\lambda=0\Rightarrow\text{全ての}p_{j}\text{は等しい}\\
+\pd F{\lambda} & =\sum_{j=1}^{n}p_{j}-1=0
+\end{align*}
+
+\[
+p_{j}=\frac{1}{n}
+\]
+
+(一様分布が一番情報エントロピーが大きい)
+
+\paragraph{解析力学}
+
+Lagrangianは一般化座標$q$と一般加速度$\dot{q}$
+\[
+\mathcal{L}\left(q,\dot{q}\right)=T\left(\dot{q}\right)-V\left(q\right)
+\]
+
+$T\left(\dot{q}\right)$: 運動エネルギー
+
+$V\left(q\right)$: ポテンシャルエネルギー
+
+Eular-Lagrange方程式
+\[
+\pd{\mathcal{L}}q-\d{}t\pd{\mathcal{L}}{\dot{q}}=0
+\]
+
+
+\paragraph{例}
+
+質量$m$の質点がポテンシャル$V\left(x\right)$中を運動する。
+
+\[
+\mathcal{L}\left(x,\dot{x}\right)=\frac{m}{2}\dot{x}^{2}-V\left(x\right)
+\]
+
+\[
+\pd{\mathcal{L}}x=\pd{V\left(x\right)}x,\pd{\mathcal{L}}{\dot{x}}=m\dot{x}
+\]
+
+\[
+\pd{V\left(x\right)}x-\d{}t\left(m\dot{x}\right)=0\Rightarrow m\dot{x}=-\pd{V\left(x\right)}x
+\]
+
+Newton方程式
+
+一般運動量$p=\pd{\mathcal{L}}{\dot{q}}$
+
+\paragraph{例}
+
+\[
+p=\pd{\mathcal{L}}{\dot{x}}=m\dot{x}\quad\left(\text{運動量}\right)
+\]
+
+Hamiltonian $\mathcal{H}$ (一般化座標$q$ と一般化運動量$p$の関数)
+
+HamiltonianはLagrangianをLegendre変換$\dot{q}\mapsto p$すれば得られる。
+
+\[
+\mathcal{H}\left(q,p\right)=p\dot{q}-\mathcal{L}\left(q,\dot{q}\right)
+\]
+
+
+\paragraph{例}
+
+\[
+\mathcal{H}=p\frac{p}{m}-\left[\frac{m}{2}\left(\frac{p}{m}\right)^{2}-V\left(x\right)\right]=\frac{p^{2}}{2m}+V\left(x\right)
+\]
+
+\[
+\mathcal{H}\left(q,p\right)=T\left(p\right)+V\left(q\right)
+\]
+
+正準方程式
+\begin{align*}
+\pd H{q_{i}} & =-\dot{p}_{i}\\
+\pd H{p_{i}} & =\dot{q}_{i}
+\end{align*}
+
+
+\paragraph{例}
+
+\begin{align*}
+\pd Hx & =\pd{V\left(x\right)}x\\
+\pd Hp & =\frac{p}{m}=\dot{x}\Rightarrow m\dot{x}=p
+\end{align*}
+
+\[
+m\dot{x}=p=-\pd{V\left(x\right)}x
+\]
+
+Newton方程式
+
+解析力学: 力学を変分法から導出できる。
 \end{document}
