@@ -2033,4 +2033,136 @@ W\left(s\right)^{3}=3\int_{0}^{s}W\left(t\right)\mathrm{d}t+3\int_{0}^{s}W\left(
 sW\left(s\right)=\int_{0}^{s}t\mathrm{d}W\left(t\right)+\int_{0}^{s}W\left(t\right)\mathrm{d}t
 \]
 
+
+\section*{第12回}
+
+\[
+\mathrm{d}X\left(t\right)=\mu\left(t,X\right)\mathrm{d}t+\sigma\left(tX\right)\mathrm{d}B
+\]
+
+$f\left(t,x\right)$: $t$および$x$について連続、微分可能
+
+\begin{align*}
+f\left(t+\Delta t,x+\Delta x\right)= & f\left(x,t\right)+\pd ft\mathrm{d}t+\frac{1}{2}\pdd ft\mathrm{d}t^{2}+\cdots\\
+ & +\pd fx\mathrm{d}x+\frac{1}{2}\pdd fx\mathrm{d}x^{2}+\frac{1}{2}\frac{\partial^{2}f}{\partial x\partial t}\mathrm{d}x\mathrm{d}t+\cdots
+\end{align*}
+
+$f\left(t,X\left(t\right)\right)$
+
+\[
+f\left(t+\mathrm{d}t,X+\mathrm{d}X\right)=f\left(t,X\right)+\pd ft\mathrm{d}t+\left(\pd{f\left(t,x\right)}x\right)_{x=X}\mathrm{d}X+\frac{1}{2}\left(\pdd fx\right)_{x=X}\underbrace{\left(\mathrm{d}X\right)^{2}}_{\sim\mathrm{d}t}
+\]
+
+($\left(\mathrm{d}B\right)^{2}\sim\mathrm{d}t$)
+
+\[
+\mathrm{d}f=\left[\pd ft+\when{\pd fx}_{x=X}\mu+\frac{1}{2}\when{\pdd fx}_{x=X}\sigma^{2}\right]\mathrm{d}t+\when{\pd fx}_{x=X}\sigma\cdot\mathrm{d}B
+\]
+
+$\mathrm{d}f=\left(\pd ft+\when{\pd fx}_{x=X}\mu\right)\mathrm{d}t+\when{\pd fx}_{x=X}\sigma\mathrm{d}B$とはならない。
+
+Ex) 
+\[
+\mathrm{d}X=X\left(2-X\right)\mathrm{d}t+b\mathrm{d}B
+\]
+
+\begin{align*}
+X_{1}-X_{0} & =X_{1}\left(2-X_{1}\right)\Delta t+b\left(B_{1}-B_{0}\right)\\
+X_{2}-X_{1} & =X_{2}\left(2-X_{2}\right)\Delta t+b\left(B_{2}-B_{1}\right)\\
+ & \vdots
+\end{align*}
+より、
+\[
+X\left(t\right)=\int_{0}^{t}X\left(2-X\right)\mathrm{d}t+b\cdot B\left(t\right)
+\]
+
+Ex) 
+\begin{equation}
+\mathrm{d}X=\left(\mu+\frac{1}{2}\sigma^{2}\right)X\mathrm{d}t+\sigma X\mathrm{d}B\label{star-1}
+\end{equation}
+
+\[
+\rightarrow X\left(t\right)=\e^{\sigma B\left(t\right)+\mu t}
+\]
+
+$f\left(t,x\right)=\e^{\sigma x+\mu t}$
+
+\[
+\pd ft=\mu f,\pd fx=\sigma f,\pdd fx=\sigma^{2}f
+\]
+
+\begin{equation}
+\mathrm{d}f=\left[\mu+\sigma\mu+\frac{1}{2}\sigma^{2}\right]f\mathrm{d}t+\sigma^{2}f\mathrm{d}B\label{star-2}
+\end{equation}
+
+
+\paragraph{常微分方程式の数値}
+
+Cauchyの折れ線 (図略)
+
+\[
+y\left(t_{n+1}\right)=y\left(t_{n}\right)+hy'\left(t_{n}\right)+\underbrace{\frac{h^{2}}{2}y''\left(t_{n}\right)}_{\text{無視できる}}
+\]
+
+\[
+t_{n+1}-t_{n}=h
+\]
+
+Eular法
+
+拡散過程にこの方法を適用
+
+$M$: 時間ステップの総数
+
+$n$: 距離ステップの総数
+
+\[
+t=M\cdot\Delta t,\Delta t\sim\left(\Delta\xi\right)^{2},x=n\cdot\Delta\xi
+\]
+
+確率密度
+\[
+p\left(M,n\right)=\frac{\sqrt{2}}{\sqrt{\pi M}}\exp\left(-\frac{n^{2}}{2M}\right)
+\]
+
+時刻$t$に$x\sim x+\mathrm{d}x$に存在する確率
+\begin{align*}
+p\left(t,x\right)\mathrm{d}x & =\frac{1}{2\Delta\xi}p\left(M,n\right)\mathrm{d}x\\
+p\left(t,x\right) & =\frac{1}{\sqrt{2\pi t}}\sqrt{\frac{\Delta t}{\left(\Delta\xi\right)^{2}}}\exp\left(-\frac{x^{2}}{2t}\cdot\frac{\Delta t}{\Delta\xi^{2}}\right)
+\end{align*}
+
+\[
+\text{分散}=t\cdot\frac{\Delta\xi^{2}}{\Delta t}
+\]
+
+$\frac{\Delta\xi^{2}}{\Delta t}=1$であるような確率過程 ($\Delta\xi=\sqrt{\Delta t}$)
+
+\[
+W_{t+\Delta t}-W_{t}=\xi\left(t\right)\left(\Delta\xi\right)^{2}=\xi\left(t\right)\cdot\Delta t
+\]
+
+$\xi\left(t\right)$: 時刻$t$に於いて発生される、$\pm1$をとる乱数
+
+$\mathrm{d}X=\mu X+\sigma\mathrm{d}W$
+
+\[
+X_{t+\Delta t}=X_{t}+\mu\left(t,X_{t}\right)\Delta t+\sigma\left(t,X_{t}\right)\Delta W_{t}
+\]
+
+\[
+\Delta W=W_{t}-W_{t-\Delta t}=\xi_{t}\cdot\Delta t
+\]
+
+
+\paragraph{ブラック・ショールズ方程式 (モデル)}
+
+$S$: 適正価格
+
+収益率: $\frac{S_{t+\Delta t}-S_{t}}{S_{t}}=\frac{\mathrm{d}S_{t}}{S_{t}}$
+
+\[
+\frac{\mathrm{d}S_{t}}{S_{t}}=\mu\mathrm{d}t+\sigma\cdot\mathrm{d}B
+\]
+
+ドリフト
 \end{document}
