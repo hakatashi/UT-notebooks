@@ -1362,4 +1362,113 @@ I_{B} & =I_{E}-I_{c}=I_{E}-\alpha I_{E}=\left(1-\alpha\right)I_{E}
 \]
 
 $\beta=\frac{\alpha}{1-\alpha}$: エミッタ接地の電流増幅率
+
+\section*{第13回}
+
+\section{アナログ回路の基礎}
+
+\subsection{MOSトランジスタのモデリング}
+
+図電デ13-1
+
+\[
+I_{D}=\mu C_{OX}\frac{W}{2L}\left(V_{GS}-V_{TH}\right)^{2}
+\]
+
+図電デ13-2
+
+\paragraph{小信号解析}
+
+\begin{align*}
+I_{D} & =f\left(V_{GS}\right)=f\left(V_{G0}\right)+\Delta V_{G}\cdot f'\left(V_{G0}\right)+\cdots\\
+ & \simeq I_{D0}+\Delta V_{G}\cdot f'\left(V_{G0}\right)
+\end{align*}
+
+$f\left(V_{G0}\right)$: \uline{ある電圧$V_{G0}$}での電流バイアス電圧
+
+$f'\left(V_{G0}\right)$: 傾き
+
+\[
+I_{D}-I_{D0}=\Delta I_{D}=\Delta V_{G}\cdot f'\left(V_{G0}\right)\Rightarrow i_{p}=g_{m}\cdot v_{g}
+\]
+
+$g_{m}$: 相互コンダクタンス
+
+\[
+g_{m}=\pd{I_{D}V_{g}}{}=\mu C_{OX}\frac{W}{L}\left(V_{G}-V_{TH}\right)
+\]
+
+図電デ13-3
+
+ポイント
+\begin{enumerate}
+\item バイアス店を決める。
+\item 微小信号のみ成立。→線形方程式になる。
+\end{enumerate}
+
+\subsection{増幅回路}
+
+図電デ13-4
+
+増幅率$A_{v}=\frac{v_{out}}{v_{in}}$
+
+図電デ13-5
+
+外部からエネルギーを供給し入力信号と相似形のより大きな信号を出力する。
+
+\subsection{負荷抵抗型のソース接地回路}
+
+図電デ13-6
+
+図電デ13-7
+
+ポイント: 重ね合わせの原理によって交流と直流を分離する。
+
+交流と直流を分離して回路を書いてみよう!!
+
+図電デ13-8
+
+図電デ13-9
+
+\[
+I=I_{1}+I_{2}=\frac{V_{1}}{R}+\frac{V_{2}}{R}
+\]
+
+図電デ13-10
+
+\[
+I=I_{D0}+i_{D}
+\]
+
+微小領域→線形にした→重ね合わせの原理→直流と交流分離→電源はアース
+
+交流のみを考える。
+
+図電デ13-11
+
+\[
+v_{out}=-g_{m}\cdot v_{g}\cdot R_{D}
+\]
+
+増幅率$A_{v}=\frac{v_{out}}{v_{in}}=\frac{-g_{m}\cdot v_{g}\cdot R_{D}}{v_{g}}$
+
+\[
+\left|A_{v}\right|=g_{m}\cdot R_{D}
+\]
+
+図電デ13-12
+
+\paragraph{板書}
+
+http://www.ntech.t.u-tokyo.ac.jp/lecture.html
+
+ID, PW (secret)
+
+\paragraph{試験}
+\begin{itemize}
+\item 自分で作成した手書きのA4で1枚のメモ(両面)
+\item 関数電卓の持ち込みは可
+\item 他はだめ(参考書、ノート、教科書、PC、スマホ、タブレットなど)
+\end{itemize}
+
 \end{document}
