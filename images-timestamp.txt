@@ -1,0 +1,2 @@
+Update of this file will trigger the make to re-compile all PDFs regarding to images.
+So the content of this file is arbitrary but I'll write what the day is today here: 2017-01-20

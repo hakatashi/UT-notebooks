@@ -7,7 +7,7 @@ EPS=$(JPG:.jpg=.eps)
 all: $(EPS) $(PDF)
 
 .INTERMEDIATE: $(DVI)
-%.dvi: %.tex
+%.dvi: %.tex images-timestamp.txt
 	# Compile twice to properly compile \label-\ref
 	# http://tex.stackexchange.com/a/111281/116656
 	cd $(dir $@); uplatex -no-guess-input-enc -kanji=utf8 -synctex=1 $(notdir $<) 0<&-
