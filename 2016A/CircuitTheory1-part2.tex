@@ -1464,7 +1464,9 @@ f\left(t\right) & =\begin{cases}
 \end{cases}
 \end{align*}
 
-図回後4-1
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-1}
+\par\end{center}
 
 ローパスフィルタのインパルス応答
 
@@ -1474,7 +1476,9 @@ f\left(t\right) & =\begin{cases}
 \laplace{t\e^{at}}=\cdots=\frac{1}{\left(s-a\right)^{2}}\quad\Re\left(s-a\right)>0
 \]
 
-図回後4-2
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-2}
+\par\end{center}
 
 ローパスフィルタを2回通った時のインパルス応答
 
@@ -1486,7 +1490,9 @@ f\left(t\right) & =\begin{cases}
  & =\frac{n\left(n-1\right)\cdots1}{\left(s-a\right)^{n}}\int_{0}^{\infty}\e^{\left(a-s\right)t}\mathrm{d}t=\frac{n!}{\left(s-a\right)^{n+1}}
 \end{align*}
 
-図回後4-3
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-3}
+\par\end{center}
 
 $a=0$のとき
 \[
@@ -1505,7 +1511,9 @@ $a=0$のとき
 \e^{at}\sin\omega t\quad\left(t>0\right)
 \]
 
-図回後4-4
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-4}
+\par\end{center}
 
 (2)(a)
 
@@ -1520,7 +1528,9 @@ f\left(t\right)=\begin{cases}
 \int_{-\infty}^{\infty}f\left(t\right)\e^{-\j\omega t}\mathrm{d}t=\frac{1}{\j\omega-a}
 \]
 
-図回後4-5
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-5}
+\par\end{center}
 
 (b)
 
@@ -1535,7 +1545,9 @@ f\left(t\right)=\begin{cases}
 \int_{-\infty}^{\infty}f\left(t\right)\e^{-\j\omega t}\mathrm{d}t=\frac{1}{\j\omega-a}
 \]
 
-図回後4-6
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-6}
+\par\end{center}
 
 注) ラプラス変換
 
@@ -1543,11 +1555,17 @@ f\left(t\right)=\begin{cases}
 F\left(s\right)=\frac{1}{s-a}\Leftrightarrow f\left(t\right)=\e^{at}\left(t\geqq0\right)
 \]
 
-図回後4-7
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-7}
+\par\end{center}
 
-図回後4-8
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-8}
+\par\end{center}
 
-図回後4-9
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-9}
+\par\end{center}
 
 \paragraph{本日の内容}
 \begin{itemize}
@@ -1568,8 +1586,9 @@ F\left(s\right)=\frac{1}{s-a}\Leftrightarrow f\left(t\right)=\e^{at}\left(t\geqq
 \subsection{ラプラス変換による回路の過渡応答解析}
 \begin{enumerate}
 \item 直流RC回路
-
-図回後4-10
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-10}
+\par\end{center}
 
 \[
 q\left(0+\right)=\int_{-\infty}^{\infty}i\left(t\right)\mathrm{d}t=0
@@ -1595,8 +1614,9 @@ i\left(t\right)=\frac{V}{R}\e^{-\frac{1}{RC}}\quad\left(t\geqq0\right)
 \]
 
 \item 交流RL回路
-
-図回後4-11
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-11}
+\par\end{center}
 
 \[
 L\d it+Ri=\frac{V}{\j}\e^{\j\omega t}\quad\left(t\geqq0\right)
@@ -1630,8 +1650,9 @@ i\left(t\right)=\frac{V}{\j Z}\left(\e^{\j\left(\omega t-\theta\right)}-\e^{-\j\
 \subsection{S領域のインピーダンス}
 
 微分方程式を使わず解析が行える。
-
-図回後4-12
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-12}
+\par\end{center}
 
 \[
 e\left(t\right)=L\d it
@@ -1656,12 +1677,14 @@ i\left(t\right)=\frac{1}{L}\int e\left(t\right)\mathrm{d}t
 \]
 
 $i\left(0+\right)=0$の場合
-
-図回後4-13
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-13}
+\par\end{center}
 
 $t=0$におけるインダクタの電流は、電流源として考える。
-
-図回後4-14
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-14}
+\par\end{center}
 
 $e\left(0+\right)=\frac{q\left(0+\right)}{c}=0$のとき、
 \[
@@ -1686,7 +1709,9 @@ i\left(t\right)=C\d{e\left(t\right)}t
 \xrightarrow{\mathcal{L}}I\left(s\right)=C\left(sE\left(s\right)-e\left(0+\right)\right)
 \]
 
-図回後4-15
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-15}
+\par\end{center}
 
 \subsection{部分分数展開}
 
@@ -1770,7 +1795,9 @@ E\left(s\right)=\frac{1}{2}\left(\frac{1}{s}-\frac{1}{s+2}\right)-\frac{1}{s^{2}
 \xrightarrow{\mathcal{L}}e\left(t\right)=\frac{1}{2}\left(1-\e^{-2t}\right)-\frac{1}{\sqrt{3}}\e^{-t}\sin\sqrt{3}t
 \]
 
-図回後4-16
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-16}
+\par\end{center}
 
 \subsection{ラプラス変換の性質}
 
@@ -1819,7 +1846,9 @@ f\left(0+\right)=\lim_{s\rightarrow\infty}sF\left(s\right)
  & =\int_{0}^{\infty}f\left(t'\right)\e^{-sat''}a\mathrm{d}t'=aF\left(as\right)
 \end{align*}
 
-図回後4-17
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-17}
+\par\end{center}
 
 面積$a$倍、周波数$\frac{1}{a}$倍
 
@@ -1839,14 +1868,16 @@ f\left(0+\right)=\lim_{s\rightarrow\infty}sF\left(s\right)
 \end{align*}
 
 ←遅延$T$の伝達関数
-
-図回後4-18
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-18}
+\par\end{center}
 
 \paragraph{推移定理の応用}
 
 方形波
-
-図回後4-19
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-19}
+\par\end{center}
 
 \[
 f\left(t\right)=u\left(t\right)-u\left(t-\tau\right)
@@ -1858,8 +1889,9 @@ F\left(s\right) & =\frac{1}{s}-\frac{\e^{-s\tau}}{s}\\
 \end{align*}
 
 同期的な方形波
-
-図回後4-20
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-20}
+\par\end{center}
 
 \begin{align*}
 F\left(s\right) & =\frac{1}{s}\left(1-\e^{-s\tau}\right)\underbrace{\left(1+\e^{-sT}+\e^{-2sT}+\cdots\right)}_{\text{無限級数}}\\
@@ -1874,22 +1906,34 @@ H\left(s\right) & =\frac{1}{s+a}\quad\left(a>0\right)\\
 h\left(s\right) & =\e^{-at}\quad\left(t\geqq0\right)
 \end{align*}
 
-図回後4-21
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-21}
+\par\end{center}
 
-図回後4-22
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-22}
+\par\end{center}
 
-図回後4-23
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-23}
+\par\end{center}
 
 \begin{align*}
 H\left(s\right) & =s+a\quad\left(a>0\right)\\
 h\left(t\right) & =\d{}t\delta\left(t\right)+a\delta\left(t\right)
 \end{align*}
 
-図回後4-24
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-24}
+\par\end{center}
 
-図回後4-25
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-25}
+\par\end{center}
 
-図回後4-26
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/4-26}
+\par\end{center}
 
 \subsection{周波数特性の実部と虚部の関係}
 
@@ -1939,8 +1983,9 @@ $\Re F\left(\omega\right)$がわかる→$f_{S}\left(t\right)$がわかる→$f\
 \section*{第5回}
 
 \paragraph{レポート解説}
-
-図回後5-1
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-1.jpg}
+\par\end{center}
 
 (1)
 \[
@@ -1997,7 +2042,9 @@ i\left(t\right)=\frac{V}{2\j\beta L}\left(\e^{s_{1}t}-\e^{s_{2}t}\right)=\frac{V
 \when{\d it}_{i=0+}=\lim_{s\rightarrow\infty}ssI\left(s\right)=\frac{V}{L}
 \]
 
-図回後5-2
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-2.jpg}
+\par\end{center}
 
 \[
 \int_{0}^{\infty}i\left(t\right)\mathrm{d}t=\lim_{s\rightarrow0}s\frac{I\left(s\right)}{s}=C
@@ -2020,8 +2067,9 @@ $I\left(s\right)$から色んな情報が引き出せる。
 \section{4端子網}
 
 \subsection{4端子網と基本行列}
-
-図回後5-3
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-3.jpg}
+\par\end{center}
 \begin{itemize}
 \item 大きな回路を小さな回路の組み合わせで考えるときの標準的な回路の単位。
 \item 入力→出力(作用)だけでなく、出力→入力(反作用)も表せる。(伝達関数は1方向しか表せない)
@@ -2043,7 +2091,9 @@ I_{2}
 \end{array}\right)
 \]
 
-図回後5-4
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-4.jpg}
+\par\end{center}
 
 \[
 \left(\begin{array}{c}
@@ -2063,8 +2113,9 @@ I_{3}
 \paragraph{F行列の計算}
 
 2つ覚える。
-
-図回後5-5
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-5.jpg}
+\par\end{center}
 
 \begin{align*}
 V_{1} & =V_{2}\\
@@ -2084,7 +2135,9 @@ I_{2}
 \end{array}\right)
 \]
 
-図回後5-6
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-6.jpg}
+\par\end{center}
 
 \begin{align*}
 V_{1} & =V_{2}+ZI_{2}\\
@@ -2106,8 +2159,9 @@ I_{2}
 
 
 \paragraph{例}
-
-図回後5-7
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-7.jpg}
+\par\end{center}
 
 \[
 \left(\begin{array}{c}
@@ -2160,7 +2214,9 @@ V_{1} & =Z_{11}I_{1}-Z_{12}I_{2}\\
 V_{2} & =Z_{21}I_{1}-Z_{22}I_{2}
 \end{align*}
 
-図回後5-8
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-8.jpg}
+\par\end{center}
 
 \begin{align*}
 \left(\begin{array}{c}
@@ -2198,8 +2254,9 @@ Z_{21} & =\when{\frac{V_{2}}{I_{1}}}_{I_{2}=0}
 \end{align*}
 
 (参考) $Z_{11}$: 開放駆動点インピーダンス、$Z_{21}$: 開放伝達インピーダンス と呼ぶ。
-
-図回後5-9
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-9.jpg}
+\par\end{center}
 
 \begin{align*}
 Z_{12} & =\when{\frac{V_{1}}{-I_{2}}}_{I_{1}=0}\\
@@ -2208,8 +2265,9 @@ Z_{22} & =\when{\frac{V_{2}}{-I_{2}}}_{I_{1}=0}
 
 
 \paragraph{例}
-
-図回後5-10
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-10.jpg}
+\par\end{center}
 
 \begin{align*}
 V_{11} & =\when{\frac{V_{1}}{I_{1}}}_{I_{2}=0}=Z_{a}+Z_{b}\\
@@ -2241,7 +2299,9 @@ I_{1} & =Y_{11}V_{1}+Y_{12}V_{2}\\
 -I_{2} & =Y_{21}V_{1}+Y_{22}V_{2}
 \end{align*}
 
-図回後5-11
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-11.jpg}
+\par\end{center}
 
 \begin{align*}
 \left(\begin{array}{c}
@@ -2279,7 +2339,9 @@ Y_{11} & =\when{\frac{I_{1}}{V_{1}}}_{V_{2}=0}\\
 Y_{21} & =\when{\frac{-I_{2}}{V_{1}}}_{V_{2}=0}
 \end{align*}
 
-図回後5-12
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-12.jpg}
+\par\end{center}
 
 (参考) $Y_{11}$: 短絡駆動点アドミッタンス、$Y_{21}$: 短絡伝達アドミッタンス と呼ぶ。
 
@@ -2290,8 +2352,9 @@ Y_{22} & =\when{\frac{-I_{2}}{V_{2}}}_{V_{1}=0}
 
 
 \paragraph{例}
-
-図回後5-13
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-13.jpg}
+\par\end{center}
 
 \begin{align*}
 Y_{11} & =\when{\frac{I_{1}}{V_{1}}}_{V_{2}=0}=Y_{1}+Y_{2}\\
@@ -2364,8 +2427,9 @@ A & AD-BC\\
 \subsection{等価変換}
 
 異なる回路構成で同じ特性を実現
-
-図回後5-14
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-14.jpg}
+\par\end{center}
 
 \begin{align*}
 F_{T} & =\left(\begin{array}{cc}
@@ -2405,8 +2469,9 @@ Z_{0}^{2}=Z_{a}Z_{b}+Z_{b}Z_{c}+Z_{c}Z_{a}
 \paragraph{対称$\pi$型回路↔対称格子回路}
 
 Z行列で考える。
-
-図回後5-15
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-15.jpg}
+\par\end{center}
 
 左
 
@@ -2429,7 +2494,9 @@ Z_{b}=\frac{1}{2}\left(Z_{\beta}-Z_{\alpha}\right)
 \end{cases}
 \]
 
-図回後5-16
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-16.jpg}
+\par\end{center}
 
 左
 
@@ -2456,16 +2523,18 @@ Y_{2}=\frac{1}{2}\left(Y_{\alpha}-Y_{\beta}\right)
 \subsection{4端子網の応用}
 
 \paragraph{インピーダンス変換}
-
-図回後5-17
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-17.jpg}
+\par\end{center}
 
 \[
 Z_{1}=\frac{V_{1}}{I_{1}}=\frac{AV_{2}+B_{2}}{CV_{2}+DI_{2}}=\frac{AZ_{L}+B}{CZ_{L}+D}
 \]
 
 $Z_{L}$が$F$によって$Z_{1}$に変換される。
-
-図回後5-18
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-18.jpg}
+\par\end{center}
 
 最大の電力を取り出す条件
 
@@ -2479,8 +2548,9 @@ Z_{1}=\frac{V_{1}}{I_{1}}=Z_{0}^{*}
 周波数に応じて信号を通過・阻止する。
 
 \paragraph{low-pass filter (LPF)}
-
-図回後5-19
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-19.jpg}
+\par\end{center}
 
 \[
 \frac{V_{2}}{V_{1}}=\frac{1}{1+sRC}
@@ -2498,8 +2568,9 @@ $s\rightarrow\infty$
 
 
 \paragraph{high-pass filter (HPF)}
-
-図回後5-20
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-20.jpg}
+\par\end{center}
 
 \[
 \frac{V_{2}}{V_{1}}=\frac{sRC}{1+sRC}
@@ -2517,8 +2588,9 @@ $s\rightarrow\infty$
 
 
 \paragraph{band pass filter}
-
-図回後5-21
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-21.jpg}
+\par\end{center}
 
 \[
 \frac{V_{2}}{V_{1}}=\frac{RS}{Ls^{2}+Rs+\frac{1}{C}}
@@ -2531,12 +2603,14 @@ F行列を使って計算
 \subsection{影像パラメータ}
 
 縦続接続した回路の計算方法
-
-図回後5-22
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-22.jpg}
+\par\end{center}
 
 インピーダンス整合した回路のみ表現
-
-図回後5-23
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-23.jpg}
+\par\end{center}
 
 $\theta_{1},\theta_{2},\theta_{3}$: 影像パラメータ(複素数)
 
@@ -2547,14 +2621,17 @@ $\theta=\theta_{1}+\theta_{2}+\theta_{3}$: 複素数の足し算
 影像インピーダンス: 各4端子網に固有の値
 
 \paragraph{影像インピーダンスの求め方}
-
-図回後5-24
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-24.jpg}
+\par\end{center}
 
 \[
 Z_{1}=\frac{V_{1}}{I_{1}},Z_{2}=\frac{V_{2}}{I_{2}}
 \]
 
-図回後5-25
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/CircuitTheory1-part2/5-25.jpg}
+\par\end{center}
 
 \[
 Z_{1}=\frac{V_{1}'}{-I_{1}'},Z_{2}=\frac{V_{2}'}{-I_{2}'}
@@ -2662,12 +2739,14 @@ $\beta$: 位相定数
 \end{itemize}
 
 \section{分布定数回路}
-
-図回後6-1
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/6-1}
+\par\end{center}
 
 \subsection{無損失線路}
-
-図回後6-2
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/6-2}
+\par\end{center}
 \begin{itemize}
 \item $L\mathrm{\left[H/m\right]}$: 1mあたりのインダクタンス
 \item $C\mathrm{\left[F/m\right]}$: 1mあたりのキャパシタンス
@@ -2719,8 +2798,9 @@ Z_{0}=\pm\sqrt{\frac{L}{C}}
 伝播の様子が周波数に依存。
 
 周波数$\omega$の正弦波、複素電圧$V\left(x\right)$、複素電流$I\left(x\right)$を考える。
-
-図回後6-3
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/6-3}
+\par\end{center}
 
 \[
 \begin{cases}
@@ -2773,11 +2853,14 @@ $R=G=0$のとき、
 \item $\gamma=\j\omega\sqrt{LC}$: 純虚数: 振幅一定
 \item $Z_{0}=\sqrt{\frac{L}{C}}$: 実数: 電圧と電流の位相差なし
 \end{itemize}
-図回後6-4
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/6-4}
+\par\end{center}
 
 \subsection{反射と定在波}
-
-図回後6-5
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/6-5}
+\par\end{center}
 
 \[
 \begin{cases}
@@ -2825,7 +2908,9 @@ I\left(x\right) & =\frac{A}{Z_{0}}\left(\e^{-\gamma x}-\e^{\gamma x}\right)\\
  & =\frac{A}{\j Z_{0}}\sin\beta x
 \end{align*}
 
-図回後6-6
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/6-6}
+\par\end{center}
 
 \paragraph{例2}
 
@@ -2846,14 +2931,18 @@ V_{\mathrm{min}} & =\left|A\right|\left(1-\left|r\right|\right)
 
 $\mathrm{VSWR}=\frac{V_{\mathrm{max}}}{V_{\mathrm{min}}}=\frac{1+\left|r\right|}{1-\left|r\right|}$
 (Voltage Standing Wave Ratio): 1に近いほど反射が小さい(インピーダンスが整合しているから)
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/6-7}
+\par\end{center}
 
-図回後6-7
-
-図回後6-8
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/6-8}
+\par\end{center}
 
 \subsection{有限長線路}
-
-図回後6-9
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/6-9}
+\par\end{center}
 
 \[
 \begin{cases}
@@ -2884,8 +2973,9 @@ I\left(x\right) & =\frac{A}{Z_{0}}\e^{-\gamma x}-\frac{B}{Z_{0}}\e^{\gamma x}
 \]
 
 有限長線路の先にインピーダンス$Z_{L}$があるとき
-
-図回後6-10
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/6-10}
+\par\end{center}
 
 $\gamma l\ll1$のとき、$Z_{1}\sim Z_{L}$($Z_{0}$によらない)(集中定数回路)
 
@@ -2919,21 +3009,25 @@ Z_{1} & =\frac{Z_{0}}{\tanh\gamma l}\\
 
 キャパシタンス的
 \end{itemize}
-図回後6-11
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/6-11}
+\par\end{center}
 
 高周波回路で応用する。
 
 ・未知の線路の計測にも使える
-
-図回後6-12
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/6-12}
+\par\end{center}
 
 \[
 \Rightarrow Z_{0}=\sqrt{Z_{s}Z_{f}},\tanh\gamma l=\sqrt{\frac{Z_{s}}{Z_{f}}}
 \]
 
 影像パラメータとの関係
-
-図回後6-13
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/6-13}
+\par\end{center}
 
 \begin{align*}
 Z_{1} & =\sqrt{\frac{AB}{CD}}=\sqrt{\when{\frac{V_{1}}{I_{1}}}_{I_{2}=0}\when{\frac{V_{2}}{I_{2}}}_{V_{2}=0}}\\
@@ -2945,8 +3039,9 @@ Z_{2} & =\sqrt{\frac{BD}{CA}}
 \]
 
 ・短絡した有限超線路で何が起きているのか? (時間領域)
-
-図回後6-14
+\begin{center}
+\includegraphics{images/CircuitTheory1-part2/6-14}
+\par\end{center}
 
 伝達関数
 

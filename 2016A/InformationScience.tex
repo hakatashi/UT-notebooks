@@ -464,7 +464,7 @@ L=\sum p_{i}l_{i}
 \paragraph{定理}
 \begin{enumerate}
 \item $L<H\left(S\right)+1$となる瞬時符号を作ることができる。
-\item $H\left(S\right)\le L$でなければならない
+\item $H\left(S\right)\geq L$でなければならない
 \end{enumerate}
 →$H\left(S\right)\le L<H\left(S\right)+1$
 
@@ -472,7 +472,7 @@ L=\sum p_{i}l_{i}
 
 符号長$l_{i}$について
 \[
--\log p_{i}\le l_{i}<-\log_{i}+1
+-\log p_{i}\le l_{i}<-\log p_{i}+1
 \]
 と$l_{i}$を選ぶ。
 
@@ -498,7 +498,7 @@ p_{i}\ge2^{-l_{i}}
 
 \paragraph{シャノンの補助定理}
 
-$q_{1},\cdots'q_{m}$を非負の数で$q_{1}+\cdots+q_{m}=1$とする。
+$q_{1},\cdots,q_{m}$を非負の数で$q_{1}+\cdots+q_{m}=1$とする。
 
 \[
 -p_{i}\log q_{i}\ge-p_{i}\log p_{i}
@@ -531,7 +531,7 @@ $l_{i}$瞬時符号があれば
 
 例:
 \begin{center}
-\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/InformationScience/4-1.jpg}
+\includegraphics{images/InformationScience/4-1}
 \par\end{center}
 
 \[
@@ -545,7 +545,7 @@ H & =-0.8\log0.8-0.2\log0.2\\
 
 2次の拡大情報源 ハフマン符号
 \begin{center}
-\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/InformationScience/4-2.jpg}
+\includegraphics{images/InformationScience/4-2}
 \par\end{center}
 
 平均符号長
@@ -652,7 +652,7 @@ H\left(S\right)\leq L<H\left(S\right)+\varepsilon
 
 \paragraph{例 2値画像}
 \begin{center}
-\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/InformationScience/4-3.jpg}
+\includegraphics{images/InformationScience/4-3}
 \par\end{center}
 
 \paragraph{マルコフ情報源}
@@ -1125,8 +1125,9 @@ S & =\left(x_{1}+e_{1}\right)+\left(x_{2}+e_{2}\right)+\cdots+\left(c+e_{k+1}\ri
 \end{itemize}
 
 \paragraph{符号関西章距離}
-
-図情8-1
+\begin{center}
+\includegraphics{images/InformationScience/8-1}
+\par\end{center}
 
 1つの誤り検出が可能の例
 
@@ -1218,15 +1219,18 @@ S_{3}=e_{1}+e_{2}+e_{4}+e_{7}
 \end{cases}
 \]
 
-図情8-2
+\begin{center}
+\includegraphics{images/InformationScience/8-2}
+\par\end{center}
 
 \paragraph{符号語間最小距離}
 
 $d_{\mathrm{min}}=d_{\mathrm{min}}w_{H}\left(\boldsymbol{w}\right)$
 
 ハミング(7,4) 符号の符号間最小距離→3
-
-図情8-3
+\begin{center}
+\includegraphics{images/InformationScience/8-3}
+\par\end{center}
 
 \[
 d_{\mathrm{min}}=3
@@ -1302,7 +1306,9 @@ $\boldsymbol{e}_{i}$が1ゑ1つしか含まないならば、$\boldsymbol{e}_{i}
 \end{array}\right]
 \]
 
-図情9-1
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/InformationScience/9-1.jpg}
+\par\end{center}
 
 \paragraph{巡回符号}
 \begin{itemize}
@@ -1371,10 +1377,13 @@ u\left(1\right) & =u_{0}+u_{1}+\cdots+u_{n-1}=0
 →線形単一パリティ検査符号の検査方程式
 
 \paragraph{例 巡回ハミング$\left(7,4\right)$符号}
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/InformationScience/9-2.jpg}
+\par\end{center}
 
-図情9-2
-
-図情9-3
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/InformationScience/9-3.jpg}
+\par\end{center}
 
 \paragraph{シンドローム}
 
@@ -1410,17 +1419,22 @@ $g\left(x\right)$で割り切れる符号多項式
 \underbrace{c_{0}+c_{1}x+\cdots+c_{n-k-1}x^{n-k-1}+}_{\text{パリティビット}}\underbrace{p_{0}x^{n-k}+\cdots+p_{k}^{n-1}}_{\text{情報ビット}}
 \]
 
-図情9-4
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/InformationScience/9-4.jpg}
+\par\end{center}
 
 \paragraph{割り算回路}
-
-図情9-5
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/InformationScience/9-5.jpg}
+\par\end{center}
 
 \[
 x^{4}\Rightarrow\left(1,0,0,0,0\right)
 \]
 
-図情9-6
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/InformationScience/9-6.jpg}
+\par\end{center}
 
 \paragraph{巡回ハミング符号$\left(7,4\right)$符号化回路}
 
@@ -1428,7 +1442,9 @@ x^{4}\Rightarrow\left(1,0,0,0,0\right)
 g\left(x\right)=x^{2}+x+1
 \]
 
-図情9-7
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/InformationScience/9-7.jpg}
+\par\end{center}
 
 \section*{第10回}
 

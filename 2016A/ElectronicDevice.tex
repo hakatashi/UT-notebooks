@@ -1016,10 +1016,13 @@ Metal-Oxide-Semiconductor: 金属-SiO2(絶縁体)-半導体(Si)
 Field-Effect-Transistor: 電界効果トランジスタ
 
 \subsection{どのような構造をしているか}
+\begin{center}
+\includegraphics{images/ElectronicDevice/9-1}
+\par\end{center}
 
-図電デ9-1
-
-図電デ9-2
+\begin{center}
+\includegraphics{images/ElectronicDevice/9-2}
+\par\end{center}
 
 \subsection{動作原理のポイント}
 \begin{enumerate}
@@ -1037,10 +1040,13 @@ MON構造を使い電界効果で動かす。
 \end{enumerate}
 
 \paragraph{水門の作り方}
+\begin{center}
+\includegraphics{images/ElectronicDevice/9-3}
+\par\end{center}
 
-図電デ9-3
-
-図電デ9-4
+\begin{center}
+\includegraphics{images/ElectronicDevice/9-4}
+\par\end{center}
 
 \paragraph{MOSFETの2つのタイプ}
 \begin{itemize}
@@ -1057,8 +1063,9 @@ MON構造を使い電界効果で動かす。
 \end{itemize}
 
 \subsection{MOS構造}
-
-図電デ9-5
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ElectronicDevice/9-5.jpg}
+\par\end{center}
 
 反転層の電荷量$Q_{I}$
 
@@ -1083,12 +1090,17 @@ $V_{TH}$ しきい(電圧)
 電子エネルギーを表す
 
 電位は下向きが正
+\begin{center}
+\includegraphics{images/ElectronicDevice/10-1}
+\par\end{center}
 
-図電デ10-1
+\begin{center}
+\includegraphics{images/ElectronicDevice/10-2}
+\par\end{center}
 
-図電デ10-2
-
-図電デ10-3
+\begin{center}
+\includegraphics{images/ElectronicDevice/10-3}
+\par\end{center}
 
 熱平衡状態においては
 \[
@@ -1098,16 +1110,18 @@ $V_{TH}$ しきい(電圧)
 $V_{\mathrm{OX}}$: 酸化膜($\mathrm{SiO_{2}}$)にかかる電圧
 
 $\phi_{S}$: 半導体の空乏層にかかる電圧→「バンド曲がり」
-
-図電デ10-4
+\begin{center}
+\includegraphics{images/ElectronicDevice/10-4}
+\par\end{center}
 
 \[
 V_{\mathrm{FB}}=-\left(\psi_{S}-\psi_{M}\right)=\psi_{M}-\psi_{S}=\psi_{MS}
 \]
 
 $\psi_{M}-\psi_{S}$: 金属と半導体の仕事関数の差
-
-図電デ10-5
+\begin{center}
+\includegraphics{images/ElectronicDevice/10-5}
+\par\end{center}
 
 深さ$x$のキャリア密度は?
 
@@ -1167,8 +1181,9 @@ $2\phi_{F}=\phi_{S}$のときに反転する。
 \section*{第11回}
 
 \paragraph{反転(復習と訂正)}
-
-図電デ11-1
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ElectronicDevice/11-1.jpg}
+\par\end{center}
 
 \paragraph{深さ方向のキャリア密度}
 
@@ -1184,15 +1199,22 @@ P型半導体の電子密度 $p\left(x>W\right)=n_{i}\exp\frac{q\left[\phi_{F}-\
 \phi_{S}=\phi_{i}\left(x=0\right)-\phi_{i}\left(x>W\right)=2\phi_{FP}
 \]
 
-図電デ11-2
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ElectronicDevice/11-2.jpg}
+\par\end{center}
 
-図電デ11-3
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ElectronicDevice/11-3.jpg}
+\par\end{center}
 
-図電デ11-4
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ElectronicDevice/11-4.jpg}
+\par\end{center}
 
 \paragraph{MOSFETのIV特性を求めてみよう}
-
-図電デ11-5
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ElectronicDevice/11-5.jpg}
+\par\end{center}
 
 MOS構造はすべて反転しており、電荷からの電気力線は全てゲートで終端している。その後でドレインソース間の電圧を考慮する。これをグラ樹あるチャネル近似という。
 
@@ -1239,7 +1261,9 @@ I_{D}=\mu C_{OX}\frac{W}{L}\left\{ \left(V_{GS}-V_{TH}\right)V_{DS}-\frac{1}{2}V
 I_{D}=\mu C_{OX}\frac{W}{L}\left(V_{GS}-V_{TH}\right)V_{DS}
 \]
 
-図電デ11-6
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ElectronicDevice/11-6.jpg}
+\par\end{center}
 
 \[
 I_{D}=\mu C_{OX}\frac{W}{L}\left\{ \left(V_{GS}-V_{TH}\right)V_{DS}-\frac{1}{2}V_{DS}^{2}\right\} 
@@ -1248,8 +1272,9 @@ I_{D}=\mu C_{OX}\frac{W}{L}\left\{ \left(V_{GS}-V_{TH}\right)V_{DS}-\frac{1}{2}V
 ←放物線
 
 この式が$V_{DS}=V_{GS}-V_{TH}$で最大になる。
-
-図電デ11-7
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ElectronicDevice/11-7.jpg}
+\par\end{center}
 
 $V_{DS}>V_{GS}-V_{TH}$で$I_{D}$は一定
 
@@ -1272,8 +1297,9 @@ Q\left(x=L\right)=C_{OX}W\left(V_{HS}-V_{TH}-\left(V_{HS}-V_{TH}\right)\right)=0
 $x=L$で反転電子がなくなる
 
 →ドレイン端でチャネルが消失!!
-
-図電デ11-8
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/ElectronicDevice/11-8.jpg}
+\par\end{center}
 
 \section*{第12回}
 
@@ -1300,45 +1326,59 @@ $x=L$ ドレイン端
 \]
 
 ピンチオフ点に於いては、ドレイン端で反転層がなくなる。→チャネルが消失する
+\begin{center}
+\includegraphics{images/ElectronicDevice/12-1}
+\par\end{center}
 
-図電デ12-1
+\begin{center}
+\includegraphics{images/ElectronicDevice/12-2}
+\par\end{center}
 
-図電デ12-2
-
-図電デ12-3
+\begin{center}
+\includegraphics{images/ElectronicDevice/12-3}
+\par\end{center}
 
 \section{バイポーラトランジスタ}
 
 (参考: MOSトランジスタ = ユニポーラトランジスタ)
 
 ①基本構造と記号
+\begin{center}
+\includegraphics{images/ElectronicDevice/12-4}
+\par\end{center}
 
-図電デ12-4
-
-図電デ12-5
+\begin{center}
+\includegraphics{images/ElectronicDevice/12-5}
+\par\end{center}
 
 ②動作原理
-
-図電デ12-6
+\begin{center}
+\includegraphics{images/ElectronicDevice/12-6}
+\par\end{center}
 
 ③構造的な特徴
 
 ただのnp結合+pn結合ではない。
-
-図電デ12-7
+\begin{center}
+\includegraphics{images/ElectronicDevice/12-7}
+\par\end{center}
 \begin{itemize}
 \item エミッタのドーピング濃度はベースの濃度よりも桁違いに大きい。
 \item ベースの厚みが非常に薄い (0.4μm以下)
 \end{itemize}
 ④キャリアの流れ
+\begin{center}
+\includegraphics{images/ElectronicDevice/12-8}
+\par\end{center}
 
-図電デ12-8
-
-図電デ12-9
+\begin{center}
+\includegraphics{images/ElectronicDevice/12-9}
+\par\end{center}
 
 ⑤増幅回路
-
-図電デ12-10
+\begin{center}
+\includegraphics{images/ElectronicDevice/12-10}
+\par\end{center}
 
 ベース接地の増幅回路
 
@@ -1347,8 +1387,9 @@ $x=L$ ドレイン端
 \]
 
 $\alpha$→ベース接地の電流増幅率
-
-図電デ12-11
+\begin{center}
+\includegraphics{images/ElectronicDevice/12-11}
+\par\end{center}
 
 エミッタ接地の増幅回路
 
@@ -1368,14 +1409,17 @@ $\beta=\frac{\alpha}{1-\alpha}$: エミッタ接地の電流増幅率
 \section{アナログ回路の基礎}
 
 \subsection{MOSトランジスタのモデリング}
-
-図電デ13-1
+\begin{center}
+\includegraphics{images/ElectronicDevice/13-1}
+\par\end{center}
 
 \[
 I_{D}=\mu C_{OX}\frac{W}{2L}\left(V_{GS}-V_{TH}\right)^{2}
 \]
 
-図電デ13-2
+\begin{center}
+\includegraphics{images/ElectronicDevice/13-2}
+\par\end{center}
 
 \paragraph{小信号解析}
 
@@ -1398,7 +1442,9 @@ $g_{m}$: 相互コンダクタンス
 g_{m}=\pd{I_{D}V_{g}}{}=\mu C_{OX}\frac{W}{L}\left(V_{G}-V_{TH}\right)
 \]
 
-図電デ13-3
+\begin{center}
+\includegraphics{images/ElectronicDevice/13-3}
+\par\end{center}
 
 ポイント
 \begin{enumerate}
@@ -1407,34 +1453,44 @@ g_{m}=\pd{I_{D}V_{g}}{}=\mu C_{OX}\frac{W}{L}\left(V_{G}-V_{TH}\right)
 \end{enumerate}
 
 \subsection{増幅回路}
-
-図電デ13-4
+\begin{center}
+\includegraphics{images/ElectronicDevice/13-4}
+\par\end{center}
 
 増幅率$A_{v}=\frac{v_{out}}{v_{in}}$
-
-図電デ13-5
+\begin{center}
+\includegraphics{images/ElectronicDevice/13-5}
+\par\end{center}
 
 外部からエネルギーを供給し入力信号と相似形のより大きな信号を出力する。
 
 \subsection{負荷抵抗型のソース接地回路}
+\begin{center}
+\includegraphics{images/ElectronicDevice/13-6}
+\par\end{center}
 
-図電デ13-6
-
-図電デ13-7
+\begin{center}
+\includegraphics{images/ElectronicDevice/13-7}
+\par\end{center}
 
 ポイント: 重ね合わせの原理によって交流と直流を分離する。
 
 交流と直流を分離して回路を書いてみよう!!
+\begin{center}
+\includegraphics{images/ElectronicDevice/13-8}
+\par\end{center}
 
-図電デ13-8
-
-図電デ13-9
+\begin{center}
+\includegraphics{images/ElectronicDevice/13-9}
+\par\end{center}
 
 \[
 I=I_{1}+I_{2}=\frac{V_{1}}{R}+\frac{V_{2}}{R}
 \]
 
-図電デ13-10
+\begin{center}
+\includegraphics{images/ElectronicDevice/13-10}
+\par\end{center}
 
 \[
 I=I_{D0}+i_{D}
@@ -1443,8 +1499,9 @@ I=I_{D0}+i_{D}
 微小領域→線形にした→重ね合わせの原理→直流と交流分離→電源はアース
 
 交流のみを考える。
-
-図電デ13-11
+\begin{center}
+\includegraphics{images/ElectronicDevice/13-11}
+\par\end{center}
 
 \[
 v_{out}=-g_{m}\cdot v_{g}\cdot R_{D}
@@ -1456,7 +1513,9 @@ v_{out}=-g_{m}\cdot v_{g}\cdot R_{D}
 \left|A_{v}\right|=g_{m}\cdot R_{D}
 \]
 
-図電デ13-12
+\begin{center}
+\includegraphics{images/ElectronicDevice/13-12}
+\par\end{center}
 
 \paragraph{板書}
 

@@ -1751,8 +1751,9 @@ P & =E\left[\frac{1}{T}\int_{T}\left|x\left(t\right)\right|^{2}\mathrm{d}t\right
 \end{align*}
 
 $\Phi_{X}\left(f\right)$: 平均電力を周波数分解したもの
-
-図信9-1
+\begin{center}
+\includegraphics{images/SignalAnalysys/9-1}
+\par\end{center}
 
 $x\left(t\right)$: real で、$\Phi_{X}\left(f\right)$が偶関数のときは⋯
 \begin{align*}
@@ -1763,8 +1764,9 @@ P & =\int_{-\infty}^{\infty}\Phi_{X}\left(f\right)\mathrm{d}f\\
 $\Phi_{X}\left(f\right)$: 両側電力スペクトル密度
 
 $\Phi'_{X}\left(f\right)=2\Phi_{X}\left(f\right)$: 片側電力スペクトル密度
-
-図信9-2
+\begin{center}
+\includegraphics{images/SignalAnalysys/9-2}
+\par\end{center}
 
 \paragraph{相互スペクトル密度}
 
@@ -1773,8 +1775,9 @@ $\Phi'_{X}\left(f\right)=2\Phi_{X}\left(f\right)$: 片側電力スペクトル�
 \]
 
 ($y\left(t\right)=x\left(t\right),Y\left(f\right)=X\left(f\right)$のときは、電力スペクトル密度になる)
-
-図信9-3
+\begin{center}
+\includegraphics{images/SignalAnalysys/9-3}
+\par\end{center}
 
 性質
 \begin{enumerate}
@@ -1783,8 +1786,9 @@ $\Phi'_{X}\left(f\right)=2\Phi_{X}\left(f\right)$: 片側電力スペクトル�
 
 →正規化・コヒーレンシー$\gamma_{XY}\left(f\right)=\frac{\Phi_{XY}\left(f\right)}{\sqrt{\Phi_{X}\left(f\right)\Phi_{Y}\left(f\right)}}$
 \item Wiener-Khinchinの定理
-
-図信9-4
+\begin{center}
+\includegraphics{images/SignalAnalysys/9-4}
+\par\end{center}
 \end{enumerate}
 
 \paragraph{略証}
@@ -1798,14 +1802,21 @@ $\Phi'_{X}\left(f\right)=2\Phi_{X}\left(f\right)$: 片側電力スペクトル�
 \end{align*}
 
 →電力スペクトル密度は$\varphi_{X}\left(\tau\right)$のフーリエ変換になる
+\begin{center}
+\includegraphics{images/SignalAnalysys/9-5}
+\par\end{center}
 
-図信9-5
+\begin{center}
+\includegraphics{images/SignalAnalysys/9-6}
+\par\end{center}
 
-図信9-6
+\begin{center}
+\includegraphics{images/SignalAnalysys/9-7}
+\par\end{center}
 
-図信9-7
-
-図信9-8
+\begin{center}
+\includegraphics{images/SignalAnalysys/9-8}
+\par\end{center}
 
 \section*{第10回}
 
@@ -1827,10 +1838,13 @@ x_{N}
 \end{array}\right]$と表記されるような信号を扱う。
 
 どのような場合に$\boldsymbol{x}$を扱うのか?
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/SignalAnalysys/10-1.jpg}
+\par\end{center}
 
-図信10-1
-
-図信10-2
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/SignalAnalysys/10-2.jpg}
+\par\end{center}
 
 \paragraph{確率密度関数}
 
@@ -1841,8 +1855,9 @@ p\left(x_{1},x_{2},\cdots x_{N}\right)=p\left(\boldsymbol{x}\right)
 $p$: スカラー値出力
 
 $\boldsymbol{x}$: ベクトル入力
-
-図信10-3
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/SignalAnalysys/10-3.jpg}
+\par\end{center}
 
 \paragraph{統計量}
 \begin{enumerate}
@@ -1924,8 +1939,9 @@ $\boldsymbol{x}$: ベクトル
 $\left|\Lambda\right|$: 共分散行列の行列式 (スカラー)
 
 $\Lambda^{-1}$: 共分散の逆行列
-
-図信10-4
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/SignalAnalysys/10-4.jpg}
+\par\end{center}
 
 等高線とは?
 \[
@@ -1935,8 +1951,9 @@ p\left(\boldsymbol{x}\right)=\mathrm{const}
 →$\left(\boldsymbol{x}-\boldsymbol{m}^{t}\right)\Lambda^{-1}\left(\boldsymbol{x}-\boldsymbol{m}\right)=\mathrm{const}$
 
 →等高線は楕円(ガウスの場合)
-
-図信10-5
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/SignalAnalysys/10-5.jpg}
+\par\end{center}
 
 多次元が薄信号の特別な場合
 \begin{enumerate}
@@ -1949,8 +1966,9 @@ p\left(\boldsymbol{x}\right)=p\left(x_{1}\right)p\left(x_{2}\right)\cdots p\left
 \]
 
 積の形に分解できる
-
-図信10-6
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/SignalAnalysys/10-6.jpg}
+\par\end{center}
 \item さらに$\sigma_{1}^{2}=\sigma_{2}^{2}=\cdots=\sigma_{N}^{2}$のとき
 
 \[
@@ -1960,7 +1978,9 @@ p\left(\boldsymbol{x}\right)=p\left(x_{1}\right)p\left(x_{2}\right)\cdots p\left
 \end{array}\right]
 \]
 
-図信10-7
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/SignalAnalysys/10-7.jpg}
+\par\end{center}
 \end{enumerate}
 
 \paragraph{ベクトルの線形変換}
@@ -1974,8 +1994,9 @@ $\boldsymbol{y}$: 出力ベクトル
 $A$: システム行列
 
 $\boldsymbol{x}$: 入力ベクトル
-
-図信10-8
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/SignalAnalysys/10-8.jpg}
+\par\end{center}
 
 \paragraph{期待値ベクトル}
 
@@ -2003,10 +2024,13 @@ $\Lambda_{y}$ 出力の共分散
 $\Lambda_{x}$ 入力の共分散
 
 \paragraph{無相関化}
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/SignalAnalysys/10-9.jpg}
+\par\end{center}
 
-図信10-9
-
-図信10-10
+\begin{center}
+\includegraphics[bb = 0 0 200 100, draft, type=eps]{images/SignalAnalysys/10-10.jpg}
+\par\end{center}
 
 \paragraph{KL変換 (カルーネン・レーベ変換)}
 
