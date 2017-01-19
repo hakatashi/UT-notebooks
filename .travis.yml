@@ -16,6 +16,8 @@ cache:
   directories:
     - dist
 before_script:
+  - echo "https://$GITLAB_CREDENTIAL@gitlab.com" >> ~/.git-credentials
+  - git config credential.helper store
   - git lfs pull
   - bash reset_timestamps.sh
 script:
