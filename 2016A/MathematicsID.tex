@@ -258,7 +258,7 @@ Y & =-\frac{\delta}{\beta\gamma}X'=\sqrt{\frac{\alpha}{\gamma}}\frac{\delta}{\be
 
 このように一般に解けない方程式も、平衡点の周りの近似解は求めることができる。
 
-\paragraph{Liourille方程式}
+\paragraph{Liouville方程式}
 
 \begin{align*}
  & y''+P\left(x\right)y'+Q\left(y\right)\left(y'\right)^{2}=0\\
@@ -1207,12 +1207,12 @@ C=\frac{F_{0}}{2\Omega}
 \paragraph{定数係数n階斉次線形常微分方程式}
 
 \[
-\sum_{j=1}^{n}a_{j}\frac{\mathrm{d}^{3}}{\mathrm{d}x^{3}}u+a_{0}u=0
+\sum_{j=1}^{n}a_{j}\frac{\mathrm{d}^{j}}{\mathrm{d}x^{j}}u+a_{0}u=0
 \]
 
 $u=C\e^{\lambda x}$を代入
 
-特性方程式 $\sum_{j=!}^{n}a_{j}\lambda^{3}+a_{0}=0$
+特性方程式 $\sum_{j=1}^{n}a_{j}\lambda^{j}+a_{0}=0$
 
 →$n$個の解$\lambda_{k}\left(k=1,\cdots,n\right)$
 \begin{enumerate}
@@ -1224,10 +1224,10 @@ u=\sum_{k}\sum_{m=0}^{n_{k}-1}C_{m}^{k}x^{m}\e^{\lambda_{k}x}
 \]
 \end{enumerate}
 \[
-\sum_{j=1}^{n}a_{j}\lambda^{3}+a_{0}=a_{0}\prod_{k=1}^{n}\left(\lambda-\lambda_{k}\right)=0
+\sum_{j=1}^{n}a_{j}\lambda^{j}+a_{0}=a_{0}\prod_{k=1}^{n}\left(\lambda-\lambda_{k}\right)=0
 \]
 \[
-\sum_{j=1}^{n}\frac{\mathrm{d}^{3}}{\mathrm{d}x^{3}}u+a_{0}u=a_{0}\prod_{k=1}^{n}\left(D-\lambda_{k}\right)u=0
+\sum_{j=1}^{n}\frac{\mathrm{d}^{j}}{\mathrm{d}x^{j}}u+a_{0}u=a_{0}\prod_{k=1}^{n}\left(D-\lambda_{k}\right)u=0
 \]
 
 \[
@@ -1308,7 +1308,7 @@ u'''-8u''+16=0\Rightarrow u=\left(C_{1}+C_{2}x\right)\e^{2x}+\left(C_{3}+C_{4}x\
 \paragraph{定数係数n階非斉次線形常微分方程式}
 
 \[
-\sum_{j=1}^{n}a_{j}\ddd{}xu+a_{0}u_{2}=f\left(x\right)
+\sum_{j=1}^{n}a_{j}\frac{\mathrm{d}^{j}}{\mathrm{d}x^{j}}u+a_{0}u_{2}=f\left(x\right)
 \]
 
 \[
@@ -1441,7 +1441,7 @@ u\left(x\right)=\frac{x}{\eta^{2}}-\frac{2}{\eta^{3}}+C_{1}\e^{-\eta x}+C_{2}x\e
 \paragraph{n階微分方程式と一階n次元連立微分方程式}
 
 \[
-\sum_{j=1}^{n}a_{j}\ddd{}xu+a_{0}u=0
+\sum_{j=1}^{n}a_{j}\frac{\mathrm{d}^{j}}{\mathrm{d}x^{j}}u+a_{0}u=0
 \]
 
 $a_{n}=1$をおいて良い。
@@ -1463,9 +1463,9 @@ $n$変数
 
 \begin{align*}
 u_{1}=u_{0}'\\
-u_{2}=u_{0}'\\
+u_{2}=u_{1}'\\
 \vdots\\
-u_{n=1}=u_{n-2}'
+u_{n-1}=u_{n-2}'
 \end{align*}
 
 \[
@@ -1703,12 +1703,12 @@ a & 0 & 0\\
 \]
 
 \[
-u\left(t\right)=\e^{at}u_{01}v\left(t\right)=\e^{bt}v_{01}w\left(t\right)=\e^{ct}v_{0}
+u\left(t\right)=\e^{at}u_{0},v\left(t\right)=\e^{bt}v_{0},w\left(t\right)=\e^{ct}w_{0}
 \]
 
 \item 1つの実数と1つの2重根
 \begin{enumerate}
-\item $\rank\left(aIA\right)=1$のとき
+\item $\rank\left(aI-A\right)=1$のとき
 
 \[
 P^{-1}AP=\left(\begin{array}{ccc}
@@ -1719,7 +1719,7 @@ a & 0 & 0\\
 \]
 
 \[
-u\left(t\right)=\e^{at}u_{01}v\left(t\right)=\e^{at}v_{0}'w\left(t\right)=\e^{ct}w_{0}
+u\left(t\right)=\e^{at}u_{0},v\left(t\right)=\e^{at}v_{0},w\left(t\right)=\e^{ct}w_{0}
 \]
 
 \item $\rank\left(aI-A\right)=2$のとき
@@ -1733,7 +1733,7 @@ a & 1 & 0\\
 \]
 
 \[
-u\left(t\right)=\e^{at}\left(u_{0}+tv_{0}\right)_{1}v\left(t\right)=\e^{at}v_{0},w\left(t\right)=\e^{ct}w_{0}
+u\left(t\right)=\e^{at}\left(u_{0}+tv_{0}\right),v\left(t\right)=\e^{at}v_{0},w\left(t\right)=\e^{ct}w_{0}
 \]
 
 \end{enumerate}
@@ -4057,7 +4057,7 @@ p_{j}=\frac{1}{n}
 
 \paragraph{解析力学}
 
-Lagrangianは一般化座標$q$と一般加速度$\dot{q}$
+Lagrangianは一般化座標$q$と一般化速度$\dot{q}$
 \[
 \mathcal{L}\left(q,\dot{q}\right)=T\left(\dot{q}\right)-V\left(q\right)
 \]
