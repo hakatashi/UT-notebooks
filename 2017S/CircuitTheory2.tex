@@ -1,0 +1,159 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 電気回路理論第二}
+
+\author{教員: 山﨑俊彦 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+
+
+\section*{第1回}
+
+\section{回路網の性質}
+
+\subsection{回路網関数}
+
+S(ラプラス変換後)平面で回路を記述して解析
+
+\subsubsection{回路網関数とは}
+
+線形回路において、初期条件が0ならば
+\[
+G\left(s\right)=H\left(s\right)\cdot F\left(s\right)
+\]
+
+$G\left(s\right)$: 出力
+
+$H\left(s\right)$: 回路網関数
+
+$F\left(s\right)$: 出力
+
+一般的には、$G\left(s\right)=H\left(F\left(s\right)\right)$
+
+\paragraph{例1: 1端子対回路(2端子回路)}
+
+図電回1-1
+
+\[
+V\left(s\right)=Z\left(s\right)\cdot I\left(s\right)
+\]
+
+$Z\left(s\right)$: インピーダンス回路
+
+\[
+I\left(s\right)=Y\left(s\right)\cdot V\left(s\right)
+\]
+
+$Y\left(s\right)$: アドミッタンス関数
+
+まとめてイミタンス関数と呼ぶ。
+
+\paragraph{例2: 4端子回路}
+
+図電回1-2
+
+\[
+\left[\begin{array}{c}
+V_{1}\\
+V_{2}
+\end{array}\right]=\left[\begin{array}{cc}
+Z_{11} & Z_{12}\\
+Z_{21} & Z_{22}
+\end{array}\right]\left[\begin{array}{c}
+I_{1}\\
+I_{2}
+\end{array}\right]
+\]
+
+$Z_{11},Z_{21}$:駆動点関数
+
+$Z_{12},Z_{22}$: 伝達関数
+
+\subsubsection{集中定数回路の回路網関数}
+
+\[
+H\left(s\right)=\frac{P\left(s\right)}{Q\left(s\right)}=\frac{b_{n}S^{n}+b_{n}+S^{n-1}+\cdots+b_{0}}{a_{m}S^{m}+a_{m-1}S^{m-1}+\cdots+a_{0}}
+\]
+と書ける←$S$の実係数有理関数
+
+\paragraph{例}
+
+図電回1-3
+
+\[
+H\left(s\right)=\frac{V_{out}\left(s\right)}{V_{in}\left(s\right)}=\frac{1}{sCR+1}
+\]
+
+
+\subsubsection{極と零点}
+
+\[
+H\left(s\right)=\frac{P\left(s\right)}{Q\left(s\right)}=H\frac{\left(S-S_{o1}\right)\cdots\left(S-S_{on}\right)}{\left(S-S_{p1}\right)\cdots\left(S-S_{pn}\right)}
+\]
+
+$H=\frac{b_{m}}{a_{n}}$: scale factor (尺度函数)
+
+零点: 分子を0にするような$S=S_{o1},S_{o2},\cdots S_{on}$
+
+極: 分母を0にするような$S=S_{p1},S_{p2},\cdots,S_{pm}$
+
+$r$重根→$r$位の極
+
+解は実数or共役複素数の形に限る
+
+\paragraph{例}
+
+図電回1-4
+
+\paragraph{例}
+
+図電回1-5
+
+\paragraph{無限遠点$S\rightarrow\infty$の扱い}
+
+$n>m$: $H\left(s\right)=HS^{n-m}$…$n-m$位の零点
+
+$n<m$: $H\left(s\right)=H\frac{1}{S^{m}-n}$…$m-n$位の極
+
+$n=m$: $H\left(s\right)=H$
+\end{document}
