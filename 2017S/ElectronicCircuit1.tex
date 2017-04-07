@@ -1,0 +1,252 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amsmath}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 電子回路I}
+
+\author{教員: 山﨑俊彦 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+
+
+\section*{第1回}
+
+\paragraph{電子回路I}
+
+\paragraph{目標}
+\begin{itemize}
+\item 電子回路(アナログ回路)をトランジスタレベルで動作を理解する
+\item 前提
+\begin{itemize}
+\item トランジスタ=MOLFETの動作
+\item 簡単な数学(特にフーリエ・ラプラス変換)
+\begin{itemize}
+\item →非線形素子のトランジスタを線形化して理解
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\paragraph{講義}
+\begin{itemize}
+\item 出席: 摂ります
+\item 宿題: 出します
+\item 評価: 期末試験のみ
+\end{itemize}
+
+\paragraph{教科書}
+
+「MOSによる電子回路基礎」数理工学社 池田著
+
+→サポート情報を見る
+
+\paragraph{参考書}
+
+「アナログCMOS集積回路」B.Razavi著 黒田訳 丸善出版
+
+→演習編あり
+
+メールアドレス: {[}secret{]}
+
+ハッシュタグ: \#UTEEAnalogCircuits
+
+\paragraph{講義の流れ}
+\begin{enumerate}
+\item イントロ、トランジスタの小信号特性
+\item ノース接地回路
+\item ゲート接地回路、ソースフォロワー
+\item カスゴート回路
+\item 差動増幅回路
+\item カレントミラー
+\item MOSトランジスタの構造と動作
+\item 回路の周波数応答と安定性
+\item フィードバック
+\item オペアンプ
+\end{enumerate}
+
+\paragraph{ディジタルとアナログ}
+
+回路はディジタルとアナログ
+\begin{itemize}
+\item ディジタル
+\begin{itemize}
+\item 回路規模: 大
+\item 動作速度: 遅
+\item 精度: 高
+\end{itemize}
+\item アナログ
+\begin{itemize}
+\item 回路規模: 小
+\item 動作速度: 速
+\item 精度: 低
+\end{itemize}
+\end{itemize}
+自然界の信号は全てアナログ
+
+信号処理はディジタルが有利
+
+この2つを相互に変換するのがA/D, D/A変換→アンプ(増幅回路)
+
+\paragraph{MOSトラン上位スタとバイポーラトランジスタ}
+\begin{itemize}
+\item 3端子素子
+\item MOS: ゲート(ソース間=基盤)の電圧で、ドレイン-ソース間の電流を制御
+\item バイポーラ: ベース-エミッタ間の電流で、コレクタ-エミッタ単の電流を制御
+\end{itemize}
+
+\paragraph{MOS (NMOS)}
+
+図回I1-1
+
+\paragraph{PMOS}
+
+図回I1-2
+
+\paragraph{バイポーラ}
+
+図回I1-3
+
+バイポーラトランジスタはコレクタとエミッタは非対称
+
+\paragraph{NMOSとPMOS}
+
+図回I1-4
+
+\paragraph{MOSトランジスタの動作}
+
+図回I1-5
+
+\paragraph{弱反転}
+
+$V_{GS}<V_{TH}$ 
+\[
+I_{D}=\left(\frac{\omega}{L}\right)I_{DO}\e^{\frac{qV_{GS}}{kT}}
+\]
+
+
+\paragraph{強反転}
+
+飽和領域 $V_{TH}<V_{GS}<V_{TH}+V_{DS}$
+
+\[
+I_{D}=\mu C_{OX}\frac{\omega}{L}\frac{\left(V_{GS}-V_{TH}\right)^{2}}{2}
+\]
+
+線形領域 $V_{TH}+V_{DS}<V_{GS}$
+\[
+I_{D}=\mu C_{OX}\frac{\omega}{L}\left\{ \left(V_{GS}-V_{TH}\right)V_{DS}+\frac{V_{DS}^{2}}{2}\right\} 
+\]
+
+図回I1-6
+
+\[
+I_{D}'=I_{D}\left(1+\lambda V_{DS}\right)
+\]
+
+$\lambda$: チャネル長変調係数
+
+NMOS: $\lambda_{n}=0.1$
+
+PMOS: $\lambda_{p}=0.2$
+
+\paragraph{バイアスと小信号解析}
+
+少信号解析→線形近似
+
+\[
+y=f'\left(x_{0}\right)\Delta x+y_{0}
+\]
+
+\[
+\Delta y=f'\left(x_{0}\right)\Delta x
+\]
+
+傾き(=ゲイン)のみを考える→小信号解析
+
+\[
+I_{D}=I_{D0}\left(V_{GS}-V_{TH}\right)^{2}
+\]
+
+\[
+I_{D0}=\frac{1}{2}\mu C_{OX}\frac{\omega}{L}
+\]
+
+\begin{align*}
+g_{m} & =\pd{I_{D}}{V_{GS}}=2I_{D0}\left(V_{GS}-V_{TH}\right)\\
+ & \rightarrow\Delta I_{D}=g_{m}\cdot V_{GS}
+\end{align*}
+
+\[
+\text{相互コンダクタンス}=\frac{2I_{D}}{V_{GS}-V_{TH}}=\sqrt{\frac{\cdots}{I_{D}}}
+\]
+
+図回I1-8
+
+MOSトランジスタ信号等価回路
+
+変化分は小文字で表す
+
+\begin{align*}
+\Delta V_{GS} & \rightarrow v_{gs}\rightarrow i_{d}=g_{m}v_{gs}\\
+\Delta I_{D} & \rightarrow i_{d}
+\end{align*}
+
+
+\paragraph{チャネル長変調効果の小信号モデル}
+
+\begin{align*}
+I_{D} & =f\left(V_{DS}\right)\\
+ & =\pd{I_{D}}{V_{DS}}=\frac{I}{V_{D}}
+\end{align*}
+
+チャンネル接続
+
+図回I1-9
+
+\[
+I_{D}=f\left(V_{GS}\cdot V_{DS}\right)
+\]
+
+\[
+I_{D}=\when{\pd f{V_{GS}}}_{V_{GS}}\Delta V_{GS}+\when{\pd f{V_{DS}}}\Delta V_{DS}
+\]
+
+\end{document}
