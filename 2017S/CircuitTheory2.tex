@@ -8,8 +8,16 @@
 \setlength{\parskip}{\smallskipamount}
 \setlength{\parindent}{0pt}
 \usepackage{textcomp}
+\usepackage{amsmath}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
 
 \makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage[dvipdfmx]{hyperref}
 \usepackage[dvipdfmx]{pxjahyper}
@@ -45,6 +53,7 @@
 \global\long\def\cov{\operatorname{Cov}}
 \global\long\def\when#1{\left.#1\right|}
 \global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+\global\long\def\invlaplace#1{\mathcal{L}^{-1}\left[#1\right]}
 
 
 \section*{第1回}
@@ -156,4 +165,129 @@ $n>m$: $H\left(s\right)=HS^{n-m}$…$n-m$位の零点
 $n<m$: $H\left(s\right)=H\frac{1}{S^{m}-n}$…$m-n$位の極
 
 $n=m$: $H\left(s\right)=H$
+
+\subsubsection{回路の応答}
+
+応答 $g\left(t\right)=\invlaplace{G\left(s\right)}=\invlaplace{H\left(s\right)F\left(s\right)}$
+
+入力 $f\left(t\right)=\delta\left(t\right)$ (インパルス信号) → $F\left(s\right)=1$
+とすると
+
+\paragraph{例}
+
+図電回2-1
+
+$m$位の極(m-th order of polen
+
+\[
+\frac{Km}{\left(S-S_{pi}\right)^{m}}\xrightarrow{\mathcal{L}^{-1}}\frac{Km}{\left(m-1\right)!}t^{m-1}\e^{S_{pi}t}
+\]
+
+図電回2-2
+
+\subsubsection{回路全体の安定性}
+
+($t\rightarrow\infty$のときの固有応答)
+
+\begin{tabular}{|c|c|c|c|}
+\hline 
+極 & 左半面内 & 虚軸上 & 右半面内\tabularnewline
+\hline 
+\hline 
+1位 & 減衰 & 振動 & 発散\tabularnewline
+\hline 
+2位以上 & 減衰 & 発散 & 発散\tabularnewline
+\hline 
+\end{tabular}
+\begin{itemize}
+\item 回路網関数の曲が全て左半面内
+\begin{itemize}
+\item 応答は全て減衰→狭義安定
+\end{itemize}
+\item 左反面内+虚軸上(1位)
+\begin{itemize}
+\item 応答は持続→広義安定
+\end{itemize}
+\item 一つでも右半面内にある or 虚軸上で2位以上→不安定
+\end{itemize}
+(注)広義安定な回路でも、外部入力の虚軸上に1位の極があると合わせて2位→共振、発散
+
+\subsection{回路網の安定性}
+
+\subsubsection{\sout{\label{immitance}}安定な回路の駆動点イミタンス関数 ($Z_{11},Z_{22},Y_{11},Y_{22}$)}
+
+広義安定の条件
+\begin{enumerate}
+\item 極と零点が右反面にない
+\begin{itemize}
+\item 零点→電圧と電流を入れ替えても成り立つから
+\end{itemize}
+\item 虚軸上の極、零点は高々1位
+\item 分母と分子の次数さは高々1次
+\begin{itemize}
+\item $S\rightarrow\infty\left(\omega\rightarrow\infty\right)$とすると、回路はL,C,Rのいずれかと等価
+\end{itemize}
+\end{enumerate}
+
+\subsubsection{安定な回路の伝達関数(transfer function) ($Z_{12},Z_{21},Y_{12},Y_{21}$)}
+
+広義安定
+\begin{enumerate}
+\item 極は右半面内にない
+\item 虚軸上の極は高々1位
+\item $H\left(s\right)=\frac{n\text{次}}{m\text{次}}$としたとき、$n\leq m+1$
+\end{enumerate}
+逆数に対する制約がないので、\ref{immitance}よりもゆるい。
+
+\subsection{回路網関数の周波数特性}
+
+\subsubsection{極・零点と周波数特性の関係}
+
+\[
+H\left(s\right)=H\frac{\left(S-S_{o1}\right)\cdots\left(S-S_{om}\right)}{\left(S-S_{p1}\right)\cdots\left(S-S_{pn}\right)}
+\]
+とすると、
+
+\paragraph{振幅特性}
+
+\[
+H\left(\j\omega\right)=\left|H\right|\frac{d_{o1}\cdots d_{om}}{d_{p1}\cdots d_{pn}}
+\]
+
+$d_{om}$: 虚軸上$S\left(\j\omega\right)$と$S_{om}$との距離
+
+図電回2-3
+
+\[
+\log\left|H\left(\j\omega\right)\right|=\log\left|H\right|+\sum_{i}\log d_{oi}-\sum_{j}\log d_{pj}
+\]
+
+
+\subsubsection{1次と2次の伝達関数}
+
+(1) 1次伝達関数 $H\left(s\right)=\frac{b_{1}S+b_{0}}{S+a_{0}}$
+
+①LP型
+
+\[
+H\left(s\right)=\frac{b_{0}}{S+a_{0}}
+\]
+
+図電回2-4
+
+図電回2-5
+
+②HP型
+
+図電回2-6
+
+図電回2-7
+
+③AP型
+
+図電回2-8
+
+図電回2-9
+
+図電回2-10
 \end{document}
