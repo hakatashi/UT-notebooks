@@ -1,0 +1,108 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amssymb}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 電子物性基礎}
+
+\author{教員: 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+
+
+\section*{第1回}
+
+\paragraph{結晶のポイント}
+\begin{enumerate}
+\item 結晶構造
+\begin{enumerate}
+\item 周期的格子配列
+\item 周期ポテンシャル
+\end{enumerate}
+→物性決まる
+\item 結晶構造を形成する結合力
+\begin{enumerate}
+\item イオン結合→イオン結晶→決定因子: 電荷、半径比
+\item 共有結合→共有性結晶→軌道の方位
+\item 金属結合→金属結晶→玉のパッキング
+\item ファンデルワールス結合→(分子性結晶)→双極子、結合様態
+\item 水素結合
+\end{enumerate}
+\end{enumerate}
+
+\paragraph{原子核の電子へ量子力学を導入}
+\begin{enumerate}
+\item 中心力力場の電子
+\end{enumerate}
+水素原子: 原子核+電子1つ 2体問題、原子核+電子2つ以上 多体問題
+
+→電子近似
+
+\[
+\left\{ -\frac{\hbar^{2}}{2m}\left(\pdd{}x+\pdd{}y+\pdd{}z\right)+V\left(r\right)\right\} \psi\left(r\right)=E\psi\left(r\right)
+\]
+
+直交座標+極座標
+
+\[
+\pd{}x=\pd rx\pd{}r+\pd{\theta}x\pd{}{\theta}+\pd{\phi}x\pd{}{\phi}
+\]
+
+\[
+r=\sqrt{x^{2}+y^{2}+z^{2}},\theta=\tan^{-1}\frac{\sqrt{x^{2}+y^{2}}}{z},\phi=\tan^{-1}\frac{y}{x}
+\]
+
+→(3.5)式
+
+\[
+V\left(r\right)=-\frac{1}{4\pi\varepsilon_{0}}\frac{Q^{2}}{r}
+\]
+
+原子核は固定。断熱近似
+
+\[
+\Psi\left(r,\theta,\phi\right)=R\left(r\right)\cdot Y\left(\theta,\phi\right)
+\]
+
+$R\left(r\right)$: 動径関数
+
+$Y\left(\theta,\phi\right)$: 角関数
+\end{document}
