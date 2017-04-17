@@ -1,0 +1,297 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 制御工学}
+
+\author{教員: 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+
+
+\section*{第1回}
+
+図制1
+
+図制2
+
+\[
+\begin{cases}
+v_{f}=A\left(v_{0}-v\right)\\
+v=Kv_{f}-r_{a}i=KA\left(v_{0}-v\right)-r_{a}i
+\end{cases}
+\]
+
+\[
+\therefore v=\frac{KA}{1+KA}v_{0}-\frac{r_{a}}{1+KA}i
+\]
+ 
+
+図制3
+
+結果を見て原因に戻している=フィードバック
+
+図制4
+
+\section*{第2回}
+
+\section{?}
+
+\section{システムの動特性表現}
+\begin{enumerate}
+\item 信号伝達の状態遷移
+\item 動作点周りの線形化
+\item 線形系の表現
+\end{enumerate}
+1.～ 2タンク系
+
+図制2-1
+
+$Q_{0}$: 出力できる制御入力
+
+$h_{2}$: 制御量
+
+図制2-2
+
+\begin{align*}
+A_{1}\d{h_{1}}t & =Q_{0}-Q_{1}\\
+ & =Q_{0}-k_{1}\sqrt{h_{1}}\\
+A_{2}\d{h_{2}}t & =Q_{1}-Q_{2}\\
+ & =k_{1}\sqrt{h_{1}}-k_{2}\sqrt{h_{2}}\left(\text{非線形システム}\right)
+\end{align*}
+
+2. ～
+
+図制2-3
+
+\begin{align*}
+Q_{0} & =Q_{00}+\Delta Q_{0}\\
+h_{1} & =h_{10}+\Delta h_{1}\\
+h_{2} & =h_{20}+\Delta h_{2}
+\end{align*}
+
+\begin{align*}
+A_{1}\d{h_{1}}t & =Q_{0}-k_{1}\sqrt{h_{1}}\\
+ & =Q_{00}+\Delta Q_{0}-k_{1}\sqrt{h_{10}+\Delta h_{1}}\\
+ & =Q_{00}+\Delta Q_{0}-k_{1}\sqrt{h_{10}}\frac{\Delta h_{1}}{2h_{10}}
+\end{align*}
+
+\[
+\sqrt{h_{10}+\Delta h_{1}}=\sqrt{h_{10}}\sqrt{1+\frac{\Delta h_{1}}{h_{10}}}
+\]
+
+\begin{align*}
+\sqrt{1+\varepsilon} & \doteqdot1+\frac{1}{2}\varepsilon+\left(\qquad\right)\varepsilon^{2}+\cdots\\
+^{n}\sqrt{1+\varepsilon} & \doteqdot1+\frac{1}{n}\varepsilon+\left(\qquad\right)\varepsilon^{2}+\cdots
+\end{align*}
+
+平衡点なので、
+
+\[
+\d{h_{1}}t=0\rightarrow Q_{00}-k_{1}\sqrt{h_{10}}=0
+\]
+
+\[
+\d{}t\Delta h_{1}=\Delta Q_{0}-\frac{k_{1}}{2\sqrt{h_{10}}}\Delta h_{1}
+\]
+
+同様にして、
+\[
+A_{2}\d{\Delta h_{2}}t=\frac{k_{1}}{1\sqrt{h_{10}}}\Delta h_{1}-\frac{k_{2}}{2\sqrt{h_{20}}}\Delta h_{2}
+\]
+
+図制2-4
+
+一般に
+\[
+\dot{\mathbf{x}}=\mathbf{f}\left(\mathbf{x},\mathbf{u}\right)
+\]
+
+\[
+\begin{cases}
+\dot{\mathbf{x}_{1}}=f_{1}\left(\mathbf{x},\mathbf{u}\right)\\
+\dot{\mathbf{x}_{2}}=f_{2}\left(\mathbf{x},\mathbf{u}\right)
+\end{cases}
+\]
+
+\[
+\begin{cases}
+\mathbf{x}=\binom{x_{1}}{x_{2}}=\binom{h_{1}}{h_{2}}\\
+\mathbf{u}=U_{1}=Q_{0}
+\end{cases}
+\]
+
+\[
+\begin{cases}
+\mathbf{x}=\mathbf{x}_{0}+\Delta\mathbf{x}\\
+\mathbf{u}=\mathbf{u}_{0}+\Delta\mathbf{u}
+\end{cases}
+\]
+
+\[
+\Delta\dot{\mathbf{x}}=A\Delta\mathbf{x}+B\Delta\mathbf{u}
+\]
+
+\begin{align*}
+\rightarrow A & =\left[\pd{\mathbf{f}}{\mathbf{x}}\right]_{\mathbf{x}_{0},\mathbf{u}_{0}}=\left[\begin{array}{cc}
+\pd{f_{1}}{x_{1}} & \pd{f_{1}}{x_{2}}\\
+\pd{f_{2}}{x_{1}} & \pd{f_{2}}{x_{2}}
+\end{array}\right]_{\mathbf{x}_{0},\mathbf{u}_{0}}\\
+B & =\left[\pd{\mathbf{f}}{\mathbf{u}}\right]_{\mathbf{x}_{0},\mathbf{u}_{0}}=\left[\begin{array}{c}
+\pd{f_{1}}{u_{1}}\\
+\pd{f_{2}}{u_{1}}
+\end{array}\right]_{\mathbf{x}_{0},\mathbf{u}_{0}}
+\end{align*}
+
+図制2-5
+
+図中Cの設計のために、
+\[
+\Delta\dot{\mathbf{x}}=A\Delta\mathbf{x}+B\Delta\mathbf{u}
+\]
+という、線形化システムを相手にする。
+
+3. ～
+
+\[
+\Delta Q_{0}\rightarrow A_{1}\d{\Delta h_{1}}t+\frac{k_{1}}{2\sqrt{h_{10}}}\Delta h_{1}=\Delta Q_{1}\rightarrow\Delta h_{1}
+\]
+
+\begin{enumerate}
+\item 微分方程式
+\item $G\left(s\right)$ 伝達関数
+\item $g\left(t\right)$ インパルス応答
+\item $G\left(\j\omega\right)$ 周波数応答
+\end{enumerate}
+\[
+G\left(s\right)=\int_{0}^{\infty}g\left(t\right)\e^{-st}\mathrm{d}t
+\]
+
+\[
+G\left(\j\omega\right)=\when{G\left(s\right)}_{s=\j\omega}
+\]
+
+ステップ応答
+
+図制2-6
+
+たたみこみ積分
+
+図制2-7
+
+\begin{align*}
+y\left(t\right) & =\int_{0}^{t}x\left(\tau\right)g\left(t-\tau\right)\mathrm{d}\tau\\
+\xrightarrow{\mathcal{L}} & Y\left(s\right)=G\left(s\right)X\left(s\right)
+\end{align*}
+
+インパルス応答
+
+図制2-8
+
+図制2-9
+
+\begin{align*}
+y\left(t\right) & =\sum x\left(\tau\right)\cdot g\left(t-\tau\right)\\
+ & \rightarrow\int_{0}^{t}x\left(\tau\right)g\left(t-\tau\right)\mathrm{d}\tau
+\end{align*}
+
+
+\subsection*{2.5 }
+
+図制2-10
+
+\begin{align*}
+y & =G_{1}x\\
+z & =G_{2}y=G_{2}G_{1}x
+\end{align*}
+
+図制2-11
+
+\[
+y=\left(G_{1}+G_{2}\right)x
+\]
+
+図制2-12
+
+$r\rightarrow y$の伝達関数
+
+\[
+\frac{y}{r}=\frac{G}{1+GH}
+\]
+
+\[
+\because\left(r-Hy\right)G=y
+\]
+
+\[
+rG-GHy=y
+\]
+
+\[
+rG=\left(1+GH\right)y
+\]
+
+図制2-13
+
+\subsection*{2.6 特性の計測}
+
+(同定: identification)
+
+図制2-14
+
+図制2-15
+
+図制2-16
+
+\paragraph{例 $J$の固定}
+
+図制2-17
+
+\[
+J\cdot\d{\omega}t=T
+\]
+
+\[
+M\cdot\alpha=f
+\]
+
+\end{document}
