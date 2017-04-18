@@ -1,8 +1,9 @@
 TEX=$(shell find . -type f -name '*.tex' -printf '%P\n')
 DVI=$(TEX:.tex=.dvi)
 PDF=$(addprefix dist/,$(TEX:.tex=.pdf))
-JPG=$(shell find . -type f -name '*.jpg' -printf '%P\n')
-EPS=$(JPG:.jpg=.eps)
+IMAGES=$(shell find . -type f \( -name '*.jpg' -or -name '*.png' \) -printf '%P\n')
+IMAGES_0=$(IMAGES:.png=.eps)
+EPS=$(IMAGES_0:.jpg=.eps)
 
 all: $(EPS) $(PDF)
 
@@ -18,8 +19,9 @@ dist/%.pdf: %.dvi
 	mkdir -p $(dir $@)
 	mv $(dir $<)/$(notdir $@) $(dir $@)
 
-%.bmp: %.jpg
-	convert $< bmp2:$@
+.SECONDEXPANSION:
+%.bmp: $$(wildcard %.jpg) $$(wildcard %.png)
+	@if [ -e "$*.jpg" ]; then convert "$*.jpg" bmp2:$@; else convert "$*.png" bmp2:$@; fi;
 
 %.eps: %.bmp
 	potrace $< -r 400 -o $@
