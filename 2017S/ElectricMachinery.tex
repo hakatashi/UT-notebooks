@@ -1,0 +1,97 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 電気機器}
+
+\author{教員: 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+
+
+\section*{第2回}
+
+工作機械、ロボット、運動制御、交通、OA機器
+
+1873 motorとgeneratorは同じもの
+
+1879 電気鉄道
+
+1980年代 Power electronicsの実用化→交流可変速駆動
+
+\paragraph{VVVF}
+
+Variable Voltage Varable Frequency AC drive
+
+(古典)力学→
+
+電磁気家化学→
+
+電気回路 交流回路理論(簡単な) 複素数
+
+電気機器
+
+→パワーエレクトロニクス (半導体電力変換)→モーションコントロール
+
+発変電工学→電力系統工学 (Power System)
+
+\paragraph{電気機器の種類}
+\begin{itemize}
+\item 静止期(stomd still machine)
+\begin{itemize}
+\item 変圧器 (Transformer)
+\item 変換器 (Powerelectronic Cenverter)
+\end{itemize}
+\item 回転機 (Rotary Machine, Linear machine)
+\begin{itemize}
+\item DC machine 直流機
+\item AC machine 交流機
+\begin{itemize}
+\item 誘導機 Induction Machine, Asynchronous Machine
+\item 同期機 Synchronous Machine
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\paragraph{物理の基礎知識の復習}
+
+SI単位 m(長さ), kg(質量), sec(時間), A(電流)
+\end{document}
