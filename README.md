@@ -52,6 +52,14 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 		* [レポート2](2016A/MathematicalMethodV-report2.tex) - [PDF][MathematicalMethodV-report2-pdf]
 	* [数学1D](2016A/MathematicsID.tex) - [PDF][MathematicsID-pdf]
 	* [信号解析基礎](2016A/SignalAnalysys.tex) - [PDF][SignalAnalysys-pdf]
+* [2017年度 Sセメスター](2017S)
+	* [電気回路理論第二](2017S/CircuitTheory2.tex) - [PDF][CircuitTheory2-pdf]
+	* [制御工学](2017S/ControlEngineering.tex) - [PDF][ControlEngineering-pdf]
+	* 電気電子情報第一(前期)実験
+		* [P1実験「電気回路の基礎」総合レポート](2017S/EEICExperiment-report-P1.tex) - [PDF][EEICExperiment-report-P1-pdf]
+	* [電気機器](2017S/ElectricMachinery.tex) - [PDF][ElectricMachinery-pdf]
+	* [電子回路I](2017S/ElectronicCircuit1.tex) - [PDF][ElectronicCircuit1-pdf]
+	* [電子物性基礎](2017S/ElectronicProperty.tex) - [PDF][ElectronicProperty-pdf]
 
 [Dynamics-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/Dynamics.pdf
 [mathIA-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/mathIA.pdf
@@ -86,6 +94,12 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 [MathematicalMethodV-report2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/MathematicalMethodV-report2.pdf
 [MathematicsID-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/MathematicsID.pdf
 [SignalAnalysys-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2016A/SignalAnalysys.pdf
+[CircuitTheory2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/CircuitTheory2.pdf
+[ControlEngineering-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/ControlEngineering.pdf
+[EEICExperiment-report-P1-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/EEICExperiment-report-P1.pdf
+[ElectricMachinery-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/ElectricMachinery.pdf
+[ElectronicCircuit1-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/ElectronicCircuit1.pdf
+[ElectronicProperty-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/ElectronicProperty.pdf
 
 ## 規約
 
