@@ -1,0 +1,409 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[LGR,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=2cm,rmargin=2cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\DeclareRobustCommand{\greektext}{%
+  \fontencoding{LGR}\selectfont\def\encodingdefault{LGR}}
+\DeclareRobustCommand{\textgreek}[1]{\leavevmode{\greektext #1}}
+\ProvideTextCommand{\~}{LGR}[1]{\char126#1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 電気電子情報第一(前期)実験 P1実験「電気回路の基礎」総合レポート}
+
+\author{学籍番号: 03-170512 氏名: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+
+
+\section{実験の目的}
+
+我々の身の回りの電気機器には、非常に多くの電気回路が含まれている。これらの電気回路は主としてアナログ回路とデジタル回路の二種に分類されるが、このうちアナログ回路を構成する上で、交流電流に対する応答、すなわち周波数に対する応答特性を理解し、適切に設計することは、非常に重要なことである。本実験では、RLC共振回路とRC四端子網という具体的な電気回路を通してこれらの周波数応答について解析的に考察し、さらにそれらを実際に実装し測定することによって、それらが持つ動作原理および理論値と実測値の誤差について明らかにすることを目的とする。
+
+\section{実験の原理}
+
+\subsection{RLC共振回路}
+
+本実験においてまず、RLC共振回路の周波数応答を解析し、これが持つ周波数特性を明らかにする。
+
+RLC共振回路は、主として抵抗・コイル・コンデンサの3つの部品と電源によって構成される回路であり、大きな特徴として共振を行うということが挙げられる。
+
+これはこの回路には回路素子によって決定される共振周波数が存在し、この共振周波数近辺の周波数の交流電流を流した時に大きな電流が流れることを示している。具体的に振幅一定の電源$V$において周波数を変化させながら電流の推移を見た時に現れる曲線を共振曲線と言い、この曲線がこの回路の周波数応答を端的に表す物となっている。
+
+いまここに下のように$R$の抵抗、$L$のインダクタ、$C$のコンデンサ、電圧$V$の交流電源を用いてRLC直列共振回路を構成したとする。\footnote{『電気電子情報第一(前期)実験テキスト 2017年4月』pp.28より引用。}
+
+図
+
+この回路のインピーダンス$Z\left(\omega\right)$は、各回路素子のインピーダンスより
+\begin{equation}
+Z\left(\omega\right)=R+\j\omega L+\frac{1}{\j\omega C}=R+\j\left(\omega L-\frac{1}{\omega C}\right)\label{eq:inpedance1}
+\end{equation}
+となる。
+
+このとき流れる電流$I\left(\omega\right)$はインピーダンスを用いて$I\left(\omega\right)=\frac{V}{Z\left(\omega\right)}$と書けるので、
+\begin{equation}
+I\left(\omega\right)=\frac{V}{Z\left(\omega\right)}=\frac{V}{R+\j\left(\omega L-\frac{1}{\omega C}\right)}\label{eq:inpedance}
+\end{equation}
+となる。
+
+このとき$I\left(\omega\right)$を最大化するためには$Z\left(\omega\right)$を最小化すればよいので、
+\[
+\omega L-\frac{1}{\omega C}=0\Rightarrow\omega=\frac{1}{\sqrt{LC}}
+\]
+となる。これが共振周波数であり、この値はRLC回路の$R$の値によらず一定である。
+
+ここで$R$にかかる電圧を$V_{R}\left(\omega\right)$とすると、
+\[
+V_{R}\left(\omega\right)=RI\left(\omega\right)
+\]
+と\ref{eq:inpedance}より、
+\begin{equation}
+\frac{V_{R}\left(\omega\right)}{VR}=Y\left(\omega\right)\label{eq:admitance-calc}
+\end{equation}
+となる。ただしここでアドミッタンス$Y\left(\omega\right)=\frac{1}{Z\left(\omega\right)}$とおいた。
+
+\subsection{RC四端子網}
+
+実験においては次に、RC四端子網のもつ周波数応答を解析する。RC四端子網はRとCによって構成される四端子網であり、RとCの配置配線によって、LPF
+(Low-pass filter)、HPF (High-pass filter)、APF (All-pass filter)などを構成することができる。
+
+本実験で用いる四端子網の回路を下図に示す。\footnote{『電気電子情報第一(前期)実験テキスト 2017年4月』pp.29より引用。}
+
+図
+
+これらの伝達関数をそれぞれ$H_{a,}H_{b},H_{c}$とすると、
+\begin{equation}
+H_{a}=\frac{1}{1+R\cdot\j\omega C},H_{b}=\frac{R\cdot\j\omega C}{1+R\cdot\j\omega C},H_{c}=\frac{1-R\cdot\j\omega C}{1+R\cdot\j\omega C}\label{eq:=004F1D=009054=0095A2=006570}
+\end{equation}
+となる。
+
+ここでたとえば$H_{a}$において、$\omega RC=1$となる周波数を考えると、
+\[
+H_{a}=\frac{1}{1+\j}=\frac{1}{2}-\frac{1}{2}\j
+\]
+となり、位相がちょうど$-45^{\circ}$となる。このように周波数の中値を取るこの点を遮断周波数と呼ぶ。
+
+なおこのとき、$\left|H_{a}\right|\mathrm{dB}$を考えると、
+\begin{align*}
+\left|H_{a}\right| & =20\log_{10}\left|\frac{1-\j}{2}\right|\\
+ & =20\log_{10}\frac{\sqrt{2}}{2}\\
+ & =-3.010299\cdots
+\end{align*}
+となり、おおよそ-3dB程度となる。
+
+\section{実験方法}
+
+本実験は以下の手順に従って行う。
+\begin{enumerate}
+\item オシロスコープの動作確認を行う
+\item ファンクションジェネレーターの動作確認を行う
+\item RLC直列共振回路を基盤に実装する
+
+以下の回路図の通り実装する。
+\begin{center}
+\includegraphics[width=0.5\textwidth]{images/EEICExperiment-report-P1/RLC}
+\par\end{center}
+\item 回路に正弦波を入力し、周波数を変えながらRLC直列共振回路の振幅および位相差を測定する
+\item 回路に長周期の方形波を入力し、過渡現象を観測する
+\item RC四端子網を基盤に実装する
+
+以下の回路図の通り実装する。
+\begin{center}
+\includegraphics[width=0.5\textwidth]{images/EEICExperiment-report-P1/RC}
+\par\end{center}
+\item 回路に正弦波を入力し、周波数を変えながらRC四端子網の振幅および位相差を測定する。このとき四端子網のプローブを接続する部分をすげ替えることによって、LPF、HPF、APFの3つの回路を一つの回路で測定する。
+\item 回路に長周期の方形波を入力し、APFの過渡現象を観測する。
+\end{enumerate}
+
+\section{使用器具}
+
+本実験において使用した器具は、以下のとおりである。
+\begin{itemize}
+\item オシロスコープ: DS-5102
+\begin{itemize}
+\item 周波数帯域: 25MHz
+\item 帯域制限: 20MHz
+\item 垂直軸感度: 2m～5V/div
+\item 入力インピーダンス: 1MΩ
+\end{itemize}
+\item ファンクションジェネレーター: FG-274
+\begin{itemize}
+\item 周波数分解能: 0.1Hz
+\item 精度: \textpm 20ppm
+\item 出力インピーダンス: 50Ω
+\end{itemize}
+\item 基盤: ICB-935-2
+\end{itemize}
+
+\section{実験結果}
+
+\subsection{RLC直列共振回路}
+
+\subsubsection{周波数応答}
+
+RLC直列共振回路に周波数の異なるいくつかの正弦波信号を入力し、回路全体および抵抗にかかる電圧を計測した。これを式\ref{eq:admitance-calc}を用いてアドミッタンスに換算し、\ref{eq:inpedance}から得られる理論値とともにプロットしたところ、図\ref{fig:=005468=006CE2=006570=003092=005909=005316=003055=00305B=00305F=003068=00304D=00306ERLC=005171=00632F=0056DE=008DEF=00306E=0030A2=0030C9=0030DF=0030C3=0030BF=0030F3=0030B9=00306E=005909=005316}および図\ref{fig:=005468=006CE2=006570=003092=005909=005316=003055=00305B=00305F=003068=00304D=00306ERLC=005171=00632F=0056DE=008DEF=00306E=0030A2=0030C9=0030DF=0030C3=0030BF=0030F3=0030B9=00306E=004F4D=0076F8=00306E=005909}のようになった。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{images/EEICExperiment-report-P1/RLC-chart-amp}
+\par\end{centering}
+\caption{周波数を変化させたときのRLC共振回路のアドミッタンスの振幅の変化\label{fig:=005468=006CE2=006570=003092=005909=005316=003055=00305B=00305F=003068=00304D=00306ERLC=005171=00632F=0056DE=008DEF=00306E=0030A2=0030C9=0030DF=0030C3=0030BF=0030F3=0030B9=00306E=005909=005316}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{images/EEICExperiment-report-P1/RLC-chart-arg}
+\par\end{centering}
+\caption{周波数を変化させたときのRLC共振回路のアドミッタンスの位相の変化\label{fig:=005468=006CE2=006570=003092=005909=005316=003055=00305B=00305F=003068=00304D=00306ERLC=005171=00632F=0056DE=008DEF=00306E=0030A2=0030C9=0030DF=0030C3=0030BF=0030F3=0030B9=00306E=004F4D=0076F8=00306E=005909}}
+\end{figure}
+
+これらから、
+\begin{itemize}
+\item 振幅・位相ともに理論値と\textpm 10\%以内の誤差に収まっている
+\item 共振周波数付近で振幅が増大し、極大値を取っている
+\item アドミッタンスの位相は共振周波数付近で急峻に変化し、$90^{\circ}$から$-90^{\circ}$へ移行している
+\end{itemize}
+ということが読み取れる。
+
+\subsubsection{過渡応答}
+
+長周期の方形波を入力し、立ち上がり付近を拡大し波形を観察した。このとき抵抗の値を様々に変え、過渡応答の波形を画像ファイルとして保存した。これを図\ref{fig:RLC=0056DE=008DEF=00306B30=0003A9=00306E=0062B5=006297=003092=0063A5=007D9A=003057=00305F=00969B=00306E=00904E=006E21=005FDC=007B54=00306E=006CE2=005F62}\ref{fig:RLC=0056DE=008DEF=00306B632=0003A9=00306E=0062B5=006297=003092=0063A5=007D9A=003057=00305F=00969B=00306E=00904E=006E21=005FDC=007B54=00306E=006CE2=005F62}\ref{fig:RLC=0056DE=008DEF=00306B5k=0003A9=00306E=0062B5=006297=003092=0063A5=007D9A=003057=00305F=00969B=00306E=00904E=006E21=005FDC=007B54=00306E=006CE2=005F62}に示す。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.3\textwidth]{images/EEICExperiment-report-P1/RLC-30}
+\par\end{centering}
+\caption{RLC回路に30Ωの抵抗を接続した際の過渡応答の波形\label{fig:RLC=0056DE=008DEF=00306B30=0003A9=00306E=0062B5=006297=003092=0063A5=007D9A=003057=00305F=00969B=00306E=00904E=006E21=005FDC=007B54=00306E=006CE2=005F62}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.3\textwidth]{images/EEICExperiment-report-P1/RLC-632}
+\par\end{centering}
+\caption{RLC回路に632Ωの抵抗を接続した際の過渡応答の波形\label{fig:RLC=0056DE=008DEF=00306B632=0003A9=00306E=0062B5=006297=003092=0063A5=007D9A=003057=00305F=00969B=00306E=00904E=006E21=005FDC=007B54=00306E=006CE2=005F62}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.3\textwidth]{images/EEICExperiment-report-P1/RLC-5k}
+\par\end{centering}
+\caption{RLC回路に5kΩの抵抗を接続した際の過渡応答の波形\label{fig:RLC=0056DE=008DEF=00306B5k=0003A9=00306E=0062B5=006297=003092=0063A5=007D9A=003057=00305F=00969B=00306E=00904E=006E21=005FDC=007B54=00306E=006CE2=005F62}}
+\end{figure}
+
+
+\subsection{RC四端子網回路}
+
+\subsubsection{低域通過フィルタ (LPF)}
+
+RC四端子網で構成された低域通過フィルタ(LPF)に周波数の異なるいくつかの正弦波信号を入力し、入力電圧および出力電圧を計測した。ここから入力電圧$V_{1}$と出力電圧$V_{2}$の比、即ち伝達関数$H=\frac{V_{2}}{V_{1}}$を計算し、\ref{eq:=004F1D=009054=0095A2=006570}から得られる理論値とともにプロットしたところ、図\ref{fig:=005468=006CE2=006570=003092=005909=005316=003055=00305B=00305F=003068=00304D=00306ELPF=00306E=004F1D=009054=0095A2=006570=00306E=00632F=005E45=00306E=005909=005316}および図\ref{fig=005468=006CE2=006570=003092=005909=005316=003055=00305B=00305F=003068=00304D=00306ELPF=00306E=004F1D=009054=0095A2=006570=00306E=004F4D=0076F8=00306E=005909=005316}のようになった。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{images/EEICExperiment-report-P1/LPF-amp}
+\par\end{centering}
+\caption{周波数を変化させたときのLPFの伝達関数の振幅の変化\label{fig:=005468=006CE2=006570=003092=005909=005316=003055=00305B=00305F=003068=00304D=00306ELPF=00306E=004F1D=009054=0095A2=006570=00306E=00632F=005E45=00306E=005909=005316}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{images/EEICExperiment-report-P1/LPF-arg}
+\par\end{centering}
+\caption{周波数を変化させたときのLPFの伝達関数の位相の変化\label{fig=005468=006CE2=006570=003092=005909=005316=003055=00305B=00305F=003068=00304D=00306ELPF=00306E=004F1D=009054=0095A2=006570=00306E=004F4D=0076F8=00306E=005909=005316}}
+\end{figure}
+
+これらから、
+\begin{itemize}
+\item 振幅は遮断周波数$1.59\mathrm{kHz}$付近まではほぼ変化せず、遮断周波数を超えると共におよそ$-20\mathrm{dB}/\mathrm{dec}$の傾きで減少傾向がみられる。
+\item アドミッタンスの位相は遮断周波数付近で急峻に変化し、$0^{\circ}$から$-90^{\circ}$へ移行している
+\end{itemize}
+ということが読み取れる。
+
+また、長周期の方形波を入力し、立ち上がり付近の波形を見ることによってステップ応答を観測した。この時の波形を図\ref{fig:LPF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54=00306E=006CE2=005F62}に示す。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.3\textwidth]{images/EEICExperiment-report-P1/LPF-step}
+\par\end{centering}
+\caption{LPFのステップ応答の波形\label{fig:LPF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54=00306E=006CE2=005F62}}
+\end{figure}
+
+
+\subsubsection{高域通過フィルタ (HPF)}
+
+RC四端子網で構成された高域通過フィルタ(HPF)に周波数の異なるいくつかの正弦波信号を入力し、入力電圧および出力電圧を計測した。ここから入力電圧$V_{1}$と出力電圧$V_{2}$の比、即ち伝達関数$H=\frac{V_{2}}{V_{1}}$を計算し、\ref{eq:=004F1D=009054=0095A2=006570}から得られる理論値とともにプロットしたところ、図\ref{fig:=005468=006CE2=006570=003092=005909=005316=003055=00305B=00305F=003068=00304D=00306EHPF=00306E=004F1D=009054=0095A2=006570=00306E=00632F=005E45=00306E=005909=005316}および図\ref{fig=005468=006CE2=006570=003092=005909=005316=003055=00305B=00305F=003068=00304D=00306EHPF=00306E=004F1D=009054=0095A2=006570=00306E=004F4D=0076F8=00306E=005909=005316}のようになった。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.9\textwidth]{images/EEICExperiment-report-P1/HPF-amp}
+\par\end{centering}
+\caption{周波数を変化させたときのHPFの伝達関数の振幅の変化\label{fig:=005468=006CE2=006570=003092=005909=005316=003055=00305B=00305F=003068=00304D=00306EHPF=00306E=004F1D=009054=0095A2=006570=00306E=00632F=005E45=00306E=005909=005316}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.9\textwidth]{images/EEICExperiment-report-P1/HPF-arg}
+\par\end{centering}
+\caption{周波数を変化させたときのHPFの伝達関数の位相の変化\label{fig=005468=006CE2=006570=003092=005909=005316=003055=00305B=00305F=003068=00304D=00306EHPF=00306E=004F1D=009054=0095A2=006570=00306E=004F4D=0076F8=00306E=005909=005316}}
+\end{figure}
+
+これらから、
+\begin{itemize}
+\item 振幅は遮断周波数$1.59\mathrm{kHz}$付近まではおよそ$20\mathrm{dB}/\mathrm{dec}$の傾きで増加傾向がみられ、遮断周波数を超えると共に$0\mathrm{dB}$に漸近し、傾きは0に近くなる。
+\item アドミッタンスの位相は遮断周波数付近で急峻に変化し、$90^{\circ}$から$0^{\circ}$へ移行している
+\end{itemize}
+ということが読み取れる。
+
+また、長周期の方形波を入力し、立ち上がり付近の波形を見ることによってステップ応答を観測した。この時の波形を図\ref{fig:HPF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54=00306E=006CE2=005F62}に示す。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.3\textwidth]{images/EEICExperiment-report-P1/HPF-step}
+\par\end{centering}
+\caption{HPFのステップ応答の波形\label{fig:HPF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54=00306E=006CE2=005F62}}
+\end{figure}
+
+
+\subsubsection{全域通過フィルタ (APF)}
+
+RC四端子網で構成された全域通過フィルタ(APF)に周波数の異なるいくつかの正弦波信号を入力し、入力電圧および出力電圧を計測した。ここから入力電圧$V_{1}$と出力電圧$V_{2}$の比、即ち伝達関数$H=\frac{V_{2}}{V_{1}}$を計算し、\ref{eq:=004F1D=009054=0095A2=006570}から得られる理論値とともにプロットしたところ、図\ref{fig:=005468=006CE2=006570=003092=005909=005316=003055=00305B=00305F=003068=00304D=00306EAPF=00306E=004F1D=009054=0095A2=006570=00306E=00632F=005E45=00306E=005909=005316}および図\ref{fig=005468=006CE2=006570=003092=005909=005316=003055=00305B=00305F=003068=00304D=00306EAPF=00306E=004F1D=009054=0095A2=006570=00306E=004F4D=0076F8=00306E=005909=005316}のようになった。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{images/EEICExperiment-report-P1/APF-amp}
+\par\end{centering}
+\caption{周波数を変化させたときのAPFの伝達関数の振幅の変化\label{fig:=005468=006CE2=006570=003092=005909=005316=003055=00305B=00305F=003068=00304D=00306EAPF=00306E=004F1D=009054=0095A2=006570=00306E=00632F=005E45=00306E=005909=005316}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{images/EEICExperiment-report-P1/APF-arg}
+\par\end{centering}
+\caption{周波数を変化させたときのAPFの伝達関数の位相の変化\label{fig=005468=006CE2=006570=003092=005909=005316=003055=00305B=00305F=003068=00304D=00306EAPF=00306E=004F1D=009054=0095A2=006570=00306E=004F4D=0076F8=00306E=005909=005316}}
+\end{figure}
+
+これらから、
+\begin{itemize}
+\item 振幅は周波数にかかわらず、ほとんど減衰しない。
+\item アドミッタンスの位相は遮断周波数付近で急峻に変化し、$0^{\circ}$から$-180^{\circ}$へ移行している
+\end{itemize}
+ということが読み取れる。
+
+また、長周期の方形波を入力し、立ち上がり付近の波形を見ることによってステップ応答を観測した。この時の波形を図\ref{fig:APF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54=00306E=006CE2=005F62}に示す。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.3\textwidth]{images/EEICExperiment-report-P1/APF-step}
+\par\end{centering}
+\caption{APFのステップ応答の波形(赤線)\label{fig:APF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54=00306E=006CE2=005F62}}
+\end{figure}
+
+
+\section{考察・検討}
+
+\subsection{周波数特性の検討}
+
+実験結果において述べた通り、本実験において扱った各回路のほとんどの周波数特性は理論値と一致した。
+
+特記すべき点として、HPFの測定において特に周波数の高い領域($>100\mathrm{kHz}$程度)において大きな誤差が見られるが、これはフィルタを通して観測された信号が小さすぎ、ケーブルや測定器におけるノイズの影響が比較して大きく現れるためだと考えられる。
+
+\subsection{ステップ応答の検討}
+
+抵抗値30Ω(図\ref{fig:=0062B5=006297=00502430=0003A9=003067=00306ERLC=005171=00632F=0056DE=008DEF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54})、632Ω(図\ref{fig:=0062B5=006297=005024632=0003A9=003067=00306ERLC=005171=00632F=0056DE=008DEF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54})、5kΩ(図\ref{fig:=0062B5=006297=0050245k=0003A9=003067=00306ERLC=005171=00632F=0056DE=008DEF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54})それぞれでのステップ応答波形を計算し、グラフにした。これらの概形は測定結果と一致している。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-P1/RLC-chart-30}
+\par\end{centering}
+\caption{抵抗値30ΩでのRLC共振回路のステップ応答\label{fig:=0062B5=006297=00502430=0003A9=003067=00306ERLC=005171=00632F=0056DE=008DEF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-P1/RLC-chart-632}
+\par\end{centering}
+\caption{抵抗値632ΩでのRLC共振回路のステップ応答\label{fig:=0062B5=006297=005024632=0003A9=003067=00306ERLC=005171=00632F=0056DE=008DEF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-P1/RLC-chart-5k}
+\par\end{centering}
+\caption{抵抗値5kΩでのRLC共振回路のステップ応答\label{fig:=0062B5=006297=0050245k=0003A9=003067=00306ERLC=005171=00632F=0056DE=008DEF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54}}
+\end{figure}
+
+
+\subsection{インパルス応答の検討}
+
+RLC回路におけるインパルス応答を考える。インパルス応答のラプラス変換は定数1になるので、流れる電流$I$はインピーダンスの逆数となる。即ち\ref{eq:inpedance1}より、
+\begin{align*}
+I\left(s\right) & =\frac{1}{R+sL+\frac{1}{sC}}\\
+ & =\frac{s}{Ls^{2}+Rs+\frac{1}{C}}\\
+ & =\frac{s}{L\left(s^{2}+\frac{R}{L}s+\frac{1}{LC}\right)}\\
+ & =\frac{s}{L\left\{ \left(s+\frac{R}{2L}\right)^{2}+\frac{1}{LC}-\frac{R^{2}}{4L^{2}}\right\} }
+\end{align*}
+
+ここで$\frac{R}{2L}=a,\sqrt{\frac{1}{LC}-\frac{R^{2}}{4L^{2}}}=b$とおくと、
+\begin{align*}
+I\left(s\right) & =\frac{s}{L\left\{ \left(s+a\right)^{2}+b^{2}\right\} }\\
+ & =\frac{1}{L}\left(\frac{s+a}{\left(s+a\right)^{2}+b^{2}}-\frac{a}{b}\frac{b}{\left(s+a\right)^{2}+b^{2}}\right)\\
+\xrightarrow{\mathcal{L}^{-1}}I\left(t\right) & =\frac{1}{L}\e^{-at}\left(\cos bt-\frac{a}{b}\sin bt\right)
+\end{align*}
+となる。ここで例えば$R=632,L=4.7\times10^{-5},C=4.7\times10^{-10}$を代入して波形を見ると図\ref{fig:RLC=005171=00632F=0056DE=008DEF=00306E=0030A4=0030F3=0030D1=0030EB=0030B9=005FDC=007B54}のようになる。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-P1/RLC-chart-inpulse}
+\par\end{centering}
+\caption{RLC共振回路のインパルス応答\label{fig:RLC=005171=00632F=0056DE=008DEF=00306E=0030A4=0030F3=0030D1=0030EB=0030B9=005FDC=007B54}}
+\end{figure}
+
+
+\subsection{正弦波応答の定性的説明}
+
+以上で検討したインパルス応答は、回路の周波数応答を解析する際に非常に有用であり、インパルス応答と正弦波の畳み込み積分が正弦波応答の波形となる。
+
+先ほど求めたインパルス応答においては、インパルス信号によって波形が一度盛り上がったあと、急激に降下して零点を切り、その後極小点を過ぎるとゆっくりと浮上していくという形になっている。正弦波は周期波形であるため、波形がこの形に近ければ近いほど畳み込み積分の値は大きくなる。
+
+即ちRLC回路の共振周波数に於いては、波形が正弦波と非常に近しく、波形の上下が正弦波の周期と一致するため、出力信号も大きくなる。一方、それよりも高い周波数領域では、波形の上下が正弦波の周期よりも長く、形が一致しないため出力信号は小さくなる。共振周波数より低い周波数領域でも同様である。
+
+\section{参考文献}
+\begin{itemize}
+\item 東京大学工学部電気電子工学科電子情報工学科編『電気電子情報第一(前期)実験テキスト 2017年4月』
+\end{itemize}
+
+\end{document}
