@@ -1,0 +1,90 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{amsmath}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 数学2D}
+
+\author{教員: 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+\global\long\def\invlaplace#1{\mathcal{L}^{-1}\left[#1\right]}
+\global\long\def\combination#1#2{_{#1}\mathrm{C}_{#2}}
+\global\long\def\permutation#1#2{_{#1}\mathrm{P}_{#2}}
+
+
+\section*{第2回}
+
+\paragraph{複素関数が微分可能な条件}
+
+\[
+\lim_{\Delta z\rightarrow0}\frac{f\left(z+\Delta z\right)-f\left(z\right)}{\Delta z}
+\]
+が存在。
+
+\paragraph{例)}
+
+1. $f\left(z\right)=z^{n}$
+
+\begin{align*}
+\frac{f\left(z+\Delta z\right)-f\left(z\right)}{\Delta z} & =\frac{1}{\Delta z}\left[\sum_{m=0}^{n}z^{m}\left(\Delta z\right)^{n-m}\combination nm-z^{n}\right]\\
+ & =\frac{1}{\Delta z}\left[\sum_{m=0}^{n-1}z^{m}\left(\Delta z\right)^{n-m}\combination nm\right]\\
+\xrightarrow[\Delta z\rightarrow0]{}\combination m{n-1}z^{n-1} & =nz^{n-1}
+\end{align*}
+
+2. $f\left(z\right)=\overline{z}$
+
+\[
+\frac{\overline{z+\Delta z}-\overline{z}}{\Delta z}=\frac{\overline{\Delta z}}{\Delta z}=\frac{\left|\Delta z\right|\e^{-\i\theta}}{\left|\Delta z\right|\e^{\i\theta}}=\e^{-\i2\theta}
+\]
+
+極限が存在しない。
+
+$\lim_{\Delta z\rightarrow0}\frac{f\left(z+\Delta z\right)-f\left(z\right)}{\Delta z}$が存在⇔コーシーリーマンの関係式
+
+\[
+f\left(z\right)=u\left(x,y\right)+\i v\left(x,y\right)\qquad\left(z=x+\i y\right)
+\]
+
+\[
+\pd ux=\pd vy,\mathrm{and}\pd uv=-\pd vu
+\]
+
+\end{document}
