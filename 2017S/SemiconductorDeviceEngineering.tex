@@ -1,0 +1,218 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 半導体デバイス工学}
+
+\author{教員: 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+
+
+\section*{第1回}
+
+\paragraph{参考書}
+\begin{itemize}
+\item 「半導体デバイス入門」柴田直
+\item 「半導体デバイス」S.M.ジィー 産業図書
+\end{itemize}
+
+\section{半導体}
+
+\paragraph{結晶中の電子}
+
+de Broglie波長 $\lambda=\frac{h}{p}$ ($p$: 運動量)
+
+有効質量$m^{*}$の自由電子
+
+\paragraph{バンド構造}
+
+図半工1-2
+
+図半工1-3
+
+図半工1-4
+
+\paragraph{フェルミ構造}
+
+図半工1-5
+
+\[
+f\left(E\right)=\frac{1}{1+\exp\left(\frac{E-E_{F}}{kT}\right)}
+\]
+
+
+\paragraph{真性半導体}
+
+図半工1-6
+
+$E_{i}$: 申請フェルミ準位$\sim\frac{E_{c}-E_{v}}{2}$
+
+$n=p=n_{i}$: 真性キャリア濃度
+
+$S_{i}:$$n_{i}=10^{10}\mathrm{cm^{-3}}$ (室温)
+
+\paragraph{N型半導体}
+
+Siの場合: P, Asを添加
+
+図半工1-7
+
+P, As: ドナー
+
+$N_{D}$: $10^{15}\sim10^{20}\mathrm{cm^{-3}}$
+
+$n\sim N_{D}$
+
+\paragraph{P型半導体}
+
+Bをdoping
+
+図半工1-1
+
+\paragraph{質量作用の法則}
+
+\[
+n\cdot p=n_{i}^{2}
+\]
+
+N型 (ex. Si(R.T.))
+
+\begin{align*}
+n & =N_{D}=10^{20}\mathrm{cm^{-1}}\quad\left(\text{多数キャリア}\right)\\
+p & =\frac{n_{i}^{2}}{N_{D}}=1\mathrm{cm^{-3}}\quad\left(\text{少数キャリア}\right)
+\end{align*}
+
+
+\paragraph{キャリア濃度}
+
+\begin{align*}
+n & =N_{c}\exp\left(\frac{E_{F}-E_{c}}{kT}\right)=n_{i}\exp\left(\frac{E_{p}-E_{i}}{kT}\right)\\
+ & =2\left(\frac{m_{e}kT}{2\pi\hbar^{2}}\right)^{\frac{3}{2}}\quad\left(\text{実効状態密度}\right)\\
+p & =N_{V}\exp\left(\frac{E_{v}-E_{F}}{kT}\right)=n_{i}\exp\left(\frac{E_{i}-E_{F}}{kT}\right)
+\end{align*}
+
+\begin{align*}
+E_{F}-E_{i} & =kT\ln\left(\frac{n}{n_{i}}\right)\\
+E_{F}-E_{i} & =-kT\ln\left(\frac{p}{n_{i}}\right)
+\end{align*}
+
+
+\section{半導体中の電気伝導}
+
+電流の媒体: 電子、ホール
+
+電流の機構: ドリフト－拡散
+
+\begin{align*}
+J_{n} & =q\mu_{n}n\vec{\varepsilon}+qD_{n}\d nx\\
+J_{p} & =q\mu_{p}p\vec{\varepsilon}-qD_{p}\d px
+\end{align*}
+
+\[
+\mu=\frac{q\tau}{m}
+\]
+
+$\tau$: 飽和時間
+
+アインシュタインの関係式
+
+\[
+D=\left(\frac{kT}{q}\right)\mu
+\]
+
+
+\subsection{キャリアの生成・再結合}
+
+図半工1-8
+
+\subsection{連続の式}
+
+\begin{align*}
+\pd nt & =\frac{1}{q}\pd{J_{n}}x+\left(g-r\right)\\
+\pd pt & =-\frac{1}{q}\pd{J_{p}}x-\left(g-r\right)
+\end{align*}
+
+\begin{align*}
+\pd nt & =\mu_{n}\pd{\left(n\vec{\varepsilon}\right)}x+D_{n}\pdd nx+\left(g-r\right)\\
+\pd pt & =-\mu_{p}\pd{\left(p\vec{\varepsilon}\right)}x+D_{p}\pdd px+\left(g-r\right)
+\end{align*}
+
+電界$\vec{\varepsilon}=-\pd{}x\phi$ ($\phi$: 電位(静電ポテンシャル))、$\pdd{}x\phi=-\frac{\rho}{\varepsilon}$($\rho$:
+電荷密度、$\varepsilon$: 誘電率)
+
+\[
+\rho=q\left(p-n+N_{D}-N_{A}\right)
+\]
+
+
+\subsection{半導体中の静電ポテンシャル}
+
+図半工1-9
+
+図半工1-10
+
+\[
+\phi=-\frac{E_{i}}{q}
+\]
+
+
+\subsection{熱平衡時のフェルミ準位}
+
+\[
+\d{E_{F}}x=0
+\]
+
+
+\subsection{擬フェルミ準位}
+
+\begin{align*}
+n & =n_{i}\exp\left(\frac{E_{Fn}-E_{i}}{kT}\right)\\
+p & =n_{i}\exp\left(\frac{E_{i}-E_{Fp}}{kT}\right)
+\end{align*}
+
+\begin{align*}
+J_{n} & =\mu_{n}n\d{E_{Fn}}x\\
+J_{p} & =\mu_{n}p\d{E_{Fp}}x
+\end{align*}
+
+\end{document}
