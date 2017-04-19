@@ -60,6 +60,7 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 	* [電気機器](2017S/ElectricMachinery.tex) - [PDF][ElectricMachinery-pdf]
 	* [電子回路I](2017S/ElectronicCircuit1.tex) - [PDF][ElectronicCircuit1-pdf]
 	* [電子物性基礎](2017S/ElectronicProperty.tex) - [PDF][ElectronicProperty-pdf]
+	* [半導体デバイス工学](2017S/SemiconductorDeviceEngineering.tex) - [PDF][SemiconductorDeviceEngineering-pdf]
 
 [Dynamics-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/Dynamics.pdf
 [mathIA-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/mathIA.pdf
@@ -100,6 +101,7 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 [ElectricMachinery-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/ElectricMachinery.pdf
 [ElectronicCircuit1-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/ElectronicCircuit1.pdf
 [ElectronicProperty-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/ElectronicProperty.pdf
+[SemiconductorDeviceEngineering-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/SemiconductorDeviceEngineering.pdf
 
 ## 規約
 
