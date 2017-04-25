@@ -1,0 +1,122 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=2cm,rmargin=2cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 電気電子情報第一(前期)実験 P3実験「回路シミュレーションとフィルタ設計」総合レポート}
+
+\author{学籍番号: 03-170512 氏名: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+
+
+\section{考察・検討}
+
+\subsection{Butterworth特性とChebyshev特性の比較}
+
+今回の実験で得られた、Butterworth低域通過フィルタの伝達特性を図\ref{fig:Butterworth=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=004F1D=009054=007279=006027}に、Chebyshev低域通過フィルタの伝達特性を図\ref{fig:Chebyshev=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=004F1D=009054=007279=006027}に示す。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-P3/butterworth-20k-amp}
+\par\end{centering}
+\caption{Butterworth低域通過フィルタの伝達特性\label{fig:Butterworth=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=004F1D=009054=007279=006027}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-P3/chebyshev-20k-amp}
+\par\end{centering}
+\caption{Chebyshev低域通過フィルタの伝達特性\label{fig:Chebyshev=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=004F1D=009054=007279=006027}}
+\end{figure}
+
+これらの実験結果から、Butterworth特性とChebyshev特性の周波数フィルタの違いについて、以下の2点が挙げられる。
+\begin{enumerate}
+\item Chebyshev特性のフィルタはButterworth特性のフィルタと比較して、遮断周波数付近における伝達特性の下がり方が急峻であること。
+\item Chebyshev特性のフィルタは遮断周波数に至るまでの通過域の部分にリプルが存在し、遮断周波数において伝達される振幅も、Butterworth特性と比べてやや大きいこと。
+\end{enumerate}
+
+\subsection{3次LPFの高周波域における理論近似値と実測値の比較}
+
+\[
+H=\frac{1}{s^{3}}=\frac{1}{\left(\j\omega\right)^{3}}=\j\omega^{-3}
+\]
+より、
+\begin{align*}
+\left|H\right| & =\omega^{-3}\\
+\log\left|H\right| & =-3\log\omega
+\end{align*}
+となる。他方、
+\begin{equation}
+\log\left|H\right|=a\log\omega\label{eq:1}
+\end{equation}
+と置いて実験結果より$a$の値を分析する。ここで図\ref{fig:Butterworth=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=004F1D=009054=007279=006027=00306E=009AD8=005468=006CE2=0057DF=00306B=00304A=003051}に示した回帰分析の結果により、
+\[
+20\log\left|H\right|=-67.797\log\omega
+\]
+
+これと\ref{eq:1}より、
+\[
+a=-3.3899
+\]
+なので、理論値に対して$+13\%$の誤差がある。
+
+\subsection{Butterworth特性とChebyshev特性のステップ応答の比較}
+
+Butterworth特性とChebyshev特性の周波数フィルタのステップ応答を図\ref{fig:Butterworth=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54}に示す。
+
+これらから、Butterworth特性にないChebyshev特性のリプルが、ステップ応答の収束部分の波形の違いに現れていると考えることができる。また、Chebyshev特性はButterworth特性と比べて波形の収束が速く、これは遮断周波数における電圧降下の急峻さの違いに寄るものと考えられる。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-P3/butterworth-step}
+\par\end{centering}
+\caption{Butterworth低域通過フィルタのステップ応答\label{fig:Butterworth=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54}}
+\end{figure}
+
+
+\section{参考文献}
+\begin{itemize}
+\item 東京大学工学部電気電子工学科電子情報工学科編『電気電子情報第一(前期)実験テキスト 2017年4月』
+\end{itemize}
+
+\end{document}
