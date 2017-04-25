@@ -8,6 +8,7 @@
 \setlength{\parskip}{\smallskipamount}
 \setlength{\parindent}{0pt}
 \usepackage{textcomp}
+\usepackage{amsmath}
 \usepackage{amssymb}
 
 \makeatletter
@@ -105,4 +106,221 @@ V\left(r\right)=-\frac{1}{4\pi\varepsilon_{0}}\frac{Q^{2}}{r}
 $R\left(r\right)$: 動径関数
 
 $Y\left(\theta,\phi\right)$: 角関数
+
+\section*{第2回}
+
+:innocent:
+
+\section*{第3回}
+
+\paragraph{前回}
+\begin{enumerate}
+\item 結晶構造の分類
+\begin{itemize}
+\item 晶系: 7
+\begin{itemize}
+\item 長さ、確度
+\end{itemize}
+\item 空間格子(ブラーべ格子): 14
+\begin{itemize}
+\item 対称操作
+\end{itemize}
+\item 点群: 32
+\begin{itemize}
+\item 回転、鏡映、反転
+\end{itemize}
+\item 空間群: 230
+\begin{itemize}
+\item 点群+並進操作
+\end{itemize}
+\item 結晶面、方向の表現
+\end{itemize}
+\item 実格子(直接)と逆格子(フーリエ空間)
+\item 逆格子により、
+\begin{itemize}
+\item 面間距離→点-点距離
+\item Bra的→Ewal球
+\end{itemize}
+\end{enumerate}
+物性を決める因子: 秩序因子
+
+\paragraph{誘電特性}
+\begin{itemize}
+\item 誘電体とは (巨視的、微視的)
+\item 誘電率とは (電気的、物理的)
+\item 誘電率の起源
+\end{itemize}
+スケーリング則の限界
+
+\[
+C=\frac{\varepsilon_{0}\varepsilon_{n}\uparrow S\downarrow}{l\downarrow}
+\]
+
+\begin{itemize}
+\item $\varepsilon_{r}$の値
+\begin{itemize}
+\item SiO2: 3.9
+\end{itemize}
+\end{itemize}
+1. 誘電分極
+
+図電性3-1
+
+図電性3-2
+
+\[
+E=\frac{\sigma}{\varepsilon_{0}}
+\]
+
+\[
+E=\frac{V}{d}
+\]
+
+真電荷$\sigma=\sigma'-P$
+
+\[
+E=\frac{\sigma'-P}{\varepsilon_{0}}
+\]
+
+ここで$\frac{\sigma'}{\sigma}=\varepsilon_{r}$とする。$P=\left(\varepsilon_{r}-1\right)\varepsilon_{0}E$
+
+$D$: 電束密度
+
+$E$: 電界
+
+$P$: 分極
+
+\begin{align*}
+D & =\varepsilon_{0}E+P\\
+ & =\varepsilon_{0}\varepsilon_{r}E\rightarrow\varepsilon_{r}\propto\d DE\\
+ & =\varepsilon_{0}\left(1+\chi\right)E
+\end{align*}
+
+$\varepsilon_{r}$: 比誘電率
+
+$\varepsilon_{0}$: 真空の誘電率 $8.85\times10^{-12}\mathrm{F/m}$
+
+$\chi$: 非電気感受率
+
+\paragraph{$\varepsilon_{r}$の物理的意味}
+
+単位電荷のもとで、単位体積中に蓄えられるエネルギーの大きさを示す。
+
+\paragraph{内部電解(局所)}
+
+Lorentsの級の考え方
+
+\[
+E_{i}+E_{1}+E_{2}
+\]
+
+$E$: 外部からの電が
+
+$E_{1}$: 玉の外部にある物質がAにつくる電解
+
+$E_{2}$: 玉の内部にある物質がAにつくる電解 等方性より$E_{2}=0$
+
+$\mathrm{d}S$上にある電荷
+\begin{align*}
+\mathrm{d}\sigma & =-P\cos\theta\mathrm{d}S\\
+ & =-P\cos\theta\cdot2\pi r^{2}\sin\theta\cdot\mathrm{d}\theta
+\end{align*}
+
+中心の単位電荷に与える力
+\[
+\mathrm{d}E=\frac{\mathrm{d}\sigma}{4\pi\varepsilon_{0}r^{2}}=\frac{P\cos\theta\sin\theta\mathrm{d}\theta}{2\varepsilon_{0}}
+\]
+
+\[
+E_{i}=\int_{0}^{\pi}\mathrm{d}E\cos\theta=\int_{0}^{\pi}\frac{P\cos^{2}\theta\sin\theta}{2\varepsilon_{0}}\mathrm{d}\theta=\frac{P}{3\varepsilon_{0}}
+\]
+
+\[
+\Rightarrow E_{i}=E+\frac{P}{3\varepsilon_{0}}
+\]
+
+ローレンツの内部電界
+
+\paragraph{巨視的-微視点}
+
+\[
+P=\varepsilon_{0}\left(\varepsilon_{r}-1\right)E
+\]
+
+\[
+P=N\cdot\alpha\cdot E_{i}
+\]
+
+$\alpha$: 分極率
+
+ローレンツ電解 $E_{r}=E+\frac{P}{3\varepsilon_{0}}$
+
+\[
+\Rightarrow\frac{\varepsilon_{r}-1}{\varepsilon_{r}+2}=\frac{\alpha N}{3\varepsilon_{0}}
+\]
+
+
+\paragraph{4. 誘電性発現の起源}
+\begin{enumerate}
+\item 電子分極 $P_{E}$
+\item イオン電極 $P_{I}$
+\item 双極子配向分極 $P_{O}$
+\end{enumerate}
+\[
+P=P_{E}+P_{I}+P_{O}
+\]
+
+
+\paragraph{5. 誘電分散}
+\begin{itemize}
+\item 緩和分散 (配向)
+\item 共鳴分散 (イオン、電子)
+\end{itemize}
+\begin{align*}
+\varepsilon_{r}^{*}-1 & =\frac{\varepsilon_{r0}-1}{1+\j\omega\tau}\\
+ & =\left(\varepsilon_{r0}-1\right)\left\{ \frac{1}{1+\omega^{2}\tau^{2}}-\i\frac{\omega\tau}{1+\omega^{2}\tau^{2}}\right\} 
+\end{align*}
+
+\[
+\varepsilon_{r}^{*}=\varepsilon_{r0}'-\i\varepsilon_{r0}''
+\]
+
+\[
+\varepsilon_{r0}'\left(\omega\right)=1+\frac{\varepsilon_{r0}-1}{1+\omega^{2}\tau^{2}}
+\]
+
+\[
+\varepsilon_{r0}''=\left(\varepsilon_{r0}-1\right)\frac{\omega\tau}{1+\omega^{2}\tau^{2}}
+\]
+
+図電性3-3
+
+\[
+\left(\varepsilon'-\frac{\varepsilon_{r0}+1}{2}\right)^{2}+\varepsilon''^{2}=\frac{\left(\varepsilon_{r0}-1\right)^{2}}{8}
+\]
+
+図電性3-4
+
+\paragraph{共鳴分散}
+
+粒子$m$
+
+振動電解により単振動
+
+運動方程式: 1次元調和振動子
+
+\[
+\dd Xt+\gamma\d Xt+\omega_{0}^{2}X=\frac{\varepsilon}{m}E_{0}\e^{\i\omega t}
+\]
+
+$\gamma$: 制動項
+
+$\omega_{0}$: 共鳴周波数
+
+\begin{align*}
+\varepsilon_{r}' & =1+\frac{nq^{2}}{\varepsilon_{0}m}\frac{\omega_{0}^{2}-\omega^{2}}{\left(\omega_{0}^{2}-\omega^{2}\right)^{2}+\gamma^{2}\omega^{2}}\\
+\varepsilon_{r}'' & =\frac{nq^{2}}{\varepsilon_{0}m}\frac{\gamma\omega}{\left(\omega_{0}^{2}+\omega^{2}\right)^{2}+\gamma^{2}\omega^{2}}
+\end{align*}
+
+静電界$\omega=0$
 \end{document}
