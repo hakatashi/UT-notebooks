@@ -1,0 +1,182 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=2cm,rmargin=2cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 電気電子情報第一(前期)実験 P3実験「回路シミュレーションとフィルタ設計」総合レポート}
+
+\author{学籍番号: 03-170512 氏名: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+
+
+\section{考察・検討}
+
+\subsection{直流ブリッジを用いた抵抗値計測における計測誤差の見積もり}
+
+今回の実験で用いたホイートストンブリッジの回路図を図\ref{fig:=005B9F=009A13=003067=007528=003044=00305F=0030DB=0030A4=0030FC=0030C8=0030B9=0030C8=0030F3=0030D6=0030EA=0030C3=0030B8=00306E=0056DE=008DEF=0056F3}に示す。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-P2/wheatstone-bridge-circuit}
+\par\end{centering}
+\caption{実験で用いたホイートストンブリッジの回路図\label{fig:=005B9F=009A13=003067=007528=003044=00305F=0030DB=0030A4=0030FC=0030C8=0030B9=0030C8=0030F3=0030D6=0030EA=0030C3=0030B8=00306E=0056DE=008DEF=0056F3}}
+\end{figure}
+
+ここで\cite{key-1}によれば、このようなホイートストンブリッジにおいて検流計の両端間の電圧差を$V_{D}$とすれば、
+\begin{align*}
+V_{D} & =V\left(R_{x}+\Delta R_{x}\right)-V_{R_{A}}\\
+ & =V\left(R_{x}+\Delta R_{x}\right)-V\left(R_{x}\right)\\
+ & =\frac{R_{x}+\Delta R_{x}}{R_{B}+R_{x}+\Delta R_{x}}E-\frac{R_{x}}{R_{B}-R_{x}}E\\
+ & \simeq\frac{R_{B}E}{\left(R_{B}+R_{x}\right)^{2}}\Delta R_{x}
+\end{align*}
+となる。
+
+逆に検出可能な電流の最小値$V_{D}$から抵抗値の誤差$\Delta R_{x}$を計算すると、
+\[
+\Delta R_{x}\simeq\frac{\left(R_{B}+R_{x}\right)^{2}}{R_{B}E}V_{D}
+\]
+となる。
+
+今回の実験に用いたマルチメーターの目盛りの最小値は$0.1\mathrm{mV}$であった。よって$V_{D}=0.1\mathrm{mV}$とおき、実験に用いた値$R_{B}\simeq4000\Omega,R_{x}\simeq2000\Omega,E=5\mathrm{V}$を代入すると、
+\begin{align*}
+\Delta R_{x} & \simeq\frac{\left(4000+2000\right)^{2}}{4000\cdot5}\cdot0.1\times10^{-3}\\
+ & =0.18\Omega
+\end{align*}
+となり、計測誤差$\frac{\Delta R_{x}}{R_{x}}\sim10^{-4}$程度と見積もることができる。
+
+\subsection{交流ブリッジによる計測値とLCRメーターによる計測値の比較}
+
+今回の実験で計測した電解コンデンサのキャパシタンス及び損失抵抗の測定値を周波数に対してプロットしたグラフを、図\ref{fig:=0096FB=0089E3=0030B3=0030F3=0030C7=0030F3=0030B5=00306E=0030AD=0030E3=0030D1=0030B7=0030BF=0030F3=0030B9=00306E=005468=006CE2=006570=007279=006027}および図\ref{fig:=0096FB=0089E3=0030B3=0030F3=0030C7=0030F3=0030B5=00306E=0030EC=0030B8=0030B9=0030BF=0030F3=0030B9=00306E=005468=006CE2=006570=007279=006027}に示す。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-P2/capacitance-chart}
+\par\end{centering}
+\caption{電解コンデンサのキャパシタンスの周波数特性\label{fig:=0096FB=0089E3=0030B3=0030F3=0030C7=0030F3=0030B5=00306E=0030AD=0030E3=0030D1=0030B7=0030BF=0030F3=0030B9=00306E=005468=006CE2=006570=007279=006027}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-P2/resistance-chart}
+\par\end{centering}
+\caption{電解コンデンサのレジスタンスの周波数特性\label{fig:=0096FB=0089E3=0030B3=0030F3=0030C7=0030F3=0030B5=00306E=0030EC=0030B8=0030B9=0030BF=0030F3=0030B9=00306E=005468=006CE2=006570=007279=006027}}
+\end{figure}
+
+交流ブリッジにおける測定においては、測定機器の限界からマルチメーターの示す値が10mA以下のものを平衡とみなし、実験を行った。ここから計測誤差は$10^{-2}$程度と見積もられるが、LCRメーターによる計測値との誤差はすべてこの範囲内に収まっており、説明可能である。
+
+また、図\ref{fig:=0096FB=0089E3=0030B3=0030F3=0030C7=0030F3=0030B5=00306E=0030EC=0030B8=0030B9=0030BF=0030F3=0030B9=00306E=005468=006CE2=006570=007279=006027}から、損失抵抗$R_{x}$は強い周波数依存性を示し、計測範囲内においては周波数が高いほど損失抵抗が低くなる傾向があることが見て取れる。これは、今回の実験で仮定した抵抗とコンデンサによる等価回路に、インダクタを加えることで説明できる。
+
+\subsection{ヘイブリッジとマクスウェルブリッジの平衡条件}
+
+\subsubsection{ヘイブリッジ}
+
+交流電源の電圧の複素表示を$V\e^{\j\theta}$とする。
+
+計測素子の合成抵抗は、
+\[
+\frac{R_{x}\j\omega L_{x}}{R_{x}+\j\omega L_{x}}
+\]
+より、検流計の両端の電圧が等しいことから
+\begin{align*}
+\frac{R_{C}+\frac{1}{\j\omega C_{S}}}{R_{A}+R_{C}+\frac{1}{\j\omega C_{s}}}V\e^{\j\theta} & =\frac{R_{B}}{\frac{R_{x}\j\omega L_{x}}{R_{x}+\j\omega L_{x}}+R_{B}}V\e^{\j\theta}\\
+\frac{R_{C}+\frac{1}{\j\omega C_{S}}}{R_{A}+R_{C}+\frac{1}{\j\omega C_{s}}} & =\frac{R_{B}}{\frac{R_{x}\j\omega L_{x}}{R_{x}+\j\omega L_{x}}+R_{B}}\\
+\left(R_{C}-\frac{\j}{\omega C_{S}}\right)\left(\frac{R_{x}\j\omega L_{x}}{R_{x}+\j\omega L_{x}}+R_{B}\right) & =\left(R_{A}+R_{C}-\frac{\j}{\omega C_{s}}\right)R_{B}\\
+\left(R_{C}-\frac{\j}{\omega C_{S}}\right)\left(R_{x}\j\omega L_{x}+R_{B}\left(R_{x}+\j\omega L_{x}\right)\right) & =\left(R_{A}+R_{C}-\frac{\j}{\omega C_{s}}\right)R_{B}\left(R_{x}+\j\omega L_{x}\right)
+\end{align*}
+
+実部を比較して、
+\begin{align*}
+R_{C}R_{B}R_{x}+\frac{R_{x}L_{x}}{C_{S}}+\frac{R_{B}L_{x}}{C_{S}} & =\left(R_{A}+R_{C}\right)R_{B}R_{x}+\frac{R_{B}L_{x}}{C_{S}}\\
+\frac{L_{x}}{C_{S}} & =R_{A}R_{B}\\
+L_{x} & =R_{A}R_{B}C_{S}
+\end{align*}
+
+虚部を比較して、
+\begin{align*}
+R_{C}R_{x}\omega L_{x}+R_{C}R_{B}\omega L_{x}-\frac{R_{B}R_{x}}{\omega C_{S}} & =\left(R_{A}+R_{C}\right)R_{B}\omega L_{x}-\frac{R_{B}R_{x}}{\omega C_{S}}\\
+R_{C}R_{x} & =R_{A}R_{B}\\
+R_{x} & =\frac{R_{A}R_{B}}{R_{C}}
+\end{align*}
+
+Q値は、
+\[
+Q=\frac{\omega L_{x}}{R_{x}}=\omega C_{S}R_{C}
+\]
+
+
+\subsubsection{マクスウェルブリッジ}
+
+$R_{C}$と$C_{S}$の合成抵抗は、
+\[
+\frac{R_{C}\frac{1}{\j\omega C_{S}}}{R_{C}+\frac{1}{\j\omega C_{S}}}=\frac{R_{C}}{\j\omega C_{S}R_{C}+1}
+\]
+より、検流計の両端の電圧が等しいことから、
+\begin{align*}
+\frac{\frac{R_{C}}{\j\omega C_{S}R_{C}+1}}{\frac{R_{C}}{\j\omega C_{S}R_{C}+1}+R_{A}} & =\frac{R_{B}}{\j\omega L_{x}+R_{x}+R_{B}}\\
+\frac{R_{C}}{\j\omega C_{S}R_{C}+1}\left(\j\omega L_{x}+R_{x}+R_{B}\right) & =R_{B}\left(\frac{R_{C}}{\j\omega C_{S}R_{C}+1}+R_{A}\right)\\
+R_{C}\left(\j\omega L_{x}+R_{x}+R_{B}\right) & =R_{B}\left(R_{C}+R_{A}\j\omega C_{S}R_{C}+R_{A}\right)
+\end{align*}
+
+実部を比較して、
+\begin{align*}
+R_{C}\left(R_{x}+R_{B}\right) & =R_{B}\left(R_{A}+R_{C}\right)\\
+R_{x} & =\frac{R_{A}R_{B}}{R_{C}}
+\end{align*}
+
+虚部を比較して、
+\begin{align*}
+R_{C}\omega L_{x} & =R_{B}R_{A}\omega C_{S}R_{C}\\
+L_{x} & =R_{A}R_{B}C_{S}
+\end{align*}
+
+Q値は、
+\[
+Q=\frac{\omega L_{x}}{R_{x}}=\omega C_{S}R_{C}
+\]
+
+\begin{thebibliography}{EEIC, 2017}
+\bibitem[EEIC, 2017]{key-1}東京大学工学部電気電子工学科電子情報工学科編『電気電子情報第一(前期)実験テキスト
+2017年4月』
+\end{thebibliography}
+
+\end{document}
