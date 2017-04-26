@@ -146,13 +146,15 @@ Q=\frac{\omega L_{x}}{R_{x}}=\omega C_{S}R_{C}
 
 \subsubsection{マクスウェルブリッジ}
 
+交流電源の電圧の複素表示を$V\e^{\j\theta}$とする。
+
 $R_{C}$と$C_{S}$の合成抵抗は、
 \[
 \frac{R_{C}\frac{1}{\j\omega C_{S}}}{R_{C}+\frac{1}{\j\omega C_{S}}}=\frac{R_{C}}{\j\omega C_{S}R_{C}+1}
 \]
 より、検流計の両端の電圧が等しいことから、
 \begin{align*}
-\frac{\frac{R_{C}}{\j\omega C_{S}R_{C}+1}}{\frac{R_{C}}{\j\omega C_{S}R_{C}+1}+R_{A}} & =\frac{R_{B}}{\j\omega L_{x}+R_{x}+R_{B}}\\
+\frac{\frac{R_{C}}{\j\omega C_{S}R_{C}+1}}{\frac{R_{C}}{\j\omega C_{S}R_{C}+1}+R_{A}}V\e^{\j\theta} & =\frac{R_{B}}{\j\omega L_{x}+R_{x}+R_{B}}V\e^{\j\theta}\\
 \frac{R_{C}}{\j\omega C_{S}R_{C}+1}\left(\j\omega L_{x}+R_{x}+R_{B}\right) & =R_{B}\left(\frac{R_{C}}{\j\omega C_{S}R_{C}+1}+R_{A}\right)\\
 R_{C}\left(\j\omega L_{x}+R_{x}+R_{B}\right) & =R_{B}\left(R_{C}+R_{A}\j\omega C_{S}R_{C}+R_{A}\right)
 \end{align*}
