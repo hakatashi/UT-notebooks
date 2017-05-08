@@ -7,6 +7,7 @@
 \geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
 \setlength{\parskip}{\smallskipamount}
 \setlength{\parindent}{0pt}
+\usepackage{textcomp}
 \usepackage{amsmath}
 \usepackage{amssymb}
 
@@ -293,5 +294,102 @@ J\cdot\d{\omega}t=T
 \[
 M\cdot\alpha=f
 \]
+
+
+\section*{第4回}
+
+\begin{align*}
+F\left(s\right) & =K_{0}\frac{\left(s-z_{1}\right)\left(s-z_{2}\right)\cdots\left(s-z_{k}\right)}{\left(s-p_{1}\right)\left(s-p_{2}\right)\cdots\left(s-p_{k}\right)}\\
+ & =K_{0}\frac{\prod x_{i}}{\prod y_{i}}\e^{\j\left(\sum\phi_{i}\sum\varphi_{i}\right)}
+\end{align*}
+
+\[
+\begin{cases}
+s-z_{i}=x_{i}\e^{\j\phi_{i}}\\
+s-p_{i}=y_{i}\e^{\j\varphi_{i}}
+\end{cases}
+\]
+
+図制4-2
+
+\paragraph{安定度}
+
+図制4-1
+
+安定度: どのくらい安定か、不安定化するまでの余裕
+\begin{itemize}
+\item $\theta_{m}$: 位相余裕 phase margin
+\item $g_{m}$ ゲイン余裕 gain margin
+\end{itemize}
+$KP\left(s\right)H\left(s\right)$を調べて、$\frac{KP\left(s\right)}{1+KP\left(s\right)H\left(s\right)}$の安定/不安定を論じた。(all
+or nothing)
+
+あと$\theta_{m}$だけ位相が送れると不安定
+
+あと$g_{m}$だけゲインが大きくなると不安定
+
+図制4-3
+
+どれも、$\left(-1,0\right)$ or $\left(0\mathrm{dB},-180^{\circ}\right)$からの距離
+
+図制4-4
+
+\paragraph{ロバスト制御 ($H\infty$制御の入り口)}
+
+図制4-4
+
+図制4-5
+\begin{enumerate}
+\item $r=\min\left|1+G\left(\j\omega\right)\right|$を指標に(→代わりに$\theta_{m},g_{m}$)
+
+\[
+S\left(\j\omega\right)\triangleq\frac{1}{1+G\left(\j\omega\right)}
+\]
+
+($S\left(s\right)\triangleq\frac{1}{1+G\left(s\right)}$: 感度関数)$\rightarrow\left\Vert S\left(s\right)\right\Vert _{\infty}\rightarrow\min$
+
+$H\infty$制御の感度最適化問題
+\item $\Delta$の変動に対してシステムが安定であるためには、
+\begin{align*}
+\left|1+G\left(\j\omega\right)\right| & >\left|\Delta\left(\j\omega\right)G\left(\j\omega\right)\right|\\
+\left|\frac{G\left(\j\omega\right)}{1+G\left(\j\omega\right)}\right| & <\left|\frac{1}{\Delta\left(\j\omega\right)}\right|
+\end{align*}
+
+$\rightarrow\left\Vert T\left(s\right)\right\Vert _{\infty}<\gamma$
+なるべく小さくしたい
+\end{enumerate}
+\begin{align*}
+T\left(\j\omega\right) & =\frac{G\left(\j\omega\right)}{1+G\left(\j\omega\right)}\\
+\rightarrow T\left(s\right) & =\frac{G\left(s\right)}{1+G\left(s\right)}
+\end{align*}
+
+相補感度関数
+
+\begin{align*}
+\left\Vert S\left(s\right)\right\Vert _{\infty} & \rightarrow\text{小}\\
+\left\Vert T\left(s\right)\right\Vert _{\infty} & \rightarrow\text{小}
+\end{align*}
+but
+\[
+S\left(s\right)+T\left(s\right)=1
+\]
+
+\[
+\left\Vert \begin{array}{c}
+W_{1}\left(s\right)S\left(s\right)\\
+W_{2}\left(s\right)T\left(s\right)
+\end{array}\right\Vert _{\infty}<\gamma
+\]
+
+混合感度関数
+
+$\gamma\rightarrow\text{iteration}$
+
+\begin{align*}
+\left\Vert x\right\Vert _{2} & =\sqrt[2]{\sum x_{i}^{2}}\\
+\left\Vert x\right\Vert _{4} & =\sqrt[4]{\sum x_{i}^{2}}\\
+\left\Vert x\right\Vert _{\infty} & =\sqrt[\infty]{\sum x_{i}^{2}}\\
+ & =\max x_{i}
+\end{align*}
 
 \end{document}
