@@ -215,4 +215,137 @@ J_{n} & =\mu_{n}n\d{E_{Fn}}x\\
 J_{p} & =\mu_{n}p\d{E_{Fp}}x
 \end{align*}
 
+
+\section*{第3回}
+
+図半工3-1
+
+\[
+\frac{n'}{n}=\e^{-\frac{q\left(V_{bi}-V\right)}{kT}}
+\]
+
+\begin{align*}
+n_{p0} & =n_{n0}\exp\left(-\frac{qV_{bi}}{kT}\right)\\
+p_{n0} & =p_{p0}\exp\left(-\frac{qV_{bi}}{kT}\right)
+\end{align*}
+
+\begin{align*}
+n_{p}\left(l_{p}\right) & =n_{n}\left(-l_{n}\right)\exp\left(-\frac{q\left(V_{bi}-V\right)}{kT}\right)\\
+p_{n}\left(-l_{n}\right) & =p_{p}\left(l_{p}\right)\exp\left(-\frac{q\left(V_{bi}-V\right)}{kT}\right)
+\end{align*}
+
+$\text{注入された少数キャリア}\ll\text{多数キャリア}$なので、
+\begin{align*}
+n_{p}\left(l_{p}\right) & =n_{n0}\exp\left\{ -\frac{q\left(V_{bi}-V\right)}{kT}\right\} =n_{p0}\exp\left\{ \frac{qV}{kT}\right\} \\
+p_{n}\left(-l_{n}\right) & =P_{n0}\exp\left\{ \frac{qV}{kT}\right\} 
+\end{align*}
+
+図半工3-2
+
+連続の式
+\[
+\pd{n_{p}}t=\mu_{n}\pd{\left(n\vec{\varepsilon}\right)}x+D_{n}\pdd{n_{p}}x+\left(g-r\right)
+\]
+
+中世領域では$\vec{\varepsilon}=0$を仮定
+
+定常状態
+\[
+\pdd{n_{p}}x+\frac{g-r}{D_{n}}=0
+\]
+
+図半工3-3
+
+\[
+U=r-g=\frac{n_{p}-n_{p0}}{\tau_{n}}
+\]
+
+\[
+\therefore\pdd{n_{p}}x-\frac{n_{p}-n_{p0}}{\tau_{n}}=0
+\]
+
+$x=l_{p}$で$n_{p}=n_{p0}\exp\left\{ +\frac{qV}{kT}\right\} $
+
+$x=\infty$で$n_{p}=n_{p0}$
+
+拡張長$L_{n}=\sqrt{D_{n}\tau_{n}}$
+
+\begin{align*}
+n_{p}-n_{p0} & =\left[n_{p0}\e^{\frac{qV}{kT}}-n_{p0}\right]\e^{-\frac{x-l_{p}}{L_{n}}}\\
+p_{n}-p_{n0} & =\left[p_{n0}\e^{\frac{qV}{kT}}-p_{n0}\right]\e^{\frac{x+l_{n}}{L_{p}}}
+\end{align*}
+
+\begin{align*}
+J_{n} & =qD_{n}\pd{n_{p}}x=-\frac{qD_{n}n_{p0}}{L_{n}}\left(\e^{\frac{qV}{kT}}-1\right)\e^{-\frac{x-l_{p}}{L_{n}}}\\
+J_{p} & =-\frac{qD_{p}p_{n0}}{L_{p}}\left(\e^{\frac{qV}{kT}}-1\right)\e^{\frac{x+l_{n}}{L_{p}}}\\
+J & =-J_{p}\left(-l_{n}\right)-J_{n}\left(l_{p}\right)\\
+ & =J_{s}\left\{ \e^{\frac{qV}{kT}}-1\right\} \\
+J_{s} & =\frac{qD_{n}n_{p0}}{L_{n}}+\frac{qD_{p}p_{n0}}{L_{p}}
+\end{align*}
+
+$J_{s}$: 飽和電流密度
+
+$n_{p}\left(l_{p}\right)=n_{p0}\exp\left\{ \frac{qV}{kT}\right\} \rightarrow\sim0,V<0$の時
+
+室温$\frac{kT}{q}\sim26\mathrm{mV}$
+
+ex. $V=-0.2V$
+\[
+\exp\left\{ \frac{qV}{kT}\right\} \sim5\times10^{4}
+\]
+
+図半工3-4
+
+\begin{align*}
+J_{n}\left(l_{p}\right) & =\frac{qD_{n}n_{p0}}{L_{n}}\\
+J_{p}\left(-l_{n}\right) & =\frac{qD_{p}p_{n0}}{L_{p}}
+\end{align*}
+
+\[
+\therefore J=-J_{s}
+\]
+
+\[
+J=J_{s}\left(\e^{\frac{qV}{kT}}-1\right)
+\]
+
+図半工3-5
+
+図半工3-6
+
+\section{?}
+
+\subsection{?}
+
+\subsection{?}
+
+\subsection{擬フェルミ準位}
+
+図半工3-7
+
+図半工3-8
+
+図半工3-9
+
+図半工3-10
+
+\subsection{接合容量}
+
+図半工3-11
+
+図半工3-12
+
+平行平板コンデンサ
+
+接合容量(単位面積)
+
+\[
+C=\d Q{V_{R}}=\frac{\varepsilon_{s}}{W}
+\]
+
+$W$: $V_{R}$に依存
+
+\subsection{実際のPN接合ダイオード}
+
+図半工3-13
 \end{document}
