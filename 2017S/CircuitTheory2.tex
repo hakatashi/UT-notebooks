@@ -9,6 +9,7 @@
 \setlength{\parindent}{0pt}
 \usepackage{textcomp}
 \usepackage{amsmath}
+\usepackage{amssymb}
 
 \makeatletter
 
@@ -49,6 +50,7 @@
 \global\long\def\rank{\operatorname{rank}}
 \global\long\def\prob{\operatorname{Prob}}
 \global\long\def\cov{\operatorname{Cov}}
+\global\long\def\re{\operatorname{Re}}
 \global\long\def\when#1{\left.#1\right|}
 \global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
 \global\long\def\invlaplace#1{\mathcal{L}^{-1}\left[#1\right]}
@@ -288,4 +290,132 @@ H\left(s\right)=\frac{b_{0}}{S+a_{0}}
 図電回2-9
 
 図電回2-10
+
+\subsection*{第2回}
+
+遅刻
+
+\paragraph{ソース抵抗付きソース接地抵抗}
+
+\subsection*{第3回}
+
+\paragraph{(訂正)}
+
+定理1 $\re Z\left(s\right)\geqq0$である→$\re Z\left(\j\omega\right)\geqq0$
+
+\paragraph{(続き)}
+
+定理2: 右半面内($\re S>0$)で、$\re Z\left(s\right)>0$
+
+ここで、有理正実関数$Z\left(S\right)$
+\begin{enumerate}
+\item $s$の実係数有理関数
+\item $\re S>0$で$\re Z\left(s\right)>0$
+\end{enumerate}
+を定めると、
+
+定理3: $Z\left(s\right)$が受動集中定数回路のイミタンス関数⇔$Z\left(s\right)$が正実関数
+
+\paragraph{正実関数の性質}
+
+$Z\left(s\right)$が正実関数なら、$\frac{1}{Z\left(s\right)},Z\left(\frac{1}{s}\right)$も正実関数
+
+∵正実関数の正実関数は正実関数だから
+
+定理4: $Z\left(s\right)$が正実関数である必要十分条件は、
+\begin{enumerate}
+\item $S$の実係数有理関数
+\item $\re S>0$で$Z\left(s\right)$が正則(安定性)
+\item 虚軸上で$\re Z\left(\j n\right)\geqq0$(定理1)
+\item 虚軸上に極があるときは高々1位で、留数は正の実数
+\end{enumerate}
+
+\paragraph{(証)}
+
+$Z\left(s\right)$が$S$平面の右半面内で極$S_{p}$を持つとする。
+
+$S_{p}$の近くでローレンス展開をする
+
+\begin{align*}
+Z\left(s\right) & =\frac{a_{-n}}{\left(S-S_{p}\right)^{n}}+\frac{a_{-\left(n-1\right)}}{\left(S-S_{p}\right)^{n-1}}+\cdots+a_{0}+a_{1}\left(S-S_{p}\right)+\cdots\\
+ & \simeq\frac{a_{-n}}{\left(S-S_{p}\right)^{n}}\;\leftarrow\;S\rightarrow S_{p}\text{のとき}
+\end{align*}
+
+一般に、$a_{-n}$は複素数なので、$a_{-n}=A\e^{\j\phi}$と置き換える。($A$: 正の実数)
+
+$S-S_{p}=\rho\e^{\i\theta}$と表すと、
+\[
+Z\left(s\right)=\frac{A\e^{\j\phi}}{\rho^{n}\e^{\i n\theta}}=\frac{A}{\rho^{n}}\e^{\j\left(\phi-n\theta\right)}
+\]
+
+\[
+\re Z\left(s\right)=\frac{A}{\rho^{n}}\cos\left(\phi-n\theta\right)
+\]
+
+$\theta$を$0\rightarrow2\pi$に1回転させると、$2n$回等号が変化
+
+∴必ず$\re Z\left(s\right)<0$となる時がある→定理2と矛盾→$Z\left(s\right)$は$\re S>0$で正則
+
+虚軸上の場合、
+\[
+a_{-n}=A\e^{\j\phi}=A
+\]
+
+∴留数は正の実数
+
+→まとめると、虚軸上の曲は高々1位で留数は正の実数
+
+\subsection{?}
+
+\subsection{?}
+
+\subsection{熱損失回路とその関数}
+
+熱損失回路: LとCのみで構成される回路←リアクタンス回路
+
+リアクタンス回路のイミタンス関数をリアクタンス関数という。
+
+\paragraph{{[}1{]} リアクタンス関数}
+
+正実奇関数である。
+
+順リアクタンスなので、$\re Z\left(\j\omega\right)=0$ (抵抗成分なし)
+
+奇関数なので、$Z\left(s\right)=-Z\left(s\right)$
+
+\paragraph{{[}2{]} リアクタンス関数の形}
+
+$Z\left(s\right)=\frac{P\left(s\right)}{Q\left(s\right)}$で、高々1位しか変わらない。
+\begin{enumerate}
+\item $0$-$\infty$型: $\frac{\text{奇}}{\text{偶}}$、$\text{分子の次数}>\text{分母の次数}$
+\item $\infty$-$0$型: $\frac{\text{偶}}{\text{奇}}$、$\text{分子の次数}<\text{分母の次数}$
+\item $\infty$-$\infty$型: $\frac{\text{偶}}{\text{奇}}$、$\text{分子の次数}>\text{分母の次数}$
+\item $0$-$0$型: $\frac{\text{奇}}{\text{偶}}$、$\text{分子の次数}<\text{分母の次数}$
+\end{enumerate}
+
+\paragraph{例) $\infty$-$0$型}
+
+\begin{align*}
+Z\left(s\right) & =\frac{a_{2n}S^{2n}+a_{2\left(n-1\right)}S^{2\left(n-1\right)}+\cdots a_{2}S^{2}+a_{0}}{S\left(b_{2\left(n-1\right)}S^{2\left(n-1\right)}+\cdots+b_{0}\right)}\\
+ & =\frac{H\left(S^{2}-S_{o1}^{2}\right)\cdots\left(S^{2}-S_{o\left(n-1\right)}^{2}\right)}{S\left(S^{2}-S_{p1}^{2}\right)\cdots\left(S^{2}\cdots S_{pn}^{2}\right)}
+\end{align*}
+
+←極$S=0,\pm S_{p1},\cdots\pm S_{pn}$
+
+→$S_{p}$が曲なら、$-S_{p}$も極
+
+→(回路の安定上$X$)極は虚軸上にのみ存在。ゼロ点も同様
+
+\paragraph{{[}3{]} リアクタンス関数の性質}
+\begin{enumerate}
+\item 極と零点は必ず虚軸に存在し、かつ1位
+\item $S=0,\infty$は極、零点のいずれか
+\item $Z\left(S\right)$を部分分数分解すると、各係数は非負←当たり前のL、Cで実現できる
+\item 虚軸上のリアクタンス分を$Z\left(\j\omega\right)=\j X\left(\omega\right)$と書くと
+\begin{enumerate}
+\item $\d{X\left(\omega\right)}{\omega}>0$⋯単調増加
+\item $X\left(\omega\right)$の極と零点は必ず交互に配置されている⋯リアクタンス定理
+\end{enumerate}
+\end{enumerate}
+
 \end{document}
