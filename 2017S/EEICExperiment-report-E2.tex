@@ -1,0 +1,147 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=2cm,rmargin=2cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 電気電子情報第一(前期)実験\\
+E2実験「電気機器と整流回路」考察レポート}
+
+\author{学籍番号: 03-170512 氏名: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+\global\long\def\ex#1#2{#1\times10^{#2}}
+
+
+\section{考察・検討}
+
+\subsection{変圧器の短絡試験により計測される抵抗値とダブルブリッジによって直接計測される一次・二次側の抵抗値の比較}
+
+実験結果より、無負荷試験における電力計の読みは以下のとおりであった。
+
+\[
+\begin{cases}
+V_{o}=200\mathrm{V}\\
+I_{o}=0.564\mathrm{A}\\
+P_{o}=0.026\mathrm{kW}\\
+\cos\theta_{o}=0.231
+\end{cases}
+\]
+
+また、短絡試験における電力計の読みは以下のとおりであった。
+
+\[
+\begin{cases}
+V_{s}=6.6\mathrm{V}\\
+I_{s}=9.981\mathrm{A}\\
+P_{s}=0.055\mathrm{kW}\\
+\cos\theta_{s}=0.842
+\end{cases}
+\]
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-E2/transformer-circuit}
+\par\end{centering}
+\caption{実験に使用した変圧器の等価回路\cite{key-1}\label{fig:=005B9F=009A13=00306B=004F7F=007528=003057=00305F=005909=005727=005668=00306E=007B49=004FA1=0056DE=008DEF}}
+\end{figure}
+
+図\ref{fig:=005B9F=009A13=00306B=004F7F=007528=003057=00305F=005909=005727=005668=00306E=007B49=004FA1=0056DE=008DEF}に、実験に使用した変圧器の等価回路を示す\cite{key-1}。ここで$G_{0}$と$B_{0}$の合成アドミッタンスを$Y_{0}$、$R_{1}$と$X_{1}$の合成インピーダンスを$Z_{1}$とおくと、
+\begin{align}
+Y_{0} & =G_{0}+B_{0}\nonumber \\
+Z_{1} & =R_{1}+X_{1}\label{eq:z1}
+\end{align}
+の関係が得られる。
+
+無負荷試験の実験結果より、
+\begin{align*}
+\left|Y_{0}\right| & =\frac{I_{o}}{V_{o}}=\frac{0.564}{200}=2.82\times10^{-3}\\
+\Re\left[Y_{0}\right] & =\left|Y_{0}\right|\sqrt{1-\cos^{2}\theta_{o}}=2.74\times10^{-3}\\
+\Im\left[Y_{0}\right] & =\left|Y_{0}\right|\cos\theta_{o}=6.51\times10^{-4}
+\end{align*}
+である。また、二次電圧側を短絡した際の回路全体の合成インピーダンスを$Y_{2}$とすると、短絡試験の実験結果より、
+\begin{align*}
+\left|Y_{2}\right| & =\frac{I_{s}}{V_{s}}=\frac{9.981}{6.6}=1.51\\
+\Re\left[Y_{2}\right] & =\left|Y_{2}\right|\sqrt{1-\cos^{2}\theta_{s}}=8.16\times10^{-1}\\
+\Im\left[Y_{2}\right] & =\left|Y_{2}\right|\cos\theta_{s}=4.54\times10^{-1}
+\end{align*}
+である。ここで、$Y_{2}$は
+\begin{align*}
+Y_{2} & =Y_{0}+\frac{1}{Z_{1}}
+\end{align*}
+と表されるので、
+\begin{align*}
+Z_{1} & =\frac{1}{Y_{2}-Y_{0}}\\
+ & =\frac{\overline{Y_{2}-Y_{0}}}{\left|Y_{2}-Y_{0}\right|^{2}}\\
+ & =\frac{\left(\Re\left[Y_{2}\right]-\Re\left[Y_{0}\right]\right)-\left(\Im\left[Y_{2}\right]-\Im\left[Y_{0}\right]\right)\j}{\left(\Re\left[Y_{2}\right]-\Re\left[Y_{0}\right]\right)^{2}+\left(\Im\left[Y_{2}\right]-\Im\left[Y_{0}\right]\right)^{2}}\\
+\Re\left[Z_{1}\right] & =\frac{\Re\left[Y_{2}\right]-\Re\left[Y_{0}\right]}{\left(\Re\left[Y_{2}\right]-\Re\left[Y_{0}\right]\right)^{2}+\left(\Im\left[Y_{2}\right]-\Im\left[Y_{0}\right]\right)^{2}}\\
+ & =\frac{8.16\times10^{-1}-2.74\times10^{-3}}{\left(8.16\times10^{-1}-2.74\times10^{-3}\right)^{2}+\left(4.54\times10^{-1}-6.51\times10^{-4}\right)^{2}}\\
+ & =9.39\times10^{-1}
+\end{align*}
+
+ここで式\ref{eq:z1}より明らかに$\Re\left[Z_{1}\right]=R_{1}$なので、
+\begin{equation}
+R_{1}=9.39\times10^{-1}\mathrm{\Omega}\label{eq:R1_1}
+\end{equation}
+と求められる。
+
+ところで、実験結果より変圧器の一次および二次の巻線抵抗をダブルブリッジを用いて直接計測したところ、それぞれ以下の値を得た。
+
+\begin{align*}
+r_{1} & =2.61\times10^{-1}\mathrm{\Omega}\\
+r_{2} & =5.08\times10^{-2}\mathrm{\Omega}
+\end{align*}
+
+これは室温$t=20.0\mathrm{^{\circ}C}$における計測であるので、基準温度$T=75\mathrm{^{\circ}C}$に換算すると、
+\begin{align*}
+r_{1}' & =r_{1}\frac{234.5+T}{234.5+t}=3.17\times10^{-1}\mathrm{\Omega}\\
+r_{2}' & =r_{2}\frac{234.5+T}{234.5+t}=6.18\times10^{-2}\mathrm{\Omega}
+\end{align*}
+となる。これらが純粋に一次および二次側の巻線抵抗となると考えると、図\ref{fig:=005B9F=009A13=00306B=004F7F=007528=003057=00305F=005909=005727=005668=00306E=007B49=004FA1=0056DE=008DEF}における$R_{1}$は、
+\begin{equation}
+R_{1}=r_{1}'+a^{2}r_{2}'=\ex{5.64}{-1}\Omega\label{eq:R1_2}
+\end{equation}
+となる。
+
+ここで式\ref{eq:R1_1}と式\ref{eq:R1_2}を比較すると、無負荷試験を用いて計測した\ref{eq:R1_1}の$R_{1}$が$1.66$倍大きい。これは、変圧器の負荷損は銅損と漂遊不可損の2種に分けられる\cite{key-1}が、ダブルブリッジによる計測では銅損しか計測できないことに由来すると考えられる。
+\begin{thebibliography}{EEIC, 2017}
+\bibitem[EEIC, 2017]{key-1}東京大学工学部電気電子工学科電子情報工学科編『電気電子情報第一(前期)実験テキスト
+2017年4月』
+\end{thebibliography}
+
+\end{document}
