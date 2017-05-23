@@ -1,0 +1,299 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 電子物性基礎 (後半)}
+
+\author{教員: 大矢忍 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\re{\operatorname{Re}}
+\global\long\def\im{\operatorname{Im}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+\global\long\def\invlaplace#1{\mathcal{L}^{-1}\left[#1\right]}
+\global\long\def\ex#1#2{#1\times10^{#2}}
+
+
+\section*{第1回}
+
+\paragraph{波動性を持つ粒子}
+
+\uline{電子}、陽子、中性子、光(フォトン)、\uline{格子振動(フォノン)}
+
+\paragraph{平面波(1次元)}
+
+\[
+\psi\left(x,t\right)=A\exp\left[\i\left(kx-\omega t\right)\right]
+\]
+
+$k$: 波数(rad/m)
+
+$\omega$: 角振動数(rad/s)
+
+波長$\lambda=\frac{2\pi}{k}\left(\mathrm{m}\right)$
+
+振動数$f=\frac{\omega}{2\pi}$
+
+\[
+\psi\left(x,t\right)=A\underbrace{\exp\left(\i kx\right)}_{\text{位置}}\underbrace{\exp\left(-\i\omega t\right)}_{\text{時間→省略}}
+\]
+
+$\left(\j=-\i\right)$
+
+強度
+\begin{align*}
+\left|\psi\right|^{2} & =\psi^{*}\left(x,t\right)\psi\left(x,t\right)\\
+ & =A^{*}\exp\left(-\i kx\right)\exp\left(\i\omega t\right)\\
+ & \times A\exp\left(\i kx\right)\exp\left(-\i\omega t\right)\\
+ & =\left|A\right|^{2}
+\end{align*}
+
+位置と時間によらない
+
+\paragraph{問}
+
+$\psi\left(x,t\right)=\exp\left[\i\left(2x-\pi t\right)\right]$の実部に着目してこの平面波の速さを求めよ。
+
+\[
+\re\left(\psi\right)=\cos\left(2x-\pi t\right)
+\]
+
+$t=0\rightarrow\cos2x$
+
+$t=\frac{1}{3}\rightarrow cos\left(2k-\frac{\pi}{2}\right)=\cos\left(2\left(x-\frac{\pi}{4}\right)\right)$
+
+$t=1\rightarrow\cos\left(2\left(x-\frac{\pi}{2}\right)\right)$
+
+$v=\frac{\pi}{2}$
+
+位相=0に着目→
+\begin{align*}
+2x-\pi t & =0\\
+2x & =\pi t
+\end{align*}
+
+\[
+v=\frac{x}{t}=\frac{\pi}{2}
+\]
+
+\[
+\psi\left(x,t\right)=A\exp\left[\i\left(kx-\omega t\right)\right]
+\]
+
+位相=0に着目すると
+\begin{align*}
+kx-\omega t & =0\\
+kx & =\omega t
+\end{align*}
+
+\[
+v=\frac{x}{t}=\frac{\omega}{k}
+\]
+
+これを位相速度と呼ぶ。
+
+\paragraph{練習1}
+
+\[
+\psi\left(x,t\right)=\exp\left[\i\left(3x-\pi t\right)\right]
+\]
+
+$v=\frac{\pi}{3},\lambda=\frac{2\pi}{3},f=\frac{\pi}{2\pi}=\frac{1}{2}$
+右に進む$\left(v>0\right)$
+
+\paragraph{練習2}
+
+\[
+\psi\left(x,t\right)=\exp\left[\i\left(-4x-2t\right)\right]
+\]
+
+$v=-\frac{2}{4}=-\frac{1}{2},\lambda=\frac{2\pi}{4}=\frac{\pi}{2},f=\frac{2}{2\pi}=\frac{1}{\pi}$
+左に進む$\left(v<0\right)$
+
+\paragraph{まとめ}
+
+1次元 $\psi=A\exp\left[\i\left(kx-\omega t\right)\right]$
+
+\[
+v=\frac{\omega}{k},\lambda=\frac{2\pi}{k},f=\frac{\omega}{2\pi}
+\]
+
+$k>0$なら右、$k<0$なら左に進む
+
+\paragraph{平面波(3次元)}
+
+\[
+\psi\left(\boldsymbol{r},t\right)=A\exp\left[\i\left(\boldsymbol{k}\cdot\boldsymbol{r}-\omega t\right)\right]
+\]
+
+位置$\boldsymbol{r}=\left(x,y,z\right)$
+
+$\boldsymbol{k}=\left(k_{x},k_{y},k_{z}\right)$
+
+\[
+\psi=A\underbrace{\exp\left(\i\boldsymbol{k}\cdot\boldsymbol{r}\right)}_{\text{位置}}\underbrace{\exp\left(-\i\omega t\right)}_{\text{時間→省略可}}
+\]
+
+強度 $\left|\psi\right|^{2}=\psi^{*}\psi=\left|A\right|^{2}$: 位置と時間によらない
+
+\paragraph{問1}
+
+$\boldsymbol{k}$に垂直な 平面上の任意の点$A\left(\boldsymbol{r}\right)$は、$\boldsymbol{k}\cdot\boldsymbol{r}=d\left(\text{定数}\right)$を満たすことを示せ。
+
+\paragraph{問2}
+
+この平面上のすべての点$A\left(\boldsymbol{r}\right)$で$\psi$の位相が等しいことを示せ。($t=t_{0}\left(\text{定数}\right)$とする)
+
+\paragraph{問3}
+
+$\psi$の平面波の進行方向と位相速度を求めよ。
+
+\paragraph{解答1}
+
+図電性後1-1
+
+\[
+\overrightarrow{OB}\cdot\overrightarrow{BA}=0
+\]
+
+\[
+s\boldsymbol{k}\cdot\left(\overrightarrow{OA}-\overrightarrow{OB}\right)=0
+\]
+
+\[
+s\boldsymbol{k}\cdot\left(\boldsymbol{r}-s\boldsymbol{k}\right)=0
+\]
+
+\[
+\boldsymbol{k}\cdot\boldsymbol{r}=s\left|\boldsymbol{k}\right|^{2}\equiv d\left(\text{定数}\right)
+\]
+
+※「$\equiv$」は「とおく」という意味である
+
+\paragraph{解答2}
+
+\[
+\boldsymbol{k}\cdot\boldsymbol{r}-\omega t=d-\omega t_{0}\left(\text{定数}\right)
+\]
+
+図電性後1-2
+
+$k\sslash\boldsymbol{r}_{0}$ 位相=0に着目
+
+\[
+\boldsymbol{k}\cdot\boldsymbol{r}_{0}-\omega t_{0}=0
+\]
+
+\[
+\left|\boldsymbol{k}\right|\left|\boldsymbol{r}_{0}\right|-\omega t_{0}=0
+\]
+
+\[
+v=\frac{\left|\boldsymbol{r}_{0}\right|}{t_{0}}=\frac{\omega}{\left|\boldsymbol{k}\right|}
+\]
+
+位相速度である。
+
+\paragraph{まとめ 3次元}
+
+\[
+\psi=A\exp\left[\i\left(\boldsymbol{k}\cdot\boldsymbol{r}-\omega t\right)\right]
+\]
+
+\[
+v=\frac{\omega}{\left|\boldsymbol{k}\right|},\lambda=\frac{2\pi}{\left|\boldsymbol{k}\right|},f=\frac{\omega}{2\pi}
+\]
+
+進行方向$\boldsymbol{k}$
+
+\paragraph{練習}
+
+\[
+\psi=\exp\left[\i\left\{ \left(\begin{array}{c}
+1\\
+2\\
+3
+\end{array}\right)\cdot\boldsymbol{r}-\pi t\right\} \right]
+\]
+
+\[
+v=\frac{\pi}{\sqrt{14}},\lambda=\frac{2\pi}{\sqrt{14}},f=\frac{\pi}{2\pi}=\frac{1}{2},\text{方向}\left(\begin{array}{c}
+1\\
+2\\
+3
+\end{array}\right)
+\]
+
+
+\paragraph{時間依存シュレディンガー方程式}
+
+\begin{equation}
+\left[-\frac{\hbar^{2}}{2m}\nabla^{2}+V\left(\boldsymbol{r},t\right)\right]\psi\left(\boldsymbol{r},t\right)=\i\hbar\pd{\psi\left(\boldsymbol{r},t\right)}t\label{eq:1-A}
+\end{equation}
+
+\[
+\nabla^{2}=\pdd{}x+\pdd{}y+\pdd{}z,\hbar=\frac{h}{2\pi}=\ex{1.05}{-34}\mathrm{Js}
+\]
+
+
+\paragraph{時間無依存のシュレディンガー方程式}
+
+$\psi\left(\boldsymbol{r},t\right)=\varphi\left(\boldsymbol{r}\right)\exp\left(-\i\omega t\right)$と書けるとする。
+
+∵$\left|\psi\right|^{2}=\left|\varphi\left(\boldsymbol{r}\right)\right|^{2}$←時間によらない
+
+\begin{equation}
+\left[-\frac{\hbar^{2}}{2m}\nabla^{2}+V\left(\boldsymbol{r}\right)\right]\varphi\left(\boldsymbol{r}\right)=E\varphi\left(\boldsymbol{r}\right)\left(\Leftarrow V\left(\boldsymbol{r},t\right)\rightarrow V\left(\boldsymbol{r}\right)\right)\label{eq:1-B}
+\end{equation}
+
+
+\paragraph{レポート課題}
+\begin{enumerate}
+\item $\lambda=1000\mathrm{\AA},3000\mathrm{\AA},5000\mathrm{\AA},7000\mathrm{\AA}$の光(速さ$v=\ex 38\mathrm{m/s}$)の波数、角振動数を求めよ。
+\item $\psi\left(x,t\right)=\sin\left(kx-\omega t\right)$が\ref{eq:1-A}を満たさないことを示せ。ただし$V=0$としてよい。
+\item \ref{eq:1-A}から\ref{eq:1-B}を導け(ただし、$V=V\left(\boldsymbol{r}\right)$とする)。
+\end{enumerate}
+
+\end{document}
