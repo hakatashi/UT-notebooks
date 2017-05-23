@@ -21,7 +21,11 @@ dist/%.pdf: %.dvi
 
 .SECONDEXPANSION:
 %.bmp: $$(wildcard %.jpg) $$(wildcard %.png)
-	@if [ -e "$*.jpg" ]; then convert "$*.jpg" bmp2:$@; else convert "$*.png" bmp2:$@; fi;
+	@if [ -e "$*.jpg" ]; then \
+		convert "$*.jpg" bmp2:$@; \
+	else \
+		convert "$*.png" bmp2:$@; \
+	fi;
 
 %.eps: %.bmp
 	potrace $< -r 400 -o $@
