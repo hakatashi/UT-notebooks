@@ -1,0 +1,236 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=2cm,rmargin=2cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 電気電子情報第一(前期)実験\\
+A1実験「半導体と電子回路の基礎」考察レポート}
+
+\author{学籍番号: 03-170512 氏名: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+\global\long\def\ex#1#2{#1\times10^{#2}}
+
+
+\section{考察・検討}
+
+\subsection{測定レンジと内部抵抗の関係についての考察、およびpn接合ダイオードの電流電圧特性が正しく測定できている範囲の検討}
+
+この考察は\cite{key-1}の5(1)に対応している。
+
+今回の実験で使用した電圧計および電流計のスケールと内部抵抗の測定値を表\ref{tab:=005B9F=009A13=00306B=004F7F=007528=003057=00305F=008A08=005668=00304A=003088=003073=0030B9=0030B1=0030FC=0030EB=003068=005185=0090E8=0062B5=006297=00306E=006E2C=005B9A=005024}に示す。
+\begin{table}
+\begin{centering}
+\begin{tabular}{|c|c|}
+\hline 
+計器およびスケール & 内部抵抗$R$ ($\Omega$)\tabularnewline
+\hline 
+\hline 
+電圧計1 3V & 29.9k\tabularnewline
+\hline 
+電圧計1 10V & 100k\tabularnewline
+\hline 
+電圧計1 30V & 301k\tabularnewline
+\hline 
+電圧計1 100V & 1.01M\tabularnewline
+\hline 
+電圧計1 300V & 3.02M\tabularnewline
+\hline 
+電圧計2 0.3V & 2.98k\tabularnewline
+\hline 
+電圧計2 1V & 9.98k\tabularnewline
+\hline 
+電圧計2 3V & 29.9k\tabularnewline
+\hline 
+電圧計2 10V & 99.7k\tabularnewline
+\hline 
+電圧計2 30V & 302k\tabularnewline
+\hline 
+電流計mA 10mA & 4.5\tabularnewline
+\hline 
+電流計mA 30mA & 1.7\tabularnewline
+\hline 
+電流計mA 100mA & 0.6\tabularnewline
+\hline 
+電流計mA 300mA & 0.3\tabularnewline
+\hline 
+電流計mA 1000mA & 0.2\tabularnewline
+\hline 
+電流計uA 30uA & 4.98k\tabularnewline
+\hline 
+電流計uA 100uA & 6.74k\tabularnewline
+\hline 
+電流計uA 300uA & 2.74k\tabularnewline
+\hline 
+電流計uA 1000uA & 875\tabularnewline
+\hline 
+電流計uA 3000uA & 300\tabularnewline
+\hline 
+\end{tabular}
+\par\end{centering}
+\caption{実験に使用した計器およびスケールと内部抵抗の測定値\label{tab:=005B9F=009A13=00306B=004F7F=007528=003057=00305F=008A08=005668=00304A=003088=003073=0030B9=0030B1=0030FC=0030EB=003068=005185=0090E8=0062B5=006297=00306E=006E2C=005B9A=005024}}
+\end{table}
+
+これらの結果から、電圧計のスケールを$V_{\mathrm{max}}$、電流計のスケールを$I_{\mathrm{max}}$とすると、概ね
+\[
+\begin{cases}
+R=aV_{\mathrm{max}} & \text{電圧計}\\
+R=\frac{b}{I_{\mathrm{max}}} & \text{電流計}
+\end{cases}
+\]
+となり（$a,b$は定数）、電圧計の内部抵抗とスケールが比例関係に、電流計の内部抵抗とスケールが反比例の関係にあること、またその係数の値はそれぞれおよそ
+\[
+\begin{cases}
+a=\ex 14\\
+b=\ex 5{-2} & \left(\text{電圧計mA}\right)\\
+b=\ex 8{-1} & \left(\text{電圧計uA}\right)
+\end{cases}
+\]
+程度であることがわかる。
+
+電流計および電圧計の構造は、接続された端子の内部に可動コイルを備えた計器であり、ここに電流が流れることによって固定磁極からオームの法則による力を受け、指針を回転させるというものである\cite{key-2}。
+
+電流計の場合、内部に分流器と呼ばれる機構を持ち、固定抵抗が並列に接続される。この抵抗の値を$R_{m}$、電流計の可動コイルの内部抵抗を$R_{i}$、電流計に流れる電流を$I_{m}$、コイルに流れる電流を$I_{i}$とすると、
+\[
+I_{m}=\left(1+\frac{R_{i}}{R_{m}}\right)I_{i}
+\]
+という関係があるため、スケールが$1+\frac{R_{i}}{R_{m}}$倍になる。$R_{i}\gg R_{m}$のときこれは$\frac{R_{i}}{R_{m}}$に近似できるため、スケールは内部抵抗$R_{i}$に比例する。
+
+電圧計の場合、内部に分圧器と呼ばれる機構を持ち、固定抵抗が直列に接続される。この抵抗の値を$R_{m}$、電圧計の可動コイルの内部抵抗を$R_{i}$、電圧計にかかる電流を$V_{m}$、コイルにかかる電流を$V_{i}$とすると、
+\[
+V_{m}=\left(1+\frac{R_{m}}{R_{i}}\right)V_{i}
+\]
+という関係があるため、スケールが$1+\frac{R_{m}}{R_{i}}$倍になる。$R_{m}\gg R_{i}$のときこれは$\frac{R_{m}}{R_{i}}$に近似できるため、スケールは内部抵抗$R_{i}$に反比例する。
+
+これらの結果は上で考察した結果によく一致する。
+
+また、今回の実験で得られたpn接合の電流電圧特性を図\ref{fig:pn=0063A5=005408=00306E=0096FB=006D41=0096FB=005727=007279=006027}に示す。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A1/pn-junction-IV-chart}
+\par\end{centering}
+\caption{pn接合の電流電圧特性\label{fig:pn=0063A5=005408=00306E=0096FB=006D41=0096FB=005727=007279=006027}}
+\end{figure}
+
+図\ref{fig:pn=0063A5=005408=00306E=0096FB=006D41=0096FB=005727=007279=006027}では、a回路における電圧0.5V未満の測定データが意図的に省略されている。表\ref{tab:=005B9F=009A13=00306B=004F7F=007528=003057=00305F=008A08=005668=00304A=003088=003073=0030B9=0030B1=0030FC=0030EB=003068=005185=0090E8=0062B5=006297=00306E=006E2C=005B9A=005024}に示した通り、今回の実験で使用した電圧計の内部抵抗は$2.98\mathrm{k\Omega}$以上であったため、$0.1\sim0.5\mathrm{V}$の電圧を印加すると最低でも$30\sim150\mathrm{\mu A}$程度の電流が流れる。今回のトランジスタにおいて$0.5\mathrm{V}$未満の電圧領域でpn接合の順バイアスに流れる電流は高くても$1\mathrm{\mu A}$程度であるため、この値よりも優に小さく、測定においては桁落ちによって少なくとも2桁は精度が落ちる。これは測定系の限界であり、この領域の電流をこの方法によって正しく計測することはできない。
+
+\subsection{pn接合ダイオードの電流電圧特性に関する定量的な考察}
+
+この考察は\cite{key-1}の5(2)に対応している。
+
+今回の実験で得られたpn接合の電流電圧特性はすでに図\ref{fig:pn=0063A5=005408=00306E=0096FB=006D41=0096FB=005727=007279=006027}に示した。
+
+\cite{key-1}によれば、pn接合において外部回路に流れる電流$I$は、逆方向飽和電流$I_{s}$を用いて、
+\begin{equation}
+I=I_{s}\left[\exp\left(\frac{qV}{kT}\right)-1\right]\label{eq:pn}
+\end{equation}
+と表される。ここで実験室の室温$20\mathrm{^{\circ}C}$を用いて、
+\begin{align*}
+\frac{qV}{kT} & =\frac{\ex{1.60}{-19}\cdot V}{\ex{1.38}{-23}\cdot\left(273.5+20\right)}\\
+ & =\ex{3.95}1\cdot V
+\end{align*}
+と計算できる。$V>0.5$において$\exp\left(\frac{qV}{kT}\right)\gg1$であるため、式\ref{eq:pn}における$-1$の項は無視できる。
+
+すなわちpn接合における電流は電圧に対して指数的に増加し、片対数グラフにおいては直線となるはずであり、その傾きは
+\[
+\log_{10}\exp39.5=17.2\mathrm{dec/V}
+\]
+程度となるはずである。
+
+$V=0.5\sim0.7\mathrm{V}$の領域を考える。測定値から$V=0.522,0.698$なる2点を取り出してこの間の傾きをとると$13.78\mathrm{dec/V}$となる。つぎに$V=0.7\sim1.0\mathrm{V}$の領域を考える。測定値から$V=0.698,0.965$なる2点を取り出してこの間の傾きをとると$4.83\mathrm{dec/V}$となる。
+
+$V=0.7\sim1.0\mathrm{V}$の領域において測定値が理論値と大きく外れているが、これはダイオードの空乏層における再結合効果によるものであると考えられる。
+
+\subsection{ソース接地回路の電圧増幅率の周波数特性の測定結果の考察およびドレインソース感漂遊容量$C_{D}$の検討}
+
+この考察は\cite{key-1}の5(4)に対応している。
+
+今回の実験で得られたソース接地回路の電圧増幅率および出力位相差の周波数特性を、図\ref{fig:=0030BD=0030FC=0030B9=0063A5=005730=0056DE=008DEF=00306E=0096FB=005727=005897=005E45=007387=00306E=005468=006CE2=006570=007279=006027}、\ref{fig:=0030BD=0030FC=0030B9=0063A5=005730=0056DE=008DEF=00306E=0051FA=00529B=004F4D=0076F8=005DEE=00306E=005468=006CE2=006570=007279=006027}に示す。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A1/4e-bode-amplitude}
+\par\end{centering}
+\caption{ソース接地回路の電圧増幅率の周波数特性\label{fig:=0030BD=0030FC=0030B9=0063A5=005730=0056DE=008DEF=00306E=0096FB=005727=005897=005E45=007387=00306E=005468=006CE2=006570=007279=006027}}
+\end{figure}
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A1/4e-bode-phase}
+\par\end{centering}
+\caption{ソース接地回路の出力位相差の周波数特性\label{fig:=0030BD=0030FC=0030B9=0063A5=005730=0056DE=008DEF=00306E=0051FA=00529B=004F4D=0076F8=005DEE=00306E=005468=006CE2=006570=007279=006027}}
+\end{figure}
+
+今回の実験において、$R_{L}=1\mathrm{k\Omega},V_{0}=10\mathrm{V}$であり、低域の遮断周波数$f_{1}$は$500\mathrm{Hz}$程度、具体的には
+\[
+f_{1}=\hfill\mathrm{Hz}
+\]
+となるように設計してある。この周波数において電圧増幅率はピーク時に比べて約$3\mathrm{dB}$低下する\cite{key-1}が、実測値からこれを計算すると
+\[
+8.29-5.15=3.14\mathrm{dB}
+\]
+となり、(有効数字一桁の範囲で)理論値と一致している。
+
+また、高域において電圧増幅率がピーク時に比べて約$3\mathrm{dB}$低下する周波数を探したところ、周波数$f=\ex{8.85}5\mathrm{Hz}$において、電圧増幅率$\left|A_{v}\right|=5.14\mathrm{dB}$となった。ここから
+\[
+f_{2}=\ex{8.85}5\mathrm{Hz}
+\]
+とすると、\cite{key-1}より
+\begin{align*}
+f_{2} & =\frac{1}{2\pi C_{D}R_{L}}\\
+C_{D} & =\frac{1}{2\pi R_{L}f_{2}}\\
+ & =\frac{1}{2\pi\cdot\ex{1.0}3\cdot\ex{8.85}5}\\
+ & =\ex{1.8}{-10}\mathrm{F}\\
+ & =0.18\mathrm{nF}
+\end{align*}
+程度と見積もれる。
+\begin{thebibliography}{EEIC, 2017}
+\bibitem[EEIC, 2017]{key-1}東京大学工学部電気電子工学科電子情報工学科編『電気電子情報第一(前期)実験テキスト
+2017年4月』
+
+\bibitem[廣瀬, 2015]{key-2}廣瀬明『電気電子計測 第2版』、数理工学社、2015年1月
+\end{thebibliography}
+
+\end{document}
