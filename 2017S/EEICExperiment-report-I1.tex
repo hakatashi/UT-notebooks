@@ -1,0 +1,105 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=2cm,rmargin=2cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+
+\newcommand*\LyXbar{\rule[0.585ex]{1.2em}{0.25pt}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\usepackage{listings}
+\renewcommand{\lstlistingname}{\inputencoding{latin9}Listing}
+
+\begin{document}
+
+\title{2017-S 電気電子情報第一(前期)実験\\
+I1実験考察レポート}
+
+\author{学籍番号: 03-170512 氏名: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+\global\long\def\ex#1#2{#1\times10^{#2}}
+
+
+\section{考察}
+
+I1実験では、音波を生成するCプログラムの実装を通して、信号波を取り扱うための基礎知識や、標本化定理やフーリエ変換など、信号処理において重要な諸原理について実践的に学んだ。
+
+特に選択課題2.16に関連して、正弦波や矩形波などの基本的な音波以外の波形について興味を持ったので、FM音源について自ら調査し、実装を行った。
+
+FM音源の波形は、以下の式によって表される。\cite{key-2}
+
+\[
+x\left(t\right)=A\sin\left(2\pi f_{C}t+\beta\sin\left(2\pi f_{M}t\right)\right)
+\]
+
+ここで$A$は振幅、$f_{C}$はキャリア周波数、$f_{M}$はモジュレータ周波数、$\beta$は変調指数である。
+
+この式を用いて、以下のようにFM音源を実装した。(位相計算部分のみ抜粋)
+
+\inputencoding{latin9}\begin{lstlisting}
+const double frequency = 440.0 * pow(2.0, (note_height - 1) / 12.0);
+const double modulation_index = 10.0;
+const double modulator_ratio = 2.0;
+buffer = amplitude * sin(
+	2.0 * (double)M_PI * frequency
+	* (double)(note_index * samples + i) / (double)SAMPLING_FREQUENCY
+	+ modulation_index * sin(
+		2.0 * (double)M_PI * frequency * modulator_ratio
+		* (double)(note_index * samples + i) / (double)SAMPLING_FREQUENCY
+	)
+);
+\end{lstlisting}
+\inputencoding{utf8}
+これを実行し試聴したところ、矩形波や正弦波とは異なる、やや歪んだような音色を聞くことができた。また出力された波形をAudacityを用いて観測したところ、図\ref{fig:FM=0097F3=006E90=00304B=003089=005F97=003089=00308C=00305F=006CE2=005F62=003092Audacity=003092=007528=003044=003066=0089B3=006E2C=003057=00305F=003082=00306E}のとおりの波形を得た。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{images/EEICExperiment-report-I1/fm_wave}
+\par\end{centering}
+\caption{FM音源から得られた波形をAudacityを用いて観測したもの\label{fig:FM=0097F3=006E90=00304B=003089=005F97=003089=00308C=00305F=006CE2=005F62=003092Audacity=003092=007528=003044=003066=0089B3=006E2C=003057=00305F=003082=00306E}}
+\end{figure}
+
+これらから、FM音源を用いると、正弦波や矩形波などとは異なって聞こえる音色を作り出すことができること、また数式を書き換えることによって様々な音を表現できることがわかった。
+\begin{thebibliography}{EEIC, 2017}
+\bibitem[EEIC, 2017]{key-1}東京大学工学部電気電子工学科電子情報工学科編『電気電子情報第一(前期)実験テキスト
+2017年4月』
+
+\bibitem[青木, 2013]{key-2}青木直史『サウンドプログラミング入門\LyXbar \LyXbar 音響合成の基本とC言語による実装』、技術評論社、2013年1月
+\end{thebibliography}
+
+\end{document}
