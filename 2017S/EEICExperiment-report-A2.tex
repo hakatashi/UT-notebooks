@@ -1,0 +1,1035 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[LGR,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=2cm,rmargin=2cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{amstext}
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\DeclareRobustCommand{\greektext}{%
+  \fontencoding{LGR}\selectfont\def\encodingdefault{LGR}}
+\DeclareRobustCommand{\textgreek}[1]{\leavevmode{\greektext #1}}
+\ProvideTextCommand{\~}{LGR}[1]{\char126#1}
+
+%% A simple dot to overcome graphicx limitations
+\newcommand{\lyxdot}{.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 電気電子情報第一(前期)実験\\
+A2実験「アナログ回路」総合レポート}
+
+\author{学籍番号: 03-170512 氏名: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+\global\long\def\ex#1#2{#1\times10^{#2}}
+
+
+\section{実験の目的}
+
+電子回路の多くは、基本となる回路の組み合わせによって設計されることが多い。この実験では、おもにオペアンプを中心とした基本回路を実際に設計・実装することによって、アナログ回路の基本的な理論と動作を学ぶことが目的である。
+
+\section{実験の原理}
+
+\subsection{仮想接地}
+
+理想的なオペアンプを考える。例えば\cite{key-1}の図A2.25に示される反転増幅回路において、発振器から入力される電圧は$R_{1}$を通してオペアンプの入力に接続され、そこからさらに$R_{2}$を介してオペアンプの出力へと接続されている。理想的なオペアンプにおいて入力インピーダンス$R_{\mathrm{in}}$は無限大とみなせるので、端子2から端子3へと電流が流れることはない。よって$R_{1}$と$R_{2}$を流れる電流は同じである。
+
+このとき端子2の部分の電圧が僅かにでも正であった場合、出力端子からは負に限りなく大きい電圧が出力される。すると$R_{2}$に限りなく大きい電流が流れることになり、先の結論に反する。また端子2の部分の電圧が負であった場合も同様である。
+
+以上によりオペアンプの出力部分が有限の電圧を取ることができるのは端子2の部分の電圧がゼロのときであるため、回路の動作中は端子2に接続された部分は常に電圧がゼロとなる。このようにオペアンプを用いることによって、実際には接地されていないにもかかわらず電圧がゼロに保たれる現象を\textbf{仮想接地}と呼ぶ。仮想接地した端子は実際に設置した場合と異なり電流が漏れ出ることがないため、その特性を利用して増幅回路や微分回路、積分回路などを設計することができる。
+
+\section{実験方法}
+
+本実験は以下の手順に従って行った。
+
+\subsection{増幅回路の設計および測定}
+
+\subsubsection{オフセット調整\label{subsec:=0030AA=0030D5=0030BB=0030C3=0030C8=008ABF=006574}}
+\begin{enumerate}
+\item プロトタイプシステムNI ELVIS上のブレッドボードに、\cite{key-1}の図A2.24に示される基本法線図を実装する。この際、図に示されるオペアンプの端子2および3をNI
+ELVIS上のGNDに接地し、端子出力OUTをNI ELVIS上の計測端子AI0に接続した。
+\item —NI ELVISから接続されたコンピューター上でNI ELVISを起動し、計測端子AI0の出力をオシロスコープを用いて観測する。
+\item 回路上の可変抵抗をメガネ用の小型マイナスドライバーを用いて調整し、オシロスコープの出力を見ながらAI5への出力が0に近づくように調整する。
+\end{enumerate}
+
+\subsubsection{反転増幅回路}
+\begin{enumerate}
+\item 実験で使用する抵抗素子の正確な抵抗値をマルチテスターを用いて測定、記録する。
+\item \ref{subsec:=0030AA=0030D5=0030BB=0030C3=0030C8=008ABF=006574}で調整したオフセット回路を残したまま、\cite{key-1}の図A2.25に示される反転増幅回路を実装した。このとき図中に発振器として示される部分にはNI
+ELVISのブレッドボード上のFGEN端子に接続し、同時に観測端子AI5に接続した。同様にオペアンプの端子3をGNDに接地、出力部分を観測端子AI0に接続した。また、図中の抵抗$R_{1}$および$R_{2}$には、設計した電圧利得に応じて以下の表示の抵抗素子を使用した。
+\begin{itemize}
+\item 20dB: $R_{1}=1\mathrm{k\Omega},R_{2}=10\mathrm{k\Omega}$
+\item 40dB: $R_{1}=1\mathrm{k\Omega},R_{2}=100\mathrm{k\Omega}$
+\end{itemize}
+\item 実装した反転増幅回路それぞれについて周波数特性を測定する。NI ELVISから接続されたコンピューター上でNI ELVISを起動し、Bodeモードのウィンドウを立ち上げる。このときの設定は以下のとおりである。
+\begin{itemize}
+\item Stimulus channel: AI5
+\item Response channel: AI0
+\item Peak amplitude: 0.10
+\item Steps: 20 per decade
+\item Start frequency: 100Hz
+\item Stop frequency: 100kHz
+\end{itemize}
+\item 計測したBode線図をNI ELVISの該当機能を用いてNI ELVISから接続されたコンピューター上のローカルのファイルシステム上に保存する。
+\item 電圧利得20dBの反転増幅回路について、NI ELVIS上のファンクション・ジェネレータを用いて10kHzおよび150kHzの正弦波を入力することによって、特定周波数における出力波形を観測する。このとき用いたファンクション・ジェネレータの設定は以下のとおりである。
+\begin{itemize}
+\item 10kHz
+\begin{itemize}
+\item Amplitude: $0.1\mathrm{V_{pp}}$
+\item Scale: 200mV
+\end{itemize}
+\item 150kHz
+\begin{itemize}
+\item Amplitude: $0.1\mathrm{V_{pp}}$
+\item Scale: 100mV
+\end{itemize}
+\end{itemize}
+\item 観測した出力波形をNI ELVISの該当機能を用いてNI ELVISから接続されたコンピューター上のローカルのファイルシステム上に保存する。
+\end{enumerate}
+
+\subsubsection{非反転増幅回路}
+\begin{enumerate}
+\item \ref{subsec:=0030AA=0030D5=0030BB=0030C3=0030C8=008ABF=006574}で調整したオフセット回路を残したまま、\cite{key-1}の図A2.11に示される非反転増幅回路を実装した。このとき図中に発振器として示される部分にはNI
+ELVISのブレッドボード上のFGEN端子に接続し、同時に観測端子AI5に接続した。同様にオペアンプの端子3をGNDに接地、出力部分を観測端子AI0に接続した。また、図中の抵抗$R_{r}$および$R_{f}$には、設計した電圧利得に応じて以下の表示の抵抗素子を使用した。
+\begin{itemize}
+\item 20dB: $R_{r}=1\mathrm{k\Omega},R_{f}=10\mathrm{k\Omega}$
+\item 40dB: $R_{r}=1\mathrm{k\Omega},R_{f}=100\mathrm{k\Omega}$
+\end{itemize}
+\item 実装した非反転増幅回路それぞれについて周波数特性を測定した。NI ELVISから接続されたコンピューター上でNI ELVISを起動し、Bodeモードのウィンドウを立ち上げた。このときの設定は以下のとおりである。
+\begin{itemize}
+\item Stimulus channel: AI5
+\item Response channel: AI0
+\item Peak amplitude: 0.10
+\item Steps: 20 per decade
+\item Start frequency: 100Hz
+\item Stop frequency: 100kHz
+\end{itemize}
+\item 計測したBode線図をNI ELVISの該当機能を用いてNI ELVISから接続されたコンピューター上のローカルのファイルシステム上に保存する。
+\item 電圧利得20dBおよび40dBの非反転増幅回路について、NI ELVIS上のファンクション・ジェネレータを用いて正弦波を入力することによって、特定周波数における出力波形を観測する。このとき用いたファンクション・ジェネレータの設定は以下のとおりである。
+\begin{itemize}
+\item 電圧利得20dB
+\begin{itemize}
+\item 周波数: 10kHz
+\begin{itemize}
+\item Scale: 200mV
+\end{itemize}
+\item 周波数: 150kHz
+\begin{itemize}
+\item Scale: 100mV
+\end{itemize}
+\end{itemize}
+\item 電圧利得20dB
+\begin{itemize}
+\item 周波数: 1kHz
+\begin{itemize}
+\item Channel 0 Scale: 2V
+\item Channel 1 Scale: 50mV
+\end{itemize}
+\item 周波数: 10kHz
+\begin{itemize}
+\item Channel 0 Scale: 2V
+\item Channel 1 Scale: 50mV
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\item 観測した出力波形をNI ELVISの該当機能を用いてNI ELVISから接続されたコンピューター上のローカルのファイルシステム上に保存する。
+\end{enumerate}
+
+\subsubsection{微分回路}
+\begin{enumerate}
+\item 実験に使用する抵抗素子及びコンデンサの正確な値を、マルチテスターを用いて計測する。
+\item \ref{subsec:=0030AA=0030D5=0030BB=0030C3=0030C8=008ABF=006574}で調整したオフセット回路を残したまま、\cite{key-1}の図A2.14に示される微分回路を実装した。このとき図中$v_{r}$として示される部分にはNI
+ELVISのブレッドボード上のFGEN端子に接続し、同時に観測端子AI5に接続した。同じく出力部$v_{o}$を観測端子AI0に接続した。また、図中の抵抗$R_{r},R_{f},C_{r},C_{f}$には、以下の表示の抵抗素子を使用した。\label{enu:=003067=008ABF=006574=003057=00305F=0030AA=0030D5=0030BB=0030C3=0030C8=0056DE=008DEF=003092=006B8B=003057=00305F=00307E=00307E=003001=00306E=0056F3A2.14=00306B=00793A=003055=00308C=00308B=005FAE}
+\begin{itemize}
+\item $R_{r}$: $1\mathrm{k\Omega}$
+\item $R_{f}$: $10\mathrm{k\Omega}$
+\item $C_{r}$: $2.2\mathrm{\mu F}$
+\item $C_{f}$: $1.3\mathrm{\mu F}$
+\end{itemize}
+\item 実装した微分回路を元にして以下の4通りの組み合わせの回路を構成し、それぞれ周波数特性を測定した。
+\begin{itemize}
+\item $C_{f}$も$R_{r}$も付加しない
+\item $C_{f}$のみ付加
+\item $R_{r}$のみ付加
+\item $C_{f}$および$R_{r}$を付加
+\end{itemize}
+NI ELVISから接続されたコンピューター上でNI ELVISを起動し、Bodeモードのウィンドウを立ち上げ、測定を行った。このときの設定は以下のとおりである。
+\begin{itemize}
+\item Stimulus channel: AI5
+\item Response channel: AI0
+\item Peak amplitude: 0.01
+\item Steps: 100 per decade
+\item Start frequency: 10Hz
+\item Stop frequency: 200kHz
+\end{itemize}
+\item \ref{enu:=003067=008ABF=006574=003057=00305F=0030AA=0030D5=0030BB=0030C3=0030C8=0056DE=008DEF=003092=006B8B=003057=00305F=00307E=00307E=003001=00306E=0056F3A2.14=00306B=00793A=003055=00308C=00308B=005FAE}で実装した微分回路について、$C_{f}$および$R_{r}$を付加して方形波を入力した際の出力波形の観測を行った。入力周波数は$10\mathrm{Hz},1.2\mathrm{kHz},50\mathrm{kHz}$の3通りについてそれぞれ観測を行い、結果をローカルのファイルシステムに保存した。
+\end{enumerate}
+
+\subsection{帰還現象と発振現象の観測}
+
+\subsubsection{ウィーンブリッジ発振回路}
+\begin{enumerate}
+\item 実験に使用する抵抗素子及びコンデンサの正確な値を、マルチテスターを用いて計測する。
+\item \ref{subsec:=0030AA=0030D5=0030BB=0030C3=0030C8=008ABF=006574}で調整したオフセット回路を残したまま、\cite{key-1}の図A2.14に示される微分回路を実装した。このとき図中$v_{o}$として示される部分にはNI
+ELVISのブレッドボード上の観測端子AI0に接続した。また、図中の抵抗$R_{r},R_{f},R_{1},R_{2},C_{1},C_{2}$には、以下の表示の素子を使用した。
+\begin{itemize}
+\item $R_{r}$: $1\mathrm{k\Omega}$
+\item $R_{f}$: $5\mathrm{k\Omega}$と$2\mathrm{k\Omega}$の直列
+\item $R_{1}$: $10\mathrm{k\Omega}$
+\item $R_{2}$: $10\mathrm{k\Omega}$可変抵抗
+\item $C_{1}$: $20\mathrm{nF}$
+\item $C_{2}$: $20\mathrm{nF}$
+\end{itemize}
+\item NI ELVISのシステム上のオシロスコープを用いて出力端子AI0の出力信号を観測する。同時に微分回路中の可変抵抗$R_{2}$を操作して分圧比を変更し、非反転入力端子への帰還量を調整する。このとき出力波形から発振が開始する以前の時点と発振した後の時点、および発振が開始した直後の時点での波形を観測し、それぞれの時点での波形および可変抵抗の分圧比を記録する。
+\item 発振が開始する以前の時点と発振した後の時点、および発振が開始した直後の時点の3通りの分圧比について、それぞれの出力波形をNI ELVISシステム上のスペクトラムアナライザを用いて出力端子AI0の出力信号を分析し、結果を観測する。またそれぞれのスペクトログラムを記録する。
+\item ウィーンブリッジ発振回路の周波数応答を調べる。\cite{key-1}の図A2.14に示されるX点において回路を切断し、非反転増幅回路への入力部分をNI
+ELVISのブレッドボード上のFGEN端子および計測端子AI0に、帰還フィルタの出力端子をNI ELVIS上の計測端子AI5に接続した。
+\item 発振が開始する以前の時点と発振した後の時点、および発振が開始した直後の時点の3通りの分圧比について、実装した回路の周波数応答を調べる。NI
+ELVISから接続されたコンピューター上でNI ELVISを起動し、Bodeモードのウィンドウを立ち上げ、計測を行う。このときの設定は以下のとおりである。
+\begin{itemize}
+\item Stimulus channel: AI0
+\item Response channel: AI5
+\item Peak amplitude: 0.10
+\item Steps: 20 per decade
+\item Start frequency: 10Hz
+\item Stop frequency: 10kHz
+\end{itemize}
+\end{enumerate}
+
+\subsection{パッシブフィルタの設計と測定}
+\begin{enumerate}
+\item 実験に使用する抵抗素子インダクト、及びコンデンサの正確な値を、マルチテスターを用いて計測する。
+\item \cite{key-1}の図A2.26に示される3次規格化$0-R$型ローパスフィルターを、NI ELVISのブレッドボード上に実装する。このとき図中$v_{s}$として示される部分にはNI
+ELVISのブレッドボード上のFGEN端子、および計測端子AI0に接続した。同じくローパスフィルターの出力側抵抗$I$の出力電圧側にはNI
+ELVISのブレッドボード上の計測端子AI5に接続した。また、図中の抵抗$L_{1},L_{2},C,I$には、設計したローパスフィルターの特性に応じて以下の表示の素子を使用した。
+\begin{itemize}
+\item Butterworth特性
+\begin{itemize}
+\item $L_{1}$: $39\mathrm{mH}$
+\item $L_{2}$: $10\mathrm{mH}$
+\item $C$: $0.3\mathrm{\mu F}$
+\item $I$: $300\mathrm{\Omega}$
+\end{itemize}
+\item Chebyshev特性
+\begin{itemize}
+\item $L_{1}$: $10\mathrm{mH}$と$39\mathrm{mH}$の直列
+\item $L_{2}$: $39\mathrm{mH}$
+\item $C$: $0.28\mathrm{\mu F}$
+\item $I$: $300\mathrm{\Omega}$と$50\mathrm{\Omega}$と$10\mathrm{\Omega}$の直列
+\end{itemize}
+\end{itemize}
+\item \cite{key-1}の図A2.26に示される3次規格化$0-R$型ローパスフィルターを参考に、3次規格化$0-R$型ハイパスフィルターを設計し、NI
+ELVISのブレッドボード上に実装する。この回路は図A2.26の回路図のインダクタをコンデンサに、コンデンサをインダクタに置き換えたものである。このとき図中$v_{s}$として示される部分にはNI
+ELVISのブレッドボード上のFGEN端子、および計測端子AI0に接続した。同じくローパスフィルターの出力側抵抗$I$の出力電圧側にはNI
+ELVISのブレッドボード上の計測端子AI5に接続した。また、図中の抵抗$C_{1},C_{2},L,I$には、以下の表示の素子を使用した。
+\begin{itemize}
+\item $L_{1}$: $0.33\mathrm{\mu F}$
+\item $L_{2}$: $1\mathrm{\mu F}$
+\item $C$: $10\mathrm{mH}$
+\item $I$: $100\mathrm{\Omega}$と$50\mathrm{\Omega}$と$10\mathrm{\Omega}$の直列
+\end{itemize}
+\item 実装したハイパスフィルターおよびローパスフィルターそれぞれについて周波数特性およびステップ応答を測定した。NI ELVISから接続されたコンピューター上でNI
+ELVISを起動し、Bodeモードのウィンドウを立ち上げ、計測を行った。このときの設定は以下のとおりである。\label{enu:=005B9F=0088C5=003057=00305F=0030CF=0030A4=0030D1=0030B9=0030D5=0030A3=0030EB=0030BF=0030FC=00304A=003088=003073=0030ED=0030FC=0030D1=0030B9=0030D5=0030A3=0030EB=0030BF=0030FC=00305D=00308C=00305E=00308C=00306B=003064=003044}
+\begin{itemize}
+\item Stimulus channel: AI5
+\item Response channel: AI0
+\item Peak amplitude: 0.10
+\item Steps: 10 per decade
+\item Start frequency: 100Hz
+\item Stop frequency: 10kHz
+\end{itemize}
+また、ファンクション・ジェネレータを用いて極めて低周波の方形波を入力し、実装したハイパスフィルターおよびローパスフィルターそれぞれについてステップ応答を計測した。NI
+ELVISから接続されたコンピューター上でNI ELVISを起動し、FGENモードのウィンドウを立ち上げ、計測を行った。このときの設定は以下のとおりである。
+\begin{itemize}
+\item Frequency: 10Hz
+\item Amplitude: 1$V_{pp}$
+\end{itemize}
+\item \ref{enu:=005B9F=0088C5=003057=00305F=0030CF=0030A4=0030D1=0030B9=0030D5=0030A3=0030EB=0030BF=0030FC=00304A=003088=003073=0030ED=0030FC=0030D1=0030B9=0030D5=0030A3=0030EB=0030BF=0030FC=00305D=00308C=00305E=00308C=00306B=003064=003044}において計測を行った際の回路を回路シミュレーション環境LTSpiceを用いてシミュレーションを行い、実際の計測結果とシミュレーション結果を比較、検討を行う。
+\end{enumerate}
+
+\subsection{アクティブフィルタ}
+\begin{enumerate}
+\item 実験に使用する抵抗素子インダクト、及びコンデンサの正確な値を、マルチテスターを用いて計測する。
+\item \cite{key-1}の図A2.21に示される低域通過アクティブフィルタを設計し、NI ELVISのブレッドボード上に実装する。この回路は図A2.26の回路図のインダクタをコンデンサに、コンデンサをインダクタに置き換えたものである。このとき図中$v_{n}$として示される部分にはNI
+ELVISのブレッドボード上のFGEN端子、および計測端子AI0に接続した。同じくローパスフィルターの出力側抵抗$I$の出力電圧側にはNI
+ELVISのブレッドボード上の計測端子AI5に接続した。また、図中の素子$Z_{1},Z_{2},2Z_{2}$には、以下の表示の素子を使用した。\label{enu:=00306E=0056F3A2.21=00306B=00793A=003055=00308C=00308B=004F4E=0057DF=00901A=008CA8=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=003092=008A2D=008A08=003057=003001NI}
+\begin{itemize}
+\item $Z_{1}$: $0.4\mathrm{\mu F}$
+\item $Z_{2}$: $5\mathrm{k\Omega}$
+\item $2Z_{2}$: $2.5\mathrm{k\Omega}$
+\end{itemize}
+\item \cite{key-1}の図A2.22に示される高域通過アクティブフィルタを設計し、NI ELVISのブレッドボード上に実装する。この回路は図A2.26の回路図のインダクタをコンデンサに、コンデンサをインダクタに置き換えたものである。このとき図中$v_{n}$として示される部分にはNI
+ELVISのブレッドボード上のFGEN端子、および計測端子AI0に接続した。同じくローパスフィルターの出力側抵抗$I$の出力電圧側にはNI
+ELVISのブレッドボード上の計測端子AI5に接続した。また、図中の素子$Z_{1},Z_{2},2Z_{2}$には、以下の表示の素子を使用した。\label{enu:=00306E=0056F3A2.22=00306B=00793A=003055=00308C=00308B=009AD8=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=003092=008A2D=008A08=003057=003001NI}
+\begin{itemize}
+\item $Z_{1}$: $200\mathrm{\Omega}$と$50\mathrm{\Omega}$の直列
+\item $Z_{2}$: $0.9\mathrm{\mu F}$
+\item $2Z_{2}$: $0.4\mathrm{\mu F}$
+\end{itemize}
+\item \ref{enu:=00306E=0056F3A2.21=00306B=00793A=003055=00308C=00308B=004F4E=0057DF=00901A=008CA8=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=003092=008A2D=008A08=003057=003001NI}および\ref{enu:=00306E=0056F3A2.22=00306B=00793A=003055=00308C=00308B=009AD8=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=003092=008A2D=008A08=003057=003001NI}で実装した高域通過フィルターおよび低域通過フィルターそれぞれについて周波数特性およびステップ応答を測定した。NI
+ELVISから接続されたコンピューター上でNI ELVISを起動し、Bodeモードのウィンドウを立ち上げ、計測を行った。このときの設定は以下のとおりである。
+\begin{itemize}
+\item Stimulus channel: AI5
+\item Response channel: AI0
+\item Peak amplitude: 0.10
+\item Steps: 10 per decade
+\item Start frequency: 100Hz
+\item Stop frequency: 10kHz
+\end{itemize}
+また、ファンクション・ジェネレータを用いて極めて低周波の方形波を入力し、実装したハイパスフィルターおよびローパスフィルターそれぞれについてステップ応答を計測した。NI
+ELVISから接続されたコンピューター上でNI ELVISを起動し、FGENモードのウィンドウを立ち上げ、計測を行った。このときの設定は以下のとおりである。
+\begin{itemize}
+\item Frequency: 10Hz
+\item Amplitude: 1$V_{pp}$
+\end{itemize}
+\end{enumerate}
+
+\section{使用器具}
+
+本実験において使用した器具は、以下のとおりである。
+\begin{itemize}
+\item 設計・プロトタイプシステム: NI ELVIS (National Instruments社)
+\item オペアンプ: μA741
+\end{itemize}
+
+\section{実験結果}
+
+\subsection{増幅回路の設計および測定}
+
+\subsubsection{オフセット調整}
+
+マイナスドライバーを用いて可変抵抗の値を変化させ、出力を観察したところ、あるところで出力電圧が極めて0に近くなる時点が存在した。ここを目標に可変抵抗を調整したところ、最大出力電圧$60\mathrm{mV}$程度まで出力を押さえることができた。このときの出力波形を図\ref{fig:=0030AA=0030DA=0030A2=0030F3=0030D7=00306E=0030AA=0030D5=0030BB=0030C3=0030C8=008ABF=006574=007D42=004E86=006642=00306E=0051FA=00529B=006CE2=005F62}に示す。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/chart-offset}
+\par\end{centering}
+\caption{オペアンプのオフセット調整終了時の出力波形\label{fig:=0030AA=0030DA=0030A2=0030F3=0030D7=00306E=0030AA=0030D5=0030BB=0030C3=0030C8=008ABF=006574=007D42=004E86=006642=00306E=0051FA=00529B=006CE2=005F62}}
+\end{figure}
+
+
+\subsubsection{反転増幅回路}
+
+実験で使用する抵抗素子の正確な抵抗値をマルチテスターを用いて測定したところ、以下の値を得た。
+\begin{itemize}
+\item $1\mathrm{k\Omega}$: $0.994\mathrm{k\Omega}$
+\item $10\mathrm{k\Omega}$: $9.97\mathrm{k\Omega}$
+\item $100\mathrm{k\Omega}$: $98.8\mathrm{k\Omega}$
+\end{itemize}
+実装した反転増幅回路それぞれについて周波数特性を測定したところ、図\ref{fig:=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306EBode=007DDA=0056F3-(=0030B2=0030A4=0030F3)},
+\ref{fig:=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306EBode=007DDA=0056F3-(=004F4D=0076F8)},
+\ref{fig:=0053CD=008EE2=005897=005E45=0056DE=008DEF(40dB)=00306EBode=007DDA=0056F3-(=0030B2=0030A4=0030F3)},
+\ref{fig:=0053CD=008EE2=005897=005E45=0056DE=008DEF(40dB)=00306EBode=007DDA=0056F3-(=004F4D=0076F8)}のとおりの結果を得た。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/inverting-amplifier-20dB-bode-amp}
+\par\end{centering}
+\caption{反転増幅回路(20dB)のBode線図 (ゲイン)\label{fig:=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306EBode=007DDA=0056F3-(=0030B2=0030A4=0030F3)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/inverting-amplifier-20dB-bode-pha}
+\par\end{centering}
+\caption{反転増幅回路(20dB)のBode線図 (位相)\label{fig:=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306EBode=007DDA=0056F3-(=004F4D=0076F8)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/inverting-amplifier-40dB-bode-amp}
+\par\end{centering}
+\caption{反転増幅回路(40dB)のBode線図 (ゲイン)\label{fig:=0053CD=008EE2=005897=005E45=0056DE=008DEF(40dB)=00306EBode=007DDA=0056F3-(=0030B2=0030A4=0030F3)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/inverting-amplifier-40dB-bode-pha\lyxdot png}
+\par\end{centering}
+\caption{反転増幅回路(40dB)のBode線図 (位相)\label{fig:=0053CD=008EE2=005897=005E45=0056DE=008DEF(40dB)=00306EBode=007DDA=0056F3-(=004F4D=0076F8)}}
+\end{figure}
+
+電圧利得20dBの反転増幅回路について、周波数$5000\mathrm{Hz}$未満のゲインは$20\mathrm{dB}\pm0.05\mathrm{dB}$内に収まっており、設計通りの反転増幅回路を実装できている。また特に高周波領域における適当な2点$\left(\text{周波数},\text{ゲイン}\right)=\left(63095.801,17.514\right),\left(100000.016,15.13\right)$を選びグラフの傾きを計算すると、
+\[
+\frac{15.13-17.514}{\log_{10}100000.016-\log_{10}63095.801}=-11.92\mathrm{dB/dec}
+\]
+となり、理論値である$-20\mathrm{dB/dec}$(\cite{key-1}による)よりも大きく下回る値が得られる。これはNI
+ELVISの性能限界上、$100\mathrm{kHz}$以上の極めて高い周波数の信号を入力することができず、最大周波数時点においてもグラフの最大傾斜に十分が漸近していないためだと考えられる。
+
+電圧利得40dBの反転増幅回路について、周波数$5000\mathrm{Hz}$未満のゲインは$40\mathrm{dB}\pm2\mathrm{dB}$内に収まっており、設計通りの反転増幅回路を実装できている。また特に高周波領域における適当な2点$\left(\text{周波数},\text{ゲイン}\right)=\left(39810.687,24.74\right),\left(100000.016,16.827\right)$を選びグラフの傾きを計算すると、
+\[
+\frac{16.827-24.74}{\log_{10}100000.016-\log_{10}39810.687}=-19.78\mathrm{dB/dec}
+\]
+となり、理論値である$-20\mathrm{dB/dec}$(\cite{key-1}による)と$\pm2\%$内で一致する値が得られる。
+
+電圧利得20dBの反転増幅回路について、10kHzおよび150kHzの正弦波を入力し、特定周波数における出力波形を観測したところ、図\ref{fig:=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306E=005165=0051FA=00529B=006CE2=005F62(f=00003D10kHz)},
+\ref{fig:=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306E=005165=0051FA=00529B=006CE2=005F62(f=00003D150kHz)}のとおりの入出力波形を得た。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/inverting-amplifier-20dB-waveform-10kHz}
+\par\end{centering}
+\caption{反転増幅回路(20dB)の入出力波形(f=10kHz)\label{fig:=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306E=005165=0051FA=00529B=006CE2=005F62(f=00003D10kHz)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/inverting-amplifier-20dB-waveform-150kHz}
+\par\end{centering}
+\caption{反転増幅回路(20dB)の入出力波形(f=150kHz)\label{fig:=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306E=005165=0051FA=00529B=006CE2=005F62(f=00003D150kHz)}}
+\end{figure}
+
+図\ref{fig:=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306E=005165=0051FA=00529B=006CE2=005F62(f=00003D10kHz)}から、$10\mathrm{kHz}$における反転増幅回路の増幅率はおよそ$10\left(\simeq20\mathrm{dB}\right)$であり、設計通りの電圧利得が得られているのに対して、図\ref{fig:=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306E=005165=0051FA=00529B=006CE2=005F62(f=00003D150kHz)}から$150\mathrm{kHz}$における反転増幅回路の増幅率はおよそ$6\left(\simeq15\mathrm{dB}\right)$であり、設計された電圧利得に対して大きく増幅率が落ち込んでいることがわかる。
+
+\subsubsection{非反転増幅回路\label{subsec:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF}}
+
+実装した非反転増幅回路それぞれについて周波数特性を測定したところ、図\ref{fig:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306EBode=007DDA=0056F3-(=0030B2=0030A4=0030F3)},
+\ref{fig:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306EBode=007DDA=0056F3-(=004F4D=0076F8)},
+\ref{fig:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF(40dB)=00306EBode=007DDA=0056F3-(=0030B2=0030A4=0030F3)},
+\ref{fig:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF(40dB)=00306EBode=007DDA=0056F3-(=004F4D=0076F8)}に示すとおりの結果を得た。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/non-inverting-amplifier-20dB-bode-amp}
+\par\end{centering}
+\caption{非反転増幅回路(20dB)のBode線図 (ゲイン)\label{fig:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306EBode=007DDA=0056F3-(=0030B2=0030A4=0030F3)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/non-inverting-amplifier-20dB-bode-pha}
+\par\end{centering}
+\caption{非反転増幅回路(20dB)のBode線図 (位相)\label{fig:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306EBode=007DDA=0056F3-(=004F4D=0076F8)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/non-inverting-amplifier-40dB-bode-amp}
+\par\end{centering}
+\caption{非反転増幅回路(40dB)のBode線図 (ゲイン)\label{fig:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF(40dB)=00306EBode=007DDA=0056F3-(=0030B2=0030A4=0030F3)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/non-inverting-amplifier-40dB-bode-pha}
+\par\end{centering}
+\caption{非反転増幅回路(40dB)のBode線図 (位相)\label{fig:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF(40dB)=00306EBode=007DDA=0056F3-(=004F4D=0076F8)}}
+\end{figure}
+
+電圧利得20dBの非反転増幅回路について、周波数$10\mathrm{kHz}$未満のゲインは$20\mathrm{dB}\pm1\mathrm{dB}$内に収まっており、設計通りの非反転増幅回路を実装できている。また特に高周波領域における適当な2点$\left(\text{周波数},\text{ゲイン}\right)=\left(79432.875,17.169\right),\left(100000.016,15.778\right)$を選びグラフの傾きを計算すると、
+\[
+\frac{15.778-17.169}{\log_{10}100000.016-\log_{10}79432.875}=-13.91\mathrm{dB/dec}
+\]
+となり、理論値である$-20\mathrm{dB/dec}$(\cite{key-1}による)よりも大きく下回る値が得られる。これはNI
+ELVISの性能限界上、$100\mathrm{kHz}$以上の極めて高い周波数の信号を入力することができず、最大周波数時点においてもグラフの最大傾斜が十分に漸近していないためだと考えられる。
+
+電圧利得40dBの非反転増幅回路について、周波数$1\mathrm{kHz}$未満のゲインは$40\mathrm{dB}\pm0.5\mathrm{dB}$内に収まっており、設計通りの非反転増幅回路を実装できている。また特に高周波領域における適当な2点$\left(\text{周波数},\text{ゲイン}\right)=\left(50118.752,22.762\right),\left(100000.016,16.803\right)$を選びグラフの傾きを計算すると、
+\[
+\frac{16.803-22.762}{\log_{10}100000.016-\log_{10}50118.752}=-19.86\mathrm{dB/dec}
+\]
+となり、理論値である$-20\mathrm{dB/dec}$(\cite{key-1}による)と$\pm2\%$内で一致する値が得られる。
+
+電圧利得20dBおよび40dBの非反転増幅回路について、NI ELVIS上のファンクション・ジェネレータを用いて正弦波を入力することによって、特定周波数における出力波形を観測したところ、図\ref{fig:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306E=005165=0051FA=00529B=006CE2=005F62(f=00003D10kHz)},
+\ref{fig:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306E=005165=0051FA=00529B=006CE2=005F62(f=00003D150kHz)},
+\ref{fig:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF(40dB)=00306E=005165=0051FA=00529B=006CE2=005F62(f=00003D1kHz)},
+\ref{fig:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF(40dB)=00306E=005165=0051FA=00529B=006CE2=005F62(f=00003D10kHz)}に示すとおりの結果を得た。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/non-inverting-amplifier-20dB-waveform-10kHz}
+\par\end{centering}
+\caption{非反転増幅回路(20dB)の入出力波形(f=10kHz)\label{fig:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306E=005165=0051FA=00529B=006CE2=005F62(f=00003D10kHz)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/non-inverting-amplifier-20dB-waveform-150kHz}
+\par\end{centering}
+\caption{非反転増幅回路(20dB)の入出力波形(f=150kHz)\label{fig:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF(20dB)=00306E=005165=0051FA=00529B=006CE2=005F62(f=00003D150kHz)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/non-inverting-amplifier-40dB-waveform-1kHz}
+\par\end{centering}
+\caption{非反転増幅回路(40dB)の入出力波形(f=1kHz)\label{fig:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF(40dB)=00306E=005165=0051FA=00529B=006CE2=005F62(f=00003D1kHz)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/non-inverting-amplifier-40dB-waveform-10kHz}
+\par\end{centering}
+\caption{非反転増幅回路(40dB)の入出力波形(f=10kHz)\label{fig:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF(40dB)=00306E=005165=0051FA=00529B=006CE2=005F62(f=00003D10kHz)}}
+\end{figure}
+
+
+\subsubsection{微分回路}
+
+実験に使用する抵抗素子及びコンデンサの正確な値を、マルチテスターを用いて計測したところ、以下の値を得た。
+\begin{itemize}
+\item $1\mathrm{k\Omega}$: $0.994\mathrm{k\Omega}$
+\item $10\mathrm{k\Omega}$: $9.97\mathrm{k\Omega}$
+\item $100\mathrm{k\Omega}$: $98.8\mathrm{k\Omega}$
+\item $2.2\mathrm{\mu F}$: $2.39\mathrm{\mu F}$
+\item $1.3\mathrm{\mu F}$: $1.30\mathrm{\mu F}$
+\end{itemize}
+実装した4通りの組み合わせの回路をについてそれぞれ周波数特性およびステップ応答を測定したところ、図\ref{fig:=005FAE=005206=0056DE=008DEF(Rr,Cf=00306A=003057)=00306EBode=007DDA=0056F3-(=0030B2=0030A4=0030F3)},
+\ref{fig:=005FAE=005206=0056DE=008DEF(Rr,Cf=00306A=003057)=00306EBode=007DDA=0056F3-(=004F4D=0076F8)},
+\ref{fig:=005FAE=005206=0056DE=008DEF(Rr,Cf=00306A=003057)=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54},
+\ref{fig:=005FAE=005206=0056DE=008DEF(Rr=00306A=003057)=00306EBode=007DDA=0056F3-(=0030B2=0030A4=0030F3)},
+\ref{fig:=005FAE=005206=0056DE=008DEF(Rr=00306A=003057)=00306EBode=007DDA=0056F3-(=004F4D=0076F8)},
+\ref{fig:=005FAE=005206=0056DE=008DEF(Rr=00306A=003057)=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54},
+\ref{fig:=005FAE=005206=0056DE=008DEF(Cf=00306A=003057)=00306EBode=007DDA=0056F3-(=0030B2=0030A4=0030F3)},
+\ref{fig:=005FAE=005206=0056DE=008DEF(Cf=00306A=003057)=00306EBode=007DDA=0056F3-(=004F4D=0076F8)},
+\ref{fig:=005FAE=005206=0056DE=008DEF(Cf=00306A=003057)=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54},
+\ref{fig:=005FAE=005206=0056DE=008DEF=00306EBode=007DDA=0056F3-(=0030B2=0030A4=0030F3)},
+\ref{fig:=005FAE=005206=0056DE=008DEF=00306EBode=007DDA=0056F3-(=004F4D=0076F8)}のとおりの結果を得た。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/differential-amplifier-no-Rr-no-Cf-bode-amp}
+\par\end{centering}
+\caption{微分回路(Rr,Cfなし)のBode線図 (ゲイン)\label{fig:=005FAE=005206=0056DE=008DEF(Rr,Cf=00306A=003057)=00306EBode=007DDA=0056F3-(=0030B2=0030A4=0030F3)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/differential-amplifier-no-Rr-no-Cf-bode-pha}
+\par\end{centering}
+\caption{微分回路(Rr,Cfなし)のBode線図 (位相)\label{fig:=005FAE=005206=0056DE=008DEF(Rr,Cf=00306A=003057)=00306EBode=007DDA=0056F3-(=004F4D=0076F8)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/differential-amplifier-no-Rr-no-Cf-step}
+\par\end{centering}
+\caption{微分回路(Rr,Cfなし)のステップ応答\label{fig:=005FAE=005206=0056DE=008DEF(Rr,Cf=00306A=003057)=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/differential-amplifier-no-Rr-bode-amp}
+\par\end{centering}
+\caption{微分回路(Rrなし)のBode線図 (ゲイン)\label{fig:=005FAE=005206=0056DE=008DEF(Rr=00306A=003057)=00306EBode=007DDA=0056F3-(=0030B2=0030A4=0030F3)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/differential-amplifier-no-Rr-bode-pha}
+\par\end{centering}
+\caption{微分回路(Rrなし)のBode線図 (位相)\label{fig:=005FAE=005206=0056DE=008DEF(Rr=00306A=003057)=00306EBode=007DDA=0056F3-(=004F4D=0076F8)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/differential-amplifier-no-Rr-step}
+\par\end{centering}
+\caption{微分回路(Rrなし)のステップ応答\label{fig:=005FAE=005206=0056DE=008DEF(Rr=00306A=003057)=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/differential-amplifier-no-Cf-bode-amp}
+\par\end{centering}
+\caption{微分回路(Cfなし)のBode線図 (ゲイン)\label{fig:=005FAE=005206=0056DE=008DEF(Cf=00306A=003057)=00306EBode=007DDA=0056F3-(=0030B2=0030A4=0030F3)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/differential-amplifier-no-Cf-bode-pha}
+\par\end{centering}
+\caption{微分回路(Cfなし)のBode線図 (位相)\label{fig:=005FAE=005206=0056DE=008DEF(Cf=00306A=003057)=00306EBode=007DDA=0056F3-(=004F4D=0076F8)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/differential-amplifier-no-Cf-step}
+\par\end{centering}
+\caption{微分回路(Cfなし)のステップ応答\label{fig:=005FAE=005206=0056DE=008DEF(Cf=00306A=003057)=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/differential-amplifier-bode-amp}
+\par\end{centering}
+\caption{微分回路のBode線図 (ゲイン)\label{fig:=005FAE=005206=0056DE=008DEF=00306EBode=007DDA=0056F3-(=0030B2=0030A4=0030F3)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/differential-amplifier-bode-pha}
+\par\end{centering}
+\caption{微分回路のBode線図 (位相)\label{fig:=005FAE=005206=0056DE=008DEF=00306EBode=007DDA=0056F3-(=004F4D=0076F8)}}
+\end{figure}
+
+ここで微分回路(Rr,Cfなし)において回路が不安定となる角周波数を$\omega$とおくと、\cite{key-1}の式A2.40より
+\[
+\omega=\sqrt{\frac{A_{0}\omega_{p}}{C_{r}R_{f}}}
+\]
+となる。また\cite{key-1}の式A2.12より、オペアンプのユニティゲイン周波数を$f_{u}$とすると
+\[
+f_{u}=A_{0}f_{p}
+\]
+であるので、
+\[
+\omega=\sqrt{\frac{A_{0}\omega_{p}}{C_{r}R_{f}}}=\sqrt{\frac{2\pi f_{u}}{C_{r}R_{f}}}
+\]
+となることがわかる。
+
+今回使用したオペアンプμA741のユニティゲイン周波数は$f_{u}=1\mathrm{MHz},C_{r}=2.39\mathrm{\mu F},R_{f}=9.97\mathrm{k\Omega}$なので、これらを代入すると、
+\[
+\omega=\sqrt{\frac{2\pi\times\ex 16}{\ex{2.39}{-6}\times\ex{9.97}3}}=\ex{1.62}4\mathrm{Hz}
+\]
+となる。これを通常の周波数に直すと、
+\[
+\frac{\omega}{2\pi}=\ex{2.58}3\mathrm{Hz}
+\]
+となる。
+
+これはグラフから読み取られる値と非常によく一致する。
+
+実装した微分回路について、$C_{f}$および$R_{r}$を付加して方形波を入力した際の出力波形の観測を行ったところ、図\ref{fig:=005FAE=005206=0056DE=008DEF=00306E=0065B9=005F62=006CE2=005FDC=007B54(f=00003D10Hz)},
+\ref{fig:=005FAE=005206=0056DE=008DEF=00306E=0065B9=005F62=006CE2=005FDC=007B54(f=00003D1.2kHz)},
+\ref{fig:=005FAE=005206=0056DE=008DEF=00306E=0065B9=005F62=006CE2=005FDC=007B54(f=00003D50kHz)}のとおりの結果を得た。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/differential-amplifier-square-wave-10Hz}
+\par\end{centering}
+\caption{微分回路の方形波応答(f=10Hz)\label{fig:=005FAE=005206=0056DE=008DEF=00306E=0065B9=005F62=006CE2=005FDC=007B54(f=00003D10Hz)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/differential-amplifier-square-wave-1200Hz}
+\par\end{centering}
+\caption{微分回路の方形波応答(f=1.2kHz)\label{fig:=005FAE=005206=0056DE=008DEF=00306E=0065B9=005F62=006CE2=005FDC=007B54(f=00003D1.2kHz)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/differential-amplifier-square-wave-50kHz}
+\par\end{centering}
+\caption{微分回路の方形波応答(f=50kHz)\label{fig:=005FAE=005206=0056DE=008DEF=00306E=0065B9=005F62=006CE2=005FDC=007B54(f=00003D50kHz)}}
+\end{figure}
+
+これらから、低周波領域においては微分特性が、中周波領域においては反転増幅特性が、高周波領域においては積分特性がみられることがわかる。
+
+\subsection{帰還現象と発振現象の観測}
+
+\subsubsection{ウィーンブリッジ発振回路\label{subsec:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF}}
+
+実験に使用する抵抗素子及びコンデンサの正確な値を、マルチテスターを用いて計測したところ、以下の値を得た。
+\begin{itemize}
+\item $R_{r}$: $0.995\mathrm{k\Omega}$
+\item $R_{f}$: $7.00\mathrm{k\Omega}$
+\item $R_{1}$: $9.95\mathrm{k\Omega}$
+\item $C_{1}$: $21.5\mathrm{nF}$
+\item $C_{2}$: $20.5\mathrm{nF}$
+\end{itemize}
+発振が開始する以前の時点と発振した後の時点、および発振が開始した直後の時点での波形を観測し、それぞれの時点での入出力波形を測定したところ、
+
+図\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=006CE2=005F62(=005E30=009084=0091CFk=00003D0)},
+\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=006CE2=005F62(=005E30=009084=0091CFk=00003D3/8)},
+\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=006CE2=005F62(=005E30=009084=0091CFk=00003D1)}のとおりの結果を得た。
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/wien-bridge-waveform-k0}
+\par\end{centering}
+\caption{ウィーンブリッジ発振回路の出力波形(帰還量k=0)\label{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=006CE2=005F62(=005E30=009084=0091CFk=00003D0)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/wien-bridge-waveform-kvibration}
+\par\end{centering}
+\caption{ウィーンブリッジ発振回路の出力波形(帰還量k=3/8)\label{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=006CE2=005F62(=005E30=009084=0091CFk=00003D3/8)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/wien-bridge-waveform-k1}
+\par\end{centering}
+\caption{ウィーンブリッジ発振回路の出力波形(帰還量k=1)\label{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=006CE2=005F62(=005E30=009084=0091CFk=00003D1)}}
+\end{figure}
+
+また、発振が開始した時点の可変抵抗の両端の抵抗値をマルチテスターを用いて測定したところ、それぞれ$3.79\mathrm{kHz},6.33\mathrm{kHz}$なる値を得た。ここから分圧比$k$は
+\begin{equation}
+k=\frac{3.79}{3.79+6.33}=0.3745\label{eq:k-measure}
+\end{equation}
+となる。
+
+ところでこのような発振回路に対して、増幅率$A$を用いて
+\[
+k=3/A
+\]
+と書けることが知られている\cite{key-1}。今回の回路においては
+\[
+A=\frac{R_{r}+R_{f}}{R_{r}}=8
+\]
+であるので、
+\[
+k=3/8=0.375
+\]
+となる。これは式\ref{eq:k-measure}の測定値と誤差$0.1\%$の範囲内でよく一致する。
+
+発振が開始する以前の時点と発振した後の時点、および発振が開始した直後の時点の3通りの分圧比について、それぞれの出力波形のスペクトログラムを計測したところ、図\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=0030B9=0030DA=0030AF=0030C8=0030EB(=005E30=009084=0091CFk=00003D0)},
+\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=0030B9=0030DA=0030AF=0030C8=0030EB(=005E30=009084=0091CFk=00003D3/8)},
+\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=0030B9=0030DA=0030AF=0030C8=0030EB(=005E30=009084=0091CFk=00003D1)}のとおりの結果を得た。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/wien-bridge-spectrum-k0}
+\par\end{centering}
+\caption{ウィーンブリッジ発振回路の出力スペクトル(帰還量k=0)\label{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=0030B9=0030DA=0030AF=0030C8=0030EB(=005E30=009084=0091CFk=00003D0)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/wien-bridge-spectrum-kvibration}
+\par\end{centering}
+\caption{ウィーンブリッジ発振回路の出力スペクトル(帰還量k=3/8)\label{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=0030B9=0030DA=0030AF=0030C8=0030EB(=005E30=009084=0091CFk=00003D3/8)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/wien-bridge-spectrum-k1}
+\par\end{centering}
+\caption{ウィーンブリッジ発振回路の出力スペクトル(帰還量k=1)\label{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=0030B9=0030DA=0030AF=0030C8=0030EB(=005E30=009084=0091CFk=00003D1)}}
+\end{figure}
+
+発振が開始する以前の時点と発振した後の時点、および発振が開始した直後の時点の3通りの分圧比について、実装した回路の周波数応答を調べたところ、図\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=00958B=0030EB=0030FC=0030D7=005229=005F97=00306E=0030B2=0030A4=0030F3=007279=006027(=005E30=009084=0091CFk=00003D0},
+\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=00958B=0030EB=0030FC=0030D7=005229=005F97=00306E=004F4D=0076F8=007279=006027(=005E30=009084=0091CFk=00003D0)},
+\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=00958B=0030EB=0030FC=0030D7=005229=005F97=00306E=0030B2=0030A4=0030F3=007279=006027(=005E30=009084=0091CFk=00003D3},
+\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=00958B=0030EB=0030FC=0030D7=005229=005F97=00306E=004F4D=0076F8=007279=006027(=005E30=009084=0091CFk=00003D3/},
+\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=00958B=0030EB=0030FC=0030D7=005229=005F97=00306E=0030B2=0030A4=0030F3=007279=006027(=005E30=009084=0091CFk=00003D1},
+\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=00958B=0030EB=0030FC=0030D7=005229=005F97=00306E=004F4D=0076F8=007279=006027(=005E30=009084=0091CFk=00003D1)}のとおりの結果を得た。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/wien-bridge-bode-k0-amp}
+\par\end{centering}
+\caption{ウィーンブリッジ発振回路の開ループ利得のゲイン特性(帰還量k=0)\label{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=00958B=0030EB=0030FC=0030D7=005229=005F97=00306E=0030B2=0030A4=0030F3=007279=006027(=005E30=009084=0091CFk=00003D0}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/wien-bridge-bode-k0-pha}
+\par\end{centering}
+\caption{ウィーンブリッジ発振回路の開ループ利得の位相特性(帰還量k=0)\label{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=00958B=0030EB=0030FC=0030D7=005229=005F97=00306E=004F4D=0076F8=007279=006027(=005E30=009084=0091CFk=00003D0)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/wien-bridge-bode-kvibration-amp}
+\par\end{centering}
+\caption{ウィーンブリッジ発振回路の開ループ利得のゲイン特性(帰還量k=3/8)\label{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=00958B=0030EB=0030FC=0030D7=005229=005F97=00306E=0030B2=0030A4=0030F3=007279=006027(=005E30=009084=0091CFk=00003D3}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/wien-bridge-bode-kvibration-pha}
+\par\end{centering}
+\caption{ウィーンブリッジ発振回路の開ループ利得の位相特性(帰還量k=3/8)\label{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=00958B=0030EB=0030FC=0030D7=005229=005F97=00306E=004F4D=0076F8=007279=006027(=005E30=009084=0091CFk=00003D3/}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/wien-bridge-bode-k1-amp}
+\par\end{centering}
+\caption{ウィーンブリッジ発振回路の開ループ利得のゲイン特性(帰還量k=1)\label{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=00958B=0030EB=0030FC=0030D7=005229=005F97=00306E=0030B2=0030A4=0030F3=007279=006027(=005E30=009084=0091CFk=00003D1}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/wien-bridge-bode-k1-pha}
+\par\end{centering}
+\caption{ウィーンブリッジ発振回路の開ループ利得の位相特性(帰還量k=1)\label{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=00958B=0030EB=0030FC=0030D7=005229=005F97=00306E=004F4D=0076F8=007279=006027(=005E30=009084=0091CFk=00003D1)}}
+\end{figure}
+
+
+\subsection{パッシブフィルタの設計と測定}
+
+実験に使用する抵抗素子、インダクタ、及びコンデンサの正確な値を、マルチテスターを用いて計測したところ、以下の値を得た。
+\begin{itemize}
+\item Butterworth特性LPF
+\begin{itemize}
+\item $L_{1}$: $43.844\mathrm{mH}$
+\item $L_{2}$: $11.623\mathrm{mH}$
+\item $C$: $0.297\mathrm{\mu F}$
+\item $I$: $300.7\mathrm{\Omega}$
+\end{itemize}
+\item Chebyshev特性LPF
+\begin{itemize}
+\item $L_{1}$: $49\mathrm{mH}$
+\item $L_{2}$: $11.623\mathrm{mH}$
+\item $C$: $0.295\mathrm{\mu F}$
+\item $I$: $375\mathrm{\Omega}$
+\end{itemize}
+\item Chebyshev特性HPF
+\begin{itemize}
+\item $C_{1}$: $0.33\mathrm{\mu F}$
+\item $C_{2}$: $0.91\mathrm{\mu F}$
+\item $L$: $10\mathrm{mH}$
+\item $I$: $161\mathrm{\Omega}$
+\end{itemize}
+\end{itemize}
+実装したハイパスフィルターおよびローパスフィルターそれぞれについて周波数特性およびステップ応答を測定したところ、図\ref{fig:Butterworth=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=00632F=005E45)},
+\ref{fig:Butterworth=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=004F4D=0076F8)},
+\ref{fig:Butterworth=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54-(=005B9F=006E2C=005024)},
+\ref{fig:Butterworth=009AD8=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=00632F=005E45)},
+\ref{fig:Butterworth=009AD8=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=004F4D=0076F8)},
+\ref{fig:Butterworth=009AD8=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54-(=005B9F=006E2C=005024)},
+\ref{fig:Chebyshev=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=00632F=005E45)},
+\ref{fig:Chebyshev=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=004F4D=0076F8)},
+\ref{fig:Chebyshev=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54-(=005B9F=006E2C=005024)}のとおりの結果を得た。周波数特性に関しては、後述のLTSpiceを用いたシミュレーションによる値も同時にプロットした。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/butterworth-lpf-bode-amp}
+\par\end{centering}
+\caption{Butterworth低域通過フィルタの周波数特性 (振幅)\label{fig:Butterworth=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=00632F=005E45)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/butterworth-lpf-bode-pha}
+\par\end{centering}
+\caption{Butterworth低域通過フィルタの周波数特性 (位相)\label{fig:Butterworth=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=004F4D=0076F8)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/butterworth-lpf-step}
+\par\end{centering}
+\caption{Butterworth低域通過フィルタのステップ応答 (実測値)\label{fig:Butterworth=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54-(=005B9F=006E2C=005024)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/butterworth-hpf-bode-amp}
+\par\end{centering}
+\caption{Butterworth高域通過フィルタの周波数特性 (振幅)\label{fig:Butterworth=009AD8=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=00632F=005E45)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/butterworth-hpf-bode-pha}
+\par\end{centering}
+\caption{Butterworth高域通過フィルタの周波数特性 (位相)\label{fig:Butterworth=009AD8=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=004F4D=0076F8)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/butterworth-hpf-step}
+\par\end{centering}
+\caption{Butterworth高域通過フィルタのステップ応答 (実測値)\label{fig:Butterworth=009AD8=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54-(=005B9F=006E2C=005024)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/chebyshev-lpf-bode-amp}
+\par\end{centering}
+\caption{Chebyshev低域通過フィルタの周波数特性 (振幅)\label{fig:Chebyshev=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=00632F=005E45)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/chebyshev-lpf-bode-pha}
+\par\end{centering}
+\caption{Chebyshev低域通過フィルタの周波数特性 (位相)\label{fig:Chebyshev=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=004F4D=0076F8)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/chebyshev-lpf-bode-step}
+\par\end{centering}
+\caption{Chebyshev低域通過フィルタのステップ応答 (実測値)\label{fig:Chebyshev=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54-(=005B9F=006E2C=005024)}}
+\end{figure}
+
+また、計測を行った際の回路を回路シミュレーション環境LTSpiceを用いてシミュレーションを行ったところ、図\ref{fig:Butterworth=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54-(=0030B7=0030DF=0030E5=0030EC},
+\ref{fig:Butterworth=009AD8=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54-(=0030B7=0030DF=0030E5=0030EC},
+\ref{fig:Chebyshev=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54-(=0030B7=0030DF=0030E5=0030EC=0030FC=0030B7}のとおりの結果を得た。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/butterworth-lpf-step-simulation}
+\par\end{centering}
+\caption{Butterworth低域通過フィルタのステップ応答 (シミュレーション)\label{fig:Butterworth=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54-(=0030B7=0030DF=0030E5=0030EC}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/butterworth-hpf-step-simulation}
+\par\end{centering}
+\caption{Butterworth高域通過フィルタのステップ応答 (シミュレーション)\label{fig:Butterworth=009AD8=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54-(=0030B7=0030DF=0030E5=0030EC}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/chebyshev-lpf-bode-step-simulation}
+\par\end{centering}
+\caption{Chebyshev低域通過フィルタのステップ応答 (シミュレーション)\label{fig:Chebyshev=004F4E=0057DF=00901A=00904E=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54-(=0030B7=0030DF=0030E5=0030EC=0030FC=0030B7}}
+\end{figure}
+
+
+\subsection{アクティブフィルタ}
+
+実験に使用する抵抗素子インダクト、及びコンデンサの正確な値を、マルチテスターを用いて計測したところ、以下の値を得た。
+\begin{itemize}
+\item 低域通貨アクティブフィルタ
+\begin{itemize}
+\item $Z_{1}$: $0.465\mathrm{\mu F}$
+\item $Z_{2}$: $2.475\mathrm{k\Omega}$
+\item $2Z_{2}$: $5.03\mathrm{k\Omega}$
+\end{itemize}
+\item 高域通貨アクティブフィルタ
+\begin{itemize}
+\item $Z_{1}$: $242\mathrm{\Omega}$
+\item $Z_{2}$: $0.923\mathrm{\mu F}$
+\item $2Z_{2}$: $0.465\mathrm{\mu F}$
+\end{itemize}
+\end{itemize}
+実装した高域通過フィルターおよび低域通過フィルターそれぞれについて周波数特性およびステップ応答を測定したところ、図\ref{fig:=009AD8=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=00632F=005E45)},
+\ref{fig:=009AD8=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=004F4D=0076F8)},
+\ref{fig:=004F4E=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=00632F=005E45)},
+\ref{fig:=004F4E=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=004F4D=0076F8)}のとおりの結果を得た。同時にLTSpiceを用いたシミュレーションによる結果もプロットした。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/active-filter-lpf-bode-amp}
+\par\end{centering}
+\caption{高域通過アクティブフィルタの周波数特性 (振幅)\label{fig:=009AD8=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=00632F=005E45)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/active-filter-lpf-bode-pha}
+\par\end{centering}
+\caption{高域通過アクティブフィルタの周波数特性 (位相)\label{fig:=009AD8=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=004F4D=0076F8)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/active-filter-hpf-bode-amp}
+\par\end{centering}
+\caption{低域通過アクティブフィルタの周波数特性 (振幅)\label{fig:=004F4E=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=00632F=005E45)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/active-filter-hpf-bode-pha}
+\par\end{centering}
+\caption{低域通過アクティブフィルタの周波数特性 (位相)\label{fig:=004F4E=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=00306E=005468=006CE2=006570=007279=006027-(=004F4D=0076F8)}}
+\end{figure}
+
+これらを見ると、概ねシミュレーションの結果と実験による測定結果は一致しているが、低域通過アクティブフィルタの$10\mathrm{kHz}$を超える高周波領域において大きくシミュレーションと異なる結果が得られることがわかる。
+
+また、実装したハイパスフィルターおよびローパスフィルターそれぞれについてステップ応答を計測したところ、図\ref{fig:=004F4E=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54},
+\ref{fig:=009AD8=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54}のとおりの結果を得た。また、LTSpiceによるシミュレーション結果を図\ref{fig:=004F4E=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54-(=0030B7=0030DF=0030E5=0030EC=0030FC=0030B7=0030E7=0030F3)},
+\ref{fig:=009AD8=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54-(=0030B7=0030DF=0030E5=0030EC=0030FC=0030B7=0030E7=0030F3)}に示す。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/active-filter-lpf-step}
+\par\end{centering}
+\caption{低域通過アクティブフィルタのステップ応答\label{fig:=004F4E=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/active-filter-hpf-step}
+\par\end{centering}
+\caption{高域通過アクティブフィルタのステップ応答\label{fig:=009AD8=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/active-filter-lpf-step-simulation}
+\par\end{centering}
+\caption{低域通過アクティブフィルタのステップ応答 (シミュレーション)\label{fig:=004F4E=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54-(=0030B7=0030DF=0030E5=0030EC=0030FC=0030B7=0030E7=0030F3)}}
+\end{figure}
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A2/active-filter-hpf-step-simulation}
+\par\end{centering}
+\caption{高域通過アクティブフィルタのステップ応答 (シミュレーション)\label{fig:=009AD8=0057DF=00901A=00904E=0030A2=0030AF=0030C6=0030A3=0030D6=0030D5=0030A3=0030EB=0030BF=00306E=0030B9=0030C6=0030C3=0030D7=005FDC=007B54-(=0030B7=0030DF=0030E5=0030EC=0030FC=0030B7=0030E7=0030F3)}}
+\end{figure}
+
+これらを見ると、概ねシミュレーションの結果と実験による測定結果は一致していることがわかる。
+
+\section{考察・検討}
+
+\subsection{増幅回路の遮断周波数と電圧利得の関係性について}
+
+この考察は、テキスト7.1(2)に対応する。
+
+測定値から、電圧利得20dBの反転増幅回路において、設計された電圧利得から$-3\mathrm{dB}$となる周波数は、70.79kHz
+(17.01dB)である。
+
+同様に、
+\begin{itemize}
+\item 20dBの反転増幅回路: 70.79kHz (17.01dB)
+\item 40dBの反転増幅回路: 7.079kHz (36.585dB)
+\item 20dBの非反転増幅回路: 79.43kHz (17.169dB)
+\item 40dBの非反転増幅回路: 7.943kHz (36.64dB)
+\end{itemize}
+がそれぞれの遮断周波数となる。
+
+これらの結果から、電圧利得が20dBから40dBになると、遮断周波数がおよそ10分の1倍になることが推測される。
+
+また、\ref{subsec:=00975E=0053CD=008EE2=005897=005E45=0056DE=008DEF}ですでに考察したとおり、高周波領域における電圧利得の減少速度は、およそ$-20\mathrm{dB/dec}$程度である。
+
+このような結果が得られる原因として、オペアンプの開ループ特性が考えられる。理想的なオペアンプにおいて増幅率は周波数に依存せず無限大の増幅を行うが、実際のオペアンプは開ループ特性を持ち、高周波数になるにつれ増幅率が低くなっていくという特性を持つ。
+
+今回使用したオペアンプの開ループ特性は、1次フィルタの特性を持ち\cite{key-1}、よって$-20\mathrm{dB/dec}$の電圧利得の減少をとる\cite{key-2}。特に高周波領域においては仮想接地が成立しなくなり、回路の設計ではなくオペアンプの増幅率に依存するため、高周波領域における電圧利得の減少速度は、およそ$-20\mathrm{dB/dec}$程度となる。
+
+また、それに伴い遮断周波数（＝仮想接地が成立しなくなる周波数）も変化する。これは設計した回路の電圧利得とオペアンプの開ループ特性の交点をとるため、電圧利得が20dBから40dBになると、遮断周波数がおよそ10分の1倍になったものと推測される。
+
+\subsection{周波数領域ごとの微分回路の動作の違いについて}
+
+この考察は、テキスト7.1(3)に対応する。
+
+\cite{key-1}の図A2.15(b)における$f<f_{r},f_{r}<f<f_{f},f_{f}<f$の周波数領域における、微分回路の動作の違いについて検討する。これらの領域における方形波応答は、図\ref{fig:=005FAE=005206=0056DE=008DEF=00306E=0065B9=005F62=006CE2=005FDC=007B54(f=00003D10Hz)},
+\ref{fig:=005FAE=005206=0056DE=008DEF=00306E=0065B9=005F62=006CE2=005FDC=007B54(f=00003D1.2kHz)},
+\ref{fig:=005FAE=005206=0056DE=008DEF=00306E=0065B9=005F62=006CE2=005FDC=007B54(f=00003D50kHz)}に記録されている。
+
+第1に$f<f_{r}$なる周波数$\left(f=10\mathrm{Hz}\right)$においては、回路は微分特性を示す。これは図\ref{fig:=005FAE=005206=0056DE=008DEF=00306E=0065B9=005F62=006CE2=005FDC=007B54(f=00003D10Hz)}の出力波形からも見て取れる。微分回路の回路図は\cite{key-1}の図A2.14に与えられているが、低周波領域においてはコンデンサのインピーダンスが高くなり、$R_{r}$と$C_{r}$の直列回路では$C_{r}$が、$R_{f}$と$C_{f}$の並列回路では$R_{f}$が支配的になる。特に入力部に接続された$C_{r}$が微分特性を示すため、増幅回路全体が微分特性を示すようになる。
+
+第2に$f_{r}<f<f_{f}$なる周波数$\left(f=1.2\mathrm{kHz}\right)$においては、回路は反転増幅特性を示す。これは図\ref{fig:=005FAE=005206=0056DE=008DEF=00306E=0065B9=005F62=006CE2=005FDC=007B54(f=00003D1.2kHz)}の出力波形からも見て取れる。$f<f_{r}$と同様に、低周波領域においてはコンデンサのインピーダンスが高くなり、$R_{f}$と$C_{f}$の並列回路では$R_{f}$が支配的になるが、ある程度高周波領域であるため$R_{r}$と$C_{r}$の直列回路では$R_{r}$が支配的になる。2つのコンデンサが除かれれば回路的に反転増幅回路と等価であるため、増幅回路全体が反転増幅特性を示すようになる。
+
+第3に$f_{f}<f$なる周波数$\left(f=50\mathrm{kHz}\right)$においては、回路は積分特性を示す。これは図\ref{fig:=005FAE=005206=0056DE=008DEF=00306E=0065B9=005F62=006CE2=005FDC=007B54(f=00003D50kHz)}の出力波形からも見て取れる。高周波領域においてはコンデンサのインピーダンスが低くなり、$R_{r}$と$C_{r}$の直列回路では$R_{r}$が、$R_{f}$と$C_{f}$の並列回路では$C_{f}$が支配的になる。特に出力部に接続された$C_{f}$が積分特性を示すため、増幅回路全体が積分特性を示すようになる。
+
+\subsection{ウィーンブリッジ発振回路の発振が開始する条件について}
+
+この考察は、テキスト7.2(1)に対応する。
+
+\ref{subsec:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF}ですでに考察したとおり、ウィーンブリッジ発振回路の発振が開始する時点での分圧比$k$は0.3745であった。
+
+\cite{key-1}の式A2.46によると、ウィーンブリッジ発振回路内の非反転増幅回路の増幅率を$A$、全体の閉ループ利得を$A_{v}$とすると、
+\begin{equation}
+A_{v}=A\frac{\left(sCR\right)^{2}+3sCR+1}{\left(sCR\right)^{2}+\left(3-kA\right)sCR+1}\label{eq:wien-loop}
+\end{equation}
+となる。
+
+ここで式\ref{eq:wien-loop}の分母の$3-kA$が負の値となる場合を考える。このとき明らかに$A_{v}>1$となるため回路全体で電圧を増幅する特性を示す。ここで発振回路は出力電圧を入力電圧にフィードバックする、帰還回路となっているため、増幅された電圧がさらに増幅され……ということを繰り返し、ループするごとに電圧が高くなる。これにより$A_{v}$の値が少しでも1より大きい場合電圧は発散し、発振する。具体的には\ref{subsec:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF}で考察したとおり$k=3/8$で発振するが、この値は測定値と誤差$0.1\%$の範囲内でよく一致する。
+
+\subsection{発信信号のスペクトラムについて}
+
+この考察は、テキスト7.2(3)に対応する。
+
+図\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=0030B9=0030DA=0030AF=0030C8=0030EB(=005E30=009084=0091CFk=00003D3/8)}および図\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=0030B9=0030DA=0030AF=0030C8=0030EB(=005E30=009084=0091CFk=00003D1)}で見たスペクトラムについて考察する。
+
+図\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=006CE2=005F62(=005E30=009084=0091CFk=00003D3/8)}および図\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=006CE2=005F62(=005E30=009084=0091CFk=00003D1)}から分かる通り、これらのスペクトラムにおける波形は、いずれも発振信号である。これらは理論上上下に無限大の電圧にふれるはずだが、現実にはオペアンプの動作電圧に制限されるため、それらの値を超えることはない。そのため波形の概形は矩形波のようになる。
+
+矩形波$\mathrm{rect}\left(f\right)$のフーリエ級数展開は、
+\[
+\mathrm{rect}\left(f\right)=\frac{4}{\pi}\left\{ \sin f+\frac{1}{3}\sin3f+\frac{1}{5}\sin5f+\cdots\right\} 
+\]
+となるため、実際のスペクトラムでも、発振周波数$f$を中心として$3f,5f,\cdots$なる周波数にピークが現れるはずである。
+
+ここで例えば図\ref{fig:=0030A6=0030A3=0030FC=0030F3=0030D6=0030EA=0030C3=0030B8=00767A=00632F=0056DE=008DEF=00306E=0051FA=00529B=0030B9=0030DA=0030AF=0030C8=0030EB(=005E30=009084=0091CFk=00003D3/8)}におけるピーク周波数は、
+\begin{itemize}
+\item $f=737.5\mathrm{Hz}$
+\item $f=2200\mathrm{Hz}$
+\item $f=3662.5\mathrm{Hz}$
+\item $f=4875\mathrm{Hz}$
+\end{itemize}
+にあらわれており、これらはそれぞれ基本周波数$f=737.5\mathrm{Hz}$の1倍、3倍、5倍、7倍となっていることがわかる。これは理論値に非常によく一致する。
+\begin{thebibliography}{EEIC, 2017}
+\bibitem[EEIC, 2017]{key-1}東京大学工学部電気電子工学科電子情報工学科編『電気電子情報第一(前期)実験テキスト
+2017年4月』
+
+\bibitem[廣瀬, 2003]{key-2}廣瀬明『電気電子計測［第2版］』、数理工学社、2003年
+\end{thebibliography}
+
+\end{document}
