@@ -7,7 +7,6 @@ before_install:
     texlive-fonts-extra texlive-lang-greek texlive-generic-recommended texlive-math-extra
     texlive-science potrace ghostscript --no-install-recommends
   # Install git-lfs
-  - gs --version
   - mkdir -p $HOME/bin
   - wget https://github.com/git-lfs/git-lfs/releases/download/v2.0.2/git-lfs-linux-amd64-2.0.2.tar.gz
   - tar xvfz git-lfs-linux-amd64-2.0.2.tar.gz

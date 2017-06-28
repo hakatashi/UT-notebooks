@@ -25,7 +25,7 @@ dist/%.pdf: %.dvi
 	@if [ -e "$*.jpg" ]; then \
 		convert "$*.jpg" "bmp2:$*.bmp" && potrace "$*.bmp" -r 400 -o $@ && rm "$*.bmp"; \
 	else \
-		convert "$*.png" eps:$@; \
+		convert "$*.png" eps3:$@; \
 	fi;
 
 .PHONY: clean
