@@ -20,15 +20,13 @@ dist/%.pdf: %.dvi
 	mv $(dir $<)/$(notdir $@) $(dir $@)
 
 .SECONDEXPANSION:
-%.bmp: $$(wildcard %.jpg) $$(wildcard %.png)
+%.eps: $$(wildcard %.jpg) $$(wildcard %.png)
+	@echo "Generating $@..."
 	@if [ -e "$*.jpg" ]; then \
-		convert "$*.jpg" bmp2:$@; \
+		convert "$*.jpg" "bmp2:$*.bmp" && potrace "$*.bmp" -r 400 -o $@ && rm "$*.bmp"; \
 	else \
-		convert "$*.png" bmp2:$@; \
+		convert "$*.png" eps3:$@; \
 	fi;
-
-%.eps: %.bmp
-	potrace $< -r 400 -o $@
 
 .PHONY: clean
 clean:
