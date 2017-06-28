@@ -8,7 +8,6 @@ before_install:
     texlive-science potrace ghostscript --no-install-recommends
   # Install git-lfs
   - gs --version
-  - rungs --version
   - mkdir -p $HOME/bin
   - wget https://github.com/git-lfs/git-lfs/releases/download/v2.0.2/git-lfs-linux-amd64-2.0.2.tar.gz
   - tar xvfz git-lfs-linux-amd64-2.0.2.tar.gz
