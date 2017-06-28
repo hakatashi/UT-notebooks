@@ -62,6 +62,7 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 		* [E2実験「電気機器と整流回路」考察レポート](2017S/EEICExperiment-report-E2.tex) - [PDF][EEICExperiment-report-E2-pdf]
 		* [A1実験「半導体と電子回路の基礎」考察レポート](2017S/EEICExperiment-report-A1.tex) - [PDF][EEICExperiment-report-A1-pdf]
 		* [A2実験「アナログ回路」総合レポート](2017S/EEICExperiment-report-A2.tex) - [PDF][EEICExperiment-report-A2-pdf]
+		* [E1実験「気体エレクトロニクス（放電現象）」総合レポート](2017S/EEICExperiment-report-E1.tex) - [PDF][EEICExperiment-report-E1-pdf]
 	* [電気機器](2017S/ElectricMachinery.tex) - [PDF][ElectricMachinery-pdf]
 	* [電子回路I](2017S/ElectronicCircuit1.tex) - [PDF][ElectronicCircuit1-pdf]
 	* [電子物性基礎 前半](2017S/ElectronicProperty.tex) - [PDF][ElectronicProperty-pdf]
@@ -107,6 +108,7 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 [EEICExperiment-report-P1-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/EEICExperiment-report-P1.pdf
 [EEICExperiment-report-P2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/EEICExperiment-report-P2.pdf
 [EEICExperiment-report-P3-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/EEICExperiment-report-P3.pdf
+[EEICExperiment-report-E1-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/EEICExperiment-report-E1.pdf
 [EEICExperiment-report-E2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/EEICExperiment-report-E2.pdf
 [EEICExperiment-report-A1-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/EEICExperiment-report-A1.pdf
 [EEICExperiment-report-A2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/EEICExperiment-report-A2.pdf
