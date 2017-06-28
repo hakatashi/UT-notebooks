@@ -1,0 +1,266 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=2cm,rmargin=2cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 電気電子情報第一(前期)実験\\
+E1実験「気体エレクトロニクス（放電現象）」考察レポート}
+
+\author{学籍番号: 03-170512 氏名: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+\global\long\def\ex#1#2{#1\times10^{#2}}
+
+
+\section{実験の目的}
+
+電気とは電子の運動によってもたらされる現象であり、身近な電気現象にも小さな電子の作用が深く結びついている。これら電子はとくに高温・高電圧などの条件下において気体と作用し、プラズマを生成する。これらプラズマの物理現象について実地の実験を通して、ただしく測定および理解することが本実験の目的である。
+
+\section{実験の原理}
+
+放電とは、気体中に存在する2電極の間に印加された電圧によって、気体中に電子が放出され、電流が流れる現象のことである。大気圧・定電圧の条件下においてこの放電現象は起きづらく、雷などの自然現象を除いて発生することは極めて珍しいが、とりわけ低気圧・高電圧の条件においては様々な放電現象が発生することが知られている。
+
+放電には発生する条件によって発現形式が異なるものが複数存在し、それぞれに「火花放電」「グロー放電」「アーク放電」などの名称が存在する。
+
+火花放電は、特に高気圧で発生する放電現象である。電極間に極めて高い電圧を印加すると、電極から放出されたエネルギーの高い電子が気体分子と衝突する。このとき電子の運動エネルギーが気体分子の電離エネルギーよりも高い場合は気体分子が電離し、イオンと自由電子が放出される。放出された正イオンが陰極に衝突するとそこからも電子が放出され、これにより2電極の間で電流が発生する。これらによって生成されるイオンの量が多いと絶縁破壊と呼ばれる現象が発生し、それらを電路として電子が一気に流れ込み、火花のような発光とともに大電流が流れる。これを火花放電という。
+
+特に低気圧条件下においてはこれが持続的に発生し、放電管全体が淡く発光する現象が発生する。これをグロー放電という。
+
+これら電極間に放電が発生する電圧のことを火花電圧と呼ぶ。放電は上で述べたように概ね低気圧・短距離であるほど発生しやすく、火花電圧もこれに従って低下していく傾向がある。特に火花電圧が気圧と電極間距離の積によって表されることが知られており、これをパッシェンの法則と呼ぶ。
+
+\section{実験の方法}
+
+\subsection{グロー放電の観測}
+\begin{enumerate}
+\item 放電管に接続されたリークバルブを締め、真空装置の電源を投入する。
+\item 真空装置を用いて放電管内の気圧を下げ、所定の気圧になるまで調整する。この際気圧が10Torr以内の場合はピラニー真空計を、10Torr以上の場合はブルドン真空計を用いて計測を行った。
+\item 高電圧電源の電源を入れ、放電管内の電極に電圧を印加する。この際低電圧から徐々に電圧を高くしていく。
+\item 放電が始まったら電源を止め、放電が開始した時点の電圧と電流を記録する。
+\item 以上を幾つかの気圧、電流において測定し、記録した。
+\end{enumerate}
+
+\subsection{平等電界の火花電圧}
+\begin{enumerate}
+\item 放電実験容器を開け、内部に所定の形状の電極を取り付け、電極間距離が所定の長さになるように調整する。
+\item 放電実験容器を閉め、容器に接続されたリークバルブを締め、真空装置の電源を投入する。
+\item 真空装置を用いて放電実験容器内の気圧を下げ、所定の気圧になるまで調整する。この際気圧が10Torr以内の場合はピラニー真空計を、10Torr以上の場合はブルドン真空計を用いて計測を行った。
+\item 高電圧電源の電源を入れ、放電管内の電極に電圧を印加する。この際低電圧から徐々に電圧を高くしていく。
+\item 放電が始まったら電源を止め、放電が開始した時点の電圧と電流を記録する。
+\item 以上をいくつかの気圧、電極形状、電極間距離において測定し、記録した。
+\end{enumerate}
+
+\subsection{不平等電界の火花電圧と極性効果}
+\begin{enumerate}
+\item ケージ内に設置された放電実験装置に所定の形状の電極を取り付け、電極間距離が所定の長さになるように調整する。
+\item 高電圧電源の電源を入れ、放電管内の電極に電圧を印加する。この際低電圧から徐々に電圧を高くしていく。
+\item 放電が始まったら電源を止め、放電が開始した時点の電圧と電流を記録する。一つの条件に付き測定を5回行い、その平均値を測定値として記録する。
+\item 以上をいくつかの電極形状、電極間距離において測定し、記録した。
+\end{enumerate}
+
+\subsection{分光測定}
+\begin{enumerate}
+\item 分光器を校正する。電圧印加装置に水銀ランプを取り付け、電源を投入する。放電管から発せられる光を分光器に入射させ、出力値を観測する。波長調整ダイアルを回転させ、出力値が極めて高くなる点に合わせる。この値と\cite{key-1}に示された水銀の発光スペクトルを比較し、その差分を元に分光器の校正を行う。
+\item 未知の気体が封入された放電管の発光スペクトルを分析する。電圧印加装置に所定の放電管を取り付け、電源を投入する。放電管から発せられる光を分光器に入射させ、出力値を観測する。ダイアルを回転させながら出力値を観測し、その特徴を記録する。これを\cite{key-1}に示された代表的な気体の発光スペクトルと比較し、放電管に封入された気体を同定する。
+\item 蛍光灯の発光スペクトルを分析する。蛍光灯から発せられる光を分光器に入射させ、出力値を観測する。ダイアルを回転させながら出力値を観測し、その特徴を記録する。
+\item 窒素気体のグロー放電の発光スペクトルを分析する。電圧印加装置に窒素が封入された放電管を取り付け、電源を投入する。放電管から発せられる光を分光器に入射させ、出力値を観測する。波長が350nmから390nmの範囲において出力値を細かく観測し、その特徴を記録する。
+\end{enumerate}
+
+\section{使用器具}
+
+本実験で使用した器具は、以下のとおりである。
+\begin{itemize}
+\item 分光器: SPG-100S
+\item アンプ: AT-100AM
+\end{itemize}
+
+\section{実験の結果}
+
+\subsection{グロー放電の観測}
+
+0.5Torr, 1Torr, 2Torr, 5Torr, 10Torrのそれぞれの気圧についてガイスラー管のグロー放電の放電電圧を記録したところ、図\ref{fig:=0030AC=0030A4=0030B9=0030E9=0030FC=007BA1=00306E=0030B0=0030ED=0030FC=00653E=0096FB=00306B=00304A=003051=00308B=0096FB=006D41=0096FB=005727=007279=006027}の結果を得た。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-E1/glow-discharge-IV-curve}
+\par\end{centering}
+\caption{ガイスラー管のグロー放電における電流電圧特性\label{fig:=0030AC=0030A4=0030B9=0030E9=0030FC=007BA1=00306E=0030B0=0030ED=0030FC=00653E=0096FB=00306B=00304A=003051=00308B=0096FB=006D41=0096FB=005727=007279=006027}}
+\end{figure}
+
+ここから、気圧が1Torr以上の範囲内においては気圧が低いほど放電電圧が低くなり、それ以下の低気圧（ここでは0.5Torr）においては電流と電圧が正の相関を持つことがわかる。
+
+また1Torr以上の条件下においては電極間に筋状の発光が見られ、紫色に輝いていたのに対して、0.5Torrの条件下においては放電管全体が淡く光る、それ以外とは異なる放電現象が観測された。
+
+\subsection{平等電界の火花電圧}
+
+5Torrから大気圧までのそれぞれの気圧について球-球 平等電界の火花電圧を記録し、気圧と電極間距離の積$pd$について整理したところ、図\ref{fig:=007403-=007403-=005E73=007B49=0096FB=00754C=00306E=00706B=0082B1=0096FB=005727}の結果を得た。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-E1/uniform-electric-field-sparking-voltage}
+\par\end{centering}
+\caption{球-球 平等電界の火花電圧\label{fig:=007403-=007403-=005E73=007B49=0096FB=00754C=00306E=00706B=0082B1=0096FB=005727}}
+\end{figure}
+
+また同様に被覆円柱-平板 平等電界の火花電圧を記録し整理したところ、図\ref{fig:=0088AB=008986=005186=0067F1-=005E73=00677F-=004E0D=005E73=007B49=0096FB=00754C=00306E=00706B=0082B1=0096FB=005727}の結果を得た。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-E1/non-uniform-electric-field-sparking-voltage}
+\par\end{centering}
+\caption{被覆円柱-平板 平等電界の火花電圧\label{fig:=0088AB=008986=005186=0067F1-=005E73=00677F-=004E0D=005E73=007B49=0096FB=00754C=00306E=00706B=0082B1=0096FB=005727}}
+\end{figure}
+
+図\ref{fig:=007403-=007403-=005E73=007B49=0096FB=00754C=00306E=00706B=0082B1=0096FB=005727}と図\ref{fig:=0088AB=008986=005186=0067F1-=005E73=00677F-=004E0D=005E73=007B49=0096FB=00754C=00306E=00706B=0082B1=0096FB=005727}には大きな違いが見られる。図\ref{fig:=007403-=007403-=005E73=007B49=0096FB=00754C=00306E=00706B=0082B1=0096FB=005727}では$pd$の値が小さくなるのに対して火花電圧が単調に減少しているのに対して、図\ref{fig:=0088AB=008986=005186=0067F1-=005E73=00677F-=004E0D=005E73=007B49=0096FB=00754C=00306E=00706B=0082B1=0096FB=005727}では$pd$の値が10未満の領域で再び増加に転じ、球-球平等電界の火花電圧よりも高い電圧特性を示している。
+
+\subsection{不平等電界の火花電圧と極性効果}
+
+球-平板 不平等電界および円錐-平板 不平等電界の火花電圧を記録し、電極間距離$d$について整理したところ、図\ref{fig:=005927=006C17=005727=004E2D=00306B=00304A=003051=00308B=004E0D=005E73=007B49=0096FB=00754C=00306E=00706B=0082B1=0096FB=005727=007279=006027}の結果を得た。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-E1/atomosphere-discharge-sparking-voltage}
+\par\end{centering}
+\caption{大気圧中における不平等電界の火花電圧特性\label{fig:=005927=006C17=005727=004E2D=00306B=00304A=003051=00308B=004E0D=005E73=007B49=0096FB=00754C=00306E=00706B=0082B1=0096FB=005727=007279=006027}}
+\end{figure}
+
+全体的な特徴として、電極間の距離が短いほど火花電圧も小さくなる傾向があり、その関係はおおよそ比例関係にある。また球-平板電界の火花電圧は円錐-平板電界の火花電圧よりも大きい傾向があり、球-平板電界においては印加した電圧の正負に大きく依存しないのに対して、円錐-平板電界では負電極が正電極の火花電圧を大きく上回る結果になった。
+
+\subsection{分光測定}
+
+窒素気体のグロー放電の発光スペクトルを観測したところ、図\ref{fig:=007A92=007D20=006C17=004F53=00306E=0030B0=0030ED=0030FC=00653E=0096FB=00767A=005149=0030B9=0030DA=0030AF=0030C8=0030EB}のとおりの結果を得た。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-E1/nitrogen-emission-spectrum}
+\par\end{centering}
+\caption{窒素気体のグロー放電発光スペクトル\label{fig:=007A92=007D20=006C17=004F53=00306E=0030B0=0030ED=0030FC=00653E=0096FB=00767A=005149=0030B9=0030DA=0030AF=0030C8=0030EB}}
+\end{figure}
+
+この結果から、発光のピークが、波長354nm, 367.2nm, 372.8nm, 377.8nmに存在することがわかる。
+
+\section{考察・検討}
+
+\subsection{放電現象における衝突電離係数の近似式}
+
+専ら大気圧に近い気圧において用いられる衝突電離係数$\alpha$の近似式について、複数の文献を参照し調査したが、有効な情報は得られなかった。
+
+\subsection{陰極から放出された電子の増幅について}
+
+衝突電離係数を$\alpha$、電極間距離を$d$、電極間の向きの座標軸を$x$、座標$x=x_{0}$の地点における、陰極から放出された電子の増幅率を$a\left(x_{0}\right)$とおく。
+
+衝突電離係数は単位長あたりで1個の電子が電離する回数を表すので、
+\[
+\d{a\left(x\right)}x=\left(\alpha+1\right)a\left(x\right)
+\]
+と書ける。
+
+\[
+a\left(x\right)=C\exp\left(\left(\alpha+1\right)x\right)
+\]
+
+$a\left(0\right)=1$なので、$C=1$。よって
+\[
+a\left(d\right)=\exp\left(\left(\alpha+1\right)d\right)
+\]
+となる。
+
+\subsection{球-球平等電界における火花電圧について}
+
+球-球平等電界における火花電圧と放電路を幾つかの条件でシミュレーションしたところ、図\ref{fig:=006C17=00572750Torr=003001=0096FB=006975=009593=008DDD=0096E25mm=00306B=00304A=003051=00308B=00653E=0096FB=00306E=0030B7=0030DF=0030E5=0030EC=0030FC=0030B7=0030E7=0030F3}および図\ref{fig:=006C17=0057275Torr=003001=0096FB=006975=009593=008DDD=0096E20.1mm=00306B=00304A=003051=00308B=00653E=0096FB=00306E=0030B7=0030DF=0030E5=0030EC=0030FC=0030B7=0030E7}のようになった。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-E1/uniform-electric-field-simulation-30torr-5mm}
+\par\end{centering}
+\caption{気圧50Torr、電極間距離5mmにおける放電のシミュレーション\label{fig:=006C17=00572750Torr=003001=0096FB=006975=009593=008DDD=0096E25mm=00306B=00304A=003051=00308B=00653E=0096FB=00306E=0030B7=0030DF=0030E5=0030EC=0030FC=0030B7=0030E7=0030F3}}
+\end{figure}
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-E1/uniform-electric-field-simulation-5torr-0_1mm}
+\par\end{centering}
+\caption{気圧5Torr、電極間距離0.1mmにおける放電のシミュレーション\label{fig:=006C17=0057275Torr=003001=0096FB=006975=009593=008DDD=0096E20.1mm=00306B=00304A=003051=00308B=00653E=0096FB=00306E=0030B7=0030DF=0030E5=0030EC=0030FC=0030B7=0030E7}}
+\end{figure}
+
+これらを踏まえて図\ref{fig:=007403-=007403-=005E73=007B49=0096FB=00754C=00306E=00706B=0082B1=0096FB=005727}および図\ref{fig:=0088AB=008986=005186=0067F1-=005E73=00677F-=004E0D=005E73=007B49=0096FB=00754C=00306E=00706B=0082B1=0096FB=005727}の結果を検討すると、球-球平等電界において$pd$の小さい領域において電圧上昇が見られないのは、球状の電極においては電極間の距離が必ずしも一定でなく、放電電圧のなるべく小さい条件を満たす放電路を選んで放電が開始するためだと考えられる。図\ref{fig:=006C17=0057275Torr=003001=0096FB=006975=009593=008DDD=0096E20.1mm=00306B=00304A=003051=00308B=00653E=0096FB=00306E=0030B7=0030DF=0030E5=0030EC=0030FC=0030B7=0030E7}が特にそれにあたり（$pd=0.5\mathrm{mm\cdot Torr}$）、電極間距離の短い中心部よりも電極間距離の長い周縁部を電流が流れていることがわかる。
+
+\subsection{窒素分子のエネルギー準位と発光スペクトラムの関係について}
+
+電子の遷移前のエネルギー準位のエネルギーを$E'$、遷移後のエネルギー準位のエネルギーを$E''$とすると、この時に発せられる電磁波の波長$\lambda$は、
+\[
+\lambda=\frac{1}{E''-E'}
+\]
+で与えられる。これに\cite{key-1}で与えられた窒素分子のSP02系列放射遷移のエネルギー準位の遷移エネルギーを用いて計算すると、それぞれ
+\begin{align*}
+\lambda_{\mathrm{SP02}} & =380.38\mathrm{nm}\\
+\lambda_{\mathrm{SP13}} & =375.43\mathrm{nm}\\
+\lambda_{\mathrm{SP24}} & =370.95\mathrm{nm}\\
+\lambda_{\mathrm{SP35}} & =367.06\mathrm{nm}
+\end{align*}
+となる。
+
+図\ref{fig:=007A92=007D20=006C17=004F53=00306E=0030B0=0030ED=0030FC=00653E=0096FB=00767A=005149=0030B9=0030DA=0030AF=0030C8=0030EB}より、窒素分子の発光スペクトルのピークは354nm,
+367.2nm, 372.8nm, 377.8nmに存在することがわかっている。これと上式を比較すると、
+\begin{itemize}
+\item 367.2nm→SP35軌道
+\item 372.8nm→SP24軌道
+\item 377.8nm→SP13軌道
+\end{itemize}
+にそれぞれ該当すると推測できる。
+
+また\cite{key-1}によれば、窒素分子が励起するために必要な電子のエネルギーは、$\mathrm{N_{2}}C^{3}\Pi_{u}$軌道の最小振動準位のエネルギー準位に等しい。このエネルギーは
+\[
+E_{d}=91291.3\mathrm{cm}^{-1}=\frac{91291.3}{8065.5}\mathrm{eV}=11.32\mathrm{eV}
+\]
+である。このときの電子の速度を$v$とすると、
+
+\begin{align*}
+E_{d} & =\frac{1}{2}m_{e}v^{2}\\
+v & =\sqrt{\frac{2E_{d}}{m_{e}}}\\
+ & =\sqrt{\frac{2\cdot11.32\cdot\ex{1.602}{-19}}{\ex{9.109}{-31}}}\\
+ & =\ex{1.995}6\mathrm{m/s}
+\end{align*}
+となる。
+\begin{thebibliography}{EEIC, 2017}
+\bibitem[EEIC, 2017]{key-1}東京大学工学部電気電子工学科電子情報工学科編『電気電子情報第一(前期)実験テキスト
+2017年4月』
+\end{thebibliography}
+
+\end{document}
