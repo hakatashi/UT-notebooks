@@ -1,0 +1,96 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=2cm,rmargin=2cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\usepackage{listings}
+\renewcommand{\lstlistingname}{\inputencoding{latin9}Listing}
+
+\begin{document}
+
+\title{2017-S 電気電子情報第一(前期)実験\\
+I2実験考察レポート}
+
+\author{学籍番号: 03-170512 氏名: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+\global\long\def\ex#1#2{#1\times10^{#2}}
+
+
+\section{考察}
+
+I2実験では、TCPやUDPなどのプロトコルを用いることによって、マシン間の通信を行い、ネットワーク越しに相手と情報のやり取りを行うことが可能であることを学んだ。
+
+本実験の考察として、これらTCPやUDPの通信が、具体的にどのような内容のデータを送受信しているのかに興味を持ったため、実験で実装した通信プログラムの通信をパケットキャプチャし、その内容を確かめてみることにした。
+
+パケットキャプチャには、Ubuntu上で動作するパケットキャプチャツールである、tcpdumpを用い、以下の通りに実行した。
+
+\inputencoding{latin9}\begin{lstlisting}
+$ sudo tcpdump -w packet.pcap
+\end{lstlisting}
+\inputencoding{utf8}
+また、通信プログラムには、\cite{key-1}の本課題8.1において実装したserv\_send.cを用い、以下の通りに実行した
+
+。
+
+\inputencoding{latin9}\begin{lstlisting}
+$ head -c 100k < /dev/urandom | ./a.out 4000
+\end{lstlisting}
+\inputencoding{utf8}
+また、受信側のプログラムは以下のようにした。
+
+\inputencoding{latin9}\begin{lstlisting}
+$ nc localhost 4000 > /dev/null
+\end{lstlisting}
+\inputencoding{utf8}
+この手法を用いてキャプチャしたパケットファイルを、Windows上のWiresharkを用いて解析したところ、図\ref{fig:=005F97=003089=00308C=00305F=0030D1=0030B1=0030C3=0030C8=0030AD=0030E3=0030D7=0030C1=0030E3=003092Wireshark=003092=007528=003044=003066=0089E3=006790=003057=00305F=003082}のような結果が得られた。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{images/EEICExperiment-report-I2/wireshark}
+\par\end{centering}
+\caption{得られたパケットキャプチャをWiresharkを用いて解析したもの\label{fig:=005F97=003089=00308C=00305F=0030D1=0030B1=0030C3=0030C8=0030AD=0030E3=0030D7=0030C1=0030E3=003092Wireshark=003092=007528=003044=003066=0089E3=006790=003057=00305F=003082}}
+\end{figure}
+
+これによると、指定の通信としてTCPによるものが記録されており、正しく解析できていることがわかる。また1パケットあたりのデータサイズは1514バイトが最も大きく、それ以降は細切れにデータが送られていることがわかる。これはネットワークの経路MTUが1500バイトであり、それにMACアドレスのヘッダー14バイトが付加された値が表示されるためだと考えられる。
+
+また、クライアントはサーバーに対して都度ACKパケットを応答している。これはTCPがパケットの到達保証をするための仕組みであり、受け取ったパケットのシーケンス番号を適宜知らせるためのものである。
+\begin{thebibliography}{EEIC, 2017}
+\bibitem[EEIC, 2017]{key-1}東京大学工学部電気電子工学科電子情報工学科編『電気電子情報第一(前期)実験テキスト
+2017年4月』
+\end{thebibliography}
+
+\end{document}

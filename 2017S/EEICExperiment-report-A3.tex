@@ -1,0 +1,126 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=2cm,rmargin=2cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 電気電子情報第一(前期)実験\\
+A3実験「ディジタル回路」考察レポート}
+
+\author{学籍番号: 03-170512 氏名: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+\global\long\def\ex#1#2{#1\times10^{#2}}
+
+
+\section{考察・検討}
+
+\subsection{CMOSインバータの遅延時間にかかる係数の見積もり}
+
+この考察は\cite{key-1}の4(1)に対応している。
+
+実験結果より、周波数1kHzの方形波における、CMOSインバーターの伝達遅延時間$\tau$と、負荷接続数$N$の関係は\ref{fig:=008CA0=008377=0063A5=007D9A=006570=003068=004F1D=009054=009045=005EF6=006642=009593=00306E=0095A2=004FC2}のようになった。
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{images/EEICExperiment-report-A3/load-numbers-and-delay-time}
+\par\end{centering}
+\caption{負荷接続数と伝達遅延時間の関係\label{fig:=008CA0=008377=0063A5=007D9A=006570=003068=004F1D=009054=009045=005EF6=006642=009593=00306E=0095A2=004FC2}}
+\end{figure}
+
+ここで図中において示されるとおり、この関係について線形回帰を行ったところ、
+
+\[
+\tau=1.886\times N+21.4
+\]
+となった。この式と\cite{key-1}の4 1.式を比較すると、
+\[
+\begin{cases}
+\tau_{0}=21.4\mathrm{ns}\\
+\tau_{1}=1.886\mathrm{ns}
+\end{cases}
+\]
+と見積もれる。
+
+\subsection{DラッチおよびDフリップフロップの動作について}
+
+この考察は\cite{key-1}の4(2)に対応している。
+
+\cite{key-1}の図9中の回路をブール代数で表現すると、
+\[
+Q=Q\overline{E}+ED+DQ
+\]
+となる。
+
+ここで$E=1$のとき、
+\begin{align*}
+Q & =D+DQ\\
+ & =D\left(1+Q\right)\\
+ & =D
+\end{align*}
+となり、出力$Q$は$D$に追従する。
+
+また、$E=0$のとき、
+\begin{align*}
+Q & =Q+DQ\\
+ & =Q\left(1+D\right)\\
+ & =Q
+\end{align*}
+となり、出力$Q$は変化しない。
+
+\cite{key-1}の図10右の回路において、clockが0のとき、1番目のDラッチへの制御信号は1であり、2番めのDラッチへの制御信号は0となる。これは入力信号$d$が、1番目のDラッチと2番目のDラッチの接続線に到達していることを示している。ここでclockが1になると、1番目のDラッチへの制御信号は0となり、2番めのDラッチへの制御信号は1となる。1番目のDラッチと2番目のDラッチの接続線は入力信号$d$から遮断され、かわりに2番目のDラッチが信号を透過し、1番目のDラッチと2番目のDラッチの接続線の信号が出力信号$q$に反映される。
+
+Dラッチの遅延時間は$2\tau$であり、Dフリップフロップの遅延時間は$4\tau$である。
+
+図9中の点線で示されたANDゲートを省略した場合も、図9右のカルノー図で示されているとおり、論理回路として互いに等価である。ただし、$D=1,Q=1$の状態において$E$が変化した場合、信号が異なる経路で変化するため、論理ゲートの遅延時間によって動作が不安定になる可能性がある。
+
+\subsection{大規模な回路の構成について}
+
+この考察は\cite{key-1}の4(3)に対応している。
+
+今回の実験では、直列加算回路の設計を通して、デジタル回路の構成方法を学んだ。ここでは、クロックと呼ばれる制御信号を回路全体に接続することによって、各個の論理ゲートの遅延時間を吸収し、クロックの動作範囲内において理想的な論理ゲートの動作を再現するという手法を取られており、これを用いて、小さな論理回路を組み合わせて大きな論理回路を設計した場合でも、安定して動作することが可能となっている。
+
+ここで、論理ゲートの遅延時間が1クロックの時間よりも大きくなった場合、クロックによる全体の回路制御が崩れ、回路全体が正しい動作をしなくなる可能性がある。そのため、クロック周波数の設定においては、各論理ゲートの遅延時間を正しく見積もり、それに応じた設計を行う必要がある。
+\begin{thebibliography}{EEIC, 2017}
+\bibitem[EEIC, 2017]{key-1}東京大学工学部電気電子工学科電子情報工学科編『電気電子情報第一(前期)実験テキスト
+2017年4月』
+
+\bibitem[廣瀬, 2015]{key-2}廣瀬明『電気電子計測 第2版』、数理工学社、2015年1月
+\end{thebibliography}
+
+\end{document}
