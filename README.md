@@ -73,6 +73,8 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 	* [電子物性基礎 後半](2017S/ElectronicProperty-part2.tex) - [PDF][ElectronicProperty-part2-pdf]
 	* [数学2D](2017S/Mathematics2D.tex) - [PDF][Mathematics2D-pdf]
 	* [半導体デバイス工学](2017S/SemiconductorDeviceEngineering.tex) - [PDF][SemiconductorDeviceEngineering-pdf]
+* [2017年度 Aセメスター](2017A)
+	* [計算論](2017A/ComputationTheory.tex) - [PDF][ComputationTheory-pdf]
 
 [Dynamics-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/Dynamics.pdf
 [mathIA-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/mathIA.pdf
@@ -126,6 +128,7 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 [ElectronicProperty-part2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/ElectronicProperty-part2.pdf
 [Mathematics2d-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/Mathematics2D.pdf
 [SemiconductorDeviceEngineering-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/SemiconductorDeviceEngineering.pdf
+[ComputationTheory-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017A/ComputationTheory.pdf
 
 ## 規約
 
