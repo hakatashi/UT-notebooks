@@ -1,0 +1,190 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amstext}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-A 計算論}
+
+\author{教員: 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+
+
+\section*{第1回}
+
+有限オートマトンは、有限個の状態と遷移動作から成る。
+
+図計1-1
+
+$w=0011$を与える→受理される
+
+$w=010$を与える→受理されない
+
+\paragraph{決定性有限状態オートマトン (DFA: deterministic finite automaton)}
+
+状態$Q$、入力記号$\Sigma$、受理状態$F\subseteq Q$が与えられたおき、DFAは$M=\left(Q,\Sigma,\delta,q_{0},F\right)$で与えられる。
+\begin{enumerate}
+\item $Q$は状態の有限集合 ($Q=\left\{ q_{1},q_{2},q_{3}\right\} $)
+\item $\Sigma$はアルファベットの有限集合 ($\Sigma=\left\{ 0,1\right\} $)
+\item $\delta$: $Q\times\Sigma\rightarrow Q$の遷移関数 ($\delta\left(q_{1},0\right)=q_{2}$)
+
+\begin{tabular}{|c|c|c|}
+\hline 
+ & 0 & 1\tabularnewline
+\hline 
+\hline 
+$q_{1}$ & $q_{1}$ & $q_{2}$\tabularnewline
+\hline 
+$q_{2}$ & $q_{3}$ & $q_{2}$\tabularnewline
+\hline 
+$q_{3}$ & $q_{2}$ & $q_{2}$\tabularnewline
+\hline 
+\end{tabular}
+\item $q_{0}\in Q$は開始状態 ($q_{0}=q_{1}$)
+\item $F\subseteq Q$は受理状態集合 ($F=\left\{ q_{2}\right\} $)
+\end{enumerate}
+DFA $A$が受理する文字列の集合を$A$の言語といい、$L\left(A\right)$で表す。$L\left(A\right)=\left\{ w|w\text{は少なくとも1つの1を含み、最後に現れる1の後ろに偶数個の0を含む}\right\} $
+
+あるDFAで受理される言語を正規言語という。
+
+図計1-2
+
+\paragraph{非決定性有限状態オートマトン (NFA: nondeterministic finite automaton)}
+
+DFA: 「状態」と「入力文字」に対して「次の状態」を与える
+
+NFA: 「状態」と「入力文字又は空列」に対して「取りうる次の状態集合」を与える。
+
+$P\left(Q\right)$で$Q$のべき集合を表すとする。
+
+例 $Q=\left\{ A,B,C\right\} ,P\left(Q\right)=\left\{ \emptyset,\left\{ A\right\} ,\left\{ B\right\} ,\left\{ C\right\} ,\left\{ A,B\right\} ,\left\{ A,C\right\} ,\left\{ B,C\right\} ,\left\{ A,B,C\right\} \right\} $
+
+$\Sigma_{\varepsilon}=\Sigma\cup\left\{ \varepsilon\right\} $とする。NFAの遷移関数は$\delta:Q\times\Sigma_{\varepsilon}\rightarrow P\left(Q\right)$
+
+図計1-3
+
+NFAは$\left(Q,\Sigma,\delta,q_{0},F\right)$で定義される
+\begin{enumerate}
+\item $Q$
+\item $\Sigma$
+\item $\delta$: $Q\times\Sigma_{\varepsilon}\rightarrow P\left(Q\right)$の遷移関数
+\item $q_{0}$
+\item $F$
+\end{enumerate}
+入力が終了した時で、1つでも受理状態にあれば、文字列はNFAに受理される。
+
+\begin{tabular}{|c|c|c|c|}
+\hline 
+ & 0 & 1 & $\varepsilon$\tabularnewline
+\hline 
+\hline 
+$q_{1}$ & $\left\{ q_{1}\right\} $ & $\left\{ q_{1},q_{2}\right\} $ & $\emptyset$\tabularnewline
+\hline 
+$q_{2}$ & $\left\{ q_{3}\right\} $ & $\emptyset$ & $\left\{ q_{3}\right\} $\tabularnewline
+\hline 
+$q_{3}$ & $\emptyset$ & $\left\{ q_{4}\right\} $ & $\emptyset$\tabularnewline
+\hline 
+$q_{4}$ & $\left\{ q_{4}\right\} $ & $\left\{ q_{4}\right\} $ & $\emptyset$\tabularnewline
+\hline 
+\end{tabular}
+
+\paragraph{NFAとDFAの等価性}
+
+DFAとNFAは同じ言語を受理する。
+
+全てのNFAがDFAに変換できることを示せば良い。
+
+NFAの$k$状態に対して、そのべき集合を考えれば良い。
+
+図計1-4
+
+\paragraph{正規演算 (regular operation)}
+
+$A,B$を正規言語とする。以下の3つを正規演算という。
+\begin{enumerate}
+\item 和集合演算 $A\cup B=\left\{ x|x\in A\:\text{or}\:x\in B\right\} $
+\item 連結演算 $A\circ B=\left\{ xy|x\in A\:\text{and}\:x\in B\right\} $
+\item スター演算 $A^{*}=\left\{ x_{1}x_{2}\cdots x_{k}|x\geq0\:\text{and}\:x_{i}\in A\right\} $
+\end{enumerate}
+$A=\left\{ \text{cat},\text{dog}\right\} ,B=\left\{ \text{car},\text{bus}\right\} $
+
+$A\cup B=\left\{ \text{cat},\text{dog},\text{car},\text{bus}\right\} $
+
+$A\circ B=\left\{ \text{catcar},\text{catbus},\text{dogcar},\text{dogbus}\right\} $
+
+$A^{*}=\left\{ \varepsilon,\text{cat},\text{dog},\text{catcat},\text{catdog},\text{dogcat},\text{dogdog},\cdots\right\} $
+
+正規言語は正規演算に対して閉じている。
+
+(「実数は四則に対して閉じている」「整数は四則に対して閉じていない」)
+
+\paragraph{和集合の証明}
+
+図計1-5
+
+\paragraph{連結演算の証明}
+
+図計1-6
+
+\paragraph{スター演算の証明}
+
+図計1-7
+
+\paragraph{正規表現}
+
+言語を記述する表現。正規表現は機能的に定義される。
+
+正規表現は以下の場合
+\begin{enumerate}
+\item アルファベットに属する$a$
+\item $\varepsilon$
+\item $\emptyset$
+\item $R_{1}$と$R_{2}$を正規表現として$\left(R_{1}\cup R_{2}\right)$
+\item $\left(R_{1}\circ R_{2}\right)$
+\item $\left(R_{1}^{*}\right)$
+\end{enumerate}
+言語は、正規表現で表される時、かつその時に限り正規言語である。
+\end{document}
