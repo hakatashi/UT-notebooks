@@ -1,0 +1,66 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=2cm,rmargin=2cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{setspace}
+\onehalfspacing
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-S 電気電子情報第一(前期)実験\\
+I3実験考察レポート}
+
+\author{学籍番号: 03-170512 氏名: 高橋光輝\\
+学籍番号03-170447 氏名: 鈴木遼}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+\global\long\def\ex#1#2{#1\times10^{#2}}
+
+
+\section{考察}
+
+I3実験では、情報実験の総まとめとして、これまでで作った電話プログラムを改造し、新しい機能、ないし性能を向上させるという演習を行った。
+
+我が班では、これまでTCPパケットで転送されていた電話通信をICMPパケットに置き換え、多様な通信環境に対応可能な電話プログラムの実現を図るとともに、opusコーデックを用いた音声圧縮を行うことによって、通信容量の削減とレイテンシの低下を図った。
+
+この課題を達成する上で、外部ライブラリ、特にlibopusの取り扱いに苦労した。libopusは主にsourceforgeでホスティングされているが、ドキュメントがとても探しづらく、また有効な実装例も見つからなかったため、手探りで、およびライブラリのソースコードを読みながら実装を進める必要があった。
+
+情報実験全体を通して、当初は電話プログラムという将来の役に立つのかわからない課題と、自由度の高すぎる発展課題にやや怖気づいていたが、発展課題については上手いアイデアと適当な落とし所を見つけて取り組むことができ、結果として多くの学びを得ることができた。
+
+また、発表会も非常に盛り上がり、聴衆としても楽しむことができる良い企画だと感じた。I3実験は前半の班と後半の班に分かれていたが、自分の所属するグループの発表以外も聞いてみたいとさえ思った。ただし発表の評価システムは非常に入力しずらく、またどの班がどの発表かもわかりずらかったので、まだ改善の余地があるように感じられた。
+\begin{thebibliography}{EEIC, 2017}
+\bibitem[EEIC, 2017]{key-1}東京大学工学部電気電子工学科電子情報工学科編『電気電子情報第一(前期)実験テキスト
+2017年4月』
+\end{thebibliography}
+
+\end{document}
