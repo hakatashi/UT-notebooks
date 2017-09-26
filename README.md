@@ -76,6 +76,7 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 * [2017年度 Aセメスター](2017A)
 	* [計算論](2017A/ComputationTheory.tex) - [PDF][ComputationTheory-pdf]
 	* [VLSI工学基礎](2017A/VLSIEngineering.tex) - [PDF][VLSIEngineering-pdf]
+	* [光電子工学I](2017A/PhotoelectronicEngineering.tex) - [PDF][PhotoelectronicEngineering-pdf]
 
 [Dynamics-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/Dynamics.pdf
 [mathIA-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/mathIA.pdf
@@ -131,6 +132,7 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 [SemiconductorDeviceEngineering-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017S/SemiconductorDeviceEngineering.pdf
 [ComputationTheory-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017A/ComputationTheory.pdf
 [VLSIEngineering-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017A/VLSIEngineering.pdf
+[PhotoelectronicEngineering-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017A/PhotoelectronicEngineering.pdf
 
 ## 規約
 
