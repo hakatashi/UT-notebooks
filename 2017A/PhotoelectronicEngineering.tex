@@ -1,0 +1,199 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amsmath}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-A 光電子工学}
+
+\author{教員: 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+
+
+\section*{光電子工学I (前半)}
+
+\subsection*{第1回}
+\begin{itemize}
+\item 科学・工学の先端。様々な応用。
+\item 電磁波
+\end{itemize}
+
+\section{光電子工学I (前半)}
+
+\subsection{複素振幅と解析信号}
+
+正弦波
+
+\[
+S\left(t\right)=S_{0}\cos\left(\omega t-\phi_{0}\right)=\Re A\e^{-\i\omega t}=\frac{1}{2}\left[A\e^{-\i\omega t}+A^{*}\e^{\i\omega t}\right]
+\]
+
+$S_{0}$: 振幅
+
+$\omega$: 角周波数
+
+$\phi_{0}$: 位相
+
+$A$: 複素振幅 $A=S_{0}\e^{\i\phi_{0}}$
+
+\paragraph{任意の信号}
+
+様々な$\omega$の正弦波の和
+
+\[
+\begin{cases}
+s\left(t\right)=\frac{1}{2\pi}\int\hat{s}\left(\omega\right)\e^{-\i\omega t}\mathrm{d}\omega\\
+\hat{s}\left(\omega\right)=\int s\left(t\right)\e^{\i\omega t}\mathrm{d}t
+\end{cases}
+\]
+
+\[
+s\left(t\right)=\Re\left[A\left(t\right)\e^{-\i\omega_{0}t}\right]=\Re.\varepsilon\left(t\right)
+\]
+
+$A\left(t\right)$: 複素振幅
+
+$\omega_{0}$: 中心周波数
+
+\subsection{ビートと群遅延}
+\begin{itemize}
+\item 2つの周波数の正弦波の和→強度が差周波で振動 (ビート)
+\end{itemize}
+\[
+\varepsilon\left(t\right)=A_{1}\e^{-\i\omega_{1}t}+A_{2}\e^{-\i\omega_{2}t}
+\]
+
+\[
+\left|\varepsilon\left(t\right)\right|^{2}=\varepsilon\left(t\right)\varepsilon^{*}\left(t\right)=\underbrace{\left|A_{1}\right|^{2}+\left|A_{2}\right|^{2}}_{\text{強度の時間平均}}+2\left|A_{1}\right|\left|A_{2}\right|\cos\left(\underbrace{-\left(\omega_{1}-\omega_{2}\right)t}_{\text{強度の時間変化}}+\underbrace{\phi_{1}-\phi_{2}}_{\text{位相}}\right)
+\]
+
+強度が最大になる時間$\tau=\frac{\phi_{1}-\phi_{2}}{\omega_{1}-\omega_{2}}$:
+群遅延
+
+\subsection{パルス波形と群遅延分散}
+
+ガウシアンパルス
+
+\begin{align*}
+A\left(t\right) & =A_{0}\exp\left(-\frac{1}{2}\left(\frac{t}{T_{0}}\right)^{2}\right)\\
+\left|A\left(t\right)\right|^{2} & =\left|A_{0}\right|^{2}\exp\left(-\left(\frac{t}{T_{0}}\right)^{2}\right)\\
+\xrightarrow{\mathcal{F}}\hat{A}\left(\omega\right) & =\sqrt{2\pi}A_{0}T_{0}\exp\left(-\frac{\left(\omega T_{0}\right)^{2}}{2}\right)
+\end{align*}
+
+図光1-1
+
+$\Delta t$: 半値全幅 (full-width half maximum: FWHM)
+
+\[
+\Delta t\Delta f=\left(\text{一定}\right)\qquad\left(\text{ガウシアンでは0.44}\right)
+\]
+
+位相が、時間に対して1次関数的に変化すると?
+
+図光1-2
+
+\[
+\mathcal{F}\left[\underbrace{A\left(t\right)\e^{-\i\Omega t}}_{A'\left(t\right)}\right]=A\left(\omega-\Omega\right)
+\]
+
+$\phi\left(t\right)=\arg A'\left(t\right)=\arg A_{0}-\Omega t$
+
+$\Omega=-\d{\phi\left(t\right)}t$: 瞬時周波数
+
+位相が、周波数に対して一次関数的に変化すると?
+
+図光1-3
+
+\[
+\mathcal{F}^{-1}\left[\hat{A}\left(\omega\right)\e^{-\i\omega\tau}\right]=A\left(t-\tau\right)
+\]
+
+\[
+\hat{\phi}\left(\omega\right)=\arg\hat{A}\left(\omega\right)\e^{\i\omega\tau}=\arg A_{0}+\omega t
+\]
+
+$\tau=\d{\hat{\phi}\left(\omega\right)}{\omega}$: 群遅延
+
+位相が、時間に対して2次関数的に変化すると?
+
+\[
+A''\left(t\right)=A\left(t\right)\exp\left(-\frac{\i C}{2}\left(\frac{t}{T_{0}}\right)^{2}\right)=A_{0}\exp\left(-\frac{1+\i C}{2}\left(\frac{t}{T_{0}}\right)^{2}\right)
+\]
+
+$\phi''\left(t\right)=\arg A''\left(t\right)=\arg A_{0}-\frac{C}{2}\left(\frac{t}{T_{0}}\right)^{2}\rightarrow\Omega=-\d{\phi^{2}\left(t\right)}t=\frac{C}{T_{0}^{2}}t$
+
+図光1-4
+
+フーリエ変換: $T_{0}\rightarrow\frac{T_{0}}{\sqrt{1+\i C}}$
+
+\[
+\hat{A}''\left(\omega\right)=\frac{\sqrt{2\pi}A_{0}T_{0}}{\sqrt{1+\i C}}\exp\left(-\frac{\left(\omega T_{0}\right)^{2}}{1+\i C}\right)
+\]
+
+スペクトル幅: $\sqrt{1+C^{2}}$倍
+
+\[
+\d{\hat{\phi}''\left(\omega\right)}{\omega}=\frac{CT_{0}^{2}}{1+C^{2}}\omega
+\]
+
+群遅延が$\omega$に依存 (\textbf{群遅延分散})
+
+\subsection{位相速度と群速度}
+
+\begin{align*}
+\varepsilon\left(z,t\right) & =A_{0}\exp.\i\left(kz-\omega t\right)\\
+\varepsilon\left(z,t+\Delta t\right) & =A_{0}\exp.\i\left(k\left(z-\frac{\omega}{k}\Delta t\right)-\omega t\right)
+\end{align*}
+
+$k=\frac{2\pi}{\lambda}$: 波数
+
+$\frac{\omega}{k}$を位相速度と呼ぶ。
+
+ビートの場合: 周波数$\omega_{1},\omega_{2}$・波数$k_{1},k_{2}$→群遅延$\tau=\frac{k_{1}z-k_{2}z}{\omega_{1}-\omega_{2}}$・ビートの速度$\frac{z}{\tau}=\frac{\omega_{1}-\omega_{2}}{k_{1}-k_{2}}$
+
+パルスの場合: $\tau=\d{k\left(\omega\right)z}{\omega}$→パルスの速度$v_{g}=\left(\d k{\omega}\right)^{-1}$
+
+※物質中で、$v_{g}$の$\omega$依存性 (群速度分散) があると、伝搬後にパルスが広がる。
+
+\subsection{スペクトル干渉とパルス列}
+
+図光1-5
+\end{document}
