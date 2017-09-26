@@ -1,0 +1,258 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{textcomp}
+\usepackage{amstext}
+\usepackage{amssymb}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-A VLSI工学基礎}
+
+\author{教員: 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\div{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+
+
+\section*{第1回}
+
+\paragraph{教科書}
+\begin{itemize}
+\item 「集積回路設計」浅田著 コロナ社
+\item (参) ``CMOS VLSI Design'' N.Weste., D.Harris Addison Wesley
+\end{itemize}
+
+\paragraph{講義}
+\begin{enumerate}
+\item MOSと論理回路
+\item CMOSインバータ
+\item 遅延モデル
+\item LSI製造プロセス
+\item 設計規則
+\item 電力
+\item 基本ゲート
+\item メモリー
+\item データパス
+\item 配線
+\item 回路シミュレーション
+\item 安定性
+\end{enumerate}
+
+\paragraph{評価}
+
+期末試験のみ (+出席点・毎回の課題による下駄)
+
+\paragraph{MOSトランジスタ}
+
+図VL1-1
+
+↓旧
+
+図VL1-2
+
+↓新
+
+図VL1-3
+\begin{itemize}
+\item 表面の凹凸が無い
+\item 素子分離の距離が小さい
+\end{itemize}
+
+\paragraph{MOSの動作}
+\begin{itemize}
+\item $I_{D}=0\:\left(V_{GS}\leqq V_{TH}\right)$ 実際には$I_{D}=I_{DO}\e^{\frac{qV_{GS}}{KT}}$
+\item $I_{D}=K_{p}\frac{w}{L}\left\{ \left(V_{GS}-V_{TH}\right)V_{DS}-\frac{V_{DS}^{2}}{2}\right\} \:\left(V_{TH}\leqq V_{GS}\leqq V_{DS}+V_{TH}\right)$
+\item $I_{D}=\frac{K_{p}}{2}\frac{w}{L}\left(V_{GS}-V_{TH}\right)^{2}\:\left(V_{GS}-V_{TH}\geqq V_{DS}\right)$
+\end{itemize}
+
+\paragraph{CMOS論理}
+
+例 インバータ
+
+・記号
+
+図VL1-4
+
+・真理値表
+
+\begin{tabular}{|c|c|}
+\hline 
+A & Y\tabularnewline
+\hline 
+\hline 
+0 & 1\tabularnewline
+\hline 
+1 & 0\tabularnewline
+\hline 
+\end{tabular}
+
+・トランジスタレベル回路図
+
+図VL1-5
+
+・CMOS論理: 一般化
+
+図VL1-6
+
+\begin{tabular}{|c|c|c|}
+\hline 
+Y & $P_{U}=\text{OFF}$ & $P_{U}=\text{ON}$\tabularnewline
+\hline 
+\hline 
+$P_{D}=\text{OFF}$ & HighZ & $Y=1$\tabularnewline
+\hline 
+$P_{D}=\text{ON}$ & $Y=0$ & \texttimes{}\tabularnewline
+\hline 
+\end{tabular}
+\begin{itemize}
+\item PMOS
+\begin{itemize}
+\item 入力$A=0$: PMOS: ON
+\item 入力$A=1$: PMOS: OFF
+\end{itemize}
+\item NMOS
+\begin{itemize}
+\item 入力$A=0$: NMOS: OFF
+\item 入力$A=1$: NMOS: ON
+\end{itemize}
+\end{itemize}
+
+\paragraph{MOSの直並列接続}
+
+・PMOS
+
+図VL1-7
+
+\begin{tabular}{|c|c|c|c|}
+\hline 
+ &  &  & \tabularnewline
+\hline 
+\hline 
+0 (ON) & 0 (ON) & 1 (OFF) & 1 (OFF)\tabularnewline
+\hline 
+0 (ON) & 1 (OFF) & 0 (ON) & 1 (OFF)\tabularnewline
+\hline 
+ON & OFF & OFF & OFF\tabularnewline
+\hline 
+\end{tabular}
+
+図VL1-8
+
+\begin{tabular}{|c|c|c|c|}
+\hline 
+ &  &  & \tabularnewline
+\hline 
+\hline 
+0 (ON) & 0 (ON) & 1 (OFF) & 1 (OFF)\tabularnewline
+\hline 
+0 (ON) & 1 (OFF) & 0 (ON) & 1 (OFF)\tabularnewline
+\hline 
+ON & ON & ON & OFF\tabularnewline
+\hline 
+\end{tabular}
+
+・NMOS
+
+図VL1-9
+
+\begin{tabular}{|c|c|c|c|}
+\hline 
+ &  &  & \tabularnewline
+\hline 
+\hline 
+0 (OFF) & 0 (OFF) & 1 (ON) & 1 (ON)\tabularnewline
+\hline 
+0 (OFF) & 1 (ON) & 0 (OFF) & 1 (ON)\tabularnewline
+\hline 
+OFF & OFF & OFF & ON\tabularnewline
+\hline 
+\end{tabular}
+
+図VL1-10
+
+\begin{tabular}{|c|c|c|c|}
+\hline 
+ &  &  & \tabularnewline
+\hline 
+\hline 
+0 (OFF) & 0 (OFF) & 1 (ON) & 1 (ON)\tabularnewline
+\hline 
+0 (OFF) & 1 (ON) & 0 (OFF) & 1 (ON)\tabularnewline
+\hline 
+OFF & ON & ON & ON\tabularnewline
+\hline 
+\end{tabular}
+
+PMOSの直列はNMOSの並列に、PMOSの並列はNMOSの直列に対応する。
+
+\paragraph{複合ゲート}
+
+\[
+Y=\overline{AB+CD}
+\]
+
+Nネットワーク $AB+CD$
+
+図VL1-11
+
+$Y=\overline{AB+CD}$の複合ゲートでの実現
+
+図VL1-12
+
+\paragraph{複雑な論理}
+
+4入力NAND
+
+図VL1-13
+
+\paragraph{宿題}
+
+次のトランジスタレベル回路図を書け。
+\begin{itemize}
+\item 4入力NOR
+\item $Y=\overline{A\cdot B\cdot C+D}$
+\item $Y=\overline{\left(AB+C\right)\cdot D}$
+\item $Y=\overline{AB+C\left(A+B\right)}$
+\end{itemize}
+ただし、最もトランジスタ数が少なくなるCMOS回路として。
+\end{document}
