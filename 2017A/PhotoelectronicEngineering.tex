@@ -196,4 +196,163 @@ $\frac{\omega}{k}$を位相速度と呼ぶ。
 \subsection{スペクトル干渉とパルス列}
 
 図光1-5
+
+\section*{第2回}
+
+\section{?}
+
+\subsection{?}
+
+\subsection{2つの平面波の干渉}
+
+\begin{align*}
+A\left(\boldsymbol{r}\right) & =A_{1}\exp\left(\i\boldsymbol{k}_{1}\cdot\boldsymbol{r}\right)+A_{2}\exp\left(\i\boldsymbol{k}_{2}\cdot\boldsymbol{r}\right)\\
+\left|A\left(\boldsymbol{r}\right)\right|^{2} & =\left|A_{1}\right|^{2}+\left|A_{2}\right|^{2}+2\Re A_{1}A_{2}^{*}\exp\left(\i\left(\boldsymbol{k}_{1}-\boldsymbol{k}_{2}\right)\cdot\boldsymbol{r}\right)
+\end{align*}
+
+ここで
+\[
+2\Re A_{1}A_{2}^{*}\exp\left(\i\left(\boldsymbol{k}_{1}-\boldsymbol{k}_{2}\right)\cdot\boldsymbol{r}\right)=2\left|A_{1}\right|\left|A_{2}\right|\cos\left(\left(\boldsymbol{k}_{1}-\boldsymbol{k}_{2}\right)\cdot\boldsymbol{r}+\phi_{1}-\phi_{2}\right)
+\]
+
+
+\subsection{ガウシアンビーム}
+
+$z=0$における複素振幅
+
+\begin{align*}
+A\left(x,y,0\right) & =A_{0}\exp\left(-\frac{1}{2}\left(\frac{x}{W_{0}}\right)^{2}\right)\exp\left(-\frac{1}{2}\left(\frac{y}{W_{0}}\right)^{2}\right)\\
+\tilde{A}\left(k_{x},k_{y}\right) & =F_{xy}\left[A\left(x,y,0\right)\right]=\iint A\left(x,y\right)\e^{-\i\left(k_{x}x+k_{y}y\right)}\mathrm{d}x\mathrm{d}y\\
+A\left(x,y,0\right) & =F_{xy}^{-1}\left[\tilde{A}\left(k_{x},k_{y}\right)\right]=\left(\frac{1}{2\pi}\right)^{2}\iint\tilde{A}\left(k_{x},k_{y}\right)\e^{\i\left(k_{x}x+k_{y}y\right)}\mathrm{d}k_{x}\mathrm{d}k_{y}\\
+A\left(x,y,z\right) & =\left(\frac{1}{2\pi}\right)^{2}\iint\tilde{A}\left(k_{x},k_{y}\right)\e^{\i\left(k_{x}x+k_{y}y+k_{z}z\right)}\mathrm{d}k_{x}\mathrm{d}k_{y}\\
+ & =F_{xy}^{-1}\left[\tilde{A}\left(k_{x},k_{y}\right)\e^{\i k_{z}z}\right]
+\end{align*}
+
+ただし
+\[
+k_{z}=k-\frac{k_{x}^{2}+k_{y}^{2}}{2k}
+\]
+
+波長が長く($k$が小さい)、ビームが短いほど、$\boldsymbol{k}$の広がりが大きく、早く広がる。(回折)
+
+$\boldsymbol{k}$が長い($\lambda\rightarrow0$)と、光は広がらない。真っ直ぐ進む(光線)
+
+\[
+A\left(x,y,z\right)=\underbrace{a\left(z\right)\exp\left(\i kz\right)}_{x=y=0\text{における複素振幅}}\underbrace{\exp\left(-\frac{1}{2}\frac{x^{2}+y^{2}}{\underbrace{W_{0}^{2}\left(z\right)}_{\text{ビームの幅}}}\right)}_{\text{ビームの空間強度}}\exp\left(\frac{\i k}{2}\frac{x^{2}+y^{2}}{\underbrace{R\left(z\right)}_{\text{波面の曲率半径}}}\right)
+\]
+
+
+\section*{第3回}
+
+\section{回折}
+
+伝搬とともに光が形を変える
+
+\subsection{角スペクトル法}
+
+図光3-1
+
+$A_{1}\left(x,y\right)$を平面波に分解
+
+\begin{align*}
+\hat{A}_{1}\left(k_{x},k_{y}\right) & =F_{xy}\left[A\left(x,y\right)\right]\\
+\hat{A}_{2}\left(k_{x},k_{y}\right) & =\hat{A}_{1}\left(k_{x},k_{y}\right)\exp\left(\i\left(k-\frac{k_{x}^{2}+k_{y}^{2}}{2k}\right)z\right)\\
+\rightarrow A_{2}\left(x,y\right) & =F^{-1}\left[\hat{A}_{2}\left(k_{x},k_{y}\right)\right]
+\end{align*}
+
+※$\i\left(k-\frac{k_{x}^{2}+k_{y}^{2}}{2k}\right)=\sqrt{k^{2}-k_{x}^{2}-k_{y}^{2}}=k_{z}$
+
+\subsection{フレネル回折積分}
+
+実空間で表したもの
+
+\[
+A_{2}\left(x,y\right)=A_{1}\left(x,y\right)\Asterisk H\left(x,y\right)
+\]
+
+$H\left(x,y\right)\leftarrow F^{-1}\left[\exp\i\left(k-\frac{k_{x}^{2}+k_{y}^{2}}{k}\right)z\right]$
+
+$H\left(x,y\right)$の導出: ガウシアンビームの解$A\left(x,y,z\right)$に対し、$2\pi A_{0}W_{0}^{2}=1$を保ったまま$W_{0}\rightarrow0$
+
+\[
+\hat{A}\left(k_{x},k_{y}\right)=A_{0}\sqrt{2\pi}W_{0}\exp\left(-\frac{1}{2}\left(k_{0}W_{0}\right)^{2}\right)\sqrt{2\pi}W_{0}\exp\left(-\frac{1}{2}\left(k_{0}W_{0}\right)\right)\rightarrow1
+\]
+
+\[
+A\left(x,y,z\right)\rightarrow\frac{1}{\i\lambda z}\exp\left(\i k\left(z+\frac{x^{2}+y^{2}}{2z}\right)\right)\equiv H\left(x,y\right)
+\]
+
+$H\left(x,y\right)$の意味: $H\left(x,y\right)\sim\frac{1}{\i\lambda r}\e^{\i kr}$
+(球面波)
+
+図光3-2
+\begin{itemize}
+\item $\frac{1}{z}\left(\frac{1}{r}\right)$で減衰: エネルギー保存
+\item $\frac{1}{\lambda}$に比例。$\lambda$が大きいほど早く回折
+\end{itemize}
+\begin{align*}
+A_{2}\left(x,y\right) & =\iint A_{1}\left(X,Y\right)H\left(x-X,y-Y\right)\mathrm{d}X\mathrm{d}Y\\
+ & =\frac{\e^{\i kz}}{\i\lambda z}\iint A_{1}\left(X,Y\right)\exp\frac{\i k\left(\left(x-X\right)^{2}+\left(y-Y\right)^{2}\right)}{2z}\mathrm{d}X\mathrm{d}Y
+\end{align*}
+
+$A_{2}$は$A_{1}$に球面波を畳み込んだもの。
+
+もし、$A_{1}\left(x,y\right)=1$とすると?
+
+\begin{align*}
+\hat{A}_{1}\left(k_{x},k_{y}\right) & =\left(2\pi\right)^{2}\delta\left(k_{x}\right)\delta\left(k_{x}\right)\\
+\hat{A}_{2}\left(k_{x},k_{y}\right) & =\hat{A}_{1}\left(k_{x},k_{y}\right)\exp\left(\i\left(k-\frac{k_{x}^{2}+k_{y}^{2}}{2k}\right)z\right)\\
+ & =\left(2\pi\right)^{2}\delta\left(k_{x}\right)\delta\left(x_{y}\right)\exp\i kz\\
+\hat{A}_{2}\left(x,y\right) & =\exp\i kz\leftarrow\text{平面波}
+\end{align*}
+
+球面波を一様に平面で畳み込むと、平面波。
+
+図3-3
+
+これをホイヘンスの原理という。
+
+\subsection{フラウンホーファー回折}
+
+図光3-4
+
+十分遠方では$\left|A_{2}\left(x,y\right)\right|^{2}$は$\left|\hat{A}_{1}\left(k_{x},k_{y}\right)\right|^{2}$と相似。
+
+\begin{align*}
+A_{x}\left(x,y\right)= & \frac{\exp\i kz}{\i\lambda z}\iint A_{1}\left(X,Y\right)\exp\frac{\i k\left(\left(x-X\right)^{2}+\left(y-Y\right)^{2}\right)}{2z}\mathrm{d}X\mathrm{d}Y\\
+= & \frac{\exp\i kz}{\i\lambda z}\exp\frac{\i k\left(x^{2}+y^{2}\right)}{2z}\\
+ & \times\iint\underbrace{A_{1}\left(X,Y\right)\exp\frac{\i k\left(X^{2}+Y^{2}\right)}{2z}\exp\frac{-ik}{z}\left(xX+yY\right)}_{\hat{A}_{1}\left(\frac{k}{z}x,\frac{k}{z}y\right)}\mathrm{d}X\mathrm{d}Y
+\end{align*}
+
+\[
+\left|A_{2}\left(x,y\right)\right|^{2}\propto\left|A_{1}\left(\frac{k}{z}x,\frac{k}{z}y\right)\right|^{2}
+\]
+
+
+\subsection{開口による回折}
+
+図光3-5
+
+ダブルスリット
+
+図光3-6
+
+円形開口による回折
+
+図光3-7
+
+$\frac{J_{1}\left(r\right)}{r}$: 円盤の2次元フーリエ変換
+
+$k_{r}=\sqrt{k_{x}^{2}+k_{y}^{2}}$の関数
+
+図光3-8
+
+ベッセル関数: 
+\[
+J_{n}\left(m\right)=\int_{-\pi}^{\pi}\e^{\i m\sin t}\e^{-\i nt}\mathrm{d}t
+\]
+
+位相変調のフーリエ展開級数
+
+図光3-9
 \end{document}
