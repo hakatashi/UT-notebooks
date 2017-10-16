@@ -8,7 +8,8 @@
 \setlength{\parskip}{\smallskipamount}
 \setlength{\parindent}{0pt}
 \usepackage{textcomp}
-\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 \makeatletter
 
@@ -44,7 +45,7 @@
 \global\long\def\j{\mathrm{j}}
 \global\long\def\grad{\operatorname{grad}}
 \global\long\def\rot{\operatorname{rot}}
-\global\long\def\div{\operatorname{div}}
+\global\long\def\opdiv{\operatorname{div}}
 \global\long\def\diag{\operatorname{diag}}
 \global\long\def\rank{\operatorname{rank}}
 \global\long\def\prob{\operatorname{Prob}}
@@ -186,5 +187,160 @@ $A^{*}=\left\{ \varepsilon,\text{cat},\text{dog},\text{catcat},\text{catdog},\te
 \item $\left(R_{1}\circ R_{2}\right)$
 \item $\left(R_{1}^{*}\right)$
 \end{enumerate}
-言語は、正規表現で表される時、かつその時に限り正規言語である。
+言語は、正規表現で表される時、かつその時に限り正規言語である。g
+
+\section*{第3回}
+
+\paragraph{例}
+
+$B=\left\{ 0^{n}1^{n}|n\geq0\right\} $に対してポンピング補題を適用する
+
+ある$s\in B$がポンプ出来ないことを示す。
+
+ポンプ可能と仮定する (ポンピング長を$p$とする)
+
+$s=0^{p}1^{p}$を考える。$s\in B$である。$s=xyz$に分解できるはず。
+\begin{enumerate}
+\item $y=0$のみの場合。$xy^{2}z$は0が1より多いので、$xy^{2}z\notin B$
+\item $y=1$のみの場合。$xy^{2}z$は1が1より多いので、$xy^{2}z\notin B$
+\item $y$が0、1を含む。$xy^{2}z\left(=0\cdots010111\cdots1\right)$は1を0の前に持つので、$xy^{2}z\notin B$
+\item ポンピング補題を満たさない。$B$は非正規。
+\end{enumerate}
+
+\paragraph{非正規言語でポンピング補題を満たす例}
+
+\[
+E=\left\{ ab^{j}c^{j}|j\geq0\right\} \cup\left\{ a^{i}a^{j}a^{k}|i,j,k\geq0\text{かつ}i\neq1\right\} 
+\]
+
+$E$はポンプ可能である。$F=L\left(ab^{*}c^{*}\right)$を考える。$F$は正規言語。
+
+$E\cap F=\left\{ ab^{j}c^{j}|j\geq0\right\} $は正規言語ではない。
+
+正規言語の積集合は正規言語なので、$E$は正規言語でない。
+
+\paragraph{文脈自由文法 (CFG: context free grammar)}
+
+\begin{tabular}{|c|c|c|}
+\hline 
+ & 出力 & 受け取る\tabularnewline
+\hline 
+\hline 
+正規言語 & 正規表現 & DFA\tabularnewline
+\hline 
+文脈自由言語 & CFG & PDA\tabularnewline
+\hline 
+\end{tabular}
+
+※PDAはプッシュダウン・オートマトンの略。
+
+CFGは正規表現よりも複雑な言語を生成可能である。
+
+CFGは人の離す言語を解析するために考案されたモデル。
+
+CFGは4つの変数$\left(V,\Sigma,R,S\right)$によって定義される。
+\begin{itemize}
+\item $V$は変数の有限集合 (非終端記号とも言う)
+\item $\Sigma$は終端記号の有限集合。$\Sigma\cap V=\oslash$
+\item $R$は書き換え規則の有限集合
+\item $S\in V$は開始記号
+\end{itemize}
+書き換え規則は$A\rightarrow\alpha\left(A\in V,\alpha\in\left(\Sigma\cup V\right)^{*}\right)$で表される。
+
+書き換え規則$R$を開始記号に適用することで文 (文字列) が精製される。
+
+例えば$\alpha_{1}A\alpha_{2}\left(\alpha_{1},\alpha_{2}\in\left(\Sigma\cup V\right)^{*},A\in V\right)$に上の規則を適用すると$\alpha_{1}\alpha\alpha_{2}$になる。
+
+$\alpha_{1}\xrightarrow[\text{書き換え規則を適用}]{}\alpha_{2}\rightarrow\cdots\rightarrow\alpha_{n}$の解き、$\alpha_{n}$は$\alpha_{1}$から導出
+(derive) されるという。
+
+この導出過程は構文解析木と呼ばれる木構造で表せる。
+
+集合$\left\{ w\in\Sigma^{*}|S\text{から導出される}w\right\} $を文法の言語という。
+
+\paragraph{例}
+
+\begin{align*}
+V & =\left\{ \left\langle \text{expr}\right\rangle ,\left\langle \text{op2}\right\rangle ,\left\langle \text{op1}\right\rangle ,\left\langle \text{var}\right\rangle ,\left\langle \text{const}\right\rangle \right\} \\
+\Sigma & =\left\{ +,-,\times,\div,\sin,\cos,\exp,\log,x,C\right\} \\
+S & =\left\langle \text{expr}\right\rangle 
+\end{align*}
+
+$R$:
+\begin{align*}
+\left\langle \text{expr}\right\rangle  & \rightarrow\left\langle \text{op2}\right\rangle \left\langle \text{expr}\right\rangle \left\langle \text{expr}\right\rangle |\left\langle \text{op1}\right\rangle \left\langle \text{expr}\right\rangle |\left\langle \text{var}\right\rangle \left\langle \text{const}\right\rangle \\
+\left\langle \text{op2}\right\rangle  & \rightarrow+|-|\times|\div\\
+\left\langle \text{op1}\right\rangle  & \rightarrow\sin|\cos|\exp|\log\\
+\left\langle \text{var}\right\rangle  & \rightarrow x\\
+\left\langle \text{const}\right\rangle  & \rightarrow C
+\end{align*}
+
+\begin{align*}
+\left\langle \text{expr}\right\rangle  & \rightarrow\left\langle \text{op2}\right\rangle \left\langle \text{expr}\right\rangle \left\langle \text{expr}\right\rangle \\
+ & \rightarrow+\left\langle \text{expr}\right\rangle \left\langle \text{expr}\right\rangle \\
+ & \rightarrow+\left\langle \text{op2}\right\rangle \left\langle \text{expr}\right\rangle \left\langle \text{expr}\right\rangle \left\langle \text{expr}\right\rangle \\
+ & \rightarrow++\left\langle \text{expr}\right\rangle \left\langle \text{expr}\right\rangle \left\langle \text{expr}\right\rangle \\
+ & \rightarrow++\left\langle \text{op1}\right\rangle \left\langle \text{expr}\right\rangle \left\langle \text{expr}\right\rangle \left\langle \text{expr}\right\rangle \\
+ & \rightarrow++\log\left\langle \text{expr}\right\rangle \left\langle \text{expr}\right\rangle \left\langle \text{expr}\right\rangle \\
+ & \rightarrow++\log\left\langle \text{var}\right\rangle \left\langle \text{expr}\right\rangle \left\langle \text{expr}\right\rangle \\
+ & \rightarrow++\log x\left\langle \text{expr}\right\rangle \left\langle \text{expr}\right\rangle \\
+ & \rightarrow++\log x\left\langle \text{var}\right\rangle \left\langle \text{expr}\right\rangle \\
+ & \rightarrow++\log xx\left\langle \text{expr}\right\rangle \\
+ & \rightarrow++\log xx\left\langle \text{const}\right\rangle \\
+ & \rightarrow++\log xxC
+\end{align*}
+
+※$+\left(+\left(\log\left(x\right),x\right),C\right)\rightarrow\log x+x+C$
+
+構文解析木 (図略)
+
+正規表現では$\left\{ 0^{n}1^{n}|n\geq0\right\} $を生成できなかった。
+
+CFGでは$E\rightarrow0E1|\varepsilon$とし、$S=E,\Sigma=\left\{ 0,1\right\} $とすることで生成できる。
+
+\paragraph{$DFA\subsetneq CFG$ (正規言語$\subsetneq$文脈自由言語)}
+
+任意の正規言語に対して、それを受理するDFAから$L$を生成するCFGを構成できる。
+
+$L$を受理するDFAを$M$とする。$M$の各繊維規則$\delta\left(q_{i},a\right)=q_{j}$に対してCFGの書き換え規則$q_{i}\rightarrow aq_{j}$を作成する。$q_{j}$が受理状態の時$q_{j}\rightarrow\varepsilon$を追加する。$M$の開始状態が$q_{0}$なら、CFGの開始変数を$q_{0}$とする。
+
+\paragraph{最左導出}
+
+文字列の導出において、最も左の変数に書き換え規則を適用する導出を最左導出という。
+
+CFGから生成されるすべての文字列は最左導出可能。
+
+文字列$w$が2つの最左導出を持つ場合、その文法は曖昧であるという。
+
+曖昧な例
+
+\[
+\left\langle \text{expr}\right\rangle \rightarrow\left\langle \text{expr}\right\rangle \div\left\langle \text{expr}\right\rangle |\left\langle \text{expr}\right\rangle \times\left\langle \text{expr}\right\rangle |\left\langle \text{expr}\right\rangle |a
+\]
+
+この時$a\div a\times a$は2つ以上の最左導出をもつ。
+
+\paragraph{チョムスキー標準形 (CNF: Chomsxy normal form)}
+
+全ての書き換え規則が$B,C\in V$ (但し開始記号は含まない), $a\in\Sigma$に対して
+\[
+A\rightarrow BC,A\rightarrow a
+\]
+となっている時CNFであると言う。$S\rightarrow\varepsilon$を加えても良い。
+\begin{itemize}
+\item $\left\langle \text{expr}\right\rangle \rightarrow a$: ◯
+\item $\left\langle \text{expr}\right\rangle \rightarrow\left\langle \text{op1}\right\rangle \left\langle expr\right\rangle $:
+◯
+\item $\left\langle \text{op1}\right\rangle \left\langle \text{expr}\right\rangle \rightarrow\left\langle \text{op2}\right\rangle \left\langle \text{expr2}\right\rangle $:
+\texttimes{}
+\end{itemize}
+任意の文法はCNFに変換可能である。
+
+\paragraph{グライバッハ標準形 (GNF: Greibach \textasciitilde{})}
+
+全ての書き換え規則が、$B$が開始記号意外の変数からなる文字列 (空列を含む), $a\in\Sigma$に対して
+\[
+a\rightarrow aB
+\]
+となっている時GNFであるという。$S\rightarrow\varepsilon$を加えてもよい。
 \end{document}
