@@ -78,6 +78,7 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 	* [VLSI工学基礎](2017A/VLSIEngineering.tex) - [PDF][VLSIEngineering-pdf]
 	* [光電子工学I](2017A/PhotoelectronicEngineering.tex) - [PDF][PhotoelectronicEngineering-pdf]
 	* [数学3](2017A/Mathematics3.tex)- [PDF][Mathematics3-pdf]
+	* [電気回路II](2017A/ElectronicCircuit2.tex)- [PDF][ElectronicCircuit2-pdf]
 
 [Dynamics-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/Dynamics.pdf
 [mathIA-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2013S/mathIA.pdf
@@ -135,6 +136,7 @@ hakatashiが東京大学で個人用に記録した板書ノートを公開す�
 [VLSIEngineering-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017A/VLSIEngineering.pdf
 [PhotoelectronicEngineering-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017A/PhotoelectronicEngineering.pdf
 [Mathematics3-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017A/Mathematics3.pdf
+[ElectronicCircuit2-pdf]: http://ut-notebooks.s3-website-ap-northeast-1.amazonaws.com/2017A/ElectronicCircuit2.pdf
 
 ## 規約
 
