@@ -1,0 +1,182 @@
+%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{hyperref}
+\usepackage[dvipdfmx]{pxjahyper}
+
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{2017-A 電子回路II}
+
+\author{教員: 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+\global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+\global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+\global\long\def\e{\mathrm{e}}
+\global\long\def\i{\mathrm{i}}
+\global\long\def\j{\mathrm{j}}
+\global\long\def\grad{\operatorname{grad}}
+\global\long\def\rot{\operatorname{rot}}
+\global\long\def\opdiv{\operatorname{div}}
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\rank{\operatorname{rank}}
+\global\long\def\prob{\operatorname{Prob}}
+\global\long\def\cov{\operatorname{Cov}}
+\global\long\def\when#1{\left.#1\right|}
+\global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+
+
+\section*{第4回}
+
+\subsection*{フィードバック回路}
+
+\begin{equation}
+\begin{cases}
+v_{in}-kHv_{1}=v_{1}\\
+v_{out}=kv_{1}
+\end{cases}\label{eq:1-2}
+\end{equation}
+
+\ref{eq:1-2}の両式から$v_{1}$を消去
+
+\[
+\begin{cases}
+v_{in}=\left(1+kH\right)v_{1}\\
+v_{out}=kv_{1}
+\end{cases}\rightarrow v_{out}=\frac{k}{1+kH}v_{in}
+\]
+
+増幅率
+\[
+A=\frac{v_{out}}{v_{in}}=\frac{k}{1+kH}=\frac{1}{\frac{1}{k}+H}\simeq\frac{1}{H}\left(=H^{-1}\right)
+\]
+
+
+\paragraph{フィードバック回路のメリット}
+
+その1: システムの増幅率が$k$に非依存
+
+\[
+\frac{\Delta A}{A}=\circ\frac{\Delta k}{k}+\square\frac{\Delta H}{H}
+\]
+
+というような感度解析を行いたい。
+
+\[
+\log\left(\frac{k}{1+kH}\right)=\log k-\log\left(HkH\right)\triangleq X
+\]
+とする。
+
+$k$に対する感度は、
+\begin{equation}
+\pd Xk=\frac{1}{k}-\pd{}k\log\left(1+kH\right)=\frac{1}{k}-\frac{1}{1+kH}\cdot H=\frac{1+kH-kH}{k\left(1+kH\right)}=\frac{1}{k\left(1+kH\right)}\label{eq:2-1}
+\end{equation}
+
+$H$に対する感度は、
+\begin{align}
+\pd XH & =\pd{}H\log k-\pd{}H\log\left(1+kH\right)\nonumber \\
+ & =0-\frac{1}{1+kH}\cdot k=-\frac{k}{1+kH}\label{2-2}
+\end{align}
+
+ところで
+\begin{equation}
+\pd{\log A}A=\frac{1}{A}\label{eq:2-3}
+\end{equation}
+である。
+
+\begin{equation}
+\pd{\log A}A\Delta A=\pd{\log A}k\Delta k+\pd{\log A}H\Delta H\label{eq:2-4}
+\end{equation}
+
+\[
+\therefore\frac{\Delta A}{A}=\frac{\Delta k}{k\left(1+kH\right)}-\frac{k\Delta H}{1+kH}
+\]
+
+\[
+\frac{\Delta A}{A}=\frac{1}{1+kH}\frac{\Delta k}{k}-\frac{kH}{1+kH}\frac{\Delta H}{H}
+\]
+
+より$\frac{1}{1+kH}$が$k$に対する感度、$-\frac{kH}{1+kH}$が$H$に対する感度となる。
+
+$kH\gg1$なので、$\frac{1}{1+kH}$はほぼ$0$、$-\frac{kH}{1+kH}$はほぼ$-1$となる。
+
+\subsubsection*{フィードバック回路の例}
+
+\paragraph{演算増幅器 (OPAMP) を使ったフィードバック回路}
+
+{[}図略: オペアンプ{]}
+
+オペアンプ: 「差動」増幅 シングルエンド出力 $k\left(V_{+}-V_{-}\right)$
+
+{[}図略: オペアンプを用いたフィードバック回路{]}
+
+\[
+\begin{cases}
+V_{+}=v_{in}\\
+V_{-}=\frac{R_{1}}{R_{1}+R_{2}}v_{out}\\
+v_{out}=k\left(V_{+}-V_{-}\right)\left(1+kH\right)v_{out}=kv_{in}
+\end{cases}
+\]
+
+\[
+\therefore v_{out}=\frac{k}{1+kH}v_{in}\rightarrow\frac{R_{1}+R_{2}}{R_{1}}=1+\frac{R_{2}}{R_{1}}
+\]
+
+フィードバック回路のメリットその1: システムの増幅率が$k$に非依存
+
+フィードバック回路のメリットその2: 出力端がノイズに強くなる
+
+\[
+kv_{1}+v_{n}=v_{out}
+\]
+
+\[
+-Hv_{out}=v_{1}
+\]
+
+\[
+-kHv_{out}+v_{n}=v_{out}
+\]
+
+\[
+v_{n}=\left(1+kH\right)v_{out}
+\]
+
+\[
+\therefore v_{out}=\frac{1}{1+kH}v_{n}
+\]
+
+c.f. ストレート回路では⋯⋯
+
+\[
+v_{out}=Av_{in}+v_{n}
+\]
+
+\[
+v_{in}=0=v_{n}
+\]
+
+フィードバック回路のメリットその3: 入出力インピーダンスが理想的になる
+\end{document}
