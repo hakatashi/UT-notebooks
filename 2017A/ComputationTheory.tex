@@ -343,4 +343,216 @@ A\rightarrow BC,A\rightarrow a
 a\rightarrow aB
 \]
 となっている時GNFであるという。$S\rightarrow\varepsilon$を加えてもよい。
+
+\section*{第n回}
+
+任意の文脈自由言語$A$に対して、ある数$p$ (ポンピング長) が存在して、$s$が少なくとも長さ$\phi$である$A$の文字列である時、$s$は以下の条件を満たす断片$s=uvxyz$に分解することができる。
+\begin{enumerate}
+\item 任意の$i\geq0$に対して、$uv^{i}xy^{i}z\in A$
+\item $\left|vy\right|>0$
+\item $\left|vxy\right|\leq p$
+\end{enumerate}
+{[}図略: ピラミッドみたいなの{]}
+
+$V$を変数とする。$b$を書き換え規則の右辺の最大文字数とする (CNFなら$b=2$)。構文解析木の高さを$h$とする。生成される文字列の長さは$b^{n}$以下。逆に言うと長さが$b^{h}+1$なら、構文解析木の高さは$h+1$以上。
+
+ポンピング長$p=b^{\left|v\right|+1}\;\left(>b^{\left|v\right|}+1\right)$とすると、ある文字列$s$が$p$以上なら、その高さは$\left|v\right|+1$以上である。
+
+この構文解析木では必ず2度以上同じ変数が出現する (その変数を$R$とする)。
+
+図のように$s$を$s=uvxyz$に分解する。下の$R$と上の$R$を入れ替えても正しいため$uv^{2}xy^{2}z$も、$uxz$も導出される。よって$uv^{i}xy^{i}z\;\left(i\geq0\right)$はこの文法によって導出される。
+
+$vxy$の高さは最大で$\left|v\right|+1$なので、$vxy$は最大でも$b^{\left|v\right|+1}=\phi$である。
+
+\paragraph{例}
+
+$B=\left\{ a^{n}b^{n}c^{n}|n\geq0\right\} $は文脈自由言語ではない。
+
+$p$をポンピング長として、$s=a^{p}b^{p}c^{p}\in B$。
+
+ポンピング補題より$s=uvxyz$に分解できる。$v$は$a$のみ、$b$のみ、$ab$混合の場合がある ($y$も同様)。$uv^{i}xy^{i}z$は、$a,b,c$の個数が正しくない
+or $0,b,c$の順番が正しくない。$B$は文脈自由言語ではない。
+
+\paragraph{プッシュダウン・オートマトン (PDA)}
+
+NFAと似たオートマトンで、スタックという記憶装置を持つ。
+
+PDAは文脈自由言語を受理する。
+
+{[}図略: PDAの動作{]}
+
+スタックはLIFO (Last In First Out)である。
+
+スタックに書き込むことをpushといい、読み出すことをpopという。
+
+PDAの持つスタックはサイズが部制限である。PDAは非決定性に動作する。 (決定的PDAもある。決PDA≠非PDA)
+
+PDAは$M=\left(Q,\Sigma,\Gamma,\delta,Z_{0},F\right)$で定義される。
+
+$Q$: 状態集合 (有限)
+
+$\Sigma$: アルファベット (テープ)
+
+$\Gamma$: スタックアルファベット
+
+$\delta$: 遷移関数$Q\times\Sigma_{\varepsilon}\times\Gamma\rightarrow P^{-}\left(Q\times\Gamma^{*}\right)$
+\begin{itemize}
+\item 最大1文字読む。$\varepsilon$でもOK。
+\item 一番上のスタックは必ずポップ
+\item 0以上の文字をスタックにプッシュ
+\end{itemize}
+$q_{0}\in Q$: 開始状態
+
+$F\subset Q$: 受理状態集合
+
+$Z_{0}\in\Gamma$: 初期スタック
+
+\paragraph{例}
+
+\[
+L=\left\{ ww^{R}|w\in\left(0\cup1\right)^{*}\right\} 
+\]
+
+回文を受理するPDAを考える。
+
+\begin{align*}
+Q & =\left\{ q_{0},q_{1},q_{2}\right\} \\
+\Sigma & =\left\{ 0,1\right\} \\
+\Gamma & =\Sigma\cup\left\{ Z_{0}\right\} \\
+q & :\text{開始}\\
+F & =\left\{ q_{2}\right\} \\
+Z_{0} & :\text{初期スタック}
+\end{align*}
+
+様相=PDAの状態を表す (状態、読み残している文字列、スタック)
+
+PDAには、2種類の受理方式がある。 (さっきの例は受理状態での受理)
+
+\paragraph{受理状態での受理}
+
+\[
+\left(q_{0},X,Z_{0}\right)\Rightarrow\left(q,\varepsilon,\beta\right)
+\]
+
+\begin{itemize}
+\item $q\in F$
+\item すべての文字列を読み終える
+\item スタックには何か残っているかもしれない
+\end{itemize}
+
+\paragraph{空のスタックで受理}
+
+\[
+\left(q_{0},X,Z_{0}\right)\Rightarrow\left(q,\varepsilon,\varepsilon\right)
+\]
+
+\begin{itemize}
+\item $q$はどこでも良い
+\item すべての文字は読み終わる
+\item スタックは空
+\end{itemize}
+どちらの方式でも容易に相互変換可能
+
+\paragraph{CFGとPDAの等価性}
+
+あるPDAがある言語を受理する時、かつその時に限り、言語は文脈自由である。
+
+\begin{align*}
+\delta\left(q_{0,}\varepsilon,Z_{0}\right) & =\left\{ \left(q_{1},SZ_{0}\right)\right\} \\
+\delta\left(q_{1},\varepsilon,A\right) & =\left\{ \left(q,\alpha\right)|A\rightarrow\alpha\text{は}G\text{の文法}\right\} \\
+\delta\left(q,a,a\right) & =\left\{ \left(q,\varepsilon\right)\right\} \\
+\delta\left(q,\varepsilon,Z_{0}\right) & =\left\{ \left(q_{0},Z_{0}\right)\right\} 
+\end{align*}
+
+
+\paragraph{例}
+
+\begin{align*}
+S & \rightarrow a|b\\
+S & \rightarrow aSa|bSb
+\end{align*}
+
+というCFGに対して、
+\begin{align*}
+M & =\left(Q,\Sigma,\Gamma,\delta,q_{0},Z_{0},F\right)\\
+Q & =\left\{ q_{0},q_{1},q_{2}\right\} \\
+\Sigma & =\left\{ a,b\right\} \\
+\Gamma & =\left\{ a,b,S,Z_{0}\right\} \\
+F & =\left\{ q_{2}\right\} 
+\end{align*}
+
+abbbaの場合
+
+紛失
+
+\section*{第n+1回}
+
+(紛失)
+
+TMは、$\left(Q,\Sigma,\Gamma,\delta,q_{0},q_{\text{accept}},q_{\text{reject}}\right)$で定義される。
+\begin{itemize}
+\item $Q$は状態の有限集合
+\item $\Sigma$は空白文字 ( ) を含まないアルファベット
+\item $\Gamma$は、$\left(\right)\in\Gamma$かつ$\Sigma\subseteq\Gamma$であるテープアルファベット
+\item $\delta$: $Q\times\Gamma\rightarrow Q\times\Gamma\times\left\{ L,R\right\} $の遷移規則
+$L,R$はテープ状の動き
+\item $q_{0}\in Q$は開始状態
+\item $q_{\text{accept}}\in Q$は受理状態
+\item $q_{\text{reject}}\in Q$は拒否状態
+\end{itemize}
+{[}図略: チューリングマシンのテープの動作{]}
+
+ヘッドの移動は$uaq_{i}bv\left(u\in\Gamma^{*},a\in\Gamma,q_{i}\in Q,b\in\Gamma,v\in\Gamma^{*}\right)$に対して$\delta\left(q_{i},b\right)=\left(q_{j},c,L\right)$なら$uq_{j}acv$に移り、$\delta\left(q_{i},b\right)=\left(q_{j},c,R\right)$なら$uacq_{j}v$に移る。
+
+TMMが受理する文字列の集まりを$M$の言語といい、$L\left(M\right)$と表す。言語に対して、それを受理する (認識する)
+TMが存在する時、チューリング認識言語という。TMは受理、拒否、ループの3つがある。受理、拒否を行う機会を判定装置という。任意の言語に対してそれを判定するTMがある時、チューリング判定可能という。
+
+要するに$L$を言語として、
+\begin{itemize}
+\item $x\in L$の時は受理、$x\in L$なら非受理(拒否 or ループ) → チューリング認識
+\item $x\in L$の時は受理、$x\notin L$なら拒否 → チューリング判定
+\end{itemize}
+
+\paragraph{TMのバリエージョン}
+
+・多テープチューリングマシン (MTM: multiple TM)
+
+複数テープのTM。善MTMはTMに変換可能。
+
+・非決定性チューリングマシン (NDTM: nondeterministic TM)
+
+遷移関数が$\delta:\;Q\times T\rightarrow P\left(Q\times\Gamma\times\left\{ L,R\right\} \right)$
+
+NDTMはTMでシミュレート可能(NTMとTMの能力は等価)
+
+NDTMに等価なTMはテープが3本ある。
+\begin{enumerate}
+\item 入力テープ。常に入力文字が入っている。
+\item シミュレーションテープ。NDTMのパスの動作をシミュレート
+\item アドレステープ。NDTMの木を深さ優先でたどる
+\end{enumerate}
+選択肢のいずれかが受理となったら受理、全てが拒否なら拒否、深さ優先では、停止しないパスに嵌まる可能性がある。
+
+\paragraph{アルゴリズム}
+\begin{itemize}
+\item アルゴリズムはTMで実行できる。
+\item 解法がある=それを解くTMがある
+\end{itemize}
+
+\paragraph{TMの高レベルな記述}
+
+TMは文字列を受け取る。オブジェクトOを文字列にしたものを$\left\langle O\right\rangle $と書く。
+
+高レベルのTMの記述例。$A=\left\{ \left\langle G\right\rangle |G\text{は連結無向グラフ}\right\} $
+
+$A$を判定するTMMの記述$\left[x\in A\rightarrow\text{yes},x\notin A\rightarrow\text{no}\right]$
+\begin{enumerate}
+\item $G$の最初の点を選んで印をつける
+\item 以下を印がつけられなく成るまで繰り返す
+\begin{enumerate}
+\item すでに印がついた点に繋がった点に印をつける
+\end{enumerate}
+\item 総ての点に印があれば受理。そうでなければ拒否。
+\end{enumerate}
+
 \end{document}
