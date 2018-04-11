@@ -1,0 +1,201 @@
+%% LyX 2.3.0rc1 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a5paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage[unicode=true,
+ bookmarks=false,
+ breaklinks=false,pdfborder={0 0 1},backref=section,colorlinks=false]
+ {hyperref}
+\hypersetup{
+ dvipdfmx}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[dvipdfmx]{pxjahyper}
+
+
+% http://tex.stackexchange.com/a/192428/116656
+\AtBeginDocument{\let\origref\ref
+   \renewcommand{\ref}[1]{(\origref{#1})}}
+
+
+
+\usepackage{babel}
+
+\makeatother
+
+\begin{document}
+
+\title{2018-S 数学2D演習}
+
+\author{教員: 入力: 高橋光輝}
+
+\maketitle
+\global\long\def\pd#1#2{\frac{\partial#1}{\partial#2}}
+ \global\long\def\d#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+ \global\long\def\pdd#1#2{\frac{\partial^{2}#1}{\partial#2^{2}}}
+ \global\long\def\dd#1#2{\frac{\mathrm{d}^{2}#1}{\mathrm{d}#2^{2}}}
+ \global\long\def\ddd#1#2{\frac{\mathrm{d}^{3}#1}{\mathrm{d}#2^{3}}}
+ \global\long\def\e{\mathrm{e}}
+ \global\long\def\i{\mathrm{i}}
+ \global\long\def\j{\mathrm{j}}
+ \global\long\def\grad{\operatorname{grad}}
+ \global\long\def\rot{\operatorname{rot}}
+ \global\long\def\div{\operatorname{div}}
+ \global\long\def\diag{\operatorname{diag}}
+ \global\long\def\rank{\operatorname{rank}}
+ \global\long\def\prob{\operatorname{Prob}}
+ \global\long\def\cov{\operatorname{Cov}}
+ \global\long\def\when#1{\left.#1\right|}
+ \global\long\def\laplace#1{\mathcal{L}\left[#1\right]}
+ \global\long\def\invlaplace#1{\mathcal{L}^{-1}\left[#1\right]}
+ \global\long\def\combination#1#2{_{#1}\mathrm{C}_{#2}}
+ \global\long\def\permutation#1#2{_{#1}\mathrm{P}_{#2}}
+
+
+\section*{第1回}
+
+\paragraph{{[}1{]} (1)}
+
+\begin{align*}
+\exp\left(\i\alpha\right)\exp\left(\i\beta\right) & =\left(\cos\alpha+\i\sin\alpha\right)\left(\cos\beta+\i\sin\beta\right)\\
+ & =\left(\cos\alpha\cos\beta-\sin\alpha\sin\beta\right)+\i\left(\cos\alpha\sin\beta+\sin\alpha\sin\beta\right)\\
+ & =\cos\left(\alpha+\beta\right)+\i\sin\left(\alpha+\beta\right)\\
+ & =\exp\left(\i\alpha+\i\beta\right)
+\end{align*}
+
+よって$\exp\left(\i\alpha\right)\exp\left(\i\beta\right)=\exp\left(\i\alpha+\i\beta\right)$
+
+\paragraph{(2)}
+
+$\alpha=\beta=\theta$として、(1)より
+\[
+\exp\left(\i\theta\right)\exp\left(\i\theta\right)=\exp\left(2\i\theta\right)
+\]
+\begin{align*}
+\left(\text{左辺}\right) & =\left(\sin\theta+\i\sin\theta\right)^{2}\\
+ & =\left(\cos^{2}\theta-\sin^{2}\theta+2\i\sin\theta\cos\theta\right)
+\end{align*}
+\[
+\left(\text{右辺}\right)=\cos2\theta+\i\sin2\theta
+\]
+
+両辺の実部と虚部を比較
+
+\begin{align*}
+\cos2\theta & =\cos^{2}\theta-\sin^{2}\theta\\
+\sin2\theta & =2\sin\theta\cos\theta
+\end{align*}
+
+3倍角も同様
+
+\paragraph{(3)}
+
+省略
+
+\paragraph{(4-1)}
+
+$r$は$z$の絶対値、$\theta$は偏角
+
+\paragraph{(4-2)}
+
+\[
+r=\sqrt{1^{2}+1^{2}}=\sqrt{2}
+\]
+\[
+\theta=\arctan\left(\frac{1}{1}\right)=\frac{\pi}{2}
+\]
+
+\[
+1+\i=\sqrt{2}\exp\left(\frac{\pi}{2}\right)
+\]
+
+
+\paragraph{(4-3)}
+
+省略
+
+\paragraph{(5)}
+
+省略
+
+\paragraph{{[}2{]}(1)}
+
+$\Delta\alpha\beta\gamma$が正三角形$\Leftrightarrow$$\frac{\alpha-\gamma}{\beta-\gamma}=\frac{1\pm\sqrt{3}}{2}$
+
+まず$\Leftarrow$を示す。
+
+\[
+\left|\frac{\alpha-\gamma}{\beta-\gamma}\right|=\left|\frac{1\pm\sqrt{3}\i}{2}\right|=1
+\]
+より
+\[
+\left|\alpha-\gamma\right|=\left|\beta-\gamma\right|
+\]
+なので、辺$\gamma\beta$と辺$\gamma\alpha$は等しく、
+
+\[
+\arg\left(\frac{\alpha-\gamma}{\beta-\gamma}\right)=\pm\frac{\pi}{3}
+\]
+なので、
+\[
+\left|\angle\beta\gamma\alpha\right|=\frac{\pi}{3}
+\]
+したがって$\Delta\alpha\beta\gamma$は頂角$\frac{\pi}{3}$のに底辺三角形、すなわち正三角形である。
+
+逆に、$\Delta\alpha\beta\gamma$が正三角形のときは、確変が等しく、度の角も$\frac{\pi}{3}$なので、点どうしの関係として
+\[
+\frac{\alpha-\gamma}{\beta-\gamma}=\frac{1\pm\sqrt{3}\i}{2}
+\]
+を満たす。
+
+\paragraph{(2)}
+
+\begin{align*}
+ & \alpha^{2}+\beta^{2}+\gamma^{2}-\alpha\beta-\beta\gamma-\gamma\alpha=0\\
+\Rightarrow & \alpha^{2}-2\alpha\gamma+\gamma^{2}+\alpha\gamma+\beta^{2}-2\beta\gamma+\gamma^{2}+\beta\gamma-\gamma^{2}-\alpha\beta=0\\
+\Rightarrow & \left(\alpha-\gamma\right)^{2}+\left(\beta-\gamma\right)^{2}+\alpha\gamma-\gamma^{2}+\beta\gamma-\alpha\beta=0\\
+\Rightarrow & \left(\alpha-\gamma\right)^{2}+\left(\beta-\gamma\right)^{2}+\gamma\left(\alpha-\gamma\right)-\beta\left(\alpha-\gamma\right)=0\\
+\Rightarrow & \left(\alpha-\gamma\right)^{2}+\left(\beta-\gamma\right)^{2}-\left(\alpha-\gamma\right)\left(\beta-\gamma\right)=0\\
+\Rightarrow & \left(\alpha-\gamma-\left(\frac{1+\sqrt{3}\i}{2}\right)\left(\beta-\gamma\right)\right)\left(\alpha-\gamma-\left(\frac{1-\sqrt{3}\i}{2}\right)\left(\beta-\gamma\right)\right)=0\\
+\Rightarrow & \alpha-\gamma=\frac{1+\sqrt{3}\i}{2}\left(\beta-\gamma\right)\\
+\Rightarrow & \frac{\alpha-\gamma}{\beta-\gamma}=\frac{1\pm\sqrt{3}\i}{2}
+\end{align*}
+
+
+\paragraph{{[}3{]}(1)}
+
+\[
+\left(\text{与式}\right)=\sum_{n=0}^{\infty}\frac{z^{n}}{n!}
+\]
+
+d'Alambertの判定法より、$a_{n}=\frac{1}{n!}$であるので、
+\[
+r=\lim_{n\rightarrow\infty}\left|\frac{\left(n+1\right)!}{n!}\right|=\infty
+\]
+
+
+\paragraph{(2)}
+
+同様に$a_{n}=\left(-1\right)^{n+1}\frac{1}{n}$として、
+\[
+r=\lim_{n\rightarrow\infty}\left|\frac{\left(-1\right)^{n+1}}{n}\times\frac{n+1}{\left(-1\right)^{n}}\right|=1
+\]
+
+
+\paragraph{(3)}
+
+同様に$a_{n}=\frac{\alpha\left(\alpha-1\right)\cdots\left(\alpha-n\right)}{n!}$として、
+\begin{align*}
+r & =\lim_{n\rightarrow\infty}\left|\frac{\alpha\left(\alpha-1\right)\cdots\left(\alpha-\left(n+1\right)\right)}{\left(n+1\right)!}\times\frac{n!}{\alpha\left(\alpha-1\right)\cdots\left(\alpha-n\right)}\right|\\
+ & =\left|\frac{\alpha-\left(n+1\right)}{n+1}\right|=1
+\end{align*}
+
+\end{document}
